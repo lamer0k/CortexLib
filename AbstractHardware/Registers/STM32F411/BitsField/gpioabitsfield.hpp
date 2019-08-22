@@ -17,10 +17,10 @@ struct GpioaModerModerValuesBase {} ;
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GpioaModerModerValues: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Input = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Output = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Alternate = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Analog = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
 struct GpioaOtyperOtValuesBase {} ;
