@@ -4,10 +4,11 @@
 #ifndef REGISTERS_REGISTER_HPP
 #define REGISTERS_REGISTER_HPP
 
+#include <initializer_list>   //for initializer_list
 #include "bitsfield.hpp"      //for BitsFileds
 #include "registertype.hpp"   //for RegisterType
-#include "accessmode.hpp"    //for WriteMode, ReadMode
-#include "susudefs.hpp"      //for __forceinline
+#include "accessmode.hpp"     //for WriteMode, ReadMode
+#include "susudefs.hpp"       //for __forceinline
 
 //Класс для работы с регистром, можно передавать список Битовых полей для установки и проверки
 template<uint32_t address, size_t size, typename AccessMode, typename BitsValueBaseType,  typename ...Args>

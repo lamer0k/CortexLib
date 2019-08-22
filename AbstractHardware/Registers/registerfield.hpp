@@ -1,26 +1,22 @@
 //
-// Created by Lamerok on 21.08.2019.
+// Created by SKolody on 22.08.2019.
 //
 
-#ifndef REGISTERS_BITSFIELDBASE_HPP
-#define REGISTERS_BITSFIELDBASE_HPP
-
-#include <cstddef>           //for size_t
-#include <type_traits>       //for std::is_base_of, std::is_same
-#include "accessmode.hpp"    //for WriteMode, ReadMode
-#include "susudefs.hpp"      //for __forceinline
-#include "registerfield.hpp" //for RegisterField
-
+#ifndef REGISTERS_REGISTERFIELD_HPP
+#define REGISTERS_REGISTERFIELD_HPP
+#include <cassert>      //for assert
 //Базовый класс для работы с битовыми полями регистров
-template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Reg::Type value>
-struct BitsFieldBase
+template<typename Reg, size_t offset, size_t size, typename AccessMode>
+struct RegisterField
 {
   using RegType = typename Reg::Type ;
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
   template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
-  static void Set()
+  static void Set(RegType value)
   {
+    assert(value < ((1 << size) - 1)) ;
+    
     RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Addr) ; //Сохраняем текущее значение регистра
     
     newRegValue &= ~ (((1 << size) - 1) << offset); //Вначале нужно очистить старое значение битового поля
@@ -32,10 +28,9 @@ struct BitsFieldBase
   //Метод устанавливает проверяет установлено ли значение битового поля
   __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
-  inline static bool IsSet()
+  inline static RegType Get()
   {
-    return ((*reinterpret_cast<RegType *>(Reg::Addr)) & static_cast<RegType>(((1 << size) - 1) << offset))
-                                                                                                == (value << offset) ;
+    return ((*reinterpret_cast<RegType *>(Reg::Addr)) & (((1 << size) - 1) >> offset))  ;
   }
 };
-#endif //REGISTERS_BITSFIELDBASE_HPP
+#endif //REGISTERS_REGISTERFIELD_HPP
