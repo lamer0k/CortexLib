@@ -31,7 +31,7 @@ struct BitsFieldBase
   
   //Метод устанавливает проверяет установлено ли значение битового поля
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   inline static bool IsSet()
   {
     return ((*reinterpret_cast<RegType *>(Reg::Addr)) & static_cast<RegType>(((1 << size) - 1) << offset))

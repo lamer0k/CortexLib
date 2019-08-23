@@ -30,7 +30,7 @@ public:
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
   template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   static bool IsSet()
   {
     Type newRegValue = *reinterpret_cast<Type *>(address) ;

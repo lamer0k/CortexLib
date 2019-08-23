@@ -1,4 +1,5 @@
 from cmsis_svd.parser import SVDParser
+from cmsis_svd.model import SVDRegister
 import os
 import argparse
 import re
@@ -63,6 +64,7 @@ class Register:
         self.size = size
         self.description = description
         self.fields = []
+        self.type = ''
         
 class Field:
     def __init__(self, name, access, bit_offset, bit_width, description):
@@ -89,7 +91,8 @@ def find_bits_field(list, name):
     return result
 
 def cut_bits_field(bits_filed):
-    name = re.sub(r'[^\w\s]+|[\d]+', r'',bits_filed).strip()
+    #name = re.sub(r'[^\w\s]+|[\d]+', r'',bits_filed).strip()
+    name = bits_filed
     return name
 
 def process_device(raw_device):
@@ -133,7 +136,32 @@ def process_peripheral(raw_peripheral, device):
         if (raw_peripheral._registers != None):
             for raw_register in raw_peripheral._registers:
                 result.registers.append(process_register(raw_register, result))
-    
+
+            if(raw_peripheral._register_arrays != None):
+
+                for raw_register in raw_peripheral._register_arrays:
+                    for i in range(raw_register.dim):
+                        _name = raw_register.name % raw_register.dim_indices[i]
+                        _name = _name.replace('[','')
+                        _name = _name.replace(']','')
+                        reg = SVDRegister(
+                            name = _name,
+                            fields = raw_register._fields,
+                            derived_from = raw_register.derived_from,
+                            description = raw_register.description,
+                            address_offset = raw_register.address_offset + raw_register.dim_increment * i,
+                            size = raw_register._size,
+                            access = raw_register._access,
+                            protection = raw_register._protection,
+                            reset_value = raw_register._reset_value,
+                            reset_mask = raw_register._reset_mask,
+                            display_name = raw_register._display_name,
+                            alternate_group = raw_register._alternate_group,
+                            modified_write_values = raw_register._modified_write_values,
+                            read_action = raw_register._read_action,
+                        )
+                        result.registers.append(process_register(reg, result))
+
     return result
     
 def process_register(raw_register, peripheral):
@@ -161,7 +189,8 @@ def process_register(raw_register, peripheral):
             peripheral.base_address + raw_register.address_offset, 
             raw_register._access if (raw_register._access != None) else peripheral.access, 
             raw_register._size if (raw_register._size != None) else peripheral.size,
-            raw_register.description)
+            raw_register.description
+            )
         
         if (raw_register._fields != None):
             for field in raw_register._fields:
@@ -192,11 +221,11 @@ def process_field(raw_field, register, peripheral):
                 for value in base_field.enumerated_values:
                     result.enumerated_values.append(process_bitsfield_value(value))
             else:
-                name = '{}{}{}Values'.format(
-                    camel_case(peripheral.name),
-                    camel_case(register.name),
-                    camel_case(raw_field.name))
-                process_bitsfield_none(cut_bits_field(name))
+                result.enumerated_values = []
+                for i in range(raw_field.bit_width):
+                    res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+                if(res != None):
+                    result.enumerated_values.append(res)
                 
     else:
         result = Field(
@@ -212,30 +241,36 @@ def process_field(raw_field, register, peripheral):
             for value in raw_field.enumerated_values:
                 result.enumerated_values.append(process_bitsfield_value(value))
         else:
-            name = '{}{}{}Values'.format(
-                camel_case(peripheral.name),
-                camel_case(register.name),
-                camel_case(raw_field.name))
-            process_bitsfield_none(cut_bits_field(name))
+            result.enumerated_values = []
+            for i in range(raw_field.bit_width):
+                res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+            if(res != None):
+                result.enumerated_values.append(res)
     
     return result
 
-def process_bitsfield_none(raw_bitsfield_value):
-    bitsfield_name = cut_bits_field(raw_bitsfield_value)
-    if (find_bits_field(bits_field_list, bitsfield_name) != True):
-        bits_field_list.append(bitsfield_name)
-        bits_field_list_temp.append(bitsfield_name)
+def process_bitsfield_none(peripheral, register, field, value, description):
+
+   # name = '{}_{}_{}_Values'.format(
+   #     camel_case(peripheral.name),
+   #     camel_case(register.name),
+   #     camel_case(field.name))
+    name = 'Value' + str(value)
+    return BitsField(
+        name,
+        str(value),
+        description)
 
 def process_bitsfield_value(raw_bitsfield_value):
-    bits_field_list.append(raw_bitsfield_value.name)
-    bits_field_list_temp.append(raw_bitsfield_value.name)
+
     return BitsField(
         raw_bitsfield_value.name,
         raw_bitsfield_value.value,
         raw_bitsfield_value.description)
 
 def camel_case(str):
-    return str.title().replace('_', '')
+    return str
+    #return str.title().replace('_', '')
 
 def generate_peripheral(peripheral, registers_file, enumerations_file = None):
     registers_file.write('struct {}\n'.format(
@@ -260,28 +295,22 @@ def generate_peripheral(peripheral, registers_file, enumerations_file = None):
     registers_file.write('} ;\n')
     registers_file.write('\n')
 
+
 def generate_register_pack(peripheral, register, registers_file):
     registers_file.write('  template<typename... T> \n')
-    for field in register.fields:
-        name = '{}{}{}Values'.format(
-            camel_case(peripheral.name),
-            camel_case(register.name),
-            camel_case(field.name))
-        enum_name = cut_bits_field(name)
-        if (find_bits_field(bits_field_list_temp, enum_name)):
-            break
-
     registers_file.write('  using {}Pack  = {}<0x{:X}, {}, {}, {}Base, T...> ;\n'.format(
         camel_case(register.name),
         register_types['register_pack'],
         register.address,
         register.size,
         access_mode[register.access],
-        enum_name
-    ))
+        camel_case(peripheral.name) + camel_case(register.name)
+        ))
     registers_file.write('\n')
 
 def generate_register_base(peripheral, register, registers_file, enumerations_file):
+
+    generate_bits_filed_base(peripheral, register, registers_file)
     registers_file.write('  struct {} : public {}<0x{:X}, {}, {}>\n'.format(
         camel_case(register.name),
         register_types['register_base'],
@@ -291,7 +320,7 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
         ))
     
     registers_file.write('  {\n')
-    
+
     for field in register.fields:
         generate_field(
             peripheral, 
@@ -309,53 +338,95 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
     if (camel_case(register.name) == camel_case(field.name)):
         field_name = '{}Field'.format(field_name)
 
-    if ((field.enumerated_values != None) or (field.bit_width <= bits_field_max_width)):
-        name = '{}{}{}Values'.format(
-            camel_case(peripheral.name),
-            camel_case(register.name),
-            camel_case(field.name))
-        enum_name = cut_bits_field(name)
-            
+    #if ((field.enumerated_values != None) or (field.bit_width <= bits_field_max_width)):
+    name = cut_bits_field(
+        '{}_{}_{}_Values'.format(
+        camel_case(peripheral.name),
+        camel_case(register.name),
+        camel_case(field.name)))
+    if (field.enumerated_values != None):
+        enum_class_name = name
+    else:
+        enum_class_name = name
+
+    name = '{}_{}_{}_'.format(
+        camel_case(peripheral.name),
+        camel_case(register.name),
+        camel_case(field.name))
+    enum_name = cut_bits_field(name)
+
+    if (field.enumerated_values != None):
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
             field_name,
-            enum_name,
+            enum_class_name,
             camel_case(peripheral.name),
             camel_case(register.name),
-            field.bit_offset, 
+            field.bit_offset,
             field.bit_width,
             bitsfield_types[field.access],
-            enum_name))
-            
-        if (bitsfiled_file != None):
-            generate_bits_field(field, enum_name, bitsfiled_file)
+            #camel_case(field.name) + enum_name))
+            camel_case(peripheral.name) + camel_case(register.name)))
     else:
-        registers_file.write('    using {} = {}<{}::{}, {}, {}> ;\n'.format(
-            field_name, 
-            bitsfield_types[field.access],
+        registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
+            field_name,
+            enum_class_name,
             camel_case(peripheral.name),
             camel_case(register.name),
-            field.bit_offset, 
-            field.bit_width))
+            field.bit_offset,
+            field.bit_width,
+            bitsfield_types[field.access],
+           # camel_case(peripheral.name) + camel_case(field.name)))
+            enum_name))
+            
+    if (bitsfiled_file != None):
+        generate_bits_field(peripheral, register, field, enum_class_name, bitsfiled_file)
+ #   else:
+ #       registers_file.write('    using {} = RegisterField<{}::{}, {}, {}> ;\n'.format(
+ #           field_name,
+ #           bitsfield_types[field.access],
+ #           camel_case(peripheral.name),
+ #           camel_case(register.name),
+ #           field.bit_offset,
+ #           field.bit_width))
 
-def generate_bits_filed_base(enum_name, bits_field_file):
-    bits_field_file.write('struct {}Base '.format(enum_name))
+bits_filed_base_list = []
+
+def generate_bits_filed_base(peripherial, register, bits_field_file):
+    name = '  struct {}Base '.format(camel_case(peripherial.name) + camel_case(register.name))
+    bits_field_file.write(name)
     bits_field_file.write('{} ;\n')
     bits_field_file.write('\n')
 
-def generate_bits_field(field, enum_name, bits_field_file):
-    if (find_bits_field(bits_field_list, enum_name)):
-        generate_bits_filed_base(enum_name, bits_field_file)
+
+def generate_bits_field(peripherial, register, field, enum_name, bits_field_file):
+    if (find_bits_field(bits_field_list, enum_name) or (field.enumerated_values != None)):
+
+        # if (find_bits_field(bits_filed_base_list, enum_name) == False):
+        #     generate_bits_filed_base(enum_name, bits_field_file)
+
+
+        #if(field.enumerated_values != None):
+        #    bits_filed_base_list.append(enum_name+'Values')
+       # else:
+       #     generate_bits_filed_base(peripherial, register, enum_name, bits_field_file)
+
         bits_field_file.write('template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> \n')
         bits_field_file.write('struct {}: public RegisterField<Reg, offset, size, AccessMode> \n'.format(enum_name))
+
         bits_field_file.write('{\n')
-        bits_field_list.remove(enum_name)
+        if(field.enumerated_values == None):
+            bits_field_list.remove(enum_name)
     
         if (field.enumerated_values != None):
             for value in field.enumerated_values:
-                bits_field_file.write('  using {} = BitsField<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
+                if (field.bit_width <= bits_field_max_width):
+                    bits_field_file.write('  using {} = BitsField<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
         else:
-            for i in range(2 ** field.bit_width):
-                bits_field_file.write('  using Value{0} = BitsField<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
+            if (field.bit_width <= bits_field_max_width):
+                for i in range(2 ** field.bit_width):
+                    bits_field_file.write('  using Value{0} = BitsField<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
+          #  else:
+          #      bits_field_file.write('  using {0} = RegisterField<Reg, offset, size, AccessMode> ;\n'.format(enum_name))
 
         bits_field_file.write('} ;\n')
         bits_field_file.write('\n')

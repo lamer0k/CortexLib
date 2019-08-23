@@ -27,7 +27,7 @@ struct RegisterField
   
   //Метод устанавливает проверяет установлено ли значение битового поля
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   inline static RegType Get()
   {
     return ((*reinterpret_cast<RegType *>(Reg::Addr)) & (((1 << size) - 1) >> offset))  ;
