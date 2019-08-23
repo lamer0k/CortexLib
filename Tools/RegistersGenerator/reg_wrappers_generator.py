@@ -37,8 +37,6 @@ register_field_types = {
 }
 
 bits_field_max_width = 5
-bits_field_list = []
-bits_field_list_temp = []
 
 class Device:
     def __init__(self, name, access, size):
@@ -222,10 +220,13 @@ def process_field(raw_field, register, peripheral):
                     result.enumerated_values.append(process_bitsfield_value(value))
             else:
                 result.enumerated_values = []
-                for i in range(raw_field.bit_width):
-                    res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
-                if(res != None):
-                    result.enumerated_values.append(res)
+                if (raw_field.bit_width <= bits_field_max_width):
+                    for i in range(raw_field.bit_width):
+                        res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+                    if(res != None):
+                        result.enumerated_values.append(res)
+                else:
+                    pass #Fixme
                 
     else:
         result = Field(
@@ -242,10 +243,13 @@ def process_field(raw_field, register, peripheral):
                 result.enumerated_values.append(process_bitsfield_value(value))
         else:
             result.enumerated_values = []
-            for i in range(raw_field.bit_width):
-                res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
-            if(res != None):
-                result.enumerated_values.append(res)
+            if (raw_field.bit_width <= bits_field_max_width):
+                for i in range(2 ** raw_field.bit_width):
+                    res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+                    if(res != None):
+                        result.enumerated_values.append(res)
+            else:
+                pass #Fixme
     
     return result
 
@@ -399,16 +403,7 @@ def generate_bits_filed_base(peripherial, register, bits_field_file):
 
 
 def generate_bits_field(peripherial, register, field, enum_name, bits_field_file):
-    if (find_bits_field(bits_field_list, enum_name) or (field.enumerated_values != None)):
-
-        # if (find_bits_field(bits_filed_base_list, enum_name) == False):
-        #     generate_bits_filed_base(enum_name, bits_field_file)
-
-
-        #if(field.enumerated_values != None):
-        #    bits_filed_base_list.append(enum_name+'Values')
-       # else:
-       #     generate_bits_filed_base(peripherial, register, enum_name, bits_field_file)
+   # if (find_bits_field(bits_field_list, enum_name) or (field.enumerated_values != None)):
 
         bits_field_file.write('template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> \n')
         bits_field_file.write('struct {}: public RegisterField<Reg, offset, size, AccessMode> \n'.format(enum_name))
@@ -421,13 +416,10 @@ def generate_bits_field(peripherial, register, field, enum_name, bits_field_file
             for value in field.enumerated_values:
                 if (field.bit_width <= bits_field_max_width):
                     bits_field_file.write('  using {} = BitsField<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
-        else:
-            if (field.bit_width <= bits_field_max_width):
-                for i in range(2 ** field.bit_width):
-                    bits_field_file.write('  using Value{0} = BitsField<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
-          #  else:
-          #      bits_field_file.write('  using {0} = RegisterField<Reg, offset, size, AccessMode> ;\n'.format(enum_name))
-
+        #else:
+        #    if (field.bit_width <= bits_field_max_width):
+        #        for i in range(2 ** field.bit_width):
+        #            bits_field_file.write('  using Value{0} = BitsField<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
         bits_field_file.write('} ;\n')
         bits_field_file.write('\n')
 
