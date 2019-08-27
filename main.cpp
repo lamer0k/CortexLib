@@ -26,24 +26,29 @@ int main()
 //          >::IsSet() ;
 //  TimerA0::Taxctl::Id::Id0::Set();
   
-  GPIOA::MODER::MODER15::Value1::Set() ;
-  auto result = GPIOA::MODER::MODER15::Value2::IsSet() ;
+  GPIOA::MODER::MODER15::Output ::Set() ;
+  auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
   GPIOA::MODER::Write(2U) ;
   auto test = GPIOA::MODER::Get() ;
 
   GPIOA::MODERPack<
-          GPIOA::MODER::MODER15::Value1,
-          GPIOA::MODER::MODER14::Value2
+          GPIOA::MODER::MODER15::Output,
+          GPIOA::MODER::MODER14::Analog
   >::Set() ;
 
   result = GPIOA::MODERPack<
-          GPIOA::MODER::MODER15::Value1,
-          GPIOA::MODER::MODER14::Value2
+          GPIOA::MODER::MODER15::Output,
+          GPIOA::MODER::MODER14::Analog
   >::IsSet() ; ;
 
   GPIOA::MODER::MODER15::Set(2U) ;
-  test = GPIOA::MODER::MODER15::Get();
+  test = GPIOA::MODER::MODER15::Get() ;
   
+  auto i = GPIOA::IDR::Get() ;
+  
+  GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
+              GPIOA::BSRR::BR4::Reset
+              >::Set() ;
   return 0 ;
 }
 
