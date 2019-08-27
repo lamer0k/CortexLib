@@ -12,28 +12,22 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct OtgFsPwrclkFsPcgcctlStppclkValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsPwrclkFsPcgcctlStppclkValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_PWRCLK_FS_PCGCCTL_STPPCLK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsPwrclkFsPcgcctlGatehclkValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsPwrclkFsPcgcctlGatehclkValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_PWRCLK_FS_PCGCCTL_GATEHCLK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsPwrclkFsPcgcctlPhysuspValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsPwrclkFsPcgcctlPhysuspValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_PWRCLK_FS_PCGCCTL_PHYSUSP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

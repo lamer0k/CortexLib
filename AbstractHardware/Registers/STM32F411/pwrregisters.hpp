@@ -15,38 +15,42 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Pwr
+struct PWR
 {
-  struct Cr : public RegisterBase<0x40007000, 32, ReadWriteMode>
+  struct PWRCRBase {} ;
+
+  struct CR : public RegisterBase<0x40007000, 32, ReadWriteMode>
   {
-    using Vos = PwrCrVosValues<Pwr::Cr, 14, 2, ReadWriteMode, PwrCrVosValuesBase> ;
-    using Adcdc1 = PwrCrAdcdcValues<Pwr::Cr, 13, 1, ReadWriteMode, PwrCrAdcdcValuesBase> ;
-    using Fpds = PwrCrFpdsValues<Pwr::Cr, 9, 1, ReadWriteMode, PwrCrFpdsValuesBase> ;
-    using Dbp = PwrCrDbpValues<Pwr::Cr, 8, 1, ReadWriteMode, PwrCrDbpValuesBase> ;
-    using Pls = PwrCrPlsValues<Pwr::Cr, 5, 3, ReadWriteMode, PwrCrPlsValuesBase> ;
-    using Pvde = PwrCrPvdeValues<Pwr::Cr, 4, 1, ReadWriteMode, PwrCrPvdeValuesBase> ;
-    using Csbf = PwrCrCsbfValues<Pwr::Cr, 3, 1, ReadWriteMode, PwrCrCsbfValuesBase> ;
-    using Cwuf = PwrCrCwufValues<Pwr::Cr, 2, 1, ReadWriteMode, PwrCrCwufValuesBase> ;
-    using Pdds = PwrCrPddsValues<Pwr::Cr, 1, 1, ReadWriteMode, PwrCrPddsValuesBase> ;
-    using Lpds = PwrCrLpdsValues<Pwr::Cr, 0, 1, ReadWriteMode, PwrCrLpdsValuesBase> ;
+    using VOS = PWR_CR_VOS_Values<PWR::CR, 14, 2, ReadWriteMode, PWRCRBase> ;
+    using ADCDC1 = PWR_CR_ADCDC_Values<PWR::CR, 13, 1, ReadWriteMode, PWRCRBase> ;
+    using FPDS = PWR_CR_FPDS_Values<PWR::CR, 9, 1, ReadWriteMode, PWRCRBase> ;
+    using DBP = PWR_CR_DBP_Values<PWR::CR, 8, 1, ReadWriteMode, PWRCRBase> ;
+    using PLS = PWR_CR_PLS_Values<PWR::CR, 5, 3, ReadWriteMode, PWRCRBase> ;
+    using PVDE = PWR_CR_PVDE_Values<PWR::CR, 4, 1, ReadWriteMode, PWRCRBase> ;
+    using CSBF = PWR_CR_CSBF_Values<PWR::CR, 3, 1, ReadWriteMode, PWRCRBase> ;
+    using CWUF = PWR_CR_CWUF_Values<PWR::CR, 2, 1, ReadWriteMode, PWRCRBase> ;
+    using PDDS = PWR_CR_PDDS_Values<PWR::CR, 1, 1, ReadWriteMode, PWRCRBase> ;
+    using LPDS = PWR_CR_LPDS_Values<PWR::CR, 0, 1, ReadWriteMode, PWRCRBase> ;
   } ;
 
   template<typename... T> 
-  using CrPack  = Register<0x40007000, 32, ReadWriteMode, PwrCrVosValuesBase, T...> ;
+  using CRPack  = Register<0x40007000, 32, ReadWriteMode, PWRCRBase, T...> ;
 
-  struct Csr : public RegisterBase<0x40007004, 32, ReadWriteMode>
+  struct PWRCSRBase {} ;
+
+  struct CSR : public RegisterBase<0x40007004, 32, ReadWriteMode>
   {
-    using Wuf = PwrCsrWufValues<Pwr::Csr, 0, 1, ReadMode, PwrCsrWufValuesBase> ;
-    using Sbf = PwrCsrSbfValues<Pwr::Csr, 1, 1, ReadMode, PwrCsrSbfValuesBase> ;
-    using Pvdo = PwrCsrPvdoValues<Pwr::Csr, 2, 1, ReadMode, PwrCsrPvdoValuesBase> ;
-    using Brr = PwrCsrBrrValues<Pwr::Csr, 3, 1, ReadMode, PwrCsrBrrValuesBase> ;
-    using Ewup = PwrCsrEwupValues<Pwr::Csr, 8, 1, ReadWriteMode, PwrCsrEwupValuesBase> ;
-    using Bre = PwrCsrBreValues<Pwr::Csr, 9, 1, ReadWriteMode, PwrCsrBreValuesBase> ;
-    using Vosrdy = PwrCsrVosrdyValues<Pwr::Csr, 14, 1, ReadWriteMode, PwrCsrVosrdyValuesBase> ;
+    using WUF = PWR_CSR_WUF_Values<PWR::CSR, 0, 1, ReadMode, PWRCSRBase> ;
+    using SBF = PWR_CSR_SBF_Values<PWR::CSR, 1, 1, ReadMode, PWRCSRBase> ;
+    using PVDO = PWR_CSR_PVDO_Values<PWR::CSR, 2, 1, ReadMode, PWRCSRBase> ;
+    using BRR = PWR_CSR_BRR_Values<PWR::CSR, 3, 1, ReadMode, PWRCSRBase> ;
+    using EWUP = PWR_CSR_EWUP_Values<PWR::CSR, 8, 1, ReadWriteMode, PWRCSRBase> ;
+    using BRE = PWR_CSR_BRE_Values<PWR::CSR, 9, 1, ReadWriteMode, PWRCSRBase> ;
+    using VOSRDY = PWR_CSR_VOSRDY_Values<PWR::CSR, 14, 1, ReadWriteMode, PWRCSRBase> ;
   } ;
 
   template<typename... T> 
-  using CsrPack  = Register<0x40007004, 32, ReadWriteMode, PwrCsrWufValuesBase, T...> ;
+  using CSRPack  = Register<0x40007004, 32, ReadWriteMode, PWRCSRBase, T...> ;
 
 } ;
 

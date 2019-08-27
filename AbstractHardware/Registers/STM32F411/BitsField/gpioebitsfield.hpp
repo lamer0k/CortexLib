@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct GpioeModerModerValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeModerModerValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_MODER_MODER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -23,19 +21,15 @@ struct GpioeModerModerValues: public RegisterField<Reg, offset, size, AccessMode
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct GpioeOtyperOtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeOtyperOtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_OTYPER_OT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeOspeedrOspeedrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeOspeedrOspeedrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_OSPEEDR_OSPEEDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -43,10 +37,8 @@ struct GpioeOspeedrOspeedrValues: public RegisterField<Reg, offset, size, Access
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct GpioePupdrPupdrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioePupdrPupdrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_PUPDR_PUPDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -54,64 +46,50 @@ struct GpioePupdrPupdrValues: public RegisterField<Reg, offset, size, AccessMode
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct GpioeIdrIdrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeIdrIdrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_IDR_IDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeOdrOdrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeOdrOdrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_ODR_ODR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeBsrrBrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeBsrrBrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_BSRR_BR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeBsrrBsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeBsrrBsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_BSRR_BS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeLckrLckkValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeLckrLckkValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_LCKR_LCKK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeLckrLckValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeLckrLckValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_LCKR_LCK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct GpioeAfrlAfrlValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeAfrlAfrlValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_AFRL_AFRL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -131,10 +109,8 @@ struct GpioeAfrlAfrlValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct GpioeAfrhAfrhValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct GpioeAfrhAfrhValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct GPIOE_AFRH_AFRH_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct OtgFsHostFsHcfgFslspcsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcfgFslspcsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCFG_FSLSPCS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -23,143 +21,118 @@ struct OtgFsHostFsHcfgFslspcsValues: public RegisterField<Reg, offset, size, Acc
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct OtgFsHostFsHcfgFslssValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcfgFslssValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCFG_FSLSS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPcstsValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_HFIR_FRIVL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPcstsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HFNUM_FRNUM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HFNUM_FTREM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HPTXSTS_PTXFSAVL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HPTXSTS_PTXQSAV_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HPTXSTS_PTXQTOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_HAINT_HAINT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_HAINTMSK_HAINTM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HPRT_PCSTS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPcdetValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPcdetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PCDET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPenchngValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPenchngValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PENCHNG_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPocaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPocaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_POCA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPocchngValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPocchngValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_POCCHNG_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPresValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPresValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PRES_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPsuspValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPsuspValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PSUSP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPrstValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPrstValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PRST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHprtPlstsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPlstsValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-} ;
-
-struct OtgFsHostFsHprtPpwrValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPpwrValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct OtgFsHostFsHprtPtctlValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPtctlValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct OtgFsHostFsHprtPspdValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHprtPspdValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PLSTS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -167,10 +140,15 @@ struct OtgFsHostFsHprtPspdValues: public RegisterField<Reg, offset, size, Access
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct OtgFsHostFsHccharEpnumValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HPRT_PPWR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharEpnumValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PTCTL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -190,28 +168,8 @@ struct OtgFsHostFsHccharEpnumValues: public RegisterField<Reg, offset, size, Acc
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct OtgFsHostFsHccharEpdirValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharEpdirValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct OtgFsHostFsHccharLsdevValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharLsdevValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct OtgFsHostFsHccharEptypValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharEptypValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HPRT_PSPD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -219,10 +177,48 @@ struct OtgFsHostFsHccharEptypValues: public RegisterField<Reg, offset, size, Acc
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct OtgFsHostFsHccharMcntValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_MPSIZ_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharMcntValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCCHAR_EPNUM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_EPDIR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_LSDEV_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_EPTYP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -230,208 +226,186 @@ struct OtgFsHostFsHccharMcntValues: public RegisterField<Reg, offset, size, Acce
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct OtgFsHostFsHccharOddfrmValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_MCNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharOddfrmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCCHAR_DAD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHccharChdisValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharChdisValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCCHAR_CHDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHccharChenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHccharChenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCCHAR_CHENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintXfrcValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintXfrcValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_XFRC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintChhValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintChhValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_CHH_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintStallValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintStallValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_STALL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintNakValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintNakValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_NAK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintAckValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintAckValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_ACK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintTxerrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintTxerrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_TXERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintBberrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintBberrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_BBERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintFrmorValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintFrmorValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_FRMOR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintDterrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintDterrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINT_DTERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskXfrcmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskXfrcmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_XFRCM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskChhmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskChhmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_CHHM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskStallmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskStallmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_STALLM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskNakmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskNakmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_NAKM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskAckmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskAckmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_ACKM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskNyetValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskNyetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_NYET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskTxerrmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskTxerrmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_TXERRM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskBberrmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskBberrmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskFrmormValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskFrmormValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHcintmskDterrmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHcintmskDterrmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct OtgFsHostFsHctsizDpidValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OtgFsHostFsHctsizDpidValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_HOST_FS_HCTSIZ_DPID_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

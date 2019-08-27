@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct TimOrRmpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TimOrRmpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM_OR_RMP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

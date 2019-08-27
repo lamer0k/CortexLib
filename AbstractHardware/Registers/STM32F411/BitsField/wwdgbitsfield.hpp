@@ -12,37 +12,39 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct WwdgCrWdgaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct WwdgCrWdgaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct WWDG_CR_WDGA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct WwdgCfrEwiValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct WWDG_CR_T_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct WwdgCfrEwiValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct WWDG_CFR_EWI_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct WwdgCfrWdgtbValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct WwdgCfrWdgtbValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct WWDG_CFR_WDGTB_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct WwdgSrEwifValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct WWDG_CFR_W_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct WwdgSrEwifValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct WWDG_SR_EWIF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

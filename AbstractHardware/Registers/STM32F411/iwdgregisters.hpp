@@ -15,40 +15,48 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Iwdg
+struct IWDG
 {
-  struct Kr : public RegisterBase<0x40003000, 32, WriteMode>
+  struct IWDGKRBase {} ;
+
+  struct KR : public RegisterBase<0x40003000, 32, WriteMode>
   {
-    using Key = WriteMode<Iwdg::Kr, 0, 16> ;
+    using KEY = IWDG_KR_KEY_Values<IWDG::KR, 0, 16, WriteMode, IWDGKRBase> ;
   } ;
 
   template<typename... T> 
-  using KrPack  = Register<0x40003000, 32, WriteMode, IwdgKrKeyValuesBase, T...> ;
+  using KRPack  = Register<0x40003000, 32, WriteMode, IWDGKRBase, T...> ;
 
-  struct Pr : public RegisterBase<0x40003004, 32, ReadWriteMode>
+  struct IWDGPRBase {} ;
+
+  struct PR : public RegisterBase<0x40003004, 32, ReadWriteMode>
   {
-    using PrField = IwdgPrPrValues<Iwdg::Pr, 0, 3, ReadWriteMode, IwdgPrPrValuesBase> ;
+    using PRField = IWDG_PR_PR_Values<IWDG::PR, 0, 3, ReadWriteMode, IWDGPRBase> ;
   } ;
 
   template<typename... T> 
-  using PrPack  = Register<0x40003004, 32, ReadWriteMode, IwdgPrPrValuesBase, T...> ;
+  using PRPack  = Register<0x40003004, 32, ReadWriteMode, IWDGPRBase, T...> ;
 
-  struct Rlr : public RegisterBase<0x40003008, 32, ReadWriteMode>
+  struct IWDGRLRBase {} ;
+
+  struct RLR : public RegisterBase<0x40003008, 32, ReadWriteMode>
   {
-    using Rl = ReadWriteMode<Iwdg::Rlr, 0, 12> ;
+    using RL = IWDG_RLR_RL_Values<IWDG::RLR, 0, 12, ReadWriteMode, IWDGRLRBase> ;
   } ;
 
   template<typename... T> 
-  using RlrPack  = Register<0x40003008, 32, ReadWriteMode, IwdgRlrRlValuesBase, T...> ;
+  using RLRPack  = Register<0x40003008, 32, ReadWriteMode, IWDGRLRBase, T...> ;
 
-  struct Sr : public RegisterBase<0x4000300C, 32, ReadMode>
+  struct IWDGSRBase {} ;
+
+  struct SR : public RegisterBase<0x4000300C, 32, ReadMode>
   {
-    using Rvu = IwdgSrRvuValues<Iwdg::Sr, 1, 1, ReadMode, IwdgSrRvuValuesBase> ;
-    using Pvu = IwdgSrPvuValues<Iwdg::Sr, 0, 1, ReadMode, IwdgSrPvuValuesBase> ;
+    using RVU = IWDG_SR_RVU_Values<IWDG::SR, 1, 1, ReadMode, IWDGSRBase> ;
+    using PVU = IWDG_SR_PVU_Values<IWDG::SR, 0, 1, ReadMode, IWDGSRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x4000300C, 32, ReadMode, IwdgSrRvuValuesBase, T...> ;
+  using SRPack  = Register<0x4000300C, 32, ReadMode, IWDGSRBase, T...> ;
 
 } ;
 

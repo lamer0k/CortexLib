@@ -15,45 +15,49 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct AdcCommon
+struct ADC_Common
 {
-  struct Csr : public RegisterBase<0x40012300, 32, ReadMode>
+  struct ADC_CommonCSRBase {} ;
+
+  struct CSR : public RegisterBase<0x40012300, 32, ReadMode>
   {
-    using Ovr3 = AdcCommonCsrOvrValues<AdcCommon::Csr, 21, 1, ReadMode, AdcCommonCsrOvrValuesBase> ;
-    using Strt3 = AdcCommonCsrStrtValues<AdcCommon::Csr, 20, 1, ReadMode, AdcCommonCsrStrtValuesBase> ;
-    using Jstrt3 = AdcCommonCsrJstrtValues<AdcCommon::Csr, 19, 1, ReadMode, AdcCommonCsrJstrtValuesBase> ;
-    using Jeoc3 = AdcCommonCsrJeocValues<AdcCommon::Csr, 18, 1, ReadMode, AdcCommonCsrJeocValuesBase> ;
-    using Eoc3 = AdcCommonCsrEocValues<AdcCommon::Csr, 17, 1, ReadMode, AdcCommonCsrEocValuesBase> ;
-    using Awd3 = AdcCommonCsrAwdValues<AdcCommon::Csr, 16, 1, ReadMode, AdcCommonCsrAwdValuesBase> ;
-    using Ovr2 = AdcCommonCsrOvrValues<AdcCommon::Csr, 13, 1, ReadMode, AdcCommonCsrOvrValuesBase> ;
-    using Strt2 = AdcCommonCsrStrtValues<AdcCommon::Csr, 12, 1, ReadMode, AdcCommonCsrStrtValuesBase> ;
-    using Jstrt2 = AdcCommonCsrJstrtValues<AdcCommon::Csr, 11, 1, ReadMode, AdcCommonCsrJstrtValuesBase> ;
-    using Jeoc2 = AdcCommonCsrJeocValues<AdcCommon::Csr, 10, 1, ReadMode, AdcCommonCsrJeocValuesBase> ;
-    using Eoc2 = AdcCommonCsrEocValues<AdcCommon::Csr, 9, 1, ReadMode, AdcCommonCsrEocValuesBase> ;
-    using Awd2 = AdcCommonCsrAwdValues<AdcCommon::Csr, 8, 1, ReadMode, AdcCommonCsrAwdValuesBase> ;
-    using Ovr1 = AdcCommonCsrOvrValues<AdcCommon::Csr, 5, 1, ReadMode, AdcCommonCsrOvrValuesBase> ;
-    using Strt1 = AdcCommonCsrStrtValues<AdcCommon::Csr, 4, 1, ReadMode, AdcCommonCsrStrtValuesBase> ;
-    using Jstrt1 = AdcCommonCsrJstrtValues<AdcCommon::Csr, 3, 1, ReadMode, AdcCommonCsrJstrtValuesBase> ;
-    using Jeoc1 = AdcCommonCsrJeocValues<AdcCommon::Csr, 2, 1, ReadMode, AdcCommonCsrJeocValuesBase> ;
-    using Eoc1 = AdcCommonCsrEocValues<AdcCommon::Csr, 1, 1, ReadMode, AdcCommonCsrEocValuesBase> ;
-    using Awd1 = AdcCommonCsrAwdValues<AdcCommon::Csr, 0, 1, ReadMode, AdcCommonCsrAwdValuesBase> ;
+    using OVR3 = ADC_Common_CSR_OVR_Values<ADC_Common::CSR, 21, 1, ReadMode, ADC_CommonCSRBase> ;
+    using STRT3 = ADC_Common_CSR_STRT_Values<ADC_Common::CSR, 20, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JSTRT3 = ADC_Common_CSR_JSTRT_Values<ADC_Common::CSR, 19, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JEOC3 = ADC_Common_CSR_JEOC_Values<ADC_Common::CSR, 18, 1, ReadMode, ADC_CommonCSRBase> ;
+    using EOC3 = ADC_Common_CSR_EOC_Values<ADC_Common::CSR, 17, 1, ReadMode, ADC_CommonCSRBase> ;
+    using AWD3 = ADC_Common_CSR_AWD_Values<ADC_Common::CSR, 16, 1, ReadMode, ADC_CommonCSRBase> ;
+    using OVR2 = ADC_Common_CSR_OVR_Values<ADC_Common::CSR, 13, 1, ReadMode, ADC_CommonCSRBase> ;
+    using STRT2 = ADC_Common_CSR_STRT_Values<ADC_Common::CSR, 12, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JSTRT2 = ADC_Common_CSR_JSTRT_Values<ADC_Common::CSR, 11, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JEOC2 = ADC_Common_CSR_JEOC_Values<ADC_Common::CSR, 10, 1, ReadMode, ADC_CommonCSRBase> ;
+    using EOC2 = ADC_Common_CSR_EOC_Values<ADC_Common::CSR, 9, 1, ReadMode, ADC_CommonCSRBase> ;
+    using AWD2 = ADC_Common_CSR_AWD_Values<ADC_Common::CSR, 8, 1, ReadMode, ADC_CommonCSRBase> ;
+    using OVR1 = ADC_Common_CSR_OVR_Values<ADC_Common::CSR, 5, 1, ReadMode, ADC_CommonCSRBase> ;
+    using STRT1 = ADC_Common_CSR_STRT_Values<ADC_Common::CSR, 4, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JSTRT1 = ADC_Common_CSR_JSTRT_Values<ADC_Common::CSR, 3, 1, ReadMode, ADC_CommonCSRBase> ;
+    using JEOC1 = ADC_Common_CSR_JEOC_Values<ADC_Common::CSR, 2, 1, ReadMode, ADC_CommonCSRBase> ;
+    using EOC1 = ADC_Common_CSR_EOC_Values<ADC_Common::CSR, 1, 1, ReadMode, ADC_CommonCSRBase> ;
+    using AWD1 = ADC_Common_CSR_AWD_Values<ADC_Common::CSR, 0, 1, ReadMode, ADC_CommonCSRBase> ;
   } ;
 
   template<typename... T> 
-  using CsrPack  = Register<0x40012300, 32, ReadMode, AdcCommonCsrOvrValuesBase, T...> ;
+  using CSRPack  = Register<0x40012300, 32, ReadMode, ADC_CommonCSRBase, T...> ;
 
-  struct Ccr : public RegisterBase<0x40012304, 32, ReadWriteMode>
+  struct ADC_CommonCCRBase {} ;
+
+  struct CCR : public RegisterBase<0x40012304, 32, ReadWriteMode>
   {
-    using Tsvrefe = AdcCommonCcrTsvrefeValues<AdcCommon::Ccr, 23, 1, ReadWriteMode, AdcCommonCcrTsvrefeValuesBase> ;
-    using Vbate = AdcCommonCcrVbateValues<AdcCommon::Ccr, 22, 1, ReadWriteMode, AdcCommonCcrVbateValuesBase> ;
-    using Adcpre = AdcCommonCcrAdcpreValues<AdcCommon::Ccr, 16, 2, ReadWriteMode, AdcCommonCcrAdcpreValuesBase> ;
-    using Dma = AdcCommonCcrDmaValues<AdcCommon::Ccr, 14, 2, ReadWriteMode, AdcCommonCcrDmaValuesBase> ;
-    using Dds = AdcCommonCcrDdsValues<AdcCommon::Ccr, 13, 1, ReadWriteMode, AdcCommonCcrDdsValuesBase> ;
-    using Delay = AdcCommonCcrDelayValues<AdcCommon::Ccr, 8, 4, ReadWriteMode, AdcCommonCcrDelayValuesBase> ;
+    using TSVREFE = ADC_Common_CCR_TSVREFE_Values<ADC_Common::CCR, 23, 1, ReadWriteMode, ADC_CommonCCRBase> ;
+    using VBATE = ADC_Common_CCR_VBATE_Values<ADC_Common::CCR, 22, 1, ReadWriteMode, ADC_CommonCCRBase> ;
+    using ADCPRE = ADC_Common_CCR_ADCPRE_Values<ADC_Common::CCR, 16, 2, ReadWriteMode, ADC_CommonCCRBase> ;
+    using DMA = ADC_Common_CCR_DMA_Values<ADC_Common::CCR, 14, 2, ReadWriteMode, ADC_CommonCCRBase> ;
+    using DDS = ADC_Common_CCR_DDS_Values<ADC_Common::CCR, 13, 1, ReadWriteMode, ADC_CommonCCRBase> ;
+    using DELAY = ADC_Common_CCR_DELAY_Values<ADC_Common::CCR, 8, 4, ReadWriteMode, ADC_CommonCCRBase> ;
   } ;
 
   template<typename... T> 
-  using CcrPack  = Register<0x40012304, 32, ReadWriteMode, AdcCommonCcrTsvrefeValuesBase, T...> ;
+  using CCRPack  = Register<0x40012304, 32, ReadWriteMode, ADC_CommonCCRBase, T...> ;
 
 } ;
 

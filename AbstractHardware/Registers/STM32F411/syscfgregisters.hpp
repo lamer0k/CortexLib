@@ -15,76 +15,90 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Syscfg
+struct SYSCFG
 {
-  struct Memrm : public RegisterBase<0x40013800, 32, ReadWriteMode>
+  struct SYSCFGMEMRMBase {} ;
+
+  struct MEMRM : public RegisterBase<0x40013800, 32, ReadWriteMode>
   {
-    using MemMode = SyscfgMemrmMemModeValues<Syscfg::Memrm, 0, 2, ReadWriteMode, SyscfgMemrmMemModeValuesBase> ;
+    using MEM_MODE = SYSCFG_MEMRM_MEM_MODE_Values<SYSCFG::MEMRM, 0, 2, ReadWriteMode, SYSCFGMEMRMBase> ;
   } ;
 
   template<typename... T> 
-  using MemrmPack  = Register<0x40013800, 32, ReadWriteMode, SyscfgMemrmMemModeValuesBase, T...> ;
+  using MEMRMPack  = Register<0x40013800, 32, ReadWriteMode, SYSCFGMEMRMBase, T...> ;
 
-  struct Pmc : public RegisterBase<0x40013804, 32, ReadWriteMode>
+  struct SYSCFGPMCBase {} ;
+
+  struct PMC : public RegisterBase<0x40013804, 32, ReadWriteMode>
   {
-    using Adc1Dc2 = SyscfgPmcAdcDcValues<Syscfg::Pmc, 16, 1, ReadWriteMode, SyscfgPmcAdcDcValuesBase> ;
+    using ADC1DC2 = SYSCFG_PMC_ADCDC_Values<SYSCFG::PMC, 16, 1, ReadWriteMode, SYSCFGPMCBase> ;
   } ;
 
   template<typename... T> 
-  using PmcPack  = Register<0x40013804, 32, ReadWriteMode, SyscfgPmcAdcDcValuesBase, T...> ;
+  using PMCPack  = Register<0x40013804, 32, ReadWriteMode, SYSCFGPMCBase, T...> ;
 
-  struct Exticr1 : public RegisterBase<0x40013808, 32, ReadWriteMode>
+  struct SYSCFGEXTICR1Base {} ;
+
+  struct EXTICR1 : public RegisterBase<0x40013808, 32, ReadWriteMode>
   {
-    using Exti3 = SyscfgExticrExtiValues<Syscfg::Exticr1, 12, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti2 = SyscfgExticrExtiValues<Syscfg::Exticr1, 8, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti1 = SyscfgExticrExtiValues<Syscfg::Exticr1, 4, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti0 = SyscfgExticrExtiValues<Syscfg::Exticr1, 0, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
+    using EXTI3 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 12, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI2 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 8, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI1 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 4, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI0 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 0, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
   } ;
 
   template<typename... T> 
-  using Exticr1Pack  = Register<0x40013808, 32, ReadWriteMode, SyscfgExticrExtiValuesBase, T...> ;
+  using EXTICR1Pack  = Register<0x40013808, 32, ReadWriteMode, SYSCFGEXTICR1Base, T...> ;
 
-  struct Exticr2 : public RegisterBase<0x4001380C, 32, ReadWriteMode>
+  struct SYSCFGEXTICR2Base {} ;
+
+  struct EXTICR2 : public RegisterBase<0x4001380C, 32, ReadWriteMode>
   {
-    using Exti7 = SyscfgExticrExtiValues<Syscfg::Exticr2, 12, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti6 = SyscfgExticrExtiValues<Syscfg::Exticr2, 8, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti5 = SyscfgExticrExtiValues<Syscfg::Exticr2, 4, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti4 = SyscfgExticrExtiValues<Syscfg::Exticr2, 0, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
+    using EXTI7 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 12, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI6 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 8, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI5 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 4, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI4 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 0, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
   } ;
 
   template<typename... T> 
-  using Exticr2Pack  = Register<0x4001380C, 32, ReadWriteMode, SyscfgExticrExtiValuesBase, T...> ;
+  using EXTICR2Pack  = Register<0x4001380C, 32, ReadWriteMode, SYSCFGEXTICR2Base, T...> ;
 
-  struct Exticr3 : public RegisterBase<0x40013810, 32, ReadWriteMode>
+  struct SYSCFGEXTICR3Base {} ;
+
+  struct EXTICR3 : public RegisterBase<0x40013810, 32, ReadWriteMode>
   {
-    using Exti11 = SyscfgExticrExtiValues<Syscfg::Exticr3, 12, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti10 = SyscfgExticrExtiValues<Syscfg::Exticr3, 8, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti9 = SyscfgExticrExtiValues<Syscfg::Exticr3, 4, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti8 = SyscfgExticrExtiValues<Syscfg::Exticr3, 0, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
+    using EXTI11 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 12, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI10 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 8, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI9 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 4, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI8 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 0, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
   } ;
 
   template<typename... T> 
-  using Exticr3Pack  = Register<0x40013810, 32, ReadWriteMode, SyscfgExticrExtiValuesBase, T...> ;
+  using EXTICR3Pack  = Register<0x40013810, 32, ReadWriteMode, SYSCFGEXTICR3Base, T...> ;
 
-  struct Exticr4 : public RegisterBase<0x40013814, 32, ReadWriteMode>
+  struct SYSCFGEXTICR4Base {} ;
+
+  struct EXTICR4 : public RegisterBase<0x40013814, 32, ReadWriteMode>
   {
-    using Exti15 = SyscfgExticrExtiValues<Syscfg::Exticr4, 12, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti14 = SyscfgExticrExtiValues<Syscfg::Exticr4, 8, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti13 = SyscfgExticrExtiValues<Syscfg::Exticr4, 4, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
-    using Exti12 = SyscfgExticrExtiValues<Syscfg::Exticr4, 0, 4, ReadWriteMode, SyscfgExticrExtiValuesBase> ;
+    using EXTI15 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 12, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI14 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 8, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI13 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 4, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI12 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 0, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
   } ;
 
   template<typename... T> 
-  using Exticr4Pack  = Register<0x40013814, 32, ReadWriteMode, SyscfgExticrExtiValuesBase, T...> ;
+  using EXTICR4Pack  = Register<0x40013814, 32, ReadWriteMode, SYSCFGEXTICR4Base, T...> ;
 
-  struct Cmpcr : public RegisterBase<0x40013820, 32, ReadMode>
+  struct SYSCFGCMPCRBase {} ;
+
+  struct CMPCR : public RegisterBase<0x40013820, 32, ReadMode>
   {
-    using Ready = SyscfgCmpcrReadyValues<Syscfg::Cmpcr, 8, 1, ReadMode, SyscfgCmpcrReadyValuesBase> ;
-    using CmpPd = SyscfgCmpcrCmpPdValues<Syscfg::Cmpcr, 0, 1, ReadMode, SyscfgCmpcrCmpPdValuesBase> ;
+    using READY = SYSCFG_CMPCR_READY_Values<SYSCFG::CMPCR, 8, 1, ReadMode, SYSCFGCMPCRBase> ;
+    using CMP_PD = SYSCFG_CMPCR_CMP_PD_Values<SYSCFG::CMPCR, 0, 1, ReadMode, SYSCFGCMPCRBase> ;
   } ;
 
   template<typename... T> 
-  using CmpcrPack  = Register<0x40013820, 32, ReadMode, SyscfgCmpcrReadyValuesBase, T...> ;
+  using CMPCRPack  = Register<0x40013820, 32, ReadMode, SYSCFGCMPCRBase, T...> ;
 
 } ;
 

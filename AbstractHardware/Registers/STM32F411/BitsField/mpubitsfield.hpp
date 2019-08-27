@@ -12,46 +12,51 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct MpuMpuTyperSeparateValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuTyperSeparateValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_TYPER_SEPARATE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuCtrlEnableValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_TYPER_DREGION_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuCtrlEnableValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_TYPER_IREGION_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_CTRL_ENABLE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuCtrlHfnmienaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuCtrlHfnmienaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_CTRL_HFNMIENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuCtrlPrivdefenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuCtrlPrivdefenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_CTRL_PRIVDEFENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRbarRegionValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_RNR_REGION_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRbarRegionValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RBAR_REGION_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -71,28 +76,27 @@ struct MpuMpuRbarRegionValues: public RegisterField<Reg, offset, size, AccessMod
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct MpuMpuRbarValidValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRbarValidValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RBAR_VALID_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRasrEnableValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_RBAR_ADDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrEnableValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_ENABLE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRasrSizeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrSizeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_SIZE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -128,52 +132,34 @@ struct MpuMpuRasrSizeValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value31 = BitsField<Reg, offset, size, AccessMode, BaseType, 31U> ;
 } ;
 
-struct MpuMpuRasrBValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_RASR_SRD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrBValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_B_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRasrCValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrCValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_C_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRasrSValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrSValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_S_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct MpuMpuRasrTexValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrTexValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct MpuMpuRasrApValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrApValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_TEX_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -185,10 +171,21 @@ struct MpuMpuRasrApValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct MpuMpuRasrXnValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct MPU_MPU_RASR_AP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct MpuMpuRasrXnValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct MPU_MPU_RASR_XN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

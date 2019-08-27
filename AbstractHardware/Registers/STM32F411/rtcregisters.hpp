@@ -15,422 +15,500 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Rtc
+struct RTC
 {
-  struct Tr : public RegisterBase<0x40002800, 32, ReadWriteMode>
+  struct RTCTRBase {} ;
+
+  struct TR : public RegisterBase<0x40002800, 32, ReadWriteMode>
   {
-    using Pm = RtcTrPmValues<Rtc::Tr, 22, 1, ReadWriteMode, RtcTrPmValuesBase> ;
-    using Ht = RtcTrHtValues<Rtc::Tr, 20, 2, ReadWriteMode, RtcTrHtValuesBase> ;
-    using Hu = RtcTrHuValues<Rtc::Tr, 16, 4, ReadWriteMode, RtcTrHuValuesBase> ;
-    using Mnt = RtcTrMntValues<Rtc::Tr, 12, 3, ReadWriteMode, RtcTrMntValuesBase> ;
-    using Mnu = RtcTrMnuValues<Rtc::Tr, 8, 4, ReadWriteMode, RtcTrMnuValuesBase> ;
-    using St = RtcTrStValues<Rtc::Tr, 4, 3, ReadWriteMode, RtcTrStValuesBase> ;
-    using Su = RtcTrSuValues<Rtc::Tr, 0, 4, ReadWriteMode, RtcTrSuValuesBase> ;
+    using PM = RTC_TR_PM_Values<RTC::TR, 22, 1, ReadWriteMode, RTCTRBase> ;
+    using HT = RTC_TR_HT_Values<RTC::TR, 20, 2, ReadWriteMode, RTCTRBase> ;
+    using HU = RTC_TR_HU_Values<RTC::TR, 16, 4, ReadWriteMode, RTCTRBase> ;
+    using MNT = RTC_TR_MNT_Values<RTC::TR, 12, 3, ReadWriteMode, RTCTRBase> ;
+    using MNU = RTC_TR_MNU_Values<RTC::TR, 8, 4, ReadWriteMode, RTCTRBase> ;
+    using ST = RTC_TR_ST_Values<RTC::TR, 4, 3, ReadWriteMode, RTCTRBase> ;
+    using SU = RTC_TR_SU_Values<RTC::TR, 0, 4, ReadWriteMode, RTCTRBase> ;
   } ;
 
   template<typename... T> 
-  using TrPack  = Register<0x40002800, 32, ReadWriteMode, RtcTrPmValuesBase, T...> ;
+  using TRPack  = Register<0x40002800, 32, ReadWriteMode, RTCTRBase, T...> ;
 
-  struct Dr : public RegisterBase<0x40002804, 32, ReadWriteMode>
+  struct RTCDRBase {} ;
+
+  struct DR : public RegisterBase<0x40002804, 32, ReadWriteMode>
   {
-    using Yt = RtcDrYtValues<Rtc::Dr, 20, 4, ReadWriteMode, RtcDrYtValuesBase> ;
-    using Yu = RtcDrYuValues<Rtc::Dr, 16, 4, ReadWriteMode, RtcDrYuValuesBase> ;
-    using Wdu = RtcDrWduValues<Rtc::Dr, 13, 3, ReadWriteMode, RtcDrWduValuesBase> ;
-    using Mt = RtcDrMtValues<Rtc::Dr, 12, 1, ReadWriteMode, RtcDrMtValuesBase> ;
-    using Mu = RtcDrMuValues<Rtc::Dr, 8, 4, ReadWriteMode, RtcDrMuValuesBase> ;
-    using Dt = RtcDrDtValues<Rtc::Dr, 4, 2, ReadWriteMode, RtcDrDtValuesBase> ;
-    using Du = RtcDrDuValues<Rtc::Dr, 0, 4, ReadWriteMode, RtcDrDuValuesBase> ;
+    using YT = RTC_DR_YT_Values<RTC::DR, 20, 4, ReadWriteMode, RTCDRBase> ;
+    using YU = RTC_DR_YU_Values<RTC::DR, 16, 4, ReadWriteMode, RTCDRBase> ;
+    using WDU = RTC_DR_WDU_Values<RTC::DR, 13, 3, ReadWriteMode, RTCDRBase> ;
+    using MT = RTC_DR_MT_Values<RTC::DR, 12, 1, ReadWriteMode, RTCDRBase> ;
+    using MU = RTC_DR_MU_Values<RTC::DR, 8, 4, ReadWriteMode, RTCDRBase> ;
+    using DT = RTC_DR_DT_Values<RTC::DR, 4, 2, ReadWriteMode, RTCDRBase> ;
+    using DU = RTC_DR_DU_Values<RTC::DR, 0, 4, ReadWriteMode, RTCDRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x40002804, 32, ReadWriteMode, RtcDrYtValuesBase, T...> ;
+  using DRPack  = Register<0x40002804, 32, ReadWriteMode, RTCDRBase, T...> ;
 
-  struct Cr : public RegisterBase<0x40002808, 32, ReadWriteMode>
+  struct RTCCRBase {} ;
+
+  struct CR : public RegisterBase<0x40002808, 32, ReadWriteMode>
   {
-    using Coe = RtcCrCoeValues<Rtc::Cr, 23, 1, ReadWriteMode, RtcCrCoeValuesBase> ;
-    using Osel = RtcCrOselValues<Rtc::Cr, 21, 2, ReadWriteMode, RtcCrOselValuesBase> ;
-    using Pol = RtcCrPolValues<Rtc::Cr, 20, 1, ReadWriteMode, RtcCrPolValuesBase> ;
-    using Cosel = RtcCrCoselValues<Rtc::Cr, 19, 1, ReadWriteMode, RtcCrCoselValuesBase> ;
-    using Bkp = RtcCrBkpValues<Rtc::Cr, 18, 1, ReadWriteMode, RtcCrBkpValuesBase> ;
-    using Sub1H = RtcCrSubHValues<Rtc::Cr, 17, 1, ReadWriteMode, RtcCrSubHValuesBase> ;
-    using Add1H = RtcCrAddHValues<Rtc::Cr, 16, 1, ReadWriteMode, RtcCrAddHValuesBase> ;
-    using Tsie = RtcCrTsieValues<Rtc::Cr, 15, 1, ReadWriteMode, RtcCrTsieValuesBase> ;
-    using Wutie = RtcCrWutieValues<Rtc::Cr, 14, 1, ReadWriteMode, RtcCrWutieValuesBase> ;
-    using Alrbie = RtcCrAlrbieValues<Rtc::Cr, 13, 1, ReadWriteMode, RtcCrAlrbieValuesBase> ;
-    using Alraie = RtcCrAlraieValues<Rtc::Cr, 12, 1, ReadWriteMode, RtcCrAlraieValuesBase> ;
-    using Tse = RtcCrTseValues<Rtc::Cr, 11, 1, ReadWriteMode, RtcCrTseValuesBase> ;
-    using Wute = RtcCrWuteValues<Rtc::Cr, 10, 1, ReadWriteMode, RtcCrWuteValuesBase> ;
-    using Alrbe = RtcCrAlrbeValues<Rtc::Cr, 9, 1, ReadWriteMode, RtcCrAlrbeValuesBase> ;
-    using Alrae = RtcCrAlraeValues<Rtc::Cr, 8, 1, ReadWriteMode, RtcCrAlraeValuesBase> ;
-    using Dce = RtcCrDceValues<Rtc::Cr, 7, 1, ReadWriteMode, RtcCrDceValuesBase> ;
-    using Fmt = RtcCrFmtValues<Rtc::Cr, 6, 1, ReadWriteMode, RtcCrFmtValuesBase> ;
-    using Bypshad = RtcCrBypshadValues<Rtc::Cr, 5, 1, ReadWriteMode, RtcCrBypshadValuesBase> ;
-    using Refckon = RtcCrRefckonValues<Rtc::Cr, 4, 1, ReadWriteMode, RtcCrRefckonValuesBase> ;
-    using Tsedge = RtcCrTsedgeValues<Rtc::Cr, 3, 1, ReadWriteMode, RtcCrTsedgeValuesBase> ;
-    using Wcksel = RtcCrWckselValues<Rtc::Cr, 0, 3, ReadWriteMode, RtcCrWckselValuesBase> ;
+    using COE = RTC_CR_COE_Values<RTC::CR, 23, 1, ReadWriteMode, RTCCRBase> ;
+    using OSEL = RTC_CR_OSEL_Values<RTC::CR, 21, 2, ReadWriteMode, RTCCRBase> ;
+    using POL = RTC_CR_POL_Values<RTC::CR, 20, 1, ReadWriteMode, RTCCRBase> ;
+    using COSEL = RTC_CR_COSEL_Values<RTC::CR, 19, 1, ReadWriteMode, RTCCRBase> ;
+    using BKP = RTC_CR_BKP_Values<RTC::CR, 18, 1, ReadWriteMode, RTCCRBase> ;
+    using SUB1H = RTC_CR_SUBH_Values<RTC::CR, 17, 1, ReadWriteMode, RTCCRBase> ;
+    using ADD1H = RTC_CR_ADDH_Values<RTC::CR, 16, 1, ReadWriteMode, RTCCRBase> ;
+    using TSIE = RTC_CR_TSIE_Values<RTC::CR, 15, 1, ReadWriteMode, RTCCRBase> ;
+    using WUTIE = RTC_CR_WUTIE_Values<RTC::CR, 14, 1, ReadWriteMode, RTCCRBase> ;
+    using ALRBIE = RTC_CR_ALRBIE_Values<RTC::CR, 13, 1, ReadWriteMode, RTCCRBase> ;
+    using ALRAIE = RTC_CR_ALRAIE_Values<RTC::CR, 12, 1, ReadWriteMode, RTCCRBase> ;
+    using TSE = RTC_CR_TSE_Values<RTC::CR, 11, 1, ReadWriteMode, RTCCRBase> ;
+    using WUTE = RTC_CR_WUTE_Values<RTC::CR, 10, 1, ReadWriteMode, RTCCRBase> ;
+    using ALRBE = RTC_CR_ALRBE_Values<RTC::CR, 9, 1, ReadWriteMode, RTCCRBase> ;
+    using ALRAE = RTC_CR_ALRAE_Values<RTC::CR, 8, 1, ReadWriteMode, RTCCRBase> ;
+    using DCE = RTC_CR_DCE_Values<RTC::CR, 7, 1, ReadWriteMode, RTCCRBase> ;
+    using FMT = RTC_CR_FMT_Values<RTC::CR, 6, 1, ReadWriteMode, RTCCRBase> ;
+    using BYPSHAD = RTC_CR_BYPSHAD_Values<RTC::CR, 5, 1, ReadWriteMode, RTCCRBase> ;
+    using REFCKON = RTC_CR_REFCKON_Values<RTC::CR, 4, 1, ReadWriteMode, RTCCRBase> ;
+    using TSEDGE = RTC_CR_TSEDGE_Values<RTC::CR, 3, 1, ReadWriteMode, RTCCRBase> ;
+    using WCKSEL = RTC_CR_WCKSEL_Values<RTC::CR, 0, 3, ReadWriteMode, RTCCRBase> ;
   } ;
 
   template<typename... T> 
-  using CrPack  = Register<0x40002808, 32, ReadWriteMode, RtcCrCoeValuesBase, T...> ;
+  using CRPack  = Register<0x40002808, 32, ReadWriteMode, RTCCRBase, T...> ;
 
-  struct Isr : public RegisterBase<0x4000280C, 32, ReadWriteMode>
+  struct RTCISRBase {} ;
+
+  struct ISR : public RegisterBase<0x4000280C, 32, ReadWriteMode>
   {
-    using Alrawf = RtcIsrAlrawfValues<Rtc::Isr, 0, 1, ReadMode, RtcIsrAlrawfValuesBase> ;
-    using Alrbwf = RtcIsrAlrbwfValues<Rtc::Isr, 1, 1, ReadMode, RtcIsrAlrbwfValuesBase> ;
-    using Wutwf = RtcIsrWutwfValues<Rtc::Isr, 2, 1, ReadMode, RtcIsrWutwfValuesBase> ;
-    using Shpf = RtcIsrShpfValues<Rtc::Isr, 3, 1, ReadWriteMode, RtcIsrShpfValuesBase> ;
-    using Inits = RtcIsrInitsValues<Rtc::Isr, 4, 1, ReadMode, RtcIsrInitsValuesBase> ;
-    using Rsf = RtcIsrRsfValues<Rtc::Isr, 5, 1, ReadWriteMode, RtcIsrRsfValuesBase> ;
-    using Initf = RtcIsrInitfValues<Rtc::Isr, 6, 1, ReadMode, RtcIsrInitfValuesBase> ;
-    using Init = RtcIsrInitValues<Rtc::Isr, 7, 1, ReadWriteMode, RtcIsrInitValuesBase> ;
-    using Alraf = RtcIsrAlrafValues<Rtc::Isr, 8, 1, ReadWriteMode, RtcIsrAlrafValuesBase> ;
-    using Alrbf = RtcIsrAlrbfValues<Rtc::Isr, 9, 1, ReadWriteMode, RtcIsrAlrbfValuesBase> ;
-    using Wutf = RtcIsrWutfValues<Rtc::Isr, 10, 1, ReadWriteMode, RtcIsrWutfValuesBase> ;
-    using Tsf = RtcIsrTsfValues<Rtc::Isr, 11, 1, ReadWriteMode, RtcIsrTsfValuesBase> ;
-    using Tsovf = RtcIsrTsovfValues<Rtc::Isr, 12, 1, ReadWriteMode, RtcIsrTsovfValuesBase> ;
-    using Tamp1F = RtcIsrTampFValues<Rtc::Isr, 13, 1, ReadWriteMode, RtcIsrTampFValuesBase> ;
-    using Tamp2F = RtcIsrTampFValues<Rtc::Isr, 14, 1, ReadWriteMode, RtcIsrTampFValuesBase> ;
-    using Recalpf = RtcIsrRecalpfValues<Rtc::Isr, 16, 1, ReadMode, RtcIsrRecalpfValuesBase> ;
+    using ALRAWF = RTC_ISR_ALRAWF_Values<RTC::ISR, 0, 1, ReadMode, RTCISRBase> ;
+    using ALRBWF = RTC_ISR_ALRBWF_Values<RTC::ISR, 1, 1, ReadMode, RTCISRBase> ;
+    using WUTWF = RTC_ISR_WUTWF_Values<RTC::ISR, 2, 1, ReadMode, RTCISRBase> ;
+    using SHPF = RTC_ISR_SHPF_Values<RTC::ISR, 3, 1, ReadWriteMode, RTCISRBase> ;
+    using INITS = RTC_ISR_INITS_Values<RTC::ISR, 4, 1, ReadMode, RTCISRBase> ;
+    using RSF = RTC_ISR_RSF_Values<RTC::ISR, 5, 1, ReadWriteMode, RTCISRBase> ;
+    using INITF = RTC_ISR_INITF_Values<RTC::ISR, 6, 1, ReadMode, RTCISRBase> ;
+    using INIT = RTC_ISR_INIT_Values<RTC::ISR, 7, 1, ReadWriteMode, RTCISRBase> ;
+    using ALRAF = RTC_ISR_ALRAF_Values<RTC::ISR, 8, 1, ReadWriteMode, RTCISRBase> ;
+    using ALRBF = RTC_ISR_ALRBF_Values<RTC::ISR, 9, 1, ReadWriteMode, RTCISRBase> ;
+    using WUTF = RTC_ISR_WUTF_Values<RTC::ISR, 10, 1, ReadWriteMode, RTCISRBase> ;
+    using TSF = RTC_ISR_TSF_Values<RTC::ISR, 11, 1, ReadWriteMode, RTCISRBase> ;
+    using TSOVF = RTC_ISR_TSOVF_Values<RTC::ISR, 12, 1, ReadWriteMode, RTCISRBase> ;
+    using TAMP1F = RTC_ISR_TAMPF_Values<RTC::ISR, 13, 1, ReadWriteMode, RTCISRBase> ;
+    using TAMP2F = RTC_ISR_TAMPF_Values<RTC::ISR, 14, 1, ReadWriteMode, RTCISRBase> ;
+    using RECALPF = RTC_ISR_RECALPF_Values<RTC::ISR, 16, 1, ReadMode, RTCISRBase> ;
   } ;
 
   template<typename... T> 
-  using IsrPack  = Register<0x4000280C, 32, ReadWriteMode, RtcIsrAlrawfValuesBase, T...> ;
+  using ISRPack  = Register<0x4000280C, 32, ReadWriteMode, RTCISRBase, T...> ;
 
-  struct Prer : public RegisterBase<0x40002810, 32, ReadWriteMode>
+  struct RTCPRERBase {} ;
+
+  struct PRER : public RegisterBase<0x40002810, 32, ReadWriteMode>
   {
-    using PredivA = ReadWriteMode<Rtc::Prer, 16, 7> ;
-    using PredivS = ReadWriteMode<Rtc::Prer, 0, 15> ;
+    using PREDIV_A = RTC_PRER_PREDIV_A_Values<RTC::PRER, 16, 7, ReadWriteMode, RTCPRERBase> ;
+    using PREDIV_S = RTC_PRER_PREDIV_S_Values<RTC::PRER, 0, 15, ReadWriteMode, RTCPRERBase> ;
   } ;
 
   template<typename... T> 
-  using PrerPack  = Register<0x40002810, 32, ReadWriteMode, RtcPrerPredivAValuesBase, T...> ;
+  using PRERPack  = Register<0x40002810, 32, ReadWriteMode, RTCPRERBase, T...> ;
 
-  struct Wutr : public RegisterBase<0x40002814, 32, ReadWriteMode>
+  struct RTCWUTRBase {} ;
+
+  struct WUTR : public RegisterBase<0x40002814, 32, ReadWriteMode>
   {
-    using Wut = ReadWriteMode<Rtc::Wutr, 0, 16> ;
+    using WUT = RTC_WUTR_WUT_Values<RTC::WUTR, 0, 16, ReadWriteMode, RTCWUTRBase> ;
   } ;
 
   template<typename... T> 
-  using WutrPack  = Register<0x40002814, 32, ReadWriteMode, RtcWutrWutValuesBase, T...> ;
+  using WUTRPack  = Register<0x40002814, 32, ReadWriteMode, RTCWUTRBase, T...> ;
 
-  struct Calibr : public RegisterBase<0x40002818, 32, ReadWriteMode>
+  struct RTCCALIBRBase {} ;
+
+  struct CALIBR : public RegisterBase<0x40002818, 32, ReadWriteMode>
   {
-    using Dcs = RtcCalibrDcsValues<Rtc::Calibr, 7, 1, ReadWriteMode, RtcCalibrDcsValuesBase> ;
-    using Dc = RtcCalibrDcValues<Rtc::Calibr, 0, 5, ReadWriteMode, RtcCalibrDcValuesBase> ;
+    using DCS = RTC_CALIBR_DCS_Values<RTC::CALIBR, 7, 1, ReadWriteMode, RTCCALIBRBase> ;
+    using DC = RTC_CALIBR_DC_Values<RTC::CALIBR, 0, 5, ReadWriteMode, RTCCALIBRBase> ;
   } ;
 
   template<typename... T> 
-  using CalibrPack  = Register<0x40002818, 32, ReadWriteMode, RtcCalibrDcsValuesBase, T...> ;
+  using CALIBRPack  = Register<0x40002818, 32, ReadWriteMode, RTCCALIBRBase, T...> ;
 
-  struct Alrmar : public RegisterBase<0x4000281C, 32, ReadWriteMode>
+  struct RTCALRMARBase {} ;
+
+  struct ALRMAR : public RegisterBase<0x4000281C, 32, ReadWriteMode>
   {
-    using Msk4 = RtcAlrmarMskValues<Rtc::Alrmar, 31, 1, ReadWriteMode, RtcAlrmarMskValuesBase> ;
-    using Wdsel = RtcAlrmarWdselValues<Rtc::Alrmar, 30, 1, ReadWriteMode, RtcAlrmarWdselValuesBase> ;
-    using Dt = RtcAlrmarDtValues<Rtc::Alrmar, 28, 2, ReadWriteMode, RtcAlrmarDtValuesBase> ;
-    using Du = RtcAlrmarDuValues<Rtc::Alrmar, 24, 4, ReadWriteMode, RtcAlrmarDuValuesBase> ;
-    using Msk3 = RtcAlrmarMskValues<Rtc::Alrmar, 23, 1, ReadWriteMode, RtcAlrmarMskValuesBase> ;
-    using Pm = RtcAlrmarPmValues<Rtc::Alrmar, 22, 1, ReadWriteMode, RtcAlrmarPmValuesBase> ;
-    using Ht = RtcAlrmarHtValues<Rtc::Alrmar, 20, 2, ReadWriteMode, RtcAlrmarHtValuesBase> ;
-    using Hu = RtcAlrmarHuValues<Rtc::Alrmar, 16, 4, ReadWriteMode, RtcAlrmarHuValuesBase> ;
-    using Msk2 = RtcAlrmarMskValues<Rtc::Alrmar, 15, 1, ReadWriteMode, RtcAlrmarMskValuesBase> ;
-    using Mnt = RtcAlrmarMntValues<Rtc::Alrmar, 12, 3, ReadWriteMode, RtcAlrmarMntValuesBase> ;
-    using Mnu = RtcAlrmarMnuValues<Rtc::Alrmar, 8, 4, ReadWriteMode, RtcAlrmarMnuValuesBase> ;
-    using Msk1 = RtcAlrmarMskValues<Rtc::Alrmar, 7, 1, ReadWriteMode, RtcAlrmarMskValuesBase> ;
-    using St = RtcAlrmarStValues<Rtc::Alrmar, 4, 3, ReadWriteMode, RtcAlrmarStValuesBase> ;
-    using Su = RtcAlrmarSuValues<Rtc::Alrmar, 0, 4, ReadWriteMode, RtcAlrmarSuValuesBase> ;
+    using MSK4 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 31, 1, ReadWriteMode, RTCALRMARBase> ;
+    using WDSEL = RTC_ALRMAR_WDSEL_Values<RTC::ALRMAR, 30, 1, ReadWriteMode, RTCALRMARBase> ;
+    using DT = RTC_ALRMAR_DT_Values<RTC::ALRMAR, 28, 2, ReadWriteMode, RTCALRMARBase> ;
+    using DU = RTC_ALRMAR_DU_Values<RTC::ALRMAR, 24, 4, ReadWriteMode, RTCALRMARBase> ;
+    using MSK3 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 23, 1, ReadWriteMode, RTCALRMARBase> ;
+    using PM = RTC_ALRMAR_PM_Values<RTC::ALRMAR, 22, 1, ReadWriteMode, RTCALRMARBase> ;
+    using HT = RTC_ALRMAR_HT_Values<RTC::ALRMAR, 20, 2, ReadWriteMode, RTCALRMARBase> ;
+    using HU = RTC_ALRMAR_HU_Values<RTC::ALRMAR, 16, 4, ReadWriteMode, RTCALRMARBase> ;
+    using MSK2 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 15, 1, ReadWriteMode, RTCALRMARBase> ;
+    using MNT = RTC_ALRMAR_MNT_Values<RTC::ALRMAR, 12, 3, ReadWriteMode, RTCALRMARBase> ;
+    using MNU = RTC_ALRMAR_MNU_Values<RTC::ALRMAR, 8, 4, ReadWriteMode, RTCALRMARBase> ;
+    using MSK1 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 7, 1, ReadWriteMode, RTCALRMARBase> ;
+    using ST = RTC_ALRMAR_ST_Values<RTC::ALRMAR, 4, 3, ReadWriteMode, RTCALRMARBase> ;
+    using SU = RTC_ALRMAR_SU_Values<RTC::ALRMAR, 0, 4, ReadWriteMode, RTCALRMARBase> ;
   } ;
 
   template<typename... T> 
-  using AlrmarPack  = Register<0x4000281C, 32, ReadWriteMode, RtcAlrmarMskValuesBase, T...> ;
+  using ALRMARPack  = Register<0x4000281C, 32, ReadWriteMode, RTCALRMARBase, T...> ;
 
-  struct Alrmbr : public RegisterBase<0x40002820, 32, ReadWriteMode>
+  struct RTCALRMBRBase {} ;
+
+  struct ALRMBR : public RegisterBase<0x40002820, 32, ReadWriteMode>
   {
-    using Msk4 = RtcAlrmbrMskValues<Rtc::Alrmbr, 31, 1, ReadWriteMode, RtcAlrmbrMskValuesBase> ;
-    using Wdsel = RtcAlrmbrWdselValues<Rtc::Alrmbr, 30, 1, ReadWriteMode, RtcAlrmbrWdselValuesBase> ;
-    using Dt = RtcAlrmbrDtValues<Rtc::Alrmbr, 28, 2, ReadWriteMode, RtcAlrmbrDtValuesBase> ;
-    using Du = RtcAlrmbrDuValues<Rtc::Alrmbr, 24, 4, ReadWriteMode, RtcAlrmbrDuValuesBase> ;
-    using Msk3 = RtcAlrmbrMskValues<Rtc::Alrmbr, 23, 1, ReadWriteMode, RtcAlrmbrMskValuesBase> ;
-    using Pm = RtcAlrmbrPmValues<Rtc::Alrmbr, 22, 1, ReadWriteMode, RtcAlrmbrPmValuesBase> ;
-    using Ht = RtcAlrmbrHtValues<Rtc::Alrmbr, 20, 2, ReadWriteMode, RtcAlrmbrHtValuesBase> ;
-    using Hu = RtcAlrmbrHuValues<Rtc::Alrmbr, 16, 4, ReadWriteMode, RtcAlrmbrHuValuesBase> ;
-    using Msk2 = RtcAlrmbrMskValues<Rtc::Alrmbr, 15, 1, ReadWriteMode, RtcAlrmbrMskValuesBase> ;
-    using Mnt = RtcAlrmbrMntValues<Rtc::Alrmbr, 12, 3, ReadWriteMode, RtcAlrmbrMntValuesBase> ;
-    using Mnu = RtcAlrmbrMnuValues<Rtc::Alrmbr, 8, 4, ReadWriteMode, RtcAlrmbrMnuValuesBase> ;
-    using Msk1 = RtcAlrmbrMskValues<Rtc::Alrmbr, 7, 1, ReadWriteMode, RtcAlrmbrMskValuesBase> ;
-    using St = RtcAlrmbrStValues<Rtc::Alrmbr, 4, 3, ReadWriteMode, RtcAlrmbrStValuesBase> ;
-    using Su = RtcAlrmbrSuValues<Rtc::Alrmbr, 0, 4, ReadWriteMode, RtcAlrmbrSuValuesBase> ;
+    using MSK4 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 31, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using WDSEL = RTC_ALRMBR_WDSEL_Values<RTC::ALRMBR, 30, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using DT = RTC_ALRMBR_DT_Values<RTC::ALRMBR, 28, 2, ReadWriteMode, RTCALRMBRBase> ;
+    using DU = RTC_ALRMBR_DU_Values<RTC::ALRMBR, 24, 4, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK3 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 23, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using PM = RTC_ALRMBR_PM_Values<RTC::ALRMBR, 22, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using HT = RTC_ALRMBR_HT_Values<RTC::ALRMBR, 20, 2, ReadWriteMode, RTCALRMBRBase> ;
+    using HU = RTC_ALRMBR_HU_Values<RTC::ALRMBR, 16, 4, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK2 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 15, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using MNT = RTC_ALRMBR_MNT_Values<RTC::ALRMBR, 12, 3, ReadWriteMode, RTCALRMBRBase> ;
+    using MNU = RTC_ALRMBR_MNU_Values<RTC::ALRMBR, 8, 4, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK1 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 7, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using ST = RTC_ALRMBR_ST_Values<RTC::ALRMBR, 4, 3, ReadWriteMode, RTCALRMBRBase> ;
+    using SU = RTC_ALRMBR_SU_Values<RTC::ALRMBR, 0, 4, ReadWriteMode, RTCALRMBRBase> ;
   } ;
 
   template<typename... T> 
-  using AlrmbrPack  = Register<0x40002820, 32, ReadWriteMode, RtcAlrmbrMskValuesBase, T...> ;
+  using ALRMBRPack  = Register<0x40002820, 32, ReadWriteMode, RTCALRMBRBase, T...> ;
 
-  struct Wpr : public RegisterBase<0x40002824, 32, WriteMode>
+  struct RTCWPRBase {} ;
+
+  struct WPR : public RegisterBase<0x40002824, 32, WriteMode>
   {
-    using Key = WriteMode<Rtc::Wpr, 0, 8> ;
+    using KEY = RTC_WPR_KEY_Values<RTC::WPR, 0, 8, WriteMode, RTCWPRBase> ;
   } ;
 
   template<typename... T> 
-  using WprPack  = Register<0x40002824, 32, WriteMode, RtcWprKeyValuesBase, T...> ;
+  using WPRPack  = Register<0x40002824, 32, WriteMode, RTCWPRBase, T...> ;
 
-  struct Ssr : public RegisterBase<0x40002828, 32, ReadMode>
+  struct RTCSSRBase {} ;
+
+  struct SSR : public RegisterBase<0x40002828, 32, ReadMode>
   {
-    using Ss = ReadMode<Rtc::Ssr, 0, 16> ;
+    using SS = RTC_SSR_SS_Values<RTC::SSR, 0, 16, ReadMode, RTCSSRBase> ;
   } ;
 
   template<typename... T> 
-  using SsrPack  = Register<0x40002828, 32, ReadMode, RtcSsrSsValuesBase, T...> ;
+  using SSRPack  = Register<0x40002828, 32, ReadMode, RTCSSRBase, T...> ;
 
-  struct Shiftr : public RegisterBase<0x4000282C, 32, WriteMode>
+  struct RTCSHIFTRBase {} ;
+
+  struct SHIFTR : public RegisterBase<0x4000282C, 32, WriteMode>
   {
-    using Add1S = RtcShiftrAddSValues<Rtc::Shiftr, 31, 1, WriteMode, RtcShiftrAddSValuesBase> ;
-    using Subfs = WriteMode<Rtc::Shiftr, 0, 15> ;
+    using ADD1S = RTC_SHIFTR_ADDS_Values<RTC::SHIFTR, 31, 1, WriteMode, RTCSHIFTRBase> ;
+    using SUBFS = RTC_SHIFTR_SUBFS_Values<RTC::SHIFTR, 0, 15, WriteMode, RTCSHIFTRBase> ;
   } ;
 
   template<typename... T> 
-  using ShiftrPack  = Register<0x4000282C, 32, WriteMode, RtcShiftrAddSValuesBase, T...> ;
+  using SHIFTRPack  = Register<0x4000282C, 32, WriteMode, RTCSHIFTRBase, T...> ;
 
-  struct Tstr : public RegisterBase<0x40002830, 32, ReadMode>
+  struct RTCTSTRBase {} ;
+
+  struct TSTR : public RegisterBase<0x40002830, 32, ReadMode>
   {
-    using Pm = RtcTstrPmValues<Rtc::Tstr, 22, 1, ReadMode, RtcTstrPmValuesBase> ;
-    using Ht = RtcTstrHtValues<Rtc::Tstr, 20, 2, ReadMode, RtcTstrHtValuesBase> ;
-    using Hu = RtcTstrHuValues<Rtc::Tstr, 16, 4, ReadMode, RtcTstrHuValuesBase> ;
-    using Mnt = RtcTstrMntValues<Rtc::Tstr, 12, 3, ReadMode, RtcTstrMntValuesBase> ;
-    using Mnu = RtcTstrMnuValues<Rtc::Tstr, 8, 4, ReadMode, RtcTstrMnuValuesBase> ;
-    using St = RtcTstrStValues<Rtc::Tstr, 4, 3, ReadMode, RtcTstrStValuesBase> ;
-    using Su = RtcTstrSuValues<Rtc::Tstr, 0, 4, ReadMode, RtcTstrSuValuesBase> ;
+    using PM = RTC_TSTR_PM_Values<RTC::TSTR, 22, 1, ReadMode, RTCTSTRBase> ;
+    using HT = RTC_TSTR_HT_Values<RTC::TSTR, 20, 2, ReadMode, RTCTSTRBase> ;
+    using HU = RTC_TSTR_HU_Values<RTC::TSTR, 16, 4, ReadMode, RTCTSTRBase> ;
+    using MNT = RTC_TSTR_MNT_Values<RTC::TSTR, 12, 3, ReadMode, RTCTSTRBase> ;
+    using MNU = RTC_TSTR_MNU_Values<RTC::TSTR, 8, 4, ReadMode, RTCTSTRBase> ;
+    using ST = RTC_TSTR_ST_Values<RTC::TSTR, 4, 3, ReadMode, RTCTSTRBase> ;
+    using SU = RTC_TSTR_SU_Values<RTC::TSTR, 0, 4, ReadMode, RTCTSTRBase> ;
   } ;
 
   template<typename... T> 
-  using TstrPack  = Register<0x40002830, 32, ReadMode, RtcTstrPmValuesBase, T...> ;
+  using TSTRPack  = Register<0x40002830, 32, ReadMode, RTCTSTRBase, T...> ;
 
-  struct Tsdr : public RegisterBase<0x40002834, 32, ReadMode>
+  struct RTCTSDRBase {} ;
+
+  struct TSDR : public RegisterBase<0x40002834, 32, ReadMode>
   {
-    using Wdu = RtcTsdrWduValues<Rtc::Tsdr, 13, 3, ReadMode, RtcTsdrWduValuesBase> ;
-    using Mt = RtcTsdrMtValues<Rtc::Tsdr, 12, 1, ReadMode, RtcTsdrMtValuesBase> ;
-    using Mu = RtcTsdrMuValues<Rtc::Tsdr, 8, 4, ReadMode, RtcTsdrMuValuesBase> ;
-    using Dt = RtcTsdrDtValues<Rtc::Tsdr, 4, 2, ReadMode, RtcTsdrDtValuesBase> ;
-    using Du = RtcTsdrDuValues<Rtc::Tsdr, 0, 4, ReadMode, RtcTsdrDuValuesBase> ;
+    using WDU = RTC_TSDR_WDU_Values<RTC::TSDR, 13, 3, ReadMode, RTCTSDRBase> ;
+    using MT = RTC_TSDR_MT_Values<RTC::TSDR, 12, 1, ReadMode, RTCTSDRBase> ;
+    using MU = RTC_TSDR_MU_Values<RTC::TSDR, 8, 4, ReadMode, RTCTSDRBase> ;
+    using DT = RTC_TSDR_DT_Values<RTC::TSDR, 4, 2, ReadMode, RTCTSDRBase> ;
+    using DU = RTC_TSDR_DU_Values<RTC::TSDR, 0, 4, ReadMode, RTCTSDRBase> ;
   } ;
 
   template<typename... T> 
-  using TsdrPack  = Register<0x40002834, 32, ReadMode, RtcTsdrWduValuesBase, T...> ;
+  using TSDRPack  = Register<0x40002834, 32, ReadMode, RTCTSDRBase, T...> ;
 
-  struct Tsssr : public RegisterBase<0x40002838, 32, ReadMode>
+  struct RTCTSSSRBase {} ;
+
+  struct TSSSR : public RegisterBase<0x40002838, 32, ReadMode>
   {
-    using Ss = ReadMode<Rtc::Tsssr, 0, 16> ;
+    using SS = RTC_TSSSR_SS_Values<RTC::TSSSR, 0, 16, ReadMode, RTCTSSSRBase> ;
   } ;
 
   template<typename... T> 
-  using TsssrPack  = Register<0x40002838, 32, ReadMode, RtcTsssrSsValuesBase, T...> ;
+  using TSSSRPack  = Register<0x40002838, 32, ReadMode, RTCTSSSRBase, T...> ;
 
-  struct Calr : public RegisterBase<0x4000283C, 32, ReadWriteMode>
+  struct RTCCALRBase {} ;
+
+  struct CALR : public RegisterBase<0x4000283C, 32, ReadWriteMode>
   {
-    using Calp = RtcCalrCalpValues<Rtc::Calr, 15, 1, ReadWriteMode, RtcCalrCalpValuesBase> ;
-    using Calw8 = RtcCalrCalwValues<Rtc::Calr, 14, 1, ReadWriteMode, RtcCalrCalwValuesBase> ;
-    using Calw16 = RtcCalrCalwValues<Rtc::Calr, 13, 1, ReadWriteMode, RtcCalrCalwValuesBase> ;
-    using Calm = ReadWriteMode<Rtc::Calr, 0, 9> ;
+    using CALP = RTC_CALR_CALP_Values<RTC::CALR, 15, 1, ReadWriteMode, RTCCALRBase> ;
+    using CALW8 = RTC_CALR_CALW_Values<RTC::CALR, 14, 1, ReadWriteMode, RTCCALRBase> ;
+    using CALW16 = RTC_CALR_CALW_Values<RTC::CALR, 13, 1, ReadWriteMode, RTCCALRBase> ;
+    using CALM = RTC_CALR_CALM_Values<RTC::CALR, 0, 9, ReadWriteMode, RTCCALRBase> ;
   } ;
 
   template<typename... T> 
-  using CalrPack  = Register<0x4000283C, 32, ReadWriteMode, RtcCalrCalpValuesBase, T...> ;
+  using CALRPack  = Register<0x4000283C, 32, ReadWriteMode, RTCCALRBase, T...> ;
 
-  struct Tafcr : public RegisterBase<0x40002840, 32, ReadWriteMode>
+  struct RTCTAFCRBase {} ;
+
+  struct TAFCR : public RegisterBase<0x40002840, 32, ReadWriteMode>
   {
-    using Alarmouttype = RtcTafcrAlarmouttypeValues<Rtc::Tafcr, 18, 1, ReadWriteMode, RtcTafcrAlarmouttypeValuesBase> ;
-    using Tsinsel = RtcTafcrTsinselValues<Rtc::Tafcr, 17, 1, ReadWriteMode, RtcTafcrTsinselValuesBase> ;
-    using Tamp1Insel = RtcTafcrTampInselValues<Rtc::Tafcr, 16, 1, ReadWriteMode, RtcTafcrTampInselValuesBase> ;
-    using Tamppudis = RtcTafcrTamppudisValues<Rtc::Tafcr, 15, 1, ReadWriteMode, RtcTafcrTamppudisValuesBase> ;
-    using Tampprch = RtcTafcrTampprchValues<Rtc::Tafcr, 13, 2, ReadWriteMode, RtcTafcrTampprchValuesBase> ;
-    using Tampflt = RtcTafcrTampfltValues<Rtc::Tafcr, 11, 2, ReadWriteMode, RtcTafcrTampfltValuesBase> ;
-    using Tampfreq = RtcTafcrTampfreqValues<Rtc::Tafcr, 8, 3, ReadWriteMode, RtcTafcrTampfreqValuesBase> ;
-    using Tampts = RtcTafcrTamptsValues<Rtc::Tafcr, 7, 1, ReadWriteMode, RtcTafcrTamptsValuesBase> ;
-    using Tamp2Trg = RtcTafcrTampTrgValues<Rtc::Tafcr, 4, 1, ReadWriteMode, RtcTafcrTampTrgValuesBase> ;
-    using Tamp2E = RtcTafcrTampEValues<Rtc::Tafcr, 3, 1, ReadWriteMode, RtcTafcrTampEValuesBase> ;
-    using Tampie = RtcTafcrTampieValues<Rtc::Tafcr, 2, 1, ReadWriteMode, RtcTafcrTampieValuesBase> ;
-    using Tamp1Trg = RtcTafcrTampTrgValues<Rtc::Tafcr, 1, 1, ReadWriteMode, RtcTafcrTampTrgValuesBase> ;
-    using Tamp1E = RtcTafcrTampEValues<Rtc::Tafcr, 0, 1, ReadWriteMode, RtcTafcrTampEValuesBase> ;
+    using ALARMOUTTYPE = RTC_TAFCR_ALARMOUTTYPE_Values<RTC::TAFCR, 18, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TSINSEL = RTC_TAFCR_TSINSEL_Values<RTC::TAFCR, 17, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP1INSEL = RTC_TAFCR_TAMPINSEL_Values<RTC::TAFCR, 16, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPPUDIS = RTC_TAFCR_TAMPPUDIS_Values<RTC::TAFCR, 15, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPPRCH = RTC_TAFCR_TAMPPRCH_Values<RTC::TAFCR, 13, 2, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPFLT = RTC_TAFCR_TAMPFLT_Values<RTC::TAFCR, 11, 2, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPFREQ = RTC_TAFCR_TAMPFREQ_Values<RTC::TAFCR, 8, 3, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPTS = RTC_TAFCR_TAMPTS_Values<RTC::TAFCR, 7, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP2TRG = RTC_TAFCR_TAMPTRG_Values<RTC::TAFCR, 4, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP2E = RTC_TAFCR_TAMPE_Values<RTC::TAFCR, 3, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMPIE = RTC_TAFCR_TAMPIE_Values<RTC::TAFCR, 2, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP1TRG = RTC_TAFCR_TAMPTRG_Values<RTC::TAFCR, 1, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP1E = RTC_TAFCR_TAMPE_Values<RTC::TAFCR, 0, 1, ReadWriteMode, RTCTAFCRBase> ;
   } ;
 
   template<typename... T> 
-  using TafcrPack  = Register<0x40002840, 32, ReadWriteMode, RtcTafcrAlarmouttypeValuesBase, T...> ;
+  using TAFCRPack  = Register<0x40002840, 32, ReadWriteMode, RTCTAFCRBase, T...> ;
 
-  struct Alrmassr : public RegisterBase<0x40002844, 32, ReadWriteMode>
+  struct RTCALRMASSRBase {} ;
+
+  struct ALRMASSR : public RegisterBase<0x40002844, 32, ReadWriteMode>
   {
-    using Maskss = RtcAlrmassrMaskssValues<Rtc::Alrmassr, 24, 4, ReadWriteMode, RtcAlrmassrMaskssValuesBase> ;
-    using Ss = ReadWriteMode<Rtc::Alrmassr, 0, 15> ;
+    using MASKSS = RTC_ALRMASSR_MASKSS_Values<RTC::ALRMASSR, 24, 4, ReadWriteMode, RTCALRMASSRBase> ;
+    using SS = RTC_ALRMASSR_SS_Values<RTC::ALRMASSR, 0, 15, ReadWriteMode, RTCALRMASSRBase> ;
   } ;
 
   template<typename... T> 
-  using AlrmassrPack  = Register<0x40002844, 32, ReadWriteMode, RtcAlrmassrMaskssValuesBase, T...> ;
+  using ALRMASSRPack  = Register<0x40002844, 32, ReadWriteMode, RTCALRMASSRBase, T...> ;
 
-  struct Alrmbssr : public RegisterBase<0x40002848, 32, ReadWriteMode>
+  struct RTCALRMBSSRBase {} ;
+
+  struct ALRMBSSR : public RegisterBase<0x40002848, 32, ReadWriteMode>
   {
-    using Maskss = RtcAlrmbssrMaskssValues<Rtc::Alrmbssr, 24, 4, ReadWriteMode, RtcAlrmbssrMaskssValuesBase> ;
-    using Ss = ReadWriteMode<Rtc::Alrmbssr, 0, 15> ;
+    using MASKSS = RTC_ALRMBSSR_MASKSS_Values<RTC::ALRMBSSR, 24, 4, ReadWriteMode, RTCALRMBSSRBase> ;
+    using SS = RTC_ALRMBSSR_SS_Values<RTC::ALRMBSSR, 0, 15, ReadWriteMode, RTCALRMBSSRBase> ;
   } ;
 
   template<typename... T> 
-  using AlrmbssrPack  = Register<0x40002848, 32, ReadWriteMode, RtcAlrmbssrMaskssValuesBase, T...> ;
+  using ALRMBSSRPack  = Register<0x40002848, 32, ReadWriteMode, RTCALRMBSSRBase, T...> ;
 
-  struct Bkp0R : public RegisterBase<0x40002850, 32, ReadWriteMode>
+  struct RTCBKP0RBase {} ;
+
+  struct BKP0R : public RegisterBase<0x40002850, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp0R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP0R, 0, 32, ReadWriteMode, RTCBKP0RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp0RPack  = Register<0x40002850, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP0RPack  = Register<0x40002850, 32, ReadWriteMode, RTCBKP0RBase, T...> ;
 
-  struct Bkp1R : public RegisterBase<0x40002854, 32, ReadWriteMode>
+  struct RTCBKP1RBase {} ;
+
+  struct BKP1R : public RegisterBase<0x40002854, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp1R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP1R, 0, 32, ReadWriteMode, RTCBKP1RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp1RPack  = Register<0x40002854, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP1RPack  = Register<0x40002854, 32, ReadWriteMode, RTCBKP1RBase, T...> ;
 
-  struct Bkp2R : public RegisterBase<0x40002858, 32, ReadWriteMode>
+  struct RTCBKP2RBase {} ;
+
+  struct BKP2R : public RegisterBase<0x40002858, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp2R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP2R, 0, 32, ReadWriteMode, RTCBKP2RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp2RPack  = Register<0x40002858, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP2RPack  = Register<0x40002858, 32, ReadWriteMode, RTCBKP2RBase, T...> ;
 
-  struct Bkp3R : public RegisterBase<0x4000285C, 32, ReadWriteMode>
+  struct RTCBKP3RBase {} ;
+
+  struct BKP3R : public RegisterBase<0x4000285C, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp3R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP3R, 0, 32, ReadWriteMode, RTCBKP3RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp3RPack  = Register<0x4000285C, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP3RPack  = Register<0x4000285C, 32, ReadWriteMode, RTCBKP3RBase, T...> ;
 
-  struct Bkp4R : public RegisterBase<0x40002860, 32, ReadWriteMode>
+  struct RTCBKP4RBase {} ;
+
+  struct BKP4R : public RegisterBase<0x40002860, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp4R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP4R, 0, 32, ReadWriteMode, RTCBKP4RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp4RPack  = Register<0x40002860, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP4RPack  = Register<0x40002860, 32, ReadWriteMode, RTCBKP4RBase, T...> ;
 
-  struct Bkp5R : public RegisterBase<0x40002864, 32, ReadWriteMode>
+  struct RTCBKP5RBase {} ;
+
+  struct BKP5R : public RegisterBase<0x40002864, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp5R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP5R, 0, 32, ReadWriteMode, RTCBKP5RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp5RPack  = Register<0x40002864, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP5RPack  = Register<0x40002864, 32, ReadWriteMode, RTCBKP5RBase, T...> ;
 
-  struct Bkp6R : public RegisterBase<0x40002868, 32, ReadWriteMode>
+  struct RTCBKP6RBase {} ;
+
+  struct BKP6R : public RegisterBase<0x40002868, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp6R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP6R, 0, 32, ReadWriteMode, RTCBKP6RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp6RPack  = Register<0x40002868, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP6RPack  = Register<0x40002868, 32, ReadWriteMode, RTCBKP6RBase, T...> ;
 
-  struct Bkp7R : public RegisterBase<0x4000286C, 32, ReadWriteMode>
+  struct RTCBKP7RBase {} ;
+
+  struct BKP7R : public RegisterBase<0x4000286C, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp7R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP7R, 0, 32, ReadWriteMode, RTCBKP7RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp7RPack  = Register<0x4000286C, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP7RPack  = Register<0x4000286C, 32, ReadWriteMode, RTCBKP7RBase, T...> ;
 
-  struct Bkp8R : public RegisterBase<0x40002870, 32, ReadWriteMode>
+  struct RTCBKP8RBase {} ;
+
+  struct BKP8R : public RegisterBase<0x40002870, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp8R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP8R, 0, 32, ReadWriteMode, RTCBKP8RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp8RPack  = Register<0x40002870, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP8RPack  = Register<0x40002870, 32, ReadWriteMode, RTCBKP8RBase, T...> ;
 
-  struct Bkp9R : public RegisterBase<0x40002874, 32, ReadWriteMode>
+  struct RTCBKP9RBase {} ;
+
+  struct BKP9R : public RegisterBase<0x40002874, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp9R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP9R, 0, 32, ReadWriteMode, RTCBKP9RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp9RPack  = Register<0x40002874, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP9RPack  = Register<0x40002874, 32, ReadWriteMode, RTCBKP9RBase, T...> ;
 
-  struct Bkp10R : public RegisterBase<0x40002878, 32, ReadWriteMode>
+  struct RTCBKP10RBase {} ;
+
+  struct BKP10R : public RegisterBase<0x40002878, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp10R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP10R, 0, 32, ReadWriteMode, RTCBKP10RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp10RPack  = Register<0x40002878, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP10RPack  = Register<0x40002878, 32, ReadWriteMode, RTCBKP10RBase, T...> ;
 
-  struct Bkp11R : public RegisterBase<0x4000287C, 32, ReadWriteMode>
+  struct RTCBKP11RBase {} ;
+
+  struct BKP11R : public RegisterBase<0x4000287C, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp11R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP11R, 0, 32, ReadWriteMode, RTCBKP11RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp11RPack  = Register<0x4000287C, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP11RPack  = Register<0x4000287C, 32, ReadWriteMode, RTCBKP11RBase, T...> ;
 
-  struct Bkp12R : public RegisterBase<0x40002880, 32, ReadWriteMode>
+  struct RTCBKP12RBase {} ;
+
+  struct BKP12R : public RegisterBase<0x40002880, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp12R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP12R, 0, 32, ReadWriteMode, RTCBKP12RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp12RPack  = Register<0x40002880, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP12RPack  = Register<0x40002880, 32, ReadWriteMode, RTCBKP12RBase, T...> ;
 
-  struct Bkp13R : public RegisterBase<0x40002884, 32, ReadWriteMode>
+  struct RTCBKP13RBase {} ;
+
+  struct BKP13R : public RegisterBase<0x40002884, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp13R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP13R, 0, 32, ReadWriteMode, RTCBKP13RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp13RPack  = Register<0x40002884, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP13RPack  = Register<0x40002884, 32, ReadWriteMode, RTCBKP13RBase, T...> ;
 
-  struct Bkp14R : public RegisterBase<0x40002888, 32, ReadWriteMode>
+  struct RTCBKP14RBase {} ;
+
+  struct BKP14R : public RegisterBase<0x40002888, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp14R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP14R, 0, 32, ReadWriteMode, RTCBKP14RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp14RPack  = Register<0x40002888, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP14RPack  = Register<0x40002888, 32, ReadWriteMode, RTCBKP14RBase, T...> ;
 
-  struct Bkp15R : public RegisterBase<0x4000288C, 32, ReadWriteMode>
+  struct RTCBKP15RBase {} ;
+
+  struct BKP15R : public RegisterBase<0x4000288C, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp15R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP15R, 0, 32, ReadWriteMode, RTCBKP15RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp15RPack  = Register<0x4000288C, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP15RPack  = Register<0x4000288C, 32, ReadWriteMode, RTCBKP15RBase, T...> ;
 
-  struct Bkp16R : public RegisterBase<0x40002890, 32, ReadWriteMode>
+  struct RTCBKP16RBase {} ;
+
+  struct BKP16R : public RegisterBase<0x40002890, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp16R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP16R, 0, 32, ReadWriteMode, RTCBKP16RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp16RPack  = Register<0x40002890, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP16RPack  = Register<0x40002890, 32, ReadWriteMode, RTCBKP16RBase, T...> ;
 
-  struct Bkp17R : public RegisterBase<0x40002894, 32, ReadWriteMode>
+  struct RTCBKP17RBase {} ;
+
+  struct BKP17R : public RegisterBase<0x40002894, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp17R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP17R, 0, 32, ReadWriteMode, RTCBKP17RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp17RPack  = Register<0x40002894, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP17RPack  = Register<0x40002894, 32, ReadWriteMode, RTCBKP17RBase, T...> ;
 
-  struct Bkp18R : public RegisterBase<0x40002898, 32, ReadWriteMode>
+  struct RTCBKP18RBase {} ;
+
+  struct BKP18R : public RegisterBase<0x40002898, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp18R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP18R, 0, 32, ReadWriteMode, RTCBKP18RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp18RPack  = Register<0x40002898, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP18RPack  = Register<0x40002898, 32, ReadWriteMode, RTCBKP18RBase, T...> ;
 
-  struct Bkp19R : public RegisterBase<0x4000289C, 32, ReadWriteMode>
+  struct RTCBKP19RBase {} ;
+
+  struct BKP19R : public RegisterBase<0x4000289C, 32, ReadWriteMode>
   {
-    using Bkp = ReadWriteMode<Rtc::Bkp19R, 0, 32> ;
+    using BKP = RTC_BKPR_BKP_Values<RTC::BKP19R, 0, 32, ReadWriteMode, RTCBKP19RBase> ;
   } ;
 
   template<typename... T> 
-  using Bkp19RPack  = Register<0x4000289C, 32, ReadWriteMode, RtcBkpRBkpValuesBase, T...> ;
+  using BKP19RPack  = Register<0x4000289C, 32, ReadWriteMode, RTCBKP19RBase, T...> ;
 
 } ;
 

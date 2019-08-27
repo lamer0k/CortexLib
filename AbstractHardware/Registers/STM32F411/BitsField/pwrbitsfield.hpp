@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct PwrCrVosValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrVosValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_VOS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -23,37 +21,29 @@ struct PwrCrVosValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct PwrCrAdcdcValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrAdcdcValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_ADCDC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrFpdsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrFpdsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_FPDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrDbpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrDbpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_DBP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrPlsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrPlsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_PLS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -65,109 +55,85 @@ struct PwrCrPlsValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct PwrCrPvdeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrPvdeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_PVDE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrCsbfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrCsbfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_CSBF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrCwufValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrCwufValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_CWUF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrPddsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrPddsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_PDDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCrLpdsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCrLpdsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_LPDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrWufValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrWufValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_WUF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrSbfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrSbfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_SBF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrPvdoValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrPvdoValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_PVDO_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrBrrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrBrrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_BRR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrEwupValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrEwupValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_EWUP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrBreValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrBreValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_BRE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct PwrCsrVosrdyValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PwrCsrVosrdyValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CSR_VOSRDY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

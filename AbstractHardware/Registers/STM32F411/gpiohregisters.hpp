@@ -15,238 +15,258 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Gpioh
+struct GPIOH
 {
-  struct Moder : public RegisterBase<0x40021C00, 32, ReadWriteMode>
+  struct GPIOHMODERBase {} ;
+
+  struct MODER : public RegisterBase<0x40021C00, 32, ReadWriteMode>
   {
-    using Moder15 = GpiohModerModerValues<Gpioh::Moder, 30, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder14 = GpiohModerModerValues<Gpioh::Moder, 28, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder13 = GpiohModerModerValues<Gpioh::Moder, 26, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder12 = GpiohModerModerValues<Gpioh::Moder, 24, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder11 = GpiohModerModerValues<Gpioh::Moder, 22, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder10 = GpiohModerModerValues<Gpioh::Moder, 20, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder9 = GpiohModerModerValues<Gpioh::Moder, 18, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder8 = GpiohModerModerValues<Gpioh::Moder, 16, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder7 = GpiohModerModerValues<Gpioh::Moder, 14, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder6 = GpiohModerModerValues<Gpioh::Moder, 12, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder5 = GpiohModerModerValues<Gpioh::Moder, 10, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder4 = GpiohModerModerValues<Gpioh::Moder, 8, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder3 = GpiohModerModerValues<Gpioh::Moder, 6, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder2 = GpiohModerModerValues<Gpioh::Moder, 4, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder1 = GpiohModerModerValues<Gpioh::Moder, 2, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
-    using Moder0 = GpiohModerModerValues<Gpioh::Moder, 0, 2, ReadWriteMode, GpiohModerModerValuesBase> ;
+    using MODER15 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 30, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER14 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 28, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER13 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 26, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER12 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 24, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER11 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 22, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER10 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 20, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER9 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 18, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER8 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 16, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER7 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 14, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER6 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 12, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER5 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 10, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER4 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 8, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER3 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 6, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER2 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 4, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER1 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 2, 2, ReadWriteMode, GPIOHMODERBase> ;
+    using MODER0 = GPIOH_MODER_MODER_Values<GPIOH::MODER, 0, 2, ReadWriteMode, GPIOHMODERBase> ;
   } ;
 
   template<typename... T> 
-  using ModerPack  = Register<0x40021C00, 32, ReadWriteMode, GpiohModerModerValuesBase, T...> ;
+  using MODERPack  = Register<0x40021C00, 32, ReadWriteMode, GPIOHMODERBase, T...> ;
 
-  struct Otyper : public RegisterBase<0x40021C04, 32, ReadWriteMode>
+  struct GPIOHOTYPERBase {} ;
+
+  struct OTYPER : public RegisterBase<0x40021C04, 32, ReadWriteMode>
   {
-    using Ot15 = GpiohOtyperOtValues<Gpioh::Otyper, 15, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot14 = GpiohOtyperOtValues<Gpioh::Otyper, 14, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot13 = GpiohOtyperOtValues<Gpioh::Otyper, 13, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot12 = GpiohOtyperOtValues<Gpioh::Otyper, 12, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot11 = GpiohOtyperOtValues<Gpioh::Otyper, 11, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot10 = GpiohOtyperOtValues<Gpioh::Otyper, 10, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot9 = GpiohOtyperOtValues<Gpioh::Otyper, 9, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot8 = GpiohOtyperOtValues<Gpioh::Otyper, 8, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot7 = GpiohOtyperOtValues<Gpioh::Otyper, 7, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot6 = GpiohOtyperOtValues<Gpioh::Otyper, 6, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot5 = GpiohOtyperOtValues<Gpioh::Otyper, 5, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot4 = GpiohOtyperOtValues<Gpioh::Otyper, 4, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot3 = GpiohOtyperOtValues<Gpioh::Otyper, 3, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot2 = GpiohOtyperOtValues<Gpioh::Otyper, 2, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot1 = GpiohOtyperOtValues<Gpioh::Otyper, 1, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
-    using Ot0 = GpiohOtyperOtValues<Gpioh::Otyper, 0, 1, ReadWriteMode, GpiohOtyperOtValuesBase> ;
+    using OT15 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 15, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT14 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 14, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT13 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 13, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT12 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 12, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT11 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 11, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT10 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 10, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT9 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 9, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT8 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 8, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT7 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 7, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT6 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 6, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT5 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 5, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT4 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 4, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT3 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 3, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT2 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 2, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT1 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 1, 1, ReadWriteMode, GPIOHOTYPERBase> ;
+    using OT0 = GPIOH_OTYPER_OT_Values<GPIOH::OTYPER, 0, 1, ReadWriteMode, GPIOHOTYPERBase> ;
   } ;
 
   template<typename... T> 
-  using OtyperPack  = Register<0x40021C04, 32, ReadWriteMode, GpiohOtyperOtValuesBase, T...> ;
+  using OTYPERPack  = Register<0x40021C04, 32, ReadWriteMode, GPIOHOTYPERBase, T...> ;
 
-  struct Ospeedr : public RegisterBase<0x40021C08, 32, ReadWriteMode>
+  struct GPIOHOSPEEDRBase {} ;
+
+  struct OSPEEDR : public RegisterBase<0x40021C08, 32, ReadWriteMode>
   {
-    using Ospeedr15 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 30, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr14 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 28, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr13 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 26, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr12 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 24, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr11 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 22, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr10 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 20, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr9 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 18, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr8 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 16, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr7 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 14, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr6 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 12, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr5 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 10, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr4 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 8, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr3 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 6, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr2 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 4, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr1 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 2, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
-    using Ospeedr0 = GpiohOspeedrOspeedrValues<Gpioh::Ospeedr, 0, 2, ReadWriteMode, GpiohOspeedrOspeedrValuesBase> ;
+    using OSPEEDR15 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 30, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR14 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 28, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR13 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 26, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR12 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 24, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR11 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 22, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR10 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 20, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR9 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 18, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR8 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 16, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR7 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 14, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR6 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 12, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR5 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 10, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR4 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 8, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR3 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 6, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR2 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 4, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR1 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 2, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
+    using OSPEEDR0 = GPIOH_OSPEEDR_OSPEEDR_Values<GPIOH::OSPEEDR, 0, 2, ReadWriteMode, GPIOHOSPEEDRBase> ;
   } ;
 
   template<typename... T> 
-  using OspeedrPack  = Register<0x40021C08, 32, ReadWriteMode, GpiohOspeedrOspeedrValuesBase, T...> ;
+  using OSPEEDRPack  = Register<0x40021C08, 32, ReadWriteMode, GPIOHOSPEEDRBase, T...> ;
 
-  struct Pupdr : public RegisterBase<0x40021C0C, 32, ReadWriteMode>
+  struct GPIOHPUPDRBase {} ;
+
+  struct PUPDR : public RegisterBase<0x40021C0C, 32, ReadWriteMode>
   {
-    using Pupdr15 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 30, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr14 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 28, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr13 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 26, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr12 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 24, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr11 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 22, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr10 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 20, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr9 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 18, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr8 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 16, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr7 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 14, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr6 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 12, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr5 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 10, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr4 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 8, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr3 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 6, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr2 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 4, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr1 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 2, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
-    using Pupdr0 = GpiohPupdrPupdrValues<Gpioh::Pupdr, 0, 2, ReadWriteMode, GpiohPupdrPupdrValuesBase> ;
+    using PUPDR15 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 30, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR14 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 28, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR13 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 26, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR12 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 24, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR11 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 22, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR10 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 20, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR9 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 18, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR8 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 16, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR7 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 14, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR6 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 12, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR5 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 10, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR4 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 8, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR3 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 6, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR2 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 4, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR1 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 2, 2, ReadWriteMode, GPIOHPUPDRBase> ;
+    using PUPDR0 = GPIOH_PUPDR_PUPDR_Values<GPIOH::PUPDR, 0, 2, ReadWriteMode, GPIOHPUPDRBase> ;
   } ;
 
   template<typename... T> 
-  using PupdrPack  = Register<0x40021C0C, 32, ReadWriteMode, GpiohPupdrPupdrValuesBase, T...> ;
+  using PUPDRPack  = Register<0x40021C0C, 32, ReadWriteMode, GPIOHPUPDRBase, T...> ;
 
-  struct Idr : public RegisterBase<0x40021C10, 32, ReadMode>
+  struct GPIOHIDRBase {} ;
+
+  struct IDR : public RegisterBase<0x40021C10, 32, ReadMode>
   {
-    using Idr15 = GpiohIdrIdrValues<Gpioh::Idr, 15, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr14 = GpiohIdrIdrValues<Gpioh::Idr, 14, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr13 = GpiohIdrIdrValues<Gpioh::Idr, 13, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr12 = GpiohIdrIdrValues<Gpioh::Idr, 12, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr11 = GpiohIdrIdrValues<Gpioh::Idr, 11, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr10 = GpiohIdrIdrValues<Gpioh::Idr, 10, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr9 = GpiohIdrIdrValues<Gpioh::Idr, 9, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr8 = GpiohIdrIdrValues<Gpioh::Idr, 8, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr7 = GpiohIdrIdrValues<Gpioh::Idr, 7, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr6 = GpiohIdrIdrValues<Gpioh::Idr, 6, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr5 = GpiohIdrIdrValues<Gpioh::Idr, 5, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr4 = GpiohIdrIdrValues<Gpioh::Idr, 4, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr3 = GpiohIdrIdrValues<Gpioh::Idr, 3, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr2 = GpiohIdrIdrValues<Gpioh::Idr, 2, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr1 = GpiohIdrIdrValues<Gpioh::Idr, 1, 1, ReadMode, GpiohIdrIdrValuesBase> ;
-    using Idr0 = GpiohIdrIdrValues<Gpioh::Idr, 0, 1, ReadMode, GpiohIdrIdrValuesBase> ;
+    using IDR15 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 15, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR14 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 14, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR13 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 13, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR12 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 12, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR11 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 11, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR10 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 10, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR9 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 9, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR8 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 8, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR7 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 7, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR6 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 6, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR5 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 5, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR4 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 4, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR3 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 3, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR2 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 2, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR1 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 1, 1, ReadMode, GPIOHIDRBase> ;
+    using IDR0 = GPIOH_IDR_IDR_Values<GPIOH::IDR, 0, 1, ReadMode, GPIOHIDRBase> ;
   } ;
 
   template<typename... T> 
-  using IdrPack  = Register<0x40021C10, 32, ReadMode, GpiohIdrIdrValuesBase, T...> ;
+  using IDRPack  = Register<0x40021C10, 32, ReadMode, GPIOHIDRBase, T...> ;
 
-  struct Odr : public RegisterBase<0x40021C14, 32, ReadWriteMode>
+  struct GPIOHODRBase {} ;
+
+  struct ODR : public RegisterBase<0x40021C14, 32, ReadWriteMode>
   {
-    using Odr15 = GpiohOdrOdrValues<Gpioh::Odr, 15, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr14 = GpiohOdrOdrValues<Gpioh::Odr, 14, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr13 = GpiohOdrOdrValues<Gpioh::Odr, 13, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr12 = GpiohOdrOdrValues<Gpioh::Odr, 12, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr11 = GpiohOdrOdrValues<Gpioh::Odr, 11, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr10 = GpiohOdrOdrValues<Gpioh::Odr, 10, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr9 = GpiohOdrOdrValues<Gpioh::Odr, 9, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr8 = GpiohOdrOdrValues<Gpioh::Odr, 8, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr7 = GpiohOdrOdrValues<Gpioh::Odr, 7, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr6 = GpiohOdrOdrValues<Gpioh::Odr, 6, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr5 = GpiohOdrOdrValues<Gpioh::Odr, 5, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr4 = GpiohOdrOdrValues<Gpioh::Odr, 4, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr3 = GpiohOdrOdrValues<Gpioh::Odr, 3, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr2 = GpiohOdrOdrValues<Gpioh::Odr, 2, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr1 = GpiohOdrOdrValues<Gpioh::Odr, 1, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
-    using Odr0 = GpiohOdrOdrValues<Gpioh::Odr, 0, 1, ReadWriteMode, GpiohOdrOdrValuesBase> ;
+    using ODR15 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 15, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR14 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 14, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR13 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 13, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR12 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 12, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR11 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 11, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR10 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 10, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR9 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 9, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR8 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 8, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR7 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 7, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR6 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 6, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR5 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 5, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR4 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 4, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR3 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 3, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR2 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 2, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR1 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 1, 1, ReadWriteMode, GPIOHODRBase> ;
+    using ODR0 = GPIOH_ODR_ODR_Values<GPIOH::ODR, 0, 1, ReadWriteMode, GPIOHODRBase> ;
   } ;
 
   template<typename... T> 
-  using OdrPack  = Register<0x40021C14, 32, ReadWriteMode, GpiohOdrOdrValuesBase, T...> ;
+  using ODRPack  = Register<0x40021C14, 32, ReadWriteMode, GPIOHODRBase, T...> ;
 
-  struct Bsrr : public RegisterBase<0x40021C18, 32, WriteMode>
+  struct GPIOHBSRRBase {} ;
+
+  struct BSRR : public RegisterBase<0x40021C18, 32, WriteMode>
   {
-    using Br15 = GpiohBsrrBrValues<Gpioh::Bsrr, 31, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br14 = GpiohBsrrBrValues<Gpioh::Bsrr, 30, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br13 = GpiohBsrrBrValues<Gpioh::Bsrr, 29, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br12 = GpiohBsrrBrValues<Gpioh::Bsrr, 28, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br11 = GpiohBsrrBrValues<Gpioh::Bsrr, 27, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br10 = GpiohBsrrBrValues<Gpioh::Bsrr, 26, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br9 = GpiohBsrrBrValues<Gpioh::Bsrr, 25, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br8 = GpiohBsrrBrValues<Gpioh::Bsrr, 24, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br7 = GpiohBsrrBrValues<Gpioh::Bsrr, 23, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br6 = GpiohBsrrBrValues<Gpioh::Bsrr, 22, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br5 = GpiohBsrrBrValues<Gpioh::Bsrr, 21, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br4 = GpiohBsrrBrValues<Gpioh::Bsrr, 20, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br3 = GpiohBsrrBrValues<Gpioh::Bsrr, 19, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br2 = GpiohBsrrBrValues<Gpioh::Bsrr, 18, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br1 = GpiohBsrrBrValues<Gpioh::Bsrr, 17, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Br0 = GpiohBsrrBrValues<Gpioh::Bsrr, 16, 1, WriteMode, GpiohBsrrBrValuesBase> ;
-    using Bs15 = GpiohBsrrBsValues<Gpioh::Bsrr, 15, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs14 = GpiohBsrrBsValues<Gpioh::Bsrr, 14, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs13 = GpiohBsrrBsValues<Gpioh::Bsrr, 13, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs12 = GpiohBsrrBsValues<Gpioh::Bsrr, 12, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs11 = GpiohBsrrBsValues<Gpioh::Bsrr, 11, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs10 = GpiohBsrrBsValues<Gpioh::Bsrr, 10, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs9 = GpiohBsrrBsValues<Gpioh::Bsrr, 9, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs8 = GpiohBsrrBsValues<Gpioh::Bsrr, 8, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs7 = GpiohBsrrBsValues<Gpioh::Bsrr, 7, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs6 = GpiohBsrrBsValues<Gpioh::Bsrr, 6, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs5 = GpiohBsrrBsValues<Gpioh::Bsrr, 5, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs4 = GpiohBsrrBsValues<Gpioh::Bsrr, 4, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs3 = GpiohBsrrBsValues<Gpioh::Bsrr, 3, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs2 = GpiohBsrrBsValues<Gpioh::Bsrr, 2, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs1 = GpiohBsrrBsValues<Gpioh::Bsrr, 1, 1, WriteMode, GpiohBsrrBsValuesBase> ;
-    using Bs0 = GpiohBsrrBsValues<Gpioh::Bsrr, 0, 1, WriteMode, GpiohBsrrBsValuesBase> ;
+    using BR15 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 31, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR14 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 30, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR13 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 29, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR12 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 28, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR11 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 27, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR10 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 26, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR9 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 25, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR8 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 24, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR7 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 23, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR6 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 22, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR5 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 21, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR4 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 20, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR3 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 19, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR2 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 18, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR1 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 17, 1, WriteMode, GPIOHBSRRBase> ;
+    using BR0 = GPIOH_BSRR_BR_Values<GPIOH::BSRR, 16, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS15 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 15, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS14 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 14, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS13 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 13, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS12 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 12, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS11 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 11, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS10 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 10, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS9 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 9, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS8 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 8, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS7 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 7, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS6 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 6, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS5 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 5, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS4 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 4, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS3 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 3, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS2 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 2, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS1 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 1, 1, WriteMode, GPIOHBSRRBase> ;
+    using BS0 = GPIOH_BSRR_BS_Values<GPIOH::BSRR, 0, 1, WriteMode, GPIOHBSRRBase> ;
   } ;
 
   template<typename... T> 
-  using BsrrPack  = Register<0x40021C18, 32, WriteMode, GpiohBsrrBrValuesBase, T...> ;
+  using BSRRPack  = Register<0x40021C18, 32, WriteMode, GPIOHBSRRBase, T...> ;
 
-  struct Lckr : public RegisterBase<0x40021C1C, 32, ReadWriteMode>
+  struct GPIOHLCKRBase {} ;
+
+  struct LCKR : public RegisterBase<0x40021C1C, 32, ReadWriteMode>
   {
-    using Lckk = GpiohLckrLckkValues<Gpioh::Lckr, 16, 1, ReadWriteMode, GpiohLckrLckkValuesBase> ;
-    using Lck15 = GpiohLckrLckValues<Gpioh::Lckr, 15, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck14 = GpiohLckrLckValues<Gpioh::Lckr, 14, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck13 = GpiohLckrLckValues<Gpioh::Lckr, 13, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck12 = GpiohLckrLckValues<Gpioh::Lckr, 12, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck11 = GpiohLckrLckValues<Gpioh::Lckr, 11, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck10 = GpiohLckrLckValues<Gpioh::Lckr, 10, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck9 = GpiohLckrLckValues<Gpioh::Lckr, 9, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck8 = GpiohLckrLckValues<Gpioh::Lckr, 8, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck7 = GpiohLckrLckValues<Gpioh::Lckr, 7, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck6 = GpiohLckrLckValues<Gpioh::Lckr, 6, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck5 = GpiohLckrLckValues<Gpioh::Lckr, 5, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck4 = GpiohLckrLckValues<Gpioh::Lckr, 4, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck3 = GpiohLckrLckValues<Gpioh::Lckr, 3, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck2 = GpiohLckrLckValues<Gpioh::Lckr, 2, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck1 = GpiohLckrLckValues<Gpioh::Lckr, 1, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
-    using Lck0 = GpiohLckrLckValues<Gpioh::Lckr, 0, 1, ReadWriteMode, GpiohLckrLckValuesBase> ;
+    using LCKK = GPIOH_LCKR_LCKK_Values<GPIOH::LCKR, 16, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK15 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 15, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK14 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 14, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK13 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 13, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK12 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 12, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK11 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 11, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK10 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 10, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK9 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 9, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK8 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 8, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK7 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 7, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK6 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 6, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK5 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 5, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK4 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 4, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK3 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 3, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK2 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 2, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK1 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 1, 1, ReadWriteMode, GPIOHLCKRBase> ;
+    using LCK0 = GPIOH_LCKR_LCK_Values<GPIOH::LCKR, 0, 1, ReadWriteMode, GPIOHLCKRBase> ;
   } ;
 
   template<typename... T> 
-  using LckrPack  = Register<0x40021C1C, 32, ReadWriteMode, GpiohLckrLckkValuesBase, T...> ;
+  using LCKRPack  = Register<0x40021C1C, 32, ReadWriteMode, GPIOHLCKRBase, T...> ;
 
-  struct Afrl : public RegisterBase<0x40021C20, 32, ReadWriteMode>
+  struct GPIOHAFRLBase {} ;
+
+  struct AFRL : public RegisterBase<0x40021C20, 32, ReadWriteMode>
   {
-    using Afrl7 = GpiohAfrlAfrlValues<Gpioh::Afrl, 28, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl6 = GpiohAfrlAfrlValues<Gpioh::Afrl, 24, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl5 = GpiohAfrlAfrlValues<Gpioh::Afrl, 20, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl4 = GpiohAfrlAfrlValues<Gpioh::Afrl, 16, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl3 = GpiohAfrlAfrlValues<Gpioh::Afrl, 12, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl2 = GpiohAfrlAfrlValues<Gpioh::Afrl, 8, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl1 = GpiohAfrlAfrlValues<Gpioh::Afrl, 4, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
-    using Afrl0 = GpiohAfrlAfrlValues<Gpioh::Afrl, 0, 4, ReadWriteMode, GpiohAfrlAfrlValuesBase> ;
+    using AFRL7 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 28, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL6 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 24, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL5 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 20, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL4 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 16, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL3 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 12, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL2 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 8, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL1 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 4, 4, ReadWriteMode, GPIOHAFRLBase> ;
+    using AFRL0 = GPIOH_AFRL_AFRL_Values<GPIOH::AFRL, 0, 4, ReadWriteMode, GPIOHAFRLBase> ;
   } ;
 
   template<typename... T> 
-  using AfrlPack  = Register<0x40021C20, 32, ReadWriteMode, GpiohAfrlAfrlValuesBase, T...> ;
+  using AFRLPack  = Register<0x40021C20, 32, ReadWriteMode, GPIOHAFRLBase, T...> ;
 
-  struct Afrh : public RegisterBase<0x40021C24, 32, ReadWriteMode>
+  struct GPIOHAFRHBase {} ;
+
+  struct AFRH : public RegisterBase<0x40021C24, 32, ReadWriteMode>
   {
-    using Afrh15 = GpiohAfrhAfrhValues<Gpioh::Afrh, 28, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh14 = GpiohAfrhAfrhValues<Gpioh::Afrh, 24, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh13 = GpiohAfrhAfrhValues<Gpioh::Afrh, 20, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh12 = GpiohAfrhAfrhValues<Gpioh::Afrh, 16, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh11 = GpiohAfrhAfrhValues<Gpioh::Afrh, 12, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh10 = GpiohAfrhAfrhValues<Gpioh::Afrh, 8, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh9 = GpiohAfrhAfrhValues<Gpioh::Afrh, 4, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
-    using Afrh8 = GpiohAfrhAfrhValues<Gpioh::Afrh, 0, 4, ReadWriteMode, GpiohAfrhAfrhValuesBase> ;
+    using AFRH15 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 28, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH14 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 24, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH13 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 20, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH12 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 16, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH11 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 12, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH10 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 8, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH9 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 4, 4, ReadWriteMode, GPIOHAFRHBase> ;
+    using AFRH8 = GPIOH_AFRH_AFRH_Values<GPIOH::AFRH, 0, 4, ReadWriteMode, GPIOHAFRHBase> ;
   } ;
 
   template<typename... T> 
-  using AfrhPack  = Register<0x40021C24, 32, ReadWriteMode, GpiohAfrhAfrhValuesBase, T...> ;
+  using AFRHPack  = Register<0x40021C24, 32, ReadWriteMode, GPIOHAFRHBase, T...> ;
 
 } ;
 

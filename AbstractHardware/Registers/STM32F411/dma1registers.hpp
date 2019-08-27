@@ -15,674 +15,778 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Dma1
+struct DMA1
 {
-  struct Lisr : public RegisterBase<0x40026000, 32, ReadMode>
+  struct DMA1LISRBase {} ;
+
+  struct LISR : public RegisterBase<0x40026000, 32, ReadMode>
   {
-    using Tcif3 = DmaLisrTcifValues<Dma1::Lisr, 27, 1, ReadMode, DmaLisrTcifValuesBase> ;
-    using Htif3 = DmaLisrHtifValues<Dma1::Lisr, 26, 1, ReadMode, DmaLisrHtifValuesBase> ;
-    using Teif3 = DmaLisrTeifValues<Dma1::Lisr, 25, 1, ReadMode, DmaLisrTeifValuesBase> ;
-    using Dmeif3 = DmaLisrDmeifValues<Dma1::Lisr, 24, 1, ReadMode, DmaLisrDmeifValuesBase> ;
-    using Feif3 = DmaLisrFeifValues<Dma1::Lisr, 22, 1, ReadMode, DmaLisrFeifValuesBase> ;
-    using Tcif2 = DmaLisrTcifValues<Dma1::Lisr, 21, 1, ReadMode, DmaLisrTcifValuesBase> ;
-    using Htif2 = DmaLisrHtifValues<Dma1::Lisr, 20, 1, ReadMode, DmaLisrHtifValuesBase> ;
-    using Teif2 = DmaLisrTeifValues<Dma1::Lisr, 19, 1, ReadMode, DmaLisrTeifValuesBase> ;
-    using Dmeif2 = DmaLisrDmeifValues<Dma1::Lisr, 18, 1, ReadMode, DmaLisrDmeifValuesBase> ;
-    using Feif2 = DmaLisrFeifValues<Dma1::Lisr, 16, 1, ReadMode, DmaLisrFeifValuesBase> ;
-    using Tcif1 = DmaLisrTcifValues<Dma1::Lisr, 11, 1, ReadMode, DmaLisrTcifValuesBase> ;
-    using Htif1 = DmaLisrHtifValues<Dma1::Lisr, 10, 1, ReadMode, DmaLisrHtifValuesBase> ;
-    using Teif1 = DmaLisrTeifValues<Dma1::Lisr, 9, 1, ReadMode, DmaLisrTeifValuesBase> ;
-    using Dmeif1 = DmaLisrDmeifValues<Dma1::Lisr, 8, 1, ReadMode, DmaLisrDmeifValuesBase> ;
-    using Feif1 = DmaLisrFeifValues<Dma1::Lisr, 6, 1, ReadMode, DmaLisrFeifValuesBase> ;
-    using Tcif0 = DmaLisrTcifValues<Dma1::Lisr, 5, 1, ReadMode, DmaLisrTcifValuesBase> ;
-    using Htif0 = DmaLisrHtifValues<Dma1::Lisr, 4, 1, ReadMode, DmaLisrHtifValuesBase> ;
-    using Teif0 = DmaLisrTeifValues<Dma1::Lisr, 3, 1, ReadMode, DmaLisrTeifValuesBase> ;
-    using Dmeif0 = DmaLisrDmeifValues<Dma1::Lisr, 2, 1, ReadMode, DmaLisrDmeifValuesBase> ;
-    using Feif0 = DmaLisrFeifValues<Dma1::Lisr, 0, 1, ReadMode, DmaLisrFeifValuesBase> ;
+    using TCIF3 = DMA_LISR_TCIF_Values<DMA1::LISR, 27, 1, ReadMode, DMA1LISRBase> ;
+    using HTIF3 = DMA_LISR_HTIF_Values<DMA1::LISR, 26, 1, ReadMode, DMA1LISRBase> ;
+    using TEIF3 = DMA_LISR_TEIF_Values<DMA1::LISR, 25, 1, ReadMode, DMA1LISRBase> ;
+    using DMEIF3 = DMA_LISR_DMEIF_Values<DMA1::LISR, 24, 1, ReadMode, DMA1LISRBase> ;
+    using FEIF3 = DMA_LISR_FEIF_Values<DMA1::LISR, 22, 1, ReadMode, DMA1LISRBase> ;
+    using TCIF2 = DMA_LISR_TCIF_Values<DMA1::LISR, 21, 1, ReadMode, DMA1LISRBase> ;
+    using HTIF2 = DMA_LISR_HTIF_Values<DMA1::LISR, 20, 1, ReadMode, DMA1LISRBase> ;
+    using TEIF2 = DMA_LISR_TEIF_Values<DMA1::LISR, 19, 1, ReadMode, DMA1LISRBase> ;
+    using DMEIF2 = DMA_LISR_DMEIF_Values<DMA1::LISR, 18, 1, ReadMode, DMA1LISRBase> ;
+    using FEIF2 = DMA_LISR_FEIF_Values<DMA1::LISR, 16, 1, ReadMode, DMA1LISRBase> ;
+    using TCIF1 = DMA_LISR_TCIF_Values<DMA1::LISR, 11, 1, ReadMode, DMA1LISRBase> ;
+    using HTIF1 = DMA_LISR_HTIF_Values<DMA1::LISR, 10, 1, ReadMode, DMA1LISRBase> ;
+    using TEIF1 = DMA_LISR_TEIF_Values<DMA1::LISR, 9, 1, ReadMode, DMA1LISRBase> ;
+    using DMEIF1 = DMA_LISR_DMEIF_Values<DMA1::LISR, 8, 1, ReadMode, DMA1LISRBase> ;
+    using FEIF1 = DMA_LISR_FEIF_Values<DMA1::LISR, 6, 1, ReadMode, DMA1LISRBase> ;
+    using TCIF0 = DMA_LISR_TCIF_Values<DMA1::LISR, 5, 1, ReadMode, DMA1LISRBase> ;
+    using HTIF0 = DMA_LISR_HTIF_Values<DMA1::LISR, 4, 1, ReadMode, DMA1LISRBase> ;
+    using TEIF0 = DMA_LISR_TEIF_Values<DMA1::LISR, 3, 1, ReadMode, DMA1LISRBase> ;
+    using DMEIF0 = DMA_LISR_DMEIF_Values<DMA1::LISR, 2, 1, ReadMode, DMA1LISRBase> ;
+    using FEIF0 = DMA_LISR_FEIF_Values<DMA1::LISR, 0, 1, ReadMode, DMA1LISRBase> ;
   } ;
 
   template<typename... T> 
-  using LisrPack  = Register<0x40026000, 32, ReadMode, DmaLisrTcifValuesBase, T...> ;
+  using LISRPack  = Register<0x40026000, 32, ReadMode, DMA1LISRBase, T...> ;
 
-  struct Hisr : public RegisterBase<0x40026004, 32, ReadMode>
+  struct DMA1HISRBase {} ;
+
+  struct HISR : public RegisterBase<0x40026004, 32, ReadMode>
   {
-    using Tcif7 = DmaHisrTcifValues<Dma1::Hisr, 27, 1, ReadMode, DmaHisrTcifValuesBase> ;
-    using Htif7 = DmaHisrHtifValues<Dma1::Hisr, 26, 1, ReadMode, DmaHisrHtifValuesBase> ;
-    using Teif7 = DmaHisrTeifValues<Dma1::Hisr, 25, 1, ReadMode, DmaHisrTeifValuesBase> ;
-    using Dmeif7 = DmaHisrDmeifValues<Dma1::Hisr, 24, 1, ReadMode, DmaHisrDmeifValuesBase> ;
-    using Feif7 = DmaHisrFeifValues<Dma1::Hisr, 22, 1, ReadMode, DmaHisrFeifValuesBase> ;
-    using Tcif6 = DmaHisrTcifValues<Dma1::Hisr, 21, 1, ReadMode, DmaHisrTcifValuesBase> ;
-    using Htif6 = DmaHisrHtifValues<Dma1::Hisr, 20, 1, ReadMode, DmaHisrHtifValuesBase> ;
-    using Teif6 = DmaHisrTeifValues<Dma1::Hisr, 19, 1, ReadMode, DmaHisrTeifValuesBase> ;
-    using Dmeif6 = DmaHisrDmeifValues<Dma1::Hisr, 18, 1, ReadMode, DmaHisrDmeifValuesBase> ;
-    using Feif6 = DmaHisrFeifValues<Dma1::Hisr, 16, 1, ReadMode, DmaHisrFeifValuesBase> ;
-    using Tcif5 = DmaHisrTcifValues<Dma1::Hisr, 11, 1, ReadMode, DmaHisrTcifValuesBase> ;
-    using Htif5 = DmaHisrHtifValues<Dma1::Hisr, 10, 1, ReadMode, DmaHisrHtifValuesBase> ;
-    using Teif5 = DmaHisrTeifValues<Dma1::Hisr, 9, 1, ReadMode, DmaHisrTeifValuesBase> ;
-    using Dmeif5 = DmaHisrDmeifValues<Dma1::Hisr, 8, 1, ReadMode, DmaHisrDmeifValuesBase> ;
-    using Feif5 = DmaHisrFeifValues<Dma1::Hisr, 6, 1, ReadMode, DmaHisrFeifValuesBase> ;
-    using Tcif4 = DmaHisrTcifValues<Dma1::Hisr, 5, 1, ReadMode, DmaHisrTcifValuesBase> ;
-    using Htif4 = DmaHisrHtifValues<Dma1::Hisr, 4, 1, ReadMode, DmaHisrHtifValuesBase> ;
-    using Teif4 = DmaHisrTeifValues<Dma1::Hisr, 3, 1, ReadMode, DmaHisrTeifValuesBase> ;
-    using Dmeif4 = DmaHisrDmeifValues<Dma1::Hisr, 2, 1, ReadMode, DmaHisrDmeifValuesBase> ;
-    using Feif4 = DmaHisrFeifValues<Dma1::Hisr, 0, 1, ReadMode, DmaHisrFeifValuesBase> ;
+    using TCIF7 = DMA_HISR_TCIF_Values<DMA1::HISR, 27, 1, ReadMode, DMA1HISRBase> ;
+    using HTIF7 = DMA_HISR_HTIF_Values<DMA1::HISR, 26, 1, ReadMode, DMA1HISRBase> ;
+    using TEIF7 = DMA_HISR_TEIF_Values<DMA1::HISR, 25, 1, ReadMode, DMA1HISRBase> ;
+    using DMEIF7 = DMA_HISR_DMEIF_Values<DMA1::HISR, 24, 1, ReadMode, DMA1HISRBase> ;
+    using FEIF7 = DMA_HISR_FEIF_Values<DMA1::HISR, 22, 1, ReadMode, DMA1HISRBase> ;
+    using TCIF6 = DMA_HISR_TCIF_Values<DMA1::HISR, 21, 1, ReadMode, DMA1HISRBase> ;
+    using HTIF6 = DMA_HISR_HTIF_Values<DMA1::HISR, 20, 1, ReadMode, DMA1HISRBase> ;
+    using TEIF6 = DMA_HISR_TEIF_Values<DMA1::HISR, 19, 1, ReadMode, DMA1HISRBase> ;
+    using DMEIF6 = DMA_HISR_DMEIF_Values<DMA1::HISR, 18, 1, ReadMode, DMA1HISRBase> ;
+    using FEIF6 = DMA_HISR_FEIF_Values<DMA1::HISR, 16, 1, ReadMode, DMA1HISRBase> ;
+    using TCIF5 = DMA_HISR_TCIF_Values<DMA1::HISR, 11, 1, ReadMode, DMA1HISRBase> ;
+    using HTIF5 = DMA_HISR_HTIF_Values<DMA1::HISR, 10, 1, ReadMode, DMA1HISRBase> ;
+    using TEIF5 = DMA_HISR_TEIF_Values<DMA1::HISR, 9, 1, ReadMode, DMA1HISRBase> ;
+    using DMEIF5 = DMA_HISR_DMEIF_Values<DMA1::HISR, 8, 1, ReadMode, DMA1HISRBase> ;
+    using FEIF5 = DMA_HISR_FEIF_Values<DMA1::HISR, 6, 1, ReadMode, DMA1HISRBase> ;
+    using TCIF4 = DMA_HISR_TCIF_Values<DMA1::HISR, 5, 1, ReadMode, DMA1HISRBase> ;
+    using HTIF4 = DMA_HISR_HTIF_Values<DMA1::HISR, 4, 1, ReadMode, DMA1HISRBase> ;
+    using TEIF4 = DMA_HISR_TEIF_Values<DMA1::HISR, 3, 1, ReadMode, DMA1HISRBase> ;
+    using DMEIF4 = DMA_HISR_DMEIF_Values<DMA1::HISR, 2, 1, ReadMode, DMA1HISRBase> ;
+    using FEIF4 = DMA_HISR_FEIF_Values<DMA1::HISR, 0, 1, ReadMode, DMA1HISRBase> ;
   } ;
 
   template<typename... T> 
-  using HisrPack  = Register<0x40026004, 32, ReadMode, DmaHisrTcifValuesBase, T...> ;
+  using HISRPack  = Register<0x40026004, 32, ReadMode, DMA1HISRBase, T...> ;
 
-  struct Lifcr : public RegisterBase<0x40026008, 32, WriteMode>
+  struct DMA1LIFCRBase {} ;
+
+  struct LIFCR : public RegisterBase<0x40026008, 32, WriteMode>
   {
-    using Ctcif3 = DmaLifcrCtcifValues<Dma1::Lifcr, 27, 1, WriteMode, DmaLifcrCtcifValuesBase> ;
-    using Chtif3 = DmaLifcrChtifValues<Dma1::Lifcr, 26, 1, WriteMode, DmaLifcrChtifValuesBase> ;
-    using Cteif3 = DmaLifcrCteifValues<Dma1::Lifcr, 25, 1, WriteMode, DmaLifcrCteifValuesBase> ;
-    using Cdmeif3 = DmaLifcrCdmeifValues<Dma1::Lifcr, 24, 1, WriteMode, DmaLifcrCdmeifValuesBase> ;
-    using Cfeif3 = DmaLifcrCfeifValues<Dma1::Lifcr, 22, 1, WriteMode, DmaLifcrCfeifValuesBase> ;
-    using Ctcif2 = DmaLifcrCtcifValues<Dma1::Lifcr, 21, 1, WriteMode, DmaLifcrCtcifValuesBase> ;
-    using Chtif2 = DmaLifcrChtifValues<Dma1::Lifcr, 20, 1, WriteMode, DmaLifcrChtifValuesBase> ;
-    using Cteif2 = DmaLifcrCteifValues<Dma1::Lifcr, 19, 1, WriteMode, DmaLifcrCteifValuesBase> ;
-    using Cdmeif2 = DmaLifcrCdmeifValues<Dma1::Lifcr, 18, 1, WriteMode, DmaLifcrCdmeifValuesBase> ;
-    using Cfeif2 = DmaLifcrCfeifValues<Dma1::Lifcr, 16, 1, WriteMode, DmaLifcrCfeifValuesBase> ;
-    using Ctcif1 = DmaLifcrCtcifValues<Dma1::Lifcr, 11, 1, WriteMode, DmaLifcrCtcifValuesBase> ;
-    using Chtif1 = DmaLifcrChtifValues<Dma1::Lifcr, 10, 1, WriteMode, DmaLifcrChtifValuesBase> ;
-    using Cteif1 = DmaLifcrCteifValues<Dma1::Lifcr, 9, 1, WriteMode, DmaLifcrCteifValuesBase> ;
-    using Cdmeif1 = DmaLifcrCdmeifValues<Dma1::Lifcr, 8, 1, WriteMode, DmaLifcrCdmeifValuesBase> ;
-    using Cfeif1 = DmaLifcrCfeifValues<Dma1::Lifcr, 6, 1, WriteMode, DmaLifcrCfeifValuesBase> ;
-    using Ctcif0 = DmaLifcrCtcifValues<Dma1::Lifcr, 5, 1, WriteMode, DmaLifcrCtcifValuesBase> ;
-    using Chtif0 = DmaLifcrChtifValues<Dma1::Lifcr, 4, 1, WriteMode, DmaLifcrChtifValuesBase> ;
-    using Cteif0 = DmaLifcrCteifValues<Dma1::Lifcr, 3, 1, WriteMode, DmaLifcrCteifValuesBase> ;
-    using Cdmeif0 = DmaLifcrCdmeifValues<Dma1::Lifcr, 2, 1, WriteMode, DmaLifcrCdmeifValuesBase> ;
-    using Cfeif0 = DmaLifcrCfeifValues<Dma1::Lifcr, 0, 1, WriteMode, DmaLifcrCfeifValuesBase> ;
+    using CTCIF3 = DMA_LIFCR_CTCIF_Values<DMA1::LIFCR, 27, 1, WriteMode, DMA1LIFCRBase> ;
+    using CHTIF3 = DMA_LIFCR_CHTIF_Values<DMA1::LIFCR, 26, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTEIF3 = DMA_LIFCR_CTEIF_Values<DMA1::LIFCR, 25, 1, WriteMode, DMA1LIFCRBase> ;
+    using CDMEIF3 = DMA_LIFCR_CDMEIF_Values<DMA1::LIFCR, 24, 1, WriteMode, DMA1LIFCRBase> ;
+    using CFEIF3 = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 22, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTCIF2 = DMA_LIFCR_CTCIF_Values<DMA1::LIFCR, 21, 1, WriteMode, DMA1LIFCRBase> ;
+    using CHTIF2 = DMA_LIFCR_CHTIF_Values<DMA1::LIFCR, 20, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTEIF2 = DMA_LIFCR_CTEIF_Values<DMA1::LIFCR, 19, 1, WriteMode, DMA1LIFCRBase> ;
+    using CDMEIF2 = DMA_LIFCR_CDMEIF_Values<DMA1::LIFCR, 18, 1, WriteMode, DMA1LIFCRBase> ;
+    using CFEIF2 = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 16, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTCIF1 = DMA_LIFCR_CTCIF_Values<DMA1::LIFCR, 11, 1, WriteMode, DMA1LIFCRBase> ;
+    using CHTIF1 = DMA_LIFCR_CHTIF_Values<DMA1::LIFCR, 10, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTEIF1 = DMA_LIFCR_CTEIF_Values<DMA1::LIFCR, 9, 1, WriteMode, DMA1LIFCRBase> ;
+    using CDMEIF1 = DMA_LIFCR_CDMEIF_Values<DMA1::LIFCR, 8, 1, WriteMode, DMA1LIFCRBase> ;
+    using CFEIF1 = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 6, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTCIF0 = DMA_LIFCR_CTCIF_Values<DMA1::LIFCR, 5, 1, WriteMode, DMA1LIFCRBase> ;
+    using CHTIF0 = DMA_LIFCR_CHTIF_Values<DMA1::LIFCR, 4, 1, WriteMode, DMA1LIFCRBase> ;
+    using CTEIF0 = DMA_LIFCR_CTEIF_Values<DMA1::LIFCR, 3, 1, WriteMode, DMA1LIFCRBase> ;
+    using CDMEIF0 = DMA_LIFCR_CDMEIF_Values<DMA1::LIFCR, 2, 1, WriteMode, DMA1LIFCRBase> ;
+    using CFEIF0 = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 0, 1, WriteMode, DMA1LIFCRBase> ;
   } ;
 
   template<typename... T> 
-  using LifcrPack  = Register<0x40026008, 32, WriteMode, DmaLifcrCtcifValuesBase, T...> ;
+  using LIFCRPack  = Register<0x40026008, 32, WriteMode, DMA1LIFCRBase, T...> ;
 
-  struct Hifcr : public RegisterBase<0x4002600C, 32, WriteMode>
+  struct DMA1HIFCRBase {} ;
+
+  struct HIFCR : public RegisterBase<0x4002600C, 32, WriteMode>
   {
-    using Ctcif7 = DmaHifcrCtcifValues<Dma1::Hifcr, 27, 1, WriteMode, DmaHifcrCtcifValuesBase> ;
-    using Chtif7 = DmaHifcrChtifValues<Dma1::Hifcr, 26, 1, WriteMode, DmaHifcrChtifValuesBase> ;
-    using Cteif7 = DmaHifcrCteifValues<Dma1::Hifcr, 25, 1, WriteMode, DmaHifcrCteifValuesBase> ;
-    using Cdmeif7 = DmaHifcrCdmeifValues<Dma1::Hifcr, 24, 1, WriteMode, DmaHifcrCdmeifValuesBase> ;
-    using Cfeif7 = DmaHifcrCfeifValues<Dma1::Hifcr, 22, 1, WriteMode, DmaHifcrCfeifValuesBase> ;
-    using Ctcif6 = DmaHifcrCtcifValues<Dma1::Hifcr, 21, 1, WriteMode, DmaHifcrCtcifValuesBase> ;
-    using Chtif6 = DmaHifcrChtifValues<Dma1::Hifcr, 20, 1, WriteMode, DmaHifcrChtifValuesBase> ;
-    using Cteif6 = DmaHifcrCteifValues<Dma1::Hifcr, 19, 1, WriteMode, DmaHifcrCteifValuesBase> ;
-    using Cdmeif6 = DmaHifcrCdmeifValues<Dma1::Hifcr, 18, 1, WriteMode, DmaHifcrCdmeifValuesBase> ;
-    using Cfeif6 = DmaHifcrCfeifValues<Dma1::Hifcr, 16, 1, WriteMode, DmaHifcrCfeifValuesBase> ;
-    using Ctcif5 = DmaHifcrCtcifValues<Dma1::Hifcr, 11, 1, WriteMode, DmaHifcrCtcifValuesBase> ;
-    using Chtif5 = DmaHifcrChtifValues<Dma1::Hifcr, 10, 1, WriteMode, DmaHifcrChtifValuesBase> ;
-    using Cteif5 = DmaHifcrCteifValues<Dma1::Hifcr, 9, 1, WriteMode, DmaHifcrCteifValuesBase> ;
-    using Cdmeif5 = DmaHifcrCdmeifValues<Dma1::Hifcr, 8, 1, WriteMode, DmaHifcrCdmeifValuesBase> ;
-    using Cfeif5 = DmaHifcrCfeifValues<Dma1::Hifcr, 6, 1, WriteMode, DmaHifcrCfeifValuesBase> ;
-    using Ctcif4 = DmaHifcrCtcifValues<Dma1::Hifcr, 5, 1, WriteMode, DmaHifcrCtcifValuesBase> ;
-    using Chtif4 = DmaHifcrChtifValues<Dma1::Hifcr, 4, 1, WriteMode, DmaHifcrChtifValuesBase> ;
-    using Cteif4 = DmaHifcrCteifValues<Dma1::Hifcr, 3, 1, WriteMode, DmaHifcrCteifValuesBase> ;
-    using Cdmeif4 = DmaHifcrCdmeifValues<Dma1::Hifcr, 2, 1, WriteMode, DmaHifcrCdmeifValuesBase> ;
-    using Cfeif4 = DmaHifcrCfeifValues<Dma1::Hifcr, 0, 1, WriteMode, DmaHifcrCfeifValuesBase> ;
+    using CTCIF7 = DMA_HIFCR_CTCIF_Values<DMA1::HIFCR, 27, 1, WriteMode, DMA1HIFCRBase> ;
+    using CHTIF7 = DMA_HIFCR_CHTIF_Values<DMA1::HIFCR, 26, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTEIF7 = DMA_HIFCR_CTEIF_Values<DMA1::HIFCR, 25, 1, WriteMode, DMA1HIFCRBase> ;
+    using CDMEIF7 = DMA_HIFCR_CDMEIF_Values<DMA1::HIFCR, 24, 1, WriteMode, DMA1HIFCRBase> ;
+    using CFEIF7 = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 22, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTCIF6 = DMA_HIFCR_CTCIF_Values<DMA1::HIFCR, 21, 1, WriteMode, DMA1HIFCRBase> ;
+    using CHTIF6 = DMA_HIFCR_CHTIF_Values<DMA1::HIFCR, 20, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTEIF6 = DMA_HIFCR_CTEIF_Values<DMA1::HIFCR, 19, 1, WriteMode, DMA1HIFCRBase> ;
+    using CDMEIF6 = DMA_HIFCR_CDMEIF_Values<DMA1::HIFCR, 18, 1, WriteMode, DMA1HIFCRBase> ;
+    using CFEIF6 = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 16, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTCIF5 = DMA_HIFCR_CTCIF_Values<DMA1::HIFCR, 11, 1, WriteMode, DMA1HIFCRBase> ;
+    using CHTIF5 = DMA_HIFCR_CHTIF_Values<DMA1::HIFCR, 10, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTEIF5 = DMA_HIFCR_CTEIF_Values<DMA1::HIFCR, 9, 1, WriteMode, DMA1HIFCRBase> ;
+    using CDMEIF5 = DMA_HIFCR_CDMEIF_Values<DMA1::HIFCR, 8, 1, WriteMode, DMA1HIFCRBase> ;
+    using CFEIF5 = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 6, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTCIF4 = DMA_HIFCR_CTCIF_Values<DMA1::HIFCR, 5, 1, WriteMode, DMA1HIFCRBase> ;
+    using CHTIF4 = DMA_HIFCR_CHTIF_Values<DMA1::HIFCR, 4, 1, WriteMode, DMA1HIFCRBase> ;
+    using CTEIF4 = DMA_HIFCR_CTEIF_Values<DMA1::HIFCR, 3, 1, WriteMode, DMA1HIFCRBase> ;
+    using CDMEIF4 = DMA_HIFCR_CDMEIF_Values<DMA1::HIFCR, 2, 1, WriteMode, DMA1HIFCRBase> ;
+    using CFEIF4 = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 0, 1, WriteMode, DMA1HIFCRBase> ;
   } ;
 
   template<typename... T> 
-  using HifcrPack  = Register<0x4002600C, 32, WriteMode, DmaHifcrCtcifValuesBase, T...> ;
+  using HIFCRPack  = Register<0x4002600C, 32, WriteMode, DMA1HIFCRBase, T...> ;
 
-  struct S0Cr : public RegisterBase<0x40026010, 32, ReadWriteMode>
+  struct DMA1S0CRBase {} ;
+
+  struct S0CR : public RegisterBase<0x40026010, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S0Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S0Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S0Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S0Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S0Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S0Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S0Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S0Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S0Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S0Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S0Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S0Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S0Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S0Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S0Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S0Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S0Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S0Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S0Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S0CR, 25, 3, ReadWriteMode, DMA1S0CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S0CR, 23, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S0CR, 21, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S0CR, 19, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S0CR, 18, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S0CR, 16, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S0CR, 15, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S0CR, 13, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S0CR, 11, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S0CR, 10, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S0CR, 9, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S0CR, 8, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S0CR, 6, 2, ReadWriteMode, DMA1S0CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S0CR, 5, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S0CR, 4, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S0CR, 3, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S0CR, 2, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S0CR, 1, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S0CR, 0, 1, ReadWriteMode, DMA1S0CRBase> ;
   } ;
 
   template<typename... T> 
-  using S0CrPack  = Register<0x40026010, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S0CRPack  = Register<0x40026010, 32, ReadWriteMode, DMA1S0CRBase, T...> ;
 
-  struct S0Ndtr : public RegisterBase<0x40026014, 32, ReadWriteMode>
+  struct DMA1S0NDTRBase {} ;
+
+  struct S0NDTR : public RegisterBase<0x40026014, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S0Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S0NDTR, 0, 16, ReadWriteMode, DMA1S0NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S0NdtrPack  = Register<0x40026014, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S0NDTRPack  = Register<0x40026014, 32, ReadWriteMode, DMA1S0NDTRBase, T...> ;
 
-  struct S0Par : public RegisterBase<0x40026018, 32, ReadWriteMode>
+  struct DMA1S0PARBase {} ;
+
+  struct S0PAR : public RegisterBase<0x40026018, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S0Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S0PAR, 0, 32, ReadWriteMode, DMA1S0PARBase> ;
   } ;
 
   template<typename... T> 
-  using S0ParPack  = Register<0x40026018, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S0PARPack  = Register<0x40026018, 32, ReadWriteMode, DMA1S0PARBase, T...> ;
 
-  struct S0M0Ar : public RegisterBase<0x4002601C, 32, ReadWriteMode>
+  struct DMA1S0M0ARBase {} ;
+
+  struct S0M0AR : public RegisterBase<0x4002601C, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S0M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S0M0AR, 0, 32, ReadWriteMode, DMA1S0M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S0M0ArPack  = Register<0x4002601C, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S0M0ARPack  = Register<0x4002601C, 32, ReadWriteMode, DMA1S0M0ARBase, T...> ;
 
-  struct S0M1Ar : public RegisterBase<0x40026020, 32, ReadWriteMode>
+  struct DMA1S0M1ARBase {} ;
+
+  struct S0M1AR : public RegisterBase<0x40026020, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S0M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S0M1AR, 0, 32, ReadWriteMode, DMA1S0M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S0M1ArPack  = Register<0x40026020, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S0M1ARPack  = Register<0x40026020, 32, ReadWriteMode, DMA1S0M1ARBase, T...> ;
 
-  struct S0Fcr : public RegisterBase<0x40026024, 32, ReadWriteMode>
+  struct DMA1S0FCRBase {} ;
+
+  struct S0FCR : public RegisterBase<0x40026024, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S0Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S0Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S0Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S0Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S0FCR, 7, 1, ReadWriteMode, DMA1S0FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S0FCR, 3, 3, ReadMode, DMA1S0FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S0FCR, 2, 1, ReadWriteMode, DMA1S0FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S0FCR, 0, 2, ReadWriteMode, DMA1S0FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S0FcrPack  = Register<0x40026024, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S0FCRPack  = Register<0x40026024, 32, ReadWriteMode, DMA1S0FCRBase, T...> ;
 
-  struct S1Cr : public RegisterBase<0x40026028, 32, ReadWriteMode>
+  struct DMA1S1CRBase {} ;
+
+  struct S1CR : public RegisterBase<0x40026028, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S1Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S1Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S1Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S1Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S1Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S1Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S1Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S1Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S1Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S1Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S1Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S1Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S1Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S1Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S1Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S1Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S1Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S1Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S1Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S1Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S1CR, 25, 3, ReadWriteMode, DMA1S1CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S1CR, 23, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S1CR, 21, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S1CR, 20, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S1CR, 19, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S1CR, 18, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S1CR, 16, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S1CR, 15, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S1CR, 13, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S1CR, 11, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S1CR, 10, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S1CR, 9, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S1CR, 8, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S1CR, 6, 2, ReadWriteMode, DMA1S1CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S1CR, 5, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S1CR, 4, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S1CR, 3, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S1CR, 2, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S1CR, 1, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S1CR, 0, 1, ReadWriteMode, DMA1S1CRBase> ;
   } ;
 
   template<typename... T> 
-  using S1CrPack  = Register<0x40026028, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S1CRPack  = Register<0x40026028, 32, ReadWriteMode, DMA1S1CRBase, T...> ;
 
-  struct S1Ndtr : public RegisterBase<0x4002602C, 32, ReadWriteMode>
+  struct DMA1S1NDTRBase {} ;
+
+  struct S1NDTR : public RegisterBase<0x4002602C, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S1Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S1NDTR, 0, 16, ReadWriteMode, DMA1S1NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S1NdtrPack  = Register<0x4002602C, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S1NDTRPack  = Register<0x4002602C, 32, ReadWriteMode, DMA1S1NDTRBase, T...> ;
 
-  struct S1Par : public RegisterBase<0x40026030, 32, ReadWriteMode>
+  struct DMA1S1PARBase {} ;
+
+  struct S1PAR : public RegisterBase<0x40026030, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S1Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S1PAR, 0, 32, ReadWriteMode, DMA1S1PARBase> ;
   } ;
 
   template<typename... T> 
-  using S1ParPack  = Register<0x40026030, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S1PARPack  = Register<0x40026030, 32, ReadWriteMode, DMA1S1PARBase, T...> ;
 
-  struct S1M0Ar : public RegisterBase<0x40026034, 32, ReadWriteMode>
+  struct DMA1S1M0ARBase {} ;
+
+  struct S1M0AR : public RegisterBase<0x40026034, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S1M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S1M0AR, 0, 32, ReadWriteMode, DMA1S1M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S1M0ArPack  = Register<0x40026034, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S1M0ARPack  = Register<0x40026034, 32, ReadWriteMode, DMA1S1M0ARBase, T...> ;
 
-  struct S1M1Ar : public RegisterBase<0x40026038, 32, ReadWriteMode>
+  struct DMA1S1M1ARBase {} ;
+
+  struct S1M1AR : public RegisterBase<0x40026038, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S1M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S1M1AR, 0, 32, ReadWriteMode, DMA1S1M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S1M1ArPack  = Register<0x40026038, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S1M1ARPack  = Register<0x40026038, 32, ReadWriteMode, DMA1S1M1ARBase, T...> ;
 
-  struct S1Fcr : public RegisterBase<0x4002603C, 32, ReadWriteMode>
+  struct DMA1S1FCRBase {} ;
+
+  struct S1FCR : public RegisterBase<0x4002603C, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S1Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S1Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S1Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S1Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S1FCR, 7, 1, ReadWriteMode, DMA1S1FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S1FCR, 3, 3, ReadMode, DMA1S1FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S1FCR, 2, 1, ReadWriteMode, DMA1S1FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S1FCR, 0, 2, ReadWriteMode, DMA1S1FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S1FcrPack  = Register<0x4002603C, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S1FCRPack  = Register<0x4002603C, 32, ReadWriteMode, DMA1S1FCRBase, T...> ;
 
-  struct S2Cr : public RegisterBase<0x40026040, 32, ReadWriteMode>
+  struct DMA1S2CRBase {} ;
+
+  struct S2CR : public RegisterBase<0x40026040, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S2Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S2Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S2Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S2Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S2Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S2Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S2Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S2Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S2Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S2Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S2Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S2Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S2Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S2Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S2Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S2Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S2Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S2Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S2Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S2Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S2CR, 25, 3, ReadWriteMode, DMA1S2CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S2CR, 23, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S2CR, 21, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S2CR, 20, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S2CR, 19, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S2CR, 18, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S2CR, 16, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S2CR, 15, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S2CR, 13, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S2CR, 11, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S2CR, 10, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S2CR, 9, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S2CR, 8, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S2CR, 6, 2, ReadWriteMode, DMA1S2CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S2CR, 5, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S2CR, 4, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S2CR, 3, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S2CR, 2, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S2CR, 1, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S2CR, 0, 1, ReadWriteMode, DMA1S2CRBase> ;
   } ;
 
   template<typename... T> 
-  using S2CrPack  = Register<0x40026040, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S2CRPack  = Register<0x40026040, 32, ReadWriteMode, DMA1S2CRBase, T...> ;
 
-  struct S2Ndtr : public RegisterBase<0x40026044, 32, ReadWriteMode>
+  struct DMA1S2NDTRBase {} ;
+
+  struct S2NDTR : public RegisterBase<0x40026044, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S2Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S2NDTR, 0, 16, ReadWriteMode, DMA1S2NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S2NdtrPack  = Register<0x40026044, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S2NDTRPack  = Register<0x40026044, 32, ReadWriteMode, DMA1S2NDTRBase, T...> ;
 
-  struct S2Par : public RegisterBase<0x40026048, 32, ReadWriteMode>
+  struct DMA1S2PARBase {} ;
+
+  struct S2PAR : public RegisterBase<0x40026048, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S2Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S2PAR, 0, 32, ReadWriteMode, DMA1S2PARBase> ;
   } ;
 
   template<typename... T> 
-  using S2ParPack  = Register<0x40026048, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S2PARPack  = Register<0x40026048, 32, ReadWriteMode, DMA1S2PARBase, T...> ;
 
-  struct S2M0Ar : public RegisterBase<0x4002604C, 32, ReadWriteMode>
+  struct DMA1S2M0ARBase {} ;
+
+  struct S2M0AR : public RegisterBase<0x4002604C, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S2M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S2M0AR, 0, 32, ReadWriteMode, DMA1S2M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S2M0ArPack  = Register<0x4002604C, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S2M0ARPack  = Register<0x4002604C, 32, ReadWriteMode, DMA1S2M0ARBase, T...> ;
 
-  struct S2M1Ar : public RegisterBase<0x40026050, 32, ReadWriteMode>
+  struct DMA1S2M1ARBase {} ;
+
+  struct S2M1AR : public RegisterBase<0x40026050, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S2M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S2M1AR, 0, 32, ReadWriteMode, DMA1S2M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S2M1ArPack  = Register<0x40026050, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S2M1ARPack  = Register<0x40026050, 32, ReadWriteMode, DMA1S2M1ARBase, T...> ;
 
-  struct S2Fcr : public RegisterBase<0x40026054, 32, ReadWriteMode>
+  struct DMA1S2FCRBase {} ;
+
+  struct S2FCR : public RegisterBase<0x40026054, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S2Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S2Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S2Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S2Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S2FCR, 7, 1, ReadWriteMode, DMA1S2FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S2FCR, 3, 3, ReadMode, DMA1S2FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S2FCR, 2, 1, ReadWriteMode, DMA1S2FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S2FCR, 0, 2, ReadWriteMode, DMA1S2FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S2FcrPack  = Register<0x40026054, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S2FCRPack  = Register<0x40026054, 32, ReadWriteMode, DMA1S2FCRBase, T...> ;
 
-  struct S3Cr : public RegisterBase<0x40026058, 32, ReadWriteMode>
+  struct DMA1S3CRBase {} ;
+
+  struct S3CR : public RegisterBase<0x40026058, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S3Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S3Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S3Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S3Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S3Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S3Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S3Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S3Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S3Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S3Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S3Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S3Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S3Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S3Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S3Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S3Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S3Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S3Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S3Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S3Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S3CR, 25, 3, ReadWriteMode, DMA1S3CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S3CR, 23, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S3CR, 21, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S3CR, 20, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S3CR, 19, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S3CR, 18, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S3CR, 16, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S3CR, 15, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S3CR, 13, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S3CR, 11, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S3CR, 10, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S3CR, 9, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S3CR, 8, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S3CR, 6, 2, ReadWriteMode, DMA1S3CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S3CR, 5, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S3CR, 4, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S3CR, 3, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S3CR, 2, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S3CR, 1, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S3CR, 0, 1, ReadWriteMode, DMA1S3CRBase> ;
   } ;
 
   template<typename... T> 
-  using S3CrPack  = Register<0x40026058, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S3CRPack  = Register<0x40026058, 32, ReadWriteMode, DMA1S3CRBase, T...> ;
 
-  struct S3Ndtr : public RegisterBase<0x4002605C, 32, ReadWriteMode>
+  struct DMA1S3NDTRBase {} ;
+
+  struct S3NDTR : public RegisterBase<0x4002605C, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S3Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S3NDTR, 0, 16, ReadWriteMode, DMA1S3NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S3NdtrPack  = Register<0x4002605C, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S3NDTRPack  = Register<0x4002605C, 32, ReadWriteMode, DMA1S3NDTRBase, T...> ;
 
-  struct S3Par : public RegisterBase<0x40026060, 32, ReadWriteMode>
+  struct DMA1S3PARBase {} ;
+
+  struct S3PAR : public RegisterBase<0x40026060, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S3Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S3PAR, 0, 32, ReadWriteMode, DMA1S3PARBase> ;
   } ;
 
   template<typename... T> 
-  using S3ParPack  = Register<0x40026060, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S3PARPack  = Register<0x40026060, 32, ReadWriteMode, DMA1S3PARBase, T...> ;
 
-  struct S3M0Ar : public RegisterBase<0x40026064, 32, ReadWriteMode>
+  struct DMA1S3M0ARBase {} ;
+
+  struct S3M0AR : public RegisterBase<0x40026064, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S3M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S3M0AR, 0, 32, ReadWriteMode, DMA1S3M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S3M0ArPack  = Register<0x40026064, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S3M0ARPack  = Register<0x40026064, 32, ReadWriteMode, DMA1S3M0ARBase, T...> ;
 
-  struct S3M1Ar : public RegisterBase<0x40026068, 32, ReadWriteMode>
+  struct DMA1S3M1ARBase {} ;
+
+  struct S3M1AR : public RegisterBase<0x40026068, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S3M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S3M1AR, 0, 32, ReadWriteMode, DMA1S3M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S3M1ArPack  = Register<0x40026068, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S3M1ARPack  = Register<0x40026068, 32, ReadWriteMode, DMA1S3M1ARBase, T...> ;
 
-  struct S3Fcr : public RegisterBase<0x4002606C, 32, ReadWriteMode>
+  struct DMA1S3FCRBase {} ;
+
+  struct S3FCR : public RegisterBase<0x4002606C, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S3Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S3Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S3Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S3Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S3FCR, 7, 1, ReadWriteMode, DMA1S3FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S3FCR, 3, 3, ReadMode, DMA1S3FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S3FCR, 2, 1, ReadWriteMode, DMA1S3FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S3FCR, 0, 2, ReadWriteMode, DMA1S3FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S3FcrPack  = Register<0x4002606C, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S3FCRPack  = Register<0x4002606C, 32, ReadWriteMode, DMA1S3FCRBase, T...> ;
 
-  struct S4Cr : public RegisterBase<0x40026070, 32, ReadWriteMode>
+  struct DMA1S4CRBase {} ;
+
+  struct S4CR : public RegisterBase<0x40026070, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S4Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S4Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S4Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S4Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S4Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S4Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S4Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S4Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S4Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S4Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S4Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S4Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S4Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S4Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S4Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S4Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S4Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S4Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S4Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S4Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S4CR, 25, 3, ReadWriteMode, DMA1S4CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S4CR, 23, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S4CR, 21, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S4CR, 20, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S4CR, 19, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S4CR, 18, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S4CR, 16, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S4CR, 15, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S4CR, 13, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S4CR, 11, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S4CR, 10, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S4CR, 9, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S4CR, 8, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S4CR, 6, 2, ReadWriteMode, DMA1S4CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S4CR, 5, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S4CR, 4, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S4CR, 3, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S4CR, 2, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S4CR, 1, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S4CR, 0, 1, ReadWriteMode, DMA1S4CRBase> ;
   } ;
 
   template<typename... T> 
-  using S4CrPack  = Register<0x40026070, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S4CRPack  = Register<0x40026070, 32, ReadWriteMode, DMA1S4CRBase, T...> ;
 
-  struct S4Ndtr : public RegisterBase<0x40026074, 32, ReadWriteMode>
+  struct DMA1S4NDTRBase {} ;
+
+  struct S4NDTR : public RegisterBase<0x40026074, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S4Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S4NDTR, 0, 16, ReadWriteMode, DMA1S4NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S4NdtrPack  = Register<0x40026074, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S4NDTRPack  = Register<0x40026074, 32, ReadWriteMode, DMA1S4NDTRBase, T...> ;
 
-  struct S4Par : public RegisterBase<0x40026078, 32, ReadWriteMode>
+  struct DMA1S4PARBase {} ;
+
+  struct S4PAR : public RegisterBase<0x40026078, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S4Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S4PAR, 0, 32, ReadWriteMode, DMA1S4PARBase> ;
   } ;
 
   template<typename... T> 
-  using S4ParPack  = Register<0x40026078, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S4PARPack  = Register<0x40026078, 32, ReadWriteMode, DMA1S4PARBase, T...> ;
 
-  struct S4M0Ar : public RegisterBase<0x4002607C, 32, ReadWriteMode>
+  struct DMA1S4M0ARBase {} ;
+
+  struct S4M0AR : public RegisterBase<0x4002607C, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S4M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S4M0AR, 0, 32, ReadWriteMode, DMA1S4M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S4M0ArPack  = Register<0x4002607C, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S4M0ARPack  = Register<0x4002607C, 32, ReadWriteMode, DMA1S4M0ARBase, T...> ;
 
-  struct S4M1Ar : public RegisterBase<0x40026080, 32, ReadWriteMode>
+  struct DMA1S4M1ARBase {} ;
+
+  struct S4M1AR : public RegisterBase<0x40026080, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S4M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S4M1AR, 0, 32, ReadWriteMode, DMA1S4M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S4M1ArPack  = Register<0x40026080, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S4M1ARPack  = Register<0x40026080, 32, ReadWriteMode, DMA1S4M1ARBase, T...> ;
 
-  struct S4Fcr : public RegisterBase<0x40026084, 32, ReadWriteMode>
+  struct DMA1S4FCRBase {} ;
+
+  struct S4FCR : public RegisterBase<0x40026084, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S4Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S4Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S4Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S4Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S4FCR, 7, 1, ReadWriteMode, DMA1S4FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S4FCR, 3, 3, ReadMode, DMA1S4FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S4FCR, 2, 1, ReadWriteMode, DMA1S4FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S4FCR, 0, 2, ReadWriteMode, DMA1S4FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S4FcrPack  = Register<0x40026084, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S4FCRPack  = Register<0x40026084, 32, ReadWriteMode, DMA1S4FCRBase, T...> ;
 
-  struct S5Cr : public RegisterBase<0x40026088, 32, ReadWriteMode>
+  struct DMA1S5CRBase {} ;
+
+  struct S5CR : public RegisterBase<0x40026088, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S5Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S5Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S5Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S5Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S5Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S5Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S5Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S5Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S5Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S5Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S5Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S5Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S5Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S5Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S5Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S5Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S5Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S5Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S5Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S5Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S5CR, 25, 3, ReadWriteMode, DMA1S5CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S5CR, 23, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S5CR, 21, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S5CR, 20, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S5CR, 19, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S5CR, 18, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S5CR, 16, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S5CR, 15, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S5CR, 13, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S5CR, 11, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S5CR, 10, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S5CR, 9, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S5CR, 8, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S5CR, 6, 2, ReadWriteMode, DMA1S5CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S5CR, 5, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S5CR, 4, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S5CR, 3, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S5CR, 2, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S5CR, 1, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S5CR, 0, 1, ReadWriteMode, DMA1S5CRBase> ;
   } ;
 
   template<typename... T> 
-  using S5CrPack  = Register<0x40026088, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S5CRPack  = Register<0x40026088, 32, ReadWriteMode, DMA1S5CRBase, T...> ;
 
-  struct S5Ndtr : public RegisterBase<0x4002608C, 32, ReadWriteMode>
+  struct DMA1S5NDTRBase {} ;
+
+  struct S5NDTR : public RegisterBase<0x4002608C, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S5Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S5NDTR, 0, 16, ReadWriteMode, DMA1S5NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S5NdtrPack  = Register<0x4002608C, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S5NDTRPack  = Register<0x4002608C, 32, ReadWriteMode, DMA1S5NDTRBase, T...> ;
 
-  struct S5Par : public RegisterBase<0x40026090, 32, ReadWriteMode>
+  struct DMA1S5PARBase {} ;
+
+  struct S5PAR : public RegisterBase<0x40026090, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S5Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S5PAR, 0, 32, ReadWriteMode, DMA1S5PARBase> ;
   } ;
 
   template<typename... T> 
-  using S5ParPack  = Register<0x40026090, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S5PARPack  = Register<0x40026090, 32, ReadWriteMode, DMA1S5PARBase, T...> ;
 
-  struct S5M0Ar : public RegisterBase<0x40026094, 32, ReadWriteMode>
+  struct DMA1S5M0ARBase {} ;
+
+  struct S5M0AR : public RegisterBase<0x40026094, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S5M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S5M0AR, 0, 32, ReadWriteMode, DMA1S5M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S5M0ArPack  = Register<0x40026094, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S5M0ARPack  = Register<0x40026094, 32, ReadWriteMode, DMA1S5M0ARBase, T...> ;
 
-  struct S5M1Ar : public RegisterBase<0x40026098, 32, ReadWriteMode>
+  struct DMA1S5M1ARBase {} ;
+
+  struct S5M1AR : public RegisterBase<0x40026098, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S5M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S5M1AR, 0, 32, ReadWriteMode, DMA1S5M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S5M1ArPack  = Register<0x40026098, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S5M1ARPack  = Register<0x40026098, 32, ReadWriteMode, DMA1S5M1ARBase, T...> ;
 
-  struct S5Fcr : public RegisterBase<0x4002609C, 32, ReadWriteMode>
+  struct DMA1S5FCRBase {} ;
+
+  struct S5FCR : public RegisterBase<0x4002609C, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S5Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S5Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S5Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S5Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S5FCR, 7, 1, ReadWriteMode, DMA1S5FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S5FCR, 3, 3, ReadMode, DMA1S5FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S5FCR, 2, 1, ReadWriteMode, DMA1S5FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S5FCR, 0, 2, ReadWriteMode, DMA1S5FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S5FcrPack  = Register<0x4002609C, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S5FCRPack  = Register<0x4002609C, 32, ReadWriteMode, DMA1S5FCRBase, T...> ;
 
-  struct S6Cr : public RegisterBase<0x400260A0, 32, ReadWriteMode>
+  struct DMA1S6CRBase {} ;
+
+  struct S6CR : public RegisterBase<0x400260A0, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S6Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S6Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S6Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S6Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S6Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S6Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S6Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S6Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S6Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S6Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S6Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S6Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S6Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S6Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S6Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S6Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S6Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S6Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S6Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S6Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S6CR, 25, 3, ReadWriteMode, DMA1S6CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S6CR, 23, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S6CR, 21, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S6CR, 20, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S6CR, 19, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S6CR, 18, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S6CR, 16, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S6CR, 15, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S6CR, 13, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S6CR, 11, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S6CR, 10, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S6CR, 9, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S6CR, 8, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S6CR, 6, 2, ReadWriteMode, DMA1S6CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S6CR, 5, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S6CR, 4, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S6CR, 3, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S6CR, 2, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S6CR, 1, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S6CR, 0, 1, ReadWriteMode, DMA1S6CRBase> ;
   } ;
 
   template<typename... T> 
-  using S6CrPack  = Register<0x400260A0, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S6CRPack  = Register<0x400260A0, 32, ReadWriteMode, DMA1S6CRBase, T...> ;
 
-  struct S6Ndtr : public RegisterBase<0x400260A4, 32, ReadWriteMode>
+  struct DMA1S6NDTRBase {} ;
+
+  struct S6NDTR : public RegisterBase<0x400260A4, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S6Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S6NDTR, 0, 16, ReadWriteMode, DMA1S6NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S6NdtrPack  = Register<0x400260A4, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S6NDTRPack  = Register<0x400260A4, 32, ReadWriteMode, DMA1S6NDTRBase, T...> ;
 
-  struct S6Par : public RegisterBase<0x400260A8, 32, ReadWriteMode>
+  struct DMA1S6PARBase {} ;
+
+  struct S6PAR : public RegisterBase<0x400260A8, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S6Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S6PAR, 0, 32, ReadWriteMode, DMA1S6PARBase> ;
   } ;
 
   template<typename... T> 
-  using S6ParPack  = Register<0x400260A8, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S6PARPack  = Register<0x400260A8, 32, ReadWriteMode, DMA1S6PARBase, T...> ;
 
-  struct S6M0Ar : public RegisterBase<0x400260AC, 32, ReadWriteMode>
+  struct DMA1S6M0ARBase {} ;
+
+  struct S6M0AR : public RegisterBase<0x400260AC, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S6M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S6M0AR, 0, 32, ReadWriteMode, DMA1S6M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S6M0ArPack  = Register<0x400260AC, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S6M0ARPack  = Register<0x400260AC, 32, ReadWriteMode, DMA1S6M0ARBase, T...> ;
 
-  struct S6M1Ar : public RegisterBase<0x400260B0, 32, ReadWriteMode>
+  struct DMA1S6M1ARBase {} ;
+
+  struct S6M1AR : public RegisterBase<0x400260B0, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S6M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S6M1AR, 0, 32, ReadWriteMode, DMA1S6M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S6M1ArPack  = Register<0x400260B0, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S6M1ARPack  = Register<0x400260B0, 32, ReadWriteMode, DMA1S6M1ARBase, T...> ;
 
-  struct S6Fcr : public RegisterBase<0x400260B4, 32, ReadWriteMode>
+  struct DMA1S6FCRBase {} ;
+
+  struct S6FCR : public RegisterBase<0x400260B4, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S6Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S6Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S6Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S6Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S6FCR, 7, 1, ReadWriteMode, DMA1S6FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S6FCR, 3, 3, ReadMode, DMA1S6FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S6FCR, 2, 1, ReadWriteMode, DMA1S6FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S6FCR, 0, 2, ReadWriteMode, DMA1S6FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S6FcrPack  = Register<0x400260B4, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S6FCRPack  = Register<0x400260B4, 32, ReadWriteMode, DMA1S6FCRBase, T...> ;
 
-  struct S7Cr : public RegisterBase<0x400260B8, 32, ReadWriteMode>
+  struct DMA1S7CRBase {} ;
+
+  struct S7CR : public RegisterBase<0x400260B8, 32, ReadWriteMode>
   {
-    using Chsel = DmaSCrChselValues<Dma1::S7Cr, 25, 3, ReadWriteMode, DmaSCrChselValuesBase> ;
-    using Mburst = DmaSCrMburstValues<Dma1::S7Cr, 23, 2, ReadWriteMode, DmaSCrMburstValuesBase> ;
-    using Pburst = DmaSCrPburstValues<Dma1::S7Cr, 21, 2, ReadWriteMode, DmaSCrPburstValuesBase> ;
-    using Ack = DmaSCrAckValues<Dma1::S7Cr, 20, 1, ReadWriteMode, DmaSCrAckValuesBase> ;
-    using Ct = DmaSCrCtValues<Dma1::S7Cr, 19, 1, ReadWriteMode, DmaSCrCtValuesBase> ;
-    using Dbm = DmaSCrDbmValues<Dma1::S7Cr, 18, 1, ReadWriteMode, DmaSCrDbmValuesBase> ;
-    using Pl = DmaSCrPlValues<Dma1::S7Cr, 16, 2, ReadWriteMode, DmaSCrPlValuesBase> ;
-    using Pincos = DmaSCrPincosValues<Dma1::S7Cr, 15, 1, ReadWriteMode, DmaSCrPincosValuesBase> ;
-    using Msize = DmaSCrMsizeValues<Dma1::S7Cr, 13, 2, ReadWriteMode, DmaSCrMsizeValuesBase> ;
-    using Psize = DmaSCrPsizeValues<Dma1::S7Cr, 11, 2, ReadWriteMode, DmaSCrPsizeValuesBase> ;
-    using Minc = DmaSCrMincValues<Dma1::S7Cr, 10, 1, ReadWriteMode, DmaSCrMincValuesBase> ;
-    using Pinc = DmaSCrPincValues<Dma1::S7Cr, 9, 1, ReadWriteMode, DmaSCrPincValuesBase> ;
-    using Circ = DmaSCrCircValues<Dma1::S7Cr, 8, 1, ReadWriteMode, DmaSCrCircValuesBase> ;
-    using Dir = DmaSCrDirValues<Dma1::S7Cr, 6, 2, ReadWriteMode, DmaSCrDirValuesBase> ;
-    using Pfctrl = DmaSCrPfctrlValues<Dma1::S7Cr, 5, 1, ReadWriteMode, DmaSCrPfctrlValuesBase> ;
-    using Tcie = DmaSCrTcieValues<Dma1::S7Cr, 4, 1, ReadWriteMode, DmaSCrTcieValuesBase> ;
-    using Htie = DmaSCrHtieValues<Dma1::S7Cr, 3, 1, ReadWriteMode, DmaSCrHtieValuesBase> ;
-    using Teie = DmaSCrTeieValues<Dma1::S7Cr, 2, 1, ReadWriteMode, DmaSCrTeieValuesBase> ;
-    using Dmeie = DmaSCrDmeieValues<Dma1::S7Cr, 1, 1, ReadWriteMode, DmaSCrDmeieValuesBase> ;
-    using En = DmaSCrEnValues<Dma1::S7Cr, 0, 1, ReadWriteMode, DmaSCrEnValuesBase> ;
+    using CHSEL = DMA_SCR_CHSEL_Values<DMA1::S7CR, 25, 3, ReadWriteMode, DMA1S7CRBase> ;
+    using MBURST = DMA_SCR_MBURST_Values<DMA1::S7CR, 23, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using PBURST = DMA_SCR_PBURST_Values<DMA1::S7CR, 21, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using ACK = DMA_SCR_ACK_Values<DMA1::S7CR, 20, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using CT = DMA_SCR_CT_Values<DMA1::S7CR, 19, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using DBM = DMA_SCR_DBM_Values<DMA1::S7CR, 18, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using PL = DMA_SCR_PL_Values<DMA1::S7CR, 16, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using PINCOS = DMA_SCR_PINCOS_Values<DMA1::S7CR, 15, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using MSIZE = DMA_SCR_MSIZE_Values<DMA1::S7CR, 13, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using PSIZE = DMA_SCR_PSIZE_Values<DMA1::S7CR, 11, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using MINC = DMA_SCR_MINC_Values<DMA1::S7CR, 10, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using PINC = DMA_SCR_PINC_Values<DMA1::S7CR, 9, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using CIRC = DMA_SCR_CIRC_Values<DMA1::S7CR, 8, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using DIR = DMA_SCR_DIR_Values<DMA1::S7CR, 6, 2, ReadWriteMode, DMA1S7CRBase> ;
+    using PFCTRL = DMA_SCR_PFCTRL_Values<DMA1::S7CR, 5, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using TCIE = DMA_SCR_TCIE_Values<DMA1::S7CR, 4, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using HTIE = DMA_SCR_HTIE_Values<DMA1::S7CR, 3, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using TEIE = DMA_SCR_TEIE_Values<DMA1::S7CR, 2, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S7CR, 1, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using EN = DMA_SCR_EN_Values<DMA1::S7CR, 0, 1, ReadWriteMode, DMA1S7CRBase> ;
   } ;
 
   template<typename... T> 
-  using S7CrPack  = Register<0x400260B8, 32, ReadWriteMode, DmaSCrChselValuesBase, T...> ;
+  using S7CRPack  = Register<0x400260B8, 32, ReadWriteMode, DMA1S7CRBase, T...> ;
 
-  struct S7Ndtr : public RegisterBase<0x400260BC, 32, ReadWriteMode>
+  struct DMA1S7NDTRBase {} ;
+
+  struct S7NDTR : public RegisterBase<0x400260BC, 32, ReadWriteMode>
   {
-    using Ndt = ReadWriteMode<Dma1::S7Ndtr, 0, 16> ;
+    using NDT = DMA_SNDTR_NDT_Values<DMA1::S7NDTR, 0, 16, ReadWriteMode, DMA1S7NDTRBase> ;
   } ;
 
   template<typename... T> 
-  using S7NdtrPack  = Register<0x400260BC, 32, ReadWriteMode, DmaSNdtrNdtValuesBase, T...> ;
+  using S7NDTRPack  = Register<0x400260BC, 32, ReadWriteMode, DMA1S7NDTRBase, T...> ;
 
-  struct S7Par : public RegisterBase<0x400260C0, 32, ReadWriteMode>
+  struct DMA1S7PARBase {} ;
+
+  struct S7PAR : public RegisterBase<0x400260C0, 32, ReadWriteMode>
   {
-    using Pa = ReadWriteMode<Dma1::S7Par, 0, 32> ;
+    using PA = DMA_SPAR_PA_Values<DMA1::S7PAR, 0, 32, ReadWriteMode, DMA1S7PARBase> ;
   } ;
 
   template<typename... T> 
-  using S7ParPack  = Register<0x400260C0, 32, ReadWriteMode, DmaSParPaValuesBase, T...> ;
+  using S7PARPack  = Register<0x400260C0, 32, ReadWriteMode, DMA1S7PARBase, T...> ;
 
-  struct S7M0Ar : public RegisterBase<0x400260C4, 32, ReadWriteMode>
+  struct DMA1S7M0ARBase {} ;
+
+  struct S7M0AR : public RegisterBase<0x400260C4, 32, ReadWriteMode>
   {
-    using M0A = ReadWriteMode<Dma1::S7M0Ar, 0, 32> ;
+    using M0A = DMA_SMAR_MA_Values<DMA1::S7M0AR, 0, 32, ReadWriteMode, DMA1S7M0ARBase> ;
   } ;
 
   template<typename... T> 
-  using S7M0ArPack  = Register<0x400260C4, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S7M0ARPack  = Register<0x400260C4, 32, ReadWriteMode, DMA1S7M0ARBase, T...> ;
 
-  struct S7M1Ar : public RegisterBase<0x400260C8, 32, ReadWriteMode>
+  struct DMA1S7M1ARBase {} ;
+
+  struct S7M1AR : public RegisterBase<0x400260C8, 32, ReadWriteMode>
   {
-    using M1A = ReadWriteMode<Dma1::S7M1Ar, 0, 32> ;
+    using M1A = DMA_SMAR_MA_Values<DMA1::S7M1AR, 0, 32, ReadWriteMode, DMA1S7M1ARBase> ;
   } ;
 
   template<typename... T> 
-  using S7M1ArPack  = Register<0x400260C8, 32, ReadWriteMode, DmaSMArMAValuesBase, T...> ;
+  using S7M1ARPack  = Register<0x400260C8, 32, ReadWriteMode, DMA1S7M1ARBase, T...> ;
 
-  struct S7Fcr : public RegisterBase<0x400260CC, 32, ReadWriteMode>
+  struct DMA1S7FCRBase {} ;
+
+  struct S7FCR : public RegisterBase<0x400260CC, 32, ReadWriteMode>
   {
-    using Feie = DmaSFcrFeieValues<Dma1::S7Fcr, 7, 1, ReadWriteMode, DmaSFcrFeieValuesBase> ;
-    using Fs = DmaSFcrFsValues<Dma1::S7Fcr, 3, 3, ReadMode, DmaSFcrFsValuesBase> ;
-    using Dmdis = DmaSFcrDmdisValues<Dma1::S7Fcr, 2, 1, ReadWriteMode, DmaSFcrDmdisValuesBase> ;
-    using Fth = DmaSFcrFthValues<Dma1::S7Fcr, 0, 2, ReadWriteMode, DmaSFcrFthValuesBase> ;
+    using FEIE = DMA_SFCR_FEIE_Values<DMA1::S7FCR, 7, 1, ReadWriteMode, DMA1S7FCRBase> ;
+    using FS = DMA_SFCR_FS_Values<DMA1::S7FCR, 3, 3, ReadMode, DMA1S7FCRBase> ;
+    using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S7FCR, 2, 1, ReadWriteMode, DMA1S7FCRBase> ;
+    using FTH = DMA_SFCR_FTH_Values<DMA1::S7FCR, 0, 2, ReadWriteMode, DMA1S7FCRBase> ;
   } ;
 
   template<typename... T> 
-  using S7FcrPack  = Register<0x400260CC, 32, ReadWriteMode, DmaSFcrFeieValuesBase, T...> ;
+  using S7FCRPack  = Register<0x400260CC, 32, ReadWriteMode, DMA1S7FCRBase, T...> ;
 
 } ;
 

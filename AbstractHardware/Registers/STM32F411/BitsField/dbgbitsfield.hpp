@@ -12,46 +12,46 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct DbgDbgmcuCrDbgSleepValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct DBG_DBGMCU_IDCODE_DEV_ID_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuCrDbgSleepValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_IDCODE_REV_ID_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct DBG_DBGMCU_CR_DBG_SLEEP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuCrDbgStopValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuCrDbgStopValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_CR_DBG_STOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuCrDbgStandbyValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuCrDbgStandbyValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_CR_DBG_STANDBY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuCrTraceIoenValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuCrTraceIoenValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_CR_TRACE_IOEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuCrTraceModeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuCrTraceModeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_CR_TRACE_MODE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -59,46 +59,43 @@ struct DbgDbgmcuCrTraceModeValues: public RegisterField<Reg, offset, size, Acces
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct DbgDbgmcuApbFzDbgTimStopValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuApbFzDbgTimStopValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuApbFzDbgRtcStopValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuApbFzDbgRtcStopValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_APB_FZ_DBG_RTC_Stop_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuApbFzDbgWwdgStopValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuApbFzDbgWwdgStopValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_APB_FZ_DBG_WWDG_STOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuApbFzDbgIwdegStopValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuApbFzDbgIwdegStopValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_APB_FZ_DBG_IWDEG_STOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct DbgDbgmcuApbFzDbgICSmbusTimeoutValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct DBG_DBGMCU_APB_FZ_DBG_IC_SMBUS_TIMEOUT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct DbgDbgmcuApbFzDbgICSmbusTimeoutValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct DBG_DBGMCU_APB_FZ_DBG_ICSMBUS_TIMEOUT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

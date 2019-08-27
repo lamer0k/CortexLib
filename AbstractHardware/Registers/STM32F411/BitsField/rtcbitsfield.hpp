@@ -12,19 +12,15 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct RtcTrPmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrPmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcTrHtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrHtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_HT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -32,10 +28,8 @@ struct RtcTrHtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcTrHuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrHuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_HU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -55,10 +49,8 @@ struct RtcTrHuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcTrMntValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrMntValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -70,48 +62,8 @@ struct RtcTrMntValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcTrMnuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrMnuValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct RtcTrStValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrStValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcTrSuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTrSuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -131,10 +83,21 @@ struct RtcTrSuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcDrYtValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TR_ST_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrYtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TR_SU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -154,10 +117,8 @@ struct RtcDrYtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcDrYuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrYuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_DR_YT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -177,34 +138,8 @@ struct RtcDrYuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcDrWduValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrWduValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcDrMtValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrMtValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcDrMuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrMuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_DR_YU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -224,21 +159,28 @@ struct RtcDrMuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcDrDtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrDtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_DR_WDU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
   using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcDrDuValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_DR_MT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcDrDuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_DR_MU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -258,19 +200,8 @@ struct RtcDrDuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcCrCoeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrCoeValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcCrOselValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrOselValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_DR_DT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -278,172 +209,171 @@ struct RtcCrOselValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcCrPolValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_DR_DU_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrPolValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_COE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrCoselValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CR_OSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrCoselValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_POL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrBkpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrBkpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_COSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrSubHValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrSubHValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrAddHValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrAddHValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_SUBH_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrTsieValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrTsieValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ADDH_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrWutieValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrWutieValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_TSIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrAlrbieValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrAlrbieValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_WUTIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrAlraieValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrAlraieValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ALRBIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrTseValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrTseValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ALRAIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrWuteValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrWuteValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_TSE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrAlrbeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrAlrbeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_WUTE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrAlraeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrAlraeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ALRBE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrDceValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrDceValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ALRAE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrFmtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrFmtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_DCE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrBypshadValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrBypshadValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_FMT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrRefckonValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrRefckonValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_BYPSHAD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrTsedgeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrTsedgeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_REFCKON_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCrWckselValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CR_TSEDGE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCrWckselValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_WCKSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -455,154 +385,135 @@ struct RtcCrWckselValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcIsrAlrawfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrAlrawfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_ALRAWF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrAlrbwfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrAlrbwfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_ALRBWF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrWutwfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrWutwfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_WUTWF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrShpfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrShpfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_SHPF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrInitsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrInitsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_INITS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrRsfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrRsfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_RSF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrInitfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrInitfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_INITF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrInitValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrInitValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_INIT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrAlrafValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrAlrafValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_ALRAF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrAlrbfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrAlrbfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_ALRBF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrWutfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrWutfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_WUTF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrTsfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrTsfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_TSF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrTsovfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrTsovfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_TSOVF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrTampFValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrTampFValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_TAMPF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcIsrRecalpfValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcIsrRecalpfValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_RECALPF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCalibrDcsValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_PRER_PREDIV_A_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCalibrDcsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_PRER_PREDIV_S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_WUTR_WUT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CALIBR_DCS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcCalibrDcValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCalibrDcValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CALIBR_DC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -638,28 +549,22 @@ struct RtcCalibrDcValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value31 = BitsField<Reg, offset, size, AccessMode, BaseType, 31U> ;
 } ;
 
-struct RtcAlrmarMskValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarMskValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_MSK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcAlrmarWdselValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarWdselValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_WDSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcAlrmarDtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarDtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_DT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -667,10 +572,8 @@ struct RtcAlrmarDtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcAlrmarDuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarDuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_DU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -690,19 +593,15 @@ struct RtcAlrmarDuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmarPmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarPmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcAlrmarHtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarHtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_HT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -710,10 +609,8 @@ struct RtcAlrmarHtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcAlrmarHuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarHuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_HU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -733,10 +630,8 @@ struct RtcAlrmarHuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmarMntValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarMntValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -748,48 +643,8 @@ struct RtcAlrmarMntValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcAlrmarMnuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarMnuValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct RtcAlrmarStValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarStValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcAlrmarSuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmarSuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -809,39 +664,21 @@ struct RtcAlrmarSuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmbrMskValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrMskValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcAlrmbrWdselValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrWdselValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcAlrmbrDtValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrDtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_ST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
   using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcAlrmbrDuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrDuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_SU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -861,68 +698,31 @@ struct RtcAlrmbrDuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmbrPmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrPmValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_MSK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcAlrmbrHtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrHtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_WDSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcAlrmbrHuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrHuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_DT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
   using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmbrMntValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrMntValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcAlrmbrMnuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrMnuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_DU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -942,66 +742,15 @@ struct RtcAlrmbrMnuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmbrStValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrStValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcAlrmbrSuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbrSuValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct RtcShiftrAddSValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcShiftrAddSValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct RtcTstrPmValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrPmValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTstrHtValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrHtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_HT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1009,10 +758,8 @@ struct RtcTstrHtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcTstrHuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrHuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_HU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1032,10 +779,8 @@ struct RtcTstrHuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcTstrMntValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrMntValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1047,48 +792,8 @@ struct RtcTstrMntValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcTstrMnuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrMnuValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct RtcTstrStValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrStValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcTstrSuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTstrSuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1108,10 +813,8 @@ struct RtcTstrSuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcTsdrWduValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTsdrWduValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_ST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1123,19 +826,8 @@ struct RtcTsdrWduValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct RtcTsdrMtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTsdrMtValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTsdrMuValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTsdrMuValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_SU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1155,10 +847,37 @@ struct RtcTsdrMuValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcTsdrDtValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_WPR_KEY_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTsdrDtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_SSR_SS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_SHIFTR_ADDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_SHIFTR_SUBFS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSTR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSTR_HT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1166,160 +885,8 @@ struct RtcTsdrDtValues: public RegisterField<Reg, offset, size, AccessMode>
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct RtcTsdrDuValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTsdrDuValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
-  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
-  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
-  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
-  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
-  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
-  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
-  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
-} ;
-
-struct RtcCalrCalpValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCalrCalpValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcCalrCalwValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcCalrCalwValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrAlarmouttypeValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrAlarmouttypeValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTsinselValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTsinselValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTampInselValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampInselValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTamppudisValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTamppudisValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTampprchValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampprchValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-} ;
-
-struct RtcTafcrTampfltValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampfltValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-} ;
-
-struct RtcTafcrTampfreqValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampfreqValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
-  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
-  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
-  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
-  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
-} ;
-
-struct RtcTafcrTamptsValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTamptsValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTampTrgValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampTrgValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTampEValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampEValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcTafcrTampieValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcTafcrTampieValues: public RegisterField<Reg, offset, size, AccessMode> 
-{
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-} ;
-
-struct RtcAlrmassrMaskssValuesBase {} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmassrMaskssValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TSTR_HU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1339,10 +906,21 @@ struct RtcAlrmassrMaskssValues: public RegisterField<Reg, offset, size, AccessMo
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct RtcAlrmbssrMaskssValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSTR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RtcAlrmbssrMaskssValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TSTR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -1360,6 +938,279 @@ struct RtcAlrmbssrMaskssValues: public RegisterField<Reg, offset, size, AccessMo
   using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
   using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSTR_ST_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSTR_SU_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSDR_WDU_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSDR_MT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSDR_MU_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSDR_DT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSDR_DU_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TSSSR_SS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CALR_CALP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CALR_CALW_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CALR_CALM_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_ALARMOUTTYPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TSINSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPINSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPPUDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPPRCH_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPFLT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPFREQ_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPTS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPTRG_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMPIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMASSR_MASKSS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMASSR_SS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMBSSR_MASKSS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Value4 = BitsField<Reg, offset, size, AccessMode, BaseType, 4U> ;
+  using Value5 = BitsField<Reg, offset, size, AccessMode, BaseType, 5U> ;
+  using Value6 = BitsField<Reg, offset, size, AccessMode, BaseType, 6U> ;
+  using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
+  using Value8 = BitsField<Reg, offset, size, AccessMode, BaseType, 8U> ;
+  using Value9 = BitsField<Reg, offset, size, AccessMode, BaseType, 9U> ;
+  using Value10 = BitsField<Reg, offset, size, AccessMode, BaseType, 10U> ;
+  using Value11 = BitsField<Reg, offset, size, AccessMode, BaseType, 11U> ;
+  using Value12 = BitsField<Reg, offset, size, AccessMode, BaseType, 12U> ;
+  using Value13 = BitsField<Reg, offset, size, AccessMode, BaseType, 13U> ;
+  using Value14 = BitsField<Reg, offset, size, AccessMode, BaseType, 14U> ;
+  using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMBSSR_SS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKPR_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
 } ;
 
 #endif //#if !defined(RTCENUMS_HPP)

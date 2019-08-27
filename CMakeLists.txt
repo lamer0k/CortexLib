@@ -22,8 +22,10 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/Common
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/BitsField
-                     ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y
-                     ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y/BitsField
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/BitsField
+                 #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y
+                 #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y/BitsField
 
         #   ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
                 #   ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/BitsField

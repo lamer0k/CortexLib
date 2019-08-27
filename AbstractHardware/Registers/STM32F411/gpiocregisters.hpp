@@ -15,238 +15,258 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Gpioc
+struct GPIOC
 {
-  struct Moder : public RegisterBase<0x40020800, 32, ReadWriteMode>
+  struct GPIOCMODERBase {} ;
+
+  struct MODER : public RegisterBase<0x40020800, 32, ReadWriteMode>
   {
-    using Moder15 = GpiocModerModerValues<Gpioc::Moder, 30, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder14 = GpiocModerModerValues<Gpioc::Moder, 28, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder13 = GpiocModerModerValues<Gpioc::Moder, 26, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder12 = GpiocModerModerValues<Gpioc::Moder, 24, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder11 = GpiocModerModerValues<Gpioc::Moder, 22, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder10 = GpiocModerModerValues<Gpioc::Moder, 20, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder9 = GpiocModerModerValues<Gpioc::Moder, 18, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder8 = GpiocModerModerValues<Gpioc::Moder, 16, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder7 = GpiocModerModerValues<Gpioc::Moder, 14, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder6 = GpiocModerModerValues<Gpioc::Moder, 12, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder5 = GpiocModerModerValues<Gpioc::Moder, 10, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder4 = GpiocModerModerValues<Gpioc::Moder, 8, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder3 = GpiocModerModerValues<Gpioc::Moder, 6, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder2 = GpiocModerModerValues<Gpioc::Moder, 4, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder1 = GpiocModerModerValues<Gpioc::Moder, 2, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
-    using Moder0 = GpiocModerModerValues<Gpioc::Moder, 0, 2, ReadWriteMode, GpiocModerModerValuesBase> ;
+    using MODER15 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 30, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER14 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 28, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER13 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 26, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER12 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 24, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER11 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 22, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER10 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 20, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER9 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 18, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER8 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 16, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER7 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 14, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER6 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 12, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER5 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 10, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER4 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 8, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER3 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 6, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER2 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 4, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER1 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 2, 2, ReadWriteMode, GPIOCMODERBase> ;
+    using MODER0 = GPIOC_MODER_MODER_Values<GPIOC::MODER, 0, 2, ReadWriteMode, GPIOCMODERBase> ;
   } ;
 
   template<typename... T> 
-  using ModerPack  = Register<0x40020800, 32, ReadWriteMode, GpiocModerModerValuesBase, T...> ;
+  using MODERPack  = Register<0x40020800, 32, ReadWriteMode, GPIOCMODERBase, T...> ;
 
-  struct Otyper : public RegisterBase<0x40020804, 32, ReadWriteMode>
+  struct GPIOCOTYPERBase {} ;
+
+  struct OTYPER : public RegisterBase<0x40020804, 32, ReadWriteMode>
   {
-    using Ot15 = GpiocOtyperOtValues<Gpioc::Otyper, 15, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot14 = GpiocOtyperOtValues<Gpioc::Otyper, 14, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot13 = GpiocOtyperOtValues<Gpioc::Otyper, 13, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot12 = GpiocOtyperOtValues<Gpioc::Otyper, 12, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot11 = GpiocOtyperOtValues<Gpioc::Otyper, 11, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot10 = GpiocOtyperOtValues<Gpioc::Otyper, 10, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot9 = GpiocOtyperOtValues<Gpioc::Otyper, 9, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot8 = GpiocOtyperOtValues<Gpioc::Otyper, 8, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot7 = GpiocOtyperOtValues<Gpioc::Otyper, 7, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot6 = GpiocOtyperOtValues<Gpioc::Otyper, 6, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot5 = GpiocOtyperOtValues<Gpioc::Otyper, 5, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot4 = GpiocOtyperOtValues<Gpioc::Otyper, 4, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot3 = GpiocOtyperOtValues<Gpioc::Otyper, 3, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot2 = GpiocOtyperOtValues<Gpioc::Otyper, 2, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot1 = GpiocOtyperOtValues<Gpioc::Otyper, 1, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
-    using Ot0 = GpiocOtyperOtValues<Gpioc::Otyper, 0, 1, ReadWriteMode, GpiocOtyperOtValuesBase> ;
+    using OT15 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 15, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT14 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 14, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT13 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 13, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT12 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 12, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT11 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 11, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT10 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 10, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT9 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 9, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT8 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 8, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT7 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 7, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT6 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 6, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT5 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 5, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT4 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 4, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT3 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 3, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT2 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 2, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT1 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 1, 1, ReadWriteMode, GPIOCOTYPERBase> ;
+    using OT0 = GPIOC_OTYPER_OT_Values<GPIOC::OTYPER, 0, 1, ReadWriteMode, GPIOCOTYPERBase> ;
   } ;
 
   template<typename... T> 
-  using OtyperPack  = Register<0x40020804, 32, ReadWriteMode, GpiocOtyperOtValuesBase, T...> ;
+  using OTYPERPack  = Register<0x40020804, 32, ReadWriteMode, GPIOCOTYPERBase, T...> ;
 
-  struct Ospeedr : public RegisterBase<0x40020808, 32, ReadWriteMode>
+  struct GPIOCOSPEEDRBase {} ;
+
+  struct OSPEEDR : public RegisterBase<0x40020808, 32, ReadWriteMode>
   {
-    using Ospeedr15 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 30, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr14 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 28, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr13 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 26, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr12 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 24, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr11 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 22, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr10 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 20, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr9 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 18, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr8 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 16, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr7 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 14, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr6 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 12, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr5 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 10, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr4 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 8, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr3 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 6, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr2 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 4, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr1 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 2, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
-    using Ospeedr0 = GpiocOspeedrOspeedrValues<Gpioc::Ospeedr, 0, 2, ReadWriteMode, GpiocOspeedrOspeedrValuesBase> ;
+    using OSPEEDR15 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 30, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR14 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 28, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR13 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 26, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR12 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 24, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR11 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 22, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR10 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 20, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR9 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 18, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR8 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 16, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR7 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 14, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR6 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 12, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR5 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 10, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR4 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 8, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR3 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 6, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR2 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 4, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR1 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 2, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
+    using OSPEEDR0 = GPIOC_OSPEEDR_OSPEEDR_Values<GPIOC::OSPEEDR, 0, 2, ReadWriteMode, GPIOCOSPEEDRBase> ;
   } ;
 
   template<typename... T> 
-  using OspeedrPack  = Register<0x40020808, 32, ReadWriteMode, GpiocOspeedrOspeedrValuesBase, T...> ;
+  using OSPEEDRPack  = Register<0x40020808, 32, ReadWriteMode, GPIOCOSPEEDRBase, T...> ;
 
-  struct Pupdr : public RegisterBase<0x4002080C, 32, ReadWriteMode>
+  struct GPIOCPUPDRBase {} ;
+
+  struct PUPDR : public RegisterBase<0x4002080C, 32, ReadWriteMode>
   {
-    using Pupdr15 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 30, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr14 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 28, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr13 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 26, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr12 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 24, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr11 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 22, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr10 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 20, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr9 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 18, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr8 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 16, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr7 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 14, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr6 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 12, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr5 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 10, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr4 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 8, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr3 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 6, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr2 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 4, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr1 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 2, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
-    using Pupdr0 = GpiocPupdrPupdrValues<Gpioc::Pupdr, 0, 2, ReadWriteMode, GpiocPupdrPupdrValuesBase> ;
+    using PUPDR15 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 30, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR14 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 28, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR13 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 26, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR12 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 24, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR11 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 22, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR10 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 20, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR9 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 18, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR8 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 16, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR7 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 14, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR6 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 12, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR5 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 10, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR4 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 8, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR3 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 6, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR2 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 4, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR1 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 2, 2, ReadWriteMode, GPIOCPUPDRBase> ;
+    using PUPDR0 = GPIOC_PUPDR_PUPDR_Values<GPIOC::PUPDR, 0, 2, ReadWriteMode, GPIOCPUPDRBase> ;
   } ;
 
   template<typename... T> 
-  using PupdrPack  = Register<0x4002080C, 32, ReadWriteMode, GpiocPupdrPupdrValuesBase, T...> ;
+  using PUPDRPack  = Register<0x4002080C, 32, ReadWriteMode, GPIOCPUPDRBase, T...> ;
 
-  struct Idr : public RegisterBase<0x40020810, 32, ReadMode>
+  struct GPIOCIDRBase {} ;
+
+  struct IDR : public RegisterBase<0x40020810, 32, ReadMode>
   {
-    using Idr15 = GpiocIdrIdrValues<Gpioc::Idr, 15, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr14 = GpiocIdrIdrValues<Gpioc::Idr, 14, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr13 = GpiocIdrIdrValues<Gpioc::Idr, 13, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr12 = GpiocIdrIdrValues<Gpioc::Idr, 12, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr11 = GpiocIdrIdrValues<Gpioc::Idr, 11, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr10 = GpiocIdrIdrValues<Gpioc::Idr, 10, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr9 = GpiocIdrIdrValues<Gpioc::Idr, 9, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr8 = GpiocIdrIdrValues<Gpioc::Idr, 8, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr7 = GpiocIdrIdrValues<Gpioc::Idr, 7, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr6 = GpiocIdrIdrValues<Gpioc::Idr, 6, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr5 = GpiocIdrIdrValues<Gpioc::Idr, 5, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr4 = GpiocIdrIdrValues<Gpioc::Idr, 4, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr3 = GpiocIdrIdrValues<Gpioc::Idr, 3, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr2 = GpiocIdrIdrValues<Gpioc::Idr, 2, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr1 = GpiocIdrIdrValues<Gpioc::Idr, 1, 1, ReadMode, GpiocIdrIdrValuesBase> ;
-    using Idr0 = GpiocIdrIdrValues<Gpioc::Idr, 0, 1, ReadMode, GpiocIdrIdrValuesBase> ;
+    using IDR15 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 15, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR14 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 14, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR13 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 13, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR12 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 12, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR11 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 11, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR10 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 10, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR9 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 9, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR8 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 8, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR7 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 7, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR6 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 6, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR5 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 5, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR4 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 4, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR3 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 3, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR2 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 2, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR1 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 1, 1, ReadMode, GPIOCIDRBase> ;
+    using IDR0 = GPIOC_IDR_IDR_Values<GPIOC::IDR, 0, 1, ReadMode, GPIOCIDRBase> ;
   } ;
 
   template<typename... T> 
-  using IdrPack  = Register<0x40020810, 32, ReadMode, GpiocIdrIdrValuesBase, T...> ;
+  using IDRPack  = Register<0x40020810, 32, ReadMode, GPIOCIDRBase, T...> ;
 
-  struct Odr : public RegisterBase<0x40020814, 32, ReadWriteMode>
+  struct GPIOCODRBase {} ;
+
+  struct ODR : public RegisterBase<0x40020814, 32, ReadWriteMode>
   {
-    using Odr15 = GpiocOdrOdrValues<Gpioc::Odr, 15, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr14 = GpiocOdrOdrValues<Gpioc::Odr, 14, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr13 = GpiocOdrOdrValues<Gpioc::Odr, 13, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr12 = GpiocOdrOdrValues<Gpioc::Odr, 12, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr11 = GpiocOdrOdrValues<Gpioc::Odr, 11, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr10 = GpiocOdrOdrValues<Gpioc::Odr, 10, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr9 = GpiocOdrOdrValues<Gpioc::Odr, 9, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr8 = GpiocOdrOdrValues<Gpioc::Odr, 8, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr7 = GpiocOdrOdrValues<Gpioc::Odr, 7, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr6 = GpiocOdrOdrValues<Gpioc::Odr, 6, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr5 = GpiocOdrOdrValues<Gpioc::Odr, 5, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr4 = GpiocOdrOdrValues<Gpioc::Odr, 4, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr3 = GpiocOdrOdrValues<Gpioc::Odr, 3, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr2 = GpiocOdrOdrValues<Gpioc::Odr, 2, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr1 = GpiocOdrOdrValues<Gpioc::Odr, 1, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
-    using Odr0 = GpiocOdrOdrValues<Gpioc::Odr, 0, 1, ReadWriteMode, GpiocOdrOdrValuesBase> ;
+    using ODR15 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 15, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR14 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 14, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR13 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 13, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR12 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 12, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR11 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 11, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR10 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 10, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR9 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 9, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR8 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 8, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR7 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 7, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR6 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 6, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR5 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 5, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR4 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 4, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR3 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 3, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR2 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 2, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR1 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 1, 1, ReadWriteMode, GPIOCODRBase> ;
+    using ODR0 = GPIOC_ODR_ODR_Values<GPIOC::ODR, 0, 1, ReadWriteMode, GPIOCODRBase> ;
   } ;
 
   template<typename... T> 
-  using OdrPack  = Register<0x40020814, 32, ReadWriteMode, GpiocOdrOdrValuesBase, T...> ;
+  using ODRPack  = Register<0x40020814, 32, ReadWriteMode, GPIOCODRBase, T...> ;
 
-  struct Bsrr : public RegisterBase<0x40020818, 32, WriteMode>
+  struct GPIOCBSRRBase {} ;
+
+  struct BSRR : public RegisterBase<0x40020818, 32, WriteMode>
   {
-    using Br15 = GpiocBsrrBrValues<Gpioc::Bsrr, 31, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br14 = GpiocBsrrBrValues<Gpioc::Bsrr, 30, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br13 = GpiocBsrrBrValues<Gpioc::Bsrr, 29, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br12 = GpiocBsrrBrValues<Gpioc::Bsrr, 28, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br11 = GpiocBsrrBrValues<Gpioc::Bsrr, 27, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br10 = GpiocBsrrBrValues<Gpioc::Bsrr, 26, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br9 = GpiocBsrrBrValues<Gpioc::Bsrr, 25, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br8 = GpiocBsrrBrValues<Gpioc::Bsrr, 24, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br7 = GpiocBsrrBrValues<Gpioc::Bsrr, 23, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br6 = GpiocBsrrBrValues<Gpioc::Bsrr, 22, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br5 = GpiocBsrrBrValues<Gpioc::Bsrr, 21, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br4 = GpiocBsrrBrValues<Gpioc::Bsrr, 20, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br3 = GpiocBsrrBrValues<Gpioc::Bsrr, 19, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br2 = GpiocBsrrBrValues<Gpioc::Bsrr, 18, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br1 = GpiocBsrrBrValues<Gpioc::Bsrr, 17, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Br0 = GpiocBsrrBrValues<Gpioc::Bsrr, 16, 1, WriteMode, GpiocBsrrBrValuesBase> ;
-    using Bs15 = GpiocBsrrBsValues<Gpioc::Bsrr, 15, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs14 = GpiocBsrrBsValues<Gpioc::Bsrr, 14, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs13 = GpiocBsrrBsValues<Gpioc::Bsrr, 13, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs12 = GpiocBsrrBsValues<Gpioc::Bsrr, 12, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs11 = GpiocBsrrBsValues<Gpioc::Bsrr, 11, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs10 = GpiocBsrrBsValues<Gpioc::Bsrr, 10, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs9 = GpiocBsrrBsValues<Gpioc::Bsrr, 9, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs8 = GpiocBsrrBsValues<Gpioc::Bsrr, 8, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs7 = GpiocBsrrBsValues<Gpioc::Bsrr, 7, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs6 = GpiocBsrrBsValues<Gpioc::Bsrr, 6, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs5 = GpiocBsrrBsValues<Gpioc::Bsrr, 5, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs4 = GpiocBsrrBsValues<Gpioc::Bsrr, 4, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs3 = GpiocBsrrBsValues<Gpioc::Bsrr, 3, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs2 = GpiocBsrrBsValues<Gpioc::Bsrr, 2, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs1 = GpiocBsrrBsValues<Gpioc::Bsrr, 1, 1, WriteMode, GpiocBsrrBsValuesBase> ;
-    using Bs0 = GpiocBsrrBsValues<Gpioc::Bsrr, 0, 1, WriteMode, GpiocBsrrBsValuesBase> ;
+    using BR15 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 31, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR14 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 30, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR13 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 29, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR12 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 28, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR11 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 27, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR10 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 26, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR9 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 25, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR8 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 24, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR7 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 23, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR6 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 22, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR5 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 21, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR4 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 20, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR3 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 19, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR2 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 18, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR1 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 17, 1, WriteMode, GPIOCBSRRBase> ;
+    using BR0 = GPIOC_BSRR_BR_Values<GPIOC::BSRR, 16, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS15 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 15, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS14 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 14, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS13 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 13, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS12 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 12, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS11 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 11, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS10 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 10, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS9 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 9, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS8 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 8, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS7 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 7, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS6 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 6, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS5 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 5, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS4 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 4, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS3 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 3, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS2 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 2, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS1 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 1, 1, WriteMode, GPIOCBSRRBase> ;
+    using BS0 = GPIOC_BSRR_BS_Values<GPIOC::BSRR, 0, 1, WriteMode, GPIOCBSRRBase> ;
   } ;
 
   template<typename... T> 
-  using BsrrPack  = Register<0x40020818, 32, WriteMode, GpiocBsrrBrValuesBase, T...> ;
+  using BSRRPack  = Register<0x40020818, 32, WriteMode, GPIOCBSRRBase, T...> ;
 
-  struct Lckr : public RegisterBase<0x4002081C, 32, ReadWriteMode>
+  struct GPIOCLCKRBase {} ;
+
+  struct LCKR : public RegisterBase<0x4002081C, 32, ReadWriteMode>
   {
-    using Lckk = GpiocLckrLckkValues<Gpioc::Lckr, 16, 1, ReadWriteMode, GpiocLckrLckkValuesBase> ;
-    using Lck15 = GpiocLckrLckValues<Gpioc::Lckr, 15, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck14 = GpiocLckrLckValues<Gpioc::Lckr, 14, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck13 = GpiocLckrLckValues<Gpioc::Lckr, 13, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck12 = GpiocLckrLckValues<Gpioc::Lckr, 12, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck11 = GpiocLckrLckValues<Gpioc::Lckr, 11, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck10 = GpiocLckrLckValues<Gpioc::Lckr, 10, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck9 = GpiocLckrLckValues<Gpioc::Lckr, 9, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck8 = GpiocLckrLckValues<Gpioc::Lckr, 8, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck7 = GpiocLckrLckValues<Gpioc::Lckr, 7, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck6 = GpiocLckrLckValues<Gpioc::Lckr, 6, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck5 = GpiocLckrLckValues<Gpioc::Lckr, 5, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck4 = GpiocLckrLckValues<Gpioc::Lckr, 4, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck3 = GpiocLckrLckValues<Gpioc::Lckr, 3, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck2 = GpiocLckrLckValues<Gpioc::Lckr, 2, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck1 = GpiocLckrLckValues<Gpioc::Lckr, 1, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
-    using Lck0 = GpiocLckrLckValues<Gpioc::Lckr, 0, 1, ReadWriteMode, GpiocLckrLckValuesBase> ;
+    using LCKK = GPIOC_LCKR_LCKK_Values<GPIOC::LCKR, 16, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK15 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 15, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK14 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 14, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK13 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 13, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK12 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 12, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK11 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 11, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK10 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 10, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK9 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 9, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK8 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 8, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK7 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 7, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK6 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 6, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK5 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 5, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK4 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 4, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK3 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 3, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK2 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 2, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK1 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 1, 1, ReadWriteMode, GPIOCLCKRBase> ;
+    using LCK0 = GPIOC_LCKR_LCK_Values<GPIOC::LCKR, 0, 1, ReadWriteMode, GPIOCLCKRBase> ;
   } ;
 
   template<typename... T> 
-  using LckrPack  = Register<0x4002081C, 32, ReadWriteMode, GpiocLckrLckkValuesBase, T...> ;
+  using LCKRPack  = Register<0x4002081C, 32, ReadWriteMode, GPIOCLCKRBase, T...> ;
 
-  struct Afrl : public RegisterBase<0x40020820, 32, ReadWriteMode>
+  struct GPIOCAFRLBase {} ;
+
+  struct AFRL : public RegisterBase<0x40020820, 32, ReadWriteMode>
   {
-    using Afrl7 = GpiocAfrlAfrlValues<Gpioc::Afrl, 28, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl6 = GpiocAfrlAfrlValues<Gpioc::Afrl, 24, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl5 = GpiocAfrlAfrlValues<Gpioc::Afrl, 20, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl4 = GpiocAfrlAfrlValues<Gpioc::Afrl, 16, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl3 = GpiocAfrlAfrlValues<Gpioc::Afrl, 12, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl2 = GpiocAfrlAfrlValues<Gpioc::Afrl, 8, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl1 = GpiocAfrlAfrlValues<Gpioc::Afrl, 4, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
-    using Afrl0 = GpiocAfrlAfrlValues<Gpioc::Afrl, 0, 4, ReadWriteMode, GpiocAfrlAfrlValuesBase> ;
+    using AFRL7 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 28, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL6 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 24, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL5 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 20, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL4 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 16, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL3 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 12, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL2 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 8, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL1 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 4, 4, ReadWriteMode, GPIOCAFRLBase> ;
+    using AFRL0 = GPIOC_AFRL_AFRL_Values<GPIOC::AFRL, 0, 4, ReadWriteMode, GPIOCAFRLBase> ;
   } ;
 
   template<typename... T> 
-  using AfrlPack  = Register<0x40020820, 32, ReadWriteMode, GpiocAfrlAfrlValuesBase, T...> ;
+  using AFRLPack  = Register<0x40020820, 32, ReadWriteMode, GPIOCAFRLBase, T...> ;
 
-  struct Afrh : public RegisterBase<0x40020824, 32, ReadWriteMode>
+  struct GPIOCAFRHBase {} ;
+
+  struct AFRH : public RegisterBase<0x40020824, 32, ReadWriteMode>
   {
-    using Afrh15 = GpiocAfrhAfrhValues<Gpioc::Afrh, 28, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh14 = GpiocAfrhAfrhValues<Gpioc::Afrh, 24, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh13 = GpiocAfrhAfrhValues<Gpioc::Afrh, 20, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh12 = GpiocAfrhAfrhValues<Gpioc::Afrh, 16, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh11 = GpiocAfrhAfrhValues<Gpioc::Afrh, 12, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh10 = GpiocAfrhAfrhValues<Gpioc::Afrh, 8, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh9 = GpiocAfrhAfrhValues<Gpioc::Afrh, 4, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
-    using Afrh8 = GpiocAfrhAfrhValues<Gpioc::Afrh, 0, 4, ReadWriteMode, GpiocAfrhAfrhValuesBase> ;
+    using AFRH15 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 28, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH14 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 24, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH13 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 20, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH12 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 16, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH11 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 12, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH10 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 8, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH9 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 4, 4, ReadWriteMode, GPIOCAFRHBase> ;
+    using AFRH8 = GPIOC_AFRH_AFRH_Values<GPIOC::AFRH, 0, 4, ReadWriteMode, GPIOCAFRHBase> ;
   } ;
 
   template<typename... T> 
-  using AfrhPack  = Register<0x40020824, 32, ReadWriteMode, GpiocAfrhAfrhValuesBase, T...> ;
+  using AFRHPack  = Register<0x40020824, 32, ReadWriteMode, GPIOCAFRHBase, T...> ;
 
 } ;
 

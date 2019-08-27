@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct ScbCpuidRevisionValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCpuidRevisionValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CPUID_Revision_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -35,10 +33,13 @@ struct ScbCpuidRevisionValues: public RegisterField<Reg, offset, size, AccessMod
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct ScbCpuidConstantValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_CPUID_PartNo_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCpuidConstantValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CPUID_Constant_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -58,10 +59,8 @@ struct ScbCpuidConstantValues: public RegisterField<Reg, offset, size, AccessMod
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct ScbCpuidVariantValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCpuidVariantValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CPUID_Variant_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -81,100 +80,98 @@ struct ScbCpuidVariantValues: public RegisterField<Reg, offset, size, AccessMode
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct ScbIcsrRettobaseValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_CPUID_Implementer_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrRettobaseValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_VECTACTIVE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_ICSR_RETTOBASE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrIsrpendingValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_ICSR_VECTPENDING_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrIsrpendingValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_ISRPENDING_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrPendstclrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrPendstclrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_PENDSTCLR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrPendstsetValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrPendstsetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_PENDSTSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrPendsvclrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrPendsvclrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_PENDSVCLR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrPendsvsetValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrPendsvsetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_PENDSVSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbIcsrNmipendsetValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbIcsrNmipendsetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_ICSR_NMIPENDSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbAircrVectresetValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_VTOR_TBLOFF_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbAircrVectresetValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_AIRCR_VECTRESET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbAircrVectclractiveValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbAircrVectclractiveValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_AIRCR_VECTCLRACTIVE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbAircrSysresetreqValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbAircrSysresetreqValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_AIRCR_SYSRESETREQ_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbAircrPrigroupValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbAircrPrigroupValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_AIRCR_PRIGROUP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -186,409 +183,344 @@ struct ScbAircrPrigroupValues: public RegisterField<Reg, offset, size, AccessMod
   using Value7 = BitsField<Reg, offset, size, AccessMode, BaseType, 7U> ;
 } ;
 
-struct ScbAircrEndianessValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbAircrEndianessValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_AIRCR_ENDIANESS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbScrSleeponexitValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_AIRCR_VECTKEYSTAT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbScrSleeponexitValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SCR_SLEEPONEXIT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbScrSleepdeepValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbScrSleepdeepValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SCR_SLEEPDEEP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbScrSeveonpendValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbScrSeveonpendValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SCR_SEVEONPEND_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrNonbasethrdenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrNonbasethrdenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_NONBASETHRDENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrUsersetmpendValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrUsersetmpendValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_USERSETMPEND_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrUnalignTrpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrUnalignTrpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_UNALIGN__TRP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrDivTrpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrDivTrpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_DIV__TRP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrBfhfnmignValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrBfhfnmignValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_BFHFNMIGN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCcrStkalignValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCcrStkalignValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_STKALIGN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsMemfaultactValuesBase {} ;
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR_PRI__Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsMemfaultactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_MEMFAULTACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsBusfaultactValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsBusfaultactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_BUSFAULTACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsUsgfaultactValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsUsgfaultactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_USGFAULTACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsSvcallactValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsSvcallactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_SVCALLACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsMonitoractValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsMonitoractValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_MONITORACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsPendsvactValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsPendsvactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_PENDSVACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsSystickactValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsSystickactValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_SYSTICKACT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsUsgfaultpendedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsUsgfaultpendedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_USGFAULTPENDED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsMemfaultpendedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsMemfaultpendedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_MEMFAULTPENDED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsBusfaultpendedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsBusfaultpendedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_BUSFAULTPENDED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsSvcallpendedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsSvcallpendedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_SVCALLPENDED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsMemfaultenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsMemfaultenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_MEMFAULTENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsBusfaultenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsBusfaultenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_BUSFAULTENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbShcrsUsgfaultenaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbShcrsUsgfaultenaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHCRS_USGFAULTENA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrIaccviolValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrIaccviolValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_IACCVIOL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrMunstkerrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrMunstkerrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_MUNSTKERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrMstkerrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrMstkerrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_MSTKERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrMlsperrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrMlsperrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_MLSPERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrMmarvalidValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrMmarvalidValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_MMARVALID_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrIbuserrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrIbuserrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_IBUSERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrPreciserrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrPreciserrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_PRECISERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrImpreciserrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrImpreciserrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_IMPRECISERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrUnstkerrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrUnstkerrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_UNSTKERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrStkerrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrStkerrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_STKERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrLsperrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrLsperrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_LSPERR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrBfarvalidValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrBfarvalidValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_BFARVALID_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrUndefinstrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrUndefinstrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_UNDEFINSTR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrInvstateValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrInvstateValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_INVSTATE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrInvpcValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrInvpcValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_INVPC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrNocpValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrNocpValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_NOCP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrUnalignedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrUnalignedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_UNALIGNED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbCfsrUfsrBfsrMmfsrDivbyzeroValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbCfsrUfsrBfsrMmfsrDivbyzeroValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CFSR_UFSR_BFSR_MMFSR_DIVBYZERO_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbHfsrVecttblValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbHfsrVecttblValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_HFSR_VECTTBL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbHfsrForcedValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbHfsrForcedValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_HFSR_FORCED_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct ScbHfsrDebugVtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ScbHfsrDebugVtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_HFSR_DEBUG_VT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_MMFAR_MMFAR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_BFAR_BFAR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_AFSR_IMPDEF_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
 } ;
 
 #endif //#if !defined(SCBENUMS_HPP)

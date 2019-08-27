@@ -12,10 +12,8 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct SyscfgMemrmMemModeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SyscfgMemrmMemModeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SYSCFG_MEMRM_MEM_MODE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -23,19 +21,15 @@ struct SyscfgMemrmMemModeValues: public RegisterField<Reg, offset, size, AccessM
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct SyscfgPmcAdcDcValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SyscfgPmcAdcDcValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SYSCFG_PMC_ADCDC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct SyscfgExticrExtiValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SyscfgExticrExtiValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SYSCFG_EXTICR_EXTI_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -55,19 +49,15 @@ struct SyscfgExticrExtiValues: public RegisterField<Reg, offset, size, AccessMod
   using Value15 = BitsField<Reg, offset, size, AccessMode, BaseType, 15U> ;
 } ;
 
-struct SyscfgCmpcrReadyValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SyscfgCmpcrReadyValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SYSCFG_CMPCR_READY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct SyscfgCmpcrCmpPdValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SyscfgCmpcrCmpPdValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct SYSCFG_CMPCR_CMP_PD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

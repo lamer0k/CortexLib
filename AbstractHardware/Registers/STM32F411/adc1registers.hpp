@@ -15,214 +15,254 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Adc1
+struct ADC1
 {
-  struct Sr : public RegisterBase<0x40012000, 32, ReadWriteMode>
+  struct ADC1SRBase {} ;
+
+  struct SR : public RegisterBase<0x40012000, 32, ReadWriteMode>
   {
-    using Ovr = AdcSrOvrValues<Adc1::Sr, 5, 1, ReadWriteMode, AdcSrOvrValuesBase> ;
-    using Strt = AdcSrStrtValues<Adc1::Sr, 4, 1, ReadWriteMode, AdcSrStrtValuesBase> ;
-    using Jstrt = AdcSrJstrtValues<Adc1::Sr, 3, 1, ReadWriteMode, AdcSrJstrtValuesBase> ;
-    using Jeoc = AdcSrJeocValues<Adc1::Sr, 2, 1, ReadWriteMode, AdcSrJeocValuesBase> ;
-    using Eoc = AdcSrEocValues<Adc1::Sr, 1, 1, ReadWriteMode, AdcSrEocValuesBase> ;
-    using Awd = AdcSrAwdValues<Adc1::Sr, 0, 1, ReadWriteMode, AdcSrAwdValuesBase> ;
+    using OVR = ADC_SR_OVR_Values<ADC1::SR, 5, 1, ReadWriteMode, ADC1SRBase> ;
+    using STRT = ADC_SR_STRT_Values<ADC1::SR, 4, 1, ReadWriteMode, ADC1SRBase> ;
+    using JSTRT = ADC_SR_JSTRT_Values<ADC1::SR, 3, 1, ReadWriteMode, ADC1SRBase> ;
+    using JEOC = ADC_SR_JEOC_Values<ADC1::SR, 2, 1, ReadWriteMode, ADC1SRBase> ;
+    using EOC = ADC_SR_EOC_Values<ADC1::SR, 1, 1, ReadWriteMode, ADC1SRBase> ;
+    using AWD = ADC_SR_AWD_Values<ADC1::SR, 0, 1, ReadWriteMode, ADC1SRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40012000, 32, ReadWriteMode, AdcSrOvrValuesBase, T...> ;
+  using SRPack  = Register<0x40012000, 32, ReadWriteMode, ADC1SRBase, T...> ;
 
-  struct Cr1 : public RegisterBase<0x40012004, 32, ReadWriteMode>
+  struct ADC1CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40012004, 32, ReadWriteMode>
   {
-    using Ovrie = AdcCrOvrieValues<Adc1::Cr1, 26, 1, ReadWriteMode, AdcCrOvrieValuesBase> ;
-    using Res = AdcCrResValues<Adc1::Cr1, 24, 2, ReadWriteMode, AdcCrResValuesBase> ;
-    using Awden = AdcCrAwdenValues<Adc1::Cr1, 23, 1, ReadWriteMode, AdcCrAwdenValuesBase> ;
-    using Jawden = AdcCrJawdenValues<Adc1::Cr1, 22, 1, ReadWriteMode, AdcCrJawdenValuesBase> ;
-    using Discnum = AdcCrDiscnumValues<Adc1::Cr1, 13, 3, ReadWriteMode, AdcCrDiscnumValuesBase> ;
-    using Jdiscen = AdcCrJdiscenValues<Adc1::Cr1, 12, 1, ReadWriteMode, AdcCrJdiscenValuesBase> ;
-    using Discen = AdcCrDiscenValues<Adc1::Cr1, 11, 1, ReadWriteMode, AdcCrDiscenValuesBase> ;
-    using Jauto = AdcCrJautoValues<Adc1::Cr1, 10, 1, ReadWriteMode, AdcCrJautoValuesBase> ;
-    using Awdsgl = AdcCrAwdsglValues<Adc1::Cr1, 9, 1, ReadWriteMode, AdcCrAwdsglValuesBase> ;
-    using Scan = AdcCrScanValues<Adc1::Cr1, 8, 1, ReadWriteMode, AdcCrScanValuesBase> ;
-    using Jeocie = AdcCrJeocieValues<Adc1::Cr1, 7, 1, ReadWriteMode, AdcCrJeocieValuesBase> ;
-    using Awdie = AdcCrAwdieValues<Adc1::Cr1, 6, 1, ReadWriteMode, AdcCrAwdieValuesBase> ;
-    using Eocie = AdcCrEocieValues<Adc1::Cr1, 5, 1, ReadWriteMode, AdcCrEocieValuesBase> ;
-    using Awdch = AdcCrAwdchValues<Adc1::Cr1, 0, 5, ReadWriteMode, AdcCrAwdchValuesBase> ;
+    using OVRIE = ADC_CR_OVRIE_Values<ADC1::CR1, 26, 1, ReadWriteMode, ADC1CR1Base> ;
+    using RES = ADC_CR_RES_Values<ADC1::CR1, 24, 2, ReadWriteMode, ADC1CR1Base> ;
+    using AWDEN = ADC_CR_AWDEN_Values<ADC1::CR1, 23, 1, ReadWriteMode, ADC1CR1Base> ;
+    using JAWDEN = ADC_CR_JAWDEN_Values<ADC1::CR1, 22, 1, ReadWriteMode, ADC1CR1Base> ;
+    using DISCNUM = ADC_CR_DISCNUM_Values<ADC1::CR1, 13, 3, ReadWriteMode, ADC1CR1Base> ;
+    using JDISCEN = ADC_CR_JDISCEN_Values<ADC1::CR1, 12, 1, ReadWriteMode, ADC1CR1Base> ;
+    using DISCEN = ADC_CR_DISCEN_Values<ADC1::CR1, 11, 1, ReadWriteMode, ADC1CR1Base> ;
+    using JAUTO = ADC_CR_JAUTO_Values<ADC1::CR1, 10, 1, ReadWriteMode, ADC1CR1Base> ;
+    using AWDSGL = ADC_CR_AWDSGL_Values<ADC1::CR1, 9, 1, ReadWriteMode, ADC1CR1Base> ;
+    using SCAN = ADC_CR_SCAN_Values<ADC1::CR1, 8, 1, ReadWriteMode, ADC1CR1Base> ;
+    using JEOCIE = ADC_CR_JEOCIE_Values<ADC1::CR1, 7, 1, ReadWriteMode, ADC1CR1Base> ;
+    using AWDIE = ADC_CR_AWDIE_Values<ADC1::CR1, 6, 1, ReadWriteMode, ADC1CR1Base> ;
+    using EOCIE = ADC_CR_EOCIE_Values<ADC1::CR1, 5, 1, ReadWriteMode, ADC1CR1Base> ;
+    using AWDCH = ADC_CR_AWDCH_Values<ADC1::CR1, 0, 5, ReadWriteMode, ADC1CR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x40012004, 32, ReadWriteMode, AdcCrOvrieValuesBase, T...> ;
+  using CR1Pack  = Register<0x40012004, 32, ReadWriteMode, ADC1CR1Base, T...> ;
 
-  struct Cr2 : public RegisterBase<0x40012008, 32, ReadWriteMode>
+  struct ADC1CR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40012008, 32, ReadWriteMode>
   {
-    using Swstart = AdcCrSwstartValues<Adc1::Cr2, 30, 1, ReadWriteMode, AdcCrSwstartValuesBase> ;
-    using Exten = AdcCrExtenValues<Adc1::Cr2, 28, 2, ReadWriteMode, AdcCrExtenValuesBase> ;
-    using Extsel = AdcCrExtselValues<Adc1::Cr2, 24, 4, ReadWriteMode, AdcCrExtselValuesBase> ;
-    using Jswstart = AdcCrJswstartValues<Adc1::Cr2, 22, 1, ReadWriteMode, AdcCrJswstartValuesBase> ;
-    using Jexten = AdcCrJextenValues<Adc1::Cr2, 20, 2, ReadWriteMode, AdcCrJextenValuesBase> ;
-    using Jextsel = AdcCrJextselValues<Adc1::Cr2, 16, 4, ReadWriteMode, AdcCrJextselValuesBase> ;
-    using Align = AdcCrAlignValues<Adc1::Cr2, 11, 1, ReadWriteMode, AdcCrAlignValuesBase> ;
-    using Eocs = AdcCrEocsValues<Adc1::Cr2, 10, 1, ReadWriteMode, AdcCrEocsValuesBase> ;
-    using Dds = AdcCrDdsValues<Adc1::Cr2, 9, 1, ReadWriteMode, AdcCrDdsValuesBase> ;
-    using Dma = AdcCrDmaValues<Adc1::Cr2, 8, 1, ReadWriteMode, AdcCrDmaValuesBase> ;
-    using Cont = AdcCrContValues<Adc1::Cr2, 1, 1, ReadWriteMode, AdcCrContValuesBase> ;
-    using Adon = AdcCrAdonValues<Adc1::Cr2, 0, 1, ReadWriteMode, AdcCrAdonValuesBase> ;
+    using SWSTART = ADC_CR_SWSTART_Values<ADC1::CR2, 30, 1, ReadWriteMode, ADC1CR2Base> ;
+    using EXTEN = ADC_CR_EXTEN_Values<ADC1::CR2, 28, 2, ReadWriteMode, ADC1CR2Base> ;
+    using EXTSEL = ADC_CR_EXTSEL_Values<ADC1::CR2, 24, 4, ReadWriteMode, ADC1CR2Base> ;
+    using JSWSTART = ADC_CR_JSWSTART_Values<ADC1::CR2, 22, 1, ReadWriteMode, ADC1CR2Base> ;
+    using JEXTEN = ADC_CR_JEXTEN_Values<ADC1::CR2, 20, 2, ReadWriteMode, ADC1CR2Base> ;
+    using JEXTSEL = ADC_CR_JEXTSEL_Values<ADC1::CR2, 16, 4, ReadWriteMode, ADC1CR2Base> ;
+    using ALIGN = ADC_CR_ALIGN_Values<ADC1::CR2, 11, 1, ReadWriteMode, ADC1CR2Base> ;
+    using EOCS = ADC_CR_EOCS_Values<ADC1::CR2, 10, 1, ReadWriteMode, ADC1CR2Base> ;
+    using DDS = ADC_CR_DDS_Values<ADC1::CR2, 9, 1, ReadWriteMode, ADC1CR2Base> ;
+    using DMA = ADC_CR_DMA_Values<ADC1::CR2, 8, 1, ReadWriteMode, ADC1CR2Base> ;
+    using CONT = ADC_CR_CONT_Values<ADC1::CR2, 1, 1, ReadWriteMode, ADC1CR2Base> ;
+    using ADON = ADC_CR_ADON_Values<ADC1::CR2, 0, 1, ReadWriteMode, ADC1CR2Base> ;
   } ;
 
   template<typename... T> 
-  using Cr2Pack  = Register<0x40012008, 32, ReadWriteMode, AdcCrSwstartValuesBase, T...> ;
+  using CR2Pack  = Register<0x40012008, 32, ReadWriteMode, ADC1CR2Base, T...> ;
 
-  struct Smpr1 : public RegisterBase<0x4001200C, 32, ReadWriteMode>
+  struct ADC1SMPR1Base {} ;
+
+  struct SMPR1 : public RegisterBase<0x4001200C, 32, ReadWriteMode>
   {
-    using SmpxX = ReadWriteMode<Adc1::Smpr1, 0, 32> ;
+    using SMPx_x = ADC_SMPR_SMPx_x_Values<ADC1::SMPR1, 0, 32, ReadWriteMode, ADC1SMPR1Base> ;
   } ;
 
   template<typename... T> 
-  using Smpr1Pack  = Register<0x4001200C, 32, ReadWriteMode, AdcSmprSmpxXValuesBase, T...> ;
+  using SMPR1Pack  = Register<0x4001200C, 32, ReadWriteMode, ADC1SMPR1Base, T...> ;
 
-  struct Smpr2 : public RegisterBase<0x40012010, 32, ReadWriteMode>
+  struct ADC1SMPR2Base {} ;
+
+  struct SMPR2 : public RegisterBase<0x40012010, 32, ReadWriteMode>
   {
-    using SmpxX = ReadWriteMode<Adc1::Smpr2, 0, 32> ;
+    using SMPx_x = ADC_SMPR_SMPx_x_Values<ADC1::SMPR2, 0, 32, ReadWriteMode, ADC1SMPR2Base> ;
   } ;
 
   template<typename... T> 
-  using Smpr2Pack  = Register<0x40012010, 32, ReadWriteMode, AdcSmprSmpxXValuesBase, T...> ;
+  using SMPR2Pack  = Register<0x40012010, 32, ReadWriteMode, ADC1SMPR2Base, T...> ;
 
-  struct Jofr1 : public RegisterBase<0x40012014, 32, ReadWriteMode>
+  struct ADC1JOFR1Base {} ;
+
+  struct JOFR1 : public RegisterBase<0x40012014, 32, ReadWriteMode>
   {
-    using Joffset1 = ReadWriteMode<Adc1::Jofr1, 0, 12> ;
+    using JOFFSET1 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR1, 0, 12, ReadWriteMode, ADC1JOFR1Base> ;
   } ;
 
   template<typename... T> 
-  using Jofr1Pack  = Register<0x40012014, 32, ReadWriteMode, AdcJofrJoffsetValuesBase, T...> ;
+  using JOFR1Pack  = Register<0x40012014, 32, ReadWriteMode, ADC1JOFR1Base, T...> ;
 
-  struct Jofr2 : public RegisterBase<0x40012018, 32, ReadWriteMode>
+  struct ADC1JOFR2Base {} ;
+
+  struct JOFR2 : public RegisterBase<0x40012018, 32, ReadWriteMode>
   {
-    using Joffset2 = ReadWriteMode<Adc1::Jofr2, 0, 12> ;
+    using JOFFSET2 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR2, 0, 12, ReadWriteMode, ADC1JOFR2Base> ;
   } ;
 
   template<typename... T> 
-  using Jofr2Pack  = Register<0x40012018, 32, ReadWriteMode, AdcJofrJoffsetValuesBase, T...> ;
+  using JOFR2Pack  = Register<0x40012018, 32, ReadWriteMode, ADC1JOFR2Base, T...> ;
 
-  struct Jofr3 : public RegisterBase<0x4001201C, 32, ReadWriteMode>
+  struct ADC1JOFR3Base {} ;
+
+  struct JOFR3 : public RegisterBase<0x4001201C, 32, ReadWriteMode>
   {
-    using Joffset3 = ReadWriteMode<Adc1::Jofr3, 0, 12> ;
+    using JOFFSET3 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR3, 0, 12, ReadWriteMode, ADC1JOFR3Base> ;
   } ;
 
   template<typename... T> 
-  using Jofr3Pack  = Register<0x4001201C, 32, ReadWriteMode, AdcJofrJoffsetValuesBase, T...> ;
+  using JOFR3Pack  = Register<0x4001201C, 32, ReadWriteMode, ADC1JOFR3Base, T...> ;
 
-  struct Jofr4 : public RegisterBase<0x40012020, 32, ReadWriteMode>
+  struct ADC1JOFR4Base {} ;
+
+  struct JOFR4 : public RegisterBase<0x40012020, 32, ReadWriteMode>
   {
-    using Joffset4 = ReadWriteMode<Adc1::Jofr4, 0, 12> ;
+    using JOFFSET4 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR4, 0, 12, ReadWriteMode, ADC1JOFR4Base> ;
   } ;
 
   template<typename... T> 
-  using Jofr4Pack  = Register<0x40012020, 32, ReadWriteMode, AdcJofrJoffsetValuesBase, T...> ;
+  using JOFR4Pack  = Register<0x40012020, 32, ReadWriteMode, ADC1JOFR4Base, T...> ;
 
-  struct Htr : public RegisterBase<0x40012024, 32, ReadWriteMode>
+  struct ADC1HTRBase {} ;
+
+  struct HTR : public RegisterBase<0x40012024, 32, ReadWriteMode>
   {
-    using Ht = ReadWriteMode<Adc1::Htr, 0, 12> ;
+    using HT = ADC_HTR_HT_Values<ADC1::HTR, 0, 12, ReadWriteMode, ADC1HTRBase> ;
   } ;
 
   template<typename... T> 
-  using HtrPack  = Register<0x40012024, 32, ReadWriteMode, AdcHtrHtValuesBase, T...> ;
+  using HTRPack  = Register<0x40012024, 32, ReadWriteMode, ADC1HTRBase, T...> ;
 
-  struct Ltr : public RegisterBase<0x40012028, 32, ReadWriteMode>
+  struct ADC1LTRBase {} ;
+
+  struct LTR : public RegisterBase<0x40012028, 32, ReadWriteMode>
   {
-    using Lt = ReadWriteMode<Adc1::Ltr, 0, 12> ;
+    using LT = ADC_LTR_LT_Values<ADC1::LTR, 0, 12, ReadWriteMode, ADC1LTRBase> ;
   } ;
 
   template<typename... T> 
-  using LtrPack  = Register<0x40012028, 32, ReadWriteMode, AdcLtrLtValuesBase, T...> ;
+  using LTRPack  = Register<0x40012028, 32, ReadWriteMode, ADC1LTRBase, T...> ;
 
-  struct Sqr1 : public RegisterBase<0x4001202C, 32, ReadWriteMode>
+  struct ADC1SQR1Base {} ;
+
+  struct SQR1 : public RegisterBase<0x4001202C, 32, ReadWriteMode>
   {
-    using L = AdcSqrLValues<Adc1::Sqr1, 20, 4, ReadWriteMode, AdcSqrLValuesBase> ;
-    using Sq16 = AdcSqrSqValues<Adc1::Sqr1, 15, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq15 = AdcSqrSqValues<Adc1::Sqr1, 10, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq14 = AdcSqrSqValues<Adc1::Sqr1, 5, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq13 = AdcSqrSqValues<Adc1::Sqr1, 0, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
+    using L = ADC_SQR_L_Values<ADC1::SQR1, 20, 4, ReadWriteMode, ADC1SQR1Base> ;
+    using SQ16 = ADC_SQR_SQ_Values<ADC1::SQR1, 15, 5, ReadWriteMode, ADC1SQR1Base> ;
+    using SQ15 = ADC_SQR_SQ_Values<ADC1::SQR1, 10, 5, ReadWriteMode, ADC1SQR1Base> ;
+    using SQ14 = ADC_SQR_SQ_Values<ADC1::SQR1, 5, 5, ReadWriteMode, ADC1SQR1Base> ;
+    using SQ13 = ADC_SQR_SQ_Values<ADC1::SQR1, 0, 5, ReadWriteMode, ADC1SQR1Base> ;
   } ;
 
   template<typename... T> 
-  using Sqr1Pack  = Register<0x4001202C, 32, ReadWriteMode, AdcSqrLValuesBase, T...> ;
+  using SQR1Pack  = Register<0x4001202C, 32, ReadWriteMode, ADC1SQR1Base, T...> ;
 
-  struct Sqr2 : public RegisterBase<0x40012030, 32, ReadWriteMode>
+  struct ADC1SQR2Base {} ;
+
+  struct SQR2 : public RegisterBase<0x40012030, 32, ReadWriteMode>
   {
-    using Sq12 = AdcSqrSqValues<Adc1::Sqr2, 25, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq11 = AdcSqrSqValues<Adc1::Sqr2, 20, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq10 = AdcSqrSqValues<Adc1::Sqr2, 15, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq9 = AdcSqrSqValues<Adc1::Sqr2, 10, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq8 = AdcSqrSqValues<Adc1::Sqr2, 5, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq7 = AdcSqrSqValues<Adc1::Sqr2, 0, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
+    using SQ12 = ADC_SQR_SQ_Values<ADC1::SQR2, 25, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using SQ11 = ADC_SQR_SQ_Values<ADC1::SQR2, 20, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using SQ10 = ADC_SQR_SQ_Values<ADC1::SQR2, 15, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using SQ9 = ADC_SQR_SQ_Values<ADC1::SQR2, 10, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using SQ8 = ADC_SQR_SQ_Values<ADC1::SQR2, 5, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using SQ7 = ADC_SQR_SQ_Values<ADC1::SQR2, 0, 5, ReadWriteMode, ADC1SQR2Base> ;
   } ;
 
   template<typename... T> 
-  using Sqr2Pack  = Register<0x40012030, 32, ReadWriteMode, AdcSqrSqValuesBase, T...> ;
+  using SQR2Pack  = Register<0x40012030, 32, ReadWriteMode, ADC1SQR2Base, T...> ;
 
-  struct Sqr3 : public RegisterBase<0x40012034, 32, ReadWriteMode>
+  struct ADC1SQR3Base {} ;
+
+  struct SQR3 : public RegisterBase<0x40012034, 32, ReadWriteMode>
   {
-    using Sq6 = AdcSqrSqValues<Adc1::Sqr3, 25, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq5 = AdcSqrSqValues<Adc1::Sqr3, 20, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq4 = AdcSqrSqValues<Adc1::Sqr3, 15, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq3 = AdcSqrSqValues<Adc1::Sqr3, 10, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq2 = AdcSqrSqValues<Adc1::Sqr3, 5, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
-    using Sq1 = AdcSqrSqValues<Adc1::Sqr3, 0, 5, ReadWriteMode, AdcSqrSqValuesBase> ;
+    using SQ6 = ADC_SQR_SQ_Values<ADC1::SQR3, 25, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using SQ5 = ADC_SQR_SQ_Values<ADC1::SQR3, 20, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using SQ4 = ADC_SQR_SQ_Values<ADC1::SQR3, 15, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using SQ3 = ADC_SQR_SQ_Values<ADC1::SQR3, 10, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using SQ2 = ADC_SQR_SQ_Values<ADC1::SQR3, 5, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using SQ1 = ADC_SQR_SQ_Values<ADC1::SQR3, 0, 5, ReadWriteMode, ADC1SQR3Base> ;
   } ;
 
   template<typename... T> 
-  using Sqr3Pack  = Register<0x40012034, 32, ReadWriteMode, AdcSqrSqValuesBase, T...> ;
+  using SQR3Pack  = Register<0x40012034, 32, ReadWriteMode, ADC1SQR3Base, T...> ;
 
-  struct Jsqr : public RegisterBase<0x40012038, 32, ReadWriteMode>
+  struct ADC1JSQRBase {} ;
+
+  struct JSQR : public RegisterBase<0x40012038, 32, ReadWriteMode>
   {
-    using Jl = AdcJsqrJlValues<Adc1::Jsqr, 20, 2, ReadWriteMode, AdcJsqrJlValuesBase> ;
-    using Jsq4 = AdcJsqrJsqValues<Adc1::Jsqr, 15, 5, ReadWriteMode, AdcJsqrJsqValuesBase> ;
-    using Jsq3 = AdcJsqrJsqValues<Adc1::Jsqr, 10, 5, ReadWriteMode, AdcJsqrJsqValuesBase> ;
-    using Jsq2 = AdcJsqrJsqValues<Adc1::Jsqr, 5, 5, ReadWriteMode, AdcJsqrJsqValuesBase> ;
-    using Jsq1 = AdcJsqrJsqValues<Adc1::Jsqr, 0, 5, ReadWriteMode, AdcJsqrJsqValuesBase> ;
+    using JL = ADC_JSQR_JL_Values<ADC1::JSQR, 20, 2, ReadWriteMode, ADC1JSQRBase> ;
+    using JSQ4 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 15, 5, ReadWriteMode, ADC1JSQRBase> ;
+    using JSQ3 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 10, 5, ReadWriteMode, ADC1JSQRBase> ;
+    using JSQ2 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 5, 5, ReadWriteMode, ADC1JSQRBase> ;
+    using JSQ1 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 0, 5, ReadWriteMode, ADC1JSQRBase> ;
   } ;
 
   template<typename... T> 
-  using JsqrPack  = Register<0x40012038, 32, ReadWriteMode, AdcJsqrJlValuesBase, T...> ;
+  using JSQRPack  = Register<0x40012038, 32, ReadWriteMode, ADC1JSQRBase, T...> ;
 
-  struct Jdr1 : public RegisterBase<0x4001203C, 32, ReadMode>
+  struct ADC1JDR1Base {} ;
+
+  struct JDR1 : public RegisterBase<0x4001203C, 32, ReadMode>
   {
-    using Jdata = ReadMode<Adc1::Jdr1, 0, 16> ;
+    using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR1, 0, 16, ReadMode, ADC1JDR1Base> ;
   } ;
 
   template<typename... T> 
-  using Jdr1Pack  = Register<0x4001203C, 32, ReadMode, AdcJdrJdataValuesBase, T...> ;
+  using JDR1Pack  = Register<0x4001203C, 32, ReadMode, ADC1JDR1Base, T...> ;
 
-  struct Jdr2 : public RegisterBase<0x40012040, 32, ReadMode>
+  struct ADC1JDR2Base {} ;
+
+  struct JDR2 : public RegisterBase<0x40012040, 32, ReadMode>
   {
-    using Jdata = ReadMode<Adc1::Jdr2, 0, 16> ;
+    using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR2, 0, 16, ReadMode, ADC1JDR2Base> ;
   } ;
 
   template<typename... T> 
-  using Jdr2Pack  = Register<0x40012040, 32, ReadMode, AdcJdrJdataValuesBase, T...> ;
+  using JDR2Pack  = Register<0x40012040, 32, ReadMode, ADC1JDR2Base, T...> ;
 
-  struct Jdr3 : public RegisterBase<0x40012044, 32, ReadMode>
+  struct ADC1JDR3Base {} ;
+
+  struct JDR3 : public RegisterBase<0x40012044, 32, ReadMode>
   {
-    using Jdata = ReadMode<Adc1::Jdr3, 0, 16> ;
+    using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR3, 0, 16, ReadMode, ADC1JDR3Base> ;
   } ;
 
   template<typename... T> 
-  using Jdr3Pack  = Register<0x40012044, 32, ReadMode, AdcJdrJdataValuesBase, T...> ;
+  using JDR3Pack  = Register<0x40012044, 32, ReadMode, ADC1JDR3Base, T...> ;
 
-  struct Jdr4 : public RegisterBase<0x40012048, 32, ReadMode>
+  struct ADC1JDR4Base {} ;
+
+  struct JDR4 : public RegisterBase<0x40012048, 32, ReadMode>
   {
-    using Jdata = ReadMode<Adc1::Jdr4, 0, 16> ;
+    using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR4, 0, 16, ReadMode, ADC1JDR4Base> ;
   } ;
 
   template<typename... T> 
-  using Jdr4Pack  = Register<0x40012048, 32, ReadMode, AdcJdrJdataValuesBase, T...> ;
+  using JDR4Pack  = Register<0x40012048, 32, ReadMode, ADC1JDR4Base, T...> ;
 
-  struct Dr : public RegisterBase<0x4001204C, 32, ReadMode>
+  struct ADC1DRBase {} ;
+
+  struct DR : public RegisterBase<0x4001204C, 32, ReadMode>
   {
-    using Data = ReadMode<Adc1::Dr, 0, 16> ;
+    using DATA = ADC_DR_DATA_Values<ADC1::DR, 0, 16, ReadMode, ADC1DRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x4001204C, 32, ReadMode, AdcDrDataValuesBase, T...> ;
+  using DRPack  = Register<0x4001204C, 32, ReadMode, ADC1DRBase, T...> ;
 
 } ;
 

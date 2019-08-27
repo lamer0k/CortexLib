@@ -15,337 +15,377 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Rcc
+struct RCC
 {
-  struct Cr : public RegisterBase<0x40023800, 32, ReadWriteMode>
+  struct RCCCRBase {} ;
+
+  struct CR : public RegisterBase<0x40023800, 32, ReadWriteMode>
   {
-    using Plli2Srdy = RccCrPlliSrdyValues<Rcc::Cr, 27, 1, ReadMode, RccCrPlliSrdyValuesBase> ;
-    using Plli2Son = RccCrPlliSonValues<Rcc::Cr, 26, 1, ReadWriteMode, RccCrPlliSonValuesBase> ;
-    using Pllrdy = RccCrPllrdyValues<Rcc::Cr, 25, 1, ReadMode, RccCrPllrdyValuesBase> ;
-    using Pllon = RccCrPllonValues<Rcc::Cr, 24, 1, ReadWriteMode, RccCrPllonValuesBase> ;
-    using Csson = RccCrCssonValues<Rcc::Cr, 19, 1, ReadWriteMode, RccCrCssonValuesBase> ;
-    using Hsebyp = RccCrHsebypValues<Rcc::Cr, 18, 1, ReadWriteMode, RccCrHsebypValuesBase> ;
-    using Hserdy = RccCrHserdyValues<Rcc::Cr, 17, 1, ReadMode, RccCrHserdyValuesBase> ;
-    using Hseon = RccCrHseonValues<Rcc::Cr, 16, 1, ReadWriteMode, RccCrHseonValuesBase> ;
-    using Hsical = ReadMode<Rcc::Cr, 8, 8> ;
-    using Hsitrim = RccCrHsitrimValues<Rcc::Cr, 3, 5, ReadWriteMode, RccCrHsitrimValuesBase> ;
-    using Hsirdy = RccCrHsirdyValues<Rcc::Cr, 1, 1, ReadMode, RccCrHsirdyValuesBase> ;
-    using Hsion = RccCrHsionValues<Rcc::Cr, 0, 1, ReadWriteMode, RccCrHsionValuesBase> ;
+    using PLLI2SRDY = RCC_CR_PLLISRDY_Values<RCC::CR, 27, 1, ReadMode, RCCCRBase> ;
+    using PLLI2SON = RCC_CR_PLLISON_Values<RCC::CR, 26, 1, ReadWriteMode, RCCCRBase> ;
+    using PLLRDY = RCC_CR_PLLRDY_Values<RCC::CR, 25, 1, ReadMode, RCCCRBase> ;
+    using PLLON = RCC_CR_PLLON_Values<RCC::CR, 24, 1, ReadWriteMode, RCCCRBase> ;
+    using CSSON = RCC_CR_CSSON_Values<RCC::CR, 19, 1, ReadWriteMode, RCCCRBase> ;
+    using HSEBYP = RCC_CR_HSEBYP_Values<RCC::CR, 18, 1, ReadWriteMode, RCCCRBase> ;
+    using HSERDY = RCC_CR_HSERDY_Values<RCC::CR, 17, 1, ReadMode, RCCCRBase> ;
+    using HSEON = RCC_CR_HSEON_Values<RCC::CR, 16, 1, ReadWriteMode, RCCCRBase> ;
+    using HSICAL = RCC_CR_HSICAL_Values<RCC::CR, 8, 8, ReadMode, RCCCRBase> ;
+    using HSITRIM = RCC_CR_HSITRIM_Values<RCC::CR, 3, 5, ReadWriteMode, RCCCRBase> ;
+    using HSIRDY = RCC_CR_HSIRDY_Values<RCC::CR, 1, 1, ReadMode, RCCCRBase> ;
+    using HSION = RCC_CR_HSION_Values<RCC::CR, 0, 1, ReadWriteMode, RCCCRBase> ;
   } ;
 
   template<typename... T> 
-  using CrPack  = Register<0x40023800, 32, ReadWriteMode, RccCrPlliSrdyValuesBase, T...> ;
+  using CRPack  = Register<0x40023800, 32, ReadWriteMode, RCCCRBase, T...> ;
 
-  struct Pllcfgr : public RegisterBase<0x40023804, 32, ReadWriteMode>
+  struct RCCPLLCFGRBase {} ;
+
+  struct PLLCFGR : public RegisterBase<0x40023804, 32, ReadWriteMode>
   {
-    using Pllq3 = RccPllcfgrPllqValues<Rcc::Pllcfgr, 27, 1, ReadWriteMode, RccPllcfgrPllqValuesBase> ;
-    using Pllq2 = RccPllcfgrPllqValues<Rcc::Pllcfgr, 26, 1, ReadWriteMode, RccPllcfgrPllqValuesBase> ;
-    using Pllq1 = RccPllcfgrPllqValues<Rcc::Pllcfgr, 25, 1, ReadWriteMode, RccPllcfgrPllqValuesBase> ;
-    using Pllq0 = RccPllcfgrPllqValues<Rcc::Pllcfgr, 24, 1, ReadWriteMode, RccPllcfgrPllqValuesBase> ;
-    using Pllsrc = RccPllcfgrPllsrcValues<Rcc::Pllcfgr, 22, 1, ReadWriteMode, RccPllcfgrPllsrcValuesBase> ;
-    using Pllp1 = RccPllcfgrPllpValues<Rcc::Pllcfgr, 17, 1, ReadWriteMode, RccPllcfgrPllpValuesBase> ;
-    using Pllp0 = RccPllcfgrPllpValues<Rcc::Pllcfgr, 16, 1, ReadWriteMode, RccPllcfgrPllpValuesBase> ;
-    using Plln8 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 14, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln7 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 13, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln6 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 12, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln5 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 11, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln4 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 10, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln3 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 9, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln2 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 8, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln1 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 7, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Plln0 = RccPllcfgrPllnValues<Rcc::Pllcfgr, 6, 1, ReadWriteMode, RccPllcfgrPllnValuesBase> ;
-    using Pllm5 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 5, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
-    using Pllm4 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 4, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
-    using Pllm3 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 3, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
-    using Pllm2 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 2, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
-    using Pllm1 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 1, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
-    using Pllm0 = RccPllcfgrPllmValues<Rcc::Pllcfgr, 0, 1, ReadWriteMode, RccPllcfgrPllmValuesBase> ;
+    using PLLQ3 = RCC_PLLCFGR_PLLQ_Values<RCC::PLLCFGR, 27, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLQ2 = RCC_PLLCFGR_PLLQ_Values<RCC::PLLCFGR, 26, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLQ1 = RCC_PLLCFGR_PLLQ_Values<RCC::PLLCFGR, 25, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLQ0 = RCC_PLLCFGR_PLLQ_Values<RCC::PLLCFGR, 24, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLSRC = RCC_PLLCFGR_PLLSRC_Values<RCC::PLLCFGR, 22, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLP1 = RCC_PLLCFGR_PLLP_Values<RCC::PLLCFGR, 17, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLP0 = RCC_PLLCFGR_PLLP_Values<RCC::PLLCFGR, 16, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN8 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 14, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN7 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 13, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN6 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 12, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN5 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 11, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN4 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 10, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN3 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 9, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN2 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 8, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN1 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 7, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN0 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 6, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM5 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 5, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM4 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 4, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM3 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 3, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM2 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 2, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM1 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 1, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLM0 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 0, 1, ReadWriteMode, RCCPLLCFGRBase> ;
   } ;
 
   template<typename... T> 
-  using PllcfgrPack  = Register<0x40023804, 32, ReadWriteMode, RccPllcfgrPllqValuesBase, T...> ;
+  using PLLCFGRPack  = Register<0x40023804, 32, ReadWriteMode, RCCPLLCFGRBase, T...> ;
 
-  struct Cfgr : public RegisterBase<0x40023808, 32, ReadWriteMode>
+  struct RCCCFGRBase {} ;
+
+  struct CFGR : public RegisterBase<0x40023808, 32, ReadWriteMode>
   {
-    using Mco2 = RccCfgrMcoValues<Rcc::Cfgr, 30, 2, ReadWriteMode, RccCfgrMcoValuesBase> ;
-    using Mco2Pre = RccCfgrMcoPreValues<Rcc::Cfgr, 27, 3, ReadWriteMode, RccCfgrMcoPreValuesBase> ;
-    using Mco1Pre = RccCfgrMcoPreValues<Rcc::Cfgr, 24, 3, ReadWriteMode, RccCfgrMcoPreValuesBase> ;
-    using I2Ssrc = RccCfgrISsrcValues<Rcc::Cfgr, 23, 1, ReadWriteMode, RccCfgrISsrcValuesBase> ;
-    using Mco1 = RccCfgrMcoValues<Rcc::Cfgr, 21, 2, ReadWriteMode, RccCfgrMcoValuesBase> ;
-    using Rtcpre = RccCfgrRtcpreValues<Rcc::Cfgr, 16, 5, ReadWriteMode, RccCfgrRtcpreValuesBase> ;
-    using Ppre2 = RccCfgrPpreValues<Rcc::Cfgr, 13, 3, ReadWriteMode, RccCfgrPpreValuesBase> ;
-    using Ppre1 = RccCfgrPpreValues<Rcc::Cfgr, 10, 3, ReadWriteMode, RccCfgrPpreValuesBase> ;
-    using Hpre = RccCfgrHpreValues<Rcc::Cfgr, 4, 4, ReadWriteMode, RccCfgrHpreValuesBase> ;
-    using Sws1 = RccCfgrSwsValues<Rcc::Cfgr, 3, 1, ReadMode, RccCfgrSwsValuesBase> ;
-    using Sws0 = RccCfgrSwsValues<Rcc::Cfgr, 2, 1, ReadMode, RccCfgrSwsValuesBase> ;
-    using Sw1 = RccCfgrSwValues<Rcc::Cfgr, 1, 1, ReadWriteMode, RccCfgrSwValuesBase> ;
-    using Sw0 = RccCfgrSwValues<Rcc::Cfgr, 0, 1, ReadWriteMode, RccCfgrSwValuesBase> ;
+    using MCO2 = RCC_CFGR_MCO_Values<RCC::CFGR, 30, 2, ReadWriteMode, RCCCFGRBase> ;
+    using MCO2PRE = RCC_CFGR_MCOPRE_Values<RCC::CFGR, 27, 3, ReadWriteMode, RCCCFGRBase> ;
+    using MCO1PRE = RCC_CFGR_MCOPRE_Values<RCC::CFGR, 24, 3, ReadWriteMode, RCCCFGRBase> ;
+    using I2SSRC = RCC_CFGR_ISSRC_Values<RCC::CFGR, 23, 1, ReadWriteMode, RCCCFGRBase> ;
+    using MCO1 = RCC_CFGR_MCO_Values<RCC::CFGR, 21, 2, ReadWriteMode, RCCCFGRBase> ;
+    using RTCPRE = RCC_CFGR_RTCPRE_Values<RCC::CFGR, 16, 5, ReadWriteMode, RCCCFGRBase> ;
+    using PPRE2 = RCC_CFGR_PPRE_Values<RCC::CFGR, 13, 3, ReadWriteMode, RCCCFGRBase> ;
+    using PPRE1 = RCC_CFGR_PPRE_Values<RCC::CFGR, 10, 3, ReadWriteMode, RCCCFGRBase> ;
+    using HPRE = RCC_CFGR_HPRE_Values<RCC::CFGR, 4, 4, ReadWriteMode, RCCCFGRBase> ;
+    using SWS1 = RCC_CFGR_SWS_Values<RCC::CFGR, 3, 1, ReadMode, RCCCFGRBase> ;
+    using SWS0 = RCC_CFGR_SWS_Values<RCC::CFGR, 2, 1, ReadMode, RCCCFGRBase> ;
+    using SW1 = RCC_CFGR_SW_Values<RCC::CFGR, 1, 1, ReadWriteMode, RCCCFGRBase> ;
+    using SW0 = RCC_CFGR_SW_Values<RCC::CFGR, 0, 1, ReadWriteMode, RCCCFGRBase> ;
   } ;
 
   template<typename... T> 
-  using CfgrPack  = Register<0x40023808, 32, ReadWriteMode, RccCfgrMcoValuesBase, T...> ;
+  using CFGRPack  = Register<0x40023808, 32, ReadWriteMode, RCCCFGRBase, T...> ;
 
-  struct Cir : public RegisterBase<0x4002380C, 32, ReadWriteMode>
+  struct RCCCIRBase {} ;
+
+  struct CIR : public RegisterBase<0x4002380C, 32, ReadWriteMode>
   {
-    using Cssc = RccCirCsscValues<Rcc::Cir, 23, 1, WriteMode, RccCirCsscValuesBase> ;
-    using Plli2Srdyc = RccCirPlliSrdycValues<Rcc::Cir, 21, 1, WriteMode, RccCirPlliSrdycValuesBase> ;
-    using Pllrdyc = RccCirPllrdycValues<Rcc::Cir, 20, 1, WriteMode, RccCirPllrdycValuesBase> ;
-    using Hserdyc = RccCirHserdycValues<Rcc::Cir, 19, 1, WriteMode, RccCirHserdycValuesBase> ;
-    using Hsirdyc = RccCirHsirdycValues<Rcc::Cir, 18, 1, WriteMode, RccCirHsirdycValuesBase> ;
-    using Lserdyc = RccCirLserdycValues<Rcc::Cir, 17, 1, WriteMode, RccCirLserdycValuesBase> ;
-    using Lsirdyc = RccCirLsirdycValues<Rcc::Cir, 16, 1, WriteMode, RccCirLsirdycValuesBase> ;
-    using Plli2Srdyie = RccCirPlliSrdyieValues<Rcc::Cir, 13, 1, ReadWriteMode, RccCirPlliSrdyieValuesBase> ;
-    using Pllrdyie = RccCirPllrdyieValues<Rcc::Cir, 12, 1, ReadWriteMode, RccCirPllrdyieValuesBase> ;
-    using Hserdyie = RccCirHserdyieValues<Rcc::Cir, 11, 1, ReadWriteMode, RccCirHserdyieValuesBase> ;
-    using Hsirdyie = RccCirHsirdyieValues<Rcc::Cir, 10, 1, ReadWriteMode, RccCirHsirdyieValuesBase> ;
-    using Lserdyie = RccCirLserdyieValues<Rcc::Cir, 9, 1, ReadWriteMode, RccCirLserdyieValuesBase> ;
-    using Lsirdyie = RccCirLsirdyieValues<Rcc::Cir, 8, 1, ReadWriteMode, RccCirLsirdyieValuesBase> ;
-    using Cssf = RccCirCssfValues<Rcc::Cir, 7, 1, ReadMode, RccCirCssfValuesBase> ;
-    using Plli2Srdyf = RccCirPlliSrdyfValues<Rcc::Cir, 5, 1, ReadMode, RccCirPlliSrdyfValuesBase> ;
-    using Pllrdyf = RccCirPllrdyfValues<Rcc::Cir, 4, 1, ReadMode, RccCirPllrdyfValuesBase> ;
-    using Hserdyf = RccCirHserdyfValues<Rcc::Cir, 3, 1, ReadMode, RccCirHserdyfValuesBase> ;
-    using Hsirdyf = RccCirHsirdyfValues<Rcc::Cir, 2, 1, ReadMode, RccCirHsirdyfValuesBase> ;
-    using Lserdyf = RccCirLserdyfValues<Rcc::Cir, 1, 1, ReadMode, RccCirLserdyfValuesBase> ;
-    using Lsirdyf = RccCirLsirdyfValues<Rcc::Cir, 0, 1, ReadMode, RccCirLsirdyfValuesBase> ;
+    using CSSC = RCC_CIR_CSSC_Values<RCC::CIR, 23, 1, WriteMode, RCCCIRBase> ;
+    using PLLI2SRDYC = RCC_CIR_PLLISRDYC_Values<RCC::CIR, 21, 1, WriteMode, RCCCIRBase> ;
+    using PLLRDYC = RCC_CIR_PLLRDYC_Values<RCC::CIR, 20, 1, WriteMode, RCCCIRBase> ;
+    using HSERDYC = RCC_CIR_HSERDYC_Values<RCC::CIR, 19, 1, WriteMode, RCCCIRBase> ;
+    using HSIRDYC = RCC_CIR_HSIRDYC_Values<RCC::CIR, 18, 1, WriteMode, RCCCIRBase> ;
+    using LSERDYC = RCC_CIR_LSERDYC_Values<RCC::CIR, 17, 1, WriteMode, RCCCIRBase> ;
+    using LSIRDYC = RCC_CIR_LSIRDYC_Values<RCC::CIR, 16, 1, WriteMode, RCCCIRBase> ;
+    using PLLI2SRDYIE = RCC_CIR_PLLISRDYIE_Values<RCC::CIR, 13, 1, ReadWriteMode, RCCCIRBase> ;
+    using PLLRDYIE = RCC_CIR_PLLRDYIE_Values<RCC::CIR, 12, 1, ReadWriteMode, RCCCIRBase> ;
+    using HSERDYIE = RCC_CIR_HSERDYIE_Values<RCC::CIR, 11, 1, ReadWriteMode, RCCCIRBase> ;
+    using HSIRDYIE = RCC_CIR_HSIRDYIE_Values<RCC::CIR, 10, 1, ReadWriteMode, RCCCIRBase> ;
+    using LSERDYIE = RCC_CIR_LSERDYIE_Values<RCC::CIR, 9, 1, ReadWriteMode, RCCCIRBase> ;
+    using LSIRDYIE = RCC_CIR_LSIRDYIE_Values<RCC::CIR, 8, 1, ReadWriteMode, RCCCIRBase> ;
+    using CSSF = RCC_CIR_CSSF_Values<RCC::CIR, 7, 1, ReadMode, RCCCIRBase> ;
+    using PLLI2SRDYF = RCC_CIR_PLLISRDYF_Values<RCC::CIR, 5, 1, ReadMode, RCCCIRBase> ;
+    using PLLRDYF = RCC_CIR_PLLRDYF_Values<RCC::CIR, 4, 1, ReadMode, RCCCIRBase> ;
+    using HSERDYF = RCC_CIR_HSERDYF_Values<RCC::CIR, 3, 1, ReadMode, RCCCIRBase> ;
+    using HSIRDYF = RCC_CIR_HSIRDYF_Values<RCC::CIR, 2, 1, ReadMode, RCCCIRBase> ;
+    using LSERDYF = RCC_CIR_LSERDYF_Values<RCC::CIR, 1, 1, ReadMode, RCCCIRBase> ;
+    using LSIRDYF = RCC_CIR_LSIRDYF_Values<RCC::CIR, 0, 1, ReadMode, RCCCIRBase> ;
   } ;
 
   template<typename... T> 
-  using CirPack  = Register<0x4002380C, 32, ReadWriteMode, RccCirCsscValuesBase, T...> ;
+  using CIRPack  = Register<0x4002380C, 32, ReadWriteMode, RCCCIRBase, T...> ;
 
-  struct Ahb1Rstr : public RegisterBase<0x40023810, 32, ReadWriteMode>
+  struct RCCAHB1RSTRBase {} ;
+
+  struct AHB1RSTR : public RegisterBase<0x40023810, 32, ReadWriteMode>
   {
-    using Dma2Rst = RccAhbRstrDmaRstValues<Rcc::Ahb1Rstr, 22, 1, ReadWriteMode, RccAhbRstrDmaRstValuesBase> ;
-    using Dma1Rst = RccAhbRstrDmaRstValues<Rcc::Ahb1Rstr, 21, 1, ReadWriteMode, RccAhbRstrDmaRstValuesBase> ;
-    using Crcrst = RccAhbRstrCrcrstValues<Rcc::Ahb1Rstr, 12, 1, ReadWriteMode, RccAhbRstrCrcrstValuesBase> ;
-    using Gpiohrst = RccAhbRstrGpiohrstValues<Rcc::Ahb1Rstr, 7, 1, ReadWriteMode, RccAhbRstrGpiohrstValuesBase> ;
-    using Gpioerst = RccAhbRstrGpioerstValues<Rcc::Ahb1Rstr, 4, 1, ReadWriteMode, RccAhbRstrGpioerstValuesBase> ;
-    using Gpiodrst = RccAhbRstrGpiodrstValues<Rcc::Ahb1Rstr, 3, 1, ReadWriteMode, RccAhbRstrGpiodrstValuesBase> ;
-    using Gpiocrst = RccAhbRstrGpiocrstValues<Rcc::Ahb1Rstr, 2, 1, ReadWriteMode, RccAhbRstrGpiocrstValuesBase> ;
-    using Gpiobrst = RccAhbRstrGpiobrstValues<Rcc::Ahb1Rstr, 1, 1, ReadWriteMode, RccAhbRstrGpiobrstValuesBase> ;
-    using Gpioarst = RccAhbRstrGpioarstValues<Rcc::Ahb1Rstr, 0, 1, ReadWriteMode, RccAhbRstrGpioarstValuesBase> ;
+    using DMA2RST = RCC_AHBRSTR_DMARST_Values<RCC::AHB1RSTR, 22, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using DMA1RST = RCC_AHBRSTR_DMARST_Values<RCC::AHB1RSTR, 21, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using CRCRST = RCC_AHBRSTR_CRCRST_Values<RCC::AHB1RSTR, 12, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIOHRST = RCC_AHBRSTR_GPIOHRST_Values<RCC::AHB1RSTR, 7, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIOERST = RCC_AHBRSTR_GPIOERST_Values<RCC::AHB1RSTR, 4, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIODRST = RCC_AHBRSTR_GPIODRST_Values<RCC::AHB1RSTR, 3, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIOCRST = RCC_AHBRSTR_GPIOCRST_Values<RCC::AHB1RSTR, 2, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIOBRST = RCC_AHBRSTR_GPIOBRST_Values<RCC::AHB1RSTR, 1, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using GPIOARST = RCC_AHBRSTR_GPIOARST_Values<RCC::AHB1RSTR, 0, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb1RstrPack  = Register<0x40023810, 32, ReadWriteMode, RccAhbRstrDmaRstValuesBase, T...> ;
+  using AHB1RSTRPack  = Register<0x40023810, 32, ReadWriteMode, RCCAHB1RSTRBase, T...> ;
 
-  struct Ahb2Rstr : public RegisterBase<0x40023814, 32, ReadWriteMode>
+  struct RCCAHB2RSTRBase {} ;
+
+  struct AHB2RSTR : public RegisterBase<0x40023814, 32, ReadWriteMode>
   {
-    using Otgfsrst = RccAhbRstrOtgfsrstValues<Rcc::Ahb2Rstr, 7, 1, ReadWriteMode, RccAhbRstrOtgfsrstValuesBase> ;
+    using OTGFSRST = RCC_AHBRSTR_OTGFSRST_Values<RCC::AHB2RSTR, 7, 1, ReadWriteMode, RCCAHB2RSTRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb2RstrPack  = Register<0x40023814, 32, ReadWriteMode, RccAhbRstrOtgfsrstValuesBase, T...> ;
+  using AHB2RSTRPack  = Register<0x40023814, 32, ReadWriteMode, RCCAHB2RSTRBase, T...> ;
 
-  struct Apb1Rstr : public RegisterBase<0x40023820, 32, ReadWriteMode>
+  struct RCCAPB1RSTRBase {} ;
+
+  struct APB1RSTR : public RegisterBase<0x40023820, 32, ReadWriteMode>
   {
-    using Pwrrst = RccApbRstrPwrrstValues<Rcc::Apb1Rstr, 28, 1, ReadWriteMode, RccApbRstrPwrrstValuesBase> ;
-    using I2C3Rst = RccApbRstrICRstValues<Rcc::Apb1Rstr, 23, 1, ReadWriteMode, RccApbRstrICRstValuesBase> ;
-    using I2C2Rst = RccApbRstrICRstValues<Rcc::Apb1Rstr, 22, 1, ReadWriteMode, RccApbRstrICRstValuesBase> ;
-    using I2C1Rst = RccApbRstrICRstValues<Rcc::Apb1Rstr, 21, 1, ReadWriteMode, RccApbRstrICRstValuesBase> ;
-    using Uart2Rst = RccApbRstrUartRstValues<Rcc::Apb1Rstr, 17, 1, ReadWriteMode, RccApbRstrUartRstValuesBase> ;
-    using Spi3Rst = RccApbRstrSpiRstValues<Rcc::Apb1Rstr, 15, 1, ReadWriteMode, RccApbRstrSpiRstValuesBase> ;
-    using Spi2Rst = RccApbRstrSpiRstValues<Rcc::Apb1Rstr, 14, 1, ReadWriteMode, RccApbRstrSpiRstValuesBase> ;
-    using Wwdgrst = RccApbRstrWwdgrstValues<Rcc::Apb1Rstr, 11, 1, ReadWriteMode, RccApbRstrWwdgrstValuesBase> ;
-    using Tim5Rst = RccApbRstrTimRstValues<Rcc::Apb1Rstr, 3, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Tim4Rst = RccApbRstrTimRstValues<Rcc::Apb1Rstr, 2, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Tim3Rst = RccApbRstrTimRstValues<Rcc::Apb1Rstr, 1, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Tim2Rst = RccApbRstrTimRstValues<Rcc::Apb1Rstr, 0, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
+    using PWRRST = RCC_APBRSTR_PWRRST_Values<RCC::APB1RSTR, 28, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using I2C3RST = RCC_APBRSTR_ICRST_Values<RCC::APB1RSTR, 23, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using I2C2RST = RCC_APBRSTR_ICRST_Values<RCC::APB1RSTR, 22, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using I2C1RST = RCC_APBRSTR_ICRST_Values<RCC::APB1RSTR, 21, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using UART2RST = RCC_APBRSTR_UARTRST_Values<RCC::APB1RSTR, 17, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using SPI3RST = RCC_APBRSTR_SPIRST_Values<RCC::APB1RSTR, 15, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using SPI2RST = RCC_APBRSTR_SPIRST_Values<RCC::APB1RSTR, 14, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using WWDGRST = RCC_APBRSTR_WWDGRST_Values<RCC::APB1RSTR, 11, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using TIM5RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 3, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using TIM4RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 2, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using TIM3RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 1, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using TIM2RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 0, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb1RstrPack  = Register<0x40023820, 32, ReadWriteMode, RccApbRstrPwrrstValuesBase, T...> ;
+  using APB1RSTRPack  = Register<0x40023820, 32, ReadWriteMode, RCCAPB1RSTRBase, T...> ;
 
-  struct Apb2Rstr : public RegisterBase<0x40023824, 32, ReadWriteMode>
+  struct RCCAPB2RSTRBase {} ;
+
+  struct APB2RSTR : public RegisterBase<0x40023824, 32, ReadWriteMode>
   {
-    using Tim11Rst = RccApbRstrTimRstValues<Rcc::Apb2Rstr, 18, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Tim10Rst = RccApbRstrTimRstValues<Rcc::Apb2Rstr, 17, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Tim9Rst = RccApbRstrTimRstValues<Rcc::Apb2Rstr, 16, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
-    using Syscfgrst = RccApbRstrSyscfgrstValues<Rcc::Apb2Rstr, 14, 1, ReadWriteMode, RccApbRstrSyscfgrstValuesBase> ;
-    using Spi1Rst = RccApbRstrSpiRstValues<Rcc::Apb2Rstr, 12, 1, ReadWriteMode, RccApbRstrSpiRstValuesBase> ;
-    using Sdiorst = RccApbRstrSdiorstValues<Rcc::Apb2Rstr, 11, 1, ReadWriteMode, RccApbRstrSdiorstValuesBase> ;
-    using Adcrst = RccApbRstrAdcrstValues<Rcc::Apb2Rstr, 8, 1, ReadWriteMode, RccApbRstrAdcrstValuesBase> ;
-    using Usart6Rst = RccApbRstrUsartRstValues<Rcc::Apb2Rstr, 5, 1, ReadWriteMode, RccApbRstrUsartRstValuesBase> ;
-    using Usart1Rst = RccApbRstrUsartRstValues<Rcc::Apb2Rstr, 4, 1, ReadWriteMode, RccApbRstrUsartRstValuesBase> ;
-    using Tim1Rst = RccApbRstrTimRstValues<Rcc::Apb2Rstr, 0, 1, ReadWriteMode, RccApbRstrTimRstValuesBase> ;
+    using TIM11RST = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 18, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using TIM10RST = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 17, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using TIM9RST = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 16, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using SYSCFGRST = RCC_APBRSTR_SYSCFGRST_Values<RCC::APB2RSTR, 14, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using SPI1RST = RCC_APBRSTR_SPIRST_Values<RCC::APB2RSTR, 12, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using SDIORST = RCC_APBRSTR_SDIORST_Values<RCC::APB2RSTR, 11, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using ADCRST = RCC_APBRSTR_ADCRST_Values<RCC::APB2RSTR, 8, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using USART6RST = RCC_APBRSTR_USARTRST_Values<RCC::APB2RSTR, 5, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using USART1RST = RCC_APBRSTR_USARTRST_Values<RCC::APB2RSTR, 4, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using TIM1RST = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 0, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb2RstrPack  = Register<0x40023824, 32, ReadWriteMode, RccApbRstrTimRstValuesBase, T...> ;
+  using APB2RSTRPack  = Register<0x40023824, 32, ReadWriteMode, RCCAPB2RSTRBase, T...> ;
 
-  struct Ahb1Enr : public RegisterBase<0x40023830, 32, ReadWriteMode>
+  struct RCCAHB1ENRBase {} ;
+
+  struct AHB1ENR : public RegisterBase<0x40023830, 32, ReadWriteMode>
   {
-    using Dma2En = RccAhbEnrDmaEnValues<Rcc::Ahb1Enr, 22, 1, ReadWriteMode, RccAhbEnrDmaEnValuesBase> ;
-    using Dma1En = RccAhbEnrDmaEnValues<Rcc::Ahb1Enr, 21, 1, ReadWriteMode, RccAhbEnrDmaEnValuesBase> ;
-    using Crcen = RccAhbEnrCrcenValues<Rcc::Ahb1Enr, 12, 1, ReadWriteMode, RccAhbEnrCrcenValuesBase> ;
-    using Gpiohen = RccAhbEnrGpiohenValues<Rcc::Ahb1Enr, 7, 1, ReadWriteMode, RccAhbEnrGpiohenValuesBase> ;
-    using Gpioeen = RccAhbEnrGpioeenValues<Rcc::Ahb1Enr, 4, 1, ReadWriteMode, RccAhbEnrGpioeenValuesBase> ;
-    using Gpioden = RccAhbEnrGpiodenValues<Rcc::Ahb1Enr, 3, 1, ReadWriteMode, RccAhbEnrGpiodenValuesBase> ;
-    using Gpiocen = RccAhbEnrGpiocenValues<Rcc::Ahb1Enr, 2, 1, ReadWriteMode, RccAhbEnrGpiocenValuesBase> ;
-    using Gpioben = RccAhbEnrGpiobenValues<Rcc::Ahb1Enr, 1, 1, ReadWriteMode, RccAhbEnrGpiobenValuesBase> ;
-    using Gpioaen = RccAhbEnrGpioaenValues<Rcc::Ahb1Enr, 0, 1, ReadWriteMode, RccAhbEnrGpioaenValuesBase> ;
+    using DMA2EN = RCC_AHBENR_DMAEN_Values<RCC::AHB1ENR, 22, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using DMA1EN = RCC_AHBENR_DMAEN_Values<RCC::AHB1ENR, 21, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using CRCEN = RCC_AHBENR_CRCEN_Values<RCC::AHB1ENR, 12, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIOHEN = RCC_AHBENR_GPIOHEN_Values<RCC::AHB1ENR, 7, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIOEEN = RCC_AHBENR_GPIOEEN_Values<RCC::AHB1ENR, 4, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIODEN = RCC_AHBENR_GPIODEN_Values<RCC::AHB1ENR, 3, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIOCEN = RCC_AHBENR_GPIOCEN_Values<RCC::AHB1ENR, 2, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIOBEN = RCC_AHBENR_GPIOBEN_Values<RCC::AHB1ENR, 1, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using GPIOAEN = RCC_AHBENR_GPIOAEN_Values<RCC::AHB1ENR, 0, 1, ReadWriteMode, RCCAHB1ENRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb1EnrPack  = Register<0x40023830, 32, ReadWriteMode, RccAhbEnrDmaEnValuesBase, T...> ;
+  using AHB1ENRPack  = Register<0x40023830, 32, ReadWriteMode, RCCAHB1ENRBase, T...> ;
 
-  struct Ahb2Enr : public RegisterBase<0x40023834, 32, ReadWriteMode>
+  struct RCCAHB2ENRBase {} ;
+
+  struct AHB2ENR : public RegisterBase<0x40023834, 32, ReadWriteMode>
   {
-    using Otgfsen = RccAhbEnrOtgfsenValues<Rcc::Ahb2Enr, 7, 1, ReadWriteMode, RccAhbEnrOtgfsenValuesBase> ;
+    using OTGFSEN = RCC_AHBENR_OTGFSEN_Values<RCC::AHB2ENR, 7, 1, ReadWriteMode, RCCAHB2ENRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb2EnrPack  = Register<0x40023834, 32, ReadWriteMode, RccAhbEnrOtgfsenValuesBase, T...> ;
+  using AHB2ENRPack  = Register<0x40023834, 32, ReadWriteMode, RCCAHB2ENRBase, T...> ;
 
-  struct Apb1Enr : public RegisterBase<0x40023840, 32, ReadWriteMode>
+  struct RCCAPB1ENRBase {} ;
+
+  struct APB1ENR : public RegisterBase<0x40023840, 32, ReadWriteMode>
   {
-    using Pwren = RccApbEnrPwrenValues<Rcc::Apb1Enr, 28, 1, ReadWriteMode, RccApbEnrPwrenValuesBase> ;
-    using I2C3En = RccApbEnrICEnValues<Rcc::Apb1Enr, 23, 1, ReadWriteMode, RccApbEnrICEnValuesBase> ;
-    using I2C2En = RccApbEnrICEnValues<Rcc::Apb1Enr, 22, 1, ReadWriteMode, RccApbEnrICEnValuesBase> ;
-    using I2C1En = RccApbEnrICEnValues<Rcc::Apb1Enr, 21, 1, ReadWriteMode, RccApbEnrICEnValuesBase> ;
-    using Usart2En = RccApbEnrUsartEnValues<Rcc::Apb1Enr, 17, 1, ReadWriteMode, RccApbEnrUsartEnValuesBase> ;
-    using Spi3En = RccApbEnrSpiEnValues<Rcc::Apb1Enr, 15, 1, ReadWriteMode, RccApbEnrSpiEnValuesBase> ;
-    using Spi2En = RccApbEnrSpiEnValues<Rcc::Apb1Enr, 14, 1, ReadWriteMode, RccApbEnrSpiEnValuesBase> ;
-    using Wwdgen = RccApbEnrWwdgenValues<Rcc::Apb1Enr, 11, 1, ReadWriteMode, RccApbEnrWwdgenValuesBase> ;
-    using Tim5En = RccApbEnrTimEnValues<Rcc::Apb1Enr, 3, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Tim4En = RccApbEnrTimEnValues<Rcc::Apb1Enr, 2, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Tim3En = RccApbEnrTimEnValues<Rcc::Apb1Enr, 1, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Tim2En = RccApbEnrTimEnValues<Rcc::Apb1Enr, 0, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
+    using PWREN = RCC_APBENR_PWREN_Values<RCC::APB1ENR, 28, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using I2C3EN = RCC_APBENR_ICEN_Values<RCC::APB1ENR, 23, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using I2C2EN = RCC_APBENR_ICEN_Values<RCC::APB1ENR, 22, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using I2C1EN = RCC_APBENR_ICEN_Values<RCC::APB1ENR, 21, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using USART2EN = RCC_APBENR_USARTEN_Values<RCC::APB1ENR, 17, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using SPI3EN = RCC_APBENR_SPIEN_Values<RCC::APB1ENR, 15, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using SPI2EN = RCC_APBENR_SPIEN_Values<RCC::APB1ENR, 14, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using WWDGEN = RCC_APBENR_WWDGEN_Values<RCC::APB1ENR, 11, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using TIM5EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 3, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using TIM4EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 2, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using TIM3EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 1, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using TIM2EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 0, 1, ReadWriteMode, RCCAPB1ENRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb1EnrPack  = Register<0x40023840, 32, ReadWriteMode, RccApbEnrPwrenValuesBase, T...> ;
+  using APB1ENRPack  = Register<0x40023840, 32, ReadWriteMode, RCCAPB1ENRBase, T...> ;
 
-  struct Apb2Enr : public RegisterBase<0x40023844, 32, ReadWriteMode>
+  struct RCCAPB2ENRBase {} ;
+
+  struct APB2ENR : public RegisterBase<0x40023844, 32, ReadWriteMode>
   {
-    using Tim1En = RccApbEnrTimEnValues<Rcc::Apb2Enr, 0, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Usart1En = RccApbEnrUsartEnValues<Rcc::Apb2Enr, 4, 1, ReadWriteMode, RccApbEnrUsartEnValuesBase> ;
-    using Usart6En = RccApbEnrUsartEnValues<Rcc::Apb2Enr, 5, 1, ReadWriteMode, RccApbEnrUsartEnValuesBase> ;
-    using Adc1En = RccApbEnrAdcEnValues<Rcc::Apb2Enr, 8, 1, ReadWriteMode, RccApbEnrAdcEnValuesBase> ;
-    using Sdioen = RccApbEnrSdioenValues<Rcc::Apb2Enr, 11, 1, ReadWriteMode, RccApbEnrSdioenValuesBase> ;
-    using Spi1En = RccApbEnrSpiEnValues<Rcc::Apb2Enr, 12, 1, ReadWriteMode, RccApbEnrSpiEnValuesBase> ;
-    using Spi4En = RccApbEnrSpiEnValues<Rcc::Apb2Enr, 13, 1, ReadWriteMode, RccApbEnrSpiEnValuesBase> ;
-    using Syscfgen = RccApbEnrSyscfgenValues<Rcc::Apb2Enr, 14, 1, ReadWriteMode, RccApbEnrSyscfgenValuesBase> ;
-    using Tim9En = RccApbEnrTimEnValues<Rcc::Apb2Enr, 16, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Tim10En = RccApbEnrTimEnValues<Rcc::Apb2Enr, 17, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
-    using Tim11En = RccApbEnrTimEnValues<Rcc::Apb2Enr, 18, 1, ReadWriteMode, RccApbEnrTimEnValuesBase> ;
+    using TIM1EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 0, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using USART1EN = RCC_APBENR_USARTEN_Values<RCC::APB2ENR, 4, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using USART6EN = RCC_APBENR_USARTEN_Values<RCC::APB2ENR, 5, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using ADC1EN = RCC_APBENR_ADCEN_Values<RCC::APB2ENR, 8, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using SDIOEN = RCC_APBENR_SDIOEN_Values<RCC::APB2ENR, 11, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using SPI1EN = RCC_APBENR_SPIEN_Values<RCC::APB2ENR, 12, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using SPI4EN = RCC_APBENR_SPIEN_Values<RCC::APB2ENR, 13, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using SYSCFGEN = RCC_APBENR_SYSCFGEN_Values<RCC::APB2ENR, 14, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using TIM9EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 16, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using TIM10EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 17, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using TIM11EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 18, 1, ReadWriteMode, RCCAPB2ENRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb2EnrPack  = Register<0x40023844, 32, ReadWriteMode, RccApbEnrTimEnValuesBase, T...> ;
+  using APB2ENRPack  = Register<0x40023844, 32, ReadWriteMode, RCCAPB2ENRBase, T...> ;
 
-  struct Ahb1Lpenr : public RegisterBase<0x40023850, 32, ReadWriteMode>
+  struct RCCAHB1LPENRBase {} ;
+
+  struct AHB1LPENR : public RegisterBase<0x40023850, 32, ReadWriteMode>
   {
-    using Dma2Lpen = RccAhbLpenrDmaLpenValues<Rcc::Ahb1Lpenr, 22, 1, ReadWriteMode, RccAhbLpenrDmaLpenValuesBase> ;
-    using Dma1Lpen = RccAhbLpenrDmaLpenValues<Rcc::Ahb1Lpenr, 21, 1, ReadWriteMode, RccAhbLpenrDmaLpenValuesBase> ;
-    using Sram1Lpen = RccAhbLpenrSramLpenValues<Rcc::Ahb1Lpenr, 16, 1, ReadWriteMode, RccAhbLpenrSramLpenValuesBase> ;
-    using Flitflpen = RccAhbLpenrFlitflpenValues<Rcc::Ahb1Lpenr, 15, 1, ReadWriteMode, RccAhbLpenrFlitflpenValuesBase> ;
-    using Crclpen = RccAhbLpenrCrclpenValues<Rcc::Ahb1Lpenr, 12, 1, ReadWriteMode, RccAhbLpenrCrclpenValuesBase> ;
-    using Gpiohlpen = RccAhbLpenrGpiohlpenValues<Rcc::Ahb1Lpenr, 7, 1, ReadWriteMode, RccAhbLpenrGpiohlpenValuesBase> ;
-    using Gpioelpen = RccAhbLpenrGpioelpenValues<Rcc::Ahb1Lpenr, 4, 1, ReadWriteMode, RccAhbLpenrGpioelpenValuesBase> ;
-    using Gpiodlpen = RccAhbLpenrGpiodlpenValues<Rcc::Ahb1Lpenr, 3, 1, ReadWriteMode, RccAhbLpenrGpiodlpenValuesBase> ;
-    using Gpioclpen = RccAhbLpenrGpioclpenValues<Rcc::Ahb1Lpenr, 2, 1, ReadWriteMode, RccAhbLpenrGpioclpenValuesBase> ;
-    using Gpioblpen = RccAhbLpenrGpioblpenValues<Rcc::Ahb1Lpenr, 1, 1, ReadWriteMode, RccAhbLpenrGpioblpenValuesBase> ;
-    using Gpioalpen = RccAhbLpenrGpioalpenValues<Rcc::Ahb1Lpenr, 0, 1, ReadWriteMode, RccAhbLpenrGpioalpenValuesBase> ;
+    using DMA2LPEN = RCC_AHBLPENR_DMALPEN_Values<RCC::AHB1LPENR, 22, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using DMA1LPEN = RCC_AHBLPENR_DMALPEN_Values<RCC::AHB1LPENR, 21, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using SRAM1LPEN = RCC_AHBLPENR_SRAMLPEN_Values<RCC::AHB1LPENR, 16, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using FLITFLPEN = RCC_AHBLPENR_FLITFLPEN_Values<RCC::AHB1LPENR, 15, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using CRCLPEN = RCC_AHBLPENR_CRCLPEN_Values<RCC::AHB1LPENR, 12, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIOHLPEN = RCC_AHBLPENR_GPIOHLPEN_Values<RCC::AHB1LPENR, 7, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIOELPEN = RCC_AHBLPENR_GPIOELPEN_Values<RCC::AHB1LPENR, 4, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIODLPEN = RCC_AHBLPENR_GPIODLPEN_Values<RCC::AHB1LPENR, 3, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIOCLPEN = RCC_AHBLPENR_GPIOCLPEN_Values<RCC::AHB1LPENR, 2, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIOBLPEN = RCC_AHBLPENR_GPIOBLPEN_Values<RCC::AHB1LPENR, 1, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using GPIOALPEN = RCC_AHBLPENR_GPIOALPEN_Values<RCC::AHB1LPENR, 0, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb1LpenrPack  = Register<0x40023850, 32, ReadWriteMode, RccAhbLpenrDmaLpenValuesBase, T...> ;
+  using AHB1LPENRPack  = Register<0x40023850, 32, ReadWriteMode, RCCAHB1LPENRBase, T...> ;
 
-  struct Ahb2Lpenr : public RegisterBase<0x40023854, 32, ReadWriteMode>
+  struct RCCAHB2LPENRBase {} ;
+
+  struct AHB2LPENR : public RegisterBase<0x40023854, 32, ReadWriteMode>
   {
-    using Otgfslpen = RccAhbLpenrOtgfslpenValues<Rcc::Ahb2Lpenr, 7, 1, ReadWriteMode, RccAhbLpenrOtgfslpenValuesBase> ;
+    using OTGFSLPEN = RCC_AHBLPENR_OTGFSLPEN_Values<RCC::AHB2LPENR, 7, 1, ReadWriteMode, RCCAHB2LPENRBase> ;
   } ;
 
   template<typename... T> 
-  using Ahb2LpenrPack  = Register<0x40023854, 32, ReadWriteMode, RccAhbLpenrOtgfslpenValuesBase, T...> ;
+  using AHB2LPENRPack  = Register<0x40023854, 32, ReadWriteMode, RCCAHB2LPENRBase, T...> ;
 
-  struct Apb1Lpenr : public RegisterBase<0x40023860, 32, ReadWriteMode>
+  struct RCCAPB1LPENRBase {} ;
+
+  struct APB1LPENR : public RegisterBase<0x40023860, 32, ReadWriteMode>
   {
-    using Pwrlpen = RccApbLpenrPwrlpenValues<Rcc::Apb1Lpenr, 28, 1, ReadWriteMode, RccApbLpenrPwrlpenValuesBase> ;
-    using I2C3Lpen = RccApbLpenrICLpenValues<Rcc::Apb1Lpenr, 23, 1, ReadWriteMode, RccApbLpenrICLpenValuesBase> ;
-    using I2C2Lpen = RccApbLpenrICLpenValues<Rcc::Apb1Lpenr, 22, 1, ReadWriteMode, RccApbLpenrICLpenValuesBase> ;
-    using I2C1Lpen = RccApbLpenrICLpenValues<Rcc::Apb1Lpenr, 21, 1, ReadWriteMode, RccApbLpenrICLpenValuesBase> ;
-    using Usart2Lpen = RccApbLpenrUsartLpenValues<Rcc::Apb1Lpenr, 17, 1, ReadWriteMode, RccApbLpenrUsartLpenValuesBase> ;
-    using Spi3Lpen = RccApbLpenrSpiLpenValues<Rcc::Apb1Lpenr, 15, 1, ReadWriteMode, RccApbLpenrSpiLpenValuesBase> ;
-    using Spi2Lpen = RccApbLpenrSpiLpenValues<Rcc::Apb1Lpenr, 14, 1, ReadWriteMode, RccApbLpenrSpiLpenValuesBase> ;
-    using Wwdglpen = RccApbLpenrWwdglpenValues<Rcc::Apb1Lpenr, 11, 1, ReadWriteMode, RccApbLpenrWwdglpenValuesBase> ;
-    using Tim5Lpen = RccApbLpenrTimLpenValues<Rcc::Apb1Lpenr, 3, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Tim4Lpen = RccApbLpenrTimLpenValues<Rcc::Apb1Lpenr, 2, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Tim3Lpen = RccApbLpenrTimLpenValues<Rcc::Apb1Lpenr, 1, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Tim2Lpen = RccApbLpenrTimLpenValues<Rcc::Apb1Lpenr, 0, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
+    using PWRLPEN = RCC_APBLPENR_PWRLPEN_Values<RCC::APB1LPENR, 28, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using I2C3LPEN = RCC_APBLPENR_ICLPEN_Values<RCC::APB1LPENR, 23, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using I2C2LPEN = RCC_APBLPENR_ICLPEN_Values<RCC::APB1LPENR, 22, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using I2C1LPEN = RCC_APBLPENR_ICLPEN_Values<RCC::APB1LPENR, 21, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using USART2LPEN = RCC_APBLPENR_USARTLPEN_Values<RCC::APB1LPENR, 17, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using SPI3LPEN = RCC_APBLPENR_SPILPEN_Values<RCC::APB1LPENR, 15, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using SPI2LPEN = RCC_APBLPENR_SPILPEN_Values<RCC::APB1LPENR, 14, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using WWDGLPEN = RCC_APBLPENR_WWDGLPEN_Values<RCC::APB1LPENR, 11, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using TIM5LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 3, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using TIM4LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 2, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using TIM3LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 1, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using TIM2LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 0, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb1LpenrPack  = Register<0x40023860, 32, ReadWriteMode, RccApbLpenrPwrlpenValuesBase, T...> ;
+  using APB1LPENRPack  = Register<0x40023860, 32, ReadWriteMode, RCCAPB1LPENRBase, T...> ;
 
-  struct Apb2Lpenr : public RegisterBase<0x40023864, 32, ReadWriteMode>
+  struct RCCAPB2LPENRBase {} ;
+
+  struct APB2LPENR : public RegisterBase<0x40023864, 32, ReadWriteMode>
   {
-    using Tim1Lpen = RccApbLpenrTimLpenValues<Rcc::Apb2Lpenr, 0, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Usart1Lpen = RccApbLpenrUsartLpenValues<Rcc::Apb2Lpenr, 4, 1, ReadWriteMode, RccApbLpenrUsartLpenValuesBase> ;
-    using Usart6Lpen = RccApbLpenrUsartLpenValues<Rcc::Apb2Lpenr, 5, 1, ReadWriteMode, RccApbLpenrUsartLpenValuesBase> ;
-    using Adc1Lpen = RccApbLpenrAdcLpenValues<Rcc::Apb2Lpenr, 8, 1, ReadWriteMode, RccApbLpenrAdcLpenValuesBase> ;
-    using Sdiolpen = RccApbLpenrSdiolpenValues<Rcc::Apb2Lpenr, 11, 1, ReadWriteMode, RccApbLpenrSdiolpenValuesBase> ;
-    using Spi1Lpen = RccApbLpenrSpiLpenValues<Rcc::Apb2Lpenr, 12, 1, ReadWriteMode, RccApbLpenrSpiLpenValuesBase> ;
-    using Spi4Lpen = RccApbLpenrSpiLpenValues<Rcc::Apb2Lpenr, 13, 1, ReadWriteMode, RccApbLpenrSpiLpenValuesBase> ;
-    using Syscfglpen = RccApbLpenrSyscfglpenValues<Rcc::Apb2Lpenr, 14, 1, ReadWriteMode, RccApbLpenrSyscfglpenValuesBase> ;
-    using Tim9Lpen = RccApbLpenrTimLpenValues<Rcc::Apb2Lpenr, 16, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Tim10Lpen = RccApbLpenrTimLpenValues<Rcc::Apb2Lpenr, 17, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
-    using Tim11Lpen = RccApbLpenrTimLpenValues<Rcc::Apb2Lpenr, 18, 1, ReadWriteMode, RccApbLpenrTimLpenValuesBase> ;
+    using TIM1LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 0, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using USART1LPEN = RCC_APBLPENR_USARTLPEN_Values<RCC::APB2LPENR, 4, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using USART6LPEN = RCC_APBLPENR_USARTLPEN_Values<RCC::APB2LPENR, 5, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using ADC1LPEN = RCC_APBLPENR_ADCLPEN_Values<RCC::APB2LPENR, 8, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using SDIOLPEN = RCC_APBLPENR_SDIOLPEN_Values<RCC::APB2LPENR, 11, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using SPI1LPEN = RCC_APBLPENR_SPILPEN_Values<RCC::APB2LPENR, 12, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using SPI4LPEN = RCC_APBLPENR_SPILPEN_Values<RCC::APB2LPENR, 13, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using SYSCFGLPEN = RCC_APBLPENR_SYSCFGLPEN_Values<RCC::APB2LPENR, 14, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using TIM9LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 16, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using TIM10LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 17, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using TIM11LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 18, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
   } ;
 
   template<typename... T> 
-  using Apb2LpenrPack  = Register<0x40023864, 32, ReadWriteMode, RccApbLpenrTimLpenValuesBase, T...> ;
+  using APB2LPENRPack  = Register<0x40023864, 32, ReadWriteMode, RCCAPB2LPENRBase, T...> ;
 
-  struct Bdcr : public RegisterBase<0x40023870, 32, ReadWriteMode>
+  struct RCCBDCRBase {} ;
+
+  struct BDCR : public RegisterBase<0x40023870, 32, ReadWriteMode>
   {
-    using Bdrst = RccBdcrBdrstValues<Rcc::Bdcr, 16, 1, ReadWriteMode, RccBdcrBdrstValuesBase> ;
-    using Rtcen = RccBdcrRtcenValues<Rcc::Bdcr, 15, 1, ReadWriteMode, RccBdcrRtcenValuesBase> ;
-    using Rtcsel1 = RccBdcrRtcselValues<Rcc::Bdcr, 9, 1, ReadWriteMode, RccBdcrRtcselValuesBase> ;
-    using Rtcsel0 = RccBdcrRtcselValues<Rcc::Bdcr, 8, 1, ReadWriteMode, RccBdcrRtcselValuesBase> ;
-    using Lsebyp = RccBdcrLsebypValues<Rcc::Bdcr, 2, 1, ReadWriteMode, RccBdcrLsebypValuesBase> ;
-    using Lserdy = RccBdcrLserdyValues<Rcc::Bdcr, 1, 1, ReadMode, RccBdcrLserdyValuesBase> ;
-    using Lseon = RccBdcrLseonValues<Rcc::Bdcr, 0, 1, ReadWriteMode, RccBdcrLseonValuesBase> ;
+    using BDRST = RCC_BDCR_BDRST_Values<RCC::BDCR, 16, 1, ReadWriteMode, RCCBDCRBase> ;
+    using RTCEN = RCC_BDCR_RTCEN_Values<RCC::BDCR, 15, 1, ReadWriteMode, RCCBDCRBase> ;
+    using RTCSEL1 = RCC_BDCR_RTCSEL_Values<RCC::BDCR, 9, 1, ReadWriteMode, RCCBDCRBase> ;
+    using RTCSEL0 = RCC_BDCR_RTCSEL_Values<RCC::BDCR, 8, 1, ReadWriteMode, RCCBDCRBase> ;
+    using LSEBYP = RCC_BDCR_LSEBYP_Values<RCC::BDCR, 2, 1, ReadWriteMode, RCCBDCRBase> ;
+    using LSERDY = RCC_BDCR_LSERDY_Values<RCC::BDCR, 1, 1, ReadMode, RCCBDCRBase> ;
+    using LSEON = RCC_BDCR_LSEON_Values<RCC::BDCR, 0, 1, ReadWriteMode, RCCBDCRBase> ;
   } ;
 
   template<typename... T> 
-  using BdcrPack  = Register<0x40023870, 32, ReadWriteMode, RccBdcrBdrstValuesBase, T...> ;
+  using BDCRPack  = Register<0x40023870, 32, ReadWriteMode, RCCBDCRBase, T...> ;
 
-  struct Csr : public RegisterBase<0x40023874, 32, ReadWriteMode>
+  struct RCCCSRBase {} ;
+
+  struct CSR : public RegisterBase<0x40023874, 32, ReadWriteMode>
   {
-    using Lpwrrstf = RccCsrLpwrrstfValues<Rcc::Csr, 31, 1, ReadWriteMode, RccCsrLpwrrstfValuesBase> ;
-    using Wwdgrstf = RccCsrWwdgrstfValues<Rcc::Csr, 30, 1, ReadWriteMode, RccCsrWwdgrstfValuesBase> ;
-    using Wdgrstf = RccCsrWdgrstfValues<Rcc::Csr, 29, 1, ReadWriteMode, RccCsrWdgrstfValuesBase> ;
-    using Sftrstf = RccCsrSftrstfValues<Rcc::Csr, 28, 1, ReadWriteMode, RccCsrSftrstfValuesBase> ;
-    using Porrstf = RccCsrPorrstfValues<Rcc::Csr, 27, 1, ReadWriteMode, RccCsrPorrstfValuesBase> ;
-    using Padrstf = RccCsrPadrstfValues<Rcc::Csr, 26, 1, ReadWriteMode, RccCsrPadrstfValuesBase> ;
-    using Borrstf = RccCsrBorrstfValues<Rcc::Csr, 25, 1, ReadWriteMode, RccCsrBorrstfValuesBase> ;
-    using Rmvf = RccCsrRmvfValues<Rcc::Csr, 24, 1, ReadWriteMode, RccCsrRmvfValuesBase> ;
-    using Lsirdy = RccCsrLsirdyValues<Rcc::Csr, 1, 1, ReadMode, RccCsrLsirdyValuesBase> ;
-    using Lsion = RccCsrLsionValues<Rcc::Csr, 0, 1, ReadWriteMode, RccCsrLsionValuesBase> ;
+    using LPWRRSTF = RCC_CSR_LPWRRSTF_Values<RCC::CSR, 31, 1, ReadWriteMode, RCCCSRBase> ;
+    using WWDGRSTF = RCC_CSR_WWDGRSTF_Values<RCC::CSR, 30, 1, ReadWriteMode, RCCCSRBase> ;
+    using WDGRSTF = RCC_CSR_WDGRSTF_Values<RCC::CSR, 29, 1, ReadWriteMode, RCCCSRBase> ;
+    using SFTRSTF = RCC_CSR_SFTRSTF_Values<RCC::CSR, 28, 1, ReadWriteMode, RCCCSRBase> ;
+    using PORRSTF = RCC_CSR_PORRSTF_Values<RCC::CSR, 27, 1, ReadWriteMode, RCCCSRBase> ;
+    using PADRSTF = RCC_CSR_PADRSTF_Values<RCC::CSR, 26, 1, ReadWriteMode, RCCCSRBase> ;
+    using BORRSTF = RCC_CSR_BORRSTF_Values<RCC::CSR, 25, 1, ReadWriteMode, RCCCSRBase> ;
+    using RMVF = RCC_CSR_RMVF_Values<RCC::CSR, 24, 1, ReadWriteMode, RCCCSRBase> ;
+    using LSIRDY = RCC_CSR_LSIRDY_Values<RCC::CSR, 1, 1, ReadMode, RCCCSRBase> ;
+    using LSION = RCC_CSR_LSION_Values<RCC::CSR, 0, 1, ReadWriteMode, RCCCSRBase> ;
   } ;
 
   template<typename... T> 
-  using CsrPack  = Register<0x40023874, 32, ReadWriteMode, RccCsrLpwrrstfValuesBase, T...> ;
+  using CSRPack  = Register<0x40023874, 32, ReadWriteMode, RCCCSRBase, T...> ;
 
-  struct Sscgr : public RegisterBase<0x40023880, 32, ReadWriteMode>
+  struct RCCSSCGRBase {} ;
+
+  struct SSCGR : public RegisterBase<0x40023880, 32, ReadWriteMode>
   {
-    using Sscgen = RccSscgrSscgenValues<Rcc::Sscgr, 31, 1, ReadWriteMode, RccSscgrSscgenValuesBase> ;
-    using Spreadsel = RccSscgrSpreadselValues<Rcc::Sscgr, 30, 1, ReadWriteMode, RccSscgrSpreadselValuesBase> ;
-    using Incstep = ReadWriteMode<Rcc::Sscgr, 13, 15> ;
-    using Modper = ReadWriteMode<Rcc::Sscgr, 0, 13> ;
+    using SSCGEN = RCC_SSCGR_SSCGEN_Values<RCC::SSCGR, 31, 1, ReadWriteMode, RCCSSCGRBase> ;
+    using SPREADSEL = RCC_SSCGR_SPREADSEL_Values<RCC::SSCGR, 30, 1, ReadWriteMode, RCCSSCGRBase> ;
+    using INCSTEP = RCC_SSCGR_INCSTEP_Values<RCC::SSCGR, 13, 15, ReadWriteMode, RCCSSCGRBase> ;
+    using MODPER = RCC_SSCGR_MODPER_Values<RCC::SSCGR, 0, 13, ReadWriteMode, RCCSSCGRBase> ;
   } ;
 
   template<typename... T> 
-  using SscgrPack  = Register<0x40023880, 32, ReadWriteMode, RccSscgrSscgenValuesBase, T...> ;
+  using SSCGRPack  = Register<0x40023880, 32, ReadWriteMode, RCCSSCGRBase, T...> ;
 
-  struct Plli2Scfgr : public RegisterBase<0x40023884, 32, ReadWriteMode>
+  struct RCCPLLI2SCFGRBase {} ;
+
+  struct PLLI2SCFGR : public RegisterBase<0x40023884, 32, ReadWriteMode>
   {
-    using Plli2Srx = RccPlliScfgrPlliSrxValues<Rcc::Plli2Scfgr, 28, 3, ReadWriteMode, RccPlliScfgrPlliSrxValuesBase> ;
-    using Plli2Snx = ReadWriteMode<Rcc::Plli2Scfgr, 6, 9> ;
+    using PLLI2SRx = RCC_PLLISCFGR_PLLISRx_Values<RCC::PLLI2SCFGR, 28, 3, ReadWriteMode, RCCPLLI2SCFGRBase> ;
+    using PLLI2SNx = RCC_PLLISCFGR_PLLISNx_Values<RCC::PLLI2SCFGR, 6, 9, ReadWriteMode, RCCPLLI2SCFGRBase> ;
   } ;
 
   template<typename... T> 
-  using Plli2ScfgrPack  = Register<0x40023884, 32, ReadWriteMode, RccPlliScfgrPlliSrxValuesBase, T...> ;
+  using PLLI2SCFGRPack  = Register<0x40023884, 32, ReadWriteMode, RCCPLLI2SCFGRBase, T...> ;
 
 } ;
 

@@ -15,187 +15,199 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Exti
+struct EXTI
 {
-  struct Imr : public RegisterBase<0x40013C00, 32, ReadWriteMode>
+  struct EXTIIMRBase {} ;
+
+  struct IMR : public RegisterBase<0x40013C00, 32, ReadWriteMode>
   {
-    using Mr0 = ExtiImrMrValues<Exti::Imr, 0, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr1 = ExtiImrMrValues<Exti::Imr, 1, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr2 = ExtiImrMrValues<Exti::Imr, 2, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr3 = ExtiImrMrValues<Exti::Imr, 3, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr4 = ExtiImrMrValues<Exti::Imr, 4, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr5 = ExtiImrMrValues<Exti::Imr, 5, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr6 = ExtiImrMrValues<Exti::Imr, 6, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr7 = ExtiImrMrValues<Exti::Imr, 7, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr8 = ExtiImrMrValues<Exti::Imr, 8, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr9 = ExtiImrMrValues<Exti::Imr, 9, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr10 = ExtiImrMrValues<Exti::Imr, 10, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr11 = ExtiImrMrValues<Exti::Imr, 11, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr12 = ExtiImrMrValues<Exti::Imr, 12, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr13 = ExtiImrMrValues<Exti::Imr, 13, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr14 = ExtiImrMrValues<Exti::Imr, 14, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr15 = ExtiImrMrValues<Exti::Imr, 15, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr16 = ExtiImrMrValues<Exti::Imr, 16, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr17 = ExtiImrMrValues<Exti::Imr, 17, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr18 = ExtiImrMrValues<Exti::Imr, 18, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr19 = ExtiImrMrValues<Exti::Imr, 19, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr20 = ExtiImrMrValues<Exti::Imr, 20, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr21 = ExtiImrMrValues<Exti::Imr, 21, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
-    using Mr22 = ExtiImrMrValues<Exti::Imr, 22, 1, ReadWriteMode, ExtiImrMrValuesBase> ;
+    using MR0 = EXTI_IMR_MR_Values<EXTI::IMR, 0, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR1 = EXTI_IMR_MR_Values<EXTI::IMR, 1, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR2 = EXTI_IMR_MR_Values<EXTI::IMR, 2, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR3 = EXTI_IMR_MR_Values<EXTI::IMR, 3, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR4 = EXTI_IMR_MR_Values<EXTI::IMR, 4, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR5 = EXTI_IMR_MR_Values<EXTI::IMR, 5, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR6 = EXTI_IMR_MR_Values<EXTI::IMR, 6, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR7 = EXTI_IMR_MR_Values<EXTI::IMR, 7, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR8 = EXTI_IMR_MR_Values<EXTI::IMR, 8, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR9 = EXTI_IMR_MR_Values<EXTI::IMR, 9, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR10 = EXTI_IMR_MR_Values<EXTI::IMR, 10, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR11 = EXTI_IMR_MR_Values<EXTI::IMR, 11, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR12 = EXTI_IMR_MR_Values<EXTI::IMR, 12, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR13 = EXTI_IMR_MR_Values<EXTI::IMR, 13, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR14 = EXTI_IMR_MR_Values<EXTI::IMR, 14, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR15 = EXTI_IMR_MR_Values<EXTI::IMR, 15, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR16 = EXTI_IMR_MR_Values<EXTI::IMR, 16, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR17 = EXTI_IMR_MR_Values<EXTI::IMR, 17, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR18 = EXTI_IMR_MR_Values<EXTI::IMR, 18, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR19 = EXTI_IMR_MR_Values<EXTI::IMR, 19, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR20 = EXTI_IMR_MR_Values<EXTI::IMR, 20, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR21 = EXTI_IMR_MR_Values<EXTI::IMR, 21, 1, ReadWriteMode, EXTIIMRBase> ;
+    using MR22 = EXTI_IMR_MR_Values<EXTI::IMR, 22, 1, ReadWriteMode, EXTIIMRBase> ;
   } ;
 
   template<typename... T> 
-  using ImrPack  = Register<0x40013C00, 32, ReadWriteMode, ExtiImrMrValuesBase, T...> ;
+  using IMRPack  = Register<0x40013C00, 32, ReadWriteMode, EXTIIMRBase, T...> ;
 
-  struct Emr : public RegisterBase<0x40013C04, 32, ReadWriteMode>
+  struct EXTIEMRBase {} ;
+
+  struct EMR : public RegisterBase<0x40013C04, 32, ReadWriteMode>
   {
-    using Mr0 = ExtiEmrMrValues<Exti::Emr, 0, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr1 = ExtiEmrMrValues<Exti::Emr, 1, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr2 = ExtiEmrMrValues<Exti::Emr, 2, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr3 = ExtiEmrMrValues<Exti::Emr, 3, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr4 = ExtiEmrMrValues<Exti::Emr, 4, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr5 = ExtiEmrMrValues<Exti::Emr, 5, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr6 = ExtiEmrMrValues<Exti::Emr, 6, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr7 = ExtiEmrMrValues<Exti::Emr, 7, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr8 = ExtiEmrMrValues<Exti::Emr, 8, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr9 = ExtiEmrMrValues<Exti::Emr, 9, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr10 = ExtiEmrMrValues<Exti::Emr, 10, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr11 = ExtiEmrMrValues<Exti::Emr, 11, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr12 = ExtiEmrMrValues<Exti::Emr, 12, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr13 = ExtiEmrMrValues<Exti::Emr, 13, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr14 = ExtiEmrMrValues<Exti::Emr, 14, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr15 = ExtiEmrMrValues<Exti::Emr, 15, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr16 = ExtiEmrMrValues<Exti::Emr, 16, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr17 = ExtiEmrMrValues<Exti::Emr, 17, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr18 = ExtiEmrMrValues<Exti::Emr, 18, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr19 = ExtiEmrMrValues<Exti::Emr, 19, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr20 = ExtiEmrMrValues<Exti::Emr, 20, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr21 = ExtiEmrMrValues<Exti::Emr, 21, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
-    using Mr22 = ExtiEmrMrValues<Exti::Emr, 22, 1, ReadWriteMode, ExtiEmrMrValuesBase> ;
+    using MR0 = EXTI_EMR_MR_Values<EXTI::EMR, 0, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR1 = EXTI_EMR_MR_Values<EXTI::EMR, 1, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR2 = EXTI_EMR_MR_Values<EXTI::EMR, 2, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR3 = EXTI_EMR_MR_Values<EXTI::EMR, 3, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR4 = EXTI_EMR_MR_Values<EXTI::EMR, 4, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR5 = EXTI_EMR_MR_Values<EXTI::EMR, 5, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR6 = EXTI_EMR_MR_Values<EXTI::EMR, 6, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR7 = EXTI_EMR_MR_Values<EXTI::EMR, 7, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR8 = EXTI_EMR_MR_Values<EXTI::EMR, 8, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR9 = EXTI_EMR_MR_Values<EXTI::EMR, 9, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR10 = EXTI_EMR_MR_Values<EXTI::EMR, 10, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR11 = EXTI_EMR_MR_Values<EXTI::EMR, 11, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR12 = EXTI_EMR_MR_Values<EXTI::EMR, 12, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR13 = EXTI_EMR_MR_Values<EXTI::EMR, 13, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR14 = EXTI_EMR_MR_Values<EXTI::EMR, 14, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR15 = EXTI_EMR_MR_Values<EXTI::EMR, 15, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR16 = EXTI_EMR_MR_Values<EXTI::EMR, 16, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR17 = EXTI_EMR_MR_Values<EXTI::EMR, 17, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR18 = EXTI_EMR_MR_Values<EXTI::EMR, 18, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR19 = EXTI_EMR_MR_Values<EXTI::EMR, 19, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR20 = EXTI_EMR_MR_Values<EXTI::EMR, 20, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR21 = EXTI_EMR_MR_Values<EXTI::EMR, 21, 1, ReadWriteMode, EXTIEMRBase> ;
+    using MR22 = EXTI_EMR_MR_Values<EXTI::EMR, 22, 1, ReadWriteMode, EXTIEMRBase> ;
   } ;
 
   template<typename... T> 
-  using EmrPack  = Register<0x40013C04, 32, ReadWriteMode, ExtiEmrMrValuesBase, T...> ;
+  using EMRPack  = Register<0x40013C04, 32, ReadWriteMode, EXTIEMRBase, T...> ;
 
-  struct Rtsr : public RegisterBase<0x40013C08, 32, ReadWriteMode>
+  struct EXTIRTSRBase {} ;
+
+  struct RTSR : public RegisterBase<0x40013C08, 32, ReadWriteMode>
   {
-    using Tr0 = ExtiRtsrTrValues<Exti::Rtsr, 0, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr1 = ExtiRtsrTrValues<Exti::Rtsr, 1, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr2 = ExtiRtsrTrValues<Exti::Rtsr, 2, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr3 = ExtiRtsrTrValues<Exti::Rtsr, 3, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr4 = ExtiRtsrTrValues<Exti::Rtsr, 4, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr5 = ExtiRtsrTrValues<Exti::Rtsr, 5, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr6 = ExtiRtsrTrValues<Exti::Rtsr, 6, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr7 = ExtiRtsrTrValues<Exti::Rtsr, 7, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr8 = ExtiRtsrTrValues<Exti::Rtsr, 8, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr9 = ExtiRtsrTrValues<Exti::Rtsr, 9, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr10 = ExtiRtsrTrValues<Exti::Rtsr, 10, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr11 = ExtiRtsrTrValues<Exti::Rtsr, 11, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr12 = ExtiRtsrTrValues<Exti::Rtsr, 12, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr13 = ExtiRtsrTrValues<Exti::Rtsr, 13, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr14 = ExtiRtsrTrValues<Exti::Rtsr, 14, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr15 = ExtiRtsrTrValues<Exti::Rtsr, 15, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr16 = ExtiRtsrTrValues<Exti::Rtsr, 16, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr17 = ExtiRtsrTrValues<Exti::Rtsr, 17, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr18 = ExtiRtsrTrValues<Exti::Rtsr, 18, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr19 = ExtiRtsrTrValues<Exti::Rtsr, 19, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr20 = ExtiRtsrTrValues<Exti::Rtsr, 20, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr21 = ExtiRtsrTrValues<Exti::Rtsr, 21, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
-    using Tr22 = ExtiRtsrTrValues<Exti::Rtsr, 22, 1, ReadWriteMode, ExtiRtsrTrValuesBase> ;
+    using TR0 = EXTI_RTSR_TR_Values<EXTI::RTSR, 0, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR1 = EXTI_RTSR_TR_Values<EXTI::RTSR, 1, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR2 = EXTI_RTSR_TR_Values<EXTI::RTSR, 2, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR3 = EXTI_RTSR_TR_Values<EXTI::RTSR, 3, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR4 = EXTI_RTSR_TR_Values<EXTI::RTSR, 4, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR5 = EXTI_RTSR_TR_Values<EXTI::RTSR, 5, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR6 = EXTI_RTSR_TR_Values<EXTI::RTSR, 6, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR7 = EXTI_RTSR_TR_Values<EXTI::RTSR, 7, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR8 = EXTI_RTSR_TR_Values<EXTI::RTSR, 8, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR9 = EXTI_RTSR_TR_Values<EXTI::RTSR, 9, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR10 = EXTI_RTSR_TR_Values<EXTI::RTSR, 10, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR11 = EXTI_RTSR_TR_Values<EXTI::RTSR, 11, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR12 = EXTI_RTSR_TR_Values<EXTI::RTSR, 12, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR13 = EXTI_RTSR_TR_Values<EXTI::RTSR, 13, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR14 = EXTI_RTSR_TR_Values<EXTI::RTSR, 14, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR15 = EXTI_RTSR_TR_Values<EXTI::RTSR, 15, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR16 = EXTI_RTSR_TR_Values<EXTI::RTSR, 16, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR17 = EXTI_RTSR_TR_Values<EXTI::RTSR, 17, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR18 = EXTI_RTSR_TR_Values<EXTI::RTSR, 18, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR19 = EXTI_RTSR_TR_Values<EXTI::RTSR, 19, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR20 = EXTI_RTSR_TR_Values<EXTI::RTSR, 20, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR21 = EXTI_RTSR_TR_Values<EXTI::RTSR, 21, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using TR22 = EXTI_RTSR_TR_Values<EXTI::RTSR, 22, 1, ReadWriteMode, EXTIRTSRBase> ;
   } ;
 
   template<typename... T> 
-  using RtsrPack  = Register<0x40013C08, 32, ReadWriteMode, ExtiRtsrTrValuesBase, T...> ;
+  using RTSRPack  = Register<0x40013C08, 32, ReadWriteMode, EXTIRTSRBase, T...> ;
 
-  struct Ftsr : public RegisterBase<0x40013C0C, 32, ReadWriteMode>
+  struct EXTIFTSRBase {} ;
+
+  struct FTSR : public RegisterBase<0x40013C0C, 32, ReadWriteMode>
   {
-    using Tr0 = ExtiFtsrTrValues<Exti::Ftsr, 0, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr1 = ExtiFtsrTrValues<Exti::Ftsr, 1, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr2 = ExtiFtsrTrValues<Exti::Ftsr, 2, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr3 = ExtiFtsrTrValues<Exti::Ftsr, 3, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr4 = ExtiFtsrTrValues<Exti::Ftsr, 4, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr5 = ExtiFtsrTrValues<Exti::Ftsr, 5, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr6 = ExtiFtsrTrValues<Exti::Ftsr, 6, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr7 = ExtiFtsrTrValues<Exti::Ftsr, 7, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr8 = ExtiFtsrTrValues<Exti::Ftsr, 8, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr9 = ExtiFtsrTrValues<Exti::Ftsr, 9, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr10 = ExtiFtsrTrValues<Exti::Ftsr, 10, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr11 = ExtiFtsrTrValues<Exti::Ftsr, 11, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr12 = ExtiFtsrTrValues<Exti::Ftsr, 12, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr13 = ExtiFtsrTrValues<Exti::Ftsr, 13, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr14 = ExtiFtsrTrValues<Exti::Ftsr, 14, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr15 = ExtiFtsrTrValues<Exti::Ftsr, 15, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr16 = ExtiFtsrTrValues<Exti::Ftsr, 16, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr17 = ExtiFtsrTrValues<Exti::Ftsr, 17, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr18 = ExtiFtsrTrValues<Exti::Ftsr, 18, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr19 = ExtiFtsrTrValues<Exti::Ftsr, 19, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr20 = ExtiFtsrTrValues<Exti::Ftsr, 20, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr21 = ExtiFtsrTrValues<Exti::Ftsr, 21, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
-    using Tr22 = ExtiFtsrTrValues<Exti::Ftsr, 22, 1, ReadWriteMode, ExtiFtsrTrValuesBase> ;
+    using TR0 = EXTI_FTSR_TR_Values<EXTI::FTSR, 0, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR1 = EXTI_FTSR_TR_Values<EXTI::FTSR, 1, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR2 = EXTI_FTSR_TR_Values<EXTI::FTSR, 2, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR3 = EXTI_FTSR_TR_Values<EXTI::FTSR, 3, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR4 = EXTI_FTSR_TR_Values<EXTI::FTSR, 4, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR5 = EXTI_FTSR_TR_Values<EXTI::FTSR, 5, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR6 = EXTI_FTSR_TR_Values<EXTI::FTSR, 6, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR7 = EXTI_FTSR_TR_Values<EXTI::FTSR, 7, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR8 = EXTI_FTSR_TR_Values<EXTI::FTSR, 8, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR9 = EXTI_FTSR_TR_Values<EXTI::FTSR, 9, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR10 = EXTI_FTSR_TR_Values<EXTI::FTSR, 10, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR11 = EXTI_FTSR_TR_Values<EXTI::FTSR, 11, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR12 = EXTI_FTSR_TR_Values<EXTI::FTSR, 12, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR13 = EXTI_FTSR_TR_Values<EXTI::FTSR, 13, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR14 = EXTI_FTSR_TR_Values<EXTI::FTSR, 14, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR15 = EXTI_FTSR_TR_Values<EXTI::FTSR, 15, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR16 = EXTI_FTSR_TR_Values<EXTI::FTSR, 16, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR17 = EXTI_FTSR_TR_Values<EXTI::FTSR, 17, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR18 = EXTI_FTSR_TR_Values<EXTI::FTSR, 18, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR19 = EXTI_FTSR_TR_Values<EXTI::FTSR, 19, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR20 = EXTI_FTSR_TR_Values<EXTI::FTSR, 20, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR21 = EXTI_FTSR_TR_Values<EXTI::FTSR, 21, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using TR22 = EXTI_FTSR_TR_Values<EXTI::FTSR, 22, 1, ReadWriteMode, EXTIFTSRBase> ;
   } ;
 
   template<typename... T> 
-  using FtsrPack  = Register<0x40013C0C, 32, ReadWriteMode, ExtiFtsrTrValuesBase, T...> ;
+  using FTSRPack  = Register<0x40013C0C, 32, ReadWriteMode, EXTIFTSRBase, T...> ;
 
-  struct Swier : public RegisterBase<0x40013C10, 32, ReadWriteMode>
+  struct EXTISWIERBase {} ;
+
+  struct SWIER : public RegisterBase<0x40013C10, 32, ReadWriteMode>
   {
-    using Swier0 = ExtiSwierSwierValues<Exti::Swier, 0, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier1 = ExtiSwierSwierValues<Exti::Swier, 1, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier2 = ExtiSwierSwierValues<Exti::Swier, 2, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier3 = ExtiSwierSwierValues<Exti::Swier, 3, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier4 = ExtiSwierSwierValues<Exti::Swier, 4, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier5 = ExtiSwierSwierValues<Exti::Swier, 5, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier6 = ExtiSwierSwierValues<Exti::Swier, 6, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier7 = ExtiSwierSwierValues<Exti::Swier, 7, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier8 = ExtiSwierSwierValues<Exti::Swier, 8, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier9 = ExtiSwierSwierValues<Exti::Swier, 9, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier10 = ExtiSwierSwierValues<Exti::Swier, 10, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier11 = ExtiSwierSwierValues<Exti::Swier, 11, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier12 = ExtiSwierSwierValues<Exti::Swier, 12, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier13 = ExtiSwierSwierValues<Exti::Swier, 13, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier14 = ExtiSwierSwierValues<Exti::Swier, 14, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier15 = ExtiSwierSwierValues<Exti::Swier, 15, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier16 = ExtiSwierSwierValues<Exti::Swier, 16, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier17 = ExtiSwierSwierValues<Exti::Swier, 17, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier18 = ExtiSwierSwierValues<Exti::Swier, 18, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier19 = ExtiSwierSwierValues<Exti::Swier, 19, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier20 = ExtiSwierSwierValues<Exti::Swier, 20, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier21 = ExtiSwierSwierValues<Exti::Swier, 21, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
-    using Swier22 = ExtiSwierSwierValues<Exti::Swier, 22, 1, ReadWriteMode, ExtiSwierSwierValuesBase> ;
+    using SWIER0 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 0, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER1 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 1, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER2 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 2, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER3 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 3, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER4 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 4, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER5 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 5, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER6 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 6, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER7 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 7, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER8 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 8, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER9 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 9, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER10 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 10, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER11 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 11, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER12 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 12, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER13 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 13, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER14 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 14, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER15 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 15, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER16 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 16, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER17 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 17, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER18 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 18, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER19 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 19, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER20 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 20, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER21 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 21, 1, ReadWriteMode, EXTISWIERBase> ;
+    using SWIER22 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 22, 1, ReadWriteMode, EXTISWIERBase> ;
   } ;
 
   template<typename... T> 
-  using SwierPack  = Register<0x40013C10, 32, ReadWriteMode, ExtiSwierSwierValuesBase, T...> ;
+  using SWIERPack  = Register<0x40013C10, 32, ReadWriteMode, EXTISWIERBase, T...> ;
 
-  struct Pr : public RegisterBase<0x40013C14, 32, ReadWriteMode>
+  struct EXTIPRBase {} ;
+
+  struct PR : public RegisterBase<0x40013C14, 32, ReadWriteMode>
   {
-    using Pr0 = ExtiPrPrValues<Exti::Pr, 0, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr1 = ExtiPrPrValues<Exti::Pr, 1, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr2 = ExtiPrPrValues<Exti::Pr, 2, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr3 = ExtiPrPrValues<Exti::Pr, 3, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr4 = ExtiPrPrValues<Exti::Pr, 4, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr5 = ExtiPrPrValues<Exti::Pr, 5, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr6 = ExtiPrPrValues<Exti::Pr, 6, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr7 = ExtiPrPrValues<Exti::Pr, 7, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr8 = ExtiPrPrValues<Exti::Pr, 8, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr9 = ExtiPrPrValues<Exti::Pr, 9, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr10 = ExtiPrPrValues<Exti::Pr, 10, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr11 = ExtiPrPrValues<Exti::Pr, 11, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr12 = ExtiPrPrValues<Exti::Pr, 12, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr13 = ExtiPrPrValues<Exti::Pr, 13, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr14 = ExtiPrPrValues<Exti::Pr, 14, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr15 = ExtiPrPrValues<Exti::Pr, 15, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr16 = ExtiPrPrValues<Exti::Pr, 16, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr17 = ExtiPrPrValues<Exti::Pr, 17, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr18 = ExtiPrPrValues<Exti::Pr, 18, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr19 = ExtiPrPrValues<Exti::Pr, 19, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr20 = ExtiPrPrValues<Exti::Pr, 20, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr21 = ExtiPrPrValues<Exti::Pr, 21, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
-    using Pr22 = ExtiPrPrValues<Exti::Pr, 22, 1, ReadWriteMode, ExtiPrPrValuesBase> ;
+    using PR0 = EXTI_PR_PR_Values<EXTI::PR, 0, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR1 = EXTI_PR_PR_Values<EXTI::PR, 1, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR2 = EXTI_PR_PR_Values<EXTI::PR, 2, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR3 = EXTI_PR_PR_Values<EXTI::PR, 3, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR4 = EXTI_PR_PR_Values<EXTI::PR, 4, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR5 = EXTI_PR_PR_Values<EXTI::PR, 5, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR6 = EXTI_PR_PR_Values<EXTI::PR, 6, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR7 = EXTI_PR_PR_Values<EXTI::PR, 7, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR8 = EXTI_PR_PR_Values<EXTI::PR, 8, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR9 = EXTI_PR_PR_Values<EXTI::PR, 9, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR10 = EXTI_PR_PR_Values<EXTI::PR, 10, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR11 = EXTI_PR_PR_Values<EXTI::PR, 11, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR12 = EXTI_PR_PR_Values<EXTI::PR, 12, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR13 = EXTI_PR_PR_Values<EXTI::PR, 13, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR14 = EXTI_PR_PR_Values<EXTI::PR, 14, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR15 = EXTI_PR_PR_Values<EXTI::PR, 15, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR16 = EXTI_PR_PR_Values<EXTI::PR, 16, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR17 = EXTI_PR_PR_Values<EXTI::PR, 17, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR18 = EXTI_PR_PR_Values<EXTI::PR, 18, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR19 = EXTI_PR_PR_Values<EXTI::PR, 19, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR20 = EXTI_PR_PR_Values<EXTI::PR, 20, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR21 = EXTI_PR_PR_Values<EXTI::PR, 21, 1, ReadWriteMode, EXTIPRBase> ;
+    using PR22 = EXTI_PR_PR_Values<EXTI::PR, 22, 1, ReadWriteMode, EXTIPRBase> ;
   } ;
 
   template<typename... T> 
-  using PrPack  = Register<0x40013C14, 32, ReadWriteMode, ExtiPrPrValuesBase, T...> ;
+  using PRPack  = Register<0x40013C14, 32, ReadWriteMode, EXTIPRBase, T...> ;
 
 } ;
 

@@ -15,110 +15,132 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Tim10
+struct TIM10
 {
-  struct Cr1 : public RegisterBase<0x40014400, 32, ReadWriteMode>
+  struct TIM10CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40014400, 32, ReadWriteMode>
   {
-    using Ckd = TimCrCkdValues<Tim10::Cr1, 8, 2, ReadWriteMode, TimCrCkdValuesBase> ;
-    using Arpe = TimCrArpeValues<Tim10::Cr1, 7, 1, ReadWriteMode, TimCrArpeValuesBase> ;
-    using Urs = TimCrUrsValues<Tim10::Cr1, 2, 1, ReadWriteMode, TimCrUrsValuesBase> ;
-    using Udis = TimCrUdisValues<Tim10::Cr1, 1, 1, ReadWriteMode, TimCrUdisValuesBase> ;
-    using Cen = TimCrCenValues<Tim10::Cr1, 0, 1, ReadWriteMode, TimCrCenValuesBase> ;
+    using CKD = TIM_CR_CKD_Values<TIM10::CR1, 8, 2, ReadWriteMode, TIM10CR1Base> ;
+    using ARPE = TIM_CR_ARPE_Values<TIM10::CR1, 7, 1, ReadWriteMode, TIM10CR1Base> ;
+    using URS = TIM_CR_URS_Values<TIM10::CR1, 2, 1, ReadWriteMode, TIM10CR1Base> ;
+    using UDIS = TIM_CR_UDIS_Values<TIM10::CR1, 1, 1, ReadWriteMode, TIM10CR1Base> ;
+    using CEN = TIM_CR_CEN_Values<TIM10::CR1, 0, 1, ReadWriteMode, TIM10CR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x40014400, 32, ReadWriteMode, TimCrCkdValuesBase, T...> ;
+  using CR1Pack  = Register<0x40014400, 32, ReadWriteMode, TIM10CR1Base, T...> ;
 
-  struct Dier : public RegisterBase<0x4001440C, 32, ReadWriteMode>
+  struct TIM10DIERBase {} ;
+
+  struct DIER : public RegisterBase<0x4001440C, 32, ReadWriteMode>
   {
-    using Cc1Ie = TimDierCcIeValues<Tim10::Dier, 1, 1, ReadWriteMode, TimDierCcIeValuesBase> ;
-    using Uie = TimDierUieValues<Tim10::Dier, 0, 1, ReadWriteMode, TimDierUieValuesBase> ;
+    using CC1IE = TIM_DIER_CCIE_Values<TIM10::DIER, 1, 1, ReadWriteMode, TIM10DIERBase> ;
+    using UIE = TIM_DIER_UIE_Values<TIM10::DIER, 0, 1, ReadWriteMode, TIM10DIERBase> ;
   } ;
 
   template<typename... T> 
-  using DierPack  = Register<0x4001440C, 32, ReadWriteMode, TimDierCcIeValuesBase, T...> ;
+  using DIERPack  = Register<0x4001440C, 32, ReadWriteMode, TIM10DIERBase, T...> ;
 
-  struct Sr : public RegisterBase<0x40014410, 32, ReadWriteMode>
+  struct TIM10SRBase {} ;
+
+  struct SR : public RegisterBase<0x40014410, 32, ReadWriteMode>
   {
-    using Cc1Of = TimSrCcOfValues<Tim10::Sr, 9, 1, ReadWriteMode, TimSrCcOfValuesBase> ;
-    using Cc1If = TimSrCcIfValues<Tim10::Sr, 1, 1, ReadWriteMode, TimSrCcIfValuesBase> ;
-    using Uif = TimSrUifValues<Tim10::Sr, 0, 1, ReadWriteMode, TimSrUifValuesBase> ;
+    using CC1OF = TIM_SR_CCOF_Values<TIM10::SR, 9, 1, ReadWriteMode, TIM10SRBase> ;
+    using CC1IF = TIM_SR_CCIF_Values<TIM10::SR, 1, 1, ReadWriteMode, TIM10SRBase> ;
+    using UIF = TIM_SR_UIF_Values<TIM10::SR, 0, 1, ReadWriteMode, TIM10SRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40014410, 32, ReadWriteMode, TimSrCcOfValuesBase, T...> ;
+  using SRPack  = Register<0x40014410, 32, ReadWriteMode, TIM10SRBase, T...> ;
 
-  struct Egr : public RegisterBase<0x40014414, 32, WriteMode>
+  struct TIM10EGRBase {} ;
+
+  struct EGR : public RegisterBase<0x40014414, 32, WriteMode>
   {
-    using Cc1G = TimEgrCcGValues<Tim10::Egr, 1, 1, WriteMode, TimEgrCcGValuesBase> ;
-    using Ug = TimEgrUgValues<Tim10::Egr, 0, 1, WriteMode, TimEgrUgValuesBase> ;
+    using CC1G = TIM_EGR_CCG_Values<TIM10::EGR, 1, 1, WriteMode, TIM10EGRBase> ;
+    using UG = TIM_EGR_UG_Values<TIM10::EGR, 0, 1, WriteMode, TIM10EGRBase> ;
   } ;
 
   template<typename... T> 
-  using EgrPack  = Register<0x40014414, 32, WriteMode, TimEgrCcGValuesBase, T...> ;
+  using EGRPack  = Register<0x40014414, 32, WriteMode, TIM10EGRBase, T...> ;
 
-  struct Ccmr1Output : public RegisterBase<0x40014418, 32, ReadWriteMode>
+  struct TIM10CCMR1_OutputBase {} ;
+
+  struct CCMR1_Output : public RegisterBase<0x40014418, 32, ReadWriteMode>
   {
-    using Oc1M = TimCcmrOutputOcMValues<Tim10::Ccmr1Output, 4, 3, ReadWriteMode, TimCcmrOutputOcMValuesBase> ;
-    using Oc1Pe = TimCcmrOutputOcPeValues<Tim10::Ccmr1Output, 3, 1, ReadWriteMode, TimCcmrOutputOcPeValuesBase> ;
-    using Oc1Fe = TimCcmrOutputOcFeValues<Tim10::Ccmr1Output, 2, 1, ReadWriteMode, TimCcmrOutputOcFeValuesBase> ;
-    using Cc1S = TimCcmrOutputCcSValues<Tim10::Ccmr1Output, 0, 2, ReadWriteMode, TimCcmrOutputCcSValuesBase> ;
+    using OC1M = TIM_CCMR_Output_OCM_Values<TIM10::CCMR1_Output, 4, 3, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using OC1PE = TIM_CCMR_Output_OCPE_Values<TIM10::CCMR1_Output, 3, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using OC1FE = TIM_CCMR_Output_OCFE_Values<TIM10::CCMR1_Output, 2, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using CC1S = TIM_CCMR_Output_CCS_Values<TIM10::CCMR1_Output, 0, 2, ReadWriteMode, TIM10CCMR1_OutputBase> ;
   } ;
 
   template<typename... T> 
-  using Ccmr1OutputPack  = Register<0x40014418, 32, ReadWriteMode, TimCcmrOutputOcMValuesBase, T...> ;
+  using CCMR1_OutputPack  = Register<0x40014418, 32, ReadWriteMode, TIM10CCMR1_OutputBase, T...> ;
 
-  struct Ccmr1Input : public RegisterBase<0x40014418, 32, ReadWriteMode>
+  struct TIM10CCMR1_InputBase {} ;
+
+  struct CCMR1_Input : public RegisterBase<0x40014418, 32, ReadWriteMode>
   {
-    using Ic1F = TimCcmrInputIcFValues<Tim10::Ccmr1Input, 4, 4, ReadWriteMode, TimCcmrInputIcFValuesBase> ;
-    using Icpcs = TimCcmrInputIcpcsValues<Tim10::Ccmr1Input, 2, 2, ReadWriteMode, TimCcmrInputIcpcsValuesBase> ;
-    using Cc1S = TimCcmrInputCcSValues<Tim10::Ccmr1Input, 0, 2, ReadWriteMode, TimCcmrInputCcSValuesBase> ;
+    using IC1F = TIM_CCMR_Input_ICF_Values<TIM10::CCMR1_Input, 4, 4, ReadWriteMode, TIM10CCMR1_InputBase> ;
+    using ICPCS = TIM_CCMR_Input_ICPCS_Values<TIM10::CCMR1_Input, 2, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
+    using CC1S = TIM_CCMR_Input_CCS_Values<TIM10::CCMR1_Input, 0, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
   } ;
 
   template<typename... T> 
-  using Ccmr1InputPack  = Register<0x40014418, 32, ReadWriteMode, TimCcmrInputIcFValuesBase, T...> ;
+  using CCMR1_InputPack  = Register<0x40014418, 32, ReadWriteMode, TIM10CCMR1_InputBase, T...> ;
 
-  struct Ccer : public RegisterBase<0x40014420, 32, ReadWriteMode>
+  struct TIM10CCERBase {} ;
+
+  struct CCER : public RegisterBase<0x40014420, 32, ReadWriteMode>
   {
-    using Cc1Np = TimCcerCcNpValues<Tim10::Ccer, 3, 1, ReadWriteMode, TimCcerCcNpValuesBase> ;
-    using Cc1P = TimCcerCcPValues<Tim10::Ccer, 1, 1, ReadWriteMode, TimCcerCcPValuesBase> ;
-    using Cc1E = TimCcerCcEValues<Tim10::Ccer, 0, 1, ReadWriteMode, TimCcerCcEValuesBase> ;
+    using CC1NP = TIM_CCER_CCNP_Values<TIM10::CCER, 3, 1, ReadWriteMode, TIM10CCERBase> ;
+    using CC1P = TIM_CCER_CCP_Values<TIM10::CCER, 1, 1, ReadWriteMode, TIM10CCERBase> ;
+    using CC1E = TIM_CCER_CCE_Values<TIM10::CCER, 0, 1, ReadWriteMode, TIM10CCERBase> ;
   } ;
 
   template<typename... T> 
-  using CcerPack  = Register<0x40014420, 32, ReadWriteMode, TimCcerCcNpValuesBase, T...> ;
+  using CCERPack  = Register<0x40014420, 32, ReadWriteMode, TIM10CCERBase, T...> ;
 
-  struct Cnt : public RegisterBase<0x40014424, 32, ReadWriteMode>
+  struct TIM10CNTBase {} ;
+
+  struct CNT : public RegisterBase<0x40014424, 32, ReadWriteMode>
   {
-    using CntField = ReadWriteMode<Tim10::Cnt, 0, 16> ;
+    using CNTField = TIM_CNT_CNT_Values<TIM10::CNT, 0, 16, ReadWriteMode, TIM10CNTBase> ;
   } ;
 
   template<typename... T> 
-  using CntPack  = Register<0x40014424, 32, ReadWriteMode, TimCntCntValuesBase, T...> ;
+  using CNTPack  = Register<0x40014424, 32, ReadWriteMode, TIM10CNTBase, T...> ;
 
-  struct Psc : public RegisterBase<0x40014428, 32, ReadWriteMode>
+  struct TIM10PSCBase {} ;
+
+  struct PSC : public RegisterBase<0x40014428, 32, ReadWriteMode>
   {
-    using PscField = ReadWriteMode<Tim10::Psc, 0, 16> ;
+    using PSCField = TIM_PSC_PSC_Values<TIM10::PSC, 0, 16, ReadWriteMode, TIM10PSCBase> ;
   } ;
 
   template<typename... T> 
-  using PscPack  = Register<0x40014428, 32, ReadWriteMode, TimPscPscValuesBase, T...> ;
+  using PSCPack  = Register<0x40014428, 32, ReadWriteMode, TIM10PSCBase, T...> ;
 
-  struct Arr : public RegisterBase<0x4001442C, 32, ReadWriteMode>
+  struct TIM10ARRBase {} ;
+
+  struct ARR : public RegisterBase<0x4001442C, 32, ReadWriteMode>
   {
-    using ArrField = ReadWriteMode<Tim10::Arr, 0, 16> ;
+    using ARRField = TIM_ARR_ARR_Values<TIM10::ARR, 0, 16, ReadWriteMode, TIM10ARRBase> ;
   } ;
 
   template<typename... T> 
-  using ArrPack  = Register<0x4001442C, 32, ReadWriteMode, TimArrArrValuesBase, T...> ;
+  using ARRPack  = Register<0x4001442C, 32, ReadWriteMode, TIM10ARRBase, T...> ;
 
-  struct Ccr1 : public RegisterBase<0x40014434, 32, ReadWriteMode>
+  struct TIM10CCR1Base {} ;
+
+  struct CCR1 : public RegisterBase<0x40014434, 32, ReadWriteMode>
   {
-    using Ccr1Field = ReadWriteMode<Tim10::Ccr1, 0, 16> ;
+    using CCR1Field = TIM_CCR_CCR_Values<TIM10::CCR1, 0, 16, ReadWriteMode, TIM10CCR1Base> ;
   } ;
 
   template<typename... T> 
-  using Ccr1Pack  = Register<0x40014434, 32, ReadWriteMode, TimCcrCcrValuesBase, T...> ;
+  using CCR1Pack  = Register<0x40014434, 32, ReadWriteMode, TIM10CCR1Base, T...> ;
 
 } ;
 

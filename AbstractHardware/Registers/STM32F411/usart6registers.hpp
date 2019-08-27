@@ -15,107 +15,121 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Usart6
+struct USART6
 {
-  struct Sr : public RegisterBase<0x40011400, 32, ReadWriteMode>
+  struct USART6SRBase {} ;
+
+  struct SR : public RegisterBase<0x40011400, 32, ReadWriteMode>
   {
-    using Cts = UsartSrCtsValues<Usart6::Sr, 9, 1, ReadWriteMode, UsartSrCtsValuesBase> ;
-    using Lbd = UsartSrLbdValues<Usart6::Sr, 8, 1, ReadWriteMode, UsartSrLbdValuesBase> ;
-    using Txe = UsartSrTxeValues<Usart6::Sr, 7, 1, ReadMode, UsartSrTxeValuesBase> ;
-    using Tc = UsartSrTcValues<Usart6::Sr, 6, 1, ReadWriteMode, UsartSrTcValuesBase> ;
-    using Rxne = UsartSrRxneValues<Usart6::Sr, 5, 1, ReadWriteMode, UsartSrRxneValuesBase> ;
-    using Idle = UsartSrIdleValues<Usart6::Sr, 4, 1, ReadMode, UsartSrIdleValuesBase> ;
-    using Ore = UsartSrOreValues<Usart6::Sr, 3, 1, ReadMode, UsartSrOreValuesBase> ;
-    using Nf = UsartSrNfValues<Usart6::Sr, 2, 1, ReadMode, UsartSrNfValuesBase> ;
-    using Fe = UsartSrFeValues<Usart6::Sr, 1, 1, ReadMode, UsartSrFeValuesBase> ;
-    using Pe = UsartSrPeValues<Usart6::Sr, 0, 1, ReadMode, UsartSrPeValuesBase> ;
+    using CTS = USART_SR_CTS_Values<USART6::SR, 9, 1, ReadWriteMode, USART6SRBase> ;
+    using LBD = USART_SR_LBD_Values<USART6::SR, 8, 1, ReadWriteMode, USART6SRBase> ;
+    using TXE = USART_SR_TXE_Values<USART6::SR, 7, 1, ReadMode, USART6SRBase> ;
+    using TC = USART_SR_TC_Values<USART6::SR, 6, 1, ReadWriteMode, USART6SRBase> ;
+    using RXNE = USART_SR_RXNE_Values<USART6::SR, 5, 1, ReadWriteMode, USART6SRBase> ;
+    using IDLE = USART_SR_IDLE_Values<USART6::SR, 4, 1, ReadMode, USART6SRBase> ;
+    using ORE = USART_SR_ORE_Values<USART6::SR, 3, 1, ReadMode, USART6SRBase> ;
+    using NF = USART_SR_NF_Values<USART6::SR, 2, 1, ReadMode, USART6SRBase> ;
+    using FE = USART_SR_FE_Values<USART6::SR, 1, 1, ReadMode, USART6SRBase> ;
+    using PE = USART_SR_PE_Values<USART6::SR, 0, 1, ReadMode, USART6SRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40011400, 32, ReadWriteMode, UsartSrCtsValuesBase, T...> ;
+  using SRPack  = Register<0x40011400, 32, ReadWriteMode, USART6SRBase, T...> ;
 
-  struct Dr : public RegisterBase<0x40011404, 32, ReadWriteMode>
+  struct USART6DRBase {} ;
+
+  struct DR : public RegisterBase<0x40011404, 32, ReadWriteMode>
   {
-    using DrField = ReadWriteMode<Usart6::Dr, 0, 9> ;
+    using DRField = USART_DR_DR_Values<USART6::DR, 0, 9, ReadWriteMode, USART6DRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x40011404, 32, ReadWriteMode, UsartDrDrValuesBase, T...> ;
+  using DRPack  = Register<0x40011404, 32, ReadWriteMode, USART6DRBase, T...> ;
 
-  struct Brr : public RegisterBase<0x40011408, 32, ReadWriteMode>
+  struct USART6BRRBase {} ;
+
+  struct BRR : public RegisterBase<0x40011408, 32, ReadWriteMode>
   {
-    using DivMantissa = ReadWriteMode<Usart6::Brr, 4, 12> ;
-    using DivFraction = UsartBrrDivFractionValues<Usart6::Brr, 0, 4, ReadWriteMode, UsartBrrDivFractionValuesBase> ;
+    using DIV_Mantissa = USART_BRR_DIV_Mantissa_Values<USART6::BRR, 4, 12, ReadWriteMode, USART6BRRBase> ;
+    using DIV_Fraction = USART_BRR_DIV_Fraction_Values<USART6::BRR, 0, 4, ReadWriteMode, USART6BRRBase> ;
   } ;
 
   template<typename... T> 
-  using BrrPack  = Register<0x40011408, 32, ReadWriteMode, UsartBrrDivMantissaValuesBase, T...> ;
+  using BRRPack  = Register<0x40011408, 32, ReadWriteMode, USART6BRRBase, T...> ;
 
-  struct Cr1 : public RegisterBase<0x4001140C, 32, ReadWriteMode>
+  struct USART6CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x4001140C, 32, ReadWriteMode>
   {
-    using Over8 = UsartCrOverValues<Usart6::Cr1, 15, 1, ReadWriteMode, UsartCrOverValuesBase> ;
-    using Ue = UsartCrUeValues<Usart6::Cr1, 13, 1, ReadWriteMode, UsartCrUeValuesBase> ;
-    using M = UsartCrMValues<Usart6::Cr1, 12, 1, ReadWriteMode, UsartCrMValuesBase> ;
-    using Wake = UsartCrWakeValues<Usart6::Cr1, 11, 1, ReadWriteMode, UsartCrWakeValuesBase> ;
-    using Pce = UsartCrPceValues<Usart6::Cr1, 10, 1, ReadWriteMode, UsartCrPceValuesBase> ;
-    using Ps = UsartCrPsValues<Usart6::Cr1, 9, 1, ReadWriteMode, UsartCrPsValuesBase> ;
-    using Peie = UsartCrPeieValues<Usart6::Cr1, 8, 1, ReadWriteMode, UsartCrPeieValuesBase> ;
-    using Txeie = UsartCrTxeieValues<Usart6::Cr1, 7, 1, ReadWriteMode, UsartCrTxeieValuesBase> ;
-    using Tcie = UsartCrTcieValues<Usart6::Cr1, 6, 1, ReadWriteMode, UsartCrTcieValuesBase> ;
-    using Rxneie = UsartCrRxneieValues<Usart6::Cr1, 5, 1, ReadWriteMode, UsartCrRxneieValuesBase> ;
-    using Idleie = UsartCrIdleieValues<Usart6::Cr1, 4, 1, ReadWriteMode, UsartCrIdleieValuesBase> ;
-    using Te = UsartCrTeValues<Usart6::Cr1, 3, 1, ReadWriteMode, UsartCrTeValuesBase> ;
-    using Re = UsartCrReValues<Usart6::Cr1, 2, 1, ReadWriteMode, UsartCrReValuesBase> ;
-    using Rwu = UsartCrRwuValues<Usart6::Cr1, 1, 1, ReadWriteMode, UsartCrRwuValuesBase> ;
-    using Sbk = UsartCrSbkValues<Usart6::Cr1, 0, 1, ReadWriteMode, UsartCrSbkValuesBase> ;
+    using OVER8 = USART_CR_OVER_Values<USART6::CR1, 15, 1, ReadWriteMode, USART6CR1Base> ;
+    using UE = USART_CR_UE_Values<USART6::CR1, 13, 1, ReadWriteMode, USART6CR1Base> ;
+    using M = USART_CR_M_Values<USART6::CR1, 12, 1, ReadWriteMode, USART6CR1Base> ;
+    using WAKE = USART_CR_WAKE_Values<USART6::CR1, 11, 1, ReadWriteMode, USART6CR1Base> ;
+    using PCE = USART_CR_PCE_Values<USART6::CR1, 10, 1, ReadWriteMode, USART6CR1Base> ;
+    using PS = USART_CR_PS_Values<USART6::CR1, 9, 1, ReadWriteMode, USART6CR1Base> ;
+    using PEIE = USART_CR_PEIE_Values<USART6::CR1, 8, 1, ReadWriteMode, USART6CR1Base> ;
+    using TXEIE = USART_CR_TXEIE_Values<USART6::CR1, 7, 1, ReadWriteMode, USART6CR1Base> ;
+    using TCIE = USART_CR_TCIE_Values<USART6::CR1, 6, 1, ReadWriteMode, USART6CR1Base> ;
+    using RXNEIE = USART_CR_RXNEIE_Values<USART6::CR1, 5, 1, ReadWriteMode, USART6CR1Base> ;
+    using IDLEIE = USART_CR_IDLEIE_Values<USART6::CR1, 4, 1, ReadWriteMode, USART6CR1Base> ;
+    using TE = USART_CR_TE_Values<USART6::CR1, 3, 1, ReadWriteMode, USART6CR1Base> ;
+    using RE = USART_CR_RE_Values<USART6::CR1, 2, 1, ReadWriteMode, USART6CR1Base> ;
+    using RWU = USART_CR_RWU_Values<USART6::CR1, 1, 1, ReadWriteMode, USART6CR1Base> ;
+    using SBK = USART_CR_SBK_Values<USART6::CR1, 0, 1, ReadWriteMode, USART6CR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x4001140C, 32, ReadWriteMode, UsartCrOverValuesBase, T...> ;
+  using CR1Pack  = Register<0x4001140C, 32, ReadWriteMode, USART6CR1Base, T...> ;
 
-  struct Cr2 : public RegisterBase<0x40011410, 32, ReadWriteMode>
+  struct USART6CR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40011410, 32, ReadWriteMode>
   {
-    using Linen = UsartCrLinenValues<Usart6::Cr2, 14, 1, ReadWriteMode, UsartCrLinenValuesBase> ;
-    using Stop = UsartCrStopValues<Usart6::Cr2, 12, 2, ReadWriteMode, UsartCrStopValuesBase> ;
-    using Clken = UsartCrClkenValues<Usart6::Cr2, 11, 1, ReadWriteMode, UsartCrClkenValuesBase> ;
-    using Cpol = UsartCrCpolValues<Usart6::Cr2, 10, 1, ReadWriteMode, UsartCrCpolValuesBase> ;
-    using Cpha = UsartCrCphaValues<Usart6::Cr2, 9, 1, ReadWriteMode, UsartCrCphaValuesBase> ;
-    using Lbcl = UsartCrLbclValues<Usart6::Cr2, 8, 1, ReadWriteMode, UsartCrLbclValuesBase> ;
-    using Lbdie = UsartCrLbdieValues<Usart6::Cr2, 6, 1, ReadWriteMode, UsartCrLbdieValuesBase> ;
-    using Lbdl = UsartCrLbdlValues<Usart6::Cr2, 5, 1, ReadWriteMode, UsartCrLbdlValuesBase> ;
-    using Add = UsartCrAddValues<Usart6::Cr2, 0, 4, ReadWriteMode, UsartCrAddValuesBase> ;
+    using LINEN = USART_CR_LINEN_Values<USART6::CR2, 14, 1, ReadWriteMode, USART6CR2Base> ;
+    using STOP = USART_CR_STOP_Values<USART6::CR2, 12, 2, ReadWriteMode, USART6CR2Base> ;
+    using CLKEN = USART_CR_CLKEN_Values<USART6::CR2, 11, 1, ReadWriteMode, USART6CR2Base> ;
+    using CPOL = USART_CR_CPOL_Values<USART6::CR2, 10, 1, ReadWriteMode, USART6CR2Base> ;
+    using CPHA = USART_CR_CPHA_Values<USART6::CR2, 9, 1, ReadWriteMode, USART6CR2Base> ;
+    using LBCL = USART_CR_LBCL_Values<USART6::CR2, 8, 1, ReadWriteMode, USART6CR2Base> ;
+    using LBDIE = USART_CR_LBDIE_Values<USART6::CR2, 6, 1, ReadWriteMode, USART6CR2Base> ;
+    using LBDL = USART_CR_LBDL_Values<USART6::CR2, 5, 1, ReadWriteMode, USART6CR2Base> ;
+    using ADD = USART_CR_ADD_Values<USART6::CR2, 0, 4, ReadWriteMode, USART6CR2Base> ;
   } ;
 
   template<typename... T> 
-  using Cr2Pack  = Register<0x40011410, 32, ReadWriteMode, UsartCrLinenValuesBase, T...> ;
+  using CR2Pack  = Register<0x40011410, 32, ReadWriteMode, USART6CR2Base, T...> ;
 
-  struct Cr3 : public RegisterBase<0x40011414, 32, ReadWriteMode>
+  struct USART6CR3Base {} ;
+
+  struct CR3 : public RegisterBase<0x40011414, 32, ReadWriteMode>
   {
-    using Onebit = UsartCrOnebitValues<Usart6::Cr3, 11, 1, ReadWriteMode, UsartCrOnebitValuesBase> ;
-    using Ctsie = UsartCrCtsieValues<Usart6::Cr3, 10, 1, ReadWriteMode, UsartCrCtsieValuesBase> ;
-    using Ctse = UsartCrCtseValues<Usart6::Cr3, 9, 1, ReadWriteMode, UsartCrCtseValuesBase> ;
-    using Rtse = UsartCrRtseValues<Usart6::Cr3, 8, 1, ReadWriteMode, UsartCrRtseValuesBase> ;
-    using Dmat = UsartCrDmatValues<Usart6::Cr3, 7, 1, ReadWriteMode, UsartCrDmatValuesBase> ;
-    using Dmar = UsartCrDmarValues<Usart6::Cr3, 6, 1, ReadWriteMode, UsartCrDmarValuesBase> ;
-    using Scen = UsartCrScenValues<Usart6::Cr3, 5, 1, ReadWriteMode, UsartCrScenValuesBase> ;
-    using Nack = UsartCrNackValues<Usart6::Cr3, 4, 1, ReadWriteMode, UsartCrNackValuesBase> ;
-    using Hdsel = UsartCrHdselValues<Usart6::Cr3, 3, 1, ReadWriteMode, UsartCrHdselValuesBase> ;
-    using Irlp = UsartCrIrlpValues<Usart6::Cr3, 2, 1, ReadWriteMode, UsartCrIrlpValuesBase> ;
-    using Iren = UsartCrIrenValues<Usart6::Cr3, 1, 1, ReadWriteMode, UsartCrIrenValuesBase> ;
-    using Eie = UsartCrEieValues<Usart6::Cr3, 0, 1, ReadWriteMode, UsartCrEieValuesBase> ;
+    using ONEBIT = USART_CR_ONEBIT_Values<USART6::CR3, 11, 1, ReadWriteMode, USART6CR3Base> ;
+    using CTSIE = USART_CR_CTSIE_Values<USART6::CR3, 10, 1, ReadWriteMode, USART6CR3Base> ;
+    using CTSE = USART_CR_CTSE_Values<USART6::CR3, 9, 1, ReadWriteMode, USART6CR3Base> ;
+    using RTSE = USART_CR_RTSE_Values<USART6::CR3, 8, 1, ReadWriteMode, USART6CR3Base> ;
+    using DMAT = USART_CR_DMAT_Values<USART6::CR3, 7, 1, ReadWriteMode, USART6CR3Base> ;
+    using DMAR = USART_CR_DMAR_Values<USART6::CR3, 6, 1, ReadWriteMode, USART6CR3Base> ;
+    using SCEN = USART_CR_SCEN_Values<USART6::CR3, 5, 1, ReadWriteMode, USART6CR3Base> ;
+    using NACK = USART_CR_NACK_Values<USART6::CR3, 4, 1, ReadWriteMode, USART6CR3Base> ;
+    using HDSEL = USART_CR_HDSEL_Values<USART6::CR3, 3, 1, ReadWriteMode, USART6CR3Base> ;
+    using IRLP = USART_CR_IRLP_Values<USART6::CR3, 2, 1, ReadWriteMode, USART6CR3Base> ;
+    using IREN = USART_CR_IREN_Values<USART6::CR3, 1, 1, ReadWriteMode, USART6CR3Base> ;
+    using EIE = USART_CR_EIE_Values<USART6::CR3, 0, 1, ReadWriteMode, USART6CR3Base> ;
   } ;
 
   template<typename... T> 
-  using Cr3Pack  = Register<0x40011414, 32, ReadWriteMode, UsartCrOnebitValuesBase, T...> ;
+  using CR3Pack  = Register<0x40011414, 32, ReadWriteMode, USART6CR3Base, T...> ;
 
-  struct Gtpr : public RegisterBase<0x40011418, 32, ReadWriteMode>
+  struct USART6GTPRBase {} ;
+
+  struct GTPR : public RegisterBase<0x40011418, 32, ReadWriteMode>
   {
-    using Gt = ReadWriteMode<Usart6::Gtpr, 8, 8> ;
-    using Psc = ReadWriteMode<Usart6::Gtpr, 0, 8> ;
+    using GT = USART_GTPR_GT_Values<USART6::GTPR, 8, 8, ReadWriteMode, USART6GTPRBase> ;
+    using PSC = USART_GTPR_PSC_Values<USART6::GTPR, 0, 8, ReadWriteMode, USART6GTPRBase> ;
   } ;
 
   template<typename... T> 
-  using GtprPack  = Register<0x40011418, 32, ReadWriteMode, UsartGtprGtValuesBase, T...> ;
+  using GTPRPack  = Register<0x40011418, 32, ReadWriteMode, USART6GTPRBase, T...> ;
 
 } ;
 

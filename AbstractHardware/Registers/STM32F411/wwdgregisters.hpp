@@ -15,35 +15,41 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Wwdg
+struct WWDG
 {
-  struct Cr : public RegisterBase<0x40002C00, 32, ReadWriteMode>
+  struct WWDGCRBase {} ;
+
+  struct CR : public RegisterBase<0x40002C00, 32, ReadWriteMode>
   {
-    using Wdga = WwdgCrWdgaValues<Wwdg::Cr, 7, 1, ReadWriteMode, WwdgCrWdgaValuesBase> ;
-    using T = ReadWriteMode<Wwdg::Cr, 0, 7> ;
+    using WDGA = WWDG_CR_WDGA_Values<WWDG::CR, 7, 1, ReadWriteMode, WWDGCRBase> ;
+    using T = WWDG_CR_T_Values<WWDG::CR, 0, 7, ReadWriteMode, WWDGCRBase> ;
   } ;
 
   template<typename... T> 
-  using CrPack  = Register<0x40002C00, 32, ReadWriteMode, WwdgCrWdgaValuesBase, T...> ;
+  using CRPack  = Register<0x40002C00, 32, ReadWriteMode, WWDGCRBase, T...> ;
 
-  struct Cfr : public RegisterBase<0x40002C04, 32, ReadWriteMode>
+  struct WWDGCFRBase {} ;
+
+  struct CFR : public RegisterBase<0x40002C04, 32, ReadWriteMode>
   {
-    using Ewi = WwdgCfrEwiValues<Wwdg::Cfr, 9, 1, ReadWriteMode, WwdgCfrEwiValuesBase> ;
-    using Wdgtb1 = WwdgCfrWdgtbValues<Wwdg::Cfr, 8, 1, ReadWriteMode, WwdgCfrWdgtbValuesBase> ;
-    using Wdgtb0 = WwdgCfrWdgtbValues<Wwdg::Cfr, 7, 1, ReadWriteMode, WwdgCfrWdgtbValuesBase> ;
-    using W = ReadWriteMode<Wwdg::Cfr, 0, 7> ;
+    using EWI = WWDG_CFR_EWI_Values<WWDG::CFR, 9, 1, ReadWriteMode, WWDGCFRBase> ;
+    using WDGTB1 = WWDG_CFR_WDGTB_Values<WWDG::CFR, 8, 1, ReadWriteMode, WWDGCFRBase> ;
+    using WDGTB0 = WWDG_CFR_WDGTB_Values<WWDG::CFR, 7, 1, ReadWriteMode, WWDGCFRBase> ;
+    using W = WWDG_CFR_W_Values<WWDG::CFR, 0, 7, ReadWriteMode, WWDGCFRBase> ;
   } ;
 
   template<typename... T> 
-  using CfrPack  = Register<0x40002C04, 32, ReadWriteMode, WwdgCfrEwiValuesBase, T...> ;
+  using CFRPack  = Register<0x40002C04, 32, ReadWriteMode, WWDGCFRBase, T...> ;
 
-  struct Sr : public RegisterBase<0x40002C08, 32, ReadWriteMode>
+  struct WWDGSRBase {} ;
+
+  struct SR : public RegisterBase<0x40002C08, 32, ReadWriteMode>
   {
-    using Ewif = WwdgSrEwifValues<Wwdg::Sr, 0, 1, ReadWriteMode, WwdgSrEwifValuesBase> ;
+    using EWIF = WWDG_SR_EWIF_Values<WWDG::SR, 0, 1, ReadWriteMode, WWDGSRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40002C08, 32, ReadWriteMode, WwdgSrEwifValuesBase, T...> ;
+  using SRPack  = Register<0x40002C08, 32, ReadWriteMode, WWDGSRBase, T...> ;
 
 } ;
 

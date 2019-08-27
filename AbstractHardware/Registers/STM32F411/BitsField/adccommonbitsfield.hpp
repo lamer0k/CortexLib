@@ -12,82 +12,64 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
-struct AdcCommonCsrOvrValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrOvrValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_OVR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCsrStrtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrStrtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_STRT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCsrJstrtValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrJstrtValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_JSTRT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCsrJeocValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrJeocValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_JEOC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCsrEocValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrEocValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_EOC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCsrAwdValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCsrAwdValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_AWD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCcrTsvrefeValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrTsvrefeValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_TSVREFE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCcrVbateValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrVbateValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_VBATE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCcrAdcpreValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrAdcpreValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_ADCPRE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -95,10 +77,8 @@ struct AdcCommonCcrAdcpreValues: public RegisterField<Reg, offset, size, AccessM
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct AdcCommonCcrDmaValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrDmaValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_DMA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
@@ -106,19 +86,15 @@ struct AdcCommonCcrDmaValues: public RegisterField<Reg, offset, size, AccessMode
   using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
-struct AdcCommonCcrDdsValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrDdsValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_DDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
-struct AdcCommonCcrDelayValuesBase {} ;
-
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct AdcCommonCcrDelayValues: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CCR_DELAY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
   using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;

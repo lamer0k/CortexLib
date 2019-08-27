@@ -15,61 +15,71 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Mpu
+struct MPU
 {
-  struct MpuTyper : public RegisterBase<0xE000ED90, 32, ReadMode>
+  struct MPUMPU_TYPERBase {} ;
+
+  struct MPU_TYPER : public RegisterBase<0xE000ED90, 32, ReadMode>
   {
-    using Separate = MpuMpuTyperSeparateValues<Mpu::MpuTyper, 0, 1, ReadMode, MpuMpuTyperSeparateValuesBase> ;
-    using Dregion = ReadMode<Mpu::MpuTyper, 8, 8> ;
-    using Iregion = ReadMode<Mpu::MpuTyper, 16, 8> ;
+    using SEPARATE = MPU_MPU_TYPER_SEPARATE_Values<MPU::MPU_TYPER, 0, 1, ReadMode, MPUMPU_TYPERBase> ;
+    using DREGION = MPU_MPU_TYPER_DREGION_Values<MPU::MPU_TYPER, 8, 8, ReadMode, MPUMPU_TYPERBase> ;
+    using IREGION = MPU_MPU_TYPER_IREGION_Values<MPU::MPU_TYPER, 16, 8, ReadMode, MPUMPU_TYPERBase> ;
   } ;
 
   template<typename... T> 
-  using MpuTyperPack  = Register<0xE000ED90, 32, ReadMode, MpuMpuTyperSeparateValuesBase, T...> ;
+  using MPU_TYPERPack  = Register<0xE000ED90, 32, ReadMode, MPUMPU_TYPERBase, T...> ;
 
-  struct MpuCtrl : public RegisterBase<0xE000ED94, 32, ReadMode>
+  struct MPUMPU_CTRLBase {} ;
+
+  struct MPU_CTRL : public RegisterBase<0xE000ED94, 32, ReadMode>
   {
-    using Enable = MpuMpuCtrlEnableValues<Mpu::MpuCtrl, 0, 1, ReadMode, MpuMpuCtrlEnableValuesBase> ;
-    using Hfnmiena = MpuMpuCtrlHfnmienaValues<Mpu::MpuCtrl, 1, 1, ReadMode, MpuMpuCtrlHfnmienaValuesBase> ;
-    using Privdefena = MpuMpuCtrlPrivdefenaValues<Mpu::MpuCtrl, 2, 1, ReadMode, MpuMpuCtrlPrivdefenaValuesBase> ;
+    using ENABLE = MPU_MPU_CTRL_ENABLE_Values<MPU::MPU_CTRL, 0, 1, ReadMode, MPUMPU_CTRLBase> ;
+    using HFNMIENA = MPU_MPU_CTRL_HFNMIENA_Values<MPU::MPU_CTRL, 1, 1, ReadMode, MPUMPU_CTRLBase> ;
+    using PRIVDEFENA = MPU_MPU_CTRL_PRIVDEFENA_Values<MPU::MPU_CTRL, 2, 1, ReadMode, MPUMPU_CTRLBase> ;
   } ;
 
   template<typename... T> 
-  using MpuCtrlPack  = Register<0xE000ED94, 32, ReadMode, MpuMpuCtrlEnableValuesBase, T...> ;
+  using MPU_CTRLPack  = Register<0xE000ED94, 32, ReadMode, MPUMPU_CTRLBase, T...> ;
 
-  struct MpuRnr : public RegisterBase<0xE000ED98, 32, ReadWriteMode>
+  struct MPUMPU_RNRBase {} ;
+
+  struct MPU_RNR : public RegisterBase<0xE000ED98, 32, ReadWriteMode>
   {
-    using Region = ReadWriteMode<Mpu::MpuRnr, 0, 8> ;
+    using REGION = MPU_MPU_RNR_REGION_Values<MPU::MPU_RNR, 0, 8, ReadWriteMode, MPUMPU_RNRBase> ;
   } ;
 
   template<typename... T> 
-  using MpuRnrPack  = Register<0xE000ED98, 32, ReadWriteMode, MpuMpuRnrRegionValuesBase, T...> ;
+  using MPU_RNRPack  = Register<0xE000ED98, 32, ReadWriteMode, MPUMPU_RNRBase, T...> ;
 
-  struct MpuRbar : public RegisterBase<0xE000ED9C, 32, ReadWriteMode>
+  struct MPUMPU_RBARBase {} ;
+
+  struct MPU_RBAR : public RegisterBase<0xE000ED9C, 32, ReadWriteMode>
   {
-    using Region = MpuMpuRbarRegionValues<Mpu::MpuRbar, 0, 4, ReadWriteMode, MpuMpuRbarRegionValuesBase> ;
-    using Valid = MpuMpuRbarValidValues<Mpu::MpuRbar, 4, 1, ReadWriteMode, MpuMpuRbarValidValuesBase> ;
-    using Addr = ReadWriteMode<Mpu::MpuRbar, 5, 27> ;
+    using REGION = MPU_MPU_RBAR_REGION_Values<MPU::MPU_RBAR, 0, 4, ReadWriteMode, MPUMPU_RBARBase> ;
+    using VALID = MPU_MPU_RBAR_VALID_Values<MPU::MPU_RBAR, 4, 1, ReadWriteMode, MPUMPU_RBARBase> ;
+    using ADDR = MPU_MPU_RBAR_ADDR_Values<MPU::MPU_RBAR, 5, 27, ReadWriteMode, MPUMPU_RBARBase> ;
   } ;
 
   template<typename... T> 
-  using MpuRbarPack  = Register<0xE000ED9C, 32, ReadWriteMode, MpuMpuRbarRegionValuesBase, T...> ;
+  using MPU_RBARPack  = Register<0xE000ED9C, 32, ReadWriteMode, MPUMPU_RBARBase, T...> ;
 
-  struct MpuRasr : public RegisterBase<0xE000EDA0, 32, ReadWriteMode>
+  struct MPUMPU_RASRBase {} ;
+
+  struct MPU_RASR : public RegisterBase<0xE000EDA0, 32, ReadWriteMode>
   {
-    using Enable = MpuMpuRasrEnableValues<Mpu::MpuRasr, 0, 1, ReadWriteMode, MpuMpuRasrEnableValuesBase> ;
-    using Size = MpuMpuRasrSizeValues<Mpu::MpuRasr, 1, 5, ReadWriteMode, MpuMpuRasrSizeValuesBase> ;
-    using Srd = ReadWriteMode<Mpu::MpuRasr, 8, 8> ;
-    using B = MpuMpuRasrBValues<Mpu::MpuRasr, 16, 1, ReadWriteMode, MpuMpuRasrBValuesBase> ;
-    using C = MpuMpuRasrCValues<Mpu::MpuRasr, 17, 1, ReadWriteMode, MpuMpuRasrCValuesBase> ;
-    using S = MpuMpuRasrSValues<Mpu::MpuRasr, 18, 1, ReadWriteMode, MpuMpuRasrSValuesBase> ;
-    using Tex = MpuMpuRasrTexValues<Mpu::MpuRasr, 19, 3, ReadWriteMode, MpuMpuRasrTexValuesBase> ;
-    using Ap = MpuMpuRasrApValues<Mpu::MpuRasr, 24, 3, ReadWriteMode, MpuMpuRasrApValuesBase> ;
-    using Xn = MpuMpuRasrXnValues<Mpu::MpuRasr, 28, 1, ReadWriteMode, MpuMpuRasrXnValuesBase> ;
+    using ENABLE = MPU_MPU_RASR_ENABLE_Values<MPU::MPU_RASR, 0, 1, ReadWriteMode, MPUMPU_RASRBase> ;
+    using SIZE = MPU_MPU_RASR_SIZE_Values<MPU::MPU_RASR, 1, 5, ReadWriteMode, MPUMPU_RASRBase> ;
+    using SRD = MPU_MPU_RASR_SRD_Values<MPU::MPU_RASR, 8, 8, ReadWriteMode, MPUMPU_RASRBase> ;
+    using B = MPU_MPU_RASR_B_Values<MPU::MPU_RASR, 16, 1, ReadWriteMode, MPUMPU_RASRBase> ;
+    using C = MPU_MPU_RASR_C_Values<MPU::MPU_RASR, 17, 1, ReadWriteMode, MPUMPU_RASRBase> ;
+    using S = MPU_MPU_RASR_S_Values<MPU::MPU_RASR, 18, 1, ReadWriteMode, MPUMPU_RASRBase> ;
+    using TEX = MPU_MPU_RASR_TEX_Values<MPU::MPU_RASR, 19, 3, ReadWriteMode, MPUMPU_RASRBase> ;
+    using AP = MPU_MPU_RASR_AP_Values<MPU::MPU_RASR, 24, 3, ReadWriteMode, MPUMPU_RASRBase> ;
+    using XN = MPU_MPU_RASR_XN_Values<MPU::MPU_RASR, 28, 1, ReadWriteMode, MPUMPU_RASRBase> ;
   } ;
 
   template<typename... T> 
-  using MpuRasrPack  = Register<0xE000EDA0, 32, ReadWriteMode, MpuMpuRasrEnableValuesBase, T...> ;
+  using MPU_RASRPack  = Register<0xE000EDA0, 32, ReadWriteMode, MPUMPU_RASRBase, T...> ;
 
 } ;
 

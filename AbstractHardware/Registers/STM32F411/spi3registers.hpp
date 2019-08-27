@@ -15,115 +15,133 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Spi3
+struct SPI3
 {
-  struct Cr1 : public RegisterBase<0x40003C00, 32, ReadWriteMode>
+  struct SPI3CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40003C00, 32, ReadWriteMode>
   {
-    using Bidimode = SpiCrBidimodeValues<Spi3::Cr1, 15, 1, ReadWriteMode, SpiCrBidimodeValuesBase> ;
-    using Bidioe = SpiCrBidioeValues<Spi3::Cr1, 14, 1, ReadWriteMode, SpiCrBidioeValuesBase> ;
-    using Crcen = SpiCrCrcenValues<Spi3::Cr1, 13, 1, ReadWriteMode, SpiCrCrcenValuesBase> ;
-    using Crcnext = SpiCrCrcnextValues<Spi3::Cr1, 12, 1, ReadWriteMode, SpiCrCrcnextValuesBase> ;
-    using Dff = SpiCrDffValues<Spi3::Cr1, 11, 1, ReadWriteMode, SpiCrDffValuesBase> ;
-    using Rxonly = SpiCrRxonlyValues<Spi3::Cr1, 10, 1, ReadWriteMode, SpiCrRxonlyValuesBase> ;
-    using Ssm = SpiCrSsmValues<Spi3::Cr1, 9, 1, ReadWriteMode, SpiCrSsmValuesBase> ;
-    using Ssi = SpiCrSsiValues<Spi3::Cr1, 8, 1, ReadWriteMode, SpiCrSsiValuesBase> ;
-    using Lsbfirst = SpiCrLsbfirstValues<Spi3::Cr1, 7, 1, ReadWriteMode, SpiCrLsbfirstValuesBase> ;
-    using Spe = SpiCrSpeValues<Spi3::Cr1, 6, 1, ReadWriteMode, SpiCrSpeValuesBase> ;
-    using Br = SpiCrBrValues<Spi3::Cr1, 3, 3, ReadWriteMode, SpiCrBrValuesBase> ;
-    using Mstr = SpiCrMstrValues<Spi3::Cr1, 2, 1, ReadWriteMode, SpiCrMstrValuesBase> ;
-    using Cpol = SpiCrCpolValues<Spi3::Cr1, 1, 1, ReadWriteMode, SpiCrCpolValuesBase> ;
-    using Cpha = SpiCrCphaValues<Spi3::Cr1, 0, 1, ReadWriteMode, SpiCrCphaValuesBase> ;
+    using BIDIMODE = SPI_CR_BIDIMODE_Values<SPI3::CR1, 15, 1, ReadWriteMode, SPI3CR1Base> ;
+    using BIDIOE = SPI_CR_BIDIOE_Values<SPI3::CR1, 14, 1, ReadWriteMode, SPI3CR1Base> ;
+    using CRCEN = SPI_CR_CRCEN_Values<SPI3::CR1, 13, 1, ReadWriteMode, SPI3CR1Base> ;
+    using CRCNEXT = SPI_CR_CRCNEXT_Values<SPI3::CR1, 12, 1, ReadWriteMode, SPI3CR1Base> ;
+    using DFF = SPI_CR_DFF_Values<SPI3::CR1, 11, 1, ReadWriteMode, SPI3CR1Base> ;
+    using RXONLY = SPI_CR_RXONLY_Values<SPI3::CR1, 10, 1, ReadWriteMode, SPI3CR1Base> ;
+    using SSM = SPI_CR_SSM_Values<SPI3::CR1, 9, 1, ReadWriteMode, SPI3CR1Base> ;
+    using SSI = SPI_CR_SSI_Values<SPI3::CR1, 8, 1, ReadWriteMode, SPI3CR1Base> ;
+    using LSBFIRST = SPI_CR_LSBFIRST_Values<SPI3::CR1, 7, 1, ReadWriteMode, SPI3CR1Base> ;
+    using SPE = SPI_CR_SPE_Values<SPI3::CR1, 6, 1, ReadWriteMode, SPI3CR1Base> ;
+    using BR = SPI_CR_BR_Values<SPI3::CR1, 3, 3, ReadWriteMode, SPI3CR1Base> ;
+    using MSTR = SPI_CR_MSTR_Values<SPI3::CR1, 2, 1, ReadWriteMode, SPI3CR1Base> ;
+    using CPOL = SPI_CR_CPOL_Values<SPI3::CR1, 1, 1, ReadWriteMode, SPI3CR1Base> ;
+    using CPHA = SPI_CR_CPHA_Values<SPI3::CR1, 0, 1, ReadWriteMode, SPI3CR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x40003C00, 32, ReadWriteMode, SpiCrBidimodeValuesBase, T...> ;
+  using CR1Pack  = Register<0x40003C00, 32, ReadWriteMode, SPI3CR1Base, T...> ;
 
-  struct Cr2 : public RegisterBase<0x40003C04, 32, ReadWriteMode>
+  struct SPI3CR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40003C04, 32, ReadWriteMode>
   {
-    using Txeie = SpiCrTxeieValues<Spi3::Cr2, 7, 1, ReadWriteMode, SpiCrTxeieValuesBase> ;
-    using Rxneie = SpiCrRxneieValues<Spi3::Cr2, 6, 1, ReadWriteMode, SpiCrRxneieValuesBase> ;
-    using Errie = SpiCrErrieValues<Spi3::Cr2, 5, 1, ReadWriteMode, SpiCrErrieValuesBase> ;
-    using Frf = SpiCrFrfValues<Spi3::Cr2, 4, 1, ReadWriteMode, SpiCrFrfValuesBase> ;
-    using Ssoe = SpiCrSsoeValues<Spi3::Cr2, 2, 1, ReadWriteMode, SpiCrSsoeValuesBase> ;
-    using Txdmaen = SpiCrTxdmaenValues<Spi3::Cr2, 1, 1, ReadWriteMode, SpiCrTxdmaenValuesBase> ;
-    using Rxdmaen = SpiCrRxdmaenValues<Spi3::Cr2, 0, 1, ReadWriteMode, SpiCrRxdmaenValuesBase> ;
+    using TXEIE = SPI_CR_TXEIE_Values<SPI3::CR2, 7, 1, ReadWriteMode, SPI3CR2Base> ;
+    using RXNEIE = SPI_CR_RXNEIE_Values<SPI3::CR2, 6, 1, ReadWriteMode, SPI3CR2Base> ;
+    using ERRIE = SPI_CR_ERRIE_Values<SPI3::CR2, 5, 1, ReadWriteMode, SPI3CR2Base> ;
+    using FRF = SPI_CR_FRF_Values<SPI3::CR2, 4, 1, ReadWriteMode, SPI3CR2Base> ;
+    using SSOE = SPI_CR_SSOE_Values<SPI3::CR2, 2, 1, ReadWriteMode, SPI3CR2Base> ;
+    using TXDMAEN = SPI_CR_TXDMAEN_Values<SPI3::CR2, 1, 1, ReadWriteMode, SPI3CR2Base> ;
+    using RXDMAEN = SPI_CR_RXDMAEN_Values<SPI3::CR2, 0, 1, ReadWriteMode, SPI3CR2Base> ;
   } ;
 
   template<typename... T> 
-  using Cr2Pack  = Register<0x40003C04, 32, ReadWriteMode, SpiCrTxeieValuesBase, T...> ;
+  using CR2Pack  = Register<0x40003C04, 32, ReadWriteMode, SPI3CR2Base, T...> ;
 
-  struct Sr : public RegisterBase<0x40003C08, 32, ReadWriteMode>
+  struct SPI3SRBase {} ;
+
+  struct SR : public RegisterBase<0x40003C08, 32, ReadWriteMode>
   {
-    using Tifrfe = SpiSrTifrfeValues<Spi3::Sr, 8, 1, ReadMode, SpiSrTifrfeValuesBase> ;
-    using Bsy = SpiSrBsyValues<Spi3::Sr, 7, 1, ReadMode, SpiSrBsyValuesBase> ;
-    using Ovr = SpiSrOvrValues<Spi3::Sr, 6, 1, ReadMode, SpiSrOvrValuesBase> ;
-    using Modf = SpiSrModfValues<Spi3::Sr, 5, 1, ReadMode, SpiSrModfValuesBase> ;
-    using Crcerr = SpiSrCrcerrValues<Spi3::Sr, 4, 1, ReadWriteMode, SpiSrCrcerrValuesBase> ;
-    using Udr = SpiSrUdrValues<Spi3::Sr, 3, 1, ReadMode, SpiSrUdrValuesBase> ;
-    using Chside = SpiSrChsideValues<Spi3::Sr, 2, 1, ReadMode, SpiSrChsideValuesBase> ;
-    using Txe = SpiSrTxeValues<Spi3::Sr, 1, 1, ReadMode, SpiSrTxeValuesBase> ;
-    using Rxne = SpiSrRxneValues<Spi3::Sr, 0, 1, ReadMode, SpiSrRxneValuesBase> ;
+    using TIFRFE = SPI_SR_TIFRFE_Values<SPI3::SR, 8, 1, ReadMode, SPI3SRBase> ;
+    using BSY = SPI_SR_BSY_Values<SPI3::SR, 7, 1, ReadMode, SPI3SRBase> ;
+    using OVR = SPI_SR_OVR_Values<SPI3::SR, 6, 1, ReadMode, SPI3SRBase> ;
+    using MODF = SPI_SR_MODF_Values<SPI3::SR, 5, 1, ReadMode, SPI3SRBase> ;
+    using CRCERR = SPI_SR_CRCERR_Values<SPI3::SR, 4, 1, ReadWriteMode, SPI3SRBase> ;
+    using UDR = SPI_SR_UDR_Values<SPI3::SR, 3, 1, ReadMode, SPI3SRBase> ;
+    using CHSIDE = SPI_SR_CHSIDE_Values<SPI3::SR, 2, 1, ReadMode, SPI3SRBase> ;
+    using TXE = SPI_SR_TXE_Values<SPI3::SR, 1, 1, ReadMode, SPI3SRBase> ;
+    using RXNE = SPI_SR_RXNE_Values<SPI3::SR, 0, 1, ReadMode, SPI3SRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40003C08, 32, ReadWriteMode, SpiSrTifrfeValuesBase, T...> ;
+  using SRPack  = Register<0x40003C08, 32, ReadWriteMode, SPI3SRBase, T...> ;
 
-  struct Dr : public RegisterBase<0x40003C0C, 32, ReadWriteMode>
+  struct SPI3DRBase {} ;
+
+  struct DR : public RegisterBase<0x40003C0C, 32, ReadWriteMode>
   {
-    using DrField = ReadWriteMode<Spi3::Dr, 0, 16> ;
+    using DRField = SPI_DR_DR_Values<SPI3::DR, 0, 16, ReadWriteMode, SPI3DRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x40003C0C, 32, ReadWriteMode, SpiDrDrValuesBase, T...> ;
+  using DRPack  = Register<0x40003C0C, 32, ReadWriteMode, SPI3DRBase, T...> ;
 
-  struct Crcpr : public RegisterBase<0x40003C10, 32, ReadWriteMode>
+  struct SPI3CRCPRBase {} ;
+
+  struct CRCPR : public RegisterBase<0x40003C10, 32, ReadWriteMode>
   {
-    using Crcpoly = ReadWriteMode<Spi3::Crcpr, 0, 16> ;
+    using CRCPOLY = SPI_CRCPR_CRCPOLY_Values<SPI3::CRCPR, 0, 16, ReadWriteMode, SPI3CRCPRBase> ;
   } ;
 
   template<typename... T> 
-  using CrcprPack  = Register<0x40003C10, 32, ReadWriteMode, SpiCrcprCrcpolyValuesBase, T...> ;
+  using CRCPRPack  = Register<0x40003C10, 32, ReadWriteMode, SPI3CRCPRBase, T...> ;
 
-  struct Rxcrcr : public RegisterBase<0x40003C14, 32, ReadMode>
+  struct SPI3RXCRCRBase {} ;
+
+  struct RXCRCR : public RegisterBase<0x40003C14, 32, ReadMode>
   {
-    using Rxcrc = ReadMode<Spi3::Rxcrcr, 0, 16> ;
+    using RxCRC = SPI_RXCRCR_RxCRC_Values<SPI3::RXCRCR, 0, 16, ReadMode, SPI3RXCRCRBase> ;
   } ;
 
   template<typename... T> 
-  using RxcrcrPack  = Register<0x40003C14, 32, ReadMode, SpiRxcrcrRxcrcValuesBase, T...> ;
+  using RXCRCRPack  = Register<0x40003C14, 32, ReadMode, SPI3RXCRCRBase, T...> ;
 
-  struct Txcrcr : public RegisterBase<0x40003C18, 32, ReadMode>
+  struct SPI3TXCRCRBase {} ;
+
+  struct TXCRCR : public RegisterBase<0x40003C18, 32, ReadMode>
   {
-    using Txcrc = ReadMode<Spi3::Txcrcr, 0, 16> ;
+    using TxCRC = SPI_TXCRCR_TxCRC_Values<SPI3::TXCRCR, 0, 16, ReadMode, SPI3TXCRCRBase> ;
   } ;
 
   template<typename... T> 
-  using TxcrcrPack  = Register<0x40003C18, 32, ReadMode, SpiTxcrcrTxcrcValuesBase, T...> ;
+  using TXCRCRPack  = Register<0x40003C18, 32, ReadMode, SPI3TXCRCRBase, T...> ;
 
-  struct I2Scfgr : public RegisterBase<0x40003C1C, 32, ReadWriteMode>
+  struct SPI3I2SCFGRBase {} ;
+
+  struct I2SCFGR : public RegisterBase<0x40003C1C, 32, ReadWriteMode>
   {
-    using I2Smod = SpiIScfgrISmodValues<Spi3::I2Scfgr, 11, 1, ReadWriteMode, SpiIScfgrISmodValuesBase> ;
-    using I2Se = SpiIScfgrISeValues<Spi3::I2Scfgr, 10, 1, ReadWriteMode, SpiIScfgrISeValuesBase> ;
-    using I2Scfg = SpiIScfgrIScfgValues<Spi3::I2Scfgr, 8, 2, ReadWriteMode, SpiIScfgrIScfgValuesBase> ;
-    using Pcmsync = SpiIScfgrPcmsyncValues<Spi3::I2Scfgr, 7, 1, ReadWriteMode, SpiIScfgrPcmsyncValuesBase> ;
-    using I2Sstd = SpiIScfgrISstdValues<Spi3::I2Scfgr, 4, 2, ReadWriteMode, SpiIScfgrISstdValuesBase> ;
-    using Ckpol = SpiIScfgrCkpolValues<Spi3::I2Scfgr, 3, 1, ReadWriteMode, SpiIScfgrCkpolValuesBase> ;
-    using Datlen = SpiIScfgrDatlenValues<Spi3::I2Scfgr, 1, 2, ReadWriteMode, SpiIScfgrDatlenValuesBase> ;
-    using Chlen = SpiIScfgrChlenValues<Spi3::I2Scfgr, 0, 1, ReadWriteMode, SpiIScfgrChlenValuesBase> ;
+    using I2SMOD = SPI_ISCFGR_ISMOD_Values<SPI3::I2SCFGR, 11, 1, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using I2SE = SPI_ISCFGR_ISE_Values<SPI3::I2SCFGR, 10, 1, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using I2SCFG = SPI_ISCFGR_ISCFG_Values<SPI3::I2SCFGR, 8, 2, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using PCMSYNC = SPI_ISCFGR_PCMSYNC_Values<SPI3::I2SCFGR, 7, 1, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using I2SSTD = SPI_ISCFGR_ISSTD_Values<SPI3::I2SCFGR, 4, 2, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using CKPOL = SPI_ISCFGR_CKPOL_Values<SPI3::I2SCFGR, 3, 1, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using DATLEN = SPI_ISCFGR_DATLEN_Values<SPI3::I2SCFGR, 1, 2, ReadWriteMode, SPI3I2SCFGRBase> ;
+    using CHLEN = SPI_ISCFGR_CHLEN_Values<SPI3::I2SCFGR, 0, 1, ReadWriteMode, SPI3I2SCFGRBase> ;
   } ;
 
   template<typename... T> 
-  using I2ScfgrPack  = Register<0x40003C1C, 32, ReadWriteMode, SpiIScfgrISmodValuesBase, T...> ;
+  using I2SCFGRPack  = Register<0x40003C1C, 32, ReadWriteMode, SPI3I2SCFGRBase, T...> ;
 
-  struct I2Spr : public RegisterBase<0x40003C20, 32, ReadWriteMode>
+  struct SPI3I2SPRBase {} ;
+
+  struct I2SPR : public RegisterBase<0x40003C20, 32, ReadWriteMode>
   {
-    using Mckoe = SpiISprMckoeValues<Spi3::I2Spr, 9, 1, ReadWriteMode, SpiISprMckoeValuesBase> ;
-    using Odd = SpiISprOddValues<Spi3::I2Spr, 8, 1, ReadWriteMode, SpiISprOddValuesBase> ;
-    using I2Sdiv = ReadWriteMode<Spi3::I2Spr, 0, 8> ;
+    using MCKOE = SPI_ISPR_MCKOE_Values<SPI3::I2SPR, 9, 1, ReadWriteMode, SPI3I2SPRBase> ;
+    using ODD = SPI_ISPR_ODD_Values<SPI3::I2SPR, 8, 1, ReadWriteMode, SPI3I2SPRBase> ;
+    using I2SDIV = SPI_ISPR_ISDIV_Values<SPI3::I2SPR, 0, 8, ReadWriteMode, SPI3I2SPRBase> ;
   } ;
 
   template<typename... T> 
-  using I2SprPack  = Register<0x40003C20, 32, ReadWriteMode, SpiISprMckoeValuesBase, T...> ;
+  using I2SPRPack  = Register<0x40003C20, 32, ReadWriteMode, SPI3I2SPRBase, T...> ;
 
 } ;
 

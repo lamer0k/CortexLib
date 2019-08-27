@@ -15,31 +15,37 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Crc
+struct CRC
 {
-  struct Dr : public RegisterBase<0x40023000, 32, ReadWriteMode>
+  struct CRCDRBase {} ;
+
+  struct DR : public RegisterBase<0x40023000, 32, ReadWriteMode>
   {
-    using DrField = ReadWriteMode<Crc::Dr, 0, 32> ;
+    using DRField = CRC_DR_DR_Values<CRC::DR, 0, 32, ReadWriteMode, CRCDRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x40023000, 32, ReadWriteMode, CrcDrDrValuesBase, T...> ;
+  using DRPack  = Register<0x40023000, 32, ReadWriteMode, CRCDRBase, T...> ;
 
-  struct Idr : public RegisterBase<0x40023004, 32, ReadWriteMode>
+  struct CRCIDRBase {} ;
+
+  struct IDR : public RegisterBase<0x40023004, 32, ReadWriteMode>
   {
-    using IdrField = ReadWriteMode<Crc::Idr, 0, 8> ;
+    using IDRField = CRC_IDR_IDR_Values<CRC::IDR, 0, 8, ReadWriteMode, CRCIDRBase> ;
   } ;
 
   template<typename... T> 
-  using IdrPack  = Register<0x40023004, 32, ReadWriteMode, CrcIdrIdrValuesBase, T...> ;
+  using IDRPack  = Register<0x40023004, 32, ReadWriteMode, CRCIDRBase, T...> ;
 
-  struct Cr : public RegisterBase<0x40023008, 32, WriteMode>
+  struct CRCCRBase {} ;
+
+  struct CR : public RegisterBase<0x40023008, 32, WriteMode>
   {
-    using CrField = CrcCrCrValues<Crc::Cr, 0, 1, WriteMode, CrcCrCrValuesBase> ;
+    using CRField = CRC_CR_CR_Values<CRC::CR, 0, 1, WriteMode, CRCCRBase> ;
   } ;
 
   template<typename... T> 
-  using CrPack  = Register<0x40023008, 32, WriteMode, CrcCrCrValuesBase, T...> ;
+  using CRPack  = Register<0x40023008, 32, WriteMode, CRCCRBase, T...> ;
 
 } ;
 

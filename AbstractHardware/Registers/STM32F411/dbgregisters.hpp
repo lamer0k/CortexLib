@@ -15,56 +15,64 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Dbg
+struct DBG
 {
-  struct DbgmcuIdcode : public RegisterBase<0xE0042000, 32, ReadMode>
+  struct DBGDBGMCU_IDCODEBase {} ;
+
+  struct DBGMCU_IDCODE : public RegisterBase<0xE0042000, 32, ReadMode>
   {
-    using DevId = ReadMode<Dbg::DbgmcuIdcode, 0, 12> ;
-    using RevId = ReadMode<Dbg::DbgmcuIdcode, 16, 16> ;
+    using DEV_ID = DBG_DBGMCU_IDCODE_DEV_ID_Values<DBG::DBGMCU_IDCODE, 0, 12, ReadMode, DBGDBGMCU_IDCODEBase> ;
+    using REV_ID = DBG_DBGMCU_IDCODE_REV_ID_Values<DBG::DBGMCU_IDCODE, 16, 16, ReadMode, DBGDBGMCU_IDCODEBase> ;
   } ;
 
   template<typename... T> 
-  using DbgmcuIdcodePack  = Register<0xE0042000, 32, ReadMode, DbgDbgmcuIdcodeDevIdValuesBase, T...> ;
+  using DBGMCU_IDCODEPack  = Register<0xE0042000, 32, ReadMode, DBGDBGMCU_IDCODEBase, T...> ;
 
-  struct DbgmcuCr : public RegisterBase<0xE0042004, 32, ReadWriteMode>
+  struct DBGDBGMCU_CRBase {} ;
+
+  struct DBGMCU_CR : public RegisterBase<0xE0042004, 32, ReadWriteMode>
   {
-    using DbgSleep = DbgDbgmcuCrDbgSleepValues<Dbg::DbgmcuCr, 0, 1, ReadWriteMode, DbgDbgmcuCrDbgSleepValuesBase> ;
-    using DbgStop = DbgDbgmcuCrDbgStopValues<Dbg::DbgmcuCr, 1, 1, ReadWriteMode, DbgDbgmcuCrDbgStopValuesBase> ;
-    using DbgStandby = DbgDbgmcuCrDbgStandbyValues<Dbg::DbgmcuCr, 2, 1, ReadWriteMode, DbgDbgmcuCrDbgStandbyValuesBase> ;
-    using TraceIoen = DbgDbgmcuCrTraceIoenValues<Dbg::DbgmcuCr, 5, 1, ReadWriteMode, DbgDbgmcuCrTraceIoenValuesBase> ;
-    using TraceMode = DbgDbgmcuCrTraceModeValues<Dbg::DbgmcuCr, 6, 2, ReadWriteMode, DbgDbgmcuCrTraceModeValuesBase> ;
+    using DBG_SLEEP = DBG_DBGMCU_CR_DBG_SLEEP_Values<DBG::DBGMCU_CR, 0, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
+    using DBG_STOP = DBG_DBGMCU_CR_DBG_STOP_Values<DBG::DBGMCU_CR, 1, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
+    using DBG_STANDBY = DBG_DBGMCU_CR_DBG_STANDBY_Values<DBG::DBGMCU_CR, 2, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
+    using TRACE_IOEN = DBG_DBGMCU_CR_TRACE_IOEN_Values<DBG::DBGMCU_CR, 5, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
+    using TRACE_MODE = DBG_DBGMCU_CR_TRACE_MODE_Values<DBG::DBGMCU_CR, 6, 2, ReadWriteMode, DBGDBGMCU_CRBase> ;
   } ;
 
   template<typename... T> 
-  using DbgmcuCrPack  = Register<0xE0042004, 32, ReadWriteMode, DbgDbgmcuCrDbgSleepValuesBase, T...> ;
+  using DBGMCU_CRPack  = Register<0xE0042004, 32, ReadWriteMode, DBGDBGMCU_CRBase, T...> ;
 
-  struct DbgmcuApb1Fz : public RegisterBase<0xE0042008, 32, ReadWriteMode>
+  struct DBGDBGMCU_APB1_FZBase {} ;
+
+  struct DBGMCU_APB1_FZ : public RegisterBase<0xE0042008, 32, ReadWriteMode>
   {
-    using DbgTim2Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb1Fz, 0, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim3Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb1Fz, 1, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim4Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb1Fz, 2, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim5Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb1Fz, 3, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgRtcStop = DbgDbgmcuApbFzDbgRtcStopValues<Dbg::DbgmcuApb1Fz, 10, 1, ReadWriteMode, DbgDbgmcuApbFzDbgRtcStopValuesBase> ;
-    using DbgWwdgStop = DbgDbgmcuApbFzDbgWwdgStopValues<Dbg::DbgmcuApb1Fz, 11, 1, ReadWriteMode, DbgDbgmcuApbFzDbgWwdgStopValuesBase> ;
-    using DbgIwdegStop = DbgDbgmcuApbFzDbgIwdegStopValues<Dbg::DbgmcuApb1Fz, 12, 1, ReadWriteMode, DbgDbgmcuApbFzDbgIwdegStopValuesBase> ;
-    using DbgI2C1SmbusTimeout = DbgDbgmcuApbFzDbgICSmbusTimeoutValues<Dbg::DbgmcuApb1Fz, 21, 1, ReadWriteMode, DbgDbgmcuApbFzDbgICSmbusTimeoutValuesBase> ;
-    using DbgI2C2SmbusTimeout = DbgDbgmcuApbFzDbgICSmbusTimeoutValues<Dbg::DbgmcuApb1Fz, 22, 1, ReadWriteMode, DbgDbgmcuApbFzDbgICSmbusTimeoutValuesBase> ;
-    using DbgI2C3SmbusTimeout = DbgDbgmcuApbFzDbgICSmbusTimeoutValues<Dbg::DbgmcuApb1Fz, 23, 1, ReadWriteMode, DbgDbgmcuApbFzDbgICSmbusTimeoutValuesBase> ;
+    using DBG_TIM2_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB1_FZ, 0, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_TIM3_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB1_FZ, 1, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_TIM4_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB1_FZ, 2, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_TIM5_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB1_FZ, 3, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_RTC_Stop = DBG_DBGMCU_APB_FZ_DBG_RTC_Stop_Values<DBG::DBGMCU_APB1_FZ, 10, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_WWDG_STOP = DBG_DBGMCU_APB_FZ_DBG_WWDG_STOP_Values<DBG::DBGMCU_APB1_FZ, 11, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_IWDEG_STOP = DBG_DBGMCU_APB_FZ_DBG_IWDEG_STOP_Values<DBG::DBGMCU_APB1_FZ, 12, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_I2C1_SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_IC_SMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 21, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_I2C2_SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_IC_SMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 22, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using DBG_I2C3SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_ICSMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 23, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
   } ;
 
   template<typename... T> 
-  using DbgmcuApb1FzPack  = Register<0xE0042008, 32, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase, T...> ;
+  using DBGMCU_APB1_FZPack  = Register<0xE0042008, 32, ReadWriteMode, DBGDBGMCU_APB1_FZBase, T...> ;
 
-  struct DbgmcuApb2Fz : public RegisterBase<0xE004200C, 32, ReadWriteMode>
+  struct DBGDBGMCU_APB2_FZBase {} ;
+
+  struct DBGMCU_APB2_FZ : public RegisterBase<0xE004200C, 32, ReadWriteMode>
   {
-    using DbgTim1Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb2Fz, 0, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim9Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb2Fz, 16, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim10Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb2Fz, 17, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
-    using DbgTim11Stop = DbgDbgmcuApbFzDbgTimStopValues<Dbg::DbgmcuApb2Fz, 18, 1, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase> ;
+    using DBG_TIM1_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 0, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
+    using DBG_TIM9_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 16, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
+    using DBG_TIM10_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 17, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
+    using DBG_TIM11_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 18, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
   } ;
 
   template<typename... T> 
-  using DbgmcuApb2FzPack  = Register<0xE004200C, 32, ReadWriteMode, DbgDbgmcuApbFzDbgTimStopValuesBase, T...> ;
+  using DBGMCU_APB2_FZPack  = Register<0xE004200C, 32, ReadWriteMode, DBGDBGMCU_APB2_FZBase, T...> ;
 
 } ;
 

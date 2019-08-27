@@ -15,115 +15,133 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct I2S2Ext
+struct I2S2ext
 {
-  struct Cr1 : public RegisterBase<0x40003400, 32, ReadWriteMode>
+  struct I2S2extCR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40003400, 32, ReadWriteMode>
   {
-    using Bidimode = ISExtCrBidimodeValues<I2S2Ext::Cr1, 15, 1, ReadWriteMode, ISExtCrBidimodeValuesBase> ;
-    using Bidioe = ISExtCrBidioeValues<I2S2Ext::Cr1, 14, 1, ReadWriteMode, ISExtCrBidioeValuesBase> ;
-    using Crcen = ISExtCrCrcenValues<I2S2Ext::Cr1, 13, 1, ReadWriteMode, ISExtCrCrcenValuesBase> ;
-    using Crcnext = ISExtCrCrcnextValues<I2S2Ext::Cr1, 12, 1, ReadWriteMode, ISExtCrCrcnextValuesBase> ;
-    using Dff = ISExtCrDffValues<I2S2Ext::Cr1, 11, 1, ReadWriteMode, ISExtCrDffValuesBase> ;
-    using Rxonly = ISExtCrRxonlyValues<I2S2Ext::Cr1, 10, 1, ReadWriteMode, ISExtCrRxonlyValuesBase> ;
-    using Ssm = ISExtCrSsmValues<I2S2Ext::Cr1, 9, 1, ReadWriteMode, ISExtCrSsmValuesBase> ;
-    using Ssi = ISExtCrSsiValues<I2S2Ext::Cr1, 8, 1, ReadWriteMode, ISExtCrSsiValuesBase> ;
-    using Lsbfirst = ISExtCrLsbfirstValues<I2S2Ext::Cr1, 7, 1, ReadWriteMode, ISExtCrLsbfirstValuesBase> ;
-    using Spe = ISExtCrSpeValues<I2S2Ext::Cr1, 6, 1, ReadWriteMode, ISExtCrSpeValuesBase> ;
-    using Br = ISExtCrBrValues<I2S2Ext::Cr1, 3, 3, ReadWriteMode, ISExtCrBrValuesBase> ;
-    using Mstr = ISExtCrMstrValues<I2S2Ext::Cr1, 2, 1, ReadWriteMode, ISExtCrMstrValuesBase> ;
-    using Cpol = ISExtCrCpolValues<I2S2Ext::Cr1, 1, 1, ReadWriteMode, ISExtCrCpolValuesBase> ;
-    using Cpha = ISExtCrCphaValues<I2S2Ext::Cr1, 0, 1, ReadWriteMode, ISExtCrCphaValuesBase> ;
+    using BIDIMODE = ISext_CR_BIDIMODE_Values<I2S2ext::CR1, 15, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using BIDIOE = ISext_CR_BIDIOE_Values<I2S2ext::CR1, 14, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using CRCEN = ISext_CR_CRCEN_Values<I2S2ext::CR1, 13, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using CRCNEXT = ISext_CR_CRCNEXT_Values<I2S2ext::CR1, 12, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using DFF = ISext_CR_DFF_Values<I2S2ext::CR1, 11, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using RXONLY = ISext_CR_RXONLY_Values<I2S2ext::CR1, 10, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using SSM = ISext_CR_SSM_Values<I2S2ext::CR1, 9, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using SSI = ISext_CR_SSI_Values<I2S2ext::CR1, 8, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using LSBFIRST = ISext_CR_LSBFIRST_Values<I2S2ext::CR1, 7, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using SPE = ISext_CR_SPE_Values<I2S2ext::CR1, 6, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using BR = ISext_CR_BR_Values<I2S2ext::CR1, 3, 3, ReadWriteMode, I2S2extCR1Base> ;
+    using MSTR = ISext_CR_MSTR_Values<I2S2ext::CR1, 2, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using CPOL = ISext_CR_CPOL_Values<I2S2ext::CR1, 1, 1, ReadWriteMode, I2S2extCR1Base> ;
+    using CPHA = ISext_CR_CPHA_Values<I2S2ext::CR1, 0, 1, ReadWriteMode, I2S2extCR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x40003400, 32, ReadWriteMode, ISExtCrBidimodeValuesBase, T...> ;
+  using CR1Pack  = Register<0x40003400, 32, ReadWriteMode, I2S2extCR1Base, T...> ;
 
-  struct Cr2 : public RegisterBase<0x40003404, 32, ReadWriteMode>
+  struct I2S2extCR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40003404, 32, ReadWriteMode>
   {
-    using Txeie = ISExtCrTxeieValues<I2S2Ext::Cr2, 7, 1, ReadWriteMode, ISExtCrTxeieValuesBase> ;
-    using Rxneie = ISExtCrRxneieValues<I2S2Ext::Cr2, 6, 1, ReadWriteMode, ISExtCrRxneieValuesBase> ;
-    using Errie = ISExtCrErrieValues<I2S2Ext::Cr2, 5, 1, ReadWriteMode, ISExtCrErrieValuesBase> ;
-    using Frf = ISExtCrFrfValues<I2S2Ext::Cr2, 4, 1, ReadWriteMode, ISExtCrFrfValuesBase> ;
-    using Ssoe = ISExtCrSsoeValues<I2S2Ext::Cr2, 2, 1, ReadWriteMode, ISExtCrSsoeValuesBase> ;
-    using Txdmaen = ISExtCrTxdmaenValues<I2S2Ext::Cr2, 1, 1, ReadWriteMode, ISExtCrTxdmaenValuesBase> ;
-    using Rxdmaen = ISExtCrRxdmaenValues<I2S2Ext::Cr2, 0, 1, ReadWriteMode, ISExtCrRxdmaenValuesBase> ;
+    using TXEIE = ISext_CR_TXEIE_Values<I2S2ext::CR2, 7, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using RXNEIE = ISext_CR_RXNEIE_Values<I2S2ext::CR2, 6, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using ERRIE = ISext_CR_ERRIE_Values<I2S2ext::CR2, 5, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using FRF = ISext_CR_FRF_Values<I2S2ext::CR2, 4, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using SSOE = ISext_CR_SSOE_Values<I2S2ext::CR2, 2, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using TXDMAEN = ISext_CR_TXDMAEN_Values<I2S2ext::CR2, 1, 1, ReadWriteMode, I2S2extCR2Base> ;
+    using RXDMAEN = ISext_CR_RXDMAEN_Values<I2S2ext::CR2, 0, 1, ReadWriteMode, I2S2extCR2Base> ;
   } ;
 
   template<typename... T> 
-  using Cr2Pack  = Register<0x40003404, 32, ReadWriteMode, ISExtCrTxeieValuesBase, T...> ;
+  using CR2Pack  = Register<0x40003404, 32, ReadWriteMode, I2S2extCR2Base, T...> ;
 
-  struct Sr : public RegisterBase<0x40003408, 32, ReadWriteMode>
+  struct I2S2extSRBase {} ;
+
+  struct SR : public RegisterBase<0x40003408, 32, ReadWriteMode>
   {
-    using Tifrfe = ISExtSrTifrfeValues<I2S2Ext::Sr, 8, 1, ReadMode, ISExtSrTifrfeValuesBase> ;
-    using Bsy = ISExtSrBsyValues<I2S2Ext::Sr, 7, 1, ReadMode, ISExtSrBsyValuesBase> ;
-    using Ovr = ISExtSrOvrValues<I2S2Ext::Sr, 6, 1, ReadMode, ISExtSrOvrValuesBase> ;
-    using Modf = ISExtSrModfValues<I2S2Ext::Sr, 5, 1, ReadMode, ISExtSrModfValuesBase> ;
-    using Crcerr = ISExtSrCrcerrValues<I2S2Ext::Sr, 4, 1, ReadWriteMode, ISExtSrCrcerrValuesBase> ;
-    using Udr = ISExtSrUdrValues<I2S2Ext::Sr, 3, 1, ReadMode, ISExtSrUdrValuesBase> ;
-    using Chside = ISExtSrChsideValues<I2S2Ext::Sr, 2, 1, ReadMode, ISExtSrChsideValuesBase> ;
-    using Txe = ISExtSrTxeValues<I2S2Ext::Sr, 1, 1, ReadMode, ISExtSrTxeValuesBase> ;
-    using Rxne = ISExtSrRxneValues<I2S2Ext::Sr, 0, 1, ReadMode, ISExtSrRxneValuesBase> ;
+    using TIFRFE = ISext_SR_TIFRFE_Values<I2S2ext::SR, 8, 1, ReadMode, I2S2extSRBase> ;
+    using BSY = ISext_SR_BSY_Values<I2S2ext::SR, 7, 1, ReadMode, I2S2extSRBase> ;
+    using OVR = ISext_SR_OVR_Values<I2S2ext::SR, 6, 1, ReadMode, I2S2extSRBase> ;
+    using MODF = ISext_SR_MODF_Values<I2S2ext::SR, 5, 1, ReadMode, I2S2extSRBase> ;
+    using CRCERR = ISext_SR_CRCERR_Values<I2S2ext::SR, 4, 1, ReadWriteMode, I2S2extSRBase> ;
+    using UDR = ISext_SR_UDR_Values<I2S2ext::SR, 3, 1, ReadMode, I2S2extSRBase> ;
+    using CHSIDE = ISext_SR_CHSIDE_Values<I2S2ext::SR, 2, 1, ReadMode, I2S2extSRBase> ;
+    using TXE = ISext_SR_TXE_Values<I2S2ext::SR, 1, 1, ReadMode, I2S2extSRBase> ;
+    using RXNE = ISext_SR_RXNE_Values<I2S2ext::SR, 0, 1, ReadMode, I2S2extSRBase> ;
   } ;
 
   template<typename... T> 
-  using SrPack  = Register<0x40003408, 32, ReadWriteMode, ISExtSrTifrfeValuesBase, T...> ;
+  using SRPack  = Register<0x40003408, 32, ReadWriteMode, I2S2extSRBase, T...> ;
 
-  struct Dr : public RegisterBase<0x4000340C, 32, ReadWriteMode>
+  struct I2S2extDRBase {} ;
+
+  struct DR : public RegisterBase<0x4000340C, 32, ReadWriteMode>
   {
-    using DrField = ReadWriteMode<I2S2Ext::Dr, 0, 16> ;
+    using DRField = ISext_DR_DR_Values<I2S2ext::DR, 0, 16, ReadWriteMode, I2S2extDRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x4000340C, 32, ReadWriteMode, ISExtDrDrValuesBase, T...> ;
+  using DRPack  = Register<0x4000340C, 32, ReadWriteMode, I2S2extDRBase, T...> ;
 
-  struct Crcpr : public RegisterBase<0x40003410, 32, ReadWriteMode>
+  struct I2S2extCRCPRBase {} ;
+
+  struct CRCPR : public RegisterBase<0x40003410, 32, ReadWriteMode>
   {
-    using Crcpoly = ReadWriteMode<I2S2Ext::Crcpr, 0, 16> ;
+    using CRCPOLY = ISext_CRCPR_CRCPOLY_Values<I2S2ext::CRCPR, 0, 16, ReadWriteMode, I2S2extCRCPRBase> ;
   } ;
 
   template<typename... T> 
-  using CrcprPack  = Register<0x40003410, 32, ReadWriteMode, ISExtCrcprCrcpolyValuesBase, T...> ;
+  using CRCPRPack  = Register<0x40003410, 32, ReadWriteMode, I2S2extCRCPRBase, T...> ;
 
-  struct Rxcrcr : public RegisterBase<0x40003414, 32, ReadMode>
+  struct I2S2extRXCRCRBase {} ;
+
+  struct RXCRCR : public RegisterBase<0x40003414, 32, ReadMode>
   {
-    using Rxcrc = ReadMode<I2S2Ext::Rxcrcr, 0, 16> ;
+    using RxCRC = ISext_RXCRCR_RxCRC_Values<I2S2ext::RXCRCR, 0, 16, ReadMode, I2S2extRXCRCRBase> ;
   } ;
 
   template<typename... T> 
-  using RxcrcrPack  = Register<0x40003414, 32, ReadMode, ISExtRxcrcrRxcrcValuesBase, T...> ;
+  using RXCRCRPack  = Register<0x40003414, 32, ReadMode, I2S2extRXCRCRBase, T...> ;
 
-  struct Txcrcr : public RegisterBase<0x40003418, 32, ReadMode>
+  struct I2S2extTXCRCRBase {} ;
+
+  struct TXCRCR : public RegisterBase<0x40003418, 32, ReadMode>
   {
-    using Txcrc = ReadMode<I2S2Ext::Txcrcr, 0, 16> ;
+    using TxCRC = ISext_TXCRCR_TxCRC_Values<I2S2ext::TXCRCR, 0, 16, ReadMode, I2S2extTXCRCRBase> ;
   } ;
 
   template<typename... T> 
-  using TxcrcrPack  = Register<0x40003418, 32, ReadMode, ISExtTxcrcrTxcrcValuesBase, T...> ;
+  using TXCRCRPack  = Register<0x40003418, 32, ReadMode, I2S2extTXCRCRBase, T...> ;
 
-  struct I2Scfgr : public RegisterBase<0x4000341C, 32, ReadWriteMode>
+  struct I2S2extI2SCFGRBase {} ;
+
+  struct I2SCFGR : public RegisterBase<0x4000341C, 32, ReadWriteMode>
   {
-    using I2Smod = ISExtIScfgrISmodValues<I2S2Ext::I2Scfgr, 11, 1, ReadWriteMode, ISExtIScfgrISmodValuesBase> ;
-    using I2Se = ISExtIScfgrISeValues<I2S2Ext::I2Scfgr, 10, 1, ReadWriteMode, ISExtIScfgrISeValuesBase> ;
-    using I2Scfg = ISExtIScfgrIScfgValues<I2S2Ext::I2Scfgr, 8, 2, ReadWriteMode, ISExtIScfgrIScfgValuesBase> ;
-    using Pcmsync = ISExtIScfgrPcmsyncValues<I2S2Ext::I2Scfgr, 7, 1, ReadWriteMode, ISExtIScfgrPcmsyncValuesBase> ;
-    using I2Sstd = ISExtIScfgrISstdValues<I2S2Ext::I2Scfgr, 4, 2, ReadWriteMode, ISExtIScfgrISstdValuesBase> ;
-    using Ckpol = ISExtIScfgrCkpolValues<I2S2Ext::I2Scfgr, 3, 1, ReadWriteMode, ISExtIScfgrCkpolValuesBase> ;
-    using Datlen = ISExtIScfgrDatlenValues<I2S2Ext::I2Scfgr, 1, 2, ReadWriteMode, ISExtIScfgrDatlenValuesBase> ;
-    using Chlen = ISExtIScfgrChlenValues<I2S2Ext::I2Scfgr, 0, 1, ReadWriteMode, ISExtIScfgrChlenValuesBase> ;
+    using I2SMOD = ISext_ISCFGR_ISMOD_Values<I2S2ext::I2SCFGR, 11, 1, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using I2SE = ISext_ISCFGR_ISE_Values<I2S2ext::I2SCFGR, 10, 1, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using I2SCFG = ISext_ISCFGR_ISCFG_Values<I2S2ext::I2SCFGR, 8, 2, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using PCMSYNC = ISext_ISCFGR_PCMSYNC_Values<I2S2ext::I2SCFGR, 7, 1, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using I2SSTD = ISext_ISCFGR_ISSTD_Values<I2S2ext::I2SCFGR, 4, 2, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using CKPOL = ISext_ISCFGR_CKPOL_Values<I2S2ext::I2SCFGR, 3, 1, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using DATLEN = ISext_ISCFGR_DATLEN_Values<I2S2ext::I2SCFGR, 1, 2, ReadWriteMode, I2S2extI2SCFGRBase> ;
+    using CHLEN = ISext_ISCFGR_CHLEN_Values<I2S2ext::I2SCFGR, 0, 1, ReadWriteMode, I2S2extI2SCFGRBase> ;
   } ;
 
   template<typename... T> 
-  using I2ScfgrPack  = Register<0x4000341C, 32, ReadWriteMode, ISExtIScfgrISmodValuesBase, T...> ;
+  using I2SCFGRPack  = Register<0x4000341C, 32, ReadWriteMode, I2S2extI2SCFGRBase, T...> ;
 
-  struct I2Spr : public RegisterBase<0x40003420, 32, ReadWriteMode>
+  struct I2S2extI2SPRBase {} ;
+
+  struct I2SPR : public RegisterBase<0x40003420, 32, ReadWriteMode>
   {
-    using Mckoe = ISExtISprMckoeValues<I2S2Ext::I2Spr, 9, 1, ReadWriteMode, ISExtISprMckoeValuesBase> ;
-    using Odd = ISExtISprOddValues<I2S2Ext::I2Spr, 8, 1, ReadWriteMode, ISExtISprOddValuesBase> ;
-    using I2Sdiv = ReadWriteMode<I2S2Ext::I2Spr, 0, 8> ;
+    using MCKOE = ISext_ISPR_MCKOE_Values<I2S2ext::I2SPR, 9, 1, ReadWriteMode, I2S2extI2SPRBase> ;
+    using ODD = ISext_ISPR_ODD_Values<I2S2ext::I2SPR, 8, 1, ReadWriteMode, I2S2extI2SPRBase> ;
+    using I2SDIV = ISext_ISPR_ISDIV_Values<I2S2ext::I2SPR, 0, 8, ReadWriteMode, I2S2extI2SPRBase> ;
   } ;
 
   template<typename... T> 
-  using I2SprPack  = Register<0x40003420, 32, ReadWriteMode, ISExtISprMckoeValuesBase, T...> ;
+  using I2SPRPack  = Register<0x40003420, 32, ReadWriteMode, I2S2extI2SPRBase, T...> ;
 
 } ;
 

@@ -15,15 +15,17 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct FpuCpacr
+struct FPU_CPACR
 {
-  struct Cpacr : public RegisterBase<0xE000ED88, 32, ReadWriteMode>
+  struct FPU_CPACRCPACRBase {} ;
+
+  struct CPACR : public RegisterBase<0xE000ED88, 32, ReadWriteMode>
   {
-    using Cp = FpuCpacrCpacrCpValues<FpuCpacr::Cpacr, 20, 4, ReadWriteMode, FpuCpacrCpacrCpValuesBase> ;
+    using CP = FPU_CPACR_CPACR_CP_Values<FPU_CPACR::CPACR, 20, 4, ReadWriteMode, FPU_CPACRCPACRBase> ;
   } ;
 
   template<typename... T> 
-  using CpacrPack  = Register<0xE000ED88, 32, ReadWriteMode, FpuCpacrCpacrCpValuesBase, T...> ;
+  using CPACRPack  = Register<0xE000ED88, 32, ReadWriteMode, FPU_CPACRCPACRBase, T...> ;
 
 } ;
 

@@ -17,121 +17,139 @@
 
 struct I2C2
 {
-  struct Cr1 : public RegisterBase<0x40005800, 32, ReadWriteMode>
+  struct I2C2CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40005800, 32, ReadWriteMode>
   {
-    using Swrst = ICCrSwrstValues<I2C2::Cr1, 15, 1, ReadWriteMode, ICCrSwrstValuesBase> ;
-    using Alert = ICCrAlertValues<I2C2::Cr1, 13, 1, ReadWriteMode, ICCrAlertValuesBase> ;
-    using Pec = ICCrPecValues<I2C2::Cr1, 12, 1, ReadWriteMode, ICCrPecValuesBase> ;
-    using Pos = ICCrPosValues<I2C2::Cr1, 11, 1, ReadWriteMode, ICCrPosValuesBase> ;
-    using Ack = ICCrAckValues<I2C2::Cr1, 10, 1, ReadWriteMode, ICCrAckValuesBase> ;
-    using Stop = ICCrStopValues<I2C2::Cr1, 9, 1, ReadWriteMode, ICCrStopValuesBase> ;
-    using Start = ICCrStartValues<I2C2::Cr1, 8, 1, ReadWriteMode, ICCrStartValuesBase> ;
-    using Nostretch = ICCrNostretchValues<I2C2::Cr1, 7, 1, ReadWriteMode, ICCrNostretchValuesBase> ;
-    using Engc = ICCrEngcValues<I2C2::Cr1, 6, 1, ReadWriteMode, ICCrEngcValuesBase> ;
-    using Enpec = ICCrEnpecValues<I2C2::Cr1, 5, 1, ReadWriteMode, ICCrEnpecValuesBase> ;
-    using Enarp = ICCrEnarpValues<I2C2::Cr1, 4, 1, ReadWriteMode, ICCrEnarpValuesBase> ;
-    using Smbtype = ICCrSmbtypeValues<I2C2::Cr1, 3, 1, ReadWriteMode, ICCrSmbtypeValuesBase> ;
-    using Smbus = ICCrSmbusValues<I2C2::Cr1, 1, 1, ReadWriteMode, ICCrSmbusValuesBase> ;
-    using Pe = ICCrPeValues<I2C2::Cr1, 0, 1, ReadWriteMode, ICCrPeValuesBase> ;
+    using SWRST = IC_CR_SWRST_Values<I2C2::CR1, 15, 1, ReadWriteMode, I2C2CR1Base> ;
+    using ALERT = IC_CR_ALERT_Values<I2C2::CR1, 13, 1, ReadWriteMode, I2C2CR1Base> ;
+    using PEC = IC_CR_PEC_Values<I2C2::CR1, 12, 1, ReadWriteMode, I2C2CR1Base> ;
+    using POS = IC_CR_POS_Values<I2C2::CR1, 11, 1, ReadWriteMode, I2C2CR1Base> ;
+    using ACK = IC_CR_ACK_Values<I2C2::CR1, 10, 1, ReadWriteMode, I2C2CR1Base> ;
+    using STOP = IC_CR_STOP_Values<I2C2::CR1, 9, 1, ReadWriteMode, I2C2CR1Base> ;
+    using START = IC_CR_START_Values<I2C2::CR1, 8, 1, ReadWriteMode, I2C2CR1Base> ;
+    using NOSTRETCH = IC_CR_NOSTRETCH_Values<I2C2::CR1, 7, 1, ReadWriteMode, I2C2CR1Base> ;
+    using ENGC = IC_CR_ENGC_Values<I2C2::CR1, 6, 1, ReadWriteMode, I2C2CR1Base> ;
+    using ENPEC = IC_CR_ENPEC_Values<I2C2::CR1, 5, 1, ReadWriteMode, I2C2CR1Base> ;
+    using ENARP = IC_CR_ENARP_Values<I2C2::CR1, 4, 1, ReadWriteMode, I2C2CR1Base> ;
+    using SMBTYPE = IC_CR_SMBTYPE_Values<I2C2::CR1, 3, 1, ReadWriteMode, I2C2CR1Base> ;
+    using SMBUS = IC_CR_SMBUS_Values<I2C2::CR1, 1, 1, ReadWriteMode, I2C2CR1Base> ;
+    using PE = IC_CR_PE_Values<I2C2::CR1, 0, 1, ReadWriteMode, I2C2CR1Base> ;
   } ;
 
   template<typename... T> 
-  using Cr1Pack  = Register<0x40005800, 32, ReadWriteMode, ICCrSwrstValuesBase, T...> ;
+  using CR1Pack  = Register<0x40005800, 32, ReadWriteMode, I2C2CR1Base, T...> ;
 
-  struct Cr2 : public RegisterBase<0x40005804, 32, ReadWriteMode>
+  struct I2C2CR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40005804, 32, ReadWriteMode>
   {
-    using Last = ICCrLastValues<I2C2::Cr2, 12, 1, ReadWriteMode, ICCrLastValuesBase> ;
-    using Dmaen = ICCrDmaenValues<I2C2::Cr2, 11, 1, ReadWriteMode, ICCrDmaenValuesBase> ;
-    using Itbufen = ICCrItbufenValues<I2C2::Cr2, 10, 1, ReadWriteMode, ICCrItbufenValuesBase> ;
-    using Itevten = ICCrItevtenValues<I2C2::Cr2, 9, 1, ReadWriteMode, ICCrItevtenValuesBase> ;
-    using Iterren = ICCrIterrenValues<I2C2::Cr2, 8, 1, ReadWriteMode, ICCrIterrenValuesBase> ;
-    using Freq = ReadWriteMode<I2C2::Cr2, 0, 6> ;
+    using LAST = IC_CR_LAST_Values<I2C2::CR2, 12, 1, ReadWriteMode, I2C2CR2Base> ;
+    using DMAEN = IC_CR_DMAEN_Values<I2C2::CR2, 11, 1, ReadWriteMode, I2C2CR2Base> ;
+    using ITBUFEN = IC_CR_ITBUFEN_Values<I2C2::CR2, 10, 1, ReadWriteMode, I2C2CR2Base> ;
+    using ITEVTEN = IC_CR_ITEVTEN_Values<I2C2::CR2, 9, 1, ReadWriteMode, I2C2CR2Base> ;
+    using ITERREN = IC_CR_ITERREN_Values<I2C2::CR2, 8, 1, ReadWriteMode, I2C2CR2Base> ;
+    using FREQ = IC_CR_FREQ_Values<I2C2::CR2, 0, 6, ReadWriteMode, I2C2CR2Base> ;
   } ;
 
   template<typename... T> 
-  using Cr2Pack  = Register<0x40005804, 32, ReadWriteMode, ICCrLastValuesBase, T...> ;
+  using CR2Pack  = Register<0x40005804, 32, ReadWriteMode, I2C2CR2Base, T...> ;
 
-  struct Oar1 : public RegisterBase<0x40005808, 32, ReadWriteMode>
+  struct I2C2OAR1Base {} ;
+
+  struct OAR1 : public RegisterBase<0x40005808, 32, ReadWriteMode>
   {
-    using Addmode = ICOarAddmodeValues<I2C2::Oar1, 15, 1, ReadWriteMode, ICOarAddmodeValuesBase> ;
-    using Add10 = ICOarAddValues<I2C2::Oar1, 8, 2, ReadWriteMode, ICOarAddValuesBase> ;
-    using Add7 = ReadWriteMode<I2C2::Oar1, 1, 7> ;
-    using Add0 = ICOarAddValues<I2C2::Oar1, 0, 1, ReadWriteMode, ICOarAddValuesBase> ;
+    using ADDMODE = IC_OAR_ADDMODE_Values<I2C2::OAR1, 15, 1, ReadWriteMode, I2C2OAR1Base> ;
+    using ADD10 = IC_OAR_ADD_Values<I2C2::OAR1, 8, 2, ReadWriteMode, I2C2OAR1Base> ;
+    using ADD7 = IC_OAR_ADD_Values<I2C2::OAR1, 1, 7, ReadWriteMode, I2C2OAR1Base> ;
+    using ADD0 = IC_OAR_ADD_Values<I2C2::OAR1, 0, 1, ReadWriteMode, I2C2OAR1Base> ;
   } ;
 
   template<typename... T> 
-  using Oar1Pack  = Register<0x40005808, 32, ReadWriteMode, ICOarAddmodeValuesBase, T...> ;
+  using OAR1Pack  = Register<0x40005808, 32, ReadWriteMode, I2C2OAR1Base, T...> ;
 
-  struct Oar2 : public RegisterBase<0x4000580C, 32, ReadWriteMode>
+  struct I2C2OAR2Base {} ;
+
+  struct OAR2 : public RegisterBase<0x4000580C, 32, ReadWriteMode>
   {
-    using Add2 = ReadWriteMode<I2C2::Oar2, 1, 7> ;
-    using Endual = ICOarEndualValues<I2C2::Oar2, 0, 1, ReadWriteMode, ICOarEndualValuesBase> ;
+    using ADD2 = IC_OAR_ADD_Values<I2C2::OAR2, 1, 7, ReadWriteMode, I2C2OAR2Base> ;
+    using ENDUAL = IC_OAR_ENDUAL_Values<I2C2::OAR2, 0, 1, ReadWriteMode, I2C2OAR2Base> ;
   } ;
 
   template<typename... T> 
-  using Oar2Pack  = Register<0x4000580C, 32, ReadWriteMode, ICOarAddValuesBase, T...> ;
+  using OAR2Pack  = Register<0x4000580C, 32, ReadWriteMode, I2C2OAR2Base, T...> ;
 
-  struct Dr : public RegisterBase<0x40005810, 32, ReadWriteMode>
+  struct I2C2DRBase {} ;
+
+  struct DR : public RegisterBase<0x40005810, 32, ReadWriteMode>
   {
-    using DrField = ReadWriteMode<I2C2::Dr, 0, 8> ;
+    using DRField = IC_DR_DR_Values<I2C2::DR, 0, 8, ReadWriteMode, I2C2DRBase> ;
   } ;
 
   template<typename... T> 
-  using DrPack  = Register<0x40005810, 32, ReadWriteMode, ICDrDrValuesBase, T...> ;
+  using DRPack  = Register<0x40005810, 32, ReadWriteMode, I2C2DRBase, T...> ;
 
-  struct Sr1 : public RegisterBase<0x40005814, 32, ReadWriteMode>
+  struct I2C2SR1Base {} ;
+
+  struct SR1 : public RegisterBase<0x40005814, 32, ReadWriteMode>
   {
-    using Smbalert = ICSrSmbalertValues<I2C2::Sr1, 15, 1, ReadWriteMode, ICSrSmbalertValuesBase> ;
-    using Timeout = ICSrTimeoutValues<I2C2::Sr1, 14, 1, ReadWriteMode, ICSrTimeoutValuesBase> ;
-    using Pecerr = ICSrPecerrValues<I2C2::Sr1, 12, 1, ReadWriteMode, ICSrPecerrValuesBase> ;
-    using Ovr = ICSrOvrValues<I2C2::Sr1, 11, 1, ReadWriteMode, ICSrOvrValuesBase> ;
-    using Af = ICSrAfValues<I2C2::Sr1, 10, 1, ReadWriteMode, ICSrAfValuesBase> ;
-    using Arlo = ICSrArloValues<I2C2::Sr1, 9, 1, ReadWriteMode, ICSrArloValuesBase> ;
-    using Berr = ICSrBerrValues<I2C2::Sr1, 8, 1, ReadWriteMode, ICSrBerrValuesBase> ;
-    using Txe = ICSrTxeValues<I2C2::Sr1, 7, 1, ReadMode, ICSrTxeValuesBase> ;
-    using Rxne = ICSrRxneValues<I2C2::Sr1, 6, 1, ReadMode, ICSrRxneValuesBase> ;
-    using Stopf = ICSrStopfValues<I2C2::Sr1, 4, 1, ReadMode, ICSrStopfValuesBase> ;
-    using Add10 = ICSrAddValues<I2C2::Sr1, 3, 1, ReadMode, ICSrAddValuesBase> ;
-    using Btf = ICSrBtfValues<I2C2::Sr1, 2, 1, ReadMode, ICSrBtfValuesBase> ;
-    using Addr = ICSrAddrValues<I2C2::Sr1, 1, 1, ReadMode, ICSrAddrValuesBase> ;
-    using Sb = ICSrSbValues<I2C2::Sr1, 0, 1, ReadMode, ICSrSbValuesBase> ;
+    using SMBALERT = IC_SR_SMBALERT_Values<I2C2::SR1, 15, 1, ReadWriteMode, I2C2SR1Base> ;
+    using TIMEOUT = IC_SR_TIMEOUT_Values<I2C2::SR1, 14, 1, ReadWriteMode, I2C2SR1Base> ;
+    using PECERR = IC_SR_PECERR_Values<I2C2::SR1, 12, 1, ReadWriteMode, I2C2SR1Base> ;
+    using OVR = IC_SR_OVR_Values<I2C2::SR1, 11, 1, ReadWriteMode, I2C2SR1Base> ;
+    using AF = IC_SR_AF_Values<I2C2::SR1, 10, 1, ReadWriteMode, I2C2SR1Base> ;
+    using ARLO = IC_SR_ARLO_Values<I2C2::SR1, 9, 1, ReadWriteMode, I2C2SR1Base> ;
+    using BERR = IC_SR_BERR_Values<I2C2::SR1, 8, 1, ReadWriteMode, I2C2SR1Base> ;
+    using TxE = IC_SR_TxE_Values<I2C2::SR1, 7, 1, ReadMode, I2C2SR1Base> ;
+    using RxNE = IC_SR_RxNE_Values<I2C2::SR1, 6, 1, ReadMode, I2C2SR1Base> ;
+    using STOPF = IC_SR_STOPF_Values<I2C2::SR1, 4, 1, ReadMode, I2C2SR1Base> ;
+    using ADD10 = IC_SR_ADD_Values<I2C2::SR1, 3, 1, ReadMode, I2C2SR1Base> ;
+    using BTF = IC_SR_BTF_Values<I2C2::SR1, 2, 1, ReadMode, I2C2SR1Base> ;
+    using ADDR = IC_SR_ADDR_Values<I2C2::SR1, 1, 1, ReadMode, I2C2SR1Base> ;
+    using SB = IC_SR_SB_Values<I2C2::SR1, 0, 1, ReadMode, I2C2SR1Base> ;
   } ;
 
   template<typename... T> 
-  using Sr1Pack  = Register<0x40005814, 32, ReadWriteMode, ICSrSmbalertValuesBase, T...> ;
+  using SR1Pack  = Register<0x40005814, 32, ReadWriteMode, I2C2SR1Base, T...> ;
 
-  struct Sr2 : public RegisterBase<0x40005818, 32, ReadMode>
+  struct I2C2SR2Base {} ;
+
+  struct SR2 : public RegisterBase<0x40005818, 32, ReadMode>
   {
-    using Pec = ReadMode<I2C2::Sr2, 8, 8> ;
-    using Dualf = ICSrDualfValues<I2C2::Sr2, 7, 1, ReadMode, ICSrDualfValuesBase> ;
-    using Smbhost = ICSrSmbhostValues<I2C2::Sr2, 6, 1, ReadMode, ICSrSmbhostValuesBase> ;
-    using Smbdefault = ICSrSmbdefaultValues<I2C2::Sr2, 5, 1, ReadMode, ICSrSmbdefaultValuesBase> ;
-    using Gencall = ICSrGencallValues<I2C2::Sr2, 4, 1, ReadMode, ICSrGencallValuesBase> ;
-    using Tra = ICSrTraValues<I2C2::Sr2, 2, 1, ReadMode, ICSrTraValuesBase> ;
-    using Busy = ICSrBusyValues<I2C2::Sr2, 1, 1, ReadMode, ICSrBusyValuesBase> ;
-    using Msl = ICSrMslValues<I2C2::Sr2, 0, 1, ReadMode, ICSrMslValuesBase> ;
+    using PEC = IC_SR_PEC_Values<I2C2::SR2, 8, 8, ReadMode, I2C2SR2Base> ;
+    using DUALF = IC_SR_DUALF_Values<I2C2::SR2, 7, 1, ReadMode, I2C2SR2Base> ;
+    using SMBHOST = IC_SR_SMBHOST_Values<I2C2::SR2, 6, 1, ReadMode, I2C2SR2Base> ;
+    using SMBDEFAULT = IC_SR_SMBDEFAULT_Values<I2C2::SR2, 5, 1, ReadMode, I2C2SR2Base> ;
+    using GENCALL = IC_SR_GENCALL_Values<I2C2::SR2, 4, 1, ReadMode, I2C2SR2Base> ;
+    using TRA = IC_SR_TRA_Values<I2C2::SR2, 2, 1, ReadMode, I2C2SR2Base> ;
+    using BUSY = IC_SR_BUSY_Values<I2C2::SR2, 1, 1, ReadMode, I2C2SR2Base> ;
+    using MSL = IC_SR_MSL_Values<I2C2::SR2, 0, 1, ReadMode, I2C2SR2Base> ;
   } ;
 
   template<typename... T> 
-  using Sr2Pack  = Register<0x40005818, 32, ReadMode, ICSrPecValuesBase, T...> ;
+  using SR2Pack  = Register<0x40005818, 32, ReadMode, I2C2SR2Base, T...> ;
 
-  struct Ccr : public RegisterBase<0x4000581C, 32, ReadWriteMode>
+  struct I2C2CCRBase {} ;
+
+  struct CCR : public RegisterBase<0x4000581C, 32, ReadWriteMode>
   {
-    using FS = ICCcrFSValues<I2C2::Ccr, 15, 1, ReadWriteMode, ICCcrFSValuesBase> ;
-    using Duty = ICCcrDutyValues<I2C2::Ccr, 14, 1, ReadWriteMode, ICCcrDutyValuesBase> ;
-    using CcrField = ReadWriteMode<I2C2::Ccr, 0, 12> ;
+    using F_S = IC_CCR_F_S_Values<I2C2::CCR, 15, 1, ReadWriteMode, I2C2CCRBase> ;
+    using DUTY = IC_CCR_DUTY_Values<I2C2::CCR, 14, 1, ReadWriteMode, I2C2CCRBase> ;
+    using CCRField = IC_CCR_CCR_Values<I2C2::CCR, 0, 12, ReadWriteMode, I2C2CCRBase> ;
   } ;
 
   template<typename... T> 
-  using CcrPack  = Register<0x4000581C, 32, ReadWriteMode, ICCcrFSValuesBase, T...> ;
+  using CCRPack  = Register<0x4000581C, 32, ReadWriteMode, I2C2CCRBase, T...> ;
 
-  struct Trise : public RegisterBase<0x40005820, 32, ReadWriteMode>
+  struct I2C2TRISEBase {} ;
+
+  struct TRISE : public RegisterBase<0x40005820, 32, ReadWriteMode>
   {
-    using TriseField = ReadWriteMode<I2C2::Trise, 0, 6> ;
+    using TRISEField = IC_TRISE_TRISE_Values<I2C2::TRISE, 0, 6, ReadWriteMode, I2C2TRISEBase> ;
   } ;
 
   template<typename... T> 
-  using TrisePack  = Register<0x40005820, 32, ReadWriteMode, ICTriseTriseValuesBase, T...> ;
+  using TRISEPack  = Register<0x40005820, 32, ReadWriteMode, I2C2TRISEBase, T...> ;
 
 } ;
 

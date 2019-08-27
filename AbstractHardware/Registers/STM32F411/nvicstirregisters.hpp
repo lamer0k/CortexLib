@@ -15,15 +15,17 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct NvicStir
+struct NVIC_STIR
 {
-  struct Stir : public RegisterBase<0xE000EF00, 32, ReadWriteMode>
+  struct NVIC_STIRSTIRBase {} ;
+
+  struct STIR : public RegisterBase<0xE000EF00, 32, ReadWriteMode>
   {
-    using Intid = ReadWriteMode<NvicStir::Stir, 0, 9> ;
+    using INTID = NVIC_STIR_STIR_INTID_Values<NVIC_STIR::STIR, 0, 9, ReadWriteMode, NVIC_STIRSTIRBase> ;
   } ;
 
   template<typename... T> 
-  using StirPack  = Register<0xE000EF00, 32, ReadWriteMode, NvicStirStirIntidValuesBase, T...> ;
+  using STIRPack  = Register<0xE000EF00, 32, ReadWriteMode, NVIC_STIRSTIRBase, T...> ;
 
 } ;
 

@@ -15,52 +15,58 @@
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
 
-struct Fpu
+struct FPU
 {
-  struct Fpccr : public RegisterBase<0xE000EF34, 32, ReadWriteMode>
+  struct FPUFPCCRBase {} ;
+
+  struct FPCCR : public RegisterBase<0xE000EF34, 32, ReadWriteMode>
   {
-    using Lspact = FpuFpccrLspactValues<Fpu::Fpccr, 0, 1, ReadWriteMode, FpuFpccrLspactValuesBase> ;
-    using User = FpuFpccrUserValues<Fpu::Fpccr, 1, 1, ReadWriteMode, FpuFpccrUserValuesBase> ;
-    using Thread = FpuFpccrThreadValues<Fpu::Fpccr, 3, 1, ReadWriteMode, FpuFpccrThreadValuesBase> ;
-    using Hfrdy = FpuFpccrHfrdyValues<Fpu::Fpccr, 4, 1, ReadWriteMode, FpuFpccrHfrdyValuesBase> ;
-    using Mmrdy = FpuFpccrMmrdyValues<Fpu::Fpccr, 5, 1, ReadWriteMode, FpuFpccrMmrdyValuesBase> ;
-    using Bfrdy = FpuFpccrBfrdyValues<Fpu::Fpccr, 6, 1, ReadWriteMode, FpuFpccrBfrdyValuesBase> ;
-    using Monrdy = FpuFpccrMonrdyValues<Fpu::Fpccr, 8, 1, ReadWriteMode, FpuFpccrMonrdyValuesBase> ;
-    using Lspen = FpuFpccrLspenValues<Fpu::Fpccr, 30, 1, ReadWriteMode, FpuFpccrLspenValuesBase> ;
-    using Aspen = FpuFpccrAspenValues<Fpu::Fpccr, 31, 1, ReadWriteMode, FpuFpccrAspenValuesBase> ;
+    using LSPACT = FPU_FPCCR_LSPACT_Values<FPU::FPCCR, 0, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using USER = FPU_FPCCR_USER_Values<FPU::FPCCR, 1, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using THREAD = FPU_FPCCR_THREAD_Values<FPU::FPCCR, 3, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using HFRDY = FPU_FPCCR_HFRDY_Values<FPU::FPCCR, 4, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using MMRDY = FPU_FPCCR_MMRDY_Values<FPU::FPCCR, 5, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using BFRDY = FPU_FPCCR_BFRDY_Values<FPU::FPCCR, 6, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using MONRDY = FPU_FPCCR_MONRDY_Values<FPU::FPCCR, 8, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using LSPEN = FPU_FPCCR_LSPEN_Values<FPU::FPCCR, 30, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using ASPEN = FPU_FPCCR_ASPEN_Values<FPU::FPCCR, 31, 1, ReadWriteMode, FPUFPCCRBase> ;
   } ;
 
   template<typename... T> 
-  using FpccrPack  = Register<0xE000EF34, 32, ReadWriteMode, FpuFpccrLspactValuesBase, T...> ;
+  using FPCCRPack  = Register<0xE000EF34, 32, ReadWriteMode, FPUFPCCRBase, T...> ;
 
-  struct Fpcar : public RegisterBase<0xE000EF38, 32, ReadWriteMode>
+  struct FPUFPCARBase {} ;
+
+  struct FPCAR : public RegisterBase<0xE000EF38, 32, ReadWriteMode>
   {
-    using Address = ReadWriteMode<Fpu::Fpcar, 3, 29> ;
+    using ADDRESS = FPU_FPCAR_ADDRESS_Values<FPU::FPCAR, 3, 29, ReadWriteMode, FPUFPCARBase> ;
   } ;
 
   template<typename... T> 
-  using FpcarPack  = Register<0xE000EF38, 32, ReadWriteMode, FpuFpcarAddressValuesBase, T...> ;
+  using FPCARPack  = Register<0xE000EF38, 32, ReadWriteMode, FPUFPCARBase, T...> ;
 
-  struct Fpscr : public RegisterBase<0xE000EF3C, 32, ReadWriteMode>
+  struct FPUFPSCRBase {} ;
+
+  struct FPSCR : public RegisterBase<0xE000EF3C, 32, ReadWriteMode>
   {
-    using Ioc = FpuFpscrIocValues<Fpu::Fpscr, 0, 1, ReadWriteMode, FpuFpscrIocValuesBase> ;
-    using Dzc = FpuFpscrDzcValues<Fpu::Fpscr, 1, 1, ReadWriteMode, FpuFpscrDzcValuesBase> ;
-    using Ofc = FpuFpscrOfcValues<Fpu::Fpscr, 2, 1, ReadWriteMode, FpuFpscrOfcValuesBase> ;
-    using Ufc = FpuFpscrUfcValues<Fpu::Fpscr, 3, 1, ReadWriteMode, FpuFpscrUfcValuesBase> ;
-    using Ixc = FpuFpscrIxcValues<Fpu::Fpscr, 4, 1, ReadWriteMode, FpuFpscrIxcValuesBase> ;
-    using Idc = FpuFpscrIdcValues<Fpu::Fpscr, 7, 1, ReadWriteMode, FpuFpscrIdcValuesBase> ;
-    using Rmode = FpuFpscrRmodeValues<Fpu::Fpscr, 22, 2, ReadWriteMode, FpuFpscrRmodeValuesBase> ;
-    using Fz = FpuFpscrFzValues<Fpu::Fpscr, 24, 1, ReadWriteMode, FpuFpscrFzValuesBase> ;
-    using Dn = FpuFpscrDnValues<Fpu::Fpscr, 25, 1, ReadWriteMode, FpuFpscrDnValuesBase> ;
-    using Ahp = FpuFpscrAhpValues<Fpu::Fpscr, 26, 1, ReadWriteMode, FpuFpscrAhpValuesBase> ;
-    using V = FpuFpscrVValues<Fpu::Fpscr, 28, 1, ReadWriteMode, FpuFpscrVValuesBase> ;
-    using C = FpuFpscrCValues<Fpu::Fpscr, 29, 1, ReadWriteMode, FpuFpscrCValuesBase> ;
-    using Z = FpuFpscrZValues<Fpu::Fpscr, 30, 1, ReadWriteMode, FpuFpscrZValuesBase> ;
-    using N = FpuFpscrNValues<Fpu::Fpscr, 31, 1, ReadWriteMode, FpuFpscrNValuesBase> ;
+    using IOC = FPU_FPSCR_IOC_Values<FPU::FPSCR, 0, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using DZC = FPU_FPSCR_DZC_Values<FPU::FPSCR, 1, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using OFC = FPU_FPSCR_OFC_Values<FPU::FPSCR, 2, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using UFC = FPU_FPSCR_UFC_Values<FPU::FPSCR, 3, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using IXC = FPU_FPSCR_IXC_Values<FPU::FPSCR, 4, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using IDC = FPU_FPSCR_IDC_Values<FPU::FPSCR, 7, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using RMode = FPU_FPSCR_RMode_Values<FPU::FPSCR, 22, 2, ReadWriteMode, FPUFPSCRBase> ;
+    using FZ = FPU_FPSCR_FZ_Values<FPU::FPSCR, 24, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using DN = FPU_FPSCR_DN_Values<FPU::FPSCR, 25, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using AHP = FPU_FPSCR_AHP_Values<FPU::FPSCR, 26, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using V = FPU_FPSCR_V_Values<FPU::FPSCR, 28, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using C = FPU_FPSCR_C_Values<FPU::FPSCR, 29, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using Z = FPU_FPSCR_Z_Values<FPU::FPSCR, 30, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using N = FPU_FPSCR_N_Values<FPU::FPSCR, 31, 1, ReadWriteMode, FPUFPSCRBase> ;
   } ;
 
   template<typename... T> 
-  using FpscrPack  = Register<0xE000EF3C, 32, ReadWriteMode, FpuFpscrIocValuesBase, T...> ;
+  using FPSCRPack  = Register<0xE000EF3C, 32, ReadWriteMode, FPUFPSCRBase, T...> ;
 
 } ;
 

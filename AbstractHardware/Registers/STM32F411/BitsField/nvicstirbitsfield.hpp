@@ -12,4 +12,9 @@
 
 #include "bitsfield.hpp"     //for BitsField 
 
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct NVIC_STIR_STIR_INTID_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
 #endif //#if !defined(NVICSTIRENUMS_HPP)
