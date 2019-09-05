@@ -15,61 +15,61 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CKD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using Divider1 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Divider2 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Divider4 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using Reserved = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_ARPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using ARRNotBuffered = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using ARRBuffered = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CMS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
-  using Value2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
-  using Value3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
+  using CenterAlignedMode0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using CenterAlignedMode1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using CenterAlignedMode2 = BitsField<Reg, offset, size, AccessMode, BaseType, 2U> ;
+  using CenterAlignedMode3 = BitsField<Reg, offset, size, AccessMode, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_DIR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Upcounter = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Downcounter = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_OPM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using ContinueAfterUEV = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using StopAfterUEV = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_URS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Any = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Overflow = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_UDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Enable  = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

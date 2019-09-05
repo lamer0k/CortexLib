@@ -535,85 +535,85 @@ struct RCC_APBRSTR_SDIORST_Values: public RegisterField<Reg, offset, size, Acces
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_APBRSTR_ADCRST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_APBRSTR_USARTRST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_DMAEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_CRCEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOHEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Diable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOEEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIODEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOCEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOBEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOAEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_OTGFSEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_APBENR_PWREN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -934,8 +934,8 @@ struct RCC_SSCGR_SSCGEN_Values: public RegisterField<Reg, offset, size, AccessMo
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_SSCGR_SPREADSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Disable = BitsField<Reg, offset, size, AccessMode, BaseType, 0U> ;
+  using Enable = BitsField<Reg, offset, size, AccessMode, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
