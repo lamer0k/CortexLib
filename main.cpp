@@ -29,8 +29,8 @@ int main()
   
   RCC::AHB1ENR::GPIOAEN::Disable::Set() ;
   
-  TIM1::CR1::CKD::Devider2::Set() ;
-  if (TIM1::CR1::CKD::Devider2::IsSet())
+  TIM1::CR1::CKD::Divider2::Set() ;
+  if (TIM1::CR1::CKD::Divider2::IsSet())
   {
     TIM1::ARR::Set(10U) ;
     TIM1::CR1::CEN::Enable::Set() ;

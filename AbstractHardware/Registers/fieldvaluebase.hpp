@@ -2,8 +2,8 @@
 // Created by Lamerok on 21.08.2019.
 //
 
-#ifndef REGISTERS_BITSFIELDBASE_HPP
-#define REGISTERS_BITSFIELDBASE_HPP
+#ifndef REGISTERS_FIELDVALUEBASE_HPP
+#define REGISTERS_FIELDVALUEBASE_HPP
 
 #include <cstddef>           //for size_t
 #include <type_traits>       //for std::is_base_of, std::is_same
@@ -13,7 +13,7 @@
 
 //Базовый класс для работы с битовыми полями регистров
 template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Reg::Type value>
-struct BitsFieldBase
+struct FieldValueBase
 {
   using RegType = typename Reg::Type ;
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
@@ -38,4 +38,4 @@ struct BitsFieldBase
                                                                                                 == (value << offset) ;
   }
 };
-#endif //REGISTERS_BITSFIELDBASE_HPP
+#endif //REGISTERS_FIELDVALUEBASE_HPP

@@ -18,7 +18,7 @@ register_types = {
     'register_pack': 'Register'
 }
 
-bitsfield_types = {
+fieldvalue_types = {
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
     'read-write': 'ReadWriteMode',
@@ -65,17 +65,17 @@ class Register:
         self.type = ''
         
 class Field:
-    def __init__(self, name, access, bit_offset, bit_width, description, is_enum):
+    def __init__(self, name, access, bit_offset, bit_width, description, is_fieldvalue):
         self.name = name
         self.access = access
         self.bit_offset = bit_offset
         self.bit_width = bit_width
         self.description = description,
-        self.is_enum = False
-        self.enumerated_values = None
+        self.is_fieldvalue = False
+        self.fieldvalue_values = None
 
         
-class BitsField:
+class FieldValue:
     def __init__(self, name, value, description):
         self.name = name
         self.value = value
@@ -212,24 +212,24 @@ def process_field(raw_field, register, peripheral):
         )
 
         if (raw_field.enumerated_values != None):
-            result.enumerated_values = []
+            result.fieldvalue_values = []
 
             for value in raw_field.enumerated_values:
-                result.enumerated_values.append(process_bitsfield_value(value))
+                result.fieldvalue_values.append(process_fieldvalue_value(value))
         else:
             if (base_field.enumerated_values != None):
-                result.enumerated_values = []
+                result.fieldvalue_values = []
         
                 for value in base_field.enumerated_values:
-                    result.enumerated_values.append(process_bitsfield_value(value))
+                    result.fieldvalue_values.append(process_fieldvalue_value(value))
             else:
-                result.enumerated_values = []
+                result.fieldvalue_values = []
                 if (raw_field.bit_width <= bits_field_max_width):
                     for i in range(raw_field.bit_width):
-                        res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+                        res = process_fieldvalue_none(peripheral, register, raw_field, i, raw_field.description)
                     if(res != None):
-                        result.enumerated_values.append(res)
-                        result.is_enum = False
+                        result.fieldvalue_values.append(res)
+                        result.is_fieldvalue = False
                 else:
                     pass #Fixme
                 
@@ -244,41 +244,41 @@ def process_field(raw_field, register, peripheral):
         )
             
         if (raw_field.enumerated_values != None):
-            result.enumerated_values = []
+            result.fieldvalue_values = []
         
             for value in raw_field.enumerated_values:
-                result.enumerated_values.append(process_bitsfield_value(value))
+                result.fieldvalue_values.append(process_fieldvalue_value(value))
         else:
-            result.enumerated_values = []
+            result.fieldvalue_values = []
             if (raw_field.bit_width <= bits_field_max_width):
                 for i in range(2 ** raw_field.bit_width):
-                    res = process_bitsfield_none(peripheral, register, raw_field, i, raw_field.description)
+                    res = process_fieldvalue_none(peripheral, register, raw_field, i, raw_field.description)
                     if(res != None):
-                        result.enumerated_values.append(res)
-                        result.is_enum = False
+                        result.fieldvalue_values.append(res)
+                        result.is_fieldvalue = False
             else:
                 pass #Fixme
     
     return result
 
-def process_bitsfield_none(peripheral, register, field, value, description):
+def process_fieldvalue_none(peripheral, register, field, value, description):
 
    # name = '{}_{}_{}_Values'.format(
    #     camel_case(peripheral.name),
    #     camel_case(register.name),
    #     camel_case(field.name))
     name = 'Value' + str(value)
-    return BitsField(
+    return FieldValue(
         name,
         str(value),
         description)
 
-def process_bitsfield_value(raw_bitsfield_value):
+def process_fieldvalue_value(raw_fieldvalue_value):
 
-    return BitsField(
-        raw_bitsfield_value.name,
-        raw_bitsfield_value.value,
-        raw_bitsfield_value.description)
+    return FieldValue(
+        raw_fieldvalue_value.name,
+        raw_fieldvalue_value.value,
+        raw_fieldvalue_value.description)
 
 def camel_case(str):
     return str
@@ -356,49 +356,49 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
         camel_case(peripheral.name),
         camel_case(register.name),
         camel_case(field.name)))
-    if (field.is_enum ):
-        enum_class_name = name
+    if (field.is_fieldvalue ):
+        fieldvalue_class_name = name
     else:
-        enum_class_name = cut_bits_field(name)
+        fieldvalue_class_name = cut_bits_field(name)
 
     name = '{}_{}_{}_'.format(
         camel_case(peripheral.name),
         camel_case(register.name),
         camel_case(field.name))
-    if (field.is_enum):
-        enum_name = name
+    if (field.is_fieldvalue):
+        fieldvalue_name = name
     else:
-        enum_name = cut_bits_field(name)
+        fieldvalue_name = cut_bits_field(name)
 
-    if (field.enumerated_values != None):
+    if (field.fieldvalue_values != None):
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
             field_name,
-            enum_class_name,
+            fieldvalue_class_name,
             camel_case(peripheral.name),
             camel_case(register.name),
             field.bit_offset,
             field.bit_width,
-            bitsfield_types[field.access],
-            #camel_case(field.name) + enum_name))
+            fieldvalue_types[field.access],
+            #camel_case(field.name) + fieldvalue_name))
             camel_case(peripheral.name) + camel_case(register.name)))
     else:
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
             field_name,
-            enum_class_name,
+            fieldvalue_class_name,
             camel_case(peripheral.name),
             camel_case(register.name),
             field.bit_offset,
             field.bit_width,
-            bitsfield_types[field.access],
+            fieldvalue_types[field.access],
            # camel_case(peripheral.name) + camel_case(field.name)))
-            enum_name))
+            fieldvalue_name))
             
     if (bitsfiled_file != None):
-        generate_bits_field(peripheral, register, field, enum_class_name, bitsfiled_file)
+        generate_bits_field(peripheral, register, field, fieldvalue_class_name, bitsfiled_file)
  #   else:
  #       registers_file.write('    using {} = RegisterField<{}::{}, {}, {}> ;\n'.format(
  #           field_name,
- #           bitsfield_types[field.access],
+ #           fieldvalue_types[field.access],
  #           camel_case(peripheral.name),
  #           camel_case(register.name),
  #           field.bit_offset,
@@ -413,25 +413,25 @@ def generate_bits_filed_base(peripherial, register, bits_field_file):
     bits_field_file.write('\n')
 
 
-def generate_bits_field(peripherial, register, field, enum_name, bits_field_file):
-   if ((find_bits_field(bits_field_list, enum_name) == False) or (field.is_enum)):
-        if (field.is_enum == False):
-            bits_field_list.append(enum_name)
+def generate_bits_field(peripherial, register, field, fieldvalue_name, bits_field_file):
+   if ((find_bits_field(bits_field_list, fieldvalue_name) == False) or (field.is_fieldvalue)):
+        if (field.is_fieldvalue == False):
+            bits_field_list.append(fieldvalue_name)
         bits_field_file.write('template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> \n')
-        bits_field_file.write('struct {}: public RegisterField<Reg, offset, size, AccessMode> \n'.format(enum_name))
+        bits_field_file.write('struct {}: public RegisterField<Reg, offset, size, AccessMode> \n'.format(fieldvalue_name))
 
         bits_field_file.write('{\n')
-        if(field.enumerated_values == None):
-            bits_field_list.remove(enum_name)
+        if(field.fieldvalue_values == None):
+            bits_field_list.remove(fieldvalue_name)
     
-        if (field.enumerated_values != None):
-            for value in field.enumerated_values:
+        if (field.fieldvalue_values != None):
+            for value in field.fieldvalue_values:
                 if (field.bit_width <= bits_field_max_width):
-                    bits_field_file.write('  using {} = BitsField<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
+                    bits_field_file.write('  using {} = FieldValue<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
         #else:
         #    if (field.bit_width <= bits_field_max_width):
         #        for i in range(2 ** field.bit_width):
-        #            bits_field_file.write('  using Value{0} = BitsField<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
+        #            bits_field_file.write('  using Value{0} = FieldValue<Reg, offset, size, AccessMode, BaseType, {0}U> ;\n'.format(i))
         bits_field_file.write('} ;\n')
         bits_field_file.write('\n')
 
@@ -482,8 +482,8 @@ def main():
     if (not os.path.isdir(device_name)):
         os.mkdir(device_name)
         
-    if (not os.path.isdir('{}\BitsField'.format(device_name))):
-        os.mkdir('{}\BitsField'.format(device_name))
+    if (not os.path.isdir('{}\FieldValues'.format(device_name))):
+        os.mkdir('{}\FieldValues'.format(device_name))
         
     if (args.p != None):
         peripherals = [x for x in device.peripherals if x.name.lower() == args.p.lower()]
@@ -493,8 +493,8 @@ def main():
     for peripheral in peripherals:
         peripheral_name = peripheral.name.lower().replace('_', '')
         reg_file_name = '{}registers.hpp'.format(peripheral_name)
-        enum_file_name = '{}bitsfield.hpp'.format(peripheral_name)
-        enum_file_full_name = '{}\BitsField\{}'.format(device_name, enum_file_name)
+        enum_file_name = '{}fieldvalue.hpp'.format(peripheral_name)
+        enum_file_full_name = '{}\FieldValues\{}'.format(device_name, enum_file_name)
     
         with open('{}\{}'.format(device_name, reg_file_name), 'w') as registers_file:
             if (peripheral.description != None):
@@ -530,7 +530,7 @@ def main():
                     enumerations_file.write('#if !defined({})\n'.format(enum_guard))
                     enumerations_file.write('#define {}\n'.format(enum_guard))
                     enumerations_file.write('\n')
-                    enumerations_file.write('#include "bitsfield.hpp"     //for BitsField \n')
+                    enumerations_file.write('#include "fieldvalue.hpp"     //for FieldValues \n')
                     enumerations_file.write('\n')
                 
                     generate_peripheral(peripheral, registers_file, enumerations_file)
