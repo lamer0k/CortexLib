@@ -10,7 +10,7 @@
 #if !defined(EXTIREGISTERS_HPP)
 #define EXTIREGISTERS_HPP
 
-#include "extifieldvalue.hpp"  //for Bits Fields defs 
+#include "extifieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

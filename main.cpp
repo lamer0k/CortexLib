@@ -29,8 +29,8 @@ int main()
   
   RCC::AHB1ENR::GPIOAEN::Disable::Set() ;
   
-  TIM1::CR1::CKD::Divider2::Set() ;
-  if (TIM1::CR1::CKD::Divider2::IsSet())
+  TIM1::CR1::CKD::DividedBy2::Set() ;
+  if (TIM1::CR1::CKD::DividedBy2::IsSet())
   {
     TIM1::ARR::Set(10U) ;
     TIM1::CR1::CEN::Enable::Set() ;
@@ -46,7 +46,7 @@ int main()
   TIM1::CR1::CEN::Enable::Set() ;
   
   TIM1::CR1Pack<TIM1::CR1::DIR::Upcounter,
-                TIM1::CR1::CKD::Divider4,
+                TIM1::CR1::CKD::DividedBy4,
                 TIM1::CR1::CEN::Enable>::Set() ;
  
   GPIOA::MODER::MODER15::Output::Set() ;

@@ -10,7 +10,7 @@
 #if !defined(FPUREGISTERS_HPP)
 #define FPUREGISTERS_HPP
 
-#include "fpufieldvalue.hpp"  //for Bits Fields defs 
+#include "fpufieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

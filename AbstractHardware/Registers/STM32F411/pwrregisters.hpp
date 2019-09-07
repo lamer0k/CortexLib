@@ -10,7 +10,7 @@
 #if !defined(PWRREGISTERS_HPP)
 #define PWRREGISTERS_HPP
 
-#include "pwrfieldvalue.hpp"  //for Bits Fields defs 
+#include "pwrfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

@@ -10,7 +10,7 @@
 #if !defined(NVICREGISTERS_HPP)
 #define NVICREGISTERS_HPP
 
-#include "nvicfieldvalue.hpp"  //for Bits Fields defs 
+#include "nvicfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

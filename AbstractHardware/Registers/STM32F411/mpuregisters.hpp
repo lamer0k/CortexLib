@@ -10,7 +10,7 @@
 #if !defined(MPUREGISTERS_HPP)
 #define MPUREGISTERS_HPP
 
-#include "mpufieldvalue.hpp"  //for Bits Fields defs 
+#include "mpufieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

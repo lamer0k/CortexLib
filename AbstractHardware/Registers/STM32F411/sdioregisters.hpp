@@ -10,7 +10,7 @@
 #if !defined(SDIOREGISTERS_HPP)
 #define SDIOREGISTERS_HPP
 
-#include "sdiofieldvalue.hpp"  //for Bits Fields defs 
+#include "sdiofieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

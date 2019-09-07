@@ -10,7 +10,7 @@
 #if !defined(NVICSTIRENUMS_HPP)
 #define NVICSTIRENUMS_HPP
 
-#include "fieldvalues.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues 
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct NVIC_STIR_STIR_INTID_Values: public RegisterField<Reg, offset, size, AccessMode> 

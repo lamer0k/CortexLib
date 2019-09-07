@@ -10,7 +10,7 @@
 #if !defined(ADC1REGISTERS_HPP)
 #define ADC1REGISTERS_HPP
 
-#include "adc1fieldvalue.hpp"  //for Bits Fields defs 
+#include "adc1fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

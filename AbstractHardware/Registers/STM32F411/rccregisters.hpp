@@ -10,7 +10,7 @@
 #if !defined(RCCREGISTERS_HPP)
 #define RCCREGISTERS_HPP
 
-#include "rccfieldvalue.hpp"  //for Bits Fields defs 
+#include "rccfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

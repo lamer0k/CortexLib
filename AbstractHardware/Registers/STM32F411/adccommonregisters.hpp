@@ -10,7 +10,7 @@
 #if !defined(ADCCOMMONREGISTERS_HPP)
 #define ADCCOMMONREGISTERS_HPP
 
-#include "adccommonfieldvalue.hpp"  //for Bits Fields defs 
+#include "adccommonfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

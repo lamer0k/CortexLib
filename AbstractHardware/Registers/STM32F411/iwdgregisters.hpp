@@ -10,7 +10,7 @@
 #if !defined(IWDGREGISTERS_HPP)
 #define IWDGREGISTERS_HPP
 
-#include "iwdgfieldvalue.hpp"  //for Bits Fields defs 
+#include "iwdgfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

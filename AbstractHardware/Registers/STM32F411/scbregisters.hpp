@@ -10,7 +10,7 @@
 #if !defined(SCBREGISTERS_HPP)
 #define SCBREGISTERS_HPP
 
-#include "scbfieldvalue.hpp"  //for Bits Fields defs 
+#include "scbfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

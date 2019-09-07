@@ -10,7 +10,7 @@
 #if !defined(OTGFSHOSTREGISTERS_HPP)
 #define OTGFSHOSTREGISTERS_HPP
 
-#include "otgfshostfieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfshostfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

@@ -10,7 +10,7 @@
 #if !defined(OTGFSDEVICEREGISTERS_HPP)
 #define OTGFSDEVICEREGISTERS_HPP
 
-#include "otgfsdevicefieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfsdevicefieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

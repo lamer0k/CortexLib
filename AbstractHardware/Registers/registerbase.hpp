@@ -13,7 +13,7 @@
 template<uint32_t address, size_t size, typename AccessMode>
 struct RegisterBase
 {
-  static constexpr auto Addr = address ;
+  static constexpr auto Address = address ;
   using Type = typename RegisterType<size>::Type ;
   
   //Метод Write будет работать только для регистров, в которые можно записать значение

@@ -10,7 +10,7 @@
 #if !defined(DMA1REGISTERS_HPP)
 #define DMA1REGISTERS_HPP
 
-#include "dma1fieldvalue.hpp"  //for Bits Fields defs 
+#include "dma1fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

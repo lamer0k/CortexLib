@@ -10,7 +10,7 @@
 #if !defined(OTGFSPWRCLKREGISTERS_HPP)
 #define OTGFSPWRCLKREGISTERS_HPP
 
-#include "otgfspwrclkfieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfspwrclkfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

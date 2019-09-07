@@ -10,7 +10,7 @@
 #if !defined(SCBACTRLREGISTERS_HPP)
 #define SCBACTRLREGISTERS_HPP
 
-#include "scbactrlfieldvalue.hpp"  //for Bits Fields defs 
+#include "scbactrlfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

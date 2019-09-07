@@ -10,7 +10,7 @@
 #if !defined(I2S2EXTREGISTERS_HPP)
 #define I2S2EXTREGISTERS_HPP
 
-#include "i2s2extfieldvalue.hpp"  //for Bits Fields defs 
+#include "i2s2extfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

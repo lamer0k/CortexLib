@@ -10,7 +10,7 @@
 #if !defined(DBGREGISTERS_HPP)
 #define DBGREGISTERS_HPP
 
-#include "dbgfieldvalue.hpp"  //for Bits Fields defs 
+#include "dbgfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

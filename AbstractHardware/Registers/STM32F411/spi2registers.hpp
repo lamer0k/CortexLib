@@ -10,7 +10,7 @@
 #if !defined(SPI2REGISTERS_HPP)
 #define SPI2REGISTERS_HPP
 
-#include "spi2fieldvalue.hpp"  //for Bits Fields defs 
+#include "spi2fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

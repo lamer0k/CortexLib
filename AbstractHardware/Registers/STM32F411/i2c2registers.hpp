@@ -10,7 +10,7 @@
 #if !defined(I2C2REGISTERS_HPP)
 #define I2C2REGISTERS_HPP
 
-#include "i2c2fieldvalue.hpp"  //for Bits Fields defs 
+#include "i2c2fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

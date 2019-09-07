@@ -10,41 +10,41 @@
 #if !defined(SCBACTRLENUMS_HPP)
 #define SCBACTRLENUMS_HPP
 
-#include "fieldvalues.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues 
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ACTRL_ACTRL_DISMCYCINT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = FieldValue<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_ACTRL_ACTRL_DISMCYCINT_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_ACTRL_ACTRL_DISMCYCINT_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ACTRL_ACTRL_DISDEFWBUF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = FieldValue<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_ACTRL_ACTRL_DISDEFWBUF_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_ACTRL_ACTRL_DISDEFWBUF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ACTRL_ACTRL_DISFOLD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = FieldValue<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_ACTRL_ACTRL_DISFOLD_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_ACTRL_ACTRL_DISFOLD_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ACTRL_ACTRL_DISFPCA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = FieldValue<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_ACTRL_ACTRL_DISFPCA_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_ACTRL_ACTRL_DISFPCA_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ACTRL_ACTRL_DISOOFP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Reg, offset, size, AccessMode, BaseType, 0U> ;
-  using Value1 = FieldValue<Reg, offset, size, AccessMode, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_ACTRL_ACTRL_DISOOFP_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_ACTRL_ACTRL_DISOOFP_Values, BaseType, 1U> ;
 } ;
 
 #endif //#if !defined(SCBACTRLENUMS_HPP)

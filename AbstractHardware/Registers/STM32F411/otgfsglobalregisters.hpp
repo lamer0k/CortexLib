@@ -10,7 +10,7 @@
 #if !defined(OTGFSGLOBALREGISTERS_HPP)
 #define OTGFSGLOBALREGISTERS_HPP
 
-#include "otgfsglobalfieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfsglobalfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

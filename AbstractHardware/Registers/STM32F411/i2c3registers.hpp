@@ -10,7 +10,7 @@
 #if !defined(I2C3REGISTERS_HPP)
 #define I2C3REGISTERS_HPP
 
-#include "i2c3fieldvalue.hpp"  //for Bits Fields defs 
+#include "i2c3fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

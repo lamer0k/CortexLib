@@ -419,6 +419,8 @@ def generate_bits_field(peripherial, register, field, fieldvalue_name, bits_fiel
             bits_field_list.append(fieldvalue_name)
         bits_field_file.write('template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> \n')
         bits_field_file.write('struct {}: public RegisterField<Reg, offset, size, AccessMode> \n'.format(fieldvalue_name))
+        #bits_field_file.write('template <typename Field, typename BaseType> \n')
+        #bits_field_file.write('struct {}: public RegisterField<Field::Register, Field::Offset, Field::Size, Field::Access> \n'.format(fieldvalue_name))
 
         bits_field_file.write('{\n')
         if(field.fieldvalue_values == None):
@@ -427,7 +429,8 @@ def generate_bits_field(peripherial, register, field, fieldvalue_name, bits_fiel
         if (field.fieldvalue_values != None):
             for value in field.fieldvalue_values:
                 if (field.bit_width <= bits_field_max_width):
-                    bits_field_file.write('  using {} = FieldValue<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
+                    #bits_field_file.write('  using {} = FieldValue<Reg, offset, size, AccessMode, BaseType, {}U> ;\n'.format(camel_case(value.name), value.value))
+                    bits_field_file.write('  using {} = FieldValue<{}, BaseType, {}U> ;\n'.format(camel_case(value.name), fieldvalue_name, value.value))
         #else:
         #    if (field.bit_width <= bits_field_max_width):
         #        for i in range(2 ** field.bit_width):
@@ -493,7 +496,7 @@ def main():
     for peripheral in peripherals:
         peripheral_name = peripheral.name.lower().replace('_', '')
         reg_file_name = '{}registers.hpp'.format(peripheral_name)
-        enum_file_name = '{}fieldvalue.hpp'.format(peripheral_name)
+        enum_file_name = '{}fieldvalues.hpp'.format(peripheral_name)
         enum_file_full_name = '{}\FieldValues\{}'.format(device_name, enum_file_name)
     
         with open('{}\{}'.format(device_name, reg_file_name), 'w') as registers_file:

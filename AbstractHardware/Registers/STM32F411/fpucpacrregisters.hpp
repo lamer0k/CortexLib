@@ -10,7 +10,7 @@
 #if !defined(FPUCPACRREGISTERS_HPP)
 #define FPUCPACRREGISTERS_HPP
 
-#include "fpucpacrfieldvalue.hpp"  //for Bits Fields defs 
+#include "fpucpacrfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

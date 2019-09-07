@@ -10,7 +10,7 @@
 #if !defined(GPIOAREGISTERS_HPP)
 #define GPIOAREGISTERS_HPP
 
-#include "gpioafieldvalue.hpp"  //for Bits Fields defs 
+#include "gpioafieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

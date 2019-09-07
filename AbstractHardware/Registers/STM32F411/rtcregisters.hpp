@@ -10,7 +10,7 @@
 #if !defined(RTCREGISTERS_HPP)
 #define RTCREGISTERS_HPP
 
-#include "rtcfieldvalue.hpp"  //for Bits Fields defs 
+#include "rtcfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

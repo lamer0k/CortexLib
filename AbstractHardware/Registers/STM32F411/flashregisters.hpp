@@ -10,7 +10,7 @@
 #if !defined(FLASHREGISTERS_HPP)
 #define FLASHREGISTERS_HPP
 
-#include "flashfieldvalue.hpp"  //for Bits Fields defs 
+#include "flashfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

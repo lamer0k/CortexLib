@@ -10,7 +10,7 @@
 #if !defined(CRCREGISTERS_HPP)
 #define CRCREGISTERS_HPP
 
-#include "crcfieldvalue.hpp"  //for Bits Fields defs 
+#include "crcfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
