@@ -18,7 +18,7 @@ struct FieldValueBase
 {
   using RegType = typename Field::Register::Type ;
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  template<typename T = typename Field::Access,
+  __forceinline template<typename T = typename Field::Access,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set()
   {

@@ -17,7 +17,7 @@ class Register
 public:
   using Type = typename RegisterType<size>::Type;
   //Метод Set устанавливает битовые поля, только если регистр может использоваться для записи
-  template<typename T = AccessMode,
+  __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set()
   {
@@ -29,7 +29,7 @@ public:
   }
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
-  template<typename T = AccessMode,
+  __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   static bool IsSet()
   {
@@ -45,7 +45,7 @@ private:
           class = typename std::enable_if_t<std::is_same<FieldValueBaseType, typename T::BaseType>::value>>
   static constexpr auto GetIndividualMask()
   {
-    Type result = T::Value << T::Offset ;
+    Type result = T::Mask << T::Offset ;
     return result ;
   }
   

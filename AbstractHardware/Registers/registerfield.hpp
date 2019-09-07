@@ -16,7 +16,7 @@ struct RegisterField
   using Access = AccessMode ;
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  template<typename T = AccessMode,
+  __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set(RegType value)
   {
