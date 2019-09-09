@@ -4,19 +4,20 @@
 #ifndef REGISTERS_REGISTER_HPP
 #define REGISTERS_REGISTER_HPP
 
-#include "bitsfield.hpp"      //for BitsFileds
+#include <initializer_list>   //for initializer_list
+#include "fieldvalue.hpp"      //for BitsFileds
 #include "registertype.hpp"   //for RegisterType
-#include "accessmode.hpp"    //for WriteMode, ReadMode
-#include "susudefs.hpp"      //for __forceinline
+#include "accessmode.hpp"     //for WriteMode, ReadMode
+#include "susudefs.hpp"       //for __forceinline
 
 //Класс для работы с регистром, можно передавать список Битовых полей для установки и проверки
-template<uint32_t address, size_t size, typename AccessMode, typename BitsValueBaseType,  typename ...Args>
+template<uint32_t address, size_t size, typename AccessMode, typename FieldValueBaseType,  typename ...Args>
 class Register
 {
 public:
   using Type = typename RegisterType<size>::Type;
   //Метод Set устанавливает битовые поля, только если регистр может использоваться для записи
-  template<typename T = AccessMode,
+  __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set()
   {
@@ -28,8 +29,8 @@ public:
   }
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
-  template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  __forceinline template<typename T = AccessMode,
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   static bool IsSet()
   {
     Type newRegValue = *reinterpret_cast<Type *>(address) ;
@@ -41,17 +42,17 @@ private:
   //Метод определен только в случае, если тип битового поля и базовый тип битового поля для регистра совпадают.
   //Т.е. нельзя устанвоить набор битов не соотвествующих набору для для данного регистра.
   __forceinline template<typename T,
-          class = typename std::enable_if_t<std::is_same<BitsValueBaseType, typename T::BaseType>::value>>
-  static constexpr auto GetMasks()
+          class = typename std::enable_if_t<std::is_same<FieldValueBaseType, typename T::BaseType>::value>>
+  static constexpr auto GetIndividualMask()
   {
-    Type result = T::Value << T::Offset ;
+    Type result = T::Mask << T::Offset ;
     return result ;
   }
   
   //Вспомогательный метод, расчитывает общую маску для всего набора битовых полей на этапе компиляции.
   static constexpr auto GetMask()
   {
-    const auto values = {GetMasks<Args>()...} ;  //распаковываем набор битовых полей через список инициализации
+    const auto values = {GetIndividualMask<Args>()...} ;  //распаковываем набор битовых полей через список инициализации
     Type result = 0UL;
     for (auto const v: values)
     {
@@ -64,8 +65,8 @@ private:
   //Метод определен только в случае, если тип битового поля и базовый тип битового поля для регистра совпадают.
   //Т.е. нельзя устанвоить набор битов не соотвествующих набору для для данного регистра.
   __forceinline template<typename T,
-          class = typename std::enable_if_t<std::is_same<BitsValueBaseType, typename T::BaseType>::value>>
-  static constexpr auto GetValues()
+          class = typename std::enable_if_t<std::is_same<FieldValueBaseType, typename T::BaseType>::value>>
+  static constexpr auto GetIndividualValue()
   {
     Type result = T::Value << T::Offset ;
     return result ;
@@ -74,7 +75,7 @@ private:
   //Вспомогательный метод, расчитывает значение которое нужно установить в регистре для всего набора битовых полей
   static constexpr auto GetValue()
   {
-    const auto values = {GetValues<Args>()...};
+    const auto values = {GetIndividualValue<Args>()...};
     Type result = 0UL;
     for (const auto v: values)
     {

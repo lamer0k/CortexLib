@@ -13,13 +13,13 @@
 template<uint32_t address, size_t size, typename AccessMode>
 struct RegisterBase
 {
-  static constexpr auto Addr = address ;
-  using Type = typename RegisterType<size>::Type;
+  static constexpr auto Address = address ;
+  using Type = typename RegisterType<size>::Type ;
   
   //Метод Write будет работать только для регистров, в которые можно записать значение
   __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
-  inline static void Write(Type value)
+  inline static void Set(Type value)
   {
     *reinterpret_cast<Type *>(address) = value ;
   }

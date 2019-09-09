@@ -1,0 +1,43 @@
+//
+// Created by Lamerok on 21.08.2019.
+//
+
+#ifndef REGISTERS_FIELDVALUEBASE_HPP
+#define REGISTERS_FIELDVALUEBASE_HPP
+
+#include <cstddef>           //for size_t
+#include <type_traits>       //for std::is_base_of, std::is_same
+#include "accessmode.hpp"    //for WriteMode, ReadMode
+#include "susudefs.hpp"      //for __forceinline
+#include "registerfield.hpp" //for RegisterField
+
+//Базовый класс для работы с битовыми полями регистров
+//template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Reg::Type value>
+template<typename Field, typename Base, typename Field::Register::Type value>
+struct FieldValueBase
+{
+  using RegType = typename Field::Register::Type ;
+  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+  __forceinline template<typename T = typename Field::Access,
+          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  static void Set()
+  {
+    RegType newRegValue = *reinterpret_cast<RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
+    
+    newRegValue &= ~ (((1 << Field::Size) - 1) << Field::Offset); //Вначале нужно очистить старое значение битового поля
+    newRegValue |= (value << Field::Offset) ; // Затем установить новое
+    
+    *reinterpret_cast<RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
+  }
+  
+  //Метод устанавливает проверяет установлено ли значение битового поля
+  __forceinline template<typename T = typename Field::Access,
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
+  inline static bool IsSet()
+  {
+    return ((*reinterpret_cast<RegType *>(Field::Register::Address)) &
+              static_cast<RegType>(((1 << Field::Size) - 1) << Field::Offset)) ==
+              (value << Field::Offset) ;
+  }
+};
+#endif //REGISTERS_FIELDVALUEBASE_HPP

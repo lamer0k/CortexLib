@@ -1,67 +1,97 @@
-#include <utility>           //for initializer_list
-#include <cstdint>           //for int types such as uint32_t
-#include "register.hpp"      //for Register class
-#include "registerbase.hpp"  //for RegisterBase class
+//#include <cstdint>            //for int types such as uint32_t
+#include "gpioaregisters.hpp" //for Gpioa
+#include "gpiobregisters.hpp" //for Gpioa
+#include "rccregisters.hpp"   //for RCC
+#include "tim1registers.hpp"  //for TIM1
+//#include "dioregisters.hpp"
+//#include "timera0registers.hpp"
+
+
 
 using namespace std ;
 
-//********Сгенерировано с помощью скрипта на Python из файла STM32F411.svd*************************
-//Базовые классы для битовых полей
-struct OspeedrValuesBase {} ;
-struct ModerValuesBase {} ;
-struct OtyperValuesBase {} ;
-struct PupdrValuesBase {} ;
-struct DefaultValuesBase {} ;
-
-//****** Сгенерировано с помощью скрипта на Python из файла STM32F411.svd*************************
-// Но можно подправить руками, чтобы значения были читабельны и юзерфрендли
-template <typename Reg, typename AccessMode, typename BaseType, size_t offset, size_t size>
-struct ModerValues
-{
-  using Input     = BitsField<Reg, AccessMode, ModerValuesBase, offset, size, 0UL>;
-  using Output    = BitsField<Reg, AccessMode, ModerValuesBase, offset, size, 1UL>;
-  using Alternate = BitsField<Reg, AccessMode, ModerValuesBase, offset, size, 2UL>;
-  using Analog    = BitsField<Reg, AccessMode, ModerValuesBase, offset, size, 3UL>;
-} ;
-
-template <typename Reg, typename AccessMode, typename BaseType, size_t offset, size_t size>
-struct OspeederValues
-{
-  using Value0    = BitsField<Reg, AccessMode, OspeedrValuesBase, offset, size, 0UL>;
-  using Value1    = BitsField<Reg, AccessMode, OspeedrValuesBase, offset, size, 1UL>;
-  using Value2    = BitsField<Reg, AccessMode, OspeedrValuesBase, offset, size, 2UL>;
-  using Value3    = BitsField<Reg, AccessMode, OspeedrValuesBase, offset, size, 3UL>;
-} ;
-
-
-//****** Сгенерировано с помощью скрипта на Python из файла STM32F411.svd*************************
-struct Gpioa
-{
-  struct Moder : RegisterBase<0x40020000, 32, ReadWriteMode>
-  {
-    struct Moder15 : ModerValues<Moder, ReadWriteMode, ModerValuesBase, 30, 2> {};
-    struct Moder14 : ModerValues<Moder, ReadWriteMode, ModerValuesBase, 28, 2> {};
-  };
-  template<typename... T>
-  using ModerPack =  Register<0x40020000, 32, ReadWriteMode, ModerValuesBase, T...> ;
-};
-
 int main()
 {
-  Gpioa::Moder::Moder15::Input::Set() ;
-  auto result = Gpioa::Moder::Moder15::Input::IsSet() ;
-  Gpioa::Moder::Write(10U) ;
-  auto test = Gpioa::Moder::Get();
+ 
+  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
-  Gpioa::ModerPack<
-          Gpioa::Moder::Moder15::Input,
-          Gpioa::Moder::Moder14::Analog
+  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
+  GPIOA::MODER::MODER15::Output::Set() ;  
+  GPIOA::MODERPack<
+          GPIOA::MODER::MODER12::Output,
+          GPIOA::MODER::MODER14::Analog
   >::Set() ;
+  //*******************************************
+
+  // Включаем тактирование на порту GPIOA
+  //Ошибка компиляции, у регистра APB1ENR нет поля GPIOAEN
+  //RCC::APB1ENR::GPIOAEN::Enable::Set() ; 
   
-  result = Gpioa::ModerPack<
-          Gpioa::Moder::Moder15::Input,
-          Gpioa::Moder::Moder14::Analog
-  >::IsSet() ;
+  //Все хорошо, подали тактирование на порт GPIOA
+  RCC::AHB1ENR::GPIOAEN::Enable::Set() ; 
+
+  //Ошибка компиляции, RCC::APB2ENR::TIM1EN::Enable не 
+  //является полем регистра APB1ENR
+  //RCC::APB1ENRPack<RCC::APB1ENR::TIM2EN::Enable,
+  //                 RCC::APB2ENR::TIM1EN::Enable>::Set();
+
+  //Ошибка компиляции, регистр BSRR только для записи     
+  //auto result = GPIOA::BSRR::Get() ; 
+
+  //Ошибка компиляции, значение Reset только для записи
+ // if (GPIOA::BSRR::BS1::Reset::IsSet())  
+  {
+     //do something
+  }
+   
+  //Ошибка компиляции, значение поля регистра только для чтения
+ // GPIOA::IDR::IDR5::On::Set()   
+  
+  //******************************************
+  TIM1::CR1::CKD::DividedBy2::Set() ;
+  if (TIM1::CR1::CKD::DividedBy2::IsSet())
+  {
+    TIM1::ARR::Set(10U) ;
+    TIM1::CR1::CEN::Enable::Set() ;
+  }
+  
+  TIM1::CR1::Set(10) ;
+  auto reg = TIM1::CR1::Get() ;
+ // reg = TIM1::EGR::Get() ;//ошибка, регистр только для чтения
+  
+  TIM1::CR1::CKD::Set(0b10) ; // в регистре CR1 бит 9 установится в 1, бит 8 в 0
+  reg = TIM1::CR1::CEN::Get() ;
+  
+  TIM1::CR1::CEN::Enable::Set() ;
+  
+  TIM1::CR1Pack<TIM1::CR1::DIR::Upcounter,
+                TIM1::CR1::CKD::DividedBy4,
+                TIM1::CR1::CEN::Enable>::Set() ;
+ 
+  GPIOA::MODER::MODER15::Output::Set() ;
+  auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
+  GPIOA::MODER::Set(2U) ;
+  auto test = GPIOA::MODER::Get() ;
+
+  GPIOA::MODERPack<
+          GPIOA::MODER::MODER15::Output,
+          GPIOA::MODER::MODER14::Analog
+  >::Set() ;
+
+  result = GPIOA::MODERPack<
+          GPIOA::MODER::MODER15::Output,
+          GPIOA::MODER::MODER14::Analog
+  >::IsSet() ; ;
+
+  GPIOA::MODER::MODER15::Set(2U) ;
+  test = GPIOA::MODER::MODER15::Get() ;
+  
+  auto i = GPIOA::IDR::Get() ;
+  
+  GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
+              GPIOA::BSRR::BR4::Reset
+              >::Set() ;
+  
   
   return 0 ;
 }

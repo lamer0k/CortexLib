@@ -1,0 +1,26 @@
+<component name="ProjectDictionaryState">
+  <dictionary name="SKolody">
+    <words>
+      <w>accessmode</w>
+      <w>bitsfield</w>
+      <w>bitsfieldbase</w>
+      <w>cmain</w>
+      <w>cstack</w>
+      <w>cstdint</w>
+      <w>exti</w>
+      <w>fileds</w>
+      <w>forceinline</w>
+      <w>gpioa</w>
+      <w>intvec</w>
+      <w>kolody</w>
+      <w>ospeeder</w>
+      <w>ospeedr</w>
+      <w>otyper</w>
+      <w>pupdr</w>
+      <w>registerbase</w>
+      <w>registerfield</w>
+      <w>registertype</w>
+      <w>susudefs</w>
+    </words>
+  </dictionary>
+</component>
