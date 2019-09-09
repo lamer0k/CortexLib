@@ -2,7 +2,6 @@
 #include "gpioaregisters.hpp" //for Gpioa
 #include "gpiobregisters.hpp" //for Gpioa
 #include "rccregisters.hpp"   //for RCC
-#include "tim1registers.hpp"  //for TIM1
 //#include "dioregisters.hpp"
 //#include "timera0registers.hpp"
 
@@ -46,31 +45,11 @@ int main()
    
   //Ошибка компиляции, значение поля регистра только для чтения
  // GPIOA::IDR::IDR5::On::Set()   
-  
-  //******************************************
-  TIM1::CR1::CKD::DividedBy2::Set() ;
-  if (TIM1::CR1::CKD::DividedBy2::IsSet())
-  {
-    TIM1::ARR::Set(10U) ;
-    TIM1::CR1::CEN::Enable::Set() ;
-  }
-  
-  TIM1::CR1::Set(10) ;
-  auto reg = TIM1::CR1::Get() ;
- // reg = TIM1::EGR::Get() ;//ошибка, регистр только для чтения
-  
-  TIM1::CR1::CKD::Set(0b10) ; // в регистре CR1 бит 9 установится в 1, бит 8 в 0
-  reg = TIM1::CR1::CEN::Get() ;
-  
-  TIM1::CR1::CEN::Enable::Set() ;
-  
-  TIM1::CR1Pack<TIM1::CR1::DIR::Upcounter,
-                TIM1::CR1::CKD::DividedBy4,
-                TIM1::CR1::CEN::Enable>::Set() ;
+   
  
   GPIOA::MODER::MODER15::Output::Set() ;
   auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
-  GPIOA::MODER::Set(2U) ;
+  GPIOA::MODER::Set(1U) ;
   auto test = GPIOA::MODER::Get() ;
 
   GPIOA::MODERPack<
