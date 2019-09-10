@@ -2,16 +2,62 @@
 #include "gpioaregisters.hpp" //for Gpioa
 #include "gpiobregisters.hpp" //for Gpioa
 #include "rccregisters.hpp"   //for RCC
+#include <array>              //for std::array ;
 //#include "dioregisters.hpp"
 //#include "timera0registers.hpp"
 
-
-
 using namespace std ;
+
+class IPin
+{
+public:
+  virtual void Set() const = 0;
+  virtual void Toggle() const = 0;
+};
+
+template<typename Port, uint8_t pinNum>
+class Pin: public IPin
+{
+public:
+  constexpr Pin() {}
+  void Set() const  override
+  {
+    static_assert(pinNum < 31, "There are only 32 pins on port") ;
+    Port::BSRR::Set(1U << pinNum) ;
+  }
+  
+  void Toggle() const override
+  {
+    static_assert(pinNum <= 31, "There are only 31 pins on port") ;
+    Port::ODR::Toggle(1U << pinNum) ;
+  }
+} ;
+
+class Led
+{
+public:
+  constexpr Led(const IPin &pin): Pin(pin)
+  {
+  }
+  __forceinline void Toggle() const
+  {
+    Pin.Toggle() ;
+  }
+private:
+  const IPin &Pin;
+};
+
+constexpr Pin<GPIOA, 1> Led1Pin;
+constexpr Pin<GPIOB, 2> Led2Pin;
+
+std::array<Led,2U> Leds{Led{Led1Pin},
+                        Led{Led2Pin}
+                        };
 
 int main()
 {
- 
+  Leds[1].Toggle()  ;
+
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
