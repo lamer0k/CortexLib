@@ -28,7 +28,7 @@ public:
   
   void Toggle() const override
   {
-    static_assert(pinNum <= 31U, "There are only 31 pins on port") ;
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
     Port::ODR::Toggle(1U << pinNum) ;
   }
 } ;
