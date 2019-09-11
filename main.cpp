@@ -22,13 +22,13 @@ public:
   constexpr Pin() {}
   void Set() const  override
   {
-    static_assert(pinNum < 31, "There are only 32 pins on port") ;
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
     Port::BSRR::Set(1U << pinNum) ;
   }
   
   void Toggle() const override
   {
-    static_assert(pinNum <= 31, "There are only 31 pins on port") ;
+    static_assert(pinNum <= 31U, "There are only 31 pins on port") ;
     Port::ODR::Toggle(1U << pinNum) ;
   }
 } ;
@@ -47,8 +47,8 @@ private:
   const IPin &Pin;
 };
 
-constexpr Pin<GPIOA, 1> Led1Pin;
-constexpr Pin<GPIOB, 2> Led2Pin;
+constexpr Pin<GPIOA, 1U> Led1Pin;
+constexpr Pin<GPIOB, 2U> Led2Pin;
 
 std::array<Led,2U> Leds{Led{Led1Pin},
                         Led{Led2Pin}
