@@ -20,7 +20,7 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set(RegType value)
   {
-    assert(value < ((1 << size) - 1)) ;
+    assert(value < (1 << size)) ;
     
     RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Address) ; //Сохраняем текущее значение регистра
     
