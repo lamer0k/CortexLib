@@ -1,0 +1,67 @@
+:source-highlighter: highlightjs
+:source-language:
+
+:highlightjs-linenums-mode: inline
+
+:backend: revealjs
+:revealjs_theme: white
+:revealjs_backgroundTransition: concave
+:revealjs_transition: convex
+:revealjs_display: table-cell
+:revealjs_controlsLayout: edges
+
+:stylesdir: mystylesheets/
+:stylesheet: plain.css
+
+= Программное обеспечение измерительных процессов
+
+== Программное обеспечение измерительных процессов (практика, Колодий С.В.)
+
+---
+[index]
+=== План работы
+* Изучить лабораторный практикум
+https://univeris.susu.ru/lk/WorkPrograms/DownloadApplication?docId=51c25035-7057-4f68-8f76-14390ab42c12
+* Сдать все лабораторные
+* Изучить микроконтроллер STM32F411 по документации на сайте компании ST
+https://www.st.com/resource/en/reference_manual/dm00119316.pdf
+* Разобраться с платой для разработки XNUCLEO-F411RE https://www.waveshare.com/wiki/XNUCLEO-F411RE
+** прочитать Руководство пользователя http://www.waveshare.com/w/upload/d/d1/Xnucleo-UserManual.pdf
+** разобраться со схематикой http://www.waveshare.com/w/upload/4/44/XNUCLEO-103-302-401-Schematic.pdf
+** изучить спецификацию https://www.waveshare.com/wiki/XNUCLEO_Datasheets
+* Разобраться со средой разработки IAR Workbench for ARM
+** прочитать раздел "5	СОЗДАНИЕ И КОМПИЛЯЦИЯ ПЕРВОГО ПРОЕКТА В СРЕДЕ IAR. НАПИСАНИЕ ПРОСТЕЙШЕГО МОДУЛЯ НА ЯЗЫКЕ С++.
+ЛАБОРАТОРНАЯ РАБОТА № 1"
+https://univeris.susu.ru/lk/WorkPrograms/DownloadApplication?docId=51c25035-7057-4f68-8f76-14390ab42c12
+** установить IAR Workbench for ARM дома
+* Прочитать документацию ОСРВ FreeRtos	https://freertos.org/a00106.html
+* Прочитать книгу Modern C++
+* Получить задание на курсовую работу
+* Сделать анализ требований к курсовой работе
+* Написать введение: актуальнойсть, описание импользуемых средств разработки, языков программирования, описание
+предлагаемого подхода в целом. Сделать обзор литературы.
+* Разработать общую архитектуру для решения задачи: описать основные классы, взимодействия между ними, используемые
+шаблоны проектирования
+** согласовать архитектуру с преподавателем
+* Разработать детельную архитектуру отдельных классов: описать методы, входные и выходные данные, атрибуты классов
+** согласовать с преподавателем
+* Разработать код отдельных классов в соответствии с детальной архитектурой
+** согласовать код с преподавателем
+** провести отладку кода, проверить, что все работает
+* Провести сборку всех модулей и провести верификационное тестирование на удовлетворение требованиям
+* Оформить пояснительную записку
+** сделать доклад и презентовать результат работы с показом работы устройства перед группой
+---
+
+---
+[index]
+=== Домашнее задание №1
+
+---
+
+Typical access to the register is used C  form:
+[source, cc]
+----
+#define GPIOA       ((GPIO_TypeDef *) GPIOA_BASE)
+----
+This is equal to the next line in the C++.
