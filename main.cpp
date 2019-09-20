@@ -2,17 +2,62 @@
 #include "gpioaregisters.hpp" //for Gpioa
 #include "gpiobregisters.hpp" //for Gpioa
 #include "rccregisters.hpp"   //for RCC
-#include "tim1registers.hpp"  //for TIM1
+#include <array>              //for std::array ;
 //#include "dioregisters.hpp"
 //#include "timera0registers.hpp"
 
-
-
 using namespace std ;
+
+class IPin
+{
+public:
+  virtual void Set() const = 0;
+  virtual void Toggle() const = 0;
+};
+
+template<typename Port, uint8_t pinNum>
+class Pin: public IPin
+{
+public:
+  constexpr Pin() {}
+  void Set() const  override
+  {
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
+    Port::BSRR::Set(1U << pinNum) ;
+  }
+  
+  void Toggle() const override
+  {
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
+    Port::ODR::Toggle(1U << pinNum) ;
+  }
+} ;
+
+class Led
+{
+public:
+  constexpr Led(const IPin &pin): Pin(pin)
+  {
+  }
+  __forceinline void Toggle() const
+  {
+    Pin.Toggle() ;
+  }
+private:
+  const IPin &Pin;
+};
+
+constexpr Pin<GPIOA, 1U> Led1Pin;
+constexpr Pin<GPIOB, 2U> Led2Pin;
+
+std::array<Led,2U> Leds{Led{Led1Pin},
+                        Led{Led2Pin}
+                        };
 
 int main()
 {
- 
+  Leds[1].Toggle()  ;
+
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
@@ -46,31 +91,11 @@ int main()
    
   //Ошибка компиляции, значение поля регистра только для чтения
  // GPIOA::IDR::IDR5::On::Set()   
-  
-  //******************************************
-  TIM1::CR1::CKD::DividedBy2::Set() ;
-  if (TIM1::CR1::CKD::DividedBy2::IsSet())
-  {
-    TIM1::ARR::Set(10U) ;
-    TIM1::CR1::CEN::Enable::Set() ;
-  }
-  
-  TIM1::CR1::Set(10) ;
-  auto reg = TIM1::CR1::Get() ;
- // reg = TIM1::EGR::Get() ;//ошибка, регистр только для чтения
-  
-  TIM1::CR1::CKD::Set(0b10) ; // в регистре CR1 бит 9 установится в 1, бит 8 в 0
-  reg = TIM1::CR1::CEN::Get() ;
-  
-  TIM1::CR1::CEN::Enable::Set() ;
-  
-  TIM1::CR1Pack<TIM1::CR1::DIR::Upcounter,
-                TIM1::CR1::CKD::DividedBy4,
-                TIM1::CR1::CEN::Enable>::Set() ;
+   
  
   GPIOA::MODER::MODER15::Output::Set() ;
   auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
-  GPIOA::MODER::Set(2U) ;
+  GPIOA::MODER::Set(1U) ;
   auto test = GPIOA::MODER::Get() ;
 
   GPIOA::MODERPack<

@@ -1,0 +1,1 @@
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/Registers.dir/main.cpp.obj    -o Registers.elf

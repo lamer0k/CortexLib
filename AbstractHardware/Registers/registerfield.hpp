@@ -20,11 +20,11 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set(RegType value)
   {
-    assert(value < ((1 << size) - 1)) ;
+    assert(value < (1U << size)) ;
     
     RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Address) ; //Сохраняем текущее значение регистра
     
-    newRegValue &= ~ (((1 << size) - 1) << offset); //Вначале нужно очистить старое значение битового поля
+    newRegValue &= ~ (((1U << size) - 1U) << offset); //Вначале нужно очистить старое значение битового поля
     newRegValue |= (value << offset) ; // Затем установить новое
     
     *reinterpret_cast<RegType *>(Reg::Address) = newRegValue ; //И записать новое значение в регистр
@@ -35,7 +35,8 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   inline static RegType Get()
   {
-    return ((*reinterpret_cast<RegType *>(Reg::Address)) & (((1 << size) - 1) >> offset))  ;
+    return ((*reinterpret_cast<RegType *>(Reg::Address)) &  
+            (((1U << size) - 1U) << offset)) >> offset ; 
   }
 };
 #endif //REGISTERS_REGISTERFIELD_HPP

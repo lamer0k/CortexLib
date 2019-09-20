@@ -15,7 +15,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_mo
 #set(CMAKE_C_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
 #set(CMAKE_CXX_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp")
 
 include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers

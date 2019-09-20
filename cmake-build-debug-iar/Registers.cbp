@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Registers"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Registers">
+				<Option output="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Registers.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 Registers"/>
+					<CompileFile command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Registers/fast">
+				<Option output="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Registers.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 Registers/fast"/>
+					<CompileFile command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/Skolody/source/CortexLib/main.cpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/Users/Skolody/source/CortexLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
