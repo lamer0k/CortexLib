@@ -35,6 +35,7 @@ struct I2S3ext
     using MSTR = ISext_CR_MSTR_Values<I2S3ext::CR1, 2, 1, ReadWriteMode, I2S3extCR1Base> ;
     using CPOL = ISext_CR_CPOL_Values<I2S3ext::CR1, 1, 1, ReadWriteMode, I2S3extCR1Base> ;
     using CPHA = ISext_CR_CPHA_Values<I2S3ext::CR1, 0, 1, ReadWriteMode, I2S3extCR1Base> ;
+    using FieldValues = ISext_CR_CPHA_Values<I2S3ext::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -51,6 +52,7 @@ struct I2S3ext
     using SSOE = ISext_CR_SSOE_Values<I2S3ext::CR2, 2, 1, ReadWriteMode, I2S3extCR2Base> ;
     using TXDMAEN = ISext_CR_TXDMAEN_Values<I2S3ext::CR2, 1, 1, ReadWriteMode, I2S3extCR2Base> ;
     using RXDMAEN = ISext_CR_RXDMAEN_Values<I2S3ext::CR2, 0, 1, ReadWriteMode, I2S3extCR2Base> ;
+    using FieldValues = ISext_CR_RXDMAEN_Values<I2S3ext::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -69,6 +71,7 @@ struct I2S3ext
     using CHSIDE = ISext_SR_CHSIDE_Values<I2S3ext::SR, 2, 1, ReadMode, I2S3extSRBase> ;
     using TXE = ISext_SR_TXE_Values<I2S3ext::SR, 1, 1, ReadMode, I2S3extSRBase> ;
     using RXNE = ISext_SR_RXNE_Values<I2S3ext::SR, 0, 1, ReadMode, I2S3extSRBase> ;
+    using FieldValues = ISext_SR_RXNE_Values<I2S3ext::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -79,6 +82,7 @@ struct I2S3ext
   struct DR : public RegisterBase<0x4000400C, 32, ReadWriteMode>
   {
     using DRField = ISext_DR_DR_Values<I2S3ext::DR, 0, 16, ReadWriteMode, I2S3extDRBase> ;
+    using FieldValues = ISext_DR_DR_Values<I2S3ext::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -89,6 +93,7 @@ struct I2S3ext
   struct CRCPR : public RegisterBase<0x40004010, 32, ReadWriteMode>
   {
     using CRCPOLY = ISext_CRCPR_CRCPOLY_Values<I2S3ext::CRCPR, 0, 16, ReadWriteMode, I2S3extCRCPRBase> ;
+    using FieldValues = ISext_CRCPR_CRCPOLY_Values<I2S3ext::CRCPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -99,6 +104,7 @@ struct I2S3ext
   struct RXCRCR : public RegisterBase<0x40004014, 32, ReadMode>
   {
     using RxCRC = ISext_RXCRCR_RxCRC_Values<I2S3ext::RXCRCR, 0, 16, ReadMode, I2S3extRXCRCRBase> ;
+    using FieldValues = ISext_RXCRCR_RxCRC_Values<I2S3ext::RXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -109,6 +115,7 @@ struct I2S3ext
   struct TXCRCR : public RegisterBase<0x40004018, 32, ReadMode>
   {
     using TxCRC = ISext_TXCRCR_TxCRC_Values<I2S3ext::TXCRCR, 0, 16, ReadMode, I2S3extTXCRCRBase> ;
+    using FieldValues = ISext_TXCRCR_TxCRC_Values<I2S3ext::TXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -126,6 +133,7 @@ struct I2S3ext
     using CKPOL = ISext_ISCFGR_CKPOL_Values<I2S3ext::I2SCFGR, 3, 1, ReadWriteMode, I2S3extI2SCFGRBase> ;
     using DATLEN = ISext_ISCFGR_DATLEN_Values<I2S3ext::I2SCFGR, 1, 2, ReadWriteMode, I2S3extI2SCFGRBase> ;
     using CHLEN = ISext_ISCFGR_CHLEN_Values<I2S3ext::I2SCFGR, 0, 1, ReadWriteMode, I2S3extI2SCFGRBase> ;
+    using FieldValues = ISext_ISCFGR_CHLEN_Values<I2S3ext::I2SCFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -138,6 +146,7 @@ struct I2S3ext
     using MCKOE = ISext_ISPR_MCKOE_Values<I2S3ext::I2SPR, 9, 1, ReadWriteMode, I2S3extI2SPRBase> ;
     using ODD = ISext_ISPR_ODD_Values<I2S3ext::I2SPR, 8, 1, ReadWriteMode, I2S3extI2SPRBase> ;
     using I2SDIV = ISext_ISPR_ISDIV_Values<I2S3ext::I2SPR, 0, 8, ReadWriteMode, I2S3extI2SPRBase> ;
+    using FieldValues = ISext_ISPR_ISDIV_Values<I2S3ext::I2SPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -37,6 +37,7 @@ struct GPIOD
     using MODER2 = GPIOD_MODER_MODER_Values<GPIOD::MODER, 4, 2, ReadWriteMode, GPIODMODERBase> ;
     using MODER1 = GPIOD_MODER_MODER_Values<GPIOD::MODER, 2, 2, ReadWriteMode, GPIODMODERBase> ;
     using MODER0 = GPIOD_MODER_MODER_Values<GPIOD::MODER, 0, 2, ReadWriteMode, GPIODMODERBase> ;
+    using FieldValues = GPIOD_MODER_MODER_Values<GPIOD::MODER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -62,6 +63,7 @@ struct GPIOD
     using OT2 = GPIOD_OTYPER_OT_Values<GPIOD::OTYPER, 2, 1, ReadWriteMode, GPIODOTYPERBase> ;
     using OT1 = GPIOD_OTYPER_OT_Values<GPIOD::OTYPER, 1, 1, ReadWriteMode, GPIODOTYPERBase> ;
     using OT0 = GPIOD_OTYPER_OT_Values<GPIOD::OTYPER, 0, 1, ReadWriteMode, GPIODOTYPERBase> ;
+    using FieldValues = GPIOD_OTYPER_OT_Values<GPIOD::OTYPER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -87,6 +89,7 @@ struct GPIOD
     using OSPEEDR2 = GPIOD_OSPEEDR_OSPEEDR_Values<GPIOD::OSPEEDR, 4, 2, ReadWriteMode, GPIODOSPEEDRBase> ;
     using OSPEEDR1 = GPIOD_OSPEEDR_OSPEEDR_Values<GPIOD::OSPEEDR, 2, 2, ReadWriteMode, GPIODOSPEEDRBase> ;
     using OSPEEDR0 = GPIOD_OSPEEDR_OSPEEDR_Values<GPIOD::OSPEEDR, 0, 2, ReadWriteMode, GPIODOSPEEDRBase> ;
+    using FieldValues = GPIOD_OSPEEDR_OSPEEDR_Values<GPIOD::OSPEEDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -112,6 +115,7 @@ struct GPIOD
     using PUPDR2 = GPIOD_PUPDR_PUPDR_Values<GPIOD::PUPDR, 4, 2, ReadWriteMode, GPIODPUPDRBase> ;
     using PUPDR1 = GPIOD_PUPDR_PUPDR_Values<GPIOD::PUPDR, 2, 2, ReadWriteMode, GPIODPUPDRBase> ;
     using PUPDR0 = GPIOD_PUPDR_PUPDR_Values<GPIOD::PUPDR, 0, 2, ReadWriteMode, GPIODPUPDRBase> ;
+    using FieldValues = GPIOD_PUPDR_PUPDR_Values<GPIOD::PUPDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -137,6 +141,7 @@ struct GPIOD
     using IDR2 = GPIOD_IDR_IDR_Values<GPIOD::IDR, 2, 1, ReadMode, GPIODIDRBase> ;
     using IDR1 = GPIOD_IDR_IDR_Values<GPIOD::IDR, 1, 1, ReadMode, GPIODIDRBase> ;
     using IDR0 = GPIOD_IDR_IDR_Values<GPIOD::IDR, 0, 1, ReadMode, GPIODIDRBase> ;
+    using FieldValues = GPIOD_IDR_IDR_Values<GPIOD::IDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -162,6 +167,7 @@ struct GPIOD
     using ODR2 = GPIOD_ODR_ODR_Values<GPIOD::ODR, 2, 1, ReadWriteMode, GPIODODRBase> ;
     using ODR1 = GPIOD_ODR_ODR_Values<GPIOD::ODR, 1, 1, ReadWriteMode, GPIODODRBase> ;
     using ODR0 = GPIOD_ODR_ODR_Values<GPIOD::ODR, 0, 1, ReadWriteMode, GPIODODRBase> ;
+    using FieldValues = GPIOD_ODR_ODR_Values<GPIOD::ODR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -203,6 +209,7 @@ struct GPIOD
     using BS2 = GPIOD_BSRR_BS_Values<GPIOD::BSRR, 2, 1, WriteMode, GPIODBSRRBase> ;
     using BS1 = GPIOD_BSRR_BS_Values<GPIOD::BSRR, 1, 1, WriteMode, GPIODBSRRBase> ;
     using BS0 = GPIOD_BSRR_BS_Values<GPIOD::BSRR, 0, 1, WriteMode, GPIODBSRRBase> ;
+    using FieldValues = GPIOD_BSRR_BS_Values<GPIOD::BSRR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -229,6 +236,7 @@ struct GPIOD
     using LCK2 = GPIOD_LCKR_LCK_Values<GPIOD::LCKR, 2, 1, ReadWriteMode, GPIODLCKRBase> ;
     using LCK1 = GPIOD_LCKR_LCK_Values<GPIOD::LCKR, 1, 1, ReadWriteMode, GPIODLCKRBase> ;
     using LCK0 = GPIOD_LCKR_LCK_Values<GPIOD::LCKR, 0, 1, ReadWriteMode, GPIODLCKRBase> ;
+    using FieldValues = GPIOD_LCKR_LCK_Values<GPIOD::LCKR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -246,6 +254,7 @@ struct GPIOD
     using AFRL2 = GPIOD_AFRL_AFRL_Values<GPIOD::AFRL, 8, 4, ReadWriteMode, GPIODAFRLBase> ;
     using AFRL1 = GPIOD_AFRL_AFRL_Values<GPIOD::AFRL, 4, 4, ReadWriteMode, GPIODAFRLBase> ;
     using AFRL0 = GPIOD_AFRL_AFRL_Values<GPIOD::AFRL, 0, 4, ReadWriteMode, GPIODAFRLBase> ;
+    using FieldValues = GPIOD_AFRL_AFRL_Values<GPIOD::AFRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -263,6 +272,7 @@ struct GPIOD
     using AFRH10 = GPIOD_AFRH_AFRH_Values<GPIOD::AFRH, 8, 4, ReadWriteMode, GPIODAFRHBase> ;
     using AFRH9 = GPIOD_AFRH_AFRH_Values<GPIOD::AFRH, 4, 4, ReadWriteMode, GPIODAFRHBase> ;
     using AFRH8 = GPIOD_AFRH_AFRH_Values<GPIOD::AFRH, 0, 4, ReadWriteMode, GPIODAFRHBase> ;
+    using FieldValues = GPIOD_AFRH_AFRH_Values<GPIOD::AFRH, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

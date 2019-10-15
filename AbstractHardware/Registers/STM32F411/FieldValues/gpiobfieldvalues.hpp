@@ -15,10 +15,10 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_MODER_MODER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Input = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 0U> ;
-  using Output = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 1U> ;
-  using Alternate = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 2U> ;
-  using Analog = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 3U> ;
+  using Value0 = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 1U> ;
+  using Value2 = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 2U> ;
+  using Value3 = FieldValue<GPIOB_MODER_MODER_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

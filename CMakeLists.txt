@@ -18,12 +18,14 @@ set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_mo
 #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp")
 
+
 include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/Common
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues
                      ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
                      ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/FieldValues
+                     ${CMAKE_SOURCE_DIR}/Common/PatternMatching
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y/BitsField
 

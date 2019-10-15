@@ -15,61 +15,61 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CKD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using DividedBy1 = FieldValue<TIM_CR_CKD_Values, BaseType, 0U> ;
-  using DividedBy2 = FieldValue<TIM_CR_CKD_Values, BaseType, 1U> ;
-  using DividedBy4 = FieldValue<TIM_CR_CKD_Values, BaseType, 2U> ;
-  using Reserved = FieldValue<TIM_CR_CKD_Values, BaseType, 3U> ;
+  using Value0 = FieldValue<TIM_CR_CKD_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_CKD_Values, BaseType, 1U> ;
+  using Value2 = FieldValue<TIM_CR_CKD_Values, BaseType, 2U> ;
+  using Value3 = FieldValue<TIM_CR_CKD_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_ARPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using ARRNotBuffered = FieldValue<TIM_CR_ARPE_Values, BaseType, 0U> ;
-  using ARRBuffered = FieldValue<TIM_CR_ARPE_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_ARPE_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_ARPE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CMS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using CenterAlignedMode0 = FieldValue<TIM_CR_CMS_Values, BaseType, 0U> ;
-  using CenterAlignedMode1 = FieldValue<TIM_CR_CMS_Values, BaseType, 1U> ;
-  using CenterAlignedMode2 = FieldValue<TIM_CR_CMS_Values, BaseType, 2U> ;
-  using CenterAlignedMode3 = FieldValue<TIM_CR_CMS_Values, BaseType, 3U> ;
+  using Value0 = FieldValue<TIM_CR_CMS_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_CMS_Values, BaseType, 1U> ;
+  using Value2 = FieldValue<TIM_CR_CMS_Values, BaseType, 2U> ;
+  using Value3 = FieldValue<TIM_CR_CMS_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_DIR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Upcounter = FieldValue<TIM_CR_DIR_Values, BaseType, 0U> ;
-  using Downcounter = FieldValue<TIM_CR_DIR_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_DIR_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_DIR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_OPM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using ContinueAfterUEV = FieldValue<TIM_CR_OPM_Values, BaseType, 0U> ;
-  using StopAfterUEV = FieldValue<TIM_CR_OPM_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_OPM_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_OPM_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_URS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Any = FieldValue<TIM_CR_URS_Values, BaseType, 0U> ;
-  using Overflow = FieldValue<TIM_CR_URS_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_URS_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_URS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_UDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Enable  = FieldValue<TIM_CR_UDIS_Values, BaseType, 0U> ;
-  using Disable = FieldValue<TIM_CR_UDIS_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_UDIS_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_UDIS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<TIM_CR_CEN_Values, BaseType, 0U> ;
-  using Enable = FieldValue<TIM_CR_CEN_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<TIM_CR_CEN_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<TIM_CR_CEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

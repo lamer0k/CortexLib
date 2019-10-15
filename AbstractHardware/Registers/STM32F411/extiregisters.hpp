@@ -44,6 +44,7 @@ struct EXTI
     using MR20 = EXTI_IMR_MR_Values<EXTI::IMR, 20, 1, ReadWriteMode, EXTIIMRBase> ;
     using MR21 = EXTI_IMR_MR_Values<EXTI::IMR, 21, 1, ReadWriteMode, EXTIIMRBase> ;
     using MR22 = EXTI_IMR_MR_Values<EXTI::IMR, 22, 1, ReadWriteMode, EXTIIMRBase> ;
+    using FieldValues = EXTI_IMR_MR_Values<EXTI::IMR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -76,6 +77,7 @@ struct EXTI
     using MR20 = EXTI_EMR_MR_Values<EXTI::EMR, 20, 1, ReadWriteMode, EXTIEMRBase> ;
     using MR21 = EXTI_EMR_MR_Values<EXTI::EMR, 21, 1, ReadWriteMode, EXTIEMRBase> ;
     using MR22 = EXTI_EMR_MR_Values<EXTI::EMR, 22, 1, ReadWriteMode, EXTIEMRBase> ;
+    using FieldValues = EXTI_EMR_MR_Values<EXTI::EMR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -108,6 +110,7 @@ struct EXTI
     using TR20 = EXTI_RTSR_TR_Values<EXTI::RTSR, 20, 1, ReadWriteMode, EXTIRTSRBase> ;
     using TR21 = EXTI_RTSR_TR_Values<EXTI::RTSR, 21, 1, ReadWriteMode, EXTIRTSRBase> ;
     using TR22 = EXTI_RTSR_TR_Values<EXTI::RTSR, 22, 1, ReadWriteMode, EXTIRTSRBase> ;
+    using FieldValues = EXTI_RTSR_TR_Values<EXTI::RTSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -140,6 +143,7 @@ struct EXTI
     using TR20 = EXTI_FTSR_TR_Values<EXTI::FTSR, 20, 1, ReadWriteMode, EXTIFTSRBase> ;
     using TR21 = EXTI_FTSR_TR_Values<EXTI::FTSR, 21, 1, ReadWriteMode, EXTIFTSRBase> ;
     using TR22 = EXTI_FTSR_TR_Values<EXTI::FTSR, 22, 1, ReadWriteMode, EXTIFTSRBase> ;
+    using FieldValues = EXTI_FTSR_TR_Values<EXTI::FTSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -172,6 +176,7 @@ struct EXTI
     using SWIER20 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 20, 1, ReadWriteMode, EXTISWIERBase> ;
     using SWIER21 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 21, 1, ReadWriteMode, EXTISWIERBase> ;
     using SWIER22 = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 22, 1, ReadWriteMode, EXTISWIERBase> ;
+    using FieldValues = EXTI_SWIER_SWIER_Values<EXTI::SWIER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -204,6 +209,7 @@ struct EXTI
     using PR20 = EXTI_PR_PR_Values<EXTI::PR, 20, 1, ReadWriteMode, EXTIPRBase> ;
     using PR21 = EXTI_PR_PR_Values<EXTI::PR, 21, 1, ReadWriteMode, EXTIPRBase> ;
     using PR22 = EXTI_PR_PR_Values<EXTI::PR, 22, 1, ReadWriteMode, EXTIPRBase> ;
+    using FieldValues = EXTI_PR_PR_Values<EXTI::PR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

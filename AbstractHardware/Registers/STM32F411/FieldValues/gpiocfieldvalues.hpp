@@ -15,10 +15,10 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOC_MODER_MODER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOC_MODER_MODER_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -49,29 +49,29 @@ struct GPIOC_PUPDR_PUPDR_Values: public RegisterField<Reg, offset, size, AccessM
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOC_IDR_IDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOC_IDR_IDR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOC_IDR_IDR_Values, BaseType, 1U> ;
+  using Disable = FieldValue<GPIOC_IDR_IDR_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOC_IDR_IDR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOC_ODR_ODR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOC_ODR_ODR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOC_ODR_ODR_Values, BaseType, 1U> ;
+  using Disable = FieldValue<GPIOC_ODR_ODR_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOC_ODR_ODR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOC_BSRR_BR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOC_BSRR_BR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOC_BSRR_BR_Values, BaseType, 1U> ;
+  using NotUsed = FieldValue<GPIOC_BSRR_BR_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOC_BSRR_BR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOC_BSRR_BS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOC_BSRR_BS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOC_BSRR_BS_Values, BaseType, 1U> ;
+  using NoyUsed = FieldValue<GPIOC_BSRR_BS_Values, BaseType, 0U> ;
+  using Disable = FieldValue<GPIOC_BSRR_BS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

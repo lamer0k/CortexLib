@@ -61,11 +61,12 @@ https://www.st.com/resource/en/reference_manual/dm00119316.pdf
 *3.* Настроить систему верстки:
 
 * Установить IDE Atom на домашний компьютер: https://atom.io/
-* Разобраться как установить и установить систему для верстки отчетов Ascii Doc. https://asciidoctor.org/
-на домашний компьютер
+* Разобраться как установить и установить систему для верстки отчетов Ascii Doc.
+https://asciidoctor.org/ на домашний компьютер
 * Установить pluggins AcsiiDoc-Assistance, aciidoc-image-helper, aciidoc-preview, language-asciidoc, autocomplete-asciidoc
 
-*4* Установить и Настроить систему конвертации файлов AsciiDoc в презентацию: https://asciidoctor.org/docs/asciidoctor-revealjs/
+*4* Установить и Настроить систему конвертации файлов AsciiDoc в презентацию:
+https://asciidoctor.org/docs/asciidoctor-revealjs/
 
 *5.* Обмен информацией:
 

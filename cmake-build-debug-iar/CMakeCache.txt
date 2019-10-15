@@ -98,6 +98,9 @@ CMAKE_IAR_ELFTOOL:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_
 //The IAR ARM linker
 CMAKE_IAR_LINKARM:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe
 
+//The IAR ILINK linker
+CMAKE_IAR_LINKER:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe
+
 //The IAR ELF Object Tool
 CMAKE_IAR_OBJMANIP:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/iobjmanip.exe
 
@@ -228,9 +231,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=c:/Users/Skolody/source/CortexLib/cmake-build-debug
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=14
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=15
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=5
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -296,6 +299,8 @@ CMAKE_IAR_ELFDUMP-ADVANCED:INTERNAL=1
 CMAKE_IAR_ELFTOOL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_LINKARM
 CMAKE_IAR_LINKARM-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_IAR_LINKER
+CMAKE_IAR_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_OBJMANIP
 CMAKE_IAR_OBJMANIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_SYMEXPORT
@@ -325,7 +330,7 @@ CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_RANLIB
 CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=C:/JetBrains/CLion2019_2/bin/cmake/win/share/cmake-3.14
+CMAKE_ROOT:INTERNAL=C:/JetBrains/CLion2019_2/bin/cmake/win/share/cmake-3.15
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG

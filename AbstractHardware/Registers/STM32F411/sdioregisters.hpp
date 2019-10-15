@@ -22,6 +22,7 @@ struct SDIO
   struct POWER : public RegisterBase<0x40012C00, 32, ReadWriteMode>
   {
     using PWRCTRL = SDIO_POWER_PWRCTRL_Values<SDIO::POWER, 0, 2, ReadWriteMode, SDIOPOWERBase> ;
+    using FieldValues = SDIO_POWER_PWRCTRL_Values<SDIO::POWER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -38,6 +39,7 @@ struct SDIO
     using PWRSAV = SDIO_CLKCR_PWRSAV_Values<SDIO::CLKCR, 9, 1, ReadWriteMode, SDIOCLKCRBase> ;
     using CLKEN = SDIO_CLKCR_CLKEN_Values<SDIO::CLKCR, 8, 1, ReadWriteMode, SDIOCLKCRBase> ;
     using CLKDIV = SDIO_CLKCR_CLKDIV_Values<SDIO::CLKCR, 0, 8, ReadWriteMode, SDIOCLKCRBase> ;
+    using FieldValues = SDIO_CLKCR_CLKDIV_Values<SDIO::CLKCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -48,6 +50,7 @@ struct SDIO
   struct ARG : public RegisterBase<0x40012C08, 32, ReadWriteMode>
   {
     using CMDARG = SDIO_ARG_CMDARG_Values<SDIO::ARG, 0, 32, ReadWriteMode, SDIOARGBase> ;
+    using FieldValues = SDIO_ARG_CMDARG_Values<SDIO::ARG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -66,6 +69,7 @@ struct SDIO
     using WAITINT = SDIO_CMD_WAITINT_Values<SDIO::CMD, 8, 1, ReadWriteMode, SDIOCMDBase> ;
     using WAITRESP = SDIO_CMD_WAITRESP_Values<SDIO::CMD, 6, 2, ReadWriteMode, SDIOCMDBase> ;
     using CMDINDEX = SDIO_CMD_CMDINDEX_Values<SDIO::CMD, 0, 6, ReadWriteMode, SDIOCMDBase> ;
+    using FieldValues = SDIO_CMD_CMDINDEX_Values<SDIO::CMD, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -76,6 +80,7 @@ struct SDIO
   struct RESPCMD : public RegisterBase<0x40012C10, 32, ReadMode>
   {
     using RESPCMDField = SDIO_RESPCMD_RESPCMD_Values<SDIO::RESPCMD, 0, 6, ReadMode, SDIORESPCMDBase> ;
+    using FieldValues = SDIO_RESPCMD_RESPCMD_Values<SDIO::RESPCMD, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -86,6 +91,7 @@ struct SDIO
   struct RESP1 : public RegisterBase<0x40012C14, 32, ReadMode>
   {
     using CARDSTATUS1 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP1, 0, 32, ReadMode, SDIORESP1Base> ;
+    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -96,6 +102,7 @@ struct SDIO
   struct RESP2 : public RegisterBase<0x40012C18, 32, ReadMode>
   {
     using CARDSTATUS2 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP2, 0, 32, ReadMode, SDIORESP2Base> ;
+    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -106,6 +113,7 @@ struct SDIO
   struct RESP3 : public RegisterBase<0x40012C1C, 32, ReadMode>
   {
     using CARDSTATUS3 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP3, 0, 32, ReadMode, SDIORESP3Base> ;
+    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -116,6 +124,7 @@ struct SDIO
   struct RESP4 : public RegisterBase<0x40012C20, 32, ReadMode>
   {
     using CARDSTATUS4 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP4, 0, 32, ReadMode, SDIORESP4Base> ;
+    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -126,6 +135,7 @@ struct SDIO
   struct DTIMER : public RegisterBase<0x40012C24, 32, ReadWriteMode>
   {
     using DATATIME = SDIO_DTIMER_DATATIME_Values<SDIO::DTIMER, 0, 32, ReadWriteMode, SDIODTIMERBase> ;
+    using FieldValues = SDIO_DTIMER_DATATIME_Values<SDIO::DTIMER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -136,6 +146,7 @@ struct SDIO
   struct DLEN : public RegisterBase<0x40012C28, 32, ReadWriteMode>
   {
     using DATALENGTH = SDIO_DLEN_DATALENGTH_Values<SDIO::DLEN, 0, 25, ReadWriteMode, SDIODLENBase> ;
+    using FieldValues = SDIO_DLEN_DATALENGTH_Values<SDIO::DLEN, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -154,6 +165,7 @@ struct SDIO
     using DTMODE = SDIO_DCTRL_DTMODE_Values<SDIO::DCTRL, 2, 1, ReadWriteMode, SDIODCTRLBase> ;
     using DTDIR = SDIO_DCTRL_DTDIR_Values<SDIO::DCTRL, 1, 1, ReadWriteMode, SDIODCTRLBase> ;
     using DTEN = SDIO_DCTRL_DTEN_Values<SDIO::DCTRL, 0, 1, ReadWriteMode, SDIODCTRLBase> ;
+    using FieldValues = SDIO_DCTRL_DTEN_Values<SDIO::DCTRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -164,6 +176,7 @@ struct SDIO
   struct DCOUNT : public RegisterBase<0x40012C30, 32, ReadMode>
   {
     using DATACOUNT = SDIO_DCOUNT_DATACOUNT_Values<SDIO::DCOUNT, 0, 25, ReadMode, SDIODCOUNTBase> ;
+    using FieldValues = SDIO_DCOUNT_DATACOUNT_Values<SDIO::DCOUNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -197,6 +210,7 @@ struct SDIO
     using CTIMEOUT = SDIO_STA_CTIMEOUT_Values<SDIO::STA, 2, 1, ReadMode, SDIOSTABase> ;
     using DCRCFAIL = SDIO_STA_DCRCFAIL_Values<SDIO::STA, 1, 1, ReadMode, SDIOSTABase> ;
     using CCRCFAIL = SDIO_STA_CCRCFAIL_Values<SDIO::STA, 0, 1, ReadMode, SDIOSTABase> ;
+    using FieldValues = SDIO_STA_CCRCFAIL_Values<SDIO::STA, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -219,6 +233,7 @@ struct SDIO
     using CTIMEOUTC = SDIO_ICR_CTIMEOUTC_Values<SDIO::ICR, 2, 1, ReadWriteMode, SDIOICRBase> ;
     using DCRCFAILC = SDIO_ICR_DCRCFAILC_Values<SDIO::ICR, 1, 1, ReadWriteMode, SDIOICRBase> ;
     using CCRCFAILC = SDIO_ICR_CCRCFAILC_Values<SDIO::ICR, 0, 1, ReadWriteMode, SDIOICRBase> ;
+    using FieldValues = SDIO_ICR_CCRCFAILC_Values<SDIO::ICR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -252,6 +267,7 @@ struct SDIO
     using CTIMEOUTIE = SDIO_MASK_CTIMEOUTIE_Values<SDIO::MASK, 2, 1, ReadWriteMode, SDIOMASKBase> ;
     using DCRCFAILIE = SDIO_MASK_DCRCFAILIE_Values<SDIO::MASK, 1, 1, ReadWriteMode, SDIOMASKBase> ;
     using CCRCFAILIE = SDIO_MASK_CCRCFAILIE_Values<SDIO::MASK, 0, 1, ReadWriteMode, SDIOMASKBase> ;
+    using FieldValues = SDIO_MASK_CCRCFAILIE_Values<SDIO::MASK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -262,6 +278,7 @@ struct SDIO
   struct FIFOCNT : public RegisterBase<0x40012C48, 32, ReadMode>
   {
     using FIFOCOUNT = SDIO_FIFOCNT_FIFOCOUNT_Values<SDIO::FIFOCNT, 0, 24, ReadMode, SDIOFIFOCNTBase> ;
+    using FieldValues = SDIO_FIFOCNT_FIFOCOUNT_Values<SDIO::FIFOCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -272,6 +289,7 @@ struct SDIO
   struct FIFO : public RegisterBase<0x40012C80, 32, ReadWriteMode>
   {
     using FIFOData = SDIO_FIFO_FIFOData_Values<SDIO::FIFO, 0, 32, ReadWriteMode, SDIOFIFOBase> ;
+    using FieldValues = SDIO_FIFO_FIFOData_Values<SDIO::FIFO, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

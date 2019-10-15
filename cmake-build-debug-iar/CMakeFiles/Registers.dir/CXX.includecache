@@ -96,6 +96,8 @@ cassert
 cstdint
 -
 
+../Common/PatternMatching/guide.hpp
+
 ../Common/susudefs.hpp
 
 C:/Users/Skolody/source/CortexLib/main.cpp
@@ -107,4 +109,6 @@ rccregisters.hpp
 C:/Users/Skolody/source/CortexLib/rccregisters.hpp
 array
 -
+guide.hpp
+C:/Users/Skolody/source/CortexLib/guide.hpp
 

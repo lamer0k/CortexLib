@@ -334,19 +334,24 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
     registers_file.write('  {\n')
 
     for field in register.fields:
-        generate_field(
+        fieldvalue_class_name = generate_field(
             peripheral, 
             register, 
             field, 
             registers_file, 
             enumerations_file)
 
+    registers_file.write('    using FieldValues = {}<{}::{}, 0, 0, NoAccess, NoAccess> ;\n'.format(
+        fieldvalue_class_name,
+        camel_case(peripheral.name),
+        camel_case(register.name)
+    ))
     registers_file.write('  } ;\n')
     registers_file.write('\n')
 
 def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
     field_name = camel_case(field.name)
-    
+
     if (camel_case(register.name) == camel_case(field.name)):
         field_name = '{}Field'.format(field_name)
 
@@ -369,6 +374,8 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
         fieldvalue_name = name
     else:
         fieldvalue_name = cut_bits_field(name)
+
+
 
     if (field.fieldvalue_values != None):
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
@@ -395,6 +402,8 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
             
     if (bitsfiled_file != None):
         generate_bits_field(peripheral, register, field, fieldvalue_class_name, bitsfiled_file)
+
+    return fieldvalue_class_name ;
  #   else:
  #       registers_file.write('    using {} = RegisterField<{}::{}, {}, {}> ;\n'.format(
  #           field_name,

@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Registers.dir/main.cpp.obj"
-  "Registers.pdb"
   "Registers.elf"
   "Registers.elf.manifest"
   "Registers.lib"
+  "Registers.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

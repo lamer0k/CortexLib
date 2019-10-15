@@ -23,6 +23,7 @@ struct OTG_FS_HOST
   {
     using FSLSPCS = OTG_FS_HOST_FS_HCFG_FSLSPCS_Values<OTG_FS_HOST::FS_HCFG, 0, 2, ReadWriteMode, OTG_FS_HOSTFS_HCFGBase> ;
     using FSLSS = OTG_FS_HOST_FS_HCFG_FSLSS_Values<OTG_FS_HOST::FS_HCFG, 2, 1, ReadMode, OTG_FS_HOSTFS_HCFGBase> ;
+    using FieldValues = OTG_FS_HOST_FS_HCFG_FSLSS_Values<OTG_FS_HOST::FS_HCFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -33,6 +34,7 @@ struct OTG_FS_HOST
   struct HFIR : public RegisterBase<0x50000404, 32, ReadWriteMode>
   {
     using FRIVL = OTG_FS_HOST_HFIR_FRIVL_Values<OTG_FS_HOST::HFIR, 0, 16, ReadWriteMode, OTG_FS_HOSTHFIRBase> ;
+    using FieldValues = OTG_FS_HOST_HFIR_FRIVL_Values<OTG_FS_HOST::HFIR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -44,6 +46,7 @@ struct OTG_FS_HOST
   {
     using FRNUM = OTG_FS_HOST_FS_HFNUM_FRNUM_Values<OTG_FS_HOST::FS_HFNUM, 0, 16, ReadMode, OTG_FS_HOSTFS_HFNUMBase> ;
     using FTREM = OTG_FS_HOST_FS_HFNUM_FTREM_Values<OTG_FS_HOST::FS_HFNUM, 16, 16, ReadMode, OTG_FS_HOSTFS_HFNUMBase> ;
+    using FieldValues = OTG_FS_HOST_FS_HFNUM_FTREM_Values<OTG_FS_HOST::FS_HFNUM, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -56,6 +59,7 @@ struct OTG_FS_HOST
     using PTXFSAVL = OTG_FS_HOST_FS_HPTXSTS_PTXFSAVL_Values<OTG_FS_HOST::FS_HPTXSTS, 0, 16, ReadWriteMode, OTG_FS_HOSTFS_HPTXSTSBase> ;
     using PTXQSAV = OTG_FS_HOST_FS_HPTXSTS_PTXQSAV_Values<OTG_FS_HOST::FS_HPTXSTS, 16, 8, ReadMode, OTG_FS_HOSTFS_HPTXSTSBase> ;
     using PTXQTOP = OTG_FS_HOST_FS_HPTXSTS_PTXQTOP_Values<OTG_FS_HOST::FS_HPTXSTS, 24, 8, ReadMode, OTG_FS_HOSTFS_HPTXSTSBase> ;
+    using FieldValues = OTG_FS_HOST_FS_HPTXSTS_PTXQTOP_Values<OTG_FS_HOST::FS_HPTXSTS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -66,6 +70,7 @@ struct OTG_FS_HOST
   struct HAINT : public RegisterBase<0x50000414, 32, ReadMode>
   {
     using HAINTField = OTG_FS_HOST_HAINT_HAINT_Values<OTG_FS_HOST::HAINT, 0, 16, ReadMode, OTG_FS_HOSTHAINTBase> ;
+    using FieldValues = OTG_FS_HOST_HAINT_HAINT_Values<OTG_FS_HOST::HAINT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -76,6 +81,7 @@ struct OTG_FS_HOST
   struct HAINTMSK : public RegisterBase<0x50000418, 32, ReadWriteMode>
   {
     using HAINTM = OTG_FS_HOST_HAINTMSK_HAINTM_Values<OTG_FS_HOST::HAINTMSK, 0, 16, ReadWriteMode, OTG_FS_HOSTHAINTMSKBase> ;
+    using FieldValues = OTG_FS_HOST_HAINTMSK_HAINTM_Values<OTG_FS_HOST::HAINTMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -98,6 +104,7 @@ struct OTG_FS_HOST
     using PPWR = OTG_FS_HOST_FS_HPRT_PPWR_Values<OTG_FS_HOST::FS_HPRT, 12, 1, ReadWriteMode, OTG_FS_HOSTFS_HPRTBase> ;
     using PTCTL = OTG_FS_HOST_FS_HPRT_PTCTL_Values<OTG_FS_HOST::FS_HPRT, 13, 4, ReadWriteMode, OTG_FS_HOSTFS_HPRTBase> ;
     using PSPD = OTG_FS_HOST_FS_HPRT_PSPD_Values<OTG_FS_HOST::FS_HPRT, 17, 2, ReadMode, OTG_FS_HOSTFS_HPRTBase> ;
+    using FieldValues = OTG_FS_HOST_FS_HPRT_PSPD_Values<OTG_FS_HOST::FS_HPRT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -117,6 +124,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR0, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR0Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR0, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR0Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR0, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR0Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -136,6 +144,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR1, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR1Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR1, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR1Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR1, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR1Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -155,6 +164,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR2, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR2Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR2, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR2Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR2, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR2Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -174,6 +184,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR3, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR3Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR3, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR3Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR3, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR3Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -193,6 +204,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR4, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR4Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR4, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR4Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR4, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR4Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -212,6 +224,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR5, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR5Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR5, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR5Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR5, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR5Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR5, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -231,6 +244,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR6, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR6Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR6, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR6Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR6, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR6Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR6, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -250,6 +264,7 @@ struct OTG_FS_HOST
     using ODDFRM = OTG_FS_HOST_FS_HCCHAR_ODDFRM_Values<OTG_FS_HOST::FS_HCCHAR7, 29, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR7Base> ;
     using CHDIS = OTG_FS_HOST_FS_HCCHAR_CHDIS_Values<OTG_FS_HOST::FS_HCCHAR7, 30, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR7Base> ;
     using CHENA = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR7, 31, 1, ReadWriteMode, OTG_FS_HOSTFS_HCCHAR7Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCCHAR_CHENA_Values<OTG_FS_HOST::FS_HCCHAR7, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -268,6 +283,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT0, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT0Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT0, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT0Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT0, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT0Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -286,6 +302,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT1, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT1Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT1, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT1Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT1, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT1Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -304,6 +321,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT2, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT2Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT2, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT2Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT2, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT2Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -322,6 +340,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT3, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT3Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT3, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT3Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT3, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT3Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -340,6 +359,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT4, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT4Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT4, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT4Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT4, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT4Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -358,6 +378,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT5, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT5Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT5, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT5Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT5, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT5Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT5, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -376,6 +397,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT6, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT6Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT6, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT6Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT6, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT6Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT6, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -394,6 +416,7 @@ struct OTG_FS_HOST
     using BBERR = OTG_FS_HOST_FS_HCINT_BBERR_Values<OTG_FS_HOST::FS_HCINT7, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT7Base> ;
     using FRMOR = OTG_FS_HOST_FS_HCINT_FRMOR_Values<OTG_FS_HOST::FS_HCINT7, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT7Base> ;
     using DTERR = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT7, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINT7Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINT_DTERR_Values<OTG_FS_HOST::FS_HCINT7, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -413,6 +436,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK0, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK0Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK0, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK0Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK0, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK0Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -432,6 +456,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK1, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK1Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK1, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK1Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK1, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK1Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -451,6 +476,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK2, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK2Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK2, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK2Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK2, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK2Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -470,6 +496,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK3, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK3Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK3, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK3Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK3, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK3Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -489,6 +516,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK4, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK4Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK4, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK4Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK4, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK4Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -508,6 +536,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK5, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK5Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK5, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK5Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK5, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK5Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK5, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -527,6 +556,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK6, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK6Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK6, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK6Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK6, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK6Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK6, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -546,6 +576,7 @@ struct OTG_FS_HOST
     using BBERRM = OTG_FS_HOST_FS_HCINTMSK_BBERRM_Values<OTG_FS_HOST::FS_HCINTMSK7, 8, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK7Base> ;
     using FRMORM = OTG_FS_HOST_FS_HCINTMSK_FRMORM_Values<OTG_FS_HOST::FS_HCINTMSK7, 9, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK7Base> ;
     using DTERRM = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK7, 10, 1, ReadWriteMode, OTG_FS_HOSTFS_HCINTMSK7Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCINTMSK_DTERRM_Values<OTG_FS_HOST::FS_HCINTMSK7, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -558,6 +589,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ0, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ0Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ0, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ0Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ0, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ0Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -570,6 +602,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ1, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ1Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ1, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ1Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ1, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ1Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -582,6 +615,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ2, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ2Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ2, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ2Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ2, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ2Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -594,6 +628,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ3, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ3Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ3, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ3Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ3, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ3Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -606,6 +641,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ4, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ4Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ4, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ4Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ4, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ4Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -618,6 +654,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ5, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ5Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ5, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ5Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ5, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ5Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ5, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -630,6 +667,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ6, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ6Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ6, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ6Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ6, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ6Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ6, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -642,6 +680,7 @@ struct OTG_FS_HOST
     using XFRSIZ = OTG_FS_HOST_FS_HCTSIZ_XFRSIZ_Values<OTG_FS_HOST::FS_HCTSIZ7, 0, 19, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ7Base> ;
     using PKTCNT = OTG_FS_HOST_FS_HCTSIZ_PKTCNT_Values<OTG_FS_HOST::FS_HCTSIZ7, 19, 10, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ7Base> ;
     using DPID = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ7, 29, 2, ReadWriteMode, OTG_FS_HOSTFS_HCTSIZ7Base> ;
+    using FieldValues = OTG_FS_HOST_FS_HCTSIZ_DPID_Values<OTG_FS_HOST::FS_HCTSIZ7, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

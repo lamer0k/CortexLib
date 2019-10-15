@@ -27,6 +27,7 @@ struct ADC1
     using JEOC = ADC_SR_JEOC_Values<ADC1::SR, 2, 1, ReadWriteMode, ADC1SRBase> ;
     using EOC = ADC_SR_EOC_Values<ADC1::SR, 1, 1, ReadWriteMode, ADC1SRBase> ;
     using AWD = ADC_SR_AWD_Values<ADC1::SR, 0, 1, ReadWriteMode, ADC1SRBase> ;
+    using FieldValues = ADC_SR_AWD_Values<ADC1::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -50,6 +51,7 @@ struct ADC1
     using AWDIE = ADC_CR_AWDIE_Values<ADC1::CR1, 6, 1, ReadWriteMode, ADC1CR1Base> ;
     using EOCIE = ADC_CR_EOCIE_Values<ADC1::CR1, 5, 1, ReadWriteMode, ADC1CR1Base> ;
     using AWDCH = ADC_CR_AWDCH_Values<ADC1::CR1, 0, 5, ReadWriteMode, ADC1CR1Base> ;
+    using FieldValues = ADC_CR_AWDCH_Values<ADC1::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -71,6 +73,7 @@ struct ADC1
     using DMA = ADC_CR_DMA_Values<ADC1::CR2, 8, 1, ReadWriteMode, ADC1CR2Base> ;
     using CONT = ADC_CR_CONT_Values<ADC1::CR2, 1, 1, ReadWriteMode, ADC1CR2Base> ;
     using ADON = ADC_CR_ADON_Values<ADC1::CR2, 0, 1, ReadWriteMode, ADC1CR2Base> ;
+    using FieldValues = ADC_CR_ADON_Values<ADC1::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,6 +84,7 @@ struct ADC1
   struct SMPR1 : public RegisterBase<0x4001200C, 32, ReadWriteMode>
   {
     using SMPx_x = ADC_SMPR_SMPx_x_Values<ADC1::SMPR1, 0, 32, ReadWriteMode, ADC1SMPR1Base> ;
+    using FieldValues = ADC_SMPR_SMPx_x_Values<ADC1::SMPR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -91,6 +95,7 @@ struct ADC1
   struct SMPR2 : public RegisterBase<0x40012010, 32, ReadWriteMode>
   {
     using SMPx_x = ADC_SMPR_SMPx_x_Values<ADC1::SMPR2, 0, 32, ReadWriteMode, ADC1SMPR2Base> ;
+    using FieldValues = ADC_SMPR_SMPx_x_Values<ADC1::SMPR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -101,6 +106,7 @@ struct ADC1
   struct JOFR1 : public RegisterBase<0x40012014, 32, ReadWriteMode>
   {
     using JOFFSET1 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR1, 0, 12, ReadWriteMode, ADC1JOFR1Base> ;
+    using FieldValues = ADC_JOFR_JOFFSET_Values<ADC1::JOFR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -111,6 +117,7 @@ struct ADC1
   struct JOFR2 : public RegisterBase<0x40012018, 32, ReadWriteMode>
   {
     using JOFFSET2 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR2, 0, 12, ReadWriteMode, ADC1JOFR2Base> ;
+    using FieldValues = ADC_JOFR_JOFFSET_Values<ADC1::JOFR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -121,6 +128,7 @@ struct ADC1
   struct JOFR3 : public RegisterBase<0x4001201C, 32, ReadWriteMode>
   {
     using JOFFSET3 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR3, 0, 12, ReadWriteMode, ADC1JOFR3Base> ;
+    using FieldValues = ADC_JOFR_JOFFSET_Values<ADC1::JOFR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -131,6 +139,7 @@ struct ADC1
   struct JOFR4 : public RegisterBase<0x40012020, 32, ReadWriteMode>
   {
     using JOFFSET4 = ADC_JOFR_JOFFSET_Values<ADC1::JOFR4, 0, 12, ReadWriteMode, ADC1JOFR4Base> ;
+    using FieldValues = ADC_JOFR_JOFFSET_Values<ADC1::JOFR4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -141,6 +150,7 @@ struct ADC1
   struct HTR : public RegisterBase<0x40012024, 32, ReadWriteMode>
   {
     using HT = ADC_HTR_HT_Values<ADC1::HTR, 0, 12, ReadWriteMode, ADC1HTRBase> ;
+    using FieldValues = ADC_HTR_HT_Values<ADC1::HTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -151,6 +161,7 @@ struct ADC1
   struct LTR : public RegisterBase<0x40012028, 32, ReadWriteMode>
   {
     using LT = ADC_LTR_LT_Values<ADC1::LTR, 0, 12, ReadWriteMode, ADC1LTRBase> ;
+    using FieldValues = ADC_LTR_LT_Values<ADC1::LTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -165,6 +176,7 @@ struct ADC1
     using SQ15 = ADC_SQR_SQ_Values<ADC1::SQR1, 10, 5, ReadWriteMode, ADC1SQR1Base> ;
     using SQ14 = ADC_SQR_SQ_Values<ADC1::SQR1, 5, 5, ReadWriteMode, ADC1SQR1Base> ;
     using SQ13 = ADC_SQR_SQ_Values<ADC1::SQR1, 0, 5, ReadWriteMode, ADC1SQR1Base> ;
+    using FieldValues = ADC_SQR_SQ_Values<ADC1::SQR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -180,6 +192,7 @@ struct ADC1
     using SQ9 = ADC_SQR_SQ_Values<ADC1::SQR2, 10, 5, ReadWriteMode, ADC1SQR2Base> ;
     using SQ8 = ADC_SQR_SQ_Values<ADC1::SQR2, 5, 5, ReadWriteMode, ADC1SQR2Base> ;
     using SQ7 = ADC_SQR_SQ_Values<ADC1::SQR2, 0, 5, ReadWriteMode, ADC1SQR2Base> ;
+    using FieldValues = ADC_SQR_SQ_Values<ADC1::SQR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -195,6 +208,7 @@ struct ADC1
     using SQ3 = ADC_SQR_SQ_Values<ADC1::SQR3, 10, 5, ReadWriteMode, ADC1SQR3Base> ;
     using SQ2 = ADC_SQR_SQ_Values<ADC1::SQR3, 5, 5, ReadWriteMode, ADC1SQR3Base> ;
     using SQ1 = ADC_SQR_SQ_Values<ADC1::SQR3, 0, 5, ReadWriteMode, ADC1SQR3Base> ;
+    using FieldValues = ADC_SQR_SQ_Values<ADC1::SQR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -209,6 +223,7 @@ struct ADC1
     using JSQ3 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 10, 5, ReadWriteMode, ADC1JSQRBase> ;
     using JSQ2 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 5, 5, ReadWriteMode, ADC1JSQRBase> ;
     using JSQ1 = ADC_JSQR_JSQ_Values<ADC1::JSQR, 0, 5, ReadWriteMode, ADC1JSQRBase> ;
+    using FieldValues = ADC_JSQR_JSQ_Values<ADC1::JSQR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -219,6 +234,7 @@ struct ADC1
   struct JDR1 : public RegisterBase<0x4001203C, 32, ReadMode>
   {
     using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR1, 0, 16, ReadMode, ADC1JDR1Base> ;
+    using FieldValues = ADC_JDR_JDATA_Values<ADC1::JDR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -229,6 +245,7 @@ struct ADC1
   struct JDR2 : public RegisterBase<0x40012040, 32, ReadMode>
   {
     using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR2, 0, 16, ReadMode, ADC1JDR2Base> ;
+    using FieldValues = ADC_JDR_JDATA_Values<ADC1::JDR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -239,6 +256,7 @@ struct ADC1
   struct JDR3 : public RegisterBase<0x40012044, 32, ReadMode>
   {
     using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR3, 0, 16, ReadMode, ADC1JDR3Base> ;
+    using FieldValues = ADC_JDR_JDATA_Values<ADC1::JDR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -249,6 +267,7 @@ struct ADC1
   struct JDR4 : public RegisterBase<0x40012048, 32, ReadMode>
   {
     using JDATA = ADC_JDR_JDATA_Values<ADC1::JDR4, 0, 16, ReadMode, ADC1JDR4Base> ;
+    using FieldValues = ADC_JDR_JDATA_Values<ADC1::JDR4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -259,6 +278,7 @@ struct ADC1
   struct DR : public RegisterBase<0x4001204C, 32, ReadMode>
   {
     using DATA = ADC_DR_DATA_Values<ADC1::DR, 0, 16, ReadMode, ADC1DRBase> ;
+    using FieldValues = ADC_DR_DATA_Values<ADC1::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

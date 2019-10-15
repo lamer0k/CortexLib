@@ -549,22 +549,22 @@ struct RCC_APBRSTR_USARTRST_Values: public RegisterField<Reg, offset, size, Acce
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_DMAEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<RCC_AHBENR_DMAEN_Values, BaseType, 0U> ;
-  using Enable = FieldValue<RCC_AHBENR_DMAEN_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RCC_AHBENR_DMAEN_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RCC_AHBENR_DMAEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_CRCEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<RCC_AHBENR_CRCEN_Values, BaseType, 0U> ;
-  using Enable = FieldValue<RCC_AHBENR_CRCEN_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RCC_AHBENR_CRCEN_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RCC_AHBENR_CRCEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOHEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<RCC_AHBENR_GPIOHEN_Values, BaseType, 0U> ;
-  using Enable = FieldValue<RCC_AHBENR_GPIOHEN_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RCC_AHBENR_GPIOHEN_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RCC_AHBENR_GPIOHEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -584,15 +584,15 @@ struct RCC_AHBENR_GPIODEN_Values: public RegisterField<Reg, offset, size, Access
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOCEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_AHBENR_GPIOCEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_AHBENR_GPIOCEN_Values, BaseType, 1U> ;
+  using Enable = FieldValue<RCC_AHBENR_GPIOCEN_Values, BaseType, 0U> ;
+  using Disable = FieldValue<RCC_AHBENR_GPIOCEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_AHBENR_GPIOBEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_AHBENR_GPIOBEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_AHBENR_GPIOBEN_Values, BaseType, 1U> ;
+  using Enable = FieldValue<RCC_AHBENR_GPIOBEN_Values, BaseType, 0U> ;
+  using Disable = FieldValue<RCC_AHBENR_GPIOBEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

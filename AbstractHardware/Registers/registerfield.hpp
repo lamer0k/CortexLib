@@ -11,6 +11,7 @@ struct RegisterField
 {
   using RegType = typename Reg::Type ;
   using Register = Reg ;
+  
   static constexpr RegType Offset = offset ;
   static constexpr RegType Size = size ;
   using Access = AccessMode ;

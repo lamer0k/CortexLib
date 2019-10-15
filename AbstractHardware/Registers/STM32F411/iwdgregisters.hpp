@@ -22,6 +22,7 @@ struct IWDG
   struct KR : public RegisterBase<0x40003000, 32, WriteMode>
   {
     using KEY = IWDG_KR_KEY_Values<IWDG::KR, 0, 16, WriteMode, IWDGKRBase> ;
+    using FieldValues = IWDG_KR_KEY_Values<IWDG::KR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -32,6 +33,7 @@ struct IWDG
   struct PR : public RegisterBase<0x40003004, 32, ReadWriteMode>
   {
     using PRField = IWDG_PR_PR_Values<IWDG::PR, 0, 3, ReadWriteMode, IWDGPRBase> ;
+    using FieldValues = IWDG_PR_PR_Values<IWDG::PR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -42,6 +44,7 @@ struct IWDG
   struct RLR : public RegisterBase<0x40003008, 32, ReadWriteMode>
   {
     using RL = IWDG_RLR_RL_Values<IWDG::RLR, 0, 12, ReadWriteMode, IWDGRLRBase> ;
+    using FieldValues = IWDG_RLR_RL_Values<IWDG::RLR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -53,6 +56,7 @@ struct IWDG
   {
     using RVU = IWDG_SR_RVU_Values<IWDG::SR, 1, 1, ReadMode, IWDGSRBase> ;
     using PVU = IWDG_SR_PVU_Values<IWDG::SR, 0, 1, ReadMode, IWDGSRBase> ;
+    using FieldValues = IWDG_SR_PVU_Values<IWDG::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

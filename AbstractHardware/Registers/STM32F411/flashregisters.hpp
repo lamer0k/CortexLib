@@ -27,6 +27,7 @@ struct FLASH
     using DCEN = FLASH_ACR_DCEN_Values<FLASH::ACR, 10, 1, ReadWriteMode, FLASHACRBase> ;
     using ICRST = FLASH_ACR_ICRST_Values<FLASH::ACR, 11, 1, WriteMode, FLASHACRBase> ;
     using DCRST = FLASH_ACR_DCRST_Values<FLASH::ACR, 12, 1, ReadWriteMode, FLASHACRBase> ;
+    using FieldValues = FLASH_ACR_DCRST_Values<FLASH::ACR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -37,6 +38,7 @@ struct FLASH
   struct KEYR : public RegisterBase<0x40023C04, 32, WriteMode>
   {
     using KEY = FLASH_KEYR_KEY_Values<FLASH::KEYR, 0, 32, WriteMode, FLASHKEYRBase> ;
+    using FieldValues = FLASH_KEYR_KEY_Values<FLASH::KEYR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -47,6 +49,7 @@ struct FLASH
   struct OPTKEYR : public RegisterBase<0x40023C08, 32, WriteMode>
   {
     using OPTKEY = FLASH_OPTKEYR_OPTKEY_Values<FLASH::OPTKEYR, 0, 32, WriteMode, FLASHOPTKEYRBase> ;
+    using FieldValues = FLASH_OPTKEYR_OPTKEY_Values<FLASH::OPTKEYR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -63,6 +66,7 @@ struct FLASH
     using PGPERR = FLASH_SR_PGPERR_Values<FLASH::SR, 6, 1, ReadWriteMode, FLASHSRBase> ;
     using PGSERR = FLASH_SR_PGSERR_Values<FLASH::SR, 7, 1, ReadWriteMode, FLASHSRBase> ;
     using BSY = FLASH_SR_BSY_Values<FLASH::SR, 16, 1, ReadMode, FLASHSRBase> ;
+    using FieldValues = FLASH_SR_BSY_Values<FLASH::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,6 +85,7 @@ struct FLASH
     using EOPIE = FLASH_CR_EOPIE_Values<FLASH::CR, 24, 1, ReadWriteMode, FLASHCRBase> ;
     using ERRIE = FLASH_CR_ERRIE_Values<FLASH::CR, 25, 1, ReadWriteMode, FLASHCRBase> ;
     using LOCK = FLASH_CR_LOCK_Values<FLASH::CR, 31, 1, ReadWriteMode, FLASHCRBase> ;
+    using FieldValues = FLASH_CR_LOCK_Values<FLASH::CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -98,6 +103,7 @@ struct FLASH
     using nRST_STDBY = FLASH_OPTCR_nRST_STDBY_Values<FLASH::OPTCR, 7, 1, ReadWriteMode, FLASHOPTCRBase> ;
     using RDP = FLASH_OPTCR_RDP_Values<FLASH::OPTCR, 8, 8, ReadWriteMode, FLASHOPTCRBase> ;
     using nWRP = FLASH_OPTCR_nWRP_Values<FLASH::OPTCR, 16, 12, ReadWriteMode, FLASHOPTCRBase> ;
+    using FieldValues = FLASH_OPTCR_nWRP_Values<FLASH::OPTCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

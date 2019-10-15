@@ -3,61 +3,113 @@
 #include "gpiobregisters.hpp" //for Gpioa
 #include "rccregisters.hpp"   //for RCC
 #include <array>              //for std::array ;
+#include "guide.hpp"          //for Guide;
 //#include "dioregisters.hpp"
 //#include "timera0registers.hpp"
 
 using namespace std ;
 
-class IPin
+
+struct PortConfigurable
+{
+
+};
+
+class ILed
 {
 public:
   virtual void Set() const = 0;
   virtual void Toggle() const = 0;
 };
 
-template<typename Port, uint8_t pinNum>
-class Pin: public IPin
+template<typename Port, uint8_t pinNum, typename ...T>
+class Pin
 {
 public:
-  constexpr Pin() {}
-  void Set() const  override
+  constexpr Pin() = default;
+  __forceinline static void Set()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
     Port::BSRR::Set(1U << pinNum) ;
   }
   
-  void Toggle() const override
+  __forceinline static void Toggle()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
     Port::ODR::Toggle(1U << pinNum) ;
   }
 } ;
 
-class Led
+
+template<typename Port, uint8_t pinNum, typename PortConfigurable>
+class Pin<Port, pinNum, PortConfigurable>
+{
+
+public:
+  constexpr Pin() = default;
+  __forceinline static void Set()
+  {
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
+    Port::BSRR::Set(1U << pinNum) ;
+  }
+  
+  __forceinline static void Toggle()
+  {
+    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
+    Port::ODR::Toggle(1U << pinNum) ;
+  }
+  
+  __forceinline static void SetAnalog()
+  {
+    Port::MODER::Set(Port::MODER::FieldValues::Analog::Value << (pinNum * 2)) ;
+  }
+  
+  __forceinline static void SetInput()
+  {
+    Port::MODER::Set(Port::MODER::FieldValues::Input::Value << (pinNum * 2)) ;
+  }
+} ;
+
+
+template <typename Pin>
+class Led : public ILed
 {
 public:
-  constexpr Led(const IPin &pin): Pin(pin)
+  constexpr Led() = default;
+  
+  __forceinline void Toggle() const override
   {
+    Pin::Toggle() ;
   }
-  __forceinline void Toggle() const
+
+  __forceinline void Set() const override
   {
-    Pin.Toggle() ;
+    Pin::Set() ;
   }
-private:
-  const IPin &Pin;
+
 };
 
-constexpr Pin<GPIOA, 1U> Led1Pin;
-constexpr Pin<GPIOB, 2U> Led2Pin;
+using Led1Pin = Pin<GPIOA, 1U, PortConfigurable> ;
+using Led2Pin = Pin<GPIOB, 2U> ;
 
-std::array<Led,2U> Leds{Led{Led1Pin},
-                        Led{Led2Pin}
-                        };
+constexpr Led<Led1Pin> Led1 ;
+constexpr Led<Led2Pin> Led2 ;
+
+constexpr std::array<const ILed*,2U> Leds{
+  &Led1,
+  &Led2
+};
 
 int main()
 {
-  Leds[1].Toggle()  ;
-
+  Leds[1]->Toggle()  ;
+  
+  Led1Pin::SetAnalog() ;
+  
+  guide(0) =  [] { int x = 0 ;} ;
+  auto testGuide = guide(0) ;
+  
+  
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
@@ -66,6 +118,8 @@ int main()
           GPIOA::MODER::MODER12::Output,
           GPIOA::MODER::MODER14::Analog
   >::Set() ;
+  
+  
   //*******************************************
 
   // Включаем тактирование на порту GPIOA

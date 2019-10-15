@@ -23,6 +23,7 @@ struct DBG
   {
     using DEV_ID = DBG_DBGMCU_IDCODE_DEV_ID_Values<DBG::DBGMCU_IDCODE, 0, 12, ReadMode, DBGDBGMCU_IDCODEBase> ;
     using REV_ID = DBG_DBGMCU_IDCODE_REV_ID_Values<DBG::DBGMCU_IDCODE, 16, 16, ReadMode, DBGDBGMCU_IDCODEBase> ;
+    using FieldValues = DBG_DBGMCU_IDCODE_REV_ID_Values<DBG::DBGMCU_IDCODE, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -37,6 +38,7 @@ struct DBG
     using DBG_STANDBY = DBG_DBGMCU_CR_DBG_STANDBY_Values<DBG::DBGMCU_CR, 2, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
     using TRACE_IOEN = DBG_DBGMCU_CR_TRACE_IOEN_Values<DBG::DBGMCU_CR, 5, 1, ReadWriteMode, DBGDBGMCU_CRBase> ;
     using TRACE_MODE = DBG_DBGMCU_CR_TRACE_MODE_Values<DBG::DBGMCU_CR, 6, 2, ReadWriteMode, DBGDBGMCU_CRBase> ;
+    using FieldValues = DBG_DBGMCU_CR_TRACE_MODE_Values<DBG::DBGMCU_CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -56,6 +58,7 @@ struct DBG
     using DBG_I2C1_SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_IC_SMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 21, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
     using DBG_I2C2_SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_IC_SMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 22, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
     using DBG_I2C3SMBUS_TIMEOUT = DBG_DBGMCU_APB_FZ_DBG_ICSMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 23, 1, ReadWriteMode, DBGDBGMCU_APB1_FZBase> ;
+    using FieldValues = DBG_DBGMCU_APB_FZ_DBG_ICSMBUS_TIMEOUT_Values<DBG::DBGMCU_APB1_FZ, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -69,6 +72,7 @@ struct DBG
     using DBG_TIM9_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 16, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
     using DBG_TIM10_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 17, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
     using DBG_TIM11_STOP = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 18, 1, ReadWriteMode, DBGDBGMCU_APB2_FZBase> ;
+    using FieldValues = DBG_DBGMCU_APB_FZ_DBG_TIM_STOP_Values<DBG::DBGMCU_APB2_FZ, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

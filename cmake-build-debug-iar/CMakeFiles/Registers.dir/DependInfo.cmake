@@ -14,6 +14,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../Common"
   "../AbstractHardware/Registers/STM32F411"
   "../AbstractHardware/Registers/STM32F411/FieldValues"
+  "../Common/PatternMatching"
   )
 
 # Targets to which this target links.

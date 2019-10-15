@@ -24,6 +24,7 @@ struct MPU
     using SEPARATE = MPU_MPU_TYPER_SEPARATE_Values<MPU::MPU_TYPER, 0, 1, ReadMode, MPUMPU_TYPERBase> ;
     using DREGION = MPU_MPU_TYPER_DREGION_Values<MPU::MPU_TYPER, 8, 8, ReadMode, MPUMPU_TYPERBase> ;
     using IREGION = MPU_MPU_TYPER_IREGION_Values<MPU::MPU_TYPER, 16, 8, ReadMode, MPUMPU_TYPERBase> ;
+    using FieldValues = MPU_MPU_TYPER_IREGION_Values<MPU::MPU_TYPER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -36,6 +37,7 @@ struct MPU
     using ENABLE = MPU_MPU_CTRL_ENABLE_Values<MPU::MPU_CTRL, 0, 1, ReadMode, MPUMPU_CTRLBase> ;
     using HFNMIENA = MPU_MPU_CTRL_HFNMIENA_Values<MPU::MPU_CTRL, 1, 1, ReadMode, MPUMPU_CTRLBase> ;
     using PRIVDEFENA = MPU_MPU_CTRL_PRIVDEFENA_Values<MPU::MPU_CTRL, 2, 1, ReadMode, MPUMPU_CTRLBase> ;
+    using FieldValues = MPU_MPU_CTRL_PRIVDEFENA_Values<MPU::MPU_CTRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -46,6 +48,7 @@ struct MPU
   struct MPU_RNR : public RegisterBase<0xE000ED98, 32, ReadWriteMode>
   {
     using REGION = MPU_MPU_RNR_REGION_Values<MPU::MPU_RNR, 0, 8, ReadWriteMode, MPUMPU_RNRBase> ;
+    using FieldValues = MPU_MPU_RNR_REGION_Values<MPU::MPU_RNR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -58,6 +61,7 @@ struct MPU
     using REGION = MPU_MPU_RBAR_REGION_Values<MPU::MPU_RBAR, 0, 4, ReadWriteMode, MPUMPU_RBARBase> ;
     using VALID = MPU_MPU_RBAR_VALID_Values<MPU::MPU_RBAR, 4, 1, ReadWriteMode, MPUMPU_RBARBase> ;
     using ADDR = MPU_MPU_RBAR_ADDR_Values<MPU::MPU_RBAR, 5, 27, ReadWriteMode, MPUMPU_RBARBase> ;
+    using FieldValues = MPU_MPU_RBAR_ADDR_Values<MPU::MPU_RBAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -76,6 +80,7 @@ struct MPU
     using TEX = MPU_MPU_RASR_TEX_Values<MPU::MPU_RASR, 19, 3, ReadWriteMode, MPUMPU_RASRBase> ;
     using AP = MPU_MPU_RASR_AP_Values<MPU::MPU_RASR, 24, 3, ReadWriteMode, MPUMPU_RASRBase> ;
     using XN = MPU_MPU_RASR_XN_Values<MPU::MPU_RASR, 28, 1, ReadWriteMode, MPUMPU_RASRBase> ;
+    using FieldValues = MPU_MPU_RASR_XN_Values<MPU::MPU_RASR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
