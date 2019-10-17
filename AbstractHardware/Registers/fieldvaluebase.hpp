@@ -12,7 +12,6 @@
 #include "registerfield.hpp" //for RegisterField
 
 //Базовый класс для работы с битовыми полями регистров
-//template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Reg::Type value>
 template<typename Field, typename Base, typename Field::Register::Type value>
 struct FieldValueBase
 {
