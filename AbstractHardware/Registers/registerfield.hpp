@@ -18,7 +18,7 @@ struct RegisterField
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set(RegType value)
   {
     assert(value < (1U << size)) ;
@@ -30,6 +30,16 @@ struct RegisterField
     
     *reinterpret_cast<RegType *>(Reg::Address) = newRegValue ; //И записать новое значение в регистр
   }
+  
+  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+  __forceinline template<typename T = AccessMode,
+          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  static void Write(RegType value)
+  {
+    assert(value < (1U << size)) ;
+    *reinterpret_cast<RegType *>(Reg::Address) = (value << offset) ;
+  }
+  
   
   //Метод устанавливает проверяет установлено ли значение битового поля
   __forceinline template<typename T = AccessMode,

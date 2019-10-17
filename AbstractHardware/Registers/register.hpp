@@ -18,7 +18,7 @@ public:
   using Type = typename RegisterType<size>::Type;
   //Метод Set устанавливает битовые поля, только если регистр может использоваться для записи
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set()
   {
     Type newRegValue = *reinterpret_cast<Type *>(address) ; //Сохраняем текущее значение регистра
@@ -27,6 +27,16 @@ public:
     newRegValue |= GetValue() ; //Устанавливаем новые значения битовых полей
     *reinterpret_cast<Type *>(address) = newRegValue ; //Записываем в регистра новое значение
   }
+  
+  
+  //Метод Set устанавливает битовые поля, только если регистр может использоваться для записи
+  __forceinline template<typename T = AccessMode,
+          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  static void Write()
+  {
+    *reinterpret_cast<Type *>(address) = GetValue() ; //Записываем в регистра новое значение
+  }
+  
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
   __forceinline template<typename T = AccessMode,

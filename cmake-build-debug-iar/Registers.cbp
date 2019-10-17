@@ -25,6 +25,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Pin"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
@@ -45,6 +46,7 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Pin"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>

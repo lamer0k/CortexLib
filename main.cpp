@@ -3,16 +3,13 @@
 #include "gpiobregisters.hpp" //for Gpioa
 #include "rccregisters.hpp"   //for RCC
 #include <array>              //for std::array ;
+#include "pin.hpp"            //for Pin
 #include "guide.hpp"          //for Guide;
 //#include "dioregisters.hpp"
 //#include "timera0registers.hpp"
 
 using namespace std ;
 
-struct PortConfigurable
-{
-
-};
 
 class ILed
 {
@@ -20,64 +17,6 @@ public:
   virtual void Set() const = 0;
   virtual void Toggle() const = 0;
 };
-
-
-template<typename Port, uint8_t pinNum, typename ...T>
-class Pin
-{
-public:
-  constexpr Pin() = default;
-  __forceinline static void Set()
-  {
-    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::BSRR::Set(1U << pinNum) ;
-  }
-  
-  __forceinline static void Toggle()
-  {
-    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::ODR::Toggle(1U << pinNum) ;
-  }
-} ;
-
-template<typename Port, uint8_t pinNum, typename PortConfigurable>
-class Pin<Port, pinNum, PortConfigurable>
-{
-public:
-  constexpr Pin() = default;
-  __forceinline static void Set()
-  {
-    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::BSRR::Set(1U << pinNum) ;
-  }
-  
-  __forceinline static void Toggle()
-  {
-    static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::ODR::Toggle(1U << pinNum) ;
-  }
-  
-  __forceinline static void SetAnalog()
-  {
-    Port::MODER::Set(Port::MODER::FieldValues::Analog::Value << (pinNum << 1)) ;
-  }
-  
-  __forceinline static void SetInput()
-  {
-    Port::MODER::Set(Port::MODER::FieldValues::Input::Value << (pinNum << 1)) ;
-  }
-  
-  __forceinline static void SetOutput()
-  {
-    Port::MODER::Set(Port::MODER::FieldValues::Output::Value << (pinNum << 1)) ;
-  }
-  
-  __forceinline static void SetAlternate()
-  {
-    Port::MODER::Set(Port::MODER::FieldValues::Alternate::Value << (pinNum << 1)) ;
-  }
-  
-} ;
 
 
 template <typename Pin>
@@ -98,7 +37,7 @@ public:
 
 };
 
-using Led1Pin = Pin<GPIOA, 1U, PortConfigurable> ;
+using Led1Pin = Pin<GPIOA, 1U, PinConfigurable> ;
 using Led2Pin = Pin<GPIOB, 2U> ;
 
 constexpr Led<Led1Pin> Led1 ;
@@ -176,7 +115,7 @@ int main()
   
   GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
               GPIOA::BSRR::BR4::Reset
-              >::Set() ;
+              >::Write() ;
   
   return 0 ;
 }
