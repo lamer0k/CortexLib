@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+../AbstractHardware/Pin/pin.hpp
+susudefs.hpp
+../AbstractHardware/Pin/susudefs.hpp
+
 ../AbstractHardware/Registers/STM32F411/FieldValues/gpioafieldvalues.hpp
 fieldvalue.hpp
 ../AbstractHardware/Registers/STM32F411/FieldValues/fieldvalue.hpp
@@ -109,6 +113,8 @@ rccregisters.hpp
 C:/Users/Skolody/source/CortexLib/rccregisters.hpp
 array
 -
+pin.hpp
+C:/Users/Skolody/source/CortexLib/pin.hpp
 guide.hpp
 C:/Users/Skolody/source/CortexLib/guide.hpp
 

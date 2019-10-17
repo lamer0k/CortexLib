@@ -6,5 +6,5 @@ CXX_FLAGS = --debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers -IC:\Users\Skolody\source\CortexLib\Common -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers\STM32F411 -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues -IC:\Users\Skolody\source\CortexLib\Common\PatternMatching 
+CXX_INCLUDES = -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Pin -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Port -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Timer -IC:\Users\Skolody\source\CortexLib\Application\Led -IC:\Users\Skolody\source\CortexLib\Common -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers\STM32F411 -IC:\Users\Skolody\source\CortexLib\AbstractHardware\Registers\STM32F411\FieldValues -IC:\Users\Skolody\source\CortexLib\Common\PatternMatching 
 

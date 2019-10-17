@@ -4,46 +4,39 @@
 #include "rccregisters.hpp"   //for RCC
 #include <array>              //for std::array ;
 #include "pin.hpp"            //for Pin
-#include "guide.hpp"          //for Guide;
-//#include "dioregisters.hpp"
-//#include "timera0registers.hpp"
+#include "Led.hpp"            //for Led
+#include "port.hpp"           //for Port
+#include "tim2registers.hpp"  //for TIM2
+#include "timer.hpp"           //for Timer
 
 using namespace std ;
 
 
-class ILed
-{
-public:
-  virtual void Set() const = 0;
-  virtual void Toggle() const = 0;
-};
+using Led1Pin = Pin<GPIOA, 1U, PinWriteableConfigurable> ;
+using Led2Pin = Pin<GPIOB, 2U, PinWriteableConfigurable> ;
 
-
-template <typename Pin>
-class Led : public ILed
+struct Test : ISubscriber
 {
-public:
-  constexpr Led() = default;
+  constexpr Test() {} ;
+  void Update()  override
+  {
   
-  __forceinline void Toggle() const override
-  {
-    Pin::Toggle() ;
   }
-
-  __forceinline void Set() const override
-  {
-    Pin::Set() ;
-  }
-
 };
 
-using Led1Pin = Pin<GPIOA, 1U, PinConfigurable> ;
-using Led2Pin = Pin<GPIOB, 2U> ;
+constexpr Test test ;
+
+
+using DurationTimer = Timer<TIM2, TimerCountableInterruptable> ;
+
+constexpr DurationTimer durationTimer(test);
+
 
 constexpr Led<Led1Pin> Led1 ;
 constexpr Led<Led2Pin> Led2 ;
 
-constexpr std::array<const ILed*,2U> Leds{
+constexpr std::array<const ILed*,2U> Leds
+{
   &Led1,
   &Led2
 };
@@ -51,9 +44,10 @@ constexpr std::array<const ILed*,2U> Leds{
 
 int main()
 {
+  Port<Led1Pin, Led2Pin>::SetOutput() ;
+  durationTimer.Start();
+  durationTimer.Update() ;
   Leds[1]->Toggle() ;
-  
-  Led1Pin::SetAnalog() ;
   
   //guide(0) =  [] { int x = 0 ;} ;
   //auto testGuide = guide(0) ;

@@ -21,6 +21,9 @@ set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_mo
 
 include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Pin
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
+                    ${CMAKE_SOURCE_DIR}/Application/Led
                     ${CMAKE_SOURCE_DIR}/Common
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues

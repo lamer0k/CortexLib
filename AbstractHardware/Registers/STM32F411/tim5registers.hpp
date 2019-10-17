@@ -10,7 +10,8 @@
 #if !defined(TIM5REGISTERS_HPP)
 #define TIM5REGISTERS_HPP
 
-#include "tim5fieldvalues.hpp"  //for Bits Fields defs 
+#include "tim5fieldvalues.hpp"  //for Bits Fields defs
+#include "tim1fieldvalues.hpp"  //for Bits Fields defs
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  

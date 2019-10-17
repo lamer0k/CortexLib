@@ -10,7 +10,8 @@
 #if !defined(TIM2ENUMS_HPP)
 #define TIM2ENUMS_HPP
 
-#include "fieldvalue.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues
+
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CCMR_Output_OCE_Values: public RegisterField<Reg, offset, size, AccessMode> 

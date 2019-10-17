@@ -68,8 +68,8 @@ struct TIM_CR_UDIS_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_CR_CEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM_CR_CEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM_CR_CEN_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM_CR_CEN_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM_CR_CEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -305,8 +305,8 @@ struct TIM_SR_CCIF_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM_SR_UIF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM_SR_UIF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM_SR_UIF_Values, BaseType, 1U> ;
+  using NoUpdate = FieldValue<TIM_SR_UIF_Values, BaseType, 0U> ;
+  using UpdatePending = FieldValue<TIM_SR_UIF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
