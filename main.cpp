@@ -7,6 +7,7 @@
 #include "Led.hpp"            //for Led
 #include "port.hpp"           //for Port
 #include "tim2registers.hpp"  //for TIM2
+#include "tim5registers.hpp"  //for TIM5
 #include "timer.hpp"           //for Timer
 
 using namespace std ;
@@ -28,8 +29,9 @@ constexpr Test test ;
 
 
 using DurationTimer = Timer<TIM2, TimerCountableInterruptable> ;
+using DelayTimer = Timer<TIM5, TimerCountable> ;
 
-constexpr DurationTimer durationTimer(test);
+constexpr DurationTimer durationTimer{test};
 
 
 constexpr Led<Led1Pin> Led1 ;
@@ -45,8 +47,9 @@ constexpr std::array<const ILed*,2U> Leds
 int main()
 {
   Port<Led1Pin, Led2Pin>::SetOutput() ;
-  durationTimer.Start();
-  durationTimer.Update() ;
+  DurationTimer::Start();
+  DelayTimer::SetDelay(100) ;
+ // durationTimer.Update() ;
   Leds[1]->Toggle() ;
   
   //guide(0) =  [] { int x = 0 ;} ;

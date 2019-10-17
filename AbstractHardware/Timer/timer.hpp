@@ -52,7 +52,7 @@ struct Timer
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Stop()
   {
-    TimerModule::CR1::EN::Disable::Set() ;
+    TimerModule::CR1::CEN::Disable::Set() ;
     TimerModule::SR::UIF::NoUpdate::Set() ;
   }
   
@@ -68,7 +68,6 @@ struct Timer
     }
     Stop();
   }
-  
 };
 
 
