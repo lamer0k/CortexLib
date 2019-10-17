@@ -9,7 +9,6 @@
 
 using namespace std ;
 
-
 struct PortConfigurable
 {
 
@@ -21,6 +20,7 @@ public:
   virtual void Set() const = 0;
   virtual void Toggle() const = 0;
 };
+
 
 template<typename Port, uint8_t pinNum, typename ...T>
 class Pin
@@ -40,11 +40,9 @@ public:
   }
 } ;
 
-
 template<typename Port, uint8_t pinNum, typename PortConfigurable>
 class Pin<Port, pinNum, PortConfigurable>
 {
-
 public:
   constexpr Pin() = default;
   __forceinline static void Set()
@@ -61,13 +59,24 @@ public:
   
   __forceinline static void SetAnalog()
   {
-    Port::MODER::Set(Port::MODER::FieldValues::Analog::Value << (pinNum * 2)) ;
+    Port::MODER::Set(Port::MODER::FieldValues::Analog::Value << (pinNum << 1)) ;
   }
   
   __forceinline static void SetInput()
   {
-    Port::MODER::Set(Port::MODER::FieldValues::Input::Value << (pinNum * 2)) ;
+    Port::MODER::Set(Port::MODER::FieldValues::Input::Value << (pinNum << 1)) ;
   }
+  
+  __forceinline static void SetOutput()
+  {
+    Port::MODER::Set(Port::MODER::FieldValues::Output::Value << (pinNum << 1)) ;
+  }
+  
+  __forceinline static void SetAlternate()
+  {
+    Port::MODER::Set(Port::MODER::FieldValues::Alternate::Value << (pinNum << 1)) ;
+  }
+  
 } ;
 
 
@@ -100,15 +109,15 @@ constexpr std::array<const ILed*,2U> Leds{
   &Led2
 };
 
+
 int main()
 {
-  Leds[1]->Toggle()  ;
+  Leds[1]->Toggle() ;
   
   Led1Pin::SetAnalog() ;
   
-  guide(0) =  [] { int x = 0 ;} ;
-  auto testGuide = guide(0) ;
-  
+  //guide(0) =  [] { int x = 0 ;} ;
+  //auto testGuide = guide(0) ;
   
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
@@ -119,10 +128,8 @@ int main()
           GPIOA::MODER::MODER14::Analog
   >::Set() ;
   
-  
   //*******************************************
-
-  // Включаем тактирование на порту GPIOA
+  //Включаем тактирование на порту GPIOA
   //Ошибка компиляции, у регистра APB1ENR нет поля GPIOAEN
   //RCC::APB1ENR::GPIOAEN::Enable::Set() ; 
   
@@ -132,23 +139,23 @@ int main()
   //Ошибка компиляции, RCC::APB2ENR::TIM1EN::Enable не 
   //является полем регистра APB1ENR
   //RCC::APB1ENRPack<RCC::APB1ENR::TIM2EN::Enable,
-  //                 RCC::APB2ENR::TIM1EN::Enable>::Set();
+  //RCC::APB2ENR::TIM1EN::Enable>::Set() ;
 
   //Ошибка компиляции, регистр BSRR только для записи     
   //auto result = GPIOA::BSRR::Get() ; 
 
   //Ошибка компиляции, значение Reset только для записи
- // if (GPIOA::BSRR::BS1::Reset::IsSet())  
+  // if (GPIOA::BSRR::BS1::Reset::IsSet())
   {
-     //do something
+    //do something
   }
    
   //Ошибка компиляции, значение поля регистра только для чтения
- // GPIOA::IDR::IDR5::On::Set()   
-   
+  //GPIOA::IDR::IDR5::On::Set()
  
   GPIOA::MODER::MODER15::Output::Set() ;
   auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
+  
   GPIOA::MODER::Set(1U) ;
   auto test = GPIOA::MODER::Get() ;
 
@@ -160,7 +167,7 @@ int main()
   result = GPIOA::MODERPack<
           GPIOA::MODER::MODER15::Output,
           GPIOA::MODER::MODER14::Analog
-  >::IsSet() ; ;
+  >::IsSet() ;
 
   GPIOA::MODER::MODER15::Set(2U) ;
   test = GPIOA::MODER::MODER15::Get() ;
@@ -170,7 +177,6 @@ int main()
   GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
               GPIOA::BSRR::BR4::Reset
               >::Set() ;
-  
   
   return 0 ;
 }
