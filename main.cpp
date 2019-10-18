@@ -28,29 +28,42 @@ struct Test : ISubscriber
 constexpr Test test ;
 
 
-using DurationTimer = Timer<TIM2, TimerCountableInterruptable> ;
-using DelayTimer = Timer<TIM5, TimerCountable> ;
-
-constexpr DurationTimer durationTimer{test};
 
 
-constexpr Led<Led1Pin> Led1 ;
-constexpr Led<Led2Pin> Led2 ;
-
-constexpr std::array<const ILed*,2U> Leds
+class Application
 {
-  &Led1,
-  &Led2
+  static constexpr Led<Led1Pin> Led1{} ;
+  static constexpr Led<Led2Pin> Led2{} ;
+  using DurationTimer = Timer<TIM2, TimerCountableInterruptable> ;
+  using DelayTimer = Timer<TIM5, TimerCountable> ;
+
+public:
+  static constexpr DurationTimer durationTimer{test} ;
+  static constexpr DelayTimer delayTimer{} ;
+  static constexpr std::array<const ILed*, 2U> Leds
+  {
+      &Led1,
+      &Led2
+  } ;
+  
+};
+
+struct Interrupt
+{
+  static void Update()
+  {
+    Application::durationTimer.Update() ;
+  }
 };
 
 
 int main()
 {
   Port<Led1Pin, Led2Pin>::SetOutput() ;
-  DurationTimer::Start();
-  DelayTimer::SetDelay(100) ;
- // durationTimer.Update() ;
-  Leds[1]->Toggle() ;
+  Application::durationTimer.Start();
+  Application::delayTimer.SetDelay(100) ;
+  Application::durationTimer.Update() ;
+  Application::Leds[1]->Toggle() ;
   
   //guide(0) =  [] { int x = 0 ;} ;
   //auto testGuide = guide(0) ;

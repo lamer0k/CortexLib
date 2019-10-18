@@ -5,40 +5,40 @@
 #ifndef REGISTERS_PORT_HPP
 #define REGISTERS_PORT_HPP
 
-__forceinline template<typename ...Pins>
+template<typename ...Pins>
 struct Port{
   
-  static void Toggle()
+  __forceinline inline static void Toggle()
   {
     Pass((Pins::Toggle(), true)...) ;
   }
   
-  static void Set()
+  __forceinline inline static void Set()
   {
     Pass((Pins::Set(), true)...) ;
   }
   
-  static void Reset()
+  __forceinline inline static void Reset()
   {
     Pass((Pins::Reset(), true)...) ;
   }
   
-  static void SetOutput()
+  __forceinline inline static void SetOutput()
   {
     Pass((Pins::SetOutput(), true)...) ;
   }
   
-  static void SetInput()
+  __forceinline inline static void SetInput()
   {
     Pass((Pins::SetInput(), true)...) ;
   }
   
-  static void SetAnalog()
+  __forceinline inline static void SetAnalog()
   {
     Pass((Pins::SetInput(), true)...) ;
   }
   
-  static void SetAlternate()
+  __forceinline inline static void SetAlternate()
   {
     Pass((Pins::SetInput(), true)...) ;
   }
@@ -49,8 +49,6 @@ private:
   {
   }
 
-};
-
-
+} ;
 
 #endif //REGISTERS_PORT_HPP
