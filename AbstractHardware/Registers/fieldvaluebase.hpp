@@ -23,7 +23,7 @@ struct FieldValueBase
   {
     RegType newRegValue = *reinterpret_cast<RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
     
-    newRegValue &= ~ (((1U << Field::Size) - 1U) << Field::Offset); //Вначале нужно очистить старое значение битового поля
+    newRegValue &=~ (Field::Mask << Field::Offset); //Вначале нужно очистить старое значение битового поля
     newRegValue |= (value << Field::Offset) ; // Затем установить новое
     
     *reinterpret_cast<RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр

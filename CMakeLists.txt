@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION 3.13)
 
 project(Registers)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 #set(CMAKE_COMPILER_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin")
 #set(CMAKE_COMPILER_INCLUDE_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/inc/cpp")
-set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
+#set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
 #set(CMAKE_MAKE_PROGRAM "C:/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin/clearmake.exe")
 
 #set(CMAKE_C_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")

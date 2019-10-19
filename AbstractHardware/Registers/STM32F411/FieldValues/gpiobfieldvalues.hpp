@@ -49,29 +49,29 @@ struct GPIOB_PUPDR_PUPDR_Values: public RegisterField<Reg, offset, size, AccessM
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_IDR_IDR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_IDR_IDR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_IDR_IDR_Values, BaseType, 1U> ;
+  using Disable = FieldValue<GPIOB_IDR_IDR_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOB_IDR_IDR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_ODR_ODR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_ODR_ODR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_ODR_ODR_Values, BaseType, 1U> ;
+  using Disable = FieldValue<GPIOB_ODR_ODR_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOB_ODR_ODR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_BSRR_BR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_BSRR_BR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_BSRR_BR_Values, BaseType, 1U> ;
+  using NotUsed = FieldValue<GPIOB_BSRR_BR_Values, BaseType, 0U> ;
+  using Disable = FieldValue<GPIOB_BSRR_BR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_BSRR_BS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_BSRR_BS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_BSRR_BS_Values, BaseType, 1U> ;
+  using NotUsed= FieldValue<GPIOB_BSRR_BS_Values, BaseType, 0U> ;
+  using Enable = FieldValue<GPIOB_BSRR_BS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

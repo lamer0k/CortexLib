@@ -4,8 +4,8 @@ extern "C" void __iar_program_start(void) ;
 class InterruptHandler {
   public:
     static void DummyHandler() { for(;;) {} } 
-    static void Timer2Handler() {
-    }
+    static void Timer2Handler() { }
+     
 };
 
 using tIntFunct = void(*)();

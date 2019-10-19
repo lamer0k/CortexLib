@@ -14,6 +14,7 @@ struct RegisterField
   
   static constexpr RegType Offset = offset ;
   static constexpr RegType Size = size ;
+  static constexpr RegType Mask  = static_cast<RegType>((static_cast<RegType>(1U) << size) - static_cast<RegType>(1U)) ;
   using Access = AccessMode ;
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
