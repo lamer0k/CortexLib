@@ -57,7 +57,7 @@ struct Pin
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinWriteable, T>::value>>
-  __forceinline static void Toggle()
+  static void Toggle()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
     Port::ODR::Toggle(1U << pinNum) ;
@@ -65,7 +65,7 @@ struct Pin
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinReadable, T>::value>>
-  __forceinline static typename Port::IDR::Type Get()
+  static typename Port::IDR::Type Get()
   {
     return Port::IDR::Get() ;
   }
