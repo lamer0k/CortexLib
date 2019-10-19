@@ -44,7 +44,7 @@ struct Pin
   static void Set()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::BSRR::Set(1U << pinNum) ;
+    Port::BSRR::Set(uint8_t(1U) << pinNum) ;
   }
   
   __forceinline template<typename T = Interface,
@@ -52,7 +52,7 @@ struct Pin
   static void Reset()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::BSRR::Reset(1U << pinNum) ;
+    Port::BSRR::Reset(uint8_t(1U) << pinNum) ;
   }
   
   __forceinline template<typename T = Interface,
@@ -60,7 +60,7 @@ struct Pin
   static void Toggle()
   {
     static_assert(pinNum <= 31U, "There are only 32 pins on port") ;
-    Port::ODR::Toggle(1U << pinNum) ;
+    Port::ODR::Toggle(uint8_t(1U) << pinNum) ;
   }
   
   __forceinline template<typename T = Interface,

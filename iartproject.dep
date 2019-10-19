@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1551833429</fileChecksum>
+    <fileChecksum>3877468783</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
@@ -119,6 +119,7 @@
             <file>$TOOLKIT_DIR$\inc\cpp\algorithm</file>
             <file>$TOOLKIT_DIR$\inc\cpp\xmemory</file>
             <file>$PROJ_DIR$\AbstractHardware\Pin\pin.hpp</file>
+            <file>$TOOLKIT_DIR$\src\lib\dlib\edg\main.h</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
@@ -184,6 +185,22 @@
                 </tool>
             </inputs>
         </file>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\startup.cpp</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <tool>C-STAT</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\startup.cpp</name>
+            <tool>ICCARM</tool>
+        </forcedrebuild>
+        <forcedrebuild>
+            <name>$PROJ_DIR$\main.cpp</name>
+            <tool>ICCARM</tool>
+        </forcedrebuild>
     </configuration>
     <configuration>
         <name>Release</name>

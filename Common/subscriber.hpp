@@ -8,7 +8,7 @@
 struct ISubscriber
 {
   constexpr ISubscriber() {} ;
-  virtual void Update()  = 0;
+  virtual void Update() const  = 0;
 };
 
 #endif //REGISTERS_SUBSRIBER_HPP

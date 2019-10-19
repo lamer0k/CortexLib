@@ -16,17 +16,44 @@ using namespace std ;
 using Led1Pin = Pin<GPIOA, 1U, PinWriteableConfigurable> ;
 using Led2Pin = Pin<GPIOB, 2U, PinWriteableConfigurable> ;
 
+
 struct Test : ISubscriber
 {
-  constexpr Test() {} ;
-  void Update()  override
+  constexpr Test(std::uint32_t id): Id{id} {} ;
+  __forceinline void Update() const override
   {
-  
+    //std::cout << Id << std::endl ;
   }
+  
+  const std::uint32_t Id;
 };
 
-constexpr Test test ;
+struct Test1 : ISubscriber
+{
+  constexpr Test1(std::uint32_t id): Id{id} {} ;
+  __forceinline void Update() const override
+  {
+    //std::cout << Id << std::endl ;
+  }
+  
+  const std::uint32_t Id;
+};
 
+Test test{1} ;
+constexpr Test1 test1{2} ;
+
+template<auto* const ...args>
+struct Notifier
+{
+  void Update() const
+  {
+    auto subscribers = {(ISubscriber*)(args)...} ;
+    for (auto subscriber: subscribers)
+    {
+      subscriber->Update() ;
+    }
+  }
+} ;
 
 
 
@@ -34,16 +61,17 @@ class Application
 {
   static constexpr Led<Led1Pin> Led1{} ;
   static constexpr Led<Led2Pin> Led2{} ;
-  using DurationTimer = Timer<TIM2, TimerCountableInterruptable> ;
+  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
   using DelayTimer = Timer<TIM5, TimerCountable> ;
 
 public:
-  static constexpr DurationTimer durationTimer{test} ;
+  //static constexpr DurationTimer durationTimer{test} ;
+  static constexpr DurationTimer durationTimer{} ;
   static constexpr DelayTimer delayTimer{} ;
-  static constexpr std::array<const ILed*, 2U> Leds
+  static constexpr std::array<const ILed*, 2U> Leds 
   {
-      &Led1,
-      &Led2
+    &Led1,
+    &Led2,
   } ;
   
 };
@@ -52,17 +80,20 @@ struct Interrupt
 {
   static void Update()
   {
-    Application::durationTimer.Update() ;
+    //Application::durationTimer.Update() ;
   }
 };
 
+  
+Notifier<&test, &test1> notifyer;
 
 int main()
 {
+  //notifyer.Update() ;
   Port<Led1Pin, Led2Pin>::SetOutput() ;
   Application::durationTimer.Start();
-  Application::delayTimer.SetDelay(100) ;
-  Application::durationTimer.Update() ;
+  Application::delayTimer.SetDelay(100) ;  
+  Application::durationTimer.InterruptHandle() ;
   Application::Leds[1]->Toggle() ;
   
   //guide(0) =  [] { int x = 0 ;} ;
@@ -106,7 +137,7 @@ int main()
   auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
   
   GPIOA::MODER::Set(1U) ;
-  auto test = GPIOA::MODER::Get() ;
+  auto testic = GPIOA::MODER::Get() ;
 
   GPIOA::MODERPack<
           GPIOA::MODER::MODER15::Output,
@@ -119,9 +150,9 @@ int main()
   >::IsSet() ;
 
   GPIOA::MODER::MODER15::Set(2U) ;
-  test = GPIOA::MODER::MODER15::Get() ;
+  testic = GPIOA::MODER::MODER15::Get() ;
   
-  auto i = GPIOA::IDR::Get() ;
+  const auto i = GPIOA::IDR::Get() ;
   
   GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
               GPIOA::BSRR::BR4::Reset
