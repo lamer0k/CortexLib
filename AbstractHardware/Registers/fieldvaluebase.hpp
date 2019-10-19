@@ -28,8 +28,7 @@ struct FieldValueBase
     
     *reinterpret_cast<RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
   }
-  
-  
+
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
   __forceinline template<typename T = typename Field::Access,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
@@ -45,8 +44,7 @@ struct FieldValueBase
   inline static bool IsSet()
   {
     return ((*reinterpret_cast<RegType *>(Field::Register::Address)) &
-              static_cast<RegType>(((1U << Field::Size) - 1U) << Field::Offset)) ==
-              (value << Field::Offset) ;
+              static_cast<RegType>(Field::Mask << Field::Offset)) == (value << Field::Offset) ;
   }
 };
 #endif //REGISTERS_FIELDVALUEBASE_HPP

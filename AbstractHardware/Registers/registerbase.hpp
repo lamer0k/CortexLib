@@ -27,7 +27,7 @@ struct RegisterBase
   //Метод Write будет работать только для регистров, в которые можно записать значение
   __forceinline template<typename T = AccessMode,
     class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
-  inline static void Set(Type value)
+  inline static void BitwiseOrSet(Type value)
   {
     *reinterpret_cast<Type *>(address) |= value ;
   }

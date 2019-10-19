@@ -20,7 +20,7 @@ using Led2Pin = Pin<GPIOC, 5U, PinWriteableConfigurable> ;
 
 struct Test : ISubscriber
 {
-  constexpr Test(std::uint32_t id): Id{id} {} ;
+  constexpr explicit Test(std::uint32_t id): Id{id} {} ;
   __forceinline void Update() const override
   {
     //std::cout << Id << std::endl ;
@@ -31,7 +31,7 @@ struct Test : ISubscriber
 
 struct Test1 : ISubscriber
 {
-  constexpr Test1(std::uint32_t id): Id{id} {} ;
+  constexpr explicit Test1(std::uint32_t id): Id{id} {} ;
   __forceinline void Update() const override
   {
     //std::cout << Id << std::endl ;
@@ -48,10 +48,11 @@ class Application
 {
   static constexpr Led<Led1Pin> Led1{} ;
   static constexpr Led<Led2Pin> Led2{} ;
-  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
-  using DelayTimer = Timer<TIM5, TimerCountable> ;
+
 
 public:
+  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
+  using DelayTimer = Timer<TIM5, TimerCountable> ;
   //static constexpr DurationTimer durationTimer{test} ;
   static constexpr DurationTimer durationTimer{} ;
   static constexpr DelayTimer delayTimer{} ;
@@ -74,7 +75,7 @@ struct Interrupt
   
 int main()
 {
-  RCC::AHB1ENR::GPIOAEN::Enable::Set() ; 
+  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   RCC::AHB1ENR::GPIOCEN::Enable::Set() ;
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
   RCC::APB1ENR::TIM5EN::Enable::Set() ;
@@ -84,7 +85,7 @@ int main()
 //  Application::durationTimer.Start();
   for (;;)
   {
-    Application::delayTimer.SetDelay(8000000) ;  
+    Application::DelayTimer::SetDelay(8000000) ;
  // Application::durationTimer.InterruptHandle() ;
     Application::Leds[0]->Toggle() ;  
     Application::Leds[1]->Toggle() ;    
@@ -98,7 +99,7 @@ int main()
   
   
 
-  GPIOA::MODER::MODER5::Output::Set() ;  
+  /*GPIOA::MODER::MODER5::Output::Set() ;
   //GPIOA::MODERPack<
  //         GPIOA::MODER::MODER12::Output,
  //         GPIOA::MODER::MODER14::Analog
@@ -152,7 +153,7 @@ int main()
   
   GPIOC::BSRRPack<GPIOC::BSRR::BR0::Disable,
               GPIOC::BSRR::BR4::Disable
-              >::Write() ;
+              >::Write() ;*/
   
   return 0 ;
 }

@@ -74,32 +74,36 @@ struct Pin
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAnalog()
   {
+    //CriticalSection cs ; TODO
     Port::MODER::Clear(Port::MODER::FieldValues::Analog::Mask << (pinNum * 2U)) ;
-    Port::MODER::Set(Port::MODER::FieldValues::Analog::Value << (pinNum * 2U)) ;
+    Port::MODER::BitwiseOrSet(Port::MODER::FieldValues::Analog::Value << (pinNum * 2U)) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinReadableConfigurable, T>::value>>
   static void SetInput()
   {
+    //CriticalSection cs ; TODO
     Port::MODER::Clear(Port::MODER::FieldValues::Input::Mask << (pinNum * 2U)) ;
-    Port::MODER::Set(Port::MODER::FieldValues::Input::Value << (pinNum * 2U)) ;
+    Port::MODER::BitwiseOrSet(Port::MODER::FieldValues::Input::Value << (pinNum * 2U)) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinWriteableConfigurable, T>::value>>
   static void SetOutput()
   {
+    //CriticalSection cs ; TODO
     Port::MODER::Clear(Port::MODER::FieldValues::Output::Mask << (pinNum * 2U)) ;
-    Port::MODER::Set(Port::MODER::FieldValues::Output::Value << (pinNum * 2U)) ;
+    Port::MODER::BitwiseOrSet(Port::MODER::FieldValues::Output::Value << (pinNum * 2U)) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAlternate()
   {
+    //CriticalSection cs ; TODO
     Port::MODER::Clear(Port::MODER::FieldValues::Alternate::Mask << (pinNum * 2U)) ;
-    Port::MODER::Set(Port::MODER::FieldValues::Alternate::Value << (pinNum * 2U)) ;
+    Port::MODER::BitwiseOrSet(Port::MODER::FieldValues::Alternate::Value << (pinNum * 2U)) ;
   }
 } ;
 
