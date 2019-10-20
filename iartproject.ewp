@@ -349,10 +349,13 @@
                     <state>$PROJ_DIR$\AbstractHardware\Pin</state>
                     <state>$PROJ_DIR$\AbstractHardware\Port</state>
                     <state>$PROJ_DIR$\AbstractHardware\Timer</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Atomic</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411\FieldValues</state>
                     <state>$PROJ_DIR$\Common</state>
+                    <state>$PROJ_DIR$\Common\CriticalSection</state>
                     <state>$PROJ_DIR$\Application\Led</state>
+                    <state>$PROJ_DIR$\Application</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>

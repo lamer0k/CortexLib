@@ -8,7 +8,7 @@
 struct NoAccess {};
 struct WriteMode {};
 struct ReadMode {};
-struct ReadWriteMode: public WriteMode, public ReadMode {};
+struct ReadWriteMode {};
 
 
 #endif //REGISTERS_ACCESSMODE_HPP

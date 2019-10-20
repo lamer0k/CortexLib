@@ -21,12 +21,12 @@ struct FieldValueBase
           class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set()
   {
-    RegType newRegValue = *reinterpret_cast<RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
+    RegType newRegValue = *reinterpret_cast<volatile RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
     
     newRegValue &=~ (Field::Mask << Field::Offset); //Вначале нужно очистить старое значение битового поля
     newRegValue |= (value << Field::Offset) ; // Затем установить новое
     
-    *reinterpret_cast<RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
+    *reinterpret_cast<volatile RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
   }
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
@@ -34,16 +34,17 @@ struct FieldValueBase
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Write()
   {
-    *reinterpret_cast<RegType *>(Field::Register::Address) = (value << Field::Offset) ;
+    *reinterpret_cast<volatile RegType *>(Field::Register::Address) = (value << Field::Offset) ;
   }
   
   
   //Метод устанавливает проверяет установлено ли значение битового поля
   __forceinline template<typename T = typename Field::Access,
-          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value ||
+                                            std::is_base_of<ReadWriteMode, T>::value>>
   inline static bool IsSet()
   {
-    return ((*reinterpret_cast<RegType *>(Field::Register::Address)) &
+    return ((*reinterpret_cast<volatile RegType *>(Field::Register::Address)) &
               static_cast<RegType>(Field::Mask << Field::Offset)) == (value << Field::Offset) ;
   }
 };

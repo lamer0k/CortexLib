@@ -10,6 +10,7 @@
 #include "tim5registers.hpp"  //for TIM5
 #include "timer.hpp"          //for Timer
 #include "susudefs.hpp"       //for __forceinline
+//#include <atomic>
 
 using namespace std ;
 
@@ -75,6 +76,9 @@ struct Interrupt
   
 int main()
 {
+  //atomic<int> j = 0;
+ // j |= 10;
+
   RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   RCC::AHB1ENR::GPIOCEN::Enable::Set() ;
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
