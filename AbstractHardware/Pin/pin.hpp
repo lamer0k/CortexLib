@@ -5,7 +5,6 @@
 #define REGISTERS_PIN_HPP
 
 #include "susudefs.hpp"  //for __forceinline
-#include "criticalsectionconfig.hpp" // for CriticalSection
 
 struct PinConfigurable
 {
@@ -75,44 +74,53 @@ struct Pin
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAnalog()
   {
-    CriticalSection cs ;
-    typename Port::MODER::Type regValue = Port::MODER::Get() ;
-    regValue &= ~(Port::MODER::FieldValues::Analog::Mask << (pinNum * 2U)) ;
-    regValue |= (Port::MODER::FieldValues::Analog::Value << (pinNum * 2U)) ;
-    Port::MODER::Write(regValue) ;
+    using RegType = typename Port::MODER::Type ;
+    AtomicUtils<RegType>::Set(
+        Port::MODER::Address,
+        Port::MODER::FieldValues::Analog::Mask,
+        Port::MODER::FieldValues::Analog::Value,
+        pinNum * uint8_t{2U}
+        ) ;
+
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinReadableConfigurable, T>::value>>
   static void SetInput()
   {
-    CriticalSection cs ;
-    typename Port::MODER::Type regValue = Port::MODER::Get() ;
-    regValue &= ~(Port::MODER::FieldValues::Input::Mask << (pinNum * 2U)) ;
-    regValue |= (Port::MODER::FieldValues::Input::Value << (pinNum * 2U)) ;
-    Port::MODER::Write(regValue) ;
+    using RegType = typename Port::MODER::Type ;
+    AtomicUtils<RegType>::Set(
+      Port::MODER::Address,
+      Port::MODER::FieldValues::Input::Mask,
+      Port::MODER::FieldValues::Input::Value,
+      pinNum * uint8_t{2U}
+    ) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinWriteableConfigurable, T>::value>>
   static void SetOutput()
   {
-    CriticalSection cs ;
-    typename Port::MODER::Type regValue = Port::MODER::Get() ;
-    regValue &= ~(Port::MODER::FieldValues::Output::Mask << (pinNum * 2U)) ;
-    regValue |= (Port::MODER::FieldValues::Output::Value << (pinNum * 2U)) ;
-    Port::MODER::Write(regValue) ;
+    using RegType = typename Port::MODER::Type ;
+    AtomicUtils<RegType>::Set(
+      Port::MODER::Address,
+      Port::MODER::FieldValues::Output::Mask,
+      Port::MODER::FieldValues::Output::Value,
+      pinNum * uint8_t{2U}
+    ) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAlternate()
   {
-    CriticalSection cs ;
-    typename Port::MODER::Type regValue = Port::MODER::Get() ;
-    regValue &= ~(Port::MODER::FieldValues::Alterate::Mask << (pinNum * 2U)) ;
-    regValue |= (Port::MODER::FieldValues::Alternate::Value << (pinNum * 2U)) ;
-    Port::MODER::Write(regValue) ;
+    using RegType = typename Port::MODER::Type ;
+    AtomicUtils<RegType>::Set(
+      Port::MODER::Address,
+      Port::MODER::FieldValues::Alternate::Mask,
+      Port::MODER::FieldValues::Alternate::Value,
+      pinNum * uint8_t{2U}
+    ) ;
   }
 } ;
 

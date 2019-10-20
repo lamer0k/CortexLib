@@ -36,19 +36,11 @@ struct FieldValueBase
     class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void SetAtomic()
   {
-    RegType newRegValue ;
-    RegType oldRegValue ;
-
-    do
-    {
-      oldRegValue = *reinterpret_cast<volatile RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
-      newRegValue = oldRegValue ;
-      newRegValue &= ~(Field::Mask << Field::Offset); //Вначале нужно очистить старое значение битового поля
-      newRegValue |= (value << Field::Offset); // Затем установить новое
-    } while(
-      !AtomicUtils<RegType>::CompareExchange(reinterpret_cast<volatile RegType *>(Field::Register::Address),
-                                             oldRegValue,
-                                             newRegValue)
+    AtomicUtils<RegType>::Set(
+      Field::Register::Address,
+      Field::Mask,
+      value,
+      Field::Offset
       ) ;
   }
 

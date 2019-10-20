@@ -26,7 +26,7 @@ struct RegisterField
   static void Set(RegType value)
   {
     assert(value < (1U << size)) ;
-  //  CriticalSection cs ;
+
 
     RegType newRegValue = *reinterpret_cast<volatile RegType *>(Reg::Address) ; //Сохраняем текущее значение регистра
     
@@ -43,20 +43,12 @@ struct RegisterField
   {
     assert(value < (1U << size)) ;
 
-    RegType newRegValue ;
-    RegType oldRegValue ;
-
-    do
-    {
-      oldRegValue = *reinterpret_cast<RegType *>(Reg::Address); //Сохраняем текущее значение регистра
-      newRegValue = oldRegValue ;
-      newRegValue &= ~(Mask << offset); //Вначале нужно очистить старое значение битового поля
-      newRegValue |= (value << offset); // Затем установить новое
-    } while(
-      !AtomicUtils<RegType>::CompareExchange(reinterpret_cast<volatile RegType *>(Reg::Address),
-                                    oldRegValue,
-                                    newRegValue)
-      ) ;
+    AtomicUtils<RegType>::Set(
+      Reg::Address,
+      Mask,
+      value,
+      offset
+    ) ;
   }
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи

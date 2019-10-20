@@ -34,20 +34,12 @@ public:
       class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
     static void SetAtomic()
     {
-      Type newRegValue ;
-      Type oldRegValue ;
-
-      do
-      {
-        oldRegValue = *reinterpret_cast<volatile Type *>(address) ; //Сохраняем текущее значение регистра
-        newRegValue = oldRegValue ;
-        newRegValue &= ~GetMask() ; //Вначале нужно очистить старое значение битового поля
-        newRegValue |= GetValue() ; // Затем установить новое
-      } while(
-        !AtomicUtils<Type>::CompareExchange(reinterpret_cast<volatile Type *>(address),
-                                               oldRegValue,
-                                               newRegValue)
-        ) ;
+      AtomicUtils<Type>::Set(
+        address,
+        GetMask(),
+        GetValue,
+        0U
+      ) ;
     }
 
   //Метод Write устанавливает битовые поля, только если регистр может использоваться для записи
