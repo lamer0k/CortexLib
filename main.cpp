@@ -10,7 +10,6 @@
 #include "tim5registers.hpp"  //for TIM5
 #include "timer.hpp"          //for Timer
 #include "susudefs.hpp"       //for __forceinline
-//#include <atomic>
 
 using namespace std ;
 
@@ -76,13 +75,10 @@ struct Interrupt
   
 int main()
 {
-  //atomic<int> j = 0;
- // j |= 10;
-
-  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
-  RCC::AHB1ENR::GPIOCEN::Enable::Set() ;
+  RCC::AHB1ENR::GPIOAEN::Enable::SetAtomic();
+  RCC::AHB1ENR::GPIOCEN::Enable::SetAtomic() ;
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
-  RCC::APB1ENR::TIM5EN::Enable::Set() ;
+  RCC::APB1ENR::TIM5EN::Enable::SetAtomic() ;
   
   Port<Led1Pin, Led2Pin>::SetOutput() ;
   Application::Leds[1]->Toggle() ;  
@@ -103,7 +99,7 @@ int main()
   
   
 
-  /*GPIOA::MODER::MODER5::Output::Set() ;
+  GPIOA::MODER::MODER5::Output::Set() ;
   //GPIOA::MODERPack<
  //         GPIOA::MODER::MODER12::Output,
  //         GPIOA::MODER::MODER14::Analog
@@ -157,7 +153,7 @@ int main()
   
   GPIOC::BSRRPack<GPIOC::BSRR::BR0::Disable,
               GPIOC::BSRR::BR4::Disable
-              >::Write() ;*/
+              >::Write() ;
   
   return 0 ;
 }

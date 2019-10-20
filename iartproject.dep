@@ -122,7 +122,10 @@
             <file>$PROJ_DIR$\Application\criticalsectionconfig.hpp</file>
             <file>$PROJ_DIR$\AbstractHardware\Atomic\atomicutils.hpp</file>
             <file>$TOOLKIT_DIR$\inc\cpp\atomic</file>
+            <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
             <file>$PROJ_DIR$\Common\CriticalSection\criticalsectionguard.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\iar_intrinsics_common.h</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\main.cpp</name>
@@ -143,7 +146,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 92 56 84 95 90 96 99 40 75 108 77 37 76 58 87 59 38 74 78 81 53 49 55 64 46 63 45 79 57 98 100 43 80 18 22 9 17 28 23 14 20 102 109 86 65 112 47 42 50 62 73 54 101 113 70 106 24 111 34 25 94 8 83 29 10 13 44 71 39 41 7 91 36 16 15 32 12 33 2 88 4 21 3 103 89 26 11 5 114 117 31 30 19 110 60 35 97 27 6</file>
+                    <file> 92 56 84 95 90 96 99 40 75 108 77 37 76 58 87 59 38 74 78 81 53 49 55 64 115 117 118 120 45 79 46 63 57 98 100 43 80 18 22 9 17 28 23 14 20 102 109 86 65 112 47 42 50 62 73 54 101 113 70 106 24 111 34 25 94 8 83 29 10 13 44 71 39 41 7 91 36 16 15 32 12 33 2 88 4 21 3 103 89 26 11 5 114 119 31 30 19 110 60 35 97 27 6</file>
                 </tool>
             </inputs>
         </file>

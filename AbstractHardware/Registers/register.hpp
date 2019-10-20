@@ -10,6 +10,7 @@
 #include "accessmode.hpp"     //for WriteMode, ReadMode
 #include "susudefs.hpp"       //for __forceinline
 
+
 //Класс для работы с регистром, можно передавать список Битовых полей для установки и проверки
 template<uint32_t address, size_t size, typename AccessMode, typename FieldValueBaseType,  typename ...Args>
 class Register
@@ -27,8 +28,28 @@ public:
     newRegValue |= GetValue() ; //Устанавливаем новые значения битовых полей
     *reinterpret_cast<volatile Type *>(address) = newRegValue ; //Записываем в регистра новое значение
   }
-  
-  
+
+    //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+    __forceinline template<typename T = AccessMode,
+      class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+    static void SetAtomic()
+    {
+      Type newRegValue ;
+      Type oldRegValue ;
+
+      do
+      {
+        oldRegValue = *reinterpret_cast<volatile Type *>(address) ; //Сохраняем текущее значение регистра
+        newRegValue = oldRegValue ;
+        newRegValue &= ~GetMask() ; //Вначале нужно очистить старое значение битового поля
+        newRegValue |= GetValue() ; // Затем установить новое
+      } while(
+        !AtomicUtils<Type>::CompareExchange(reinterpret_cast<volatile Type *>(address),
+                                               oldRegValue,
+                                               newRegValue)
+        ) ;
+    }
+
   //Метод Write устанавливает битовые поля, только если регистр может использоваться для записи
   __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
@@ -40,7 +61,8 @@ public:
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value ||
+                                            std::is_base_of<ReadWriteMode, T>::value>>
   static bool IsSet()
   {
     Type newRegValue = *reinterpret_cast<volatile Type *>(address) ;

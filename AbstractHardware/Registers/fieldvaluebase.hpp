@@ -11,6 +11,7 @@
 #include "susudefs.hpp"      //for __forceinline
 #include "registerfield.hpp" //for RegisterField
 
+
 //Базовый класс для работы с битовыми полями регистров
 template<typename Field, typename Base, typename Field::Register::Type value>
 struct FieldValueBase
@@ -21,12 +22,34 @@ struct FieldValueBase
           class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set()
   {
+
     RegType newRegValue = *reinterpret_cast<volatile RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
     
     newRegValue &=~ (Field::Mask << Field::Offset); //Вначале нужно очистить старое значение битового поля
     newRegValue |= (value << Field::Offset) ; // Затем установить новое
     
     *reinterpret_cast<volatile RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
+  }
+
+  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+  __forceinline template<typename T = typename Field::Access,
+    class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+  static void SetAtomic()
+  {
+    RegType newRegValue ;
+    RegType oldRegValue ;
+
+    do
+    {
+      oldRegValue = *reinterpret_cast<volatile RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
+      newRegValue = oldRegValue ;
+      newRegValue &= ~(Field::Mask << Field::Offset); //Вначале нужно очистить старое значение битового поля
+      newRegValue |= (value << Field::Offset); // Затем установить новое
+    } while(
+      !AtomicUtils<RegType>::CompareExchange(reinterpret_cast<volatile RegType *>(Field::Register::Address),
+                                             oldRegValue,
+                                             newRegValue)
+      ) ;
   }
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи

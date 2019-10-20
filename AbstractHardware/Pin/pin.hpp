@@ -4,8 +4,8 @@
 #ifndef REGISTERS_PIN_HPP
 #define REGISTERS_PIN_HPP
 
-#include "susudefs.hpp"
-#include "criticalsectionconfig.hpp"
+#include "susudefs.hpp"  //for __forceinline
+#include "criticalsectionconfig.hpp" // for CriticalSection
 
 struct PinConfigurable
 {
