@@ -5,6 +5,8 @@
 #ifndef REGISTERS_LED_HPP
 #define REGISTERS_LED_HPP
 
+#include "pin.hpp"  //for Pin
+
 class ILed
 {
 public:

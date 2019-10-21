@@ -1,6 +1,6 @@
 //#include <cstdint>            //for int types such as uint32_t
 #include "gpioaregisters.hpp" //for Gpioa
-#include "gpiobregisters.hpp" //for Gpioa
+#include "gpiocregisters.hpp" //for Gpioc
 #include "rccregisters.hpp"   //for RCC
 #include <array>              //for std::array ;
 #include "pin.hpp"            //for Pin
@@ -8,18 +8,19 @@
 #include "port.hpp"           //for Port
 #include "tim2registers.hpp"  //for TIM2
 #include "tim5registers.hpp"  //for TIM5
-#include "timer.hpp"           //for Timer
+#include "timer.hpp"          //for Timer
+#include "susudefs.hpp"       //for __forceinline
 
 using namespace std ;
 
 
-using Led1Pin = Pin<GPIOA, 1U, PinWriteableConfigurable> ;
-using Led2Pin = Pin<GPIOB, 2U, PinWriteableConfigurable> ;
+using Led1Pin = Pin<GPIOA, 5U, PinWriteableConfigurable> ;
+using Led2Pin = Pin<GPIOC, 5U, PinWriteableConfigurable> ;
 
 
 struct Test : ISubscriber
 {
-  constexpr Test(std::uint32_t id): Id{id} {} ;
+  constexpr explicit Test(std::uint32_t id): Id{id} {} ;
   __forceinline void Update() const override
   {
     //std::cout << Id << std::endl ;
@@ -30,7 +31,7 @@ struct Test : ISubscriber
 
 struct Test1 : ISubscriber
 {
-  constexpr Test1(std::uint32_t id): Id{id} {} ;
+  constexpr explicit Test1(std::uint32_t id): Id{id} {} ;
   __forceinline void Update() const override
   {
     //std::cout << Id << std::endl ;
@@ -42,29 +43,16 @@ struct Test1 : ISubscriber
 Test test{1} ;
 constexpr Test1 test1{2} ;
 
-template<auto* const ...args>
-struct Notifier
-{
-  void Update() const
-  {
-    auto subscribers = {(ISubscriber*)(args)...} ;
-    for (auto subscriber: subscribers)
-    {
-      subscriber->Update() ;
-    }
-  }
-} ;
-
-
 
 class Application
 {
   static constexpr Led<Led1Pin> Led1{} ;
   static constexpr Led<Led2Pin> Led2{} ;
-  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
-  using DelayTimer = Timer<TIM5, TimerCountable> ;
+
 
 public:
+  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
+  using DelayTimer = Timer<TIM5, TimerCountable> ;
   //static constexpr DurationTimer durationTimer{test} ;
   static constexpr DurationTimer durationTimer{} ;
   static constexpr DelayTimer delayTimer{} ;
@@ -80,33 +68,42 @@ struct Interrupt
 {
   static void Update()
   {
-    //Application::durationTimer.Update() ;
+    Application::durationTimer.InterruptHandle() ;
   }
 };
 
   
-Notifier<&test, &test1> notifyer;
-
 int main()
 {
-  //notifyer.Update() ;
-  Port<Led1Pin, Led2Pin>::SetOutput() ;
-  Application::durationTimer.Start();
-  Application::delayTimer.SetDelay(100) ;  
-  Application::durationTimer.InterruptHandle() ;
-  Application::Leds[1]->Toggle() ;
+  RCC::AHB1ENR::GPIOAEN::Enable::SetAtomic();
+  RCC::AHB1ENR::GPIOCEN::Enable::SetAtomic() ;
+  //RCC::APB1ENR::TIM2EN::Enable::Set() ;
+  RCC::APB1ENR::TIM5EN::Enable::SetAtomic() ;
   
+  Port<Led1Pin, Led2Pin>::SetOutput() ;
+  Application::Leds[1]->Toggle() ;  
+//  Application::durationTimer.Start();
+  for (;;)
+  {
+    Application::DelayTimer::SetDelay(8000000) ;
+ // Application::durationTimer.InterruptHandle() ;
+    Application::Leds[0]->Toggle() ;  
+    Application::Leds[1]->Toggle() ;    
+    
+  }
+
+
   //guide(0) =  [] { int x = 0 ;} ;
   //auto testGuide = guide(0) ;
   
-  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
   
-  RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
-  GPIOA::MODER::MODER15::Output::Set() ;  
-  GPIOA::MODERPack<
-          GPIOA::MODER::MODER12::Output,
-          GPIOA::MODER::MODER14::Analog
-  >::Set() ;
+  
+
+  GPIOA::MODER::MODER5::Output::Set() ;
+  //GPIOA::MODERPack<
+ //         GPIOA::MODER::MODER12::Output,
+ //         GPIOA::MODER::MODER14::Analog
+ // >::Set() ;
   
   //*******************************************
   //Включаем тактирование на порту GPIOA
@@ -114,7 +111,7 @@ int main()
   //RCC::APB1ENR::GPIOAEN::Enable::Set() ; 
   
   //Все хорошо, подали тактирование на порт GPIOA
-  RCC::AHB1ENR::GPIOAEN::Enable::Set() ; 
+
 
   //Ошибка компиляции, RCC::APB2ENR::TIM1EN::Enable не 
   //является полем регистра APB1ENR
@@ -136,26 +133,26 @@ int main()
   GPIOA::MODER::MODER15::Output::Set() ;
   auto result = GPIOA::MODER::MODER15::Output::IsSet() ;
   
-  GPIOA::MODER::Set(1U) ;
+
   auto testic = GPIOA::MODER::Get() ;
 
-  GPIOA::MODERPack<
-          GPIOA::MODER::MODER15::Output,
-          GPIOA::MODER::MODER14::Analog
+  GPIOC::MODERPack<
+          GPIOC::MODER::MODER15::Output,
+          GPIOC::MODER::MODER14::Analog
   >::Set() ;
 
-  result = GPIOA::MODERPack<
-          GPIOA::MODER::MODER15::Output,
-          GPIOA::MODER::MODER14::Analog
+  result = GPIOC::MODERPack<
+          GPIOC::MODER::MODER15::Output,
+          GPIOC::MODER::MODER14::Analog
   >::IsSet() ;
 
-  GPIOA::MODER::MODER15::Set(2U) ;
-  testic = GPIOA::MODER::MODER15::Get() ;
+  GPIOC::MODER::MODER15::Set(2U) ;
+  testic = GPIOC::MODER::MODER15::Get() ;
   
   const auto i = GPIOA::IDR::Get() ;
   
-  GPIOA::BSRRPack<GPIOA::BSRR::BR0::Reset,
-              GPIOA::BSRR::BR4::Reset
+  GPIOC::BSRRPack<GPIOC::BSRR::BR0::Disable,
+              GPIOC::BSRR::BR4::Disable
               >::Write() ;
   
   return 0 ;

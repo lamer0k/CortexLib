@@ -10,6 +10,7 @@
 #include "accessmode.hpp"     //for WriteMode, ReadMode
 #include "susudefs.hpp"       //for __forceinline
 
+
 //Класс для работы с регистром, можно передавать список Битовых полей для установки и проверки
 template<uint32_t address, size_t size, typename AccessMode, typename FieldValueBaseType,  typename ...Args>
 class Register
@@ -21,29 +22,42 @@ public:
           class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set()
   {
-    Type newRegValue = *reinterpret_cast<Type *>(address) ; //Сохраняем текущее значение регистра
+    Type newRegValue = *reinterpret_cast<volatile Type *>(address) ; //Сохраняем текущее значение регистра
     
     newRegValue &= ~GetMask() ; //Сбрасываем битовые поля, которые нужно будет установить
     newRegValue |= GetValue() ; //Устанавливаем новые значения битовых полей
-    *reinterpret_cast<Type *>(address) = newRegValue ; //Записываем в регистра новое значение
+    *reinterpret_cast<volatile Type *>(address) = newRegValue ; //Записываем в регистра новое значение
   }
-  
-  
-  //Метод Set устанавливает битовые поля, только если регистр может использоваться для записи
+
+    //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+    __forceinline template<typename T = AccessMode,
+      class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+    static void SetAtomic()
+    {
+      AtomicUtils<Type>::Set(
+        address,
+        GetMask(),
+        GetValue,
+        0U
+      ) ;
+    }
+
+  //Метод Write устанавливает битовые поля, только если регистр может использоваться для записи
   __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Write()
   {
-    *reinterpret_cast<Type *>(address) = GetValue() ; //Записываем в регистра новое значение
+    *reinterpret_cast<volatile Type *>(address) = GetValue() ; //Записываем в регистра новое значение
   }
   
   
   //Метод IsSet проверяет что все битовые поля из переданного набора установлены
   __forceinline template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
+          class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value ||
+                                            std::is_base_of<ReadWriteMode, T>::value>>
   static bool IsSet()
   {
-    Type newRegValue = *reinterpret_cast<Type *>(address) ;
+    Type newRegValue = *reinterpret_cast<volatile Type *>(address) ;
     return ((newRegValue & GetMask()) == GetValue()) ;
   }
 

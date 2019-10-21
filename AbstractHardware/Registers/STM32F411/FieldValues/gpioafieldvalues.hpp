@@ -64,14 +64,14 @@ template <typename Reg, size_t offset, size_t size, typename AccessMode, typenam
 struct GPIOA_BSRR_BR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using NotUsed = FieldValue<GPIOA_BSRR_BR_Values, BaseType, 0U> ;
-  using Reset = FieldValue<GPIOA_BSRR_BR_Values, BaseType, 1U> ;
+  using Disable = FieldValue<GPIOA_BSRR_BR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_BSRR_BS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using NotUsed = FieldValue<GPIOA_BSRR_BS_Values, BaseType, 0U> ;
-  using Set = FieldValue<GPIOA_BSRR_BS_Values, BaseType, 1U> ;
+  using Enable = FieldValue<GPIOA_BSRR_BS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

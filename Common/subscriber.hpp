@@ -7,7 +7,7 @@
 
 struct ISubscriber
 {
-  constexpr ISubscriber() {} ;
+  constexpr ISubscriber() = default; ;
   virtual void Update() const  = 0;
 };
 

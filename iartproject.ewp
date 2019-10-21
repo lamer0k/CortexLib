@@ -281,7 +281,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>1</version>
-                    <state>10010100</state>
+                    <state>00000000</state>
                 </option>
                 <option>
                     <name>CCDebugInfo</name>
@@ -349,10 +349,13 @@
                     <state>$PROJ_DIR$\AbstractHardware\Pin</state>
                     <state>$PROJ_DIR$\AbstractHardware\Port</state>
                     <state>$PROJ_DIR$\AbstractHardware\Timer</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Atomic</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411\FieldValues</state>
                     <state>$PROJ_DIR$\Common</state>
+                    <state>$PROJ_DIR$\Common\CriticalSection</state>
                     <state>$PROJ_DIR$\Application\Led</state>
+                    <state>$PROJ_DIR$\Application</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -368,7 +371,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -377,7 +380,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CompilerMisraRules98</name>
