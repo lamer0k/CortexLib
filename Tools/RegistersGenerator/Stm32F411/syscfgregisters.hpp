@@ -32,8 +32,8 @@ struct SYSCFG
 
   struct PMC : public RegisterBase<0x40013804, 32, ReadWriteMode>
   {
-    using ADC1DC2 = SYSCFG_PMC_ADCDC_Values<SYSCFG::PMC, 16, 1, ReadWriteMode, SYSCFGPMCBase> ;
-    using FieldValues = SYSCFG_PMC_ADCDC_Values<SYSCFG::PMC, 0, 0, NoAccess, NoAccess> ;
+    using ADC1DC2 = SYSCFG_PMC_ADC1DC2_Values<SYSCFG::PMC, 16, 1, ReadWriteMode, SYSCFGPMCBase> ;
+    using FieldValues = SYSCFG_PMC_ADC1DC2_Values<SYSCFG::PMC, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -43,11 +43,11 @@ struct SYSCFG
 
   struct EXTICR1 : public RegisterBase<0x40013808, 32, ReadWriteMode>
   {
-    using EXTI3 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 12, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
-    using EXTI2 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 8, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
-    using EXTI1 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 4, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
-    using EXTI0 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 0, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
-    using FieldValues = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR1, 0, 0, NoAccess, NoAccess> ;
+    using EXTI3 = SYSCFG_EXTICR1_EXTI3_Values<SYSCFG::EXTICR1, 12, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI2 = SYSCFG_EXTICR1_EXTI2_Values<SYSCFG::EXTICR1, 8, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI1 = SYSCFG_EXTICR1_EXTI1_Values<SYSCFG::EXTICR1, 4, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using EXTI0 = SYSCFG_EXTICR1_EXTI0_Values<SYSCFG::EXTICR1, 0, 4, ReadWriteMode, SYSCFGEXTICR1Base> ;
+    using FieldValues = SYSCFG_EXTICR1_EXTI0_Values<SYSCFG::EXTICR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -57,11 +57,11 @@ struct SYSCFG
 
   struct EXTICR2 : public RegisterBase<0x4001380C, 32, ReadWriteMode>
   {
-    using EXTI7 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 12, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
-    using EXTI6 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 8, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
-    using EXTI5 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 4, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
-    using EXTI4 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 0, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
-    using FieldValues = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR2, 0, 0, NoAccess, NoAccess> ;
+    using EXTI7 = SYSCFG_EXTICR2_EXTI7_Values<SYSCFG::EXTICR2, 12, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI6 = SYSCFG_EXTICR2_EXTI6_Values<SYSCFG::EXTICR2, 8, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI5 = SYSCFG_EXTICR2_EXTI5_Values<SYSCFG::EXTICR2, 4, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using EXTI4 = SYSCFG_EXTICR2_EXTI4_Values<SYSCFG::EXTICR2, 0, 4, ReadWriteMode, SYSCFGEXTICR2Base> ;
+    using FieldValues = SYSCFG_EXTICR2_EXTI4_Values<SYSCFG::EXTICR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -71,11 +71,11 @@ struct SYSCFG
 
   struct EXTICR3 : public RegisterBase<0x40013810, 32, ReadWriteMode>
   {
-    using EXTI11 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 12, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
-    using EXTI10 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 8, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
-    using EXTI9 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 4, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
-    using EXTI8 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 0, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
-    using FieldValues = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR3, 0, 0, NoAccess, NoAccess> ;
+    using EXTI11 = SYSCFG_EXTICR3_EXTI11_Values<SYSCFG::EXTICR3, 12, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI10 = SYSCFG_EXTICR3_EXTI10_Values<SYSCFG::EXTICR3, 8, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI9 = SYSCFG_EXTICR3_EXTI9_Values<SYSCFG::EXTICR3, 4, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using EXTI8 = SYSCFG_EXTICR3_EXTI8_Values<SYSCFG::EXTICR3, 0, 4, ReadWriteMode, SYSCFGEXTICR3Base> ;
+    using FieldValues = SYSCFG_EXTICR3_EXTI8_Values<SYSCFG::EXTICR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -85,11 +85,11 @@ struct SYSCFG
 
   struct EXTICR4 : public RegisterBase<0x40013814, 32, ReadWriteMode>
   {
-    using EXTI15 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 12, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
-    using EXTI14 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 8, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
-    using EXTI13 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 4, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
-    using EXTI12 = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 0, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
-    using FieldValues = SYSCFG_EXTICR_EXTI_Values<SYSCFG::EXTICR4, 0, 0, NoAccess, NoAccess> ;
+    using EXTI15 = SYSCFG_EXTICR4_EXTI15_Values<SYSCFG::EXTICR4, 12, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI14 = SYSCFG_EXTICR4_EXTI14_Values<SYSCFG::EXTICR4, 8, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI13 = SYSCFG_EXTICR4_EXTI13_Values<SYSCFG::EXTICR4, 4, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using EXTI12 = SYSCFG_EXTICR4_EXTI12_Values<SYSCFG::EXTICR4, 0, 4, ReadWriteMode, SYSCFGEXTICR4Base> ;
+    using FieldValues = SYSCFG_EXTICR4_EXTI12_Values<SYSCFG::EXTICR4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

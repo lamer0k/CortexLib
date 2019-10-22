@@ -268,17 +268,17 @@ struct RTC_CR_BKP_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_CR_SUBH_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_SUB1H_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_CR_SUBH_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_CR_SUBH_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_CR_SUB1H_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_CR_SUB1H_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_CR_ADDH_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CR_ADD1H_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_CR_ADDH_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_CR_ADDH_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_CR_ADD1H_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_CR_ADD1H_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -477,10 +477,17 @@ struct RTC_ISR_TSOVF_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_ISR_TAMPF_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ISR_TAMP1F_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_ISR_TAMPF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_ISR_TAMPF_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_ISR_TAMP1F_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ISR_TAMP1F_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ISR_TAMP2F_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ISR_TAMP2F_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ISR_TAMP2F_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -550,10 +557,10 @@ struct RTC_CALIBR_DC_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_ALRMAR_MSK_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMAR_MSK4_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_ALRMAR_MSK_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_ALRMAR_MSK_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_ALRMAR_MSK4_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMAR_MSK4_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -594,6 +601,13 @@ struct RTC_ALRMAR_DU_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMAR_MSK3_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMAR_MSK3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMAR_MSK3_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RTC_ALRMAR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = FieldValue<RTC_ALRMAR_PM_Values, BaseType, 0U> ;
@@ -631,6 +645,13 @@ struct RTC_ALRMAR_HU_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMAR_MSK2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMAR_MSK2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMAR_MSK2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RTC_ALRMAR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = FieldValue<RTC_ALRMAR_MNT_Values, BaseType, 0U> ;
@@ -662,6 +683,13 @@ struct RTC_ALRMAR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode
   using Value13 = FieldValue<RTC_ALRMAR_MNU_Values, BaseType, 13U> ;
   using Value14 = FieldValue<RTC_ALRMAR_MNU_Values, BaseType, 14U> ;
   using Value15 = FieldValue<RTC_ALRMAR_MNU_Values, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMAR_MSK1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMAR_MSK1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMAR_MSK1_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -699,10 +727,10 @@ struct RTC_ALRMAR_SU_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_ALRMBR_MSK_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_ALRMBR_MSK4_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_ALRMBR_MSK_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_ALRMBR_MSK_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_ALRMBR_MSK4_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMBR_MSK4_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -743,6 +771,13 @@ struct RTC_ALRMBR_DU_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMBR_MSK3_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMBR_MSK3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMBR_MSK3_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RTC_ALRMBR_PM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = FieldValue<RTC_ALRMBR_PM_Values, BaseType, 0U> ;
@@ -780,6 +815,13 @@ struct RTC_ALRMBR_HU_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMBR_MSK2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMBR_MSK2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMBR_MSK2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RTC_ALRMBR_MNT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Value0 = FieldValue<RTC_ALRMBR_MNT_Values, BaseType, 0U> ;
@@ -811,6 +853,13 @@ struct RTC_ALRMBR_MNU_Values: public RegisterField<Reg, offset, size, AccessMode
   using Value13 = FieldValue<RTC_ALRMBR_MNU_Values, BaseType, 13U> ;
   using Value14 = FieldValue<RTC_ALRMBR_MNU_Values, BaseType, 14U> ;
   using Value15 = FieldValue<RTC_ALRMBR_MNU_Values, BaseType, 15U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_ALRMBR_MSK1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_ALRMBR_MSK1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_ALRMBR_MSK1_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -858,10 +907,10 @@ struct RTC_SSR_SS_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_SHIFTR_ADDS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_SHIFTR_ADD1S_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_SHIFTR_ADDS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_SHIFTR_ADDS_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_SHIFTR_ADD1S_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_SHIFTR_ADD1S_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1058,10 +1107,17 @@ struct RTC_CALR_CALP_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_CALR_CALW_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_CALR_CALW8_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_CALR_CALW_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_CALR_CALW_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_CALR_CALW8_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_CALR_CALW8_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_CALR_CALW16_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_CALR_CALW16_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_CALR_CALW16_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1084,10 +1140,10 @@ struct RTC_TAFCR_TSINSEL_Values: public RegisterField<Reg, offset, size, AccessM
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_TAFCR_TAMPINSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TAFCR_TAMP1INSEL_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_TAFCR_TAMPINSEL_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_TAFCR_TAMPINSEL_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_TAFCR_TAMP1INSEL_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_TAFCR_TAMP1INSEL_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1136,17 +1192,17 @@ struct RTC_TAFCR_TAMPTS_Values: public RegisterField<Reg, offset, size, AccessMo
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_TAFCR_TAMPTRG_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TAFCR_TAMP2TRG_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_TAFCR_TAMPTRG_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_TAFCR_TAMPTRG_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_TAFCR_TAMP2TRG_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_TAFCR_TAMP2TRG_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_TAFCR_TAMPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_TAFCR_TAMP2E_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RTC_TAFCR_TAMPE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RTC_TAFCR_TAMPE_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<RTC_TAFCR_TAMP2E_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_TAFCR_TAMP2E_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1154,6 +1210,20 @@ struct RTC_TAFCR_TAMPIE_Values: public RegisterField<Reg, offset, size, AccessMo
 {
   using Value0 = FieldValue<RTC_TAFCR_TAMPIE_Values, BaseType, 0U> ;
   using Value1 = FieldValue<RTC_TAFCR_TAMPIE_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMP1TRG_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_TAFCR_TAMP1TRG_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_TAFCR_TAMP1TRG_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_TAFCR_TAMP1E_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<RTC_TAFCR_TAMP1E_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<RTC_TAFCR_TAMP1E_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1209,7 +1279,102 @@ struct RTC_ALRMBSSR_SS_Values: public RegisterField<Reg, offset, size, AccessMod
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct RTC_BKPR_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct RTC_BKP0R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP1R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP2R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP3R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP4R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP5R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP6R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP7R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP8R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP9R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP10R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP11R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP12R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP13R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP14R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP15R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP16R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP17R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP18R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct RTC_BKP19R_BKP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 

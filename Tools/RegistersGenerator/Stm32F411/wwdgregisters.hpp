@@ -34,8 +34,8 @@ struct WWDG
   struct CFR : public RegisterBase<0x40002C04, 32, ReadWriteMode>
   {
     using EWI = WWDG_CFR_EWI_Values<WWDG::CFR, 9, 1, ReadWriteMode, WWDGCFRBase> ;
-    using WDGTB1 = WWDG_CFR_WDGTB_Values<WWDG::CFR, 8, 1, ReadWriteMode, WWDGCFRBase> ;
-    using WDGTB0 = WWDG_CFR_WDGTB_Values<WWDG::CFR, 7, 1, ReadWriteMode, WWDGCFRBase> ;
+    using WDGTB1 = WWDG_CFR_WDGTB1_Values<WWDG::CFR, 8, 1, ReadWriteMode, WWDGCFRBase> ;
+    using WDGTB0 = WWDG_CFR_WDGTB0_Values<WWDG::CFR, 7, 1, ReadWriteMode, WWDGCFRBase> ;
     using W = WWDG_CFR_W_Values<WWDG::CFR, 0, 7, ReadWriteMode, WWDGCFRBase> ;
     using FieldValues = WWDG_CFR_W_Values<WWDG::CFR, 0, 0, NoAccess, NoAccess> ;
   } ;

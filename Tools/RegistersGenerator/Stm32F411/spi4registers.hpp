@@ -21,21 +21,21 @@ struct SPI4
 
   struct CR1 : public RegisterBase<0x40013400, 32, ReadWriteMode>
   {
-    using BIDIMODE = SPI_CR_BIDIMODE_Values<SPI4::CR1, 15, 1, ReadWriteMode, SPI4CR1Base> ;
-    using BIDIOE = SPI_CR_BIDIOE_Values<SPI4::CR1, 14, 1, ReadWriteMode, SPI4CR1Base> ;
-    using CRCEN = SPI_CR_CRCEN_Values<SPI4::CR1, 13, 1, ReadWriteMode, SPI4CR1Base> ;
-    using CRCNEXT = SPI_CR_CRCNEXT_Values<SPI4::CR1, 12, 1, ReadWriteMode, SPI4CR1Base> ;
-    using DFF = SPI_CR_DFF_Values<SPI4::CR1, 11, 1, ReadWriteMode, SPI4CR1Base> ;
-    using RXONLY = SPI_CR_RXONLY_Values<SPI4::CR1, 10, 1, ReadWriteMode, SPI4CR1Base> ;
-    using SSM = SPI_CR_SSM_Values<SPI4::CR1, 9, 1, ReadWriteMode, SPI4CR1Base> ;
-    using SSI = SPI_CR_SSI_Values<SPI4::CR1, 8, 1, ReadWriteMode, SPI4CR1Base> ;
-    using LSBFIRST = SPI_CR_LSBFIRST_Values<SPI4::CR1, 7, 1, ReadWriteMode, SPI4CR1Base> ;
-    using SPE = SPI_CR_SPE_Values<SPI4::CR1, 6, 1, ReadWriteMode, SPI4CR1Base> ;
-    using BR = SPI_CR_BR_Values<SPI4::CR1, 3, 3, ReadWriteMode, SPI4CR1Base> ;
-    using MSTR = SPI_CR_MSTR_Values<SPI4::CR1, 2, 1, ReadWriteMode, SPI4CR1Base> ;
-    using CPOL = SPI_CR_CPOL_Values<SPI4::CR1, 1, 1, ReadWriteMode, SPI4CR1Base> ;
-    using CPHA = SPI_CR_CPHA_Values<SPI4::CR1, 0, 1, ReadWriteMode, SPI4CR1Base> ;
-    using FieldValues = SPI_CR_CPHA_Values<SPI4::CR1, 0, 0, NoAccess, NoAccess> ;
+    using BIDIMODE = SPI4_CR1_BIDIMODE_Values<SPI4::CR1, 15, 1, ReadWriteMode, SPI4CR1Base> ;
+    using BIDIOE = SPI4_CR1_BIDIOE_Values<SPI4::CR1, 14, 1, ReadWriteMode, SPI4CR1Base> ;
+    using CRCEN = SPI4_CR1_CRCEN_Values<SPI4::CR1, 13, 1, ReadWriteMode, SPI4CR1Base> ;
+    using CRCNEXT = SPI4_CR1_CRCNEXT_Values<SPI4::CR1, 12, 1, ReadWriteMode, SPI4CR1Base> ;
+    using DFF = SPI4_CR1_DFF_Values<SPI4::CR1, 11, 1, ReadWriteMode, SPI4CR1Base> ;
+    using RXONLY = SPI4_CR1_RXONLY_Values<SPI4::CR1, 10, 1, ReadWriteMode, SPI4CR1Base> ;
+    using SSM = SPI4_CR1_SSM_Values<SPI4::CR1, 9, 1, ReadWriteMode, SPI4CR1Base> ;
+    using SSI = SPI4_CR1_SSI_Values<SPI4::CR1, 8, 1, ReadWriteMode, SPI4CR1Base> ;
+    using LSBFIRST = SPI4_CR1_LSBFIRST_Values<SPI4::CR1, 7, 1, ReadWriteMode, SPI4CR1Base> ;
+    using SPE = SPI4_CR1_SPE_Values<SPI4::CR1, 6, 1, ReadWriteMode, SPI4CR1Base> ;
+    using BR = SPI4_CR1_BR_Values<SPI4::CR1, 3, 3, ReadWriteMode, SPI4CR1Base> ;
+    using MSTR = SPI4_CR1_MSTR_Values<SPI4::CR1, 2, 1, ReadWriteMode, SPI4CR1Base> ;
+    using CPOL = SPI4_CR1_CPOL_Values<SPI4::CR1, 1, 1, ReadWriteMode, SPI4CR1Base> ;
+    using CPHA = SPI4_CR1_CPHA_Values<SPI4::CR1, 0, 1, ReadWriteMode, SPI4CR1Base> ;
+    using FieldValues = SPI4_CR1_CPHA_Values<SPI4::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -45,14 +45,14 @@ struct SPI4
 
   struct CR2 : public RegisterBase<0x40013404, 32, ReadWriteMode>
   {
-    using TXEIE = SPI_CR_TXEIE_Values<SPI4::CR2, 7, 1, ReadWriteMode, SPI4CR2Base> ;
-    using RXNEIE = SPI_CR_RXNEIE_Values<SPI4::CR2, 6, 1, ReadWriteMode, SPI4CR2Base> ;
-    using ERRIE = SPI_CR_ERRIE_Values<SPI4::CR2, 5, 1, ReadWriteMode, SPI4CR2Base> ;
-    using FRF = SPI_CR_FRF_Values<SPI4::CR2, 4, 1, ReadWriteMode, SPI4CR2Base> ;
-    using SSOE = SPI_CR_SSOE_Values<SPI4::CR2, 2, 1, ReadWriteMode, SPI4CR2Base> ;
-    using TXDMAEN = SPI_CR_TXDMAEN_Values<SPI4::CR2, 1, 1, ReadWriteMode, SPI4CR2Base> ;
-    using RXDMAEN = SPI_CR_RXDMAEN_Values<SPI4::CR2, 0, 1, ReadWriteMode, SPI4CR2Base> ;
-    using FieldValues = SPI_CR_RXDMAEN_Values<SPI4::CR2, 0, 0, NoAccess, NoAccess> ;
+    using TXEIE = SPI4_CR2_TXEIE_Values<SPI4::CR2, 7, 1, ReadWriteMode, SPI4CR2Base> ;
+    using RXNEIE = SPI4_CR2_RXNEIE_Values<SPI4::CR2, 6, 1, ReadWriteMode, SPI4CR2Base> ;
+    using ERRIE = SPI4_CR2_ERRIE_Values<SPI4::CR2, 5, 1, ReadWriteMode, SPI4CR2Base> ;
+    using FRF = SPI4_CR2_FRF_Values<SPI4::CR2, 4, 1, ReadWriteMode, SPI4CR2Base> ;
+    using SSOE = SPI4_CR2_SSOE_Values<SPI4::CR2, 2, 1, ReadWriteMode, SPI4CR2Base> ;
+    using TXDMAEN = SPI4_CR2_TXDMAEN_Values<SPI4::CR2, 1, 1, ReadWriteMode, SPI4CR2Base> ;
+    using RXDMAEN = SPI4_CR2_RXDMAEN_Values<SPI4::CR2, 0, 1, ReadWriteMode, SPI4CR2Base> ;
+    using FieldValues = SPI4_CR2_RXDMAEN_Values<SPI4::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -62,16 +62,16 @@ struct SPI4
 
   struct SR : public RegisterBase<0x40013408, 32, ReadWriteMode>
   {
-    using TIFRFE = SPI_SR_TIFRFE_Values<SPI4::SR, 8, 1, ReadMode, SPI4SRBase> ;
-    using BSY = SPI_SR_BSY_Values<SPI4::SR, 7, 1, ReadMode, SPI4SRBase> ;
-    using OVR = SPI_SR_OVR_Values<SPI4::SR, 6, 1, ReadMode, SPI4SRBase> ;
-    using MODF = SPI_SR_MODF_Values<SPI4::SR, 5, 1, ReadMode, SPI4SRBase> ;
-    using CRCERR = SPI_SR_CRCERR_Values<SPI4::SR, 4, 1, ReadWriteMode, SPI4SRBase> ;
-    using UDR = SPI_SR_UDR_Values<SPI4::SR, 3, 1, ReadMode, SPI4SRBase> ;
-    using CHSIDE = SPI_SR_CHSIDE_Values<SPI4::SR, 2, 1, ReadMode, SPI4SRBase> ;
-    using TXE = SPI_SR_TXE_Values<SPI4::SR, 1, 1, ReadMode, SPI4SRBase> ;
-    using RXNE = SPI_SR_RXNE_Values<SPI4::SR, 0, 1, ReadMode, SPI4SRBase> ;
-    using FieldValues = SPI_SR_RXNE_Values<SPI4::SR, 0, 0, NoAccess, NoAccess> ;
+    using TIFRFE = SPI4_SR_TIFRFE_Values<SPI4::SR, 8, 1, ReadMode, SPI4SRBase> ;
+    using BSY = SPI4_SR_BSY_Values<SPI4::SR, 7, 1, ReadMode, SPI4SRBase> ;
+    using OVR = SPI4_SR_OVR_Values<SPI4::SR, 6, 1, ReadMode, SPI4SRBase> ;
+    using MODF = SPI4_SR_MODF_Values<SPI4::SR, 5, 1, ReadMode, SPI4SRBase> ;
+    using CRCERR = SPI4_SR_CRCERR_Values<SPI4::SR, 4, 1, ReadWriteMode, SPI4SRBase> ;
+    using UDR = SPI4_SR_UDR_Values<SPI4::SR, 3, 1, ReadMode, SPI4SRBase> ;
+    using CHSIDE = SPI4_SR_CHSIDE_Values<SPI4::SR, 2, 1, ReadMode, SPI4SRBase> ;
+    using TXE = SPI4_SR_TXE_Values<SPI4::SR, 1, 1, ReadMode, SPI4SRBase> ;
+    using RXNE = SPI4_SR_RXNE_Values<SPI4::SR, 0, 1, ReadMode, SPI4SRBase> ;
+    using FieldValues = SPI4_SR_RXNE_Values<SPI4::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,8 +81,8 @@ struct SPI4
 
   struct DR : public RegisterBase<0x4001340C, 32, ReadWriteMode>
   {
-    using DRField = SPI_DR_DR_Values<SPI4::DR, 0, 16, ReadWriteMode, SPI4DRBase> ;
-    using FieldValues = SPI_DR_DR_Values<SPI4::DR, 0, 0, NoAccess, NoAccess> ;
+    using DRField = SPI4_DR_DR_Values<SPI4::DR, 0, 16, ReadWriteMode, SPI4DRBase> ;
+    using FieldValues = SPI4_DR_DR_Values<SPI4::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -92,8 +92,8 @@ struct SPI4
 
   struct CRCPR : public RegisterBase<0x40013410, 32, ReadWriteMode>
   {
-    using CRCPOLY = SPI_CRCPR_CRCPOLY_Values<SPI4::CRCPR, 0, 16, ReadWriteMode, SPI4CRCPRBase> ;
-    using FieldValues = SPI_CRCPR_CRCPOLY_Values<SPI4::CRCPR, 0, 0, NoAccess, NoAccess> ;
+    using CRCPOLY = SPI4_CRCPR_CRCPOLY_Values<SPI4::CRCPR, 0, 16, ReadWriteMode, SPI4CRCPRBase> ;
+    using FieldValues = SPI4_CRCPR_CRCPOLY_Values<SPI4::CRCPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -103,8 +103,8 @@ struct SPI4
 
   struct RXCRCR : public RegisterBase<0x40013414, 32, ReadMode>
   {
-    using RxCRC = SPI_RXCRCR_RxCRC_Values<SPI4::RXCRCR, 0, 16, ReadMode, SPI4RXCRCRBase> ;
-    using FieldValues = SPI_RXCRCR_RxCRC_Values<SPI4::RXCRCR, 0, 0, NoAccess, NoAccess> ;
+    using RxCRC = SPI4_RXCRCR_RxCRC_Values<SPI4::RXCRCR, 0, 16, ReadMode, SPI4RXCRCRBase> ;
+    using FieldValues = SPI4_RXCRCR_RxCRC_Values<SPI4::RXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -114,8 +114,8 @@ struct SPI4
 
   struct TXCRCR : public RegisterBase<0x40013418, 32, ReadMode>
   {
-    using TxCRC = SPI_TXCRCR_TxCRC_Values<SPI4::TXCRCR, 0, 16, ReadMode, SPI4TXCRCRBase> ;
-    using FieldValues = SPI_TXCRCR_TxCRC_Values<SPI4::TXCRCR, 0, 0, NoAccess, NoAccess> ;
+    using TxCRC = SPI4_TXCRCR_TxCRC_Values<SPI4::TXCRCR, 0, 16, ReadMode, SPI4TXCRCRBase> ;
+    using FieldValues = SPI4_TXCRCR_TxCRC_Values<SPI4::TXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -125,15 +125,15 @@ struct SPI4
 
   struct I2SCFGR : public RegisterBase<0x4001341C, 32, ReadWriteMode>
   {
-    using I2SMOD = SPI_ISCFGR_ISMOD_Values<SPI4::I2SCFGR, 11, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using I2SE = SPI_ISCFGR_ISE_Values<SPI4::I2SCFGR, 10, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using I2SCFG = SPI_ISCFGR_ISCFG_Values<SPI4::I2SCFGR, 8, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using PCMSYNC = SPI_ISCFGR_PCMSYNC_Values<SPI4::I2SCFGR, 7, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using I2SSTD = SPI_ISCFGR_ISSTD_Values<SPI4::I2SCFGR, 4, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using CKPOL = SPI_ISCFGR_CKPOL_Values<SPI4::I2SCFGR, 3, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using DATLEN = SPI_ISCFGR_DATLEN_Values<SPI4::I2SCFGR, 1, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using CHLEN = SPI_ISCFGR_CHLEN_Values<SPI4::I2SCFGR, 0, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
-    using FieldValues = SPI_ISCFGR_CHLEN_Values<SPI4::I2SCFGR, 0, 0, NoAccess, NoAccess> ;
+    using I2SMOD = SPI4_I2SCFGR_I2SMOD_Values<SPI4::I2SCFGR, 11, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using I2SE = SPI4_I2SCFGR_I2SE_Values<SPI4::I2SCFGR, 10, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using I2SCFG = SPI4_I2SCFGR_I2SCFG_Values<SPI4::I2SCFGR, 8, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using PCMSYNC = SPI4_I2SCFGR_PCMSYNC_Values<SPI4::I2SCFGR, 7, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using I2SSTD = SPI4_I2SCFGR_I2SSTD_Values<SPI4::I2SCFGR, 4, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using CKPOL = SPI4_I2SCFGR_CKPOL_Values<SPI4::I2SCFGR, 3, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using DATLEN = SPI4_I2SCFGR_DATLEN_Values<SPI4::I2SCFGR, 1, 2, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using CHLEN = SPI4_I2SCFGR_CHLEN_Values<SPI4::I2SCFGR, 0, 1, ReadWriteMode, SPI4I2SCFGRBase> ;
+    using FieldValues = SPI4_I2SCFGR_CHLEN_Values<SPI4::I2SCFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -143,10 +143,10 @@ struct SPI4
 
   struct I2SPR : public RegisterBase<0x40013420, 32, ReadWriteMode>
   {
-    using MCKOE = SPI_ISPR_MCKOE_Values<SPI4::I2SPR, 9, 1, ReadWriteMode, SPI4I2SPRBase> ;
-    using ODD = SPI_ISPR_ODD_Values<SPI4::I2SPR, 8, 1, ReadWriteMode, SPI4I2SPRBase> ;
-    using I2SDIV = SPI_ISPR_ISDIV_Values<SPI4::I2SPR, 0, 8, ReadWriteMode, SPI4I2SPRBase> ;
-    using FieldValues = SPI_ISPR_ISDIV_Values<SPI4::I2SPR, 0, 0, NoAccess, NoAccess> ;
+    using MCKOE = SPI4_I2SPR_MCKOE_Values<SPI4::I2SPR, 9, 1, ReadWriteMode, SPI4I2SPRBase> ;
+    using ODD = SPI4_I2SPR_ODD_Values<SPI4::I2SPR, 8, 1, ReadWriteMode, SPI4I2SPRBase> ;
+    using I2SDIV = SPI4_I2SPR_I2SDIV_Values<SPI4::I2SPR, 0, 8, ReadWriteMode, SPI4I2SPRBase> ;
+    using FieldValues = SPI4_I2SPR_I2SDIV_Values<SPI4::I2SPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

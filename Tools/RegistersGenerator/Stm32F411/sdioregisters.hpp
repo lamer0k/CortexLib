@@ -90,8 +90,8 @@ struct SDIO
 
   struct RESP1 : public RegisterBase<0x40012C14, 32, ReadMode>
   {
-    using CARDSTATUS1 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP1, 0, 32, ReadMode, SDIORESP1Base> ;
-    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP1, 0, 0, NoAccess, NoAccess> ;
+    using CARDSTATUS1 = SDIO_RESP1_CARDSTATUS1_Values<SDIO::RESP1, 0, 32, ReadMode, SDIORESP1Base> ;
+    using FieldValues = SDIO_RESP1_CARDSTATUS1_Values<SDIO::RESP1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -101,8 +101,8 @@ struct SDIO
 
   struct RESP2 : public RegisterBase<0x40012C18, 32, ReadMode>
   {
-    using CARDSTATUS2 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP2, 0, 32, ReadMode, SDIORESP2Base> ;
-    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP2, 0, 0, NoAccess, NoAccess> ;
+    using CARDSTATUS2 = SDIO_RESP2_CARDSTATUS2_Values<SDIO::RESP2, 0, 32, ReadMode, SDIORESP2Base> ;
+    using FieldValues = SDIO_RESP2_CARDSTATUS2_Values<SDIO::RESP2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -112,8 +112,8 @@ struct SDIO
 
   struct RESP3 : public RegisterBase<0x40012C1C, 32, ReadMode>
   {
-    using CARDSTATUS3 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP3, 0, 32, ReadMode, SDIORESP3Base> ;
-    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP3, 0, 0, NoAccess, NoAccess> ;
+    using CARDSTATUS3 = SDIO_RESP3_CARDSTATUS3_Values<SDIO::RESP3, 0, 32, ReadMode, SDIORESP3Base> ;
+    using FieldValues = SDIO_RESP3_CARDSTATUS3_Values<SDIO::RESP3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -123,8 +123,8 @@ struct SDIO
 
   struct RESP4 : public RegisterBase<0x40012C20, 32, ReadMode>
   {
-    using CARDSTATUS4 = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP4, 0, 32, ReadMode, SDIORESP4Base> ;
-    using FieldValues = SDIO_RESP_CARDSTATUS_Values<SDIO::RESP4, 0, 0, NoAccess, NoAccess> ;
+    using CARDSTATUS4 = SDIO_RESP4_CARDSTATUS4_Values<SDIO::RESP4, 0, 32, ReadMode, SDIORESP4Base> ;
+    using FieldValues = SDIO_RESP4_CARDSTATUS4_Values<SDIO::RESP4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

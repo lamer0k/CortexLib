@@ -98,7 +98,7 @@ struct SCB
     using NONBASETHRDENA = SCB_CCR_NONBASETHRDENA_Values<SCB::CCR, 0, 1, ReadWriteMode, SCBCCRBase> ;
     using USERSETMPEND = SCB_CCR_USERSETMPEND_Values<SCB::CCR, 1, 1, ReadWriteMode, SCBCCRBase> ;
     using UNALIGN__TRP = SCB_CCR_UNALIGN__TRP_Values<SCB::CCR, 3, 1, ReadWriteMode, SCBCCRBase> ;
-    using DIV_0_TRP = SCB_CCR_DIV__TRP_Values<SCB::CCR, 4, 1, ReadWriteMode, SCBCCRBase> ;
+    using DIV_0_TRP = SCB_CCR_DIV_0_TRP_Values<SCB::CCR, 4, 1, ReadWriteMode, SCBCCRBase> ;
     using BFHFNMIGN = SCB_CCR_BFHFNMIGN_Values<SCB::CCR, 8, 1, ReadWriteMode, SCBCCRBase> ;
     using STKALIGN = SCB_CCR_STKALIGN_Values<SCB::CCR, 9, 1, ReadWriteMode, SCBCCRBase> ;
     using FieldValues = SCB_CCR_STKALIGN_Values<SCB::CCR, 0, 0, NoAccess, NoAccess> ;
@@ -111,10 +111,10 @@ struct SCB
 
   struct SHPR1 : public RegisterBase<0xE000ED18, 32, ReadWriteMode>
   {
-    using PRI_4 = SCB_SHPR_PRI__Values<SCB::SHPR1, 0, 8, ReadWriteMode, SCBSHPR1Base> ;
-    using PRI_5 = SCB_SHPR_PRI__Values<SCB::SHPR1, 8, 8, ReadWriteMode, SCBSHPR1Base> ;
-    using PRI_6 = SCB_SHPR_PRI__Values<SCB::SHPR1, 16, 8, ReadWriteMode, SCBSHPR1Base> ;
-    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR1, 0, 0, NoAccess, NoAccess> ;
+    using PRI_4 = SCB_SHPR1_PRI_4_Values<SCB::SHPR1, 0, 8, ReadWriteMode, SCBSHPR1Base> ;
+    using PRI_5 = SCB_SHPR1_PRI_5_Values<SCB::SHPR1, 8, 8, ReadWriteMode, SCBSHPR1Base> ;
+    using PRI_6 = SCB_SHPR1_PRI_6_Values<SCB::SHPR1, 16, 8, ReadWriteMode, SCBSHPR1Base> ;
+    using FieldValues = SCB_SHPR1_PRI_6_Values<SCB::SHPR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -124,8 +124,8 @@ struct SCB
 
   struct SHPR2 : public RegisterBase<0xE000ED1C, 32, ReadWriteMode>
   {
-    using PRI_11 = SCB_SHPR_PRI__Values<SCB::SHPR2, 24, 8, ReadWriteMode, SCBSHPR2Base> ;
-    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR2, 0, 0, NoAccess, NoAccess> ;
+    using PRI_11 = SCB_SHPR2_PRI_11_Values<SCB::SHPR2, 24, 8, ReadWriteMode, SCBSHPR2Base> ;
+    using FieldValues = SCB_SHPR2_PRI_11_Values<SCB::SHPR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -135,9 +135,9 @@ struct SCB
 
   struct SHPR3 : public RegisterBase<0xE000ED20, 32, ReadWriteMode>
   {
-    using PRI_14 = SCB_SHPR_PRI__Values<SCB::SHPR3, 16, 8, ReadWriteMode, SCBSHPR3Base> ;
-    using PRI_15 = SCB_SHPR_PRI__Values<SCB::SHPR3, 24, 8, ReadWriteMode, SCBSHPR3Base> ;
-    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR3, 0, 0, NoAccess, NoAccess> ;
+    using PRI_14 = SCB_SHPR3_PRI_14_Values<SCB::SHPR3, 16, 8, ReadWriteMode, SCBSHPR3Base> ;
+    using PRI_15 = SCB_SHPR3_PRI_15_Values<SCB::SHPR3, 24, 8, ReadWriteMode, SCBSHPR3Base> ;
+    using FieldValues = SCB_SHPR3_PRI_15_Values<SCB::SHPR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

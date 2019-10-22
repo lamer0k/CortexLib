@@ -22,7 +22,7 @@ struct PWR
   struct CR : public RegisterBase<0x40007000, 32, ReadWriteMode>
   {
     using VOS = PWR_CR_VOS_Values<PWR::CR, 14, 2, ReadWriteMode, PWRCRBase> ;
-    using ADCDC1 = PWR_CR_ADCDC_Values<PWR::CR, 13, 1, ReadWriteMode, PWRCRBase> ;
+    using ADCDC1 = PWR_CR_ADCDC1_Values<PWR::CR, 13, 1, ReadWriteMode, PWRCRBase> ;
     using FPDS = PWR_CR_FPDS_Values<PWR::CR, 9, 1, ReadWriteMode, PWRCRBase> ;
     using DBP = PWR_CR_DBP_Values<PWR::CR, 8, 1, ReadWriteMode, PWRCRBase> ;
     using PLS = PWR_CR_PLS_Values<PWR::CR, 5, 3, ReadWriteMode, PWRCRBase> ;

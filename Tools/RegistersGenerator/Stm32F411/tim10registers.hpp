@@ -21,12 +21,12 @@ struct TIM10
 
   struct CR1 : public RegisterBase<0x40014400, 32, ReadWriteMode>
   {
-    using CKD = TIM_CR_CKD_Values<TIM10::CR1, 8, 2, ReadWriteMode, TIM10CR1Base> ;
-    using ARPE = TIM_CR_ARPE_Values<TIM10::CR1, 7, 1, ReadWriteMode, TIM10CR1Base> ;
-    using URS = TIM_CR_URS_Values<TIM10::CR1, 2, 1, ReadWriteMode, TIM10CR1Base> ;
-    using UDIS = TIM_CR_UDIS_Values<TIM10::CR1, 1, 1, ReadWriteMode, TIM10CR1Base> ;
-    using CEN = TIM_CR_CEN_Values<TIM10::CR1, 0, 1, ReadWriteMode, TIM10CR1Base> ;
-    using FieldValues = TIM_CR_CEN_Values<TIM10::CR1, 0, 0, NoAccess, NoAccess> ;
+    using CKD = TIM10_CR1_CKD_Values<TIM10::CR1, 8, 2, ReadWriteMode, TIM10CR1Base> ;
+    using ARPE = TIM10_CR1_ARPE_Values<TIM10::CR1, 7, 1, ReadWriteMode, TIM10CR1Base> ;
+    using URS = TIM10_CR1_URS_Values<TIM10::CR1, 2, 1, ReadWriteMode, TIM10CR1Base> ;
+    using UDIS = TIM10_CR1_UDIS_Values<TIM10::CR1, 1, 1, ReadWriteMode, TIM10CR1Base> ;
+    using CEN = TIM10_CR1_CEN_Values<TIM10::CR1, 0, 1, ReadWriteMode, TIM10CR1Base> ;
+    using FieldValues = TIM10_CR1_CEN_Values<TIM10::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -36,9 +36,9 @@ struct TIM10
 
   struct DIER : public RegisterBase<0x4001440C, 32, ReadWriteMode>
   {
-    using CC1IE = TIM_DIER_CCIE_Values<TIM10::DIER, 1, 1, ReadWriteMode, TIM10DIERBase> ;
-    using UIE = TIM_DIER_UIE_Values<TIM10::DIER, 0, 1, ReadWriteMode, TIM10DIERBase> ;
-    using FieldValues = TIM_DIER_UIE_Values<TIM10::DIER, 0, 0, NoAccess, NoAccess> ;
+    using CC1IE = TIM10_DIER_CC1IE_Values<TIM10::DIER, 1, 1, ReadWriteMode, TIM10DIERBase> ;
+    using UIE = TIM10_DIER_UIE_Values<TIM10::DIER, 0, 1, ReadWriteMode, TIM10DIERBase> ;
+    using FieldValues = TIM10_DIER_UIE_Values<TIM10::DIER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -48,10 +48,10 @@ struct TIM10
 
   struct SR : public RegisterBase<0x40014410, 32, ReadWriteMode>
   {
-    using CC1OF = TIM_SR_CCOF_Values<TIM10::SR, 9, 1, ReadWriteMode, TIM10SRBase> ;
-    using CC1IF = TIM_SR_CCIF_Values<TIM10::SR, 1, 1, ReadWriteMode, TIM10SRBase> ;
-    using UIF = TIM_SR_UIF_Values<TIM10::SR, 0, 1, ReadWriteMode, TIM10SRBase> ;
-    using FieldValues = TIM_SR_UIF_Values<TIM10::SR, 0, 0, NoAccess, NoAccess> ;
+    using CC1OF = TIM10_SR_CC1OF_Values<TIM10::SR, 9, 1, ReadWriteMode, TIM10SRBase> ;
+    using CC1IF = TIM10_SR_CC1IF_Values<TIM10::SR, 1, 1, ReadWriteMode, TIM10SRBase> ;
+    using UIF = TIM10_SR_UIF_Values<TIM10::SR, 0, 1, ReadWriteMode, TIM10SRBase> ;
+    using FieldValues = TIM10_SR_UIF_Values<TIM10::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -61,9 +61,9 @@ struct TIM10
 
   struct EGR : public RegisterBase<0x40014414, 32, WriteMode>
   {
-    using CC1G = TIM_EGR_CCG_Values<TIM10::EGR, 1, 1, WriteMode, TIM10EGRBase> ;
-    using UG = TIM_EGR_UG_Values<TIM10::EGR, 0, 1, WriteMode, TIM10EGRBase> ;
-    using FieldValues = TIM_EGR_UG_Values<TIM10::EGR, 0, 0, NoAccess, NoAccess> ;
+    using CC1G = TIM10_EGR_CC1G_Values<TIM10::EGR, 1, 1, WriteMode, TIM10EGRBase> ;
+    using UG = TIM10_EGR_UG_Values<TIM10::EGR, 0, 1, WriteMode, TIM10EGRBase> ;
+    using FieldValues = TIM10_EGR_UG_Values<TIM10::EGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -73,11 +73,11 @@ struct TIM10
 
   struct CCMR1_Output : public RegisterBase<0x40014418, 32, ReadWriteMode>
   {
-    using OC1M = TIM_CCMR_Output_OCM_Values<TIM10::CCMR1_Output, 4, 3, ReadWriteMode, TIM10CCMR1_OutputBase> ;
-    using OC1PE = TIM_CCMR_Output_OCPE_Values<TIM10::CCMR1_Output, 3, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
-    using OC1FE = TIM_CCMR_Output_OCFE_Values<TIM10::CCMR1_Output, 2, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
-    using CC1S = TIM_CCMR_Output_CCS_Values<TIM10::CCMR1_Output, 0, 2, ReadWriteMode, TIM10CCMR1_OutputBase> ;
-    using FieldValues = TIM_CCMR_Output_CCS_Values<TIM10::CCMR1_Output, 0, 0, NoAccess, NoAccess> ;
+    using OC1M = TIM10_CCMR1_Output_OC1M_Values<TIM10::CCMR1_Output, 4, 3, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using OC1PE = TIM10_CCMR1_Output_OC1PE_Values<TIM10::CCMR1_Output, 3, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using OC1FE = TIM10_CCMR1_Output_OC1FE_Values<TIM10::CCMR1_Output, 2, 1, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using CC1S = TIM10_CCMR1_Output_CC1S_Values<TIM10::CCMR1_Output, 0, 2, ReadWriteMode, TIM10CCMR1_OutputBase> ;
+    using FieldValues = TIM10_CCMR1_Output_CC1S_Values<TIM10::CCMR1_Output, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -87,10 +87,10 @@ struct TIM10
 
   struct CCMR1_Input : public RegisterBase<0x40014418, 32, ReadWriteMode>
   {
-    using IC1F = TIM_CCMR_Input_ICF_Values<TIM10::CCMR1_Input, 4, 4, ReadWriteMode, TIM10CCMR1_InputBase> ;
-    using ICPCS = TIM_CCMR_Input_ICPCS_Values<TIM10::CCMR1_Input, 2, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
-    using CC1S = TIM_CCMR_Input_CCS_Values<TIM10::CCMR1_Input, 0, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
-    using FieldValues = TIM_CCMR_Input_CCS_Values<TIM10::CCMR1_Input, 0, 0, NoAccess, NoAccess> ;
+    using IC1F = TIM10_CCMR1_Input_IC1F_Values<TIM10::CCMR1_Input, 4, 4, ReadWriteMode, TIM10CCMR1_InputBase> ;
+    using ICPCS = TIM10_CCMR1_Input_ICPCS_Values<TIM10::CCMR1_Input, 2, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
+    using CC1S = TIM10_CCMR1_Input_CC1S_Values<TIM10::CCMR1_Input, 0, 2, ReadWriteMode, TIM10CCMR1_InputBase> ;
+    using FieldValues = TIM10_CCMR1_Input_CC1S_Values<TIM10::CCMR1_Input, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -100,10 +100,10 @@ struct TIM10
 
   struct CCER : public RegisterBase<0x40014420, 32, ReadWriteMode>
   {
-    using CC1NP = TIM_CCER_CCNP_Values<TIM10::CCER, 3, 1, ReadWriteMode, TIM10CCERBase> ;
-    using CC1P = TIM_CCER_CCP_Values<TIM10::CCER, 1, 1, ReadWriteMode, TIM10CCERBase> ;
-    using CC1E = TIM_CCER_CCE_Values<TIM10::CCER, 0, 1, ReadWriteMode, TIM10CCERBase> ;
-    using FieldValues = TIM_CCER_CCE_Values<TIM10::CCER, 0, 0, NoAccess, NoAccess> ;
+    using CC1NP = TIM10_CCER_CC1NP_Values<TIM10::CCER, 3, 1, ReadWriteMode, TIM10CCERBase> ;
+    using CC1P = TIM10_CCER_CC1P_Values<TIM10::CCER, 1, 1, ReadWriteMode, TIM10CCERBase> ;
+    using CC1E = TIM10_CCER_CC1E_Values<TIM10::CCER, 0, 1, ReadWriteMode, TIM10CCERBase> ;
+    using FieldValues = TIM10_CCER_CC1E_Values<TIM10::CCER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -113,8 +113,8 @@ struct TIM10
 
   struct CNT : public RegisterBase<0x40014424, 32, ReadWriteMode>
   {
-    using CNTField = TIM_CNT_CNT_Values<TIM10::CNT, 0, 16, ReadWriteMode, TIM10CNTBase> ;
-    using FieldValues = TIM_CNT_CNT_Values<TIM10::CNT, 0, 0, NoAccess, NoAccess> ;
+    using CNTField = TIM10_CNT_CNT_Values<TIM10::CNT, 0, 16, ReadWriteMode, TIM10CNTBase> ;
+    using FieldValues = TIM10_CNT_CNT_Values<TIM10::CNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -124,8 +124,8 @@ struct TIM10
 
   struct PSC : public RegisterBase<0x40014428, 32, ReadWriteMode>
   {
-    using PSCField = TIM_PSC_PSC_Values<TIM10::PSC, 0, 16, ReadWriteMode, TIM10PSCBase> ;
-    using FieldValues = TIM_PSC_PSC_Values<TIM10::PSC, 0, 0, NoAccess, NoAccess> ;
+    using PSCField = TIM10_PSC_PSC_Values<TIM10::PSC, 0, 16, ReadWriteMode, TIM10PSCBase> ;
+    using FieldValues = TIM10_PSC_PSC_Values<TIM10::PSC, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -135,8 +135,8 @@ struct TIM10
 
   struct ARR : public RegisterBase<0x4001442C, 32, ReadWriteMode>
   {
-    using ARRField = TIM_ARR_ARR_Values<TIM10::ARR, 0, 16, ReadWriteMode, TIM10ARRBase> ;
-    using FieldValues = TIM_ARR_ARR_Values<TIM10::ARR, 0, 0, NoAccess, NoAccess> ;
+    using ARRField = TIM10_ARR_ARR_Values<TIM10::ARR, 0, 16, ReadWriteMode, TIM10ARRBase> ;
+    using FieldValues = TIM10_ARR_ARR_Values<TIM10::ARR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -146,8 +146,8 @@ struct TIM10
 
   struct CCR1 : public RegisterBase<0x40014434, 32, ReadWriteMode>
   {
-    using CCR1Field = TIM_CCR_CCR_Values<TIM10::CCR1, 0, 16, ReadWriteMode, TIM10CCR1Base> ;
-    using FieldValues = TIM_CCR_CCR_Values<TIM10::CCR1, 0, 0, NoAccess, NoAccess> ;
+    using CCR1Field = TIM10_CCR1_CCR1_Values<TIM10::CCR1, 0, 16, ReadWriteMode, TIM10CCR1Base> ;
+    using FieldValues = TIM10_CCR1_CCR1_Values<TIM10::CCR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
