@@ -1,3 +1,0 @@
-C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/Registers.dir
-C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/edit_cache.dir
-C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/rebuild_cache.dir
