@@ -90,7 +90,7 @@ class SVDElement(object):
 
         # if there is a derivedFrom, check there first
         elif derived_from is not None:
-            derived_value = getattr(derived_from, "_{}".format(attr), NOT_PRESENT)
+            derived_value = getattr(derived_from, attr, NOT_PRESENT)
             if derived_value is not NOT_PRESENT:
                 return derived_value
 
@@ -126,6 +126,63 @@ class SVDEnumeratedValue(SVDElement):
         self.is_default = is_default
 
 
+
+class SVDFieldArray(SVDElement):
+    def __init__(self, name, derived_from, description, bit_offset, bit_width, access, enumerated_values, modified_write_values, read_action, dim, dim_indices, dim_increment):
+        SVDElement.__init__(self)
+
+        self.derived_from = derived_from
+        self.name = name
+        self.description = description
+        self.bit_offset = bit_offset
+        self.dim = dim
+        self.dim_indices = dim_indices
+        self.dim_increment = dim_increment
+
+
+        self._access = access
+        self._bit_width = bit_width
+        self._enumerated_values = enumerated_values
+        self._modified_write_values = modified_write_values
+        self._read_action = read_action
+
+    def __getattr__(self, attr):
+        return self._lookup_possibly_derived_attribute(attr)
+
+    @property
+    def fields(self):
+        for i in six.moves.range(self.dim):
+            field = SVDField(
+                name=self.name % self.dim_indices[i],
+                derived_from=self.derived_from,
+                description=self.description,
+                bit_offset=self.bit_offset + self.dim_increment * i,
+
+                bit_width=self._bit_width,
+                access=self._access,
+                enumerated_values=self._enumerated_values,
+                modified_write_values=self._modified_write_values,
+                read_action=self._read_action,
+            )
+            field.parent = self.parent
+            yield field
+
+    def get_derived_from(self):
+        # TODO: add support for dot notation derivedFrom
+        if self.derived_from is None:
+            return None
+
+        for register in self.parent.registers:
+            if register.name == self.derived_from:
+                return register
+
+        raise KeyError("Unable to find derived_from: %r" % self.derived_from)
+
+    def is_reserved(self):
+        return 'reserved' in self.name.lower()
+
+
+#---------------
 class SVDField(SVDElement):
     def __init__(self, name, derived_from, description, bit_offset, bit_width, access, enumerated_values, modified_write_values, read_action):
         SVDElement.__init__(self)
@@ -133,11 +190,11 @@ class SVDField(SVDElement):
         self.derived_from = derived_from
         self.description = description
         self.bit_offset = bit_offset
-        self.bit_width = bit_width
-        self.access = access
-        self.enumerated_values = enumerated_values
-        self.modified_write_values = modified_write_values
-        self.read_action = read_action
+        self._bit_width = bit_width
+        self._access = access
+        self._enumerated_values = enumerated_values
+        self._modified_write_values = modified_write_values
+        self._read_action = read_action
 
     def __getattr__(self, attr):
         return self._lookup_possibly_derived_attribute(attr)
@@ -161,13 +218,13 @@ class SVDField(SVDElement):
     @property
     def is_reserved(self):
         return self.name.lower() == "reserved"
-
+#----------------
 
 class SVDRegisterArray(SVDElement):
     """Represent a register array in the tree"""
 
     def __init__(self, name, derived_from, description, address_offset, size,
-                 access, protection, reset_value, reset_mask, fields,
+                 access, protection, reset_value, reset_mask, fields, fields_array,
                  display_name, alternate_group, modified_write_values,
                  read_action, dim, dim_indices, dim_increment):
         SVDElement.__init__(self)
@@ -192,6 +249,7 @@ class SVDRegisterArray(SVDElement):
         self._reset_value = reset_value
         self._reset_mask = reset_mask
         self._fields = fields
+        self._fields_array = fields_array
 
         # make parent association
         for field in self._fields:
@@ -206,6 +264,7 @@ class SVDRegisterArray(SVDElement):
             reg = SVDRegister(
                 name=self.name % self.dim_indices[i],
                 fields=self._fields,
+                fields_array = self._fields_array,
                 derived_from=self.derived_from,
                 description=self.description,
                 address_offset=self.address_offset + self.dim_increment * i,
@@ -239,7 +298,7 @@ class SVDRegisterArray(SVDElement):
 
 class SVDRegister(SVDElement):
     def __init__(self, name, derived_from, description, address_offset, size, access, protection, reset_value, reset_mask,
-                 fields, display_name, alternate_group, modified_write_values, read_action):
+                 fields, display_name, alternate_group, modified_write_values, read_action, fields_array):
         SVDElement.__init__(self)
 
         # When deriving a register, it is mandatory to specify at least the name, the description,
@@ -259,172 +318,27 @@ class SVDRegister(SVDElement):
         self._reset_value = reset_value
         self._reset_mask = reset_mask
         self._fields = fields
+        self._fields_array = fields_array
 
         # make parent association
         for field in self._fields:
             field.parent = self
+            # make parent association
+        for field_array in self._fields_array:
+            field_array.parent = self
 
     def __getattr__(self, attr):
         return self._lookup_possibly_derived_attribute(attr)
-
-    def get_derived_from(self):
-        # TODO: add support for dot notation derivedFrom
-        if self.derived_from is None:
-            return None
-
-        for register in self.parent.registers:
-            if register.name == self.derived_from:
-                return register
-
-        raise KeyError("Unable to find derived_from: %r" % self.derived_from)
-
-    def is_reserved(self):
-        return 'reserved' in self.name.lower()
-
-
-class SVDRegisterCluster(SVDElement):
-    """Represent a register cluster in the tree"""
-
-    def __init__(self, name, derived_from, description, address_offset, size,
-                 alternate_cluster, header_struct_name,
-                 access, protection, reset_value, reset_mask, register,
-                 cluster):
-        SVDElement.__init__(self)
-
-        # When deriving a register, it is mandatory to specify at least the name, the description,
-        # and the addressOffset
-        self.derived_from = derived_from
-        self.name = name
-        self.description = description
-        self.address_offset = address_offset
-
-        self._alternate_cluster = alternate_cluster
-        self._header_struct_name = header_struct_name
-        self._size = size
-        self._access = access
-        self._protection = protection
-        self._reset_value = reset_value
-        self._reset_mask = reset_mask
-        self._register = register
-        self._cluster = cluster
-
-        # make parent association
-        for cluster in self._cluster:
-            cluster.parent = self
-
-    def __getattr__(self, attr):
-        return self._lookup_possibly_derived_attribute(attr)
-
-    def updated_register(self, reg, clu):
-        new_reg = SVDRegister(
-            name="{}_{}".format(clu.name, reg.name),
-            fields=reg.fields,
-            derived_from=reg.derived_from,
-            description=reg.description,
-            address_offset=clu.address_offset + reg.address_offset,
-            size=reg.size,
-            access=reg.access,
-            protection=reg.protection,
-            reset_value=reg.reset_value,
-            reset_mask=reg.reset_mask,
-            display_name=reg.display_name,
-            alternate_group=reg.alternate_group,
-            modified_write_values=reg.modified_write_values,
-            read_action=reg.read_action,
-        )
-        new_reg.parent = self
-        return new_reg
 
     @property
-    def registers(self):
-        for reg in self._register:
-            yield self.updated_register(reg, self)
-        for cluster in self._cluster:
-            for reg in cluster.registers:
-                yield self.updated_register(reg, self)
+    def fields(self):
+        fields = []
+        for field in self._lookup_possibly_derived_attribute('fields'):
+            fields.append(reg)
+        for arr in self._lookup_possibly_derived_attribute('fields_arrays'):
+            fields.extend(arr.registers)
+        return fields
 
-    def get_derived_from(self):
-        # TODO: add support for dot notation derivedFrom
-        if self.derived_from is None:
-            return None
-
-        for register in self.parent.registers:
-            if register.name == self.derived_from:
-                return register
-
-        raise KeyError("Unable to find derived_from: %r" % self.derived_from)
-
-    def is_reserved(self):
-        return 'reserved' in self.name.lower()
-
-
-class SVDRegisterClusterArray(SVDElement):
-    """Represent a register cluster in the tree"""
-
-    def __init__(self, name, derived_from, description, address_offset, size,
-                 alternate_cluster, header_struct_name,
-                 dim, dim_indices, dim_increment,
-                 access, protection, reset_value, reset_mask, register,
-                 cluster):
-        SVDElement.__init__(self)
-
-        # When deriving a register, it is mandatory to specify at least the name, the description,
-        # and the addressOffset
-        self.derived_from = derived_from
-        self.name = name
-        self.description = description
-        self.address_offset = address_offset
-        self.dim = dim
-        self.dim_indices = dim_indices
-        self.dim_increment = dim_increment
-
-        self._alternate_cluster = alternate_cluster
-        self._header_struct_name = header_struct_name
-        self._size = size
-        self._access = access
-        self._protection = protection
-        self._reset_value = reset_value
-        self._reset_mask = reset_mask
-        self._register = register
-        self._cluster = cluster
-
-        # make parent association
-        for register in self._register:
-            register.parent = self
-        for cluster in self._cluster:
-            cluster.parent = self
-
-    def __getattr__(self, attr):
-        return self._lookup_possibly_derived_attribute(attr)
-
-    def updated_register(self, reg, clu, i):
-        new_reg = SVDRegister(
-            name="{}_{}".format(clu.name % i, reg.name),
-            fields=reg.fields,
-            derived_from=reg.derived_from,
-            description=reg.description,
-            address_offset=clu.address_offset + reg.address_offset + i*clu.dim_increment,
-            size=reg.size,
-            access=reg.access,
-            protection=reg.protection,
-            reset_value=reg.reset_value,
-            reset_mask=reg.reset_mask,
-            display_name=reg.display_name,
-            alternate_group=reg.alternate_group,
-            modified_write_values=reg.modified_write_values,
-            read_action=reg.read_action,
-        )
-        new_reg.parent = self
-        return new_reg
-
-    @property
-    def registers(self):
-        for i in six.moves.range(self.dim):
-            for reg in self._register:
-                yield self.updated_register(reg, self, i)
-            for cluster in self._cluster:
-                for reg in cluster.registers:
-                    yield self.updated_register(reg, cluster, i)
 
     def get_derived_from(self):
         # TODO: add support for dot notation derivedFrom
@@ -450,20 +364,16 @@ class SVDAddressBlock(SVDElement):
 
 
 class SVDInterrupt(SVDElement):
-    def __init__(self, name, value, description):
+    def __init__(self, name, value):
         SVDElement.__init__(self)
         self.name = name
         self.value = _check_type(value, six.integer_types)
-        self.description = description
 
 
 class SVDPeripheral(SVDElement):
-    def __init__(self, name, version, derived_from, description,
-                 prepend_to_name, base_address, address_block,
-                 interrupts, registers, register_arrays, size, access,
-                 protection, reset_value, reset_mask,
-                 group_name, append_to_name, disable_condition,
-                 clusters):
+    def __init__(self, name, version, derived_from, description, prepend_to_name, base_address, address_block,
+                 interrupts, registers, register_arrays, size, access, protection, reset_value, reset_mask,
+                 group_name, append_to_name, disable_condition):
         SVDElement.__init__(self)
 
         # items with underscore are potentially derived
@@ -485,7 +395,6 @@ class SVDPeripheral(SVDElement):
         self._group_name = group_name
         self._append_to_name = append_to_name
         self._disable_condition = disable_condition
-        self._clusters = clusters
 
         # make parent association for complex node types
         for i in _none_as_empty(self._interrupts):
@@ -503,8 +412,6 @@ class SVDPeripheral(SVDElement):
             regs.append(reg)
         for arr in self._lookup_possibly_derived_attribute('register_arrays'):
             regs.extend(arr.registers)
-        for cluster in self._lookup_possibly_derived_attribute('clusters'):
-            regs.extend(cluster.registers)
         return regs
 
     def get_derived_from(self):

@@ -17,13 +17,12 @@ from xml.etree import ElementTree as ET
 
 import six
 
-from cmsis_svd.model import SVDDevice
+from cmsis_svd.model import SVDDevice, SVDRegisterArray
 from cmsis_svd.model import SVDPeripheral
 from cmsis_svd.model import SVDInterrupt
 from cmsis_svd.model import SVDAddressBlock
-from cmsis_svd.model import SVDRegister, SVDRegisterArray
-from cmsis_svd.model import SVDRegisterCluster, SVDRegisterClusterArray
-from cmsis_svd.model import SVDField
+from cmsis_svd.model import SVDRegister
+from cmsis_svd.model import SVDField, SVDFieldArray
 from cmsis_svd.model import SVDEnumeratedValue
 from cmsis_svd.model import SVDCpu
 import pkg_resources
@@ -83,28 +82,6 @@ class SVDParser(object):
 
         filename = pkg_resources.resource_filename("cmsis_svd", resource)
         return cls.for_xml_file(filename, remove_reserved)
-    
-    @classmethod
-    def for_mcu(cls, mcu):
-        mcu = mcu.lower()
-        vendors = pkg_resources.resource_listdir("cmsis_svd", "data")
-        for vendor in vendors:
-            fnames = pkg_resources.resource_listdir("cmsis_svd", "data/%s" % vendor)
-            for fname in fnames:
-                filename = fname.lower()
-                if not filename.endswith(".svd"):
-                    continue
-                filename = filename[:-4]
-                if mcu.startswith(filename):
-                    return cls.for_packaged_svd(vendor, fname)
-            for fname in fnames:
-                filename = fname.lower()
-                if not filename.endswith(".svd"):
-                    continue
-                filename = "^%s.*" % filename[:-4].replace('x', '.')
-                if re.match(filename, mcu):
-                    return cls.for_packaged_svd(vendor, fname)
-        return None
 
     def __init__(self, tree, remove_reserved=False):
         self.remove_reserved = remove_reserved
@@ -124,11 +101,16 @@ class SVDParser(object):
         for enumerated_value_node in field_node.findall("./enumeratedValues/enumeratedValue"):
             enumerated_values.append(self._parse_enumerated_value(enumerated_value_node))
 
+        dim = _get_int(field_node, 'dim')
+        dim_increment = _get_int(field_node, 'dimIncrement')
+        dim_index_text = _get_text(field_node, 'dimIndex')
+
         modified_write_values=_get_text(field_node, 'modifiedWriteValues')
         read_action=_get_text(field_node, 'readAction')
         bit_range = _get_text(field_node, 'bitRange')
         bit_offset = _get_int(field_node, 'bitOffset')
         bit_width = _get_int(field_node, 'bitWidth')
+
         msb = _get_int(field_node, 'msb')
         lsb = _get_int(field_node, 'lsb')
         if bit_range is not None:
@@ -138,25 +120,62 @@ class SVDParser(object):
         elif msb is not None:
             bit_offset = lsb
             bit_width = 1 + (msb - lsb)
+        if dim is None:
+            return SVDField(
+                name=_get_text(field_node, 'name'),
+                derived_from=_get_text(field_node, 'derivedFrom'),
+                description=_get_text(field_node, 'description'),
+                bit_offset=bit_offset,
+                bit_width=bit_width,
+                access=_get_text(field_node, 'access'),
+                enumerated_values=enumerated_values or None,
+                modified_write_values=modified_write_values,
+                read_action=read_action,
+            )
+        else:
+            # the node represents a register array
+            if dim_index_text is None:
+                dim_indices = range(0, dim)  # some files omit dimIndex
+            elif ',' in dim_index_text:
+                dim_indices = dim_index_text.split(',')
+            elif '-' in dim_index_text:  # some files use <dimIndex>0-3</dimIndex> as an inclusive inclusive range
+                m = re.search(r'([0-9]+)-([0-9]+)', dim_index_text)
+                dim_indices = range(int(m.group(1)), int(m.group(2)) + 1)
+            else:
+                raise ValueError("Unexpected dim_index_text: %r" % dim_index_text)
 
-        return SVDField(
-            name=_get_text(field_node, 'name'),
-            derived_from=_get_text(field_node, 'derivedFrom'),
-            description=_get_text(field_node, 'description'),
-            bit_offset=bit_offset,
-            bit_width=bit_width,
-            access=_get_text(field_node, 'access'),
-            enumerated_values=enumerated_values or None,
-            modified_write_values=modified_write_values,
-            read_action=read_action,
-        )
+            # yield `SVDFieldArray` (caller will differentiate on type)
+            return SVDFieldArray(
+                name=_get_text(field_node, 'name'),
+                derived_from=_get_text(field_node, 'derivedFrom'),
+                description=_get_text(field_node, 'description'),
+                bit_offset=bit_offset,
+                bit_width=bit_width,
+                access=_get_text(field_node, 'access'),
+                enumerated_values=enumerated_values or None,
+                modified_write_values=modified_write_values,
+                read_action=read_action,
+                dim=dim,
+                dim_indices=dim_indices,
+                dim_increment=dim_increment,
+            )
+
 
     def _parse_registers(self, register_node):
         fields = []
-        for field_node in register_node.findall('.//field'):
+        fields_array = []
+
+        #for field_node in register_node.findall('.//field'):
+        for field_node in register_node.findall('./fields/field'):
             node = self._parse_field(field_node)
-            if self.remove_reserved or 'reserved' not in node.name.lower():
-                fields.append(node)
+            if isinstance(node, SVDFieldArray):
+                if self.remove_reserved or 'reserved' not in node.name.lower():
+                    fields_array.append(node)
+            else:
+                if self.remove_reserved or 'reserved' not in node.name.lower():
+                    fields.append(node)
+#            if self.remove_reserved or 'reserved' not in node.name.lower():
+#                fields.append(node)
 
         dim = _get_int(register_node, 'dim')
         name = _get_text(register_node, 'name')
@@ -179,6 +198,7 @@ class SVDParser(object):
             return SVDRegister(
                 name=name,
                 fields=fields,
+                fields_array = fields_array,
                 derived_from=derived_from,
                 description=description,
                 address_offset=address_offset,
@@ -208,6 +228,7 @@ class SVDParser(object):
             return SVDRegisterArray(
                 name=name,
                 fields=fields,
+                fields_array = fields_array,
                 derived_from=derived_from,
                 description=description,
                 address_offset=address_offset,
@@ -225,76 +246,6 @@ class SVDParser(object):
                 dim_increment=dim_increment,
             )
 
-    def _parse_cluster(self, cluster_node):
-        dim = _get_int(cluster_node, 'dim')
-        name = _get_text(cluster_node, 'name')
-        derived_from = _get_text(cluster_node, 'derivedFrom')
-        description = _get_text(cluster_node, 'description')
-        address_offset = _get_int(cluster_node, 'addressOffset')
-        size = _get_int(cluster_node, 'size')
-        access = _get_text(cluster_node, 'access')
-        protection = _get_text(cluster_node, 'protection')
-        reset_value = _get_int(cluster_node, 'resetValue')
-        reset_mask = _get_int(cluster_node, 'resetMask')
-        dim_increment = _get_int(cluster_node, 'dimIncrement')
-        dim_index_text = _get_text(cluster_node, 'dimIndex')
-        alternate_cluster = _get_text(cluster_node, 'alternateGluster')
-        header_struct_name = _get_text(cluster_node, 'headerStructName')
-        cluster = []
-        for sub_cluster_node in cluster_node.findall("./cluster"):
-            cluster.append(self._parse_cluster(sub_cluster_node))
-        register = []
-        for reg_node in cluster_node.findall("./register"):
-            register.append(self._parse_registers(reg_node))
-
-        if dim is None:
-            return SVDRegisterCluster(
-                name=name,
-                derived_from=derived_from,
-                description=description,
-                address_offset=address_offset,
-                size=size,
-                access=access,
-                protection=protection,
-                reset_value=reset_value,
-                reset_mask=reset_mask,
-                alternate_cluster=alternate_cluster,
-                header_struct_name=header_struct_name,
-                register=register,
-                cluster=cluster,
-            )
-        else:
-            # the node represents a register array
-            if dim_index_text is None:
-                dim_indices = range(0, dim)  # some files omit dimIndex
-            elif ',' in dim_index_text:
-                dim_indices = dim_index_text.split(',')
-            elif '-' in dim_index_text:  # some files use <dimIndex>0-3</dimIndex> as an inclusive inclusive range
-                m = re.search(r'([0-9]+)-([0-9]+)', dim_index_text)
-                dim_indices = range(int(m.group(1)), int(m.group(2)) + 1)
-            else:
-                raise ValueError("Unexpected dim_index_text: %r" % dim_index_text)
-
-            # yield `SVDRegisterArray` (caller will differentiate on type)
-            return SVDRegisterClusterArray(
-                name=name,
-                derived_from=derived_from,
-                description=description,
-                address_offset=address_offset,
-                size=size,
-                access=access,
-                protection=protection,
-                reset_value=reset_value,
-                reset_mask=reset_mask,
-                alternate_cluster=alternate_cluster,
-                header_struct_name=header_struct_name,
-                register=register,
-                cluster=cluster,
-                dim=dim,
-                dim_increment=dim_increment,
-                dim_indices=dim_indices,
-            )
-
     def _parse_address_block(self, address_block_node):
         return SVDAddressBlock(
             _get_int(address_block_node, 'offset'),
@@ -305,8 +256,7 @@ class SVDParser(object):
     def _parse_interrupt(self, interrupt_node):
         return SVDInterrupt(
             name=_get_text(interrupt_node, 'name'),
-            value=_get_int(interrupt_node, 'value'),
-            description=_get_text(interrupt_node, 'description')
+            value=_get_int(interrupt_node, 'value')
         )
 
     def _parse_peripheral(self, peripheral_node):
@@ -319,11 +269,6 @@ class SVDParser(object):
                 register_arrays.append(reg)
             else:
                 registers.append(reg)
-
-        clusters = []
-        for cluster_node in peripheral_node.findall('./registers/cluster'):
-            reg = self._parse_cluster(cluster_node)
-            clusters.append(reg)
 
         # parse all interrupts for the peripheral
         interrupts = []
@@ -379,7 +324,6 @@ class SVDParser(object):
             # <interrupt>
             #     <name>identifierType</name>
             #     <value>scaledNonNegativeInteger</value>
-            #     <description>xs:string</description>
             # </interrupt>
             interrupts=interrupts,
 
@@ -388,11 +332,6 @@ class SVDParser(object):
             # </registers>
             register_arrays=register_arrays,
             registers=registers,
-
-            # <cluster>
-            #    ...
-            # </cluster>
-            clusters=clusters,
 
             # (not mentioned in docs -- applies to all registers)
             protection=_get_text(peripheral_node, 'protection'),
