@@ -10,7 +10,7 @@
 #if !defined(OTGFSDEVICEREGISTERS_HPP)
 #define OTGFSDEVICEREGISTERS_HPP
 
-#include "otgfsdevicefieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfsdevicefieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -25,6 +25,7 @@ struct OTG_FS_DEVICE
     using NZLSOHSK = OTG_FS_DEVICE_FS_DCFG_NZLSOHSK_Values<OTG_FS_DEVICE::FS_DCFG, 2, 1, ReadWriteMode, OTG_FS_DEVICEFS_DCFGBase> ;
     using DAD = OTG_FS_DEVICE_FS_DCFG_DAD_Values<OTG_FS_DEVICE::FS_DCFG, 4, 7, ReadWriteMode, OTG_FS_DEVICEFS_DCFGBase> ;
     using PFIVL = OTG_FS_DEVICE_FS_DCFG_PFIVL_Values<OTG_FS_DEVICE::FS_DCFG, 11, 2, ReadWriteMode, OTG_FS_DEVICEFS_DCFGBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DCFG_PFIVL_Values<OTG_FS_DEVICE::FS_DCFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -44,6 +45,7 @@ struct OTG_FS_DEVICE
     using SGONAK = OTG_FS_DEVICE_FS_DCTL_SGONAK_Values<OTG_FS_DEVICE::FS_DCTL, 9, 1, ReadWriteMode, OTG_FS_DEVICEFS_DCTLBase> ;
     using CGONAK = OTG_FS_DEVICE_FS_DCTL_CGONAK_Values<OTG_FS_DEVICE::FS_DCTL, 10, 1, ReadWriteMode, OTG_FS_DEVICEFS_DCTLBase> ;
     using POPRGDNE = OTG_FS_DEVICE_FS_DCTL_POPRGDNE_Values<OTG_FS_DEVICE::FS_DCTL, 11, 1, ReadWriteMode, OTG_FS_DEVICEFS_DCTLBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DCTL_POPRGDNE_Values<OTG_FS_DEVICE::FS_DCTL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -57,6 +59,7 @@ struct OTG_FS_DEVICE
     using ENUMSPD = OTG_FS_DEVICE_FS_DSTS_ENUMSPD_Values<OTG_FS_DEVICE::FS_DSTS, 1, 2, ReadMode, OTG_FS_DEVICEFS_DSTSBase> ;
     using EERR = OTG_FS_DEVICE_FS_DSTS_EERR_Values<OTG_FS_DEVICE::FS_DSTS, 3, 1, ReadMode, OTG_FS_DEVICEFS_DSTSBase> ;
     using FNSOF = OTG_FS_DEVICE_FS_DSTS_FNSOF_Values<OTG_FS_DEVICE::FS_DSTS, 8, 14, ReadMode, OTG_FS_DEVICEFS_DSTSBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DSTS_FNSOF_Values<OTG_FS_DEVICE::FS_DSTS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -72,6 +75,7 @@ struct OTG_FS_DEVICE
     using ITTXFEMSK = OTG_FS_DEVICE_FS_DIEPMSK_ITTXFEMSK_Values<OTG_FS_DEVICE::FS_DIEPMSK, 4, 1, ReadWriteMode, OTG_FS_DEVICEFS_DIEPMSKBase> ;
     using INEPNMM = OTG_FS_DEVICE_FS_DIEPMSK_INEPNMM_Values<OTG_FS_DEVICE::FS_DIEPMSK, 5, 1, ReadWriteMode, OTG_FS_DEVICEFS_DIEPMSKBase> ;
     using INEPNEM = OTG_FS_DEVICE_FS_DIEPMSK_INEPNEM_Values<OTG_FS_DEVICE::FS_DIEPMSK, 6, 1, ReadWriteMode, OTG_FS_DEVICEFS_DIEPMSKBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DIEPMSK_INEPNEM_Values<OTG_FS_DEVICE::FS_DIEPMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -85,6 +89,7 @@ struct OTG_FS_DEVICE
     using EPDM = OTG_FS_DEVICE_FS_DOEPMSK_EPDM_Values<OTG_FS_DEVICE::FS_DOEPMSK, 1, 1, ReadWriteMode, OTG_FS_DEVICEFS_DOEPMSKBase> ;
     using STUPM = OTG_FS_DEVICE_FS_DOEPMSK_STUPM_Values<OTG_FS_DEVICE::FS_DOEPMSK, 3, 1, ReadWriteMode, OTG_FS_DEVICEFS_DOEPMSKBase> ;
     using OTEPDM = OTG_FS_DEVICE_FS_DOEPMSK_OTEPDM_Values<OTG_FS_DEVICE::FS_DOEPMSK, 4, 1, ReadWriteMode, OTG_FS_DEVICEFS_DOEPMSKBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DOEPMSK_OTEPDM_Values<OTG_FS_DEVICE::FS_DOEPMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -96,6 +101,7 @@ struct OTG_FS_DEVICE
   {
     using IEPINT = OTG_FS_DEVICE_FS_DAINT_IEPINT_Values<OTG_FS_DEVICE::FS_DAINT, 0, 16, ReadMode, OTG_FS_DEVICEFS_DAINTBase> ;
     using OEPINT = OTG_FS_DEVICE_FS_DAINT_OEPINT_Values<OTG_FS_DEVICE::FS_DAINT, 16, 16, ReadMode, OTG_FS_DEVICEFS_DAINTBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DAINT_OEPINT_Values<OTG_FS_DEVICE::FS_DAINT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -107,6 +113,7 @@ struct OTG_FS_DEVICE
   {
     using IEPM = OTG_FS_DEVICE_FS_DAINTMSK_IEPM_Values<OTG_FS_DEVICE::FS_DAINTMSK, 0, 16, ReadWriteMode, OTG_FS_DEVICEFS_DAINTMSKBase> ;
     using OEPINT = OTG_FS_DEVICE_FS_DAINTMSK_OEPINT_Values<OTG_FS_DEVICE::FS_DAINTMSK, 16, 16, ReadWriteMode, OTG_FS_DEVICEFS_DAINTMSKBase> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DAINTMSK_OEPINT_Values<OTG_FS_DEVICE::FS_DAINTMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -117,6 +124,7 @@ struct OTG_FS_DEVICE
   struct DVBUSDIS : public RegisterBase<0x50000828, 32, ReadWriteMode>
   {
     using VBUSDT = OTG_FS_DEVICE_DVBUSDIS_VBUSDT_Values<OTG_FS_DEVICE::DVBUSDIS, 0, 16, ReadWriteMode, OTG_FS_DEVICEDVBUSDISBase> ;
+    using FieldValues = OTG_FS_DEVICE_DVBUSDIS_VBUSDT_Values<OTG_FS_DEVICE::DVBUSDIS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -127,6 +135,7 @@ struct OTG_FS_DEVICE
   struct DVBUSPULSE : public RegisterBase<0x5000082C, 32, ReadWriteMode>
   {
     using DVBUSP = OTG_FS_DEVICE_DVBUSPULSE_DVBUSP_Values<OTG_FS_DEVICE::DVBUSPULSE, 0, 12, ReadWriteMode, OTG_FS_DEVICEDVBUSPULSEBase> ;
+    using FieldValues = OTG_FS_DEVICE_DVBUSPULSE_DVBUSP_Values<OTG_FS_DEVICE::DVBUSPULSE, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -137,6 +146,7 @@ struct OTG_FS_DEVICE
   struct DIEPEMPMSK : public RegisterBase<0x50000834, 32, ReadWriteMode>
   {
     using INEPTXFEM = OTG_FS_DEVICE_DIEPEMPMSK_INEPTXFEM_Values<OTG_FS_DEVICE::DIEPEMPMSK, 0, 16, ReadWriteMode, OTG_FS_DEVICEDIEPEMPMSKBase> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPEMPMSK_INEPTXFEM_Values<OTG_FS_DEVICE::DIEPEMPMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -156,6 +166,7 @@ struct OTG_FS_DEVICE
     using SNAK = OTG_FS_DEVICE_FS_DIEPCTL_SNAK_Values<OTG_FS_DEVICE::FS_DIEPCTL0, 27, 1, WriteMode, OTG_FS_DEVICEFS_DIEPCTL0Base> ;
     using EPDIS = OTG_FS_DEVICE_FS_DIEPCTL_EPDIS_Values<OTG_FS_DEVICE::FS_DIEPCTL0, 30, 1, ReadMode, OTG_FS_DEVICEFS_DIEPCTL0Base> ;
     using EPENA = OTG_FS_DEVICE_FS_DIEPCTL_EPENA_Values<OTG_FS_DEVICE::FS_DIEPCTL0, 31, 1, ReadMode, OTG_FS_DEVICEFS_DIEPCTL0Base> ;
+    using FieldValues = OTG_FS_DEVICE_FS_DIEPCTL_EPENA_Values<OTG_FS_DEVICE::FS_DIEPCTL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -178,6 +189,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DIEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DIEPCTL1, 16, 1, ReadMode, OTG_FS_DEVICEDIEPCTL1Base> ;
     using USBAEP = OTG_FS_DEVICE_DIEPCTL_USBAEP_Values<OTG_FS_DEVICE::DIEPCTL1, 15, 1, ReadWriteMode, OTG_FS_DEVICEDIEPCTL1Base> ;
     using MPSIZ = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL1, 0, 11, ReadWriteMode, OTG_FS_DEVICEDIEPCTL1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -200,6 +212,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DIEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DIEPCTL2, 16, 1, ReadMode, OTG_FS_DEVICEDIEPCTL2Base> ;
     using USBAEP = OTG_FS_DEVICE_DIEPCTL_USBAEP_Values<OTG_FS_DEVICE::DIEPCTL2, 15, 1, ReadWriteMode, OTG_FS_DEVICEDIEPCTL2Base> ;
     using MPSIZ = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL2, 0, 11, ReadWriteMode, OTG_FS_DEVICEDIEPCTL2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -222,6 +235,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DIEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DIEPCTL3, 16, 1, ReadMode, OTG_FS_DEVICEDIEPCTL3Base> ;
     using USBAEP = OTG_FS_DEVICE_DIEPCTL_USBAEP_Values<OTG_FS_DEVICE::DIEPCTL3, 15, 1, ReadWriteMode, OTG_FS_DEVICEDIEPCTL3Base> ;
     using MPSIZ = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL3, 0, 11, ReadWriteMode, OTG_FS_DEVICEDIEPCTL3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DIEPCTL3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -241,6 +255,7 @@ struct OTG_FS_DEVICE
     using NAKSTS = OTG_FS_DEVICE_DOEPCTL_NAKSTS_Values<OTG_FS_DEVICE::DOEPCTL0, 17, 1, ReadMode, OTG_FS_DEVICEDOEPCTL0Base> ;
     using USBAEP = OTG_FS_DEVICE_DOEPCTL_USBAEP_Values<OTG_FS_DEVICE::DOEPCTL0, 15, 1, ReadMode, OTG_FS_DEVICEDOEPCTL0Base> ;
     using MPSIZ = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL0, 0, 2, ReadMode, OTG_FS_DEVICEDOEPCTL0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -263,6 +278,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DOEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DOEPCTL1, 16, 1, ReadMode, OTG_FS_DEVICEDOEPCTL1Base> ;
     using USBAEP = OTG_FS_DEVICE_DOEPCTL_USBAEP_Values<OTG_FS_DEVICE::DOEPCTL1, 15, 1, ReadWriteMode, OTG_FS_DEVICEDOEPCTL1Base> ;
     using MPSIZ = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL1, 0, 11, ReadWriteMode, OTG_FS_DEVICEDOEPCTL1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -285,6 +301,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DOEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DOEPCTL2, 16, 1, ReadMode, OTG_FS_DEVICEDOEPCTL2Base> ;
     using USBAEP = OTG_FS_DEVICE_DOEPCTL_USBAEP_Values<OTG_FS_DEVICE::DOEPCTL2, 15, 1, ReadWriteMode, OTG_FS_DEVICEDOEPCTL2Base> ;
     using MPSIZ = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL2, 0, 11, ReadWriteMode, OTG_FS_DEVICEDOEPCTL2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -307,6 +324,7 @@ struct OTG_FS_DEVICE
     using EONUM_DPID = OTG_FS_DEVICE_DOEPCTL_EONUM_DPID_Values<OTG_FS_DEVICE::DOEPCTL3, 16, 1, ReadMode, OTG_FS_DEVICEDOEPCTL3Base> ;
     using USBAEP = OTG_FS_DEVICE_DOEPCTL_USBAEP_Values<OTG_FS_DEVICE::DOEPCTL3, 15, 1, ReadWriteMode, OTG_FS_DEVICEDOEPCTL3Base> ;
     using MPSIZ = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL3, 0, 11, ReadWriteMode, OTG_FS_DEVICEDOEPCTL3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPCTL_MPSIZ_Values<OTG_FS_DEVICE::DOEPCTL3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -322,6 +340,7 @@ struct OTG_FS_DEVICE
     using TOC = OTG_FS_DEVICE_DIEPINT_TOC_Values<OTG_FS_DEVICE::DIEPINT0, 3, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT0Base> ;
     using EPDISD = OTG_FS_DEVICE_DIEPINT_EPDISD_Values<OTG_FS_DEVICE::DIEPINT0, 1, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT0Base> ;
     using XFRC = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT0, 0, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -337,6 +356,7 @@ struct OTG_FS_DEVICE
     using TOC = OTG_FS_DEVICE_DIEPINT_TOC_Values<OTG_FS_DEVICE::DIEPINT1, 3, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT1Base> ;
     using EPDISD = OTG_FS_DEVICE_DIEPINT_EPDISD_Values<OTG_FS_DEVICE::DIEPINT1, 1, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT1Base> ;
     using XFRC = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT1, 0, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -352,6 +372,7 @@ struct OTG_FS_DEVICE
     using TOC = OTG_FS_DEVICE_DIEPINT_TOC_Values<OTG_FS_DEVICE::DIEPINT2, 3, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT2Base> ;
     using EPDISD = OTG_FS_DEVICE_DIEPINT_EPDISD_Values<OTG_FS_DEVICE::DIEPINT2, 1, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT2Base> ;
     using XFRC = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT2, 0, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -367,6 +388,7 @@ struct OTG_FS_DEVICE
     using TOC = OTG_FS_DEVICE_DIEPINT_TOC_Values<OTG_FS_DEVICE::DIEPINT3, 3, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT3Base> ;
     using EPDISD = OTG_FS_DEVICE_DIEPINT_EPDISD_Values<OTG_FS_DEVICE::DIEPINT3, 1, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT3Base> ;
     using XFRC = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT3, 0, 1, ReadWriteMode, OTG_FS_DEVICEDIEPINT3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPINT_XFRC_Values<OTG_FS_DEVICE::DIEPINT3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -381,6 +403,7 @@ struct OTG_FS_DEVICE
     using STUP = OTG_FS_DEVICE_DOEPINT_STUP_Values<OTG_FS_DEVICE::DOEPINT0, 3, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT0Base> ;
     using EPDISD = OTG_FS_DEVICE_DOEPINT_EPDISD_Values<OTG_FS_DEVICE::DOEPINT0, 1, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT0Base> ;
     using XFRC = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT0, 0, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -395,6 +418,7 @@ struct OTG_FS_DEVICE
     using STUP = OTG_FS_DEVICE_DOEPINT_STUP_Values<OTG_FS_DEVICE::DOEPINT1, 3, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT1Base> ;
     using EPDISD = OTG_FS_DEVICE_DOEPINT_EPDISD_Values<OTG_FS_DEVICE::DOEPINT1, 1, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT1Base> ;
     using XFRC = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT1, 0, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -409,6 +433,7 @@ struct OTG_FS_DEVICE
     using STUP = OTG_FS_DEVICE_DOEPINT_STUP_Values<OTG_FS_DEVICE::DOEPINT2, 3, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT2Base> ;
     using EPDISD = OTG_FS_DEVICE_DOEPINT_EPDISD_Values<OTG_FS_DEVICE::DOEPINT2, 1, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT2Base> ;
     using XFRC = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT2, 0, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -423,6 +448,7 @@ struct OTG_FS_DEVICE
     using STUP = OTG_FS_DEVICE_DOEPINT_STUP_Values<OTG_FS_DEVICE::DOEPINT3, 3, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT3Base> ;
     using EPDISD = OTG_FS_DEVICE_DOEPINT_EPDISD_Values<OTG_FS_DEVICE::DOEPINT3, 1, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT3Base> ;
     using XFRC = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT3, 0, 1, ReadWriteMode, OTG_FS_DEVICEDOEPINT3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPINT_XFRC_Values<OTG_FS_DEVICE::DOEPINT3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -434,6 +460,7 @@ struct OTG_FS_DEVICE
   {
     using PKTCNT = OTG_FS_DEVICE_DIEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DIEPTSIZ0, 19, 2, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ0Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ0, 0, 7, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -446,6 +473,7 @@ struct OTG_FS_DEVICE
     using STUPCNT = OTG_FS_DEVICE_DOEPTSIZ_STUPCNT_Values<OTG_FS_DEVICE::DOEPTSIZ0, 29, 2, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ0Base> ;
     using PKTCNT = OTG_FS_DEVICE_DOEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DOEPTSIZ0, 19, 1, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ0Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ0, 0, 7, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -458,6 +486,7 @@ struct OTG_FS_DEVICE
     using MCNT = OTG_FS_DEVICE_DIEPTSIZ_MCNT_Values<OTG_FS_DEVICE::DIEPTSIZ1, 29, 2, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ1Base> ;
     using PKTCNT = OTG_FS_DEVICE_DIEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DIEPTSIZ1, 19, 10, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ1Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ1, 0, 19, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -470,6 +499,7 @@ struct OTG_FS_DEVICE
     using MCNT = OTG_FS_DEVICE_DIEPTSIZ_MCNT_Values<OTG_FS_DEVICE::DIEPTSIZ2, 29, 2, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ2Base> ;
     using PKTCNT = OTG_FS_DEVICE_DIEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DIEPTSIZ2, 19, 10, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ2Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ2, 0, 19, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -482,6 +512,7 @@ struct OTG_FS_DEVICE
     using MCNT = OTG_FS_DEVICE_DIEPTSIZ_MCNT_Values<OTG_FS_DEVICE::DIEPTSIZ3, 29, 2, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ3Base> ;
     using PKTCNT = OTG_FS_DEVICE_DIEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DIEPTSIZ3, 19, 10, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ3Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ3, 0, 19, ReadWriteMode, OTG_FS_DEVICEDIEPTSIZ3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DIEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DIEPTSIZ3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -492,6 +523,7 @@ struct OTG_FS_DEVICE
   struct DTXFSTS0 : public RegisterBase<0x50000918, 32, ReadMode>
   {
     using INEPTFSAV = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS0, 0, 16, ReadMode, OTG_FS_DEVICEDTXFSTS0Base> ;
+    using FieldValues = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -502,6 +534,7 @@ struct OTG_FS_DEVICE
   struct DTXFSTS1 : public RegisterBase<0x50000938, 32, ReadMode>
   {
     using INEPTFSAV = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS1, 0, 16, ReadMode, OTG_FS_DEVICEDTXFSTS1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -512,6 +545,7 @@ struct OTG_FS_DEVICE
   struct DTXFSTS2 : public RegisterBase<0x50000958, 32, ReadMode>
   {
     using INEPTFSAV = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS2, 0, 16, ReadMode, OTG_FS_DEVICEDTXFSTS2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -522,6 +556,7 @@ struct OTG_FS_DEVICE
   struct DTXFSTS3 : public RegisterBase<0x50000978, 32, ReadMode>
   {
     using INEPTFSAV = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS3, 0, 16, ReadMode, OTG_FS_DEVICEDTXFSTS3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DTXFSTS_INEPTFSAV_Values<OTG_FS_DEVICE::DTXFSTS3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -534,6 +569,7 @@ struct OTG_FS_DEVICE
     using RXDPID_STUPCNT = OTG_FS_DEVICE_DOEPTSIZ_RXDPID_STUPCNT_Values<OTG_FS_DEVICE::DOEPTSIZ1, 29, 2, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ1Base> ;
     using PKTCNT = OTG_FS_DEVICE_DOEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DOEPTSIZ1, 19, 10, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ1Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ1, 0, 19, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ1Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -546,6 +582,7 @@ struct OTG_FS_DEVICE
     using RXDPID_STUPCNT = OTG_FS_DEVICE_DOEPTSIZ_RXDPID_STUPCNT_Values<OTG_FS_DEVICE::DOEPTSIZ2, 29, 2, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ2Base> ;
     using PKTCNT = OTG_FS_DEVICE_DOEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DOEPTSIZ2, 19, 10, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ2Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ2, 0, 19, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ2Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -558,6 +595,7 @@ struct OTG_FS_DEVICE
     using RXDPID_STUPCNT = OTG_FS_DEVICE_DOEPTSIZ_RXDPID_STUPCNT_Values<OTG_FS_DEVICE::DOEPTSIZ3, 29, 2, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ3Base> ;
     using PKTCNT = OTG_FS_DEVICE_DOEPTSIZ_PKTCNT_Values<OTG_FS_DEVICE::DOEPTSIZ3, 19, 10, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ3Base> ;
     using XFRSIZ = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ3, 0, 19, ReadWriteMode, OTG_FS_DEVICEDOEPTSIZ3Base> ;
+    using FieldValues = OTG_FS_DEVICE_DOEPTSIZ_XFRSIZ_Values<OTG_FS_DEVICE::DOEPTSIZ3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -5,8 +5,10 @@
 #ifndef REGISTERS_ACCESSMODE_HPP
 #define REGISTERS_ACCESSMODE_HPP
 //Режим доступа к регистрам
+struct NoAccess {};
 struct WriteMode {};
 struct ReadMode {};
 struct ReadWriteMode: public WriteMode, public ReadMode {};
+
 
 #endif //REGISTERS_ACCESSMODE_HPP

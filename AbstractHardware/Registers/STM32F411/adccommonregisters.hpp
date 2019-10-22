@@ -10,7 +10,7 @@
 #if !defined(ADCCOMMONREGISTERS_HPP)
 #define ADCCOMMONREGISTERS_HPP
 
-#include "adccommonfieldvalue.hpp"  //for Bits Fields defs 
+#include "adccommonfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -39,6 +39,7 @@ struct ADC_Common
     using JEOC1 = ADC_Common_CSR_JEOC_Values<ADC_Common::CSR, 2, 1, ReadMode, ADC_CommonCSRBase> ;
     using EOC1 = ADC_Common_CSR_EOC_Values<ADC_Common::CSR, 1, 1, ReadMode, ADC_CommonCSRBase> ;
     using AWD1 = ADC_Common_CSR_AWD_Values<ADC_Common::CSR, 0, 1, ReadMode, ADC_CommonCSRBase> ;
+    using FieldValues = ADC_Common_CSR_AWD_Values<ADC_Common::CSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -54,6 +55,7 @@ struct ADC_Common
     using DMA = ADC_Common_CCR_DMA_Values<ADC_Common::CCR, 14, 2, ReadWriteMode, ADC_CommonCCRBase> ;
     using DDS = ADC_Common_CCR_DDS_Values<ADC_Common::CCR, 13, 1, ReadWriteMode, ADC_CommonCCRBase> ;
     using DELAY = ADC_Common_CCR_DELAY_Values<ADC_Common::CCR, 8, 4, ReadWriteMode, ADC_CommonCCRBase> ;
+    using FieldValues = ADC_Common_CCR_DELAY_Values<ADC_Common::CCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

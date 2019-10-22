@@ -10,7 +10,7 @@
 #if !defined(I2C1REGISTERS_HPP)
 #define I2C1REGISTERS_HPP
 
-#include "i2c1fieldvalue.hpp"  //for Bits Fields defs 
+#include "i2c1fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -35,6 +35,7 @@ struct I2C1
     using SMBTYPE = IC_CR_SMBTYPE_Values<I2C1::CR1, 3, 1, ReadWriteMode, I2C1CR1Base> ;
     using SMBUS = IC_CR_SMBUS_Values<I2C1::CR1, 1, 1, ReadWriteMode, I2C1CR1Base> ;
     using PE = IC_CR_PE_Values<I2C1::CR1, 0, 1, ReadWriteMode, I2C1CR1Base> ;
+    using FieldValues = IC_CR_PE_Values<I2C1::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -50,6 +51,7 @@ struct I2C1
     using ITEVTEN = IC_CR_ITEVTEN_Values<I2C1::CR2, 9, 1, ReadWriteMode, I2C1CR2Base> ;
     using ITERREN = IC_CR_ITERREN_Values<I2C1::CR2, 8, 1, ReadWriteMode, I2C1CR2Base> ;
     using FREQ = IC_CR_FREQ_Values<I2C1::CR2, 0, 6, ReadWriteMode, I2C1CR2Base> ;
+    using FieldValues = IC_CR_FREQ_Values<I2C1::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -63,6 +65,7 @@ struct I2C1
     using ADD10 = IC_OAR_ADD_Values<I2C1::OAR1, 8, 2, ReadWriteMode, I2C1OAR1Base> ;
     using ADD7 = IC_OAR_ADD_Values<I2C1::OAR1, 1, 7, ReadWriteMode, I2C1OAR1Base> ;
     using ADD0 = IC_OAR_ADD_Values<I2C1::OAR1, 0, 1, ReadWriteMode, I2C1OAR1Base> ;
+    using FieldValues = IC_OAR_ADD_Values<I2C1::OAR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -74,6 +77,7 @@ struct I2C1
   {
     using ADD2 = IC_OAR_ADD_Values<I2C1::OAR2, 1, 7, ReadWriteMode, I2C1OAR2Base> ;
     using ENDUAL = IC_OAR_ENDUAL_Values<I2C1::OAR2, 0, 1, ReadWriteMode, I2C1OAR2Base> ;
+    using FieldValues = IC_OAR_ENDUAL_Values<I2C1::OAR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -84,6 +88,7 @@ struct I2C1
   struct DR : public RegisterBase<0x40005410, 32, ReadWriteMode>
   {
     using DRField = IC_DR_DR_Values<I2C1::DR, 0, 8, ReadWriteMode, I2C1DRBase> ;
+    using FieldValues = IC_DR_DR_Values<I2C1::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -107,6 +112,7 @@ struct I2C1
     using BTF = IC_SR_BTF_Values<I2C1::SR1, 2, 1, ReadMode, I2C1SR1Base> ;
     using ADDR = IC_SR_ADDR_Values<I2C1::SR1, 1, 1, ReadMode, I2C1SR1Base> ;
     using SB = IC_SR_SB_Values<I2C1::SR1, 0, 1, ReadMode, I2C1SR1Base> ;
+    using FieldValues = IC_SR_SB_Values<I2C1::SR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -124,6 +130,7 @@ struct I2C1
     using TRA = IC_SR_TRA_Values<I2C1::SR2, 2, 1, ReadMode, I2C1SR2Base> ;
     using BUSY = IC_SR_BUSY_Values<I2C1::SR2, 1, 1, ReadMode, I2C1SR2Base> ;
     using MSL = IC_SR_MSL_Values<I2C1::SR2, 0, 1, ReadMode, I2C1SR2Base> ;
+    using FieldValues = IC_SR_MSL_Values<I2C1::SR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -136,6 +143,7 @@ struct I2C1
     using F_S = IC_CCR_F_S_Values<I2C1::CCR, 15, 1, ReadWriteMode, I2C1CCRBase> ;
     using DUTY = IC_CCR_DUTY_Values<I2C1::CCR, 14, 1, ReadWriteMode, I2C1CCRBase> ;
     using CCRField = IC_CCR_CCR_Values<I2C1::CCR, 0, 12, ReadWriteMode, I2C1CCRBase> ;
+    using FieldValues = IC_CCR_CCR_Values<I2C1::CCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -146,6 +154,7 @@ struct I2C1
   struct TRISE : public RegisterBase<0x40005420, 32, ReadWriteMode>
   {
     using TRISEField = IC_TRISE_TRISE_Values<I2C1::TRISE, 0, 6, ReadWriteMode, I2C1TRISEBase> ;
+    using FieldValues = IC_TRISE_TRISE_Values<I2C1::TRISE, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

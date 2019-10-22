@@ -10,7 +10,7 @@
 #if !defined(SCBACTRLREGISTERS_HPP)
 #define SCBACTRLREGISTERS_HPP
 
-#include "scbactrlfieldvalue.hpp"  //for Bits Fields defs 
+#include "scbactrlfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -26,6 +26,7 @@ struct SCB_ACTRL
     using DISFOLD = SCB_ACTRL_ACTRL_DISFOLD_Values<SCB_ACTRL::ACTRL, 2, 1, ReadWriteMode, SCB_ACTRLACTRLBase> ;
     using DISFPCA = SCB_ACTRL_ACTRL_DISFPCA_Values<SCB_ACTRL::ACTRL, 8, 1, ReadWriteMode, SCB_ACTRLACTRLBase> ;
     using DISOOFP = SCB_ACTRL_ACTRL_DISOOFP_Values<SCB_ACTRL::ACTRL, 9, 1, ReadWriteMode, SCB_ACTRLACTRLBase> ;
+    using FieldValues = SCB_ACTRL_ACTRL_DISOOFP_Values<SCB_ACTRL::ACTRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

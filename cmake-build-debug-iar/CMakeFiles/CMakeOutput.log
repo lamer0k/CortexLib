@@ -1,4 +1,216 @@
 The system is: Windows - 10.0.15063 - AMD64
+The system is: Windows - 10.0.15063 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/iccarm.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+   IAR ANSI C/C++ Compiler V8.20.2.14835/W32 for ARM
+   Copyright 1999-2017 IAR Systems AB.
+   Network license: USRTC-IAR_LICENSE (STD)
+ 
+  76 bytes of CODE  memory
+ 176 bytes of CONST memory
+  16 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is IAR, found in "C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/3.14.5/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/iccarm.exe 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+0
+
+   IAR ANSI C/C++ Compiler V8.20.2.14835/W32 for ARM
+   Copyright 1999-2017 IAR Systems AB.
+   Network license: USRTC-IAR_LICENSE (STD)
+ 
+  64 bytes of CODE  memory
+ 176 bytes of CONST memory
+  16 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is IAR, found in "C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_a693b/fast 
+	clearmake -f CMakeFiles\cmTC_a693b.dir\build.make CMakeFiles/cmTC_a693b.dir/build
+Building C object CMakeFiles/cmTC_a693b.dir/testCCompiler.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCCompiler.c   -e -o CMakeFiles\cmTC_a693b.dir\testCCompiler.c.obj
+
+Linking C executable cmTC_a693b.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a693b.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_a693b.dir/testCCompiler.c.obj     -o cmTC_a693b.exe
+
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_6448f/fast 
+	clearmake -f CMakeFiles\cmTC_6448f.dir\build.make CMakeFiles/cmTC_6448f.dir/build
+Building C object CMakeFiles/cmTC_6448f.dir/CMakeCCompilerABI.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.14\Modules\CMakeCCompilerABI.c   -e -o CMakeFiles\cmTC_6448f.dir\CMakeCCompilerABI.c.obj
+
+Linking C executable cmTC_6448f.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_6448f.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_6448f.dir/CMakeCCompilerABI.c.obj     -o cmTC_6448f.exe
+
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_1cb70/fast 
+	clearmake -f CMakeFiles\cmTC_1cb70.dir\build.make CMakeFiles/cmTC_1cb70.dir/build
+Building C object CMakeFiles/cmTC_1cb70.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_1cb70.dir\feature_tests.c.obj
+
+Linking C executable cmTC_1cb70.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_1cb70.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_1cb70.dir/feature_tests.c.obj     -o cmTC_1cb70.exe
+
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_a2720/fast 
+	clearmake -f CMakeFiles\cmTC_a2720.dir\build.make CMakeFiles/cmTC_a2720.dir/build
+Building C object CMakeFiles/cmTC_a2720.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_a2720.dir\feature_tests.c.obj
+
+Linking C executable cmTC_a2720.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a2720.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_a2720.dir/feature_tests.c.obj     -o cmTC_a2720.exe
+
+
+
+
+
+
+Detecting C [--c89] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_117ff/fast 
+	clearmake -f CMakeFiles\cmTC_117ff.dir\build.make CMakeFiles/cmTC_117ff.dir/build
+Building C object CMakeFiles/cmTC_117ff.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   --c89 -e -o CMakeFiles\cmTC_117ff.dir\feature_tests.c.obj
+
+Linking C executable cmTC_117ff.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_117ff.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_117ff.dir/feature_tests.c.obj     -o cmTC_117ff.exe
+
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_5dc64/fast 
+	clearmake -f CMakeFiles\cmTC_5dc64.dir\build.make CMakeFiles/cmTC_5dc64.dir/build
+Building CXX object CMakeFiles/cmTC_5dc64.dir/testCXXCompiler.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCXXCompiler.cxx   -e -o CMakeFiles\cmTC_5dc64.dir\testCXXCompiler.cxx.obj
+
+Linking CXX executable cmTC_5dc64.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5dc64.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_5dc64.dir/testCXXCompiler.cxx.obj     -o cmTC_5dc64.exe
+
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_582a2/fast 
+	clearmake -f CMakeFiles\cmTC_582a2.dir\build.make CMakeFiles/cmTC_582a2.dir/build
+Building CXX object CMakeFiles/cmTC_582a2.dir/CMakeCXXCompilerABI.cpp.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.14\Modules\CMakeCXXCompilerABI.cpp   -e -o CMakeFiles\cmTC_582a2.dir\CMakeCXXCompilerABI.cpp.obj
+
+Linking CXX executable cmTC_582a2.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_582a2.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_582a2.dir/CMakeCXXCompilerABI.cpp.obj     -o cmTC_582a2.exe
+
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_5f9d6/fast 
+	clearmake -f CMakeFiles\cmTC_5f9d6.dir\build.make CMakeFiles/cmTC_5f9d6.dir/build
+Building CXX object CMakeFiles/cmTC_5f9d6.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_5f9d6.dir\feature_tests.cxx.obj
+
+Linking CXX executable cmTC_5f9d6.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5f9d6.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_5f9d6.dir/feature_tests.cxx.obj     -o cmTC_5f9d6.exe
+
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_244f2/fast 
+	clearmake -f CMakeFiles\cmTC_244f2.dir\build.make CMakeFiles/cmTC_244f2.dir/build
+Building CXX object CMakeFiles/cmTC_244f2.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_244f2.dir\feature_tests.cxx.obj
+
+Linking CXX executable cmTC_244f2.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_244f2.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_244f2.dir/feature_tests.cxx.obj     -o cmTC_244f2.exe
+
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_f81d7/fast 
+	clearmake -f CMakeFiles\cmTC_f81d7.dir\build.make CMakeFiles/cmTC_f81d7.dir/build
+Building CXX object CMakeFiles/cmTC_f81d7.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_f81d7.dir\feature_tests.cxx.obj
+
+Linking CXX executable cmTC_f81d7.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_f81d7.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_f81d7.dir/feature_tests.cxx.obj     -o cmTC_f81d7.exe
+
+
+
+
+The system is: Windows - 10.0.15063 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/iccarm.exe 
 Build flags: 
@@ -50,13 +262,13 @@ The CXX compiler identification is IAR, found in "C:/Users/Skolody/source/Cortex
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_00217/fast && 	clearmake -f CMakeFiles\cmTC_00217.dir\build.make CMakeFiles/cmTC_00217.dir/build
-Building C object CMakeFiles/cmTC_00217.dir/testCCompiler.c.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCCompiler.c   -e -o CMakeFiles\cmTC_00217.dir\testCCompiler.c.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_00e6e/fast && 	clearmake -f CMakeFiles\cmTC_00e6e.dir\build.make CMakeFiles/cmTC_00e6e.dir/build
+Building C object CMakeFiles/cmTC_00e6e.dir/testCCompiler.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCCompiler.c   -e -o CMakeFiles\cmTC_00e6e.dir\testCCompiler.c.obj
 
-Linking C executable cmTC_00217.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_00217.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_00217.dir/testCCompiler.c.obj     -o cmTC_00217.exe
+Linking C executable cmTC_00e6e.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_00e6e.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_00e6e.dir/testCCompiler.c.obj     -o cmTC_00e6e.exe
 
 
 
@@ -65,30 +277,13 @@ Linking C executable cmTC_00217.exe
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_5a7c2/fast && 	clearmake -f CMakeFiles\cmTC_5a7c2.dir\build.make CMakeFiles/cmTC_5a7c2.dir/build
-Building C object CMakeFiles/cmTC_5a7c2.dir/CMakeCCompilerABI.c.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.15\Modules\CMakeCCompilerABI.c   -e -o CMakeFiles\cmTC_5a7c2.dir\CMakeCCompilerABI.c.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_fb489/fast && 	clearmake -f CMakeFiles\cmTC_fb489.dir\build.make CMakeFiles/cmTC_fb489.dir/build
+Building C object CMakeFiles/cmTC_fb489.dir/CMakeCCompilerABI.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.15\Modules\CMakeCCompilerABI.c   -e -o CMakeFiles\cmTC_fb489.dir\CMakeCCompilerABI.c.obj
 
-Linking C executable cmTC_5a7c2.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5a7c2.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_5a7c2.dir/CMakeCCompilerABI.c.obj     -o cmTC_5a7c2.exe
-
-
-
-
-
-
-
-Detecting C [] compiler features compiled with the following output:
-Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
-
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_752ef/fast && 	clearmake -f CMakeFiles\cmTC_752ef.dir\build.make CMakeFiles/cmTC_752ef.dir/build
-Building C object CMakeFiles/cmTC_752ef.dir/feature_tests.c.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_752ef.dir\feature_tests.c.obj
-
-Linking C executable cmTC_752ef.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_752ef.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_752ef.dir/feature_tests.c.obj     -o cmTC_752ef.exe
+Linking C executable cmTC_fb489.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_fb489.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_fb489.dir/CMakeCCompilerABI.c.obj     -o cmTC_fb489.exe
 
 
 
@@ -99,13 +294,30 @@ Linking C executable cmTC_752ef.exe
 Detecting C [] compiler features compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_f598a/fast && 	clearmake -f CMakeFiles\cmTC_f598a.dir\build.make CMakeFiles/cmTC_f598a.dir/build
-Building C object CMakeFiles/cmTC_f598a.dir/feature_tests.c.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_f598a.dir\feature_tests.c.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_0e7ca/fast && 	clearmake -f CMakeFiles\cmTC_0e7ca.dir\build.make CMakeFiles/cmTC_0e7ca.dir/build
+Building C object CMakeFiles/cmTC_0e7ca.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_0e7ca.dir\feature_tests.c.obj
 
-Linking C executable cmTC_f598a.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_f598a.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_f598a.dir/feature_tests.c.obj     -o cmTC_f598a.exe
+Linking C executable cmTC_0e7ca.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_0e7ca.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_0e7ca.dir/feature_tests.c.obj     -o cmTC_0e7ca.exe
+
+
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_e510d/fast && 	clearmake -f CMakeFiles\cmTC_e510d.dir\build.make CMakeFiles/cmTC_e510d.dir/build
+Building C object CMakeFiles/cmTC_e510d.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_e510d.dir\feature_tests.c.obj
+
+Linking C executable cmTC_e510d.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_e510d.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_e510d.dir/feature_tests.c.obj     -o cmTC_e510d.exe
 
 
 
@@ -116,13 +328,13 @@ Linking C executable cmTC_f598a.exe
 Detecting C [--c89] compiler features compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_52375/fast && 	clearmake -f CMakeFiles\cmTC_52375.dir\build.make CMakeFiles/cmTC_52375.dir/build
-Building C object CMakeFiles/cmTC_52375.dir/feature_tests.c.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   --c89 -e -o CMakeFiles\cmTC_52375.dir\feature_tests.c.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_db6b0/fast && 	clearmake -f CMakeFiles\cmTC_db6b0.dir\build.make CMakeFiles/cmTC_db6b0.dir/build
+Building C object CMakeFiles/cmTC_db6b0.dir/feature_tests.c.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe  --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.c   --c89 -e -o CMakeFiles\cmTC_db6b0.dir\feature_tests.c.obj
 
-Linking C executable cmTC_52375.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_52375.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_52375.dir/feature_tests.c.obj     -o cmTC_52375.exe
+Linking C executable cmTC_db6b0.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_db6b0.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_db6b0.dir/feature_tests.c.obj     -o cmTC_db6b0.exe
 
 
 
@@ -131,13 +343,13 @@ Linking C executable cmTC_52375.exe
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_30733/fast && 	clearmake -f CMakeFiles\cmTC_30733.dir\build.make CMakeFiles/cmTC_30733.dir/build
-Building CXX object CMakeFiles/cmTC_30733.dir/testCXXCompiler.cxx.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCXXCompiler.cxx   -e -o CMakeFiles\cmTC_30733.dir\testCXXCompiler.cxx.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_c388a/fast && 	clearmake -f CMakeFiles\cmTC_c388a.dir\build.make CMakeFiles/cmTC_c388a.dir/build
+Building CXX object CMakeFiles/cmTC_c388a.dir/testCXXCompiler.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\CMakeTmp\testCXXCompiler.cxx   -e -o CMakeFiles\cmTC_c388a.dir\testCXXCompiler.cxx.obj
 
-Linking CXX executable cmTC_30733.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_30733.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_30733.dir/testCXXCompiler.cxx.obj     -o cmTC_30733.exe
+Linking CXX executable cmTC_c388a.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_c388a.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_c388a.dir/testCXXCompiler.cxx.obj     -o cmTC_c388a.exe
 
 
 
@@ -146,30 +358,13 @@ Linking CXX executable cmTC_30733.exe
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_fa39f/fast && 	clearmake -f CMakeFiles\cmTC_fa39f.dir\build.make CMakeFiles/cmTC_fa39f.dir/build
-Building CXX object CMakeFiles/cmTC_fa39f.dir/CMakeCXXCompilerABI.cpp.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.15\Modules\CMakeCXXCompilerABI.cpp   -e -o CMakeFiles\cmTC_fa39f.dir\CMakeCXXCompilerABI.cpp.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_985fc/fast && 	clearmake -f CMakeFiles\cmTC_985fc.dir\build.make CMakeFiles/cmTC_985fc.dir/build
+Building CXX object CMakeFiles/cmTC_985fc.dir/CMakeCXXCompilerABI.cpp.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\JetBrains\CLion2019_2\bin\cmake\win\share\cmake-3.15\Modules\CMakeCXXCompilerABI.cpp   -e -o CMakeFiles\cmTC_985fc.dir\CMakeCXXCompilerABI.cpp.obj
 
-Linking CXX executable cmTC_fa39f.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_fa39f.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_fa39f.dir/CMakeCXXCompilerABI.cpp.obj     -o cmTC_fa39f.exe
-
-
-
-
-
-
-
-Detecting CXX [] compiler features compiled with the following output:
-Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
-
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_4dd12/fast && 	clearmake -f CMakeFiles\cmTC_4dd12.dir\build.make CMakeFiles/cmTC_4dd12.dir/build
-Building CXX object CMakeFiles/cmTC_4dd12.dir/feature_tests.cxx.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_4dd12.dir\feature_tests.cxx.obj
-
-Linking CXX executable cmTC_4dd12.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_4dd12.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_4dd12.dir/feature_tests.cxx.obj     -o cmTC_4dd12.exe
+Linking CXX executable cmTC_985fc.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_985fc.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_985fc.dir/CMakeCXXCompilerABI.cpp.obj     -o cmTC_985fc.exe
 
 
 
@@ -180,13 +375,13 @@ Linking CXX executable cmTC_4dd12.exe
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_5becc/fast && 	clearmake -f CMakeFiles\cmTC_5becc.dir\build.make CMakeFiles/cmTC_5becc.dir/build
-Building CXX object CMakeFiles/cmTC_5becc.dir/feature_tests.cxx.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_5becc.dir\feature_tests.cxx.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_73b96/fast && 	clearmake -f CMakeFiles\cmTC_73b96.dir\build.make CMakeFiles/cmTC_73b96.dir/build
+Building CXX object CMakeFiles/cmTC_73b96.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_73b96.dir\feature_tests.cxx.obj
 
-Linking CXX executable cmTC_5becc.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_5becc.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_5becc.dir/feature_tests.cxx.obj     -o cmTC_5becc.exe
+Linking CXX executable cmTC_73b96.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_73b96.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_73b96.dir/feature_tests.cxx.obj     -o cmTC_73b96.exe
 
 
 
@@ -197,13 +392,30 @@ Linking CXX executable cmTC_5becc.exe
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_1818f/fast && 	clearmake -f CMakeFiles\cmTC_1818f.dir\build.make CMakeFiles/cmTC_1818f.dir/build
-Building CXX object CMakeFiles/cmTC_1818f.dir/feature_tests.cxx.obj
-	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_1818f.dir\feature_tests.cxx.obj
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_2485c/fast && 	clearmake -f CMakeFiles\cmTC_2485c.dir\build.make CMakeFiles/cmTC_2485c.dir/build
+Building CXX object CMakeFiles/cmTC_2485c.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_2485c.dir\feature_tests.cxx.obj
 
-Linking CXX executable cmTC_1818f.exe
-	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_1818f.dir\link.txt --verbose=1
-"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_1818f.dir/feature_tests.cxx.obj     -o cmTC_1818f.exe
+Linking CXX executable cmTC_2485c.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_2485c.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_2485c.dir/feature_tests.cxx.obj     -o cmTC_2485c.exe
+
+
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe cmTC_4b64e/fast && 	clearmake -f CMakeFiles\cmTC_4b64e.dir\build.make CMakeFiles/cmTC_4b64e.dir/build
+Building CXX object CMakeFiles/cmTC_4b64e.dir/feature_tests.cxx.obj
+	Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe --c++ --silent C:\Users\Skolody\source\CortexLib\cmake-build-debug-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_4b64e.dir\feature_tests.cxx.obj
+
+Linking CXX executable cmTC_4b64e.exe
+	C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_4b64e.dir\link.txt --verbose=1
+"Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_4b64e.dir/feature_tests.cxx.obj     -o cmTC_4b64e.exe
 
 
 

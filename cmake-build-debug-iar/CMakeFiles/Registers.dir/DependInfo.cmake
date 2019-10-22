@@ -11,9 +11,14 @@ set(CMAKE_CXX_COMPILER_ID "IAR")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../AbstractHardware/Registers"
+  "../AbstractHardware/Pin"
+  "../AbstractHardware/Port"
+  "../AbstractHardware/Timer"
+  "../Application/Led"
   "../Common"
-  "../Tools/RegistersGenerator/Stm32F411"
-  "../Tools/RegistersGenerator/Stm32F411/FieldValues"
+  "../AbstractHardware/Registers/STM32F411"
+  "../AbstractHardware/Registers/STM32F411/FieldValues"
+  "../Common/PatternMatching"
   )
 
 # Targets to which this target links.

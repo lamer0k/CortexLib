@@ -1,0 +1,86 @@
+:source-highlighter: highlightjs
+:source-language:
+
+:highlightjs-linenums-mode: inline
+
+:backend: revealjs
+:revealjs_theme: white
+:revealjs_backgroundTransition: concave
+:revealjs_transition: convex
+:revealjs_display: table-cell
+:revealjs_controlsLayout: edges
+
+:stylesdir: mystylesheets/
+:stylesheet: plain.css
+
+= Программное обеспечение измерительных процессов
+
+== Программное обеспечение измерительных процессов (практика, Колодий С.В.)
+
+---
+[index]
+=== План работы
+* Изучить лабораторный практикум https://univeris.susu.ru/lk/WorkPrograms/DownloadApplication?docId=51c25035-7057-4f68-8f76-14390ab42c12
+* Сдать все лабораторные
+* Изучить микроконтроллер STM32F411 по документации на сайте компании ST
+https://www.st.com/resource/en/reference_manual/dm00119316.pdf
+* Разобраться с платой для разработки XNUCLEO-F411RE https://www.waveshare.com/wiki/XNUCLEO-F411RE
+** прочитать Руководство пользователя http://www.waveshare.com/w/upload/d/d1/Xnucleo-UserManual.pdf
+** разобраться со схематикой http://www.waveshare.com/w/upload/4/44/XNUCLEO-103-302-401-Schematic.pdf
+** изучить спецификацию https://www.waveshare.com/wiki/XNUCLEO_Datasheets
+* Разобраться со средой разработки IAR Workbench for ARM
+** прочитать раздел "5	СОЗДАНИЕ И КОМПИЛЯЦИЯ ПЕРВОГО ПРОЕКТА В СРЕДЕ IAR. НАПИСАНИЕ ПРОСТЕЙШЕГО МОДУЛЯ НА ЯЗЫКЕ С++. ЛАБОРАТОРНАЯ РАБОТА № 1" https://univeris.susu.ru/lk/WorkPrograms/DownloadApplication?docId=51c25035-7057-4f68-8f76-14390ab42c12
+** установить IAR Workbench for ARM дома
+* Прочитать документацию по ОСРВ FreeRtos	https://freertos.org/a00106.html
+* Прочитать книгу по «C+ +» для начального уровня, любую в интернете, которая выпущена позднее 2015 года, например: "Язык программирования C++. Лекции и упражнения" Стивен Прата
+или "Программирование. Принципы и практика с использованием C++" Бьерном Страуструп
+* Прочитать книгу «Effective Modern C++» Скотта Майерса
+* Прочитать документацию на систему верстки Ascii Doc: https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+* Получить задание на курсовую работу
+* Сделать анализ требований к курсовой работе
+* Написать введение: актуальнойсть, описание импользуемых средств разработки, языков программирования, описание предлагаемого подхода в целом. Сделать обзор литературы.
+* Разработать общую архитектуру для решения задачи: описать основные классы, взимодействия между ними, используемые шаблоны проектирования,
+** согласовать архитектуру с преподавателем
+* Разработать детельную архитектуру отдельных классов: описать методы, входные и выходные данные, атрибуты классов
+** согласовать с преподавателем
+* Разработать код отдельных классов в соответствии с детальной архитектурой
+** согласовать код с преподавателем
+** провести отладку кода, проверить, что все работает
+* Провести сборку всех модулей и провести верификационное тестирование на удовлетворение требованиям
+* Оформить пояснительную записку
+** сделать доклад и презентовать результат работы с показом работы устройства перед группой
+
+---
+
+[index]
+=== Домашнее задание №1
+*1.* Установить Python: https://www.python.org/
+
+*2.* Установить Rubby: https://www.ruby-lang.org/en/
+
+*3.* Настроить систему верстки:
+
+* Установить IDE Atom на домашний компьютер: https://atom.io/
+* Разобраться как установить и установить систему для верстки отчетов Ascii Doc.
+https://asciidoctor.org/ на домашний компьютер
+* Установить pluggins AcsiiDoc-Assistance, aciidoc-image-helper, aciidoc-preview, language-asciidoc, autocomplete-asciidoc
+
+*4* Установить и Настроить систему конвертации файлов AsciiDoc в презентацию:
+https://asciidoctor.org/docs/asciidoctor-revealjs/
+
+*5.* Обмен информацией:
+
+* Зарегистрироваться в репозитории GitHub:https://github.com/
+** адрес и логин должен иметь вид Name.Surname или Name-Surname.
+** Начало работы с GitHub: https://guides.github.com/activities/hello-world/
+** Скачать программу-оболочку для синхронизации кода: Desktop.GitHub https://desktop.github.com/.
+** Зарегестриоваться на любом почтовом сервере
+
+*6.* Установить IAR Workbench for ARM: https://yadi.sk/d/z3MFQNPdAGLMAg
+
+[IMPORTANT]
+Вопросы можно задать по email: sergey.kolody@yandex.ru
+
+Слайды первой лекции: https://univeris.susu.ru/lk/WorkPrograms/DownloadApplication?docId=3e0f035e-fcbc-4afb-ab74-f4e1164f0f7f
+
+---

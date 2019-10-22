@@ -10,7 +10,7 @@
 #if !defined(SCBREGISTERS_HPP)
 #define SCBREGISTERS_HPP
 
-#include "scbfieldvalue.hpp"  //for Bits Fields defs 
+#include "scbfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -26,6 +26,7 @@ struct SCB
     using Constant = SCB_CPUID_Constant_Values<SCB::CPUID, 16, 4, ReadMode, SCBCPUIDBase> ;
     using Variant = SCB_CPUID_Variant_Values<SCB::CPUID, 20, 4, ReadMode, SCBCPUIDBase> ;
     using Implementer = SCB_CPUID_Implementer_Values<SCB::CPUID, 24, 8, ReadMode, SCBCPUIDBase> ;
+    using FieldValues = SCB_CPUID_Implementer_Values<SCB::CPUID, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -44,6 +45,7 @@ struct SCB
     using PENDSVCLR = SCB_ICSR_PENDSVCLR_Values<SCB::ICSR, 27, 1, ReadWriteMode, SCBICSRBase> ;
     using PENDSVSET = SCB_ICSR_PENDSVSET_Values<SCB::ICSR, 28, 1, ReadWriteMode, SCBICSRBase> ;
     using NMIPENDSET = SCB_ICSR_NMIPENDSET_Values<SCB::ICSR, 31, 1, ReadWriteMode, SCBICSRBase> ;
+    using FieldValues = SCB_ICSR_NMIPENDSET_Values<SCB::ICSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -54,6 +56,7 @@ struct SCB
   struct VTOR : public RegisterBase<0xE000ED08, 32, ReadWriteMode>
   {
     using TBLOFF = SCB_VTOR_TBLOFF_Values<SCB::VTOR, 9, 21, ReadWriteMode, SCBVTORBase> ;
+    using FieldValues = SCB_VTOR_TBLOFF_Values<SCB::VTOR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -69,6 +72,7 @@ struct SCB
     using PRIGROUP = SCB_AIRCR_PRIGROUP_Values<SCB::AIRCR, 8, 3, ReadWriteMode, SCBAIRCRBase> ;
     using ENDIANESS = SCB_AIRCR_ENDIANESS_Values<SCB::AIRCR, 15, 1, ReadWriteMode, SCBAIRCRBase> ;
     using VECTKEYSTAT = SCB_AIRCR_VECTKEYSTAT_Values<SCB::AIRCR, 16, 16, ReadWriteMode, SCBAIRCRBase> ;
+    using FieldValues = SCB_AIRCR_VECTKEYSTAT_Values<SCB::AIRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,6 +85,7 @@ struct SCB
     using SLEEPONEXIT = SCB_SCR_SLEEPONEXIT_Values<SCB::SCR, 1, 1, ReadWriteMode, SCBSCRBase> ;
     using SLEEPDEEP = SCB_SCR_SLEEPDEEP_Values<SCB::SCR, 2, 1, ReadWriteMode, SCBSCRBase> ;
     using SEVEONPEND = SCB_SCR_SEVEONPEND_Values<SCB::SCR, 4, 1, ReadWriteMode, SCBSCRBase> ;
+    using FieldValues = SCB_SCR_SEVEONPEND_Values<SCB::SCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -96,6 +101,7 @@ struct SCB
     using DIV_0_TRP = SCB_CCR_DIV__TRP_Values<SCB::CCR, 4, 1, ReadWriteMode, SCBCCRBase> ;
     using BFHFNMIGN = SCB_CCR_BFHFNMIGN_Values<SCB::CCR, 8, 1, ReadWriteMode, SCBCCRBase> ;
     using STKALIGN = SCB_CCR_STKALIGN_Values<SCB::CCR, 9, 1, ReadWriteMode, SCBCCRBase> ;
+    using FieldValues = SCB_CCR_STKALIGN_Values<SCB::CCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -108,6 +114,7 @@ struct SCB
     using PRI_4 = SCB_SHPR_PRI__Values<SCB::SHPR1, 0, 8, ReadWriteMode, SCBSHPR1Base> ;
     using PRI_5 = SCB_SHPR_PRI__Values<SCB::SHPR1, 8, 8, ReadWriteMode, SCBSHPR1Base> ;
     using PRI_6 = SCB_SHPR_PRI__Values<SCB::SHPR1, 16, 8, ReadWriteMode, SCBSHPR1Base> ;
+    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -118,6 +125,7 @@ struct SCB
   struct SHPR2 : public RegisterBase<0xE000ED1C, 32, ReadWriteMode>
   {
     using PRI_11 = SCB_SHPR_PRI__Values<SCB::SHPR2, 24, 8, ReadWriteMode, SCBSHPR2Base> ;
+    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -129,6 +137,7 @@ struct SCB
   {
     using PRI_14 = SCB_SHPR_PRI__Values<SCB::SHPR3, 16, 8, ReadWriteMode, SCBSHPR3Base> ;
     using PRI_15 = SCB_SHPR_PRI__Values<SCB::SHPR3, 24, 8, ReadWriteMode, SCBSHPR3Base> ;
+    using FieldValues = SCB_SHPR_PRI__Values<SCB::SHPR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -152,6 +161,7 @@ struct SCB
     using MEMFAULTENA = SCB_SHCRS_MEMFAULTENA_Values<SCB::SHCRS, 16, 1, ReadWriteMode, SCBSHCRSBase> ;
     using BUSFAULTENA = SCB_SHCRS_BUSFAULTENA_Values<SCB::SHCRS, 17, 1, ReadWriteMode, SCBSHCRSBase> ;
     using USGFAULTENA = SCB_SHCRS_USGFAULTENA_Values<SCB::SHCRS, 18, 1, ReadWriteMode, SCBSHCRSBase> ;
+    using FieldValues = SCB_SHCRS_USGFAULTENA_Values<SCB::SHCRS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -179,6 +189,7 @@ struct SCB
     using NOCP = SCB_CFSR_UFSR_BFSR_MMFSR_NOCP_Values<SCB::CFSR_UFSR_BFSR_MMFSR, 19, 1, ReadWriteMode, SCBCFSR_UFSR_BFSR_MMFSRBase> ;
     using UNALIGNED = SCB_CFSR_UFSR_BFSR_MMFSR_UNALIGNED_Values<SCB::CFSR_UFSR_BFSR_MMFSR, 24, 1, ReadWriteMode, SCBCFSR_UFSR_BFSR_MMFSRBase> ;
     using DIVBYZERO = SCB_CFSR_UFSR_BFSR_MMFSR_DIVBYZERO_Values<SCB::CFSR_UFSR_BFSR_MMFSR, 25, 1, ReadWriteMode, SCBCFSR_UFSR_BFSR_MMFSRBase> ;
+    using FieldValues = SCB_CFSR_UFSR_BFSR_MMFSR_DIVBYZERO_Values<SCB::CFSR_UFSR_BFSR_MMFSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -191,6 +202,7 @@ struct SCB
     using VECTTBL = SCB_HFSR_VECTTBL_Values<SCB::HFSR, 1, 1, ReadWriteMode, SCBHFSRBase> ;
     using FORCED = SCB_HFSR_FORCED_Values<SCB::HFSR, 30, 1, ReadWriteMode, SCBHFSRBase> ;
     using DEBUG_VT = SCB_HFSR_DEBUG_VT_Values<SCB::HFSR, 31, 1, ReadWriteMode, SCBHFSRBase> ;
+    using FieldValues = SCB_HFSR_DEBUG_VT_Values<SCB::HFSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -201,6 +213,7 @@ struct SCB
   struct MMFAR : public RegisterBase<0xE000ED34, 32, ReadWriteMode>
   {
     using MMFARField = SCB_MMFAR_MMFAR_Values<SCB::MMFAR, 0, 32, ReadWriteMode, SCBMMFARBase> ;
+    using FieldValues = SCB_MMFAR_MMFAR_Values<SCB::MMFAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -211,6 +224,7 @@ struct SCB
   struct BFAR : public RegisterBase<0xE000ED38, 32, ReadWriteMode>
   {
     using BFARField = SCB_BFAR_BFAR_Values<SCB::BFAR, 0, 32, ReadWriteMode, SCBBFARBase> ;
+    using FieldValues = SCB_BFAR_BFAR_Values<SCB::BFAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -221,6 +235,7 @@ struct SCB
   struct AFSR : public RegisterBase<0xE000ED3C, 32, ReadWriteMode>
   {
     using IMPDEF = SCB_AFSR_IMPDEF_Values<SCB::AFSR, 0, 32, ReadWriteMode, SCBAFSRBase> ;
+    using FieldValues = SCB_AFSR_IMPDEF_Values<SCB::AFSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -95,6 +95,9 @@ CMAKE_IAR_ELFDUMP:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_
 //The IAR ELF Tool
 CMAKE_IAR_ELFTOOL:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ielftool.exe
 
+//The IAR ARM linker
+CMAKE_IAR_LINKARM:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe
+
 //The IAR ILINK linker
 CMAKE_IAR_LINKER:FILEPATH=Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin/ilinkarm.exe
 
@@ -294,6 +297,8 @@ CMAKE_IAR_ARCHIVE-ADVANCED:INTERNAL=1
 CMAKE_IAR_ELFDUMP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_ELFTOOL
 CMAKE_IAR_ELFTOOL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_IAR_LINKARM
+CMAKE_IAR_LINKARM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_LINKER
 CMAKE_IAR_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_IAR_OBJMANIP

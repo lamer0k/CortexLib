@@ -10,7 +10,7 @@
 #if !defined(PWRREGISTERS_HPP)
 #define PWRREGISTERS_HPP
 
-#include "pwrfieldvalue.hpp"  //for Bits Fields defs 
+#include "pwrfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -31,6 +31,7 @@ struct PWR
     using CWUF = PWR_CR_CWUF_Values<PWR::CR, 2, 1, ReadWriteMode, PWRCRBase> ;
     using PDDS = PWR_CR_PDDS_Values<PWR::CR, 1, 1, ReadWriteMode, PWRCRBase> ;
     using LPDS = PWR_CR_LPDS_Values<PWR::CR, 0, 1, ReadWriteMode, PWRCRBase> ;
+    using FieldValues = PWR_CR_LPDS_Values<PWR::CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -47,6 +48,7 @@ struct PWR
     using EWUP = PWR_CSR_EWUP_Values<PWR::CSR, 8, 1, ReadWriteMode, PWRCSRBase> ;
     using BRE = PWR_CSR_BRE_Values<PWR::CSR, 9, 1, ReadWriteMode, PWRCSRBase> ;
     using VOSRDY = PWR_CSR_VOSRDY_Values<PWR::CSR, 14, 1, ReadWriteMode, PWRCSRBase> ;
+    using FieldValues = PWR_CSR_VOSRDY_Values<PWR::CSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

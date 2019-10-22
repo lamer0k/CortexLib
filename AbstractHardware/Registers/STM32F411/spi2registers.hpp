@@ -10,7 +10,7 @@
 #if !defined(SPI2REGISTERS_HPP)
 #define SPI2REGISTERS_HPP
 
-#include "spi2fieldvalue.hpp"  //for Bits Fields defs 
+#include "spi2fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -35,6 +35,7 @@ struct SPI2
     using MSTR = SPI_CR_MSTR_Values<SPI2::CR1, 2, 1, ReadWriteMode, SPI2CR1Base> ;
     using CPOL = SPI_CR_CPOL_Values<SPI2::CR1, 1, 1, ReadWriteMode, SPI2CR1Base> ;
     using CPHA = SPI_CR_CPHA_Values<SPI2::CR1, 0, 1, ReadWriteMode, SPI2CR1Base> ;
+    using FieldValues = SPI_CR_CPHA_Values<SPI2::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -51,6 +52,7 @@ struct SPI2
     using SSOE = SPI_CR_SSOE_Values<SPI2::CR2, 2, 1, ReadWriteMode, SPI2CR2Base> ;
     using TXDMAEN = SPI_CR_TXDMAEN_Values<SPI2::CR2, 1, 1, ReadWriteMode, SPI2CR2Base> ;
     using RXDMAEN = SPI_CR_RXDMAEN_Values<SPI2::CR2, 0, 1, ReadWriteMode, SPI2CR2Base> ;
+    using FieldValues = SPI_CR_RXDMAEN_Values<SPI2::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -69,6 +71,7 @@ struct SPI2
     using CHSIDE = SPI_SR_CHSIDE_Values<SPI2::SR, 2, 1, ReadMode, SPI2SRBase> ;
     using TXE = SPI_SR_TXE_Values<SPI2::SR, 1, 1, ReadMode, SPI2SRBase> ;
     using RXNE = SPI_SR_RXNE_Values<SPI2::SR, 0, 1, ReadMode, SPI2SRBase> ;
+    using FieldValues = SPI_SR_RXNE_Values<SPI2::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -79,6 +82,7 @@ struct SPI2
   struct DR : public RegisterBase<0x4000380C, 32, ReadWriteMode>
   {
     using DRField = SPI_DR_DR_Values<SPI2::DR, 0, 16, ReadWriteMode, SPI2DRBase> ;
+    using FieldValues = SPI_DR_DR_Values<SPI2::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -89,6 +93,7 @@ struct SPI2
   struct CRCPR : public RegisterBase<0x40003810, 32, ReadWriteMode>
   {
     using CRCPOLY = SPI_CRCPR_CRCPOLY_Values<SPI2::CRCPR, 0, 16, ReadWriteMode, SPI2CRCPRBase> ;
+    using FieldValues = SPI_CRCPR_CRCPOLY_Values<SPI2::CRCPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -99,6 +104,7 @@ struct SPI2
   struct RXCRCR : public RegisterBase<0x40003814, 32, ReadMode>
   {
     using RxCRC = SPI_RXCRCR_RxCRC_Values<SPI2::RXCRCR, 0, 16, ReadMode, SPI2RXCRCRBase> ;
+    using FieldValues = SPI_RXCRCR_RxCRC_Values<SPI2::RXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -109,6 +115,7 @@ struct SPI2
   struct TXCRCR : public RegisterBase<0x40003818, 32, ReadMode>
   {
     using TxCRC = SPI_TXCRCR_TxCRC_Values<SPI2::TXCRCR, 0, 16, ReadMode, SPI2TXCRCRBase> ;
+    using FieldValues = SPI_TXCRCR_TxCRC_Values<SPI2::TXCRCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -126,6 +133,7 @@ struct SPI2
     using CKPOL = SPI_ISCFGR_CKPOL_Values<SPI2::I2SCFGR, 3, 1, ReadWriteMode, SPI2I2SCFGRBase> ;
     using DATLEN = SPI_ISCFGR_DATLEN_Values<SPI2::I2SCFGR, 1, 2, ReadWriteMode, SPI2I2SCFGRBase> ;
     using CHLEN = SPI_ISCFGR_CHLEN_Values<SPI2::I2SCFGR, 0, 1, ReadWriteMode, SPI2I2SCFGRBase> ;
+    using FieldValues = SPI_ISCFGR_CHLEN_Values<SPI2::I2SCFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -138,6 +146,7 @@ struct SPI2
     using MCKOE = SPI_ISPR_MCKOE_Values<SPI2::I2SPR, 9, 1, ReadWriteMode, SPI2I2SPRBase> ;
     using ODD = SPI_ISPR_ODD_Values<SPI2::I2SPR, 8, 1, ReadWriteMode, SPI2I2SPRBase> ;
     using I2SDIV = SPI_ISPR_ISDIV_Values<SPI2::I2SPR, 0, 8, ReadWriteMode, SPI2I2SPRBase> ;
+    using FieldValues = SPI_ISPR_ISDIV_Values<SPI2::I2SPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

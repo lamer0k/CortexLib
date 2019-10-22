@@ -10,7 +10,7 @@
 #if !defined(DMA1REGISTERS_HPP)
 #define DMA1REGISTERS_HPP
 
-#include "dma1fieldvalue.hpp"  //for Bits Fields defs 
+#include "dma1fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -41,6 +41,7 @@ struct DMA1
     using TEIF0 = DMA_LISR_TEIF_Values<DMA1::LISR, 3, 1, ReadMode, DMA1LISRBase> ;
     using DMEIF0 = DMA_LISR_DMEIF_Values<DMA1::LISR, 2, 1, ReadMode, DMA1LISRBase> ;
     using FEIF0 = DMA_LISR_FEIF_Values<DMA1::LISR, 0, 1, ReadMode, DMA1LISRBase> ;
+    using FieldValues = DMA_LISR_FEIF_Values<DMA1::LISR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -70,6 +71,7 @@ struct DMA1
     using TEIF4 = DMA_HISR_TEIF_Values<DMA1::HISR, 3, 1, ReadMode, DMA1HISRBase> ;
     using DMEIF4 = DMA_HISR_DMEIF_Values<DMA1::HISR, 2, 1, ReadMode, DMA1HISRBase> ;
     using FEIF4 = DMA_HISR_FEIF_Values<DMA1::HISR, 0, 1, ReadMode, DMA1HISRBase> ;
+    using FieldValues = DMA_HISR_FEIF_Values<DMA1::HISR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -99,6 +101,7 @@ struct DMA1
     using CTEIF0 = DMA_LIFCR_CTEIF_Values<DMA1::LIFCR, 3, 1, WriteMode, DMA1LIFCRBase> ;
     using CDMEIF0 = DMA_LIFCR_CDMEIF_Values<DMA1::LIFCR, 2, 1, WriteMode, DMA1LIFCRBase> ;
     using CFEIF0 = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 0, 1, WriteMode, DMA1LIFCRBase> ;
+    using FieldValues = DMA_LIFCR_CFEIF_Values<DMA1::LIFCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -128,6 +131,7 @@ struct DMA1
     using CTEIF4 = DMA_HIFCR_CTEIF_Values<DMA1::HIFCR, 3, 1, WriteMode, DMA1HIFCRBase> ;
     using CDMEIF4 = DMA_HIFCR_CDMEIF_Values<DMA1::HIFCR, 2, 1, WriteMode, DMA1HIFCRBase> ;
     using CFEIF4 = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 0, 1, WriteMode, DMA1HIFCRBase> ;
+    using FieldValues = DMA_HIFCR_CFEIF_Values<DMA1::HIFCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -156,6 +160,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S0CR, 2, 1, ReadWriteMode, DMA1S0CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S0CR, 1, 1, ReadWriteMode, DMA1S0CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S0CR, 0, 1, ReadWriteMode, DMA1S0CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S0CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -166,6 +171,7 @@ struct DMA1
   struct S0NDTR : public RegisterBase<0x40026014, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S0NDTR, 0, 16, ReadWriteMode, DMA1S0NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S0NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -176,6 +182,7 @@ struct DMA1
   struct S0PAR : public RegisterBase<0x40026018, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S0PAR, 0, 32, ReadWriteMode, DMA1S0PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S0PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -186,6 +193,7 @@ struct DMA1
   struct S0M0AR : public RegisterBase<0x4002601C, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S0M0AR, 0, 32, ReadWriteMode, DMA1S0M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S0M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -196,6 +204,7 @@ struct DMA1
   struct S0M1AR : public RegisterBase<0x40026020, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S0M1AR, 0, 32, ReadWriteMode, DMA1S0M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S0M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -209,6 +218,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S0FCR, 3, 3, ReadMode, DMA1S0FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S0FCR, 2, 1, ReadWriteMode, DMA1S0FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S0FCR, 0, 2, ReadWriteMode, DMA1S0FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S0FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -238,6 +248,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S1CR, 2, 1, ReadWriteMode, DMA1S1CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S1CR, 1, 1, ReadWriteMode, DMA1S1CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S1CR, 0, 1, ReadWriteMode, DMA1S1CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S1CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -248,6 +259,7 @@ struct DMA1
   struct S1NDTR : public RegisterBase<0x4002602C, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S1NDTR, 0, 16, ReadWriteMode, DMA1S1NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S1NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -258,6 +270,7 @@ struct DMA1
   struct S1PAR : public RegisterBase<0x40026030, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S1PAR, 0, 32, ReadWriteMode, DMA1S1PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S1PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -268,6 +281,7 @@ struct DMA1
   struct S1M0AR : public RegisterBase<0x40026034, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S1M0AR, 0, 32, ReadWriteMode, DMA1S1M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S1M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -278,6 +292,7 @@ struct DMA1
   struct S1M1AR : public RegisterBase<0x40026038, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S1M1AR, 0, 32, ReadWriteMode, DMA1S1M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S1M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -291,6 +306,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S1FCR, 3, 3, ReadMode, DMA1S1FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S1FCR, 2, 1, ReadWriteMode, DMA1S1FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S1FCR, 0, 2, ReadWriteMode, DMA1S1FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S1FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -320,6 +336,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S2CR, 2, 1, ReadWriteMode, DMA1S2CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S2CR, 1, 1, ReadWriteMode, DMA1S2CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S2CR, 0, 1, ReadWriteMode, DMA1S2CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S2CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -330,6 +347,7 @@ struct DMA1
   struct S2NDTR : public RegisterBase<0x40026044, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S2NDTR, 0, 16, ReadWriteMode, DMA1S2NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S2NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -340,6 +358,7 @@ struct DMA1
   struct S2PAR : public RegisterBase<0x40026048, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S2PAR, 0, 32, ReadWriteMode, DMA1S2PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S2PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -350,6 +369,7 @@ struct DMA1
   struct S2M0AR : public RegisterBase<0x4002604C, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S2M0AR, 0, 32, ReadWriteMode, DMA1S2M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S2M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -360,6 +380,7 @@ struct DMA1
   struct S2M1AR : public RegisterBase<0x40026050, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S2M1AR, 0, 32, ReadWriteMode, DMA1S2M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S2M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -373,6 +394,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S2FCR, 3, 3, ReadMode, DMA1S2FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S2FCR, 2, 1, ReadWriteMode, DMA1S2FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S2FCR, 0, 2, ReadWriteMode, DMA1S2FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S2FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -402,6 +424,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S3CR, 2, 1, ReadWriteMode, DMA1S3CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S3CR, 1, 1, ReadWriteMode, DMA1S3CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S3CR, 0, 1, ReadWriteMode, DMA1S3CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S3CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -412,6 +435,7 @@ struct DMA1
   struct S3NDTR : public RegisterBase<0x4002605C, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S3NDTR, 0, 16, ReadWriteMode, DMA1S3NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S3NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -422,6 +446,7 @@ struct DMA1
   struct S3PAR : public RegisterBase<0x40026060, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S3PAR, 0, 32, ReadWriteMode, DMA1S3PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S3PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -432,6 +457,7 @@ struct DMA1
   struct S3M0AR : public RegisterBase<0x40026064, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S3M0AR, 0, 32, ReadWriteMode, DMA1S3M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S3M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -442,6 +468,7 @@ struct DMA1
   struct S3M1AR : public RegisterBase<0x40026068, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S3M1AR, 0, 32, ReadWriteMode, DMA1S3M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S3M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -455,6 +482,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S3FCR, 3, 3, ReadMode, DMA1S3FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S3FCR, 2, 1, ReadWriteMode, DMA1S3FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S3FCR, 0, 2, ReadWriteMode, DMA1S3FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S3FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -484,6 +512,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S4CR, 2, 1, ReadWriteMode, DMA1S4CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S4CR, 1, 1, ReadWriteMode, DMA1S4CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S4CR, 0, 1, ReadWriteMode, DMA1S4CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S4CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -494,6 +523,7 @@ struct DMA1
   struct S4NDTR : public RegisterBase<0x40026074, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S4NDTR, 0, 16, ReadWriteMode, DMA1S4NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S4NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -504,6 +534,7 @@ struct DMA1
   struct S4PAR : public RegisterBase<0x40026078, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S4PAR, 0, 32, ReadWriteMode, DMA1S4PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S4PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -514,6 +545,7 @@ struct DMA1
   struct S4M0AR : public RegisterBase<0x4002607C, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S4M0AR, 0, 32, ReadWriteMode, DMA1S4M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S4M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -524,6 +556,7 @@ struct DMA1
   struct S4M1AR : public RegisterBase<0x40026080, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S4M1AR, 0, 32, ReadWriteMode, DMA1S4M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S4M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -537,6 +570,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S4FCR, 3, 3, ReadMode, DMA1S4FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S4FCR, 2, 1, ReadWriteMode, DMA1S4FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S4FCR, 0, 2, ReadWriteMode, DMA1S4FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S4FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -566,6 +600,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S5CR, 2, 1, ReadWriteMode, DMA1S5CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S5CR, 1, 1, ReadWriteMode, DMA1S5CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S5CR, 0, 1, ReadWriteMode, DMA1S5CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S5CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -576,6 +611,7 @@ struct DMA1
   struct S5NDTR : public RegisterBase<0x4002608C, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S5NDTR, 0, 16, ReadWriteMode, DMA1S5NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S5NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -586,6 +622,7 @@ struct DMA1
   struct S5PAR : public RegisterBase<0x40026090, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S5PAR, 0, 32, ReadWriteMode, DMA1S5PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S5PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -596,6 +633,7 @@ struct DMA1
   struct S5M0AR : public RegisterBase<0x40026094, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S5M0AR, 0, 32, ReadWriteMode, DMA1S5M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S5M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -606,6 +644,7 @@ struct DMA1
   struct S5M1AR : public RegisterBase<0x40026098, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S5M1AR, 0, 32, ReadWriteMode, DMA1S5M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S5M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -619,6 +658,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S5FCR, 3, 3, ReadMode, DMA1S5FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S5FCR, 2, 1, ReadWriteMode, DMA1S5FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S5FCR, 0, 2, ReadWriteMode, DMA1S5FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S5FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -648,6 +688,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S6CR, 2, 1, ReadWriteMode, DMA1S6CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S6CR, 1, 1, ReadWriteMode, DMA1S6CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S6CR, 0, 1, ReadWriteMode, DMA1S6CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S6CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -658,6 +699,7 @@ struct DMA1
   struct S6NDTR : public RegisterBase<0x400260A4, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S6NDTR, 0, 16, ReadWriteMode, DMA1S6NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S6NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -668,6 +710,7 @@ struct DMA1
   struct S6PAR : public RegisterBase<0x400260A8, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S6PAR, 0, 32, ReadWriteMode, DMA1S6PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S6PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -678,6 +721,7 @@ struct DMA1
   struct S6M0AR : public RegisterBase<0x400260AC, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S6M0AR, 0, 32, ReadWriteMode, DMA1S6M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S6M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -688,6 +732,7 @@ struct DMA1
   struct S6M1AR : public RegisterBase<0x400260B0, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S6M1AR, 0, 32, ReadWriteMode, DMA1S6M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S6M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -701,6 +746,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S6FCR, 3, 3, ReadMode, DMA1S6FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S6FCR, 2, 1, ReadWriteMode, DMA1S6FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S6FCR, 0, 2, ReadWriteMode, DMA1S6FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S6FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -730,6 +776,7 @@ struct DMA1
     using TEIE = DMA_SCR_TEIE_Values<DMA1::S7CR, 2, 1, ReadWriteMode, DMA1S7CRBase> ;
     using DMEIE = DMA_SCR_DMEIE_Values<DMA1::S7CR, 1, 1, ReadWriteMode, DMA1S7CRBase> ;
     using EN = DMA_SCR_EN_Values<DMA1::S7CR, 0, 1, ReadWriteMode, DMA1S7CRBase> ;
+    using FieldValues = DMA_SCR_EN_Values<DMA1::S7CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -740,6 +787,7 @@ struct DMA1
   struct S7NDTR : public RegisterBase<0x400260BC, 32, ReadWriteMode>
   {
     using NDT = DMA_SNDTR_NDT_Values<DMA1::S7NDTR, 0, 16, ReadWriteMode, DMA1S7NDTRBase> ;
+    using FieldValues = DMA_SNDTR_NDT_Values<DMA1::S7NDTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -750,6 +798,7 @@ struct DMA1
   struct S7PAR : public RegisterBase<0x400260C0, 32, ReadWriteMode>
   {
     using PA = DMA_SPAR_PA_Values<DMA1::S7PAR, 0, 32, ReadWriteMode, DMA1S7PARBase> ;
+    using FieldValues = DMA_SPAR_PA_Values<DMA1::S7PAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -760,6 +809,7 @@ struct DMA1
   struct S7M0AR : public RegisterBase<0x400260C4, 32, ReadWriteMode>
   {
     using M0A = DMA_SMAR_MA_Values<DMA1::S7M0AR, 0, 32, ReadWriteMode, DMA1S7M0ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S7M0AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -770,6 +820,7 @@ struct DMA1
   struct S7M1AR : public RegisterBase<0x400260C8, 32, ReadWriteMode>
   {
     using M1A = DMA_SMAR_MA_Values<DMA1::S7M1AR, 0, 32, ReadWriteMode, DMA1S7M1ARBase> ;
+    using FieldValues = DMA_SMAR_MA_Values<DMA1::S7M1AR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -783,6 +834,7 @@ struct DMA1
     using FS = DMA_SFCR_FS_Values<DMA1::S7FCR, 3, 3, ReadMode, DMA1S7FCRBase> ;
     using DMDIS = DMA_SFCR_DMDIS_Values<DMA1::S7FCR, 2, 1, ReadWriteMode, DMA1S7FCRBase> ;
     using FTH = DMA_SFCR_FTH_Values<DMA1::S7FCR, 0, 2, ReadWriteMode, DMA1S7FCRBase> ;
+    using FieldValues = DMA_SFCR_FTH_Values<DMA1::S7FCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

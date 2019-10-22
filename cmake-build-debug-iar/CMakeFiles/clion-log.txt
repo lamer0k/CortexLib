@@ -4,21 +4,21 @@ C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug "-
 -- Build files have been written to: C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar
 
 Cannot get compiler information:
-	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\Tools\\RegistersGenerator\\Stm32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\Tools\\RegistersGenerator\\Stm32F411\\FieldValues --debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti -e -fpch-preprocess -v -dD -E
+	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Pin -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Port -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Timer -IC:\\Users\\Skolody\\source\\CortexLib\\Application\\Led -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411\\FieldValues -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\PatternMatching --debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti -e -fpch-preprocess -v -dD -E
 	Fatal error[Su011]: More than one source file specified:
-	            @C:\Users\Skolody\AppData\Local\Temp\response-file1675109018880215
-	                      4928.txt
-	            C:\Users\Skolody\AppData\Local\Temp\compiler-file13913046295014750
-	                      790
+	            @C:\Users\Skolody\AppData\Local\Temp\response-file1078432206752733
+	                      5646.txt
+	            C:\Users\Skolody\AppData\Local\Temp\compiler-file98816362325962867
+	                      29
 	Fatal error detected, aborting.
 	
 	
-	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ --c++ --silent C:\\Users\\Skolody\\source\\CortexLib\\main.cpp -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\Tools\\RegistersGenerator\\Stm32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\Tools\\RegistersGenerator\\Stm32F411\\FieldValues --debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti -e -fpch-preprocess -v -dD -E
+	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ --c++ --silent C:\\Users\\Skolody\\source\\CortexLib\\main.cpp -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Pin -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Port -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Timer -IC:\\Users\\Skolody\\source\\CortexLib\\Application\\Led -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411\\FieldValues -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\PatternMatching --debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti -e -fpch-preprocess -v -dD -E
 	Fatal error[Su011]: More than one source file specified:
-	            @C:\Users\Skolody\AppData\Local\Temp\response-file1513133921454354
-	                      4127.txt
-	            C:\Users\Skolody\AppData\Local\Temp\compiler-file13913046295014750
-	                      790
+	            @C:\Users\Skolody\AppData\Local\Temp\response-file1490858289042789
+	                      170.txt
+	            C:\Users\Skolody\AppData\Local\Temp\compiler-file98816362325962867
+	                      29
 	Fatal error detected, aborting.
 	
 	

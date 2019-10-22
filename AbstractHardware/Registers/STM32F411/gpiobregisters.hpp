@@ -10,7 +10,7 @@
 #if !defined(GPIOBREGISTERS_HPP)
 #define GPIOBREGISTERS_HPP
 
-#include "gpiobfieldvalue.hpp"  //for Bits Fields defs 
+#include "gpiobfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -37,6 +37,7 @@ struct GPIOB
     using MODER2 = GPIOB_MODER_MODER_Values<GPIOB::MODER, 4, 2, ReadWriteMode, GPIOBMODERBase> ;
     using MODER1 = GPIOB_MODER_MODER_Values<GPIOB::MODER, 2, 2, ReadWriteMode, GPIOBMODERBase> ;
     using MODER0 = GPIOB_MODER_MODER_Values<GPIOB::MODER, 0, 2, ReadWriteMode, GPIOBMODERBase> ;
+    using FieldValues = GPIOB_MODER_MODER_Values<GPIOB::MODER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -62,6 +63,7 @@ struct GPIOB
     using OT2 = GPIOB_OTYPER_OT_Values<GPIOB::OTYPER, 2, 1, ReadWriteMode, GPIOBOTYPERBase> ;
     using OT1 = GPIOB_OTYPER_OT_Values<GPIOB::OTYPER, 1, 1, ReadWriteMode, GPIOBOTYPERBase> ;
     using OT0 = GPIOB_OTYPER_OT_Values<GPIOB::OTYPER, 0, 1, ReadWriteMode, GPIOBOTYPERBase> ;
+    using FieldValues = GPIOB_OTYPER_OT_Values<GPIOB::OTYPER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -87,6 +89,7 @@ struct GPIOB
     using OSPEEDR2 = GPIOB_OSPEEDR_OSPEEDR_Values<GPIOB::OSPEEDR, 4, 2, ReadWriteMode, GPIOBOSPEEDRBase> ;
     using OSPEEDR1 = GPIOB_OSPEEDR_OSPEEDR_Values<GPIOB::OSPEEDR, 2, 2, ReadWriteMode, GPIOBOSPEEDRBase> ;
     using OSPEEDR0 = GPIOB_OSPEEDR_OSPEEDR_Values<GPIOB::OSPEEDR, 0, 2, ReadWriteMode, GPIOBOSPEEDRBase> ;
+    using FieldValues = GPIOB_OSPEEDR_OSPEEDR_Values<GPIOB::OSPEEDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -112,6 +115,7 @@ struct GPIOB
     using PUPDR2 = GPIOB_PUPDR_PUPDR_Values<GPIOB::PUPDR, 4, 2, ReadWriteMode, GPIOBPUPDRBase> ;
     using PUPDR1 = GPIOB_PUPDR_PUPDR_Values<GPIOB::PUPDR, 2, 2, ReadWriteMode, GPIOBPUPDRBase> ;
     using PUPDR0 = GPIOB_PUPDR_PUPDR_Values<GPIOB::PUPDR, 0, 2, ReadWriteMode, GPIOBPUPDRBase> ;
+    using FieldValues = GPIOB_PUPDR_PUPDR_Values<GPIOB::PUPDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -137,6 +141,7 @@ struct GPIOB
     using IDR2 = GPIOB_IDR_IDR_Values<GPIOB::IDR, 2, 1, ReadMode, GPIOBIDRBase> ;
     using IDR1 = GPIOB_IDR_IDR_Values<GPIOB::IDR, 1, 1, ReadMode, GPIOBIDRBase> ;
     using IDR0 = GPIOB_IDR_IDR_Values<GPIOB::IDR, 0, 1, ReadMode, GPIOBIDRBase> ;
+    using FieldValues = GPIOB_IDR_IDR_Values<GPIOB::IDR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -162,6 +167,7 @@ struct GPIOB
     using ODR2 = GPIOB_ODR_ODR_Values<GPIOB::ODR, 2, 1, ReadWriteMode, GPIOBODRBase> ;
     using ODR1 = GPIOB_ODR_ODR_Values<GPIOB::ODR, 1, 1, ReadWriteMode, GPIOBODRBase> ;
     using ODR0 = GPIOB_ODR_ODR_Values<GPIOB::ODR, 0, 1, ReadWriteMode, GPIOBODRBase> ;
+    using FieldValues = GPIOB_ODR_ODR_Values<GPIOB::ODR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -203,6 +209,7 @@ struct GPIOB
     using BS2 = GPIOB_BSRR_BS_Values<GPIOB::BSRR, 2, 1, WriteMode, GPIOBBSRRBase> ;
     using BS1 = GPIOB_BSRR_BS_Values<GPIOB::BSRR, 1, 1, WriteMode, GPIOBBSRRBase> ;
     using BS0 = GPIOB_BSRR_BS_Values<GPIOB::BSRR, 0, 1, WriteMode, GPIOBBSRRBase> ;
+    using FieldValues = GPIOB_BSRR_BS_Values<GPIOB::BSRR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -229,6 +236,7 @@ struct GPIOB
     using LCK2 = GPIOB_LCKR_LCK_Values<GPIOB::LCKR, 2, 1, ReadWriteMode, GPIOBLCKRBase> ;
     using LCK1 = GPIOB_LCKR_LCK_Values<GPIOB::LCKR, 1, 1, ReadWriteMode, GPIOBLCKRBase> ;
     using LCK0 = GPIOB_LCKR_LCK_Values<GPIOB::LCKR, 0, 1, ReadWriteMode, GPIOBLCKRBase> ;
+    using FieldValues = GPIOB_LCKR_LCK_Values<GPIOB::LCKR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -246,6 +254,7 @@ struct GPIOB
     using AFRL2 = GPIOB_AFRL_AFRL_Values<GPIOB::AFRL, 8, 4, ReadWriteMode, GPIOBAFRLBase> ;
     using AFRL1 = GPIOB_AFRL_AFRL_Values<GPIOB::AFRL, 4, 4, ReadWriteMode, GPIOBAFRLBase> ;
     using AFRL0 = GPIOB_AFRL_AFRL_Values<GPIOB::AFRL, 0, 4, ReadWriteMode, GPIOBAFRLBase> ;
+    using FieldValues = GPIOB_AFRL_AFRL_Values<GPIOB::AFRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -263,6 +272,7 @@ struct GPIOB
     using AFRH10 = GPIOB_AFRH_AFRH_Values<GPIOB::AFRH, 8, 4, ReadWriteMode, GPIOBAFRHBase> ;
     using AFRH9 = GPIOB_AFRH_AFRH_Values<GPIOB::AFRH, 4, 4, ReadWriteMode, GPIOBAFRHBase> ;
     using AFRH8 = GPIOB_AFRH_AFRH_Values<GPIOB::AFRH, 0, 4, ReadWriteMode, GPIOBAFRHBase> ;
+    using FieldValues = GPIOB_AFRH_AFRH_Values<GPIOB::AFRH, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

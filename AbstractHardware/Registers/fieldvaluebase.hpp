@@ -12,30 +12,41 @@
 #include "registerfield.hpp" //for RegisterField
 
 //Базовый класс для работы с битовыми полями регистров
-template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Reg::Type value>
+template<typename Field, typename Base, typename Field::Register::Type value>
 struct FieldValueBase
 {
-  using RegType = typename Reg::Type ;
+  using RegType = typename Field::Register::Type ;
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  template<typename T = AccessMode,
-          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  __forceinline template<typename T = typename Field::Access,
+          class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set()
   {
-    RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Addr) ; //Сохраняем текущее значение регистра
+    RegType newRegValue = *reinterpret_cast<RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
     
-    newRegValue &= ~ (((1 << size) - 1) << offset); //Вначале нужно очистить старое значение битового поля
-    newRegValue |= (value << offset) ; // Затем установить новое
+    newRegValue &= ~ (((1U << Field::Size) - 1U) << Field::Offset); //Вначале нужно очистить старое значение битового поля
+    newRegValue |= (value << Field::Offset) ; // Затем установить новое
     
-    *reinterpret_cast<RegType *>(Reg::Addr) = newRegValue ; //И записать новое значение в регистр
+    *reinterpret_cast<RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
   }
   
+  
+  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+  __forceinline template<typename T = typename Field::Access,
+          class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+  static void Write()
+  {
+    *reinterpret_cast<RegType *>(Field::Register::Address) = (value << Field::Offset) ;
+  }
+  
+  
   //Метод устанавливает проверяет установлено ли значение битового поля
-  __forceinline template<typename T = AccessMode,
+  __forceinline template<typename T = typename Field::Access,
           class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   inline static bool IsSet()
   {
-    return ((*reinterpret_cast<RegType *>(Reg::Addr)) & static_cast<RegType>(((1 << size) - 1) << offset))
-                                                                                                == (value << offset) ;
+    return ((*reinterpret_cast<RegType *>(Field::Register::Address)) &
+              static_cast<RegType>(((1U << Field::Size) - 1U) << Field::Offset)) ==
+              (value << Field::Offset) ;
   }
 };
 #endif //REGISTERS_FIELDVALUEBASE_HPP

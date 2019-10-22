@@ -10,7 +10,7 @@
 #if !defined(OTGFSGLOBALREGISTERS_HPP)
 #define OTGFSGLOBALREGISTERS_HPP
 
-#include "otgfsglobalfieldvalue.hpp"  //for Bits Fields defs 
+#include "otgfsglobalfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -31,6 +31,7 @@ struct OTG_FS_GLOBAL
     using DBCT = OTG_FS_GLOBAL_FS_GOTGCTL_DBCT_Values<OTG_FS_GLOBAL::FS_GOTGCTL, 17, 1, ReadMode, OTG_FS_GLOBALFS_GOTGCTLBase> ;
     using ASVLD = OTG_FS_GLOBAL_FS_GOTGCTL_ASVLD_Values<OTG_FS_GLOBAL::FS_GOTGCTL, 18, 1, ReadMode, OTG_FS_GLOBALFS_GOTGCTLBase> ;
     using BSVLD = OTG_FS_GLOBAL_FS_GOTGCTL_BSVLD_Values<OTG_FS_GLOBAL::FS_GOTGCTL, 19, 1, ReadMode, OTG_FS_GLOBALFS_GOTGCTLBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GOTGCTL_BSVLD_Values<OTG_FS_GLOBAL::FS_GOTGCTL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -46,6 +47,7 @@ struct OTG_FS_GLOBAL
     using HNGDET = OTG_FS_GLOBAL_FS_GOTGINT_HNGDET_Values<OTG_FS_GLOBAL::FS_GOTGINT, 17, 1, ReadWriteMode, OTG_FS_GLOBALFS_GOTGINTBase> ;
     using ADTOCHG = OTG_FS_GLOBAL_FS_GOTGINT_ADTOCHG_Values<OTG_FS_GLOBAL::FS_GOTGINT, 18, 1, ReadWriteMode, OTG_FS_GLOBALFS_GOTGINTBase> ;
     using DBCDNE = OTG_FS_GLOBAL_FS_GOTGINT_DBCDNE_Values<OTG_FS_GLOBAL::FS_GOTGINT, 19, 1, ReadWriteMode, OTG_FS_GLOBALFS_GOTGINTBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GOTGINT_DBCDNE_Values<OTG_FS_GLOBAL::FS_GOTGINT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -58,6 +60,7 @@ struct OTG_FS_GLOBAL
     using GINT = OTG_FS_GLOBAL_FS_GAHBCFG_GINT_Values<OTG_FS_GLOBAL::FS_GAHBCFG, 0, 1, ReadWriteMode, OTG_FS_GLOBALFS_GAHBCFGBase> ;
     using TXFELVL = OTG_FS_GLOBAL_FS_GAHBCFG_TXFELVL_Values<OTG_FS_GLOBAL::FS_GAHBCFG, 7, 1, ReadWriteMode, OTG_FS_GLOBALFS_GAHBCFGBase> ;
     using PTXFELVL = OTG_FS_GLOBAL_FS_GAHBCFG_PTXFELVL_Values<OTG_FS_GLOBAL::FS_GAHBCFG, 8, 1, ReadWriteMode, OTG_FS_GLOBALFS_GAHBCFGBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GAHBCFG_PTXFELVL_Values<OTG_FS_GLOBAL::FS_GAHBCFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -75,6 +78,7 @@ struct OTG_FS_GLOBAL
     using FHMOD = OTG_FS_GLOBAL_FS_GUSBCFG_FHMOD_Values<OTG_FS_GLOBAL::FS_GUSBCFG, 29, 1, ReadWriteMode, OTG_FS_GLOBALFS_GUSBCFGBase> ;
     using FDMOD = OTG_FS_GLOBAL_FS_GUSBCFG_FDMOD_Values<OTG_FS_GLOBAL::FS_GUSBCFG, 30, 1, ReadWriteMode, OTG_FS_GLOBALFS_GUSBCFGBase> ;
     using CTXPKT = OTG_FS_GLOBAL_FS_GUSBCFG_CTXPKT_Values<OTG_FS_GLOBAL::FS_GUSBCFG, 31, 1, ReadWriteMode, OTG_FS_GLOBALFS_GUSBCFGBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GUSBCFG_CTXPKT_Values<OTG_FS_GLOBAL::FS_GUSBCFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -91,6 +95,7 @@ struct OTG_FS_GLOBAL
     using TXFFLSH = OTG_FS_GLOBAL_FS_GRSTCTL_TXFFLSH_Values<OTG_FS_GLOBAL::FS_GRSTCTL, 5, 1, ReadWriteMode, OTG_FS_GLOBALFS_GRSTCTLBase> ;
     using TXFNUM = OTG_FS_GLOBAL_FS_GRSTCTL_TXFNUM_Values<OTG_FS_GLOBAL::FS_GRSTCTL, 6, 5, ReadWriteMode, OTG_FS_GLOBALFS_GRSTCTLBase> ;
     using AHBIDL = OTG_FS_GLOBAL_FS_GRSTCTL_AHBIDL_Values<OTG_FS_GLOBAL::FS_GRSTCTL, 31, 1, ReadMode, OTG_FS_GLOBALFS_GRSTCTLBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GRSTCTL_AHBIDL_Values<OTG_FS_GLOBAL::FS_GRSTCTL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -125,6 +130,7 @@ struct OTG_FS_GLOBAL
     using DISCINT = OTG_FS_GLOBAL_FS_GINTSTS_DISCINT_Values<OTG_FS_GLOBAL::FS_GINTSTS, 29, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTSTSBase> ;
     using SRQINT = OTG_FS_GLOBAL_FS_GINTSTS_SRQINT_Values<OTG_FS_GLOBAL::FS_GINTSTS, 30, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTSTSBase> ;
     using WKUPINT = OTG_FS_GLOBAL_FS_GINTSTS_WKUPINT_Values<OTG_FS_GLOBAL::FS_GINTSTS, 31, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTSTSBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GINTSTS_WKUPINT_Values<OTG_FS_GLOBAL::FS_GINTSTS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -159,6 +165,7 @@ struct OTG_FS_GLOBAL
     using DISCINT = OTG_FS_GLOBAL_FS_GINTMSK_DISCINT_Values<OTG_FS_GLOBAL::FS_GINTMSK, 29, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTMSKBase> ;
     using SRQIM = OTG_FS_GLOBAL_FS_GINTMSK_SRQIM_Values<OTG_FS_GLOBAL::FS_GINTMSK, 30, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTMSKBase> ;
     using WUIM = OTG_FS_GLOBAL_FS_GINTMSK_WUIM_Values<OTG_FS_GLOBAL::FS_GINTMSK, 31, 1, ReadWriteMode, OTG_FS_GLOBALFS_GINTMSKBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GINTMSK_WUIM_Values<OTG_FS_GLOBAL::FS_GINTMSK, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -173,6 +180,7 @@ struct OTG_FS_GLOBAL
     using DPID = OTG_FS_GLOBAL_FS_GRXSTSR_Device_DPID_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Device, 15, 2, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_DeviceBase> ;
     using PKTSTS = OTG_FS_GLOBAL_FS_GRXSTSR_Device_PKTSTS_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Device, 17, 4, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_DeviceBase> ;
     using FRMNUM = OTG_FS_GLOBAL_FS_GRXSTSR_Device_FRMNUM_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Device, 21, 4, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_DeviceBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GRXSTSR_Device_FRMNUM_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Device, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -187,6 +195,7 @@ struct OTG_FS_GLOBAL
     using DPID = OTG_FS_GLOBAL_FS_GRXSTSR_Host_DPID_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Host, 15, 2, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_HostBase> ;
     using PKTSTS = OTG_FS_GLOBAL_FS_GRXSTSR_Host_PKTSTS_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Host, 17, 4, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_HostBase> ;
     using FRMNUM = OTG_FS_GLOBAL_FS_GRXSTSR_Host_FRMNUM_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Host, 21, 4, ReadMode, OTG_FS_GLOBALFS_GRXSTSR_HostBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GRXSTSR_Host_FRMNUM_Values<OTG_FS_GLOBAL::FS_GRXSTSR_Host, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -197,6 +206,7 @@ struct OTG_FS_GLOBAL
   struct FS_GRXFSIZ : public RegisterBase<0x50000024, 32, ReadWriteMode>
   {
     using RXFD = OTG_FS_GLOBAL_FS_GRXFSIZ_RXFD_Values<OTG_FS_GLOBAL::FS_GRXFSIZ, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_GRXFSIZBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GRXFSIZ_RXFD_Values<OTG_FS_GLOBAL::FS_GRXFSIZ, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -208,6 +218,7 @@ struct OTG_FS_GLOBAL
   {
     using TX0FSA = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TXFSA_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Device, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_GNPTXFSIZ_DeviceBase> ;
     using TX0FD = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TXFD_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Device, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_GNPTXFSIZ_DeviceBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TXFD_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Device, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -219,6 +230,7 @@ struct OTG_FS_GLOBAL
   {
     using NPTXFSA = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Host_NPTXFSA_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Host, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_GNPTXFSIZ_HostBase> ;
     using NPTXFD = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Host_NPTXFD_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Host, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_GNPTXFSIZ_HostBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GNPTXFSIZ_Host_NPTXFD_Values<OTG_FS_GLOBAL::FS_GNPTXFSIZ_Host, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -231,6 +243,7 @@ struct OTG_FS_GLOBAL
     using NPTXFSAV = OTG_FS_GLOBAL_FS_GNPTXSTS_NPTXFSAV_Values<OTG_FS_GLOBAL::FS_GNPTXSTS, 0, 16, ReadMode, OTG_FS_GLOBALFS_GNPTXSTSBase> ;
     using NPTQXSAV = OTG_FS_GLOBAL_FS_GNPTXSTS_NPTQXSAV_Values<OTG_FS_GLOBAL::FS_GNPTXSTS, 16, 8, ReadMode, OTG_FS_GLOBALFS_GNPTXSTSBase> ;
     using NPTXQTOP = OTG_FS_GLOBAL_FS_GNPTXSTS_NPTXQTOP_Values<OTG_FS_GLOBAL::FS_GNPTXSTS, 24, 7, ReadMode, OTG_FS_GLOBALFS_GNPTXSTSBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GNPTXSTS_NPTXQTOP_Values<OTG_FS_GLOBAL::FS_GNPTXSTS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -244,6 +257,7 @@ struct OTG_FS_GLOBAL
     using VBUSASEN = OTG_FS_GLOBAL_FS_GCCFG_VBUSASEN_Values<OTG_FS_GLOBAL::FS_GCCFG, 18, 1, ReadWriteMode, OTG_FS_GLOBALFS_GCCFGBase> ;
     using VBUSBSEN = OTG_FS_GLOBAL_FS_GCCFG_VBUSBSEN_Values<OTG_FS_GLOBAL::FS_GCCFG, 19, 1, ReadWriteMode, OTG_FS_GLOBALFS_GCCFGBase> ;
     using SOFOUTEN = OTG_FS_GLOBAL_FS_GCCFG_SOFOUTEN_Values<OTG_FS_GLOBAL::FS_GCCFG, 20, 1, ReadWriteMode, OTG_FS_GLOBALFS_GCCFGBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_GCCFG_SOFOUTEN_Values<OTG_FS_GLOBAL::FS_GCCFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -254,6 +268,7 @@ struct OTG_FS_GLOBAL
   struct FS_CID : public RegisterBase<0x5000003C, 32, ReadWriteMode>
   {
     using PRODUCT_ID = OTG_FS_GLOBAL_FS_CID_PRODUCT_ID_Values<OTG_FS_GLOBAL::FS_CID, 0, 32, ReadWriteMode, OTG_FS_GLOBALFS_CIDBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_CID_PRODUCT_ID_Values<OTG_FS_GLOBAL::FS_CID, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -265,6 +280,7 @@ struct OTG_FS_GLOBAL
   {
     using PTXSA = OTG_FS_GLOBAL_FS_HPTXFSIZ_PTXSA_Values<OTG_FS_GLOBAL::FS_HPTXFSIZ, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_HPTXFSIZBase> ;
     using PTXFSIZ = OTG_FS_GLOBAL_FS_HPTXFSIZ_PTXFSIZ_Values<OTG_FS_GLOBAL::FS_HPTXFSIZ, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_HPTXFSIZBase> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_HPTXFSIZ_PTXFSIZ_Values<OTG_FS_GLOBAL::FS_HPTXFSIZ, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -276,6 +292,7 @@ struct OTG_FS_GLOBAL
   {
     using INEPTXSA = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXSA_Values<OTG_FS_GLOBAL::FS_DIEPTXF1, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF1Base> ;
     using INEPTXFD = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF1, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF1Base> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -287,6 +304,7 @@ struct OTG_FS_GLOBAL
   {
     using INEPTXSA = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXSA_Values<OTG_FS_GLOBAL::FS_DIEPTXF2, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF2Base> ;
     using INEPTXFD = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF2, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF2Base> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -298,6 +316,7 @@ struct OTG_FS_GLOBAL
   {
     using INEPTXSA = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXSA_Values<OTG_FS_GLOBAL::FS_DIEPTXF3, 0, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF3Base> ;
     using INEPTXFD = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF3, 16, 16, ReadWriteMode, OTG_FS_GLOBALFS_DIEPTXF3Base> ;
+    using FieldValues = OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values<OTG_FS_GLOBAL::FS_DIEPTXF3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

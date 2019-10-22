@@ -10,6 +10,6 @@
 #if !defined(SPI3ENUMS_HPP)
 #define SPI3ENUMS_HPP
 
-#include "fieldvalues.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues 
 
 #endif //#if !defined(SPI3ENUMS_HPP)

@@ -10,7 +10,7 @@
 #if !defined(FPUREGISTERS_HPP)
 #define FPUREGISTERS_HPP
 
-#include "fpufieldvalue.hpp"  //for Bits Fields defs 
+#include "fpufieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -30,6 +30,7 @@ struct FPU
     using MONRDY = FPU_FPCCR_MONRDY_Values<FPU::FPCCR, 8, 1, ReadWriteMode, FPUFPCCRBase> ;
     using LSPEN = FPU_FPCCR_LSPEN_Values<FPU::FPCCR, 30, 1, ReadWriteMode, FPUFPCCRBase> ;
     using ASPEN = FPU_FPCCR_ASPEN_Values<FPU::FPCCR, 31, 1, ReadWriteMode, FPUFPCCRBase> ;
+    using FieldValues = FPU_FPCCR_ASPEN_Values<FPU::FPCCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -40,6 +41,7 @@ struct FPU
   struct FPCAR : public RegisterBase<0xE000EF38, 32, ReadWriteMode>
   {
     using ADDRESS = FPU_FPCAR_ADDRESS_Values<FPU::FPCAR, 3, 29, ReadWriteMode, FPUFPCARBase> ;
+    using FieldValues = FPU_FPCAR_ADDRESS_Values<FPU::FPCAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -63,6 +65,7 @@ struct FPU
     using C = FPU_FPSCR_C_Values<FPU::FPSCR, 29, 1, ReadWriteMode, FPUFPSCRBase> ;
     using Z = FPU_FPSCR_Z_Values<FPU::FPSCR, 30, 1, ReadWriteMode, FPUFPSCRBase> ;
     using N = FPU_FPSCR_N_Values<FPU::FPSCR, 31, 1, ReadWriteMode, FPUFPSCRBase> ;
+    using FieldValues = FPU_FPSCR_N_Values<FPU::FPSCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

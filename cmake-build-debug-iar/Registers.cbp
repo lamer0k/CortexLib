@@ -25,9 +25,14 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Pin"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Port"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Timer"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Application/Led"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
-					<Add directory="C:/Users/Skolody/source/CortexLib/Tools/RegistersGenerator/Stm32F411"/>
-					<Add directory="C:/Users/Skolody/source/CortexLib/Tools/RegistersGenerator/Stm32F411/FieldValues"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Common/PatternMatching"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 Registers"/>
@@ -44,9 +49,14 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Pin"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Port"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Timer"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Application/Led"/>
 					<Add directory="C:/Users/Skolody/source/CortexLib/Common"/>
-					<Add directory="C:/Users/Skolody/source/CortexLib/Tools/RegistersGenerator/Stm32F411"/>
-					<Add directory="C:/Users/Skolody/source/CortexLib/Tools/RegistersGenerator/Stm32F411/FieldValues"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+					<Add directory="C:/Users/Skolody/source/CortexLib/Common/PatternMatching"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="C:/PROGRA~2/IBM/RATION~1/CLEARC~1/bin/clearmake.exe -f &quot;C:/Users/Skolody/source/CortexLib/cmake-build-debug-iar/Makefile&quot;  VERBOSE=1 Registers/fast"/>

@@ -2,28 +2,34 @@ cmake_minimum_required(VERSION 3.13)
 
 project(Registers)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
 #set(CMAKE_COMPILER_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin")
 #set(CMAKE_COMPILER_INCLUDE_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/inc/cpp")
-set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
+#set(CMAKE_CXX_FLAGS_DEBUG "--debug --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
 #set(CMAKE_MAKE_PROGRAM "C:/Program Files (x86)/IBM/RationalSDLC/ClearCase/bin/clearmake.exe")
 
 #set(CMAKE_C_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
 #set(CMAKE_CXX_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
-#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f413xG.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp")
 
+
 include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Pin
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
+                    ${CMAKE_SOURCE_DIR}/Application/Led
                     ${CMAKE_SOURCE_DIR}/Common
-                    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
-                    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues
-                 #    ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
-                 #    ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/FieldValue
+                 #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
+                 #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues
+                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
+                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/FieldValues
+                     ${CMAKE_SOURCE_DIR}/Common/PatternMatching
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y/BitsField
 

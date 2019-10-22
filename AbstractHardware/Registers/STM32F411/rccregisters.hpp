@@ -10,7 +10,7 @@
 #if !defined(RCCREGISTERS_HPP)
 #define RCCREGISTERS_HPP
 
-#include "rccfieldvalue.hpp"  //for Bits Fields defs 
+#include "rccfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -33,6 +33,7 @@ struct RCC
     using HSITRIM = RCC_CR_HSITRIM_Values<RCC::CR, 3, 5, ReadWriteMode, RCCCRBase> ;
     using HSIRDY = RCC_CR_HSIRDY_Values<RCC::CR, 1, 1, ReadMode, RCCCRBase> ;
     using HSION = RCC_CR_HSION_Values<RCC::CR, 0, 1, ReadWriteMode, RCCCRBase> ;
+    using FieldValues = RCC_CR_HSION_Values<RCC::CR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -64,6 +65,7 @@ struct RCC
     using PLLM2 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 2, 1, ReadWriteMode, RCCPLLCFGRBase> ;
     using PLLM1 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 1, 1, ReadWriteMode, RCCPLLCFGRBase> ;
     using PLLM0 = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 0, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using FieldValues = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -86,6 +88,7 @@ struct RCC
     using SWS0 = RCC_CFGR_SWS_Values<RCC::CFGR, 2, 1, ReadMode, RCCCFGRBase> ;
     using SW1 = RCC_CFGR_SW_Values<RCC::CFGR, 1, 1, ReadWriteMode, RCCCFGRBase> ;
     using SW0 = RCC_CFGR_SW_Values<RCC::CFGR, 0, 1, ReadWriteMode, RCCCFGRBase> ;
+    using FieldValues = RCC_CFGR_SW_Values<RCC::CFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -115,6 +118,7 @@ struct RCC
     using HSIRDYF = RCC_CIR_HSIRDYF_Values<RCC::CIR, 2, 1, ReadMode, RCCCIRBase> ;
     using LSERDYF = RCC_CIR_LSERDYF_Values<RCC::CIR, 1, 1, ReadMode, RCCCIRBase> ;
     using LSIRDYF = RCC_CIR_LSIRDYF_Values<RCC::CIR, 0, 1, ReadMode, RCCCIRBase> ;
+    using FieldValues = RCC_CIR_LSIRDYF_Values<RCC::CIR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -133,6 +137,7 @@ struct RCC
     using GPIOCRST = RCC_AHBRSTR_GPIOCRST_Values<RCC::AHB1RSTR, 2, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
     using GPIOBRST = RCC_AHBRSTR_GPIOBRST_Values<RCC::AHB1RSTR, 1, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
     using GPIOARST = RCC_AHBRSTR_GPIOARST_Values<RCC::AHB1RSTR, 0, 1, ReadWriteMode, RCCAHB1RSTRBase> ;
+    using FieldValues = RCC_AHBRSTR_GPIOARST_Values<RCC::AHB1RSTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -143,6 +148,7 @@ struct RCC
   struct AHB2RSTR : public RegisterBase<0x40023814, 32, ReadWriteMode>
   {
     using OTGFSRST = RCC_AHBRSTR_OTGFSRST_Values<RCC::AHB2RSTR, 7, 1, ReadWriteMode, RCCAHB2RSTRBase> ;
+    using FieldValues = RCC_AHBRSTR_OTGFSRST_Values<RCC::AHB2RSTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -164,6 +170,7 @@ struct RCC
     using TIM4RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 2, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
     using TIM3RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 1, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
     using TIM2RST = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 0, 1, ReadWriteMode, RCCAPB1RSTRBase> ;
+    using FieldValues = RCC_APBRSTR_TIMRST_Values<RCC::APB1RSTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -183,6 +190,7 @@ struct RCC
     using USART6RST = RCC_APBRSTR_USARTRST_Values<RCC::APB2RSTR, 5, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
     using USART1RST = RCC_APBRSTR_USARTRST_Values<RCC::APB2RSTR, 4, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
     using TIM1RST = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 0, 1, ReadWriteMode, RCCAPB2RSTRBase> ;
+    using FieldValues = RCC_APBRSTR_TIMRST_Values<RCC::APB2RSTR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -201,6 +209,7 @@ struct RCC
     using GPIOCEN = RCC_AHBENR_GPIOCEN_Values<RCC::AHB1ENR, 2, 1, ReadWriteMode, RCCAHB1ENRBase> ;
     using GPIOBEN = RCC_AHBENR_GPIOBEN_Values<RCC::AHB1ENR, 1, 1, ReadWriteMode, RCCAHB1ENRBase> ;
     using GPIOAEN = RCC_AHBENR_GPIOAEN_Values<RCC::AHB1ENR, 0, 1, ReadWriteMode, RCCAHB1ENRBase> ;
+    using FieldValues = RCC_AHBENR_GPIOAEN_Values<RCC::AHB1ENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -211,6 +220,7 @@ struct RCC
   struct AHB2ENR : public RegisterBase<0x40023834, 32, ReadWriteMode>
   {
     using OTGFSEN = RCC_AHBENR_OTGFSEN_Values<RCC::AHB2ENR, 7, 1, ReadWriteMode, RCCAHB2ENRBase> ;
+    using FieldValues = RCC_AHBENR_OTGFSEN_Values<RCC::AHB2ENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -232,6 +242,7 @@ struct RCC
     using TIM4EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 2, 1, ReadWriteMode, RCCAPB1ENRBase> ;
     using TIM3EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 1, 1, ReadWriteMode, RCCAPB1ENRBase> ;
     using TIM2EN = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 0, 1, ReadWriteMode, RCCAPB1ENRBase> ;
+    using FieldValues = RCC_APBENR_TIMEN_Values<RCC::APB1ENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -252,6 +263,7 @@ struct RCC
     using TIM9EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 16, 1, ReadWriteMode, RCCAPB2ENRBase> ;
     using TIM10EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 17, 1, ReadWriteMode, RCCAPB2ENRBase> ;
     using TIM11EN = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 18, 1, ReadWriteMode, RCCAPB2ENRBase> ;
+    using FieldValues = RCC_APBENR_TIMEN_Values<RCC::APB2ENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -272,6 +284,7 @@ struct RCC
     using GPIOCLPEN = RCC_AHBLPENR_GPIOCLPEN_Values<RCC::AHB1LPENR, 2, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
     using GPIOBLPEN = RCC_AHBLPENR_GPIOBLPEN_Values<RCC::AHB1LPENR, 1, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
     using GPIOALPEN = RCC_AHBLPENR_GPIOALPEN_Values<RCC::AHB1LPENR, 0, 1, ReadWriteMode, RCCAHB1LPENRBase> ;
+    using FieldValues = RCC_AHBLPENR_GPIOALPEN_Values<RCC::AHB1LPENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -282,6 +295,7 @@ struct RCC
   struct AHB2LPENR : public RegisterBase<0x40023854, 32, ReadWriteMode>
   {
     using OTGFSLPEN = RCC_AHBLPENR_OTGFSLPEN_Values<RCC::AHB2LPENR, 7, 1, ReadWriteMode, RCCAHB2LPENRBase> ;
+    using FieldValues = RCC_AHBLPENR_OTGFSLPEN_Values<RCC::AHB2LPENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -303,6 +317,7 @@ struct RCC
     using TIM4LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 2, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
     using TIM3LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 1, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
     using TIM2LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 0, 1, ReadWriteMode, RCCAPB1LPENRBase> ;
+    using FieldValues = RCC_APBLPENR_TIMLPEN_Values<RCC::APB1LPENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -323,6 +338,7 @@ struct RCC
     using TIM9LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 16, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
     using TIM10LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 17, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
     using TIM11LPEN = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 18, 1, ReadWriteMode, RCCAPB2LPENRBase> ;
+    using FieldValues = RCC_APBLPENR_TIMLPEN_Values<RCC::APB2LPENR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -339,6 +355,7 @@ struct RCC
     using LSEBYP = RCC_BDCR_LSEBYP_Values<RCC::BDCR, 2, 1, ReadWriteMode, RCCBDCRBase> ;
     using LSERDY = RCC_BDCR_LSERDY_Values<RCC::BDCR, 1, 1, ReadMode, RCCBDCRBase> ;
     using LSEON = RCC_BDCR_LSEON_Values<RCC::BDCR, 0, 1, ReadWriteMode, RCCBDCRBase> ;
+    using FieldValues = RCC_BDCR_LSEON_Values<RCC::BDCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -358,6 +375,7 @@ struct RCC
     using RMVF = RCC_CSR_RMVF_Values<RCC::CSR, 24, 1, ReadWriteMode, RCCCSRBase> ;
     using LSIRDY = RCC_CSR_LSIRDY_Values<RCC::CSR, 1, 1, ReadMode, RCCCSRBase> ;
     using LSION = RCC_CSR_LSION_Values<RCC::CSR, 0, 1, ReadWriteMode, RCCCSRBase> ;
+    using FieldValues = RCC_CSR_LSION_Values<RCC::CSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -371,6 +389,7 @@ struct RCC
     using SPREADSEL = RCC_SSCGR_SPREADSEL_Values<RCC::SSCGR, 30, 1, ReadWriteMode, RCCSSCGRBase> ;
     using INCSTEP = RCC_SSCGR_INCSTEP_Values<RCC::SSCGR, 13, 15, ReadWriteMode, RCCSSCGRBase> ;
     using MODPER = RCC_SSCGR_MODPER_Values<RCC::SSCGR, 0, 13, ReadWriteMode, RCCSSCGRBase> ;
+    using FieldValues = RCC_SSCGR_MODPER_Values<RCC::SSCGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -382,6 +401,7 @@ struct RCC
   {
     using PLLI2SRx = RCC_PLLISCFGR_PLLISRx_Values<RCC::PLLI2SCFGR, 28, 3, ReadWriteMode, RCCPLLI2SCFGRBase> ;
     using PLLI2SNx = RCC_PLLISCFGR_PLLISNx_Values<RCC::PLLI2SCFGR, 6, 9, ReadWriteMode, RCCPLLI2SCFGRBase> ;
+    using FieldValues = RCC_PLLISCFGR_PLLISNx_Values<RCC::PLLI2SCFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
