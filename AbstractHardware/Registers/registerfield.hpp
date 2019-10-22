@@ -10,19 +10,24 @@ template<typename Reg, size_t offset, size_t size, typename AccessMode>
 struct RegisterField
 {
   using RegType = typename Reg::Type ;
+  using Register = Reg ;
+  static constexpr RegType Offset = offset ;
+  static constexpr RegType Size = size ;
+  using Access = AccessMode ;
+
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  template<typename T = AccessMode,
+  __forceinline template<typename T = AccessMode,
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Set(RegType value)
   {
     assert(value < ((1 << size) - 1)) ;
     
-    RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Addr) ; //Сохраняем текущее значение регистра
+    RegType newRegValue = *reinterpret_cast<RegType *>(Reg::Address) ; //Сохраняем текущее значение регистра
     
     newRegValue &= ~ (((1 << size) - 1) << offset); //Вначале нужно очистить старое значение битового поля
     newRegValue |= (value << offset) ; // Затем установить новое
     
-    *reinterpret_cast<RegType *>(Reg::Addr) = newRegValue ; //И записать новое значение в регистр
+    *reinterpret_cast<RegType *>(Reg::Address) = newRegValue ; //И записать новое значение в регистр
   }
   
   //Метод устанавливает проверяет установлено ли значение битового поля
@@ -30,7 +35,7 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value>>
   inline static RegType Get()
   {
-    return ((*reinterpret_cast<RegType *>(Reg::Addr)) & (((1 << size) - 1) >> offset))  ;
+    return ((*reinterpret_cast<RegType *>(Reg::Address)) & (((1 << size) - 1) >> offset))  ;
   }
 };
 #endif //REGISTERS_REGISTERFIELD_HPP
