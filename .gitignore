@@ -2,3 +2,6 @@
 /cmake-build-debug/
 /cmake-build-default/
 /cmake-build-default-mingw/
+/cmake-build-debug-iar/
+/Tools/RegistersGenerator/STM32F411
+

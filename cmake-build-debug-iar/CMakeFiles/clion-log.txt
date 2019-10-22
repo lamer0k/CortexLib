@@ -6,19 +6,19 @@ C:\JetBrains\CLion2019_2\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug "-
 Cannot get compiler information:
 	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Pin -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Port -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Timer -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Atomic -IC:\\Users\\Skolody\\source\\CortexLib\\Application\\Led -IC:\\Users\\Skolody\\source\\CortexLib\\Application -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\CriticalSection -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411\\FieldValues -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\PatternMatching -r -fpch-preprocess -v -dD -E
 	Fatal error[Su011]: More than one source file specified:
-	            @C:\Users\Skolody\AppData\Local\Temp\response-file8436255176375828
-	                      910.txt
-	            C:\Users\Skolody\AppData\Local\Temp\compiler-file16783483216228462
-	                      157
+	            @C:\Users\Skolody\AppData\Local\Temp\response-file5366079896250068
+	                      837.txt
+	            C:\Users\Skolody\AppData\Local\Temp\compiler-file18285732789399816
+	                      961
 	Fatal error detected, aborting.
 	
 	
 	Compiler exited with error code 2: Y:\SKolody_main\Mob_Point_Lev\Hydrastep\04_Design\03_Software\05_Source\_iar_tools\Embedded_Workbench\arm\bin\iccarm.exe -xc++ --c++ --silent C:\\Users\\Skolody\\source\\CortexLib\\main.cpp -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Pin -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Port -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Timer -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Atomic -IC:\\Users\\Skolody\\source\\CortexLib\\Application\\Led -IC:\\Users\\Skolody\\source\\CortexLib\\Application -IC:\\Users\\Skolody\\source\\CortexLib\\Common -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\CriticalSection -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411 -IC:\\Users\\Skolody\\source\\CortexLib\\AbstractHardware\\Registers\\STM32F411\\FieldValues -IC:\\Users\\Skolody\\source\\CortexLib\\Common\\PatternMatching -r -fpch-preprocess -v -dD -E
 	Fatal error[Su011]: More than one source file specified:
-	            @C:\Users\Skolody\AppData\Local\Temp\response-file1890221673115566
-	                      125.txt
-	            C:\Users\Skolody\AppData\Local\Temp\compiler-file16783483216228462
-	                      157
+	            @C:\Users\Skolody\AppData\Local\Temp\response-file5611473044154689
+	                      080.txt
+	            C:\Users\Skolody\AppData\Local\Temp\compiler-file18285732789399816
+	                      961
 	Fatal error detected, aborting.
 	
 	
