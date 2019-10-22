@@ -1,2 +1,9 @@
 # Project exclude paths
 /cmake-build-debug/
+/cmake-build-default/
+/cmake-build-default-mingw/
+/cmake-build-debug-iar/
+/cmake-build-debug-mingw/
+/Debug/
+/settings/
+/Tools/RegistersGenerator/STM32F411

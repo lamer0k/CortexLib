@@ -64,7 +64,6 @@ struct Timer
     Start();
     while(!TimerModule::SR::UIF::UpdatePending::IsSet())
     {
-    
     }
     Stop();
   }
@@ -80,6 +79,5 @@ struct Timer
     }
   }
 };
-
 
 #endif //REGISTERS_TIMER_HPP

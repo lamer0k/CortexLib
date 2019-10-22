@@ -1,5 +1,6 @@
 from cmsis_svd.parser import SVDParser
 from cmsis_svd.model import SVDRegister
+from cmsis_svd.model import SVDField
 import os
 import argparse
 import re
@@ -90,10 +91,10 @@ def find_bits_field(list, name):
             break
     return result
 
-def cut_bits_field(bits_filed):
-    name = re.sub(r'[^\w\s]+|[\d]+', r'',bits_filed).strip()
-   # name = bits_filed
-    return name
+#def cut_bits_field(bits_filed):
+#    name = re.sub(r'[^\w\s]+|[\d]+', r'',bits_filed).strip()
+#   # name = bits_filed
+#    return name
 
 def process_device(raw_device):
     result = Device(
@@ -147,6 +148,7 @@ def process_peripheral(raw_peripheral, device):
                         reg = SVDRegister(
                             name = _name,
                             fields = raw_register._fields,
+                            fields_array = raw_register._fields_array,
                             derived_from = raw_register.derived_from,
                             description = raw_register.description,
                             address_offset = raw_register.address_offset + raw_register.dim_increment * i,
@@ -195,6 +197,26 @@ def process_register(raw_register, peripheral):
         if (raw_register._fields != None):
             for field in raw_register._fields:
                 result.fields.append(process_field(field, result, peripheral))
+
+            if(raw_register._fields_array != None):
+
+               for raw_field in raw_register._fields_array:
+                    for i in range(raw_field.dim):
+                        _name = raw_field.name % raw_field.dim_indices[i]
+                        _name = _name.replace('[','')
+                        _name = _name.replace(']','')
+                        field = SVDField(
+                            name = _name,
+                            derived_from = raw_field.derived_from,
+                            description = raw_field.description,
+                            bit_offset = raw_field.bit_offset + raw_field.dim_increment * i ,
+                            bit_width = raw_field.bit_width,
+                            access = raw_field.access,
+                            enumerated_values = raw_field.enumerated_values,
+                            modified_write_values = raw_field.modified_write_values,
+                            read_action = raw_field.read_action,
+                        )
+                        result.fields.append(process_field(field, result, peripheral))
     
     return result
     
@@ -332,7 +354,7 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
         ))
     
     registers_file.write('  {\n')
-
+    fieldvalue_class_name = ""
     for field in register.fields:
         fieldvalue_class_name = generate_field(
             peripheral, 
@@ -340,17 +362,18 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
             field, 
             registers_file, 
             enumerations_file)
-
-    registers_file.write('    using FieldValues = {}<{}::{}, 0, 0, NoAccess, NoAccess> ;\n'.format(
-        fieldvalue_class_name,
-        camel_case(peripheral.name),
-        camel_case(register.name)
-    ))
+    if register.fields != None:
+        registers_file.write('    using FieldValues = {}<{}::{}, 0, 0, NoAccess, NoAccess> ;\n'.format(
+            fieldvalue_class_name,
+            camel_case(peripheral.name),
+            camel_case(register.name)
+        ))
     registers_file.write('  } ;\n')
     registers_file.write('\n')
 
 def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
     field_name = camel_case(field.name)
+    access = fieldvalue_types[field.access]
 
     if (camel_case(register.name) == camel_case(field.name)):
         field_name = '{}Field'.format(field_name)
@@ -361,21 +384,25 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
         camel_case(peripheral.name),
         camel_case(register.name),
         camel_case(field.name)))
-    if (field.is_fieldvalue ):
-        fieldvalue_class_name = name
-    else:
-        fieldvalue_class_name = cut_bits_field(name)
+    fieldvalue_class_name = name
+#    if (field.is_fieldvalue ):
+#        fieldvalue_class_name = name
+#    else:
+#        fieldvalue_class_name = cut_bits_field(name)
 
     name = '{}_{}_{}_'.format(
         camel_case(peripheral.name),
         camel_case(register.name),
         camel_case(field.name))
-    if (field.is_fieldvalue):
-        fieldvalue_name = name
-    else:
-        fieldvalue_name = cut_bits_field(name)
+    fieldvalue_name = name
+#    if (field.is_fieldvalue):
+#        fieldvalue_name = name
+#    else:
+#        fieldvalue_name = cut_bits_field(name)
 
 
+
+  #  access = fieldvalue_types['read-write'] ;
 
     if (field.fieldvalue_values != None):
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
@@ -385,8 +412,9 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
             camel_case(register.name),
             field.bit_offset,
             field.bit_width,
-            fieldvalue_types[field.access],
-            #camel_case(field.name) + fieldvalue_name))
+            access,
+            #fieldvalue_types[access],
+
             camel_case(peripheral.name) + camel_case(register.name)))
     else:
         registers_file.write('    using {} = {}<{}::{}, {}, {}, {}, {}Base> ;\n'.format(
@@ -396,8 +424,9 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
             camel_case(register.name),
             field.bit_offset,
             field.bit_width,
-            fieldvalue_types[field.access],
-           # camel_case(peripheral.name) + camel_case(field.name)))
+            access,
+            #fieldvalue_types[access],
+
             fieldvalue_name))
             
     if (bitsfiled_file != None):
