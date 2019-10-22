@@ -1,0 +1,165 @@
+/*******************************************************************************
+* Filename      : i2c3registers.hpp
+*
+* Details       : Inter-integrated circuit. This header file is auto-generated
+*                 for STM32F411 device.
+*
+*
+*******************************************************************************/
+
+#if !defined(I2C3REGISTERS_HPP)
+#define I2C3REGISTERS_HPP
+
+#include "i2c3fieldvalues.hpp"  //for Bits Fields defs 
+#include "registerbase.hpp"   //for RegisterBase
+#include "register.hpp"       //for Register
+#include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
+
+struct I2C3
+{
+  struct I2C3CR1Base {} ;
+
+  struct CR1 : public RegisterBase<0x40005C00, 32, ReadWriteMode>
+  {
+    using SWRST = I2C3_CR1_SWRST_Values<I2C3::CR1, 15, 1, ReadWriteMode, I2C3CR1Base> ;
+    using ALERT = I2C3_CR1_ALERT_Values<I2C3::CR1, 13, 1, ReadWriteMode, I2C3CR1Base> ;
+    using PEC = I2C3_CR1_PEC_Values<I2C3::CR1, 12, 1, ReadWriteMode, I2C3CR1Base> ;
+    using POS = I2C3_CR1_POS_Values<I2C3::CR1, 11, 1, ReadWriteMode, I2C3CR1Base> ;
+    using ACK = I2C3_CR1_ACK_Values<I2C3::CR1, 10, 1, ReadWriteMode, I2C3CR1Base> ;
+    using STOP = I2C3_CR1_STOP_Values<I2C3::CR1, 9, 1, ReadWriteMode, I2C3CR1Base> ;
+    using START = I2C3_CR1_START_Values<I2C3::CR1, 8, 1, ReadWriteMode, I2C3CR1Base> ;
+    using NOSTRETCH = I2C3_CR1_NOSTRETCH_Values<I2C3::CR1, 7, 1, ReadWriteMode, I2C3CR1Base> ;
+    using ENGC = I2C3_CR1_ENGC_Values<I2C3::CR1, 6, 1, ReadWriteMode, I2C3CR1Base> ;
+    using ENPEC = I2C3_CR1_ENPEC_Values<I2C3::CR1, 5, 1, ReadWriteMode, I2C3CR1Base> ;
+    using ENARP = I2C3_CR1_ENARP_Values<I2C3::CR1, 4, 1, ReadWriteMode, I2C3CR1Base> ;
+    using SMBTYPE = I2C3_CR1_SMBTYPE_Values<I2C3::CR1, 3, 1, ReadWriteMode, I2C3CR1Base> ;
+    using SMBUS = I2C3_CR1_SMBUS_Values<I2C3::CR1, 1, 1, ReadWriteMode, I2C3CR1Base> ;
+    using PE = I2C3_CR1_PE_Values<I2C3::CR1, 0, 1, ReadWriteMode, I2C3CR1Base> ;
+    using FieldValues = I2C3_CR1_PE_Values<I2C3::CR1, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using CR1Pack  = Register<0x40005C00, 32, ReadWriteMode, I2C3CR1Base, T...> ;
+
+  struct I2C3CR2Base {} ;
+
+  struct CR2 : public RegisterBase<0x40005C04, 32, ReadWriteMode>
+  {
+    using LAST = I2C3_CR2_LAST_Values<I2C3::CR2, 12, 1, ReadWriteMode, I2C3CR2Base> ;
+    using DMAEN = I2C3_CR2_DMAEN_Values<I2C3::CR2, 11, 1, ReadWriteMode, I2C3CR2Base> ;
+    using ITBUFEN = I2C3_CR2_ITBUFEN_Values<I2C3::CR2, 10, 1, ReadWriteMode, I2C3CR2Base> ;
+    using ITEVTEN = I2C3_CR2_ITEVTEN_Values<I2C3::CR2, 9, 1, ReadWriteMode, I2C3CR2Base> ;
+    using ITERREN = I2C3_CR2_ITERREN_Values<I2C3::CR2, 8, 1, ReadWriteMode, I2C3CR2Base> ;
+    using FREQ = I2C3_CR2_FREQ_Values<I2C3::CR2, 0, 6, ReadWriteMode, I2C3CR2Base> ;
+    using FieldValues = I2C3_CR2_FREQ_Values<I2C3::CR2, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using CR2Pack  = Register<0x40005C04, 32, ReadWriteMode, I2C3CR2Base, T...> ;
+
+  struct I2C3OAR1Base {} ;
+
+  struct OAR1 : public RegisterBase<0x40005C08, 32, ReadWriteMode>
+  {
+    using ADDMODE = I2C3_OAR1_ADDMODE_Values<I2C3::OAR1, 15, 1, ReadWriteMode, I2C3OAR1Base> ;
+    using ADD10 = I2C3_OAR1_ADD10_Values<I2C3::OAR1, 8, 2, ReadWriteMode, I2C3OAR1Base> ;
+    using ADD7 = I2C3_OAR1_ADD7_Values<I2C3::OAR1, 1, 7, ReadWriteMode, I2C3OAR1Base> ;
+    using ADD0 = I2C3_OAR1_ADD0_Values<I2C3::OAR1, 0, 1, ReadWriteMode, I2C3OAR1Base> ;
+    using FieldValues = I2C3_OAR1_ADD0_Values<I2C3::OAR1, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using OAR1Pack  = Register<0x40005C08, 32, ReadWriteMode, I2C3OAR1Base, T...> ;
+
+  struct I2C3OAR2Base {} ;
+
+  struct OAR2 : public RegisterBase<0x40005C0C, 32, ReadWriteMode>
+  {
+    using ADD2 = I2C3_OAR2_ADD2_Values<I2C3::OAR2, 1, 7, ReadWriteMode, I2C3OAR2Base> ;
+    using ENDUAL = I2C3_OAR2_ENDUAL_Values<I2C3::OAR2, 0, 1, ReadWriteMode, I2C3OAR2Base> ;
+    using FieldValues = I2C3_OAR2_ENDUAL_Values<I2C3::OAR2, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using OAR2Pack  = Register<0x40005C0C, 32, ReadWriteMode, I2C3OAR2Base, T...> ;
+
+  struct I2C3DRBase {} ;
+
+  struct DR : public RegisterBase<0x40005C10, 32, ReadWriteMode>
+  {
+    using DRField = I2C3_DR_DR_Values<I2C3::DR, 0, 8, ReadWriteMode, I2C3DRBase> ;
+    using FieldValues = I2C3_DR_DR_Values<I2C3::DR, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using DRPack  = Register<0x40005C10, 32, ReadWriteMode, I2C3DRBase, T...> ;
+
+  struct I2C3SR1Base {} ;
+
+  struct SR1 : public RegisterBase<0x40005C14, 32, ReadWriteMode>
+  {
+    using SMBALERT = I2C3_SR1_SMBALERT_Values<I2C3::SR1, 15, 1, ReadWriteMode, I2C3SR1Base> ;
+    using TIMEOUT = I2C3_SR1_TIMEOUT_Values<I2C3::SR1, 14, 1, ReadWriteMode, I2C3SR1Base> ;
+    using PECERR = I2C3_SR1_PECERR_Values<I2C3::SR1, 12, 1, ReadWriteMode, I2C3SR1Base> ;
+    using OVR = I2C3_SR1_OVR_Values<I2C3::SR1, 11, 1, ReadWriteMode, I2C3SR1Base> ;
+    using AF = I2C3_SR1_AF_Values<I2C3::SR1, 10, 1, ReadWriteMode, I2C3SR1Base> ;
+    using ARLO = I2C3_SR1_ARLO_Values<I2C3::SR1, 9, 1, ReadWriteMode, I2C3SR1Base> ;
+    using BERR = I2C3_SR1_BERR_Values<I2C3::SR1, 8, 1, ReadWriteMode, I2C3SR1Base> ;
+    using TxE = I2C3_SR1_TxE_Values<I2C3::SR1, 7, 1, ReadMode, I2C3SR1Base> ;
+    using RxNE = I2C3_SR1_RxNE_Values<I2C3::SR1, 6, 1, ReadMode, I2C3SR1Base> ;
+    using STOPF = I2C3_SR1_STOPF_Values<I2C3::SR1, 4, 1, ReadMode, I2C3SR1Base> ;
+    using ADD10 = I2C3_SR1_ADD10_Values<I2C3::SR1, 3, 1, ReadMode, I2C3SR1Base> ;
+    using BTF = I2C3_SR1_BTF_Values<I2C3::SR1, 2, 1, ReadMode, I2C3SR1Base> ;
+    using ADDR = I2C3_SR1_ADDR_Values<I2C3::SR1, 1, 1, ReadMode, I2C3SR1Base> ;
+    using SB = I2C3_SR1_SB_Values<I2C3::SR1, 0, 1, ReadMode, I2C3SR1Base> ;
+    using FieldValues = I2C3_SR1_SB_Values<I2C3::SR1, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using SR1Pack  = Register<0x40005C14, 32, ReadWriteMode, I2C3SR1Base, T...> ;
+
+  struct I2C3SR2Base {} ;
+
+  struct SR2 : public RegisterBase<0x40005C18, 32, ReadMode>
+  {
+    using PEC = I2C3_SR2_PEC_Values<I2C3::SR2, 8, 8, ReadMode, I2C3SR2Base> ;
+    using DUALF = I2C3_SR2_DUALF_Values<I2C3::SR2, 7, 1, ReadMode, I2C3SR2Base> ;
+    using SMBHOST = I2C3_SR2_SMBHOST_Values<I2C3::SR2, 6, 1, ReadMode, I2C3SR2Base> ;
+    using SMBDEFAULT = I2C3_SR2_SMBDEFAULT_Values<I2C3::SR2, 5, 1, ReadMode, I2C3SR2Base> ;
+    using GENCALL = I2C3_SR2_GENCALL_Values<I2C3::SR2, 4, 1, ReadMode, I2C3SR2Base> ;
+    using TRA = I2C3_SR2_TRA_Values<I2C3::SR2, 2, 1, ReadMode, I2C3SR2Base> ;
+    using BUSY = I2C3_SR2_BUSY_Values<I2C3::SR2, 1, 1, ReadMode, I2C3SR2Base> ;
+    using MSL = I2C3_SR2_MSL_Values<I2C3::SR2, 0, 1, ReadMode, I2C3SR2Base> ;
+    using FieldValues = I2C3_SR2_MSL_Values<I2C3::SR2, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using SR2Pack  = Register<0x40005C18, 32, ReadMode, I2C3SR2Base, T...> ;
+
+  struct I2C3CCRBase {} ;
+
+  struct CCR : public RegisterBase<0x40005C1C, 32, ReadWriteMode>
+  {
+    using F_S = I2C3_CCR_F_S_Values<I2C3::CCR, 15, 1, ReadWriteMode, I2C3CCRBase> ;
+    using DUTY = I2C3_CCR_DUTY_Values<I2C3::CCR, 14, 1, ReadWriteMode, I2C3CCRBase> ;
+    using CCRField = I2C3_CCR_CCR_Values<I2C3::CCR, 0, 12, ReadWriteMode, I2C3CCRBase> ;
+    using FieldValues = I2C3_CCR_CCR_Values<I2C3::CCR, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using CCRPack  = Register<0x40005C1C, 32, ReadWriteMode, I2C3CCRBase, T...> ;
+
+  struct I2C3TRISEBase {} ;
+
+  struct TRISE : public RegisterBase<0x40005C20, 32, ReadWriteMode>
+  {
+    using TRISEField = I2C3_TRISE_TRISE_Values<I2C3::TRISE, 0, 6, ReadWriteMode, I2C3TRISEBase> ;
+    using FieldValues = I2C3_TRISE_TRISE_Values<I2C3::TRISE, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using TRISEPack  = Register<0x40005C20, 32, ReadWriteMode, I2C3TRISEBase, T...> ;
+
+} ;
+
+#endif //#if !defined(I2C3REGISTERS_HPP)
