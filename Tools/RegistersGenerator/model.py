@@ -172,9 +172,9 @@ class SVDFieldArray(SVDElement):
         if self.derived_from is None:
             return None
 
-        for register in self.parent.registers:
-            if register.name == self.derived_from:
-                return register
+        for field in self.parent.fields:
+            if field.name == self.derived_from:
+                return field
 
         raise KeyError("Unable to find derived_from: %r" % self.derived_from)
 
@@ -204,11 +204,14 @@ class SVDField(SVDElement):
         if self.derived_from is None:
             return None
 
-        for field in self.parent.fields:
-            if field.name == self.derived_from:
-                return field
+        for registers in self.parent.parent.registers:
+            for field in registers.fields:
+                strlist = self.derived_from.split('.')
+                size = len(strlist) - 1
+                if (strlist[size] == field.name):
+                    return field
 
-        raise KeyError("Unable to find derived_from: %r" % self.derived_from)
+        raise KeyError("Unable to find derived_from: %r" % strlist[size])
 
     @property
     def is_enumerated_type(self):
@@ -323,7 +326,7 @@ class SVDRegister(SVDElement):
         # make parent association
         for field in self._fields:
             field.parent = self
-            # make parent association
+        # make parent association
         for field_array in self._fields_array:
             field_array.parent = self
 
@@ -334,9 +337,9 @@ class SVDRegister(SVDElement):
     def fields(self):
         fields = []
         for field in self._lookup_possibly_derived_attribute('fields'):
-            fields.append(reg)
+            fields.append(field)
         for arr in self._lookup_possibly_derived_attribute('fields_arrays'):
-            fields.extend(arr.registers)
+            fields.extend(arr.fields)
         return fields
 
 
@@ -346,7 +349,9 @@ class SVDRegister(SVDElement):
             return None
 
         for register in self.parent.registers:
-            if register.name == self.derived_from:
+            strlist = self.derived_from.split('.')
+            size = len(strlist) - 1
+            if (strlist[size] == register.name):
                 return register
 
         raise KeyError("Unable to find derived_from: %r" % self.derived_from)

@@ -199,8 +199,19 @@ def process_register(raw_register, peripheral):
                 result.fields.append(process_field(field, result, peripheral))
 
             if(raw_register._fields_array != None):
-
                for raw_field in raw_register._fields_array:
+                    if (raw_field.derived_from != None):
+                        base_field = raw_field.get_derived_from()
+                        enumerated_values = base_field.enumerated_values
+                        access = base_field.access
+                        modified_write_values = base_field.modified_write_values
+                        read_action = base_field.read_action
+                    else:
+                        enumerated_values = raw_field.enumerated_values
+                        access = raw_field.access
+                        modified_write_values = raw_field.modified_write_values
+                        read_action = raw_field.read_action
+
                     for i in range(raw_field.dim):
                         _name = raw_field.name % raw_field.dim_indices[i]
                         _name = _name.replace('[','')
@@ -211,10 +222,10 @@ def process_register(raw_register, peripheral):
                             description = raw_field.description,
                             bit_offset = raw_field.bit_offset + raw_field.dim_increment * i ,
                             bit_width = raw_field.bit_width,
-                            access = raw_field.access,
-                            enumerated_values = raw_field.enumerated_values,
-                            modified_write_values = raw_field.modified_write_values,
-                            read_action = raw_field.read_action,
+                            access = access,
+                            enumerated_values = enumerated_values,
+                            modified_write_values = modified_write_values,
+                            read_action = read_action,
                         )
                         result.fields.append(process_field(field, result, peripheral))
     
@@ -362,7 +373,7 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
             field, 
             registers_file, 
             enumerations_file)
-    if register.fields != None:
+    if (fieldvalue_class_name != ''):
         registers_file.write('    using FieldValues = {}<{}::{}, 0, 0, NoAccess, NoAccess> ;\n'.format(
             fieldvalue_class_name,
             camel_case(peripheral.name),

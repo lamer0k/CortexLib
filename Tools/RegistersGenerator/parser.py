@@ -32,7 +32,8 @@ import re
 def _get_text(node, tag, default=None):
     """Get the text for the provided tag from the provided node"""
     try:
-        return node.find(tag).text
+        result = node.find(tag).text
+        return result
     except AttributeError:
         return default
 
@@ -110,6 +111,7 @@ class SVDParser(object):
         bit_range = _get_text(field_node, 'bitRange')
         bit_offset = _get_int(field_node, 'bitOffset')
         bit_width = _get_int(field_node, 'bitWidth')
+        derivedFrom = field_node.attrib.get('derivedFrom')
 
         msb = _get_int(field_node, 'msb')
         lsb = _get_int(field_node, 'lsb')
@@ -123,7 +125,7 @@ class SVDParser(object):
         if dim is None:
             return SVDField(
                 name=_get_text(field_node, 'name'),
-                derived_from=_get_text(field_node, 'derivedFrom'),
+                derived_from= derivedFrom,
                 description=_get_text(field_node, 'description'),
                 bit_offset=bit_offset,
                 bit_width=bit_width,
@@ -147,7 +149,7 @@ class SVDParser(object):
             # yield `SVDFieldArray` (caller will differentiate on type)
             return SVDFieldArray(
                 name=_get_text(field_node, 'name'),
-                derived_from=_get_text(field_node, 'derivedFrom'),
+                derived_from = field_node.attrib.get('derivedFrom'),
                 description=_get_text(field_node, 'description'),
                 bit_offset=bit_offset,
                 bit_width=bit_width,
@@ -179,7 +181,7 @@ class SVDParser(object):
 
         dim = _get_int(register_node, 'dim')
         name = _get_text(register_node, 'name')
-        derived_from = _get_text(register_node, 'derivedFrom')
+        derived_from = register_node.attrib.get('derivedFrom')
         description = _get_text(register_node, 'description')
         address_offset = _get_int(register_node, 'addressOffset')
         size = _get_int(register_node, 'size')
