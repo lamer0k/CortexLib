@@ -314,7 +314,12 @@ def process_fieldvalue_value(raw_fieldvalue_value):
         raw_fieldvalue_value.description)
 
 def camel_case(str):
-    return str
+    result = re.sub(r'[\W]', '_', str).strip()
+    if (re.match(r'\d', result) != None):
+       result = '_' + result
+    else:
+        pass
+    return result
     #return str.title().replace('_', '')
 
 def generate_peripheral(peripheral, registers_file, enumerations_file = None):
