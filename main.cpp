@@ -77,13 +77,13 @@ extern "C"
 {
 int __low_level_init(void)
 {
-  //Switch on external 16 MHz oscilator
+  //Switch on external 16 MHz oscillator
   RCC::CR::HSEON::Enable::Set() ;
   while (!RCC::CR::HSERDY::Enable::IsSet())
   {
 
   }
-  //Switch system clock on extrenal oscilator
+  //Switch system clock on external oscillator
   RCC::CFGR::SW::HSI::Set() ;
   while (!RCC::CFGR::SWS::HSI::IsSet())
   {
