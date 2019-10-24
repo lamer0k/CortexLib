@@ -78,7 +78,7 @@ extern "C"
 int __low_level_init(void)
 {
   //Switch on external 16 MHz oscilator
-  RCC::CR::HSEON::Enable ::Set() ;
+  RCC::CR::HSEON::Enable::Set() ;
   while (!RCC::CR::HSERDY::Enable::IsSet())
   {
 
