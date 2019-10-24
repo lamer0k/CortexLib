@@ -72,11 +72,44 @@ struct Interrupt
   }
 };
 
+
+extern "C"
+{
+int __low_level_init(void)
+{
+  //Switch on external 16 MHz oscilator
+  RCC::CR::HSEON::Enable ::Set() ;
+  while (!RCC::CR::HSERDY::Enable::IsSet())
+  {
+
+  }
+  //Switch system clock on extrenal oscilator
+  RCC::CFGR::SW::HSI::Set() ;
+  while (!RCC::CFGR::SWS::HSI::IsSet())
+  {
+
+  }
+  //Switch on clock on PortA and PortC
+  RCC::AHB1ENRPack<
+    RCC::AHB1ENR::GPIOCEN::Enable,
+    RCC::AHB1ENR::GPIOAEN::Enable>::Set() ;
+
+  // LED1 on PortA.5, set PortA.5 as output
+  GPIOA::MODER::MODER5::Output::Set() ;
+  // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
+  GPIOC::MODERPack<
+    GPIOC::MODER::MODER5::Output,
+    GPIOC::MODER::MODER8::Output,
+    GPIOC::MODER::MODER9::Output
+  >::Set() ;
+
+  return 1;
+}
+}
+
   
 int main()
 {
-  RCC::AHB1ENR::GPIOAEN::Enable::SetAtomic();
-  RCC::AHB1ENR::GPIOCEN::Enable::SetAtomic() ;
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
   RCC::APB1ENR::TIM5EN::Enable::SetAtomic() ;
   
@@ -86,10 +119,8 @@ int main()
   for (;;)
   {
     Application::DelayTimer::SetDelay(8000000) ;
- // Application::durationTimer.InterruptHandle() ;
     Application::Leds[0]->Toggle() ;  
-    Application::Leds[1]->Toggle() ;    
-    
+    Application::Leds[1]->Toggle() ;
   }
 
 
