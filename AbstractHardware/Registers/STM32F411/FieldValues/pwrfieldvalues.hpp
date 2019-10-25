@@ -22,10 +22,10 @@ struct PWR_CR_VOS_Values: public RegisterField<Reg, offset, size, AccessMode>
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct PWR_CR_ADCDC_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct PWR_CR_ADCDC1_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<PWR_CR_ADCDC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<PWR_CR_ADCDC_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<PWR_CR_ADCDC1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<PWR_CR_ADCDC1_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

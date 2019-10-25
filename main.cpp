@@ -84,8 +84,8 @@ int __low_level_init(void)
 
   }
   //Switch system clock on external oscillator
-  RCC::CFGR::SW::HSI::Set() ;
-  while (!RCC::CFGR::SWS::HSI::IsSet())
+  RCC::CFGR::SW::Hse::Set() ;
+  while (!RCC::CFGR::SWS::Hse::IsSet())
   {
 
   }
@@ -111,7 +111,7 @@ int __low_level_init(void)
 int main()
 {
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
-  RCC::APB1ENR::TIM5EN::Enable::SetAtomic() ;
+  RCC::APB1ENR::TIM5EN::Enable::Set() ;
   
   Port<Led1Pin, Led2Pin>::SetOutput() ;
   Application::Leds[1]->Toggle() ;  
@@ -182,8 +182,8 @@ int main()
   
   const auto i = GPIOA::IDR::Get() ;
   
-  GPIOC::BSRRPack<GPIOC::BSRR::BR0::Disable,
-              GPIOC::BSRR::BR4::Disable
+  GPIOC::BSRRPack<GPIOC::BSRR::BR0::Reset,
+              GPIOC::BSRR::BR4::Reset
               >::Write() ;
   
   return 0 ;

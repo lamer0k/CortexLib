@@ -810,12 +810,12 @@ struct OTG_FS_GLOBAL_FS_GRXFSIZ_RXFD_Values: public RegisterField<Reg, offset, s
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TXFSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TX0FSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TXFD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_GLOBAL_FS_GNPTXFSIZ_Device_TX0FD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 
@@ -888,12 +888,32 @@ struct OTG_FS_GLOBAL_FS_HPTXFSIZ_PTXFSIZ_Values: public RegisterField<Reg, offse
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF1_INEPTXSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct OTG_FS_GLOBAL_FS_DIEPTXF_INEPTXFD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF1_INEPTXFD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF2_INEPTXSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF2_INEPTXFD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF3_INEPTXSA_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct OTG_FS_GLOBAL_FS_DIEPTXF3_INEPTXFD_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 

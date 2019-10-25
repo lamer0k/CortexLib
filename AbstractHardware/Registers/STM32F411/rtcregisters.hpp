@@ -60,8 +60,8 @@ struct RTC
     using POL = RTC_CR_POL_Values<RTC::CR, 20, 1, ReadWriteMode, RTCCRBase> ;
     using COSEL = RTC_CR_COSEL_Values<RTC::CR, 19, 1, ReadWriteMode, RTCCRBase> ;
     using BKP = RTC_CR_BKP_Values<RTC::CR, 18, 1, ReadWriteMode, RTCCRBase> ;
-    using SUB1H = RTC_CR_SUBH_Values<RTC::CR, 17, 1, ReadWriteMode, RTCCRBase> ;
-    using ADD1H = RTC_CR_ADDH_Values<RTC::CR, 16, 1, ReadWriteMode, RTCCRBase> ;
+    using SUB1H = RTC_CR_SUB1H_Values<RTC::CR, 17, 1, ReadWriteMode, RTCCRBase> ;
+    using ADD1H = RTC_CR_ADD1H_Values<RTC::CR, 16, 1, ReadWriteMode, RTCCRBase> ;
     using TSIE = RTC_CR_TSIE_Values<RTC::CR, 15, 1, ReadWriteMode, RTCCRBase> ;
     using WUTIE = RTC_CR_WUTIE_Values<RTC::CR, 14, 1, ReadWriteMode, RTCCRBase> ;
     using ALRBIE = RTC_CR_ALRBIE_Values<RTC::CR, 13, 1, ReadWriteMode, RTCCRBase> ;
@@ -99,8 +99,8 @@ struct RTC
     using WUTF = RTC_ISR_WUTF_Values<RTC::ISR, 10, 1, ReadWriteMode, RTCISRBase> ;
     using TSF = RTC_ISR_TSF_Values<RTC::ISR, 11, 1, ReadWriteMode, RTCISRBase> ;
     using TSOVF = RTC_ISR_TSOVF_Values<RTC::ISR, 12, 1, ReadWriteMode, RTCISRBase> ;
-    using TAMP1F = RTC_ISR_TAMPF_Values<RTC::ISR, 13, 1, ReadWriteMode, RTCISRBase> ;
-    using TAMP2F = RTC_ISR_TAMPF_Values<RTC::ISR, 14, 1, ReadWriteMode, RTCISRBase> ;
+    using TAMP1F = RTC_ISR_TAMP1F_Values<RTC::ISR, 13, 1, ReadWriteMode, RTCISRBase> ;
+    using TAMP2F = RTC_ISR_TAMP2F_Values<RTC::ISR, 14, 1, ReadWriteMode, RTCISRBase> ;
     using RECALPF = RTC_ISR_RECALPF_Values<RTC::ISR, 16, 1, ReadMode, RTCISRBase> ;
     using FieldValues = RTC_ISR_RECALPF_Values<RTC::ISR, 0, 0, NoAccess, NoAccess> ;
   } ;
@@ -147,18 +147,18 @@ struct RTC
 
   struct ALRMAR : public RegisterBase<0x4000281C, 32, ReadWriteMode>
   {
-    using MSK4 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 31, 1, ReadWriteMode, RTCALRMARBase> ;
+    using MSK4 = RTC_ALRMAR_MSK4_Values<RTC::ALRMAR, 31, 1, ReadWriteMode, RTCALRMARBase> ;
     using WDSEL = RTC_ALRMAR_WDSEL_Values<RTC::ALRMAR, 30, 1, ReadWriteMode, RTCALRMARBase> ;
     using DT = RTC_ALRMAR_DT_Values<RTC::ALRMAR, 28, 2, ReadWriteMode, RTCALRMARBase> ;
     using DU = RTC_ALRMAR_DU_Values<RTC::ALRMAR, 24, 4, ReadWriteMode, RTCALRMARBase> ;
-    using MSK3 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 23, 1, ReadWriteMode, RTCALRMARBase> ;
+    using MSK3 = RTC_ALRMAR_MSK3_Values<RTC::ALRMAR, 23, 1, ReadWriteMode, RTCALRMARBase> ;
     using PM = RTC_ALRMAR_PM_Values<RTC::ALRMAR, 22, 1, ReadWriteMode, RTCALRMARBase> ;
     using HT = RTC_ALRMAR_HT_Values<RTC::ALRMAR, 20, 2, ReadWriteMode, RTCALRMARBase> ;
     using HU = RTC_ALRMAR_HU_Values<RTC::ALRMAR, 16, 4, ReadWriteMode, RTCALRMARBase> ;
-    using MSK2 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 15, 1, ReadWriteMode, RTCALRMARBase> ;
+    using MSK2 = RTC_ALRMAR_MSK2_Values<RTC::ALRMAR, 15, 1, ReadWriteMode, RTCALRMARBase> ;
     using MNT = RTC_ALRMAR_MNT_Values<RTC::ALRMAR, 12, 3, ReadWriteMode, RTCALRMARBase> ;
     using MNU = RTC_ALRMAR_MNU_Values<RTC::ALRMAR, 8, 4, ReadWriteMode, RTCALRMARBase> ;
-    using MSK1 = RTC_ALRMAR_MSK_Values<RTC::ALRMAR, 7, 1, ReadWriteMode, RTCALRMARBase> ;
+    using MSK1 = RTC_ALRMAR_MSK1_Values<RTC::ALRMAR, 7, 1, ReadWriteMode, RTCALRMARBase> ;
     using ST = RTC_ALRMAR_ST_Values<RTC::ALRMAR, 4, 3, ReadWriteMode, RTCALRMARBase> ;
     using SU = RTC_ALRMAR_SU_Values<RTC::ALRMAR, 0, 4, ReadWriteMode, RTCALRMARBase> ;
     using FieldValues = RTC_ALRMAR_SU_Values<RTC::ALRMAR, 0, 0, NoAccess, NoAccess> ;
@@ -171,18 +171,18 @@ struct RTC
 
   struct ALRMBR : public RegisterBase<0x40002820, 32, ReadWriteMode>
   {
-    using MSK4 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 31, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK4 = RTC_ALRMBR_MSK4_Values<RTC::ALRMBR, 31, 1, ReadWriteMode, RTCALRMBRBase> ;
     using WDSEL = RTC_ALRMBR_WDSEL_Values<RTC::ALRMBR, 30, 1, ReadWriteMode, RTCALRMBRBase> ;
     using DT = RTC_ALRMBR_DT_Values<RTC::ALRMBR, 28, 2, ReadWriteMode, RTCALRMBRBase> ;
     using DU = RTC_ALRMBR_DU_Values<RTC::ALRMBR, 24, 4, ReadWriteMode, RTCALRMBRBase> ;
-    using MSK3 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 23, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK3 = RTC_ALRMBR_MSK3_Values<RTC::ALRMBR, 23, 1, ReadWriteMode, RTCALRMBRBase> ;
     using PM = RTC_ALRMBR_PM_Values<RTC::ALRMBR, 22, 1, ReadWriteMode, RTCALRMBRBase> ;
     using HT = RTC_ALRMBR_HT_Values<RTC::ALRMBR, 20, 2, ReadWriteMode, RTCALRMBRBase> ;
     using HU = RTC_ALRMBR_HU_Values<RTC::ALRMBR, 16, 4, ReadWriteMode, RTCALRMBRBase> ;
-    using MSK2 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 15, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK2 = RTC_ALRMBR_MSK2_Values<RTC::ALRMBR, 15, 1, ReadWriteMode, RTCALRMBRBase> ;
     using MNT = RTC_ALRMBR_MNT_Values<RTC::ALRMBR, 12, 3, ReadWriteMode, RTCALRMBRBase> ;
     using MNU = RTC_ALRMBR_MNU_Values<RTC::ALRMBR, 8, 4, ReadWriteMode, RTCALRMBRBase> ;
-    using MSK1 = RTC_ALRMBR_MSK_Values<RTC::ALRMBR, 7, 1, ReadWriteMode, RTCALRMBRBase> ;
+    using MSK1 = RTC_ALRMBR_MSK1_Values<RTC::ALRMBR, 7, 1, ReadWriteMode, RTCALRMBRBase> ;
     using ST = RTC_ALRMBR_ST_Values<RTC::ALRMBR, 4, 3, ReadWriteMode, RTCALRMBRBase> ;
     using SU = RTC_ALRMBR_SU_Values<RTC::ALRMBR, 0, 4, ReadWriteMode, RTCALRMBRBase> ;
     using FieldValues = RTC_ALRMBR_SU_Values<RTC::ALRMBR, 0, 0, NoAccess, NoAccess> ;
@@ -217,7 +217,7 @@ struct RTC
 
   struct SHIFTR : public RegisterBase<0x4000282C, 32, WriteMode>
   {
-    using ADD1S = RTC_SHIFTR_ADDS_Values<RTC::SHIFTR, 31, 1, WriteMode, RTCSHIFTRBase> ;
+    using ADD1S = RTC_SHIFTR_ADD1S_Values<RTC::SHIFTR, 31, 1, WriteMode, RTCSHIFTRBase> ;
     using SUBFS = RTC_SHIFTR_SUBFS_Values<RTC::SHIFTR, 0, 15, WriteMode, RTCSHIFTRBase> ;
     using FieldValues = RTC_SHIFTR_SUBFS_Values<RTC::SHIFTR, 0, 0, NoAccess, NoAccess> ;
   } ;
@@ -273,8 +273,8 @@ struct RTC
   struct CALR : public RegisterBase<0x4000283C, 32, ReadWriteMode>
   {
     using CALP = RTC_CALR_CALP_Values<RTC::CALR, 15, 1, ReadWriteMode, RTCCALRBase> ;
-    using CALW8 = RTC_CALR_CALW_Values<RTC::CALR, 14, 1, ReadWriteMode, RTCCALRBase> ;
-    using CALW16 = RTC_CALR_CALW_Values<RTC::CALR, 13, 1, ReadWriteMode, RTCCALRBase> ;
+    using CALW8 = RTC_CALR_CALW8_Values<RTC::CALR, 14, 1, ReadWriteMode, RTCCALRBase> ;
+    using CALW16 = RTC_CALR_CALW16_Values<RTC::CALR, 13, 1, ReadWriteMode, RTCCALRBase> ;
     using CALM = RTC_CALR_CALM_Values<RTC::CALR, 0, 9, ReadWriteMode, RTCCALRBase> ;
     using FieldValues = RTC_CALR_CALM_Values<RTC::CALR, 0, 0, NoAccess, NoAccess> ;
   } ;
@@ -288,18 +288,18 @@ struct RTC
   {
     using ALARMOUTTYPE = RTC_TAFCR_ALARMOUTTYPE_Values<RTC::TAFCR, 18, 1, ReadWriteMode, RTCTAFCRBase> ;
     using TSINSEL = RTC_TAFCR_TSINSEL_Values<RTC::TAFCR, 17, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using TAMP1INSEL = RTC_TAFCR_TAMPINSEL_Values<RTC::TAFCR, 16, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP1INSEL = RTC_TAFCR_TAMP1INSEL_Values<RTC::TAFCR, 16, 1, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPPUDIS = RTC_TAFCR_TAMPPUDIS_Values<RTC::TAFCR, 15, 1, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPPRCH = RTC_TAFCR_TAMPPRCH_Values<RTC::TAFCR, 13, 2, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPFLT = RTC_TAFCR_TAMPFLT_Values<RTC::TAFCR, 11, 2, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPFREQ = RTC_TAFCR_TAMPFREQ_Values<RTC::TAFCR, 8, 3, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPTS = RTC_TAFCR_TAMPTS_Values<RTC::TAFCR, 7, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using TAMP2TRG = RTC_TAFCR_TAMPTRG_Values<RTC::TAFCR, 4, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using TAMP2E = RTC_TAFCR_TAMPE_Values<RTC::TAFCR, 3, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP2TRG = RTC_TAFCR_TAMP2TRG_Values<RTC::TAFCR, 4, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP2E = RTC_TAFCR_TAMP2E_Values<RTC::TAFCR, 3, 1, ReadWriteMode, RTCTAFCRBase> ;
     using TAMPIE = RTC_TAFCR_TAMPIE_Values<RTC::TAFCR, 2, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using TAMP1TRG = RTC_TAFCR_TAMPTRG_Values<RTC::TAFCR, 1, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using TAMP1E = RTC_TAFCR_TAMPE_Values<RTC::TAFCR, 0, 1, ReadWriteMode, RTCTAFCRBase> ;
-    using FieldValues = RTC_TAFCR_TAMPE_Values<RTC::TAFCR, 0, 0, NoAccess, NoAccess> ;
+    using TAMP1TRG = RTC_TAFCR_TAMP1TRG_Values<RTC::TAFCR, 1, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using TAMP1E = RTC_TAFCR_TAMP1E_Values<RTC::TAFCR, 0, 1, ReadWriteMode, RTCTAFCRBase> ;
+    using FieldValues = RTC_TAFCR_TAMP1E_Values<RTC::TAFCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -333,8 +333,8 @@ struct RTC
 
   struct BKP0R : public RegisterBase<0x40002850, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP0R, 0, 32, ReadWriteMode, RTCBKP0RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP0R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP0R_BKP_Values<RTC::BKP0R, 0, 32, ReadWriteMode, RTCBKP0RBase> ;
+    using FieldValues = RTC_BKP0R_BKP_Values<RTC::BKP0R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -344,8 +344,8 @@ struct RTC
 
   struct BKP1R : public RegisterBase<0x40002854, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP1R, 0, 32, ReadWriteMode, RTCBKP1RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP1R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP1R_BKP_Values<RTC::BKP1R, 0, 32, ReadWriteMode, RTCBKP1RBase> ;
+    using FieldValues = RTC_BKP1R_BKP_Values<RTC::BKP1R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -355,8 +355,8 @@ struct RTC
 
   struct BKP2R : public RegisterBase<0x40002858, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP2R, 0, 32, ReadWriteMode, RTCBKP2RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP2R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP2R_BKP_Values<RTC::BKP2R, 0, 32, ReadWriteMode, RTCBKP2RBase> ;
+    using FieldValues = RTC_BKP2R_BKP_Values<RTC::BKP2R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -366,8 +366,8 @@ struct RTC
 
   struct BKP3R : public RegisterBase<0x4000285C, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP3R, 0, 32, ReadWriteMode, RTCBKP3RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP3R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP3R_BKP_Values<RTC::BKP3R, 0, 32, ReadWriteMode, RTCBKP3RBase> ;
+    using FieldValues = RTC_BKP3R_BKP_Values<RTC::BKP3R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -377,8 +377,8 @@ struct RTC
 
   struct BKP4R : public RegisterBase<0x40002860, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP4R, 0, 32, ReadWriteMode, RTCBKP4RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP4R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP4R_BKP_Values<RTC::BKP4R, 0, 32, ReadWriteMode, RTCBKP4RBase> ;
+    using FieldValues = RTC_BKP4R_BKP_Values<RTC::BKP4R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -388,8 +388,8 @@ struct RTC
 
   struct BKP5R : public RegisterBase<0x40002864, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP5R, 0, 32, ReadWriteMode, RTCBKP5RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP5R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP5R_BKP_Values<RTC::BKP5R, 0, 32, ReadWriteMode, RTCBKP5RBase> ;
+    using FieldValues = RTC_BKP5R_BKP_Values<RTC::BKP5R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -399,8 +399,8 @@ struct RTC
 
   struct BKP6R : public RegisterBase<0x40002868, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP6R, 0, 32, ReadWriteMode, RTCBKP6RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP6R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP6R_BKP_Values<RTC::BKP6R, 0, 32, ReadWriteMode, RTCBKP6RBase> ;
+    using FieldValues = RTC_BKP6R_BKP_Values<RTC::BKP6R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -410,8 +410,8 @@ struct RTC
 
   struct BKP7R : public RegisterBase<0x4000286C, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP7R, 0, 32, ReadWriteMode, RTCBKP7RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP7R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP7R_BKP_Values<RTC::BKP7R, 0, 32, ReadWriteMode, RTCBKP7RBase> ;
+    using FieldValues = RTC_BKP7R_BKP_Values<RTC::BKP7R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -421,8 +421,8 @@ struct RTC
 
   struct BKP8R : public RegisterBase<0x40002870, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP8R, 0, 32, ReadWriteMode, RTCBKP8RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP8R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP8R_BKP_Values<RTC::BKP8R, 0, 32, ReadWriteMode, RTCBKP8RBase> ;
+    using FieldValues = RTC_BKP8R_BKP_Values<RTC::BKP8R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -432,8 +432,8 @@ struct RTC
 
   struct BKP9R : public RegisterBase<0x40002874, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP9R, 0, 32, ReadWriteMode, RTCBKP9RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP9R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP9R_BKP_Values<RTC::BKP9R, 0, 32, ReadWriteMode, RTCBKP9RBase> ;
+    using FieldValues = RTC_BKP9R_BKP_Values<RTC::BKP9R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -443,8 +443,8 @@ struct RTC
 
   struct BKP10R : public RegisterBase<0x40002878, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP10R, 0, 32, ReadWriteMode, RTCBKP10RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP10R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP10R_BKP_Values<RTC::BKP10R, 0, 32, ReadWriteMode, RTCBKP10RBase> ;
+    using FieldValues = RTC_BKP10R_BKP_Values<RTC::BKP10R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -454,8 +454,8 @@ struct RTC
 
   struct BKP11R : public RegisterBase<0x4000287C, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP11R, 0, 32, ReadWriteMode, RTCBKP11RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP11R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP11R_BKP_Values<RTC::BKP11R, 0, 32, ReadWriteMode, RTCBKP11RBase> ;
+    using FieldValues = RTC_BKP11R_BKP_Values<RTC::BKP11R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -465,8 +465,8 @@ struct RTC
 
   struct BKP12R : public RegisterBase<0x40002880, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP12R, 0, 32, ReadWriteMode, RTCBKP12RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP12R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP12R_BKP_Values<RTC::BKP12R, 0, 32, ReadWriteMode, RTCBKP12RBase> ;
+    using FieldValues = RTC_BKP12R_BKP_Values<RTC::BKP12R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -476,8 +476,8 @@ struct RTC
 
   struct BKP13R : public RegisterBase<0x40002884, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP13R, 0, 32, ReadWriteMode, RTCBKP13RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP13R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP13R_BKP_Values<RTC::BKP13R, 0, 32, ReadWriteMode, RTCBKP13RBase> ;
+    using FieldValues = RTC_BKP13R_BKP_Values<RTC::BKP13R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -487,8 +487,8 @@ struct RTC
 
   struct BKP14R : public RegisterBase<0x40002888, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP14R, 0, 32, ReadWriteMode, RTCBKP14RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP14R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP14R_BKP_Values<RTC::BKP14R, 0, 32, ReadWriteMode, RTCBKP14RBase> ;
+    using FieldValues = RTC_BKP14R_BKP_Values<RTC::BKP14R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -498,8 +498,8 @@ struct RTC
 
   struct BKP15R : public RegisterBase<0x4000288C, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP15R, 0, 32, ReadWriteMode, RTCBKP15RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP15R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP15R_BKP_Values<RTC::BKP15R, 0, 32, ReadWriteMode, RTCBKP15RBase> ;
+    using FieldValues = RTC_BKP15R_BKP_Values<RTC::BKP15R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -509,8 +509,8 @@ struct RTC
 
   struct BKP16R : public RegisterBase<0x40002890, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP16R, 0, 32, ReadWriteMode, RTCBKP16RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP16R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP16R_BKP_Values<RTC::BKP16R, 0, 32, ReadWriteMode, RTCBKP16RBase> ;
+    using FieldValues = RTC_BKP16R_BKP_Values<RTC::BKP16R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -520,8 +520,8 @@ struct RTC
 
   struct BKP17R : public RegisterBase<0x40002894, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP17R, 0, 32, ReadWriteMode, RTCBKP17RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP17R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP17R_BKP_Values<RTC::BKP17R, 0, 32, ReadWriteMode, RTCBKP17RBase> ;
+    using FieldValues = RTC_BKP17R_BKP_Values<RTC::BKP17R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -531,8 +531,8 @@ struct RTC
 
   struct BKP18R : public RegisterBase<0x40002898, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP18R, 0, 32, ReadWriteMode, RTCBKP18RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP18R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP18R_BKP_Values<RTC::BKP18R, 0, 32, ReadWriteMode, RTCBKP18RBase> ;
+    using FieldValues = RTC_BKP18R_BKP_Values<RTC::BKP18R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -542,8 +542,8 @@ struct RTC
 
   struct BKP19R : public RegisterBase<0x4000289C, 32, ReadWriteMode>
   {
-    using BKP = RTC_BKPR_BKP_Values<RTC::BKP19R, 0, 32, ReadWriteMode, RTCBKP19RBase> ;
-    using FieldValues = RTC_BKPR_BKP_Values<RTC::BKP19R, 0, 0, NoAccess, NoAccess> ;
+    using BKP = RTC_BKP19R_BKP_Values<RTC::BKP19R, 0, 32, ReadWriteMode, RTCBKP19RBase> ;
+    using FieldValues = RTC_BKP19R_BKP_Values<RTC::BKP19R, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

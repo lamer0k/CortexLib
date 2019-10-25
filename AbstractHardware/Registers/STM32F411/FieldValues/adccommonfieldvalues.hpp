@@ -13,45 +13,129 @@
 #include "fieldvalue.hpp"     //for FieldValues 
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_OVR_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_OVR3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_OVR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_OVR_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_OVR3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_OVR3_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_STRT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_STRT3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_STRT_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_STRT_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_STRT3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_STRT3_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_JSTRT_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_JSTRT3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_JSTRT_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_JSTRT_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_JSTRT3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JSTRT3_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_JEOC_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_JEOC3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_JEOC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_JEOC_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_JEOC3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JEOC3_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_EOC_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_EOC3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_EOC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_EOC_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_EOC3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_EOC3_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct ADC_Common_CSR_AWD_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct ADC_Common_CSR_AWD3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CSR_AWD_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CSR_AWD_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<ADC_Common_CSR_AWD3_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_AWD3_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_OVR2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_OVR2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_OVR2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_STRT2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_STRT2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_STRT2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_JSTRT2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_JSTRT2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JSTRT2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_JEOC2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_JEOC2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JEOC2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_EOC2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_EOC2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_EOC2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_AWD2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_AWD2_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_AWD2_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_OVR1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_OVR1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_OVR1_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_STRT1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_STRT1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_STRT1_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_JSTRT1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_JSTRT1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JSTRT1_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_JEOC1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_JEOC1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_JEOC1_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_EOC1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_EOC1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_EOC1_Values, BaseType, 1U> ;
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct ADC_Common_CSR_AWD1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+  using Value0 = FieldValue<ADC_Common_CSR_AWD1_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<ADC_Common_CSR_AWD1_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

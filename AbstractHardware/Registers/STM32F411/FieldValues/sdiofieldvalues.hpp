@@ -144,7 +144,22 @@ struct SDIO_RESPCMD_RESPCMD_Values: public RegisterField<Reg, offset, size, Acce
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SDIO_RESP_CARDSTATUS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct SDIO_RESP1_CARDSTATUS1_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SDIO_RESP2_CARDSTATUS2_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SDIO_RESP3_CARDSTATUS3_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SDIO_RESP4_CARDSTATUS4_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 

@@ -21,17 +21,17 @@ struct USART1
 
   struct SR : public RegisterBase<0x40011000, 32, ReadWriteMode>
   {
-    using CTS = USART_SR_CTS_Values<USART1::SR, 9, 1, ReadWriteMode, USART1SRBase> ;
-    using LBD = USART_SR_LBD_Values<USART1::SR, 8, 1, ReadWriteMode, USART1SRBase> ;
-    using TXE = USART_SR_TXE_Values<USART1::SR, 7, 1, ReadMode, USART1SRBase> ;
-    using TC = USART_SR_TC_Values<USART1::SR, 6, 1, ReadWriteMode, USART1SRBase> ;
-    using RXNE = USART_SR_RXNE_Values<USART1::SR, 5, 1, ReadWriteMode, USART1SRBase> ;
-    using IDLE = USART_SR_IDLE_Values<USART1::SR, 4, 1, ReadMode, USART1SRBase> ;
-    using ORE = USART_SR_ORE_Values<USART1::SR, 3, 1, ReadMode, USART1SRBase> ;
-    using NF = USART_SR_NF_Values<USART1::SR, 2, 1, ReadMode, USART1SRBase> ;
-    using FE = USART_SR_FE_Values<USART1::SR, 1, 1, ReadMode, USART1SRBase> ;
-    using PE = USART_SR_PE_Values<USART1::SR, 0, 1, ReadMode, USART1SRBase> ;
-    using FieldValues = USART_SR_PE_Values<USART1::SR, 0, 0, NoAccess, NoAccess> ;
+    using CTS = USART1_SR_CTS_Values<USART1::SR, 9, 1, ReadWriteMode, USART1SRBase> ;
+    using LBD = USART1_SR_LBD_Values<USART1::SR, 8, 1, ReadWriteMode, USART1SRBase> ;
+    using TXE = USART1_SR_TXE_Values<USART1::SR, 7, 1, ReadMode, USART1SRBase> ;
+    using TC = USART1_SR_TC_Values<USART1::SR, 6, 1, ReadWriteMode, USART1SRBase> ;
+    using RXNE = USART1_SR_RXNE_Values<USART1::SR, 5, 1, ReadWriteMode, USART1SRBase> ;
+    using IDLE = USART1_SR_IDLE_Values<USART1::SR, 4, 1, ReadMode, USART1SRBase> ;
+    using ORE = USART1_SR_ORE_Values<USART1::SR, 3, 1, ReadMode, USART1SRBase> ;
+    using NF = USART1_SR_NF_Values<USART1::SR, 2, 1, ReadMode, USART1SRBase> ;
+    using FE = USART1_SR_FE_Values<USART1::SR, 1, 1, ReadMode, USART1SRBase> ;
+    using PE = USART1_SR_PE_Values<USART1::SR, 0, 1, ReadMode, USART1SRBase> ;
+    using FieldValues = USART1_SR_PE_Values<USART1::SR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -41,8 +41,8 @@ struct USART1
 
   struct DR : public RegisterBase<0x40011004, 32, ReadWriteMode>
   {
-    using DRField = USART_DR_DR_Values<USART1::DR, 0, 9, ReadWriteMode, USART1DRBase> ;
-    using FieldValues = USART_DR_DR_Values<USART1::DR, 0, 0, NoAccess, NoAccess> ;
+    using DRField = USART1_DR_DR_Values<USART1::DR, 0, 9, ReadWriteMode, USART1DRBase> ;
+    using FieldValues = USART1_DR_DR_Values<USART1::DR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -52,9 +52,9 @@ struct USART1
 
   struct BRR : public RegisterBase<0x40011008, 32, ReadWriteMode>
   {
-    using DIV_Mantissa = USART_BRR_DIV_Mantissa_Values<USART1::BRR, 4, 12, ReadWriteMode, USART1BRRBase> ;
-    using DIV_Fraction = USART_BRR_DIV_Fraction_Values<USART1::BRR, 0, 4, ReadWriteMode, USART1BRRBase> ;
-    using FieldValues = USART_BRR_DIV_Fraction_Values<USART1::BRR, 0, 0, NoAccess, NoAccess> ;
+    using DIV_Mantissa = USART1_BRR_DIV_Mantissa_Values<USART1::BRR, 4, 12, ReadWriteMode, USART1BRRBase> ;
+    using DIV_Fraction = USART1_BRR_DIV_Fraction_Values<USART1::BRR, 0, 4, ReadWriteMode, USART1BRRBase> ;
+    using FieldValues = USART1_BRR_DIV_Fraction_Values<USART1::BRR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -64,22 +64,22 @@ struct USART1
 
   struct CR1 : public RegisterBase<0x4001100C, 32, ReadWriteMode>
   {
-    using OVER8 = USART_CR_OVER_Values<USART1::CR1, 15, 1, ReadWriteMode, USART1CR1Base> ;
-    using UE = USART_CR_UE_Values<USART1::CR1, 13, 1, ReadWriteMode, USART1CR1Base> ;
-    using M = USART_CR_M_Values<USART1::CR1, 12, 1, ReadWriteMode, USART1CR1Base> ;
-    using WAKE = USART_CR_WAKE_Values<USART1::CR1, 11, 1, ReadWriteMode, USART1CR1Base> ;
-    using PCE = USART_CR_PCE_Values<USART1::CR1, 10, 1, ReadWriteMode, USART1CR1Base> ;
-    using PS = USART_CR_PS_Values<USART1::CR1, 9, 1, ReadWriteMode, USART1CR1Base> ;
-    using PEIE = USART_CR_PEIE_Values<USART1::CR1, 8, 1, ReadWriteMode, USART1CR1Base> ;
-    using TXEIE = USART_CR_TXEIE_Values<USART1::CR1, 7, 1, ReadWriteMode, USART1CR1Base> ;
-    using TCIE = USART_CR_TCIE_Values<USART1::CR1, 6, 1, ReadWriteMode, USART1CR1Base> ;
-    using RXNEIE = USART_CR_RXNEIE_Values<USART1::CR1, 5, 1, ReadWriteMode, USART1CR1Base> ;
-    using IDLEIE = USART_CR_IDLEIE_Values<USART1::CR1, 4, 1, ReadWriteMode, USART1CR1Base> ;
-    using TE = USART_CR_TE_Values<USART1::CR1, 3, 1, ReadWriteMode, USART1CR1Base> ;
-    using RE = USART_CR_RE_Values<USART1::CR1, 2, 1, ReadWriteMode, USART1CR1Base> ;
-    using RWU = USART_CR_RWU_Values<USART1::CR1, 1, 1, ReadWriteMode, USART1CR1Base> ;
-    using SBK = USART_CR_SBK_Values<USART1::CR1, 0, 1, ReadWriteMode, USART1CR1Base> ;
-    using FieldValues = USART_CR_SBK_Values<USART1::CR1, 0, 0, NoAccess, NoAccess> ;
+    using OVER8 = USART1_CR1_OVER8_Values<USART1::CR1, 15, 1, ReadWriteMode, USART1CR1Base> ;
+    using UE = USART1_CR1_UE_Values<USART1::CR1, 13, 1, ReadWriteMode, USART1CR1Base> ;
+    using M = USART1_CR1_M_Values<USART1::CR1, 12, 1, ReadWriteMode, USART1CR1Base> ;
+    using WAKE = USART1_CR1_WAKE_Values<USART1::CR1, 11, 1, ReadWriteMode, USART1CR1Base> ;
+    using PCE = USART1_CR1_PCE_Values<USART1::CR1, 10, 1, ReadWriteMode, USART1CR1Base> ;
+    using PS = USART1_CR1_PS_Values<USART1::CR1, 9, 1, ReadWriteMode, USART1CR1Base> ;
+    using PEIE = USART1_CR1_PEIE_Values<USART1::CR1, 8, 1, ReadWriteMode, USART1CR1Base> ;
+    using TXEIE = USART1_CR1_TXEIE_Values<USART1::CR1, 7, 1, ReadWriteMode, USART1CR1Base> ;
+    using TCIE = USART1_CR1_TCIE_Values<USART1::CR1, 6, 1, ReadWriteMode, USART1CR1Base> ;
+    using RXNEIE = USART1_CR1_RXNEIE_Values<USART1::CR1, 5, 1, ReadWriteMode, USART1CR1Base> ;
+    using IDLEIE = USART1_CR1_IDLEIE_Values<USART1::CR1, 4, 1, ReadWriteMode, USART1CR1Base> ;
+    using TE = USART1_CR1_TE_Values<USART1::CR1, 3, 1, ReadWriteMode, USART1CR1Base> ;
+    using RE = USART1_CR1_RE_Values<USART1::CR1, 2, 1, ReadWriteMode, USART1CR1Base> ;
+    using RWU = USART1_CR1_RWU_Values<USART1::CR1, 1, 1, ReadWriteMode, USART1CR1Base> ;
+    using SBK = USART1_CR1_SBK_Values<USART1::CR1, 0, 1, ReadWriteMode, USART1CR1Base> ;
+    using FieldValues = USART1_CR1_SBK_Values<USART1::CR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -89,16 +89,16 @@ struct USART1
 
   struct CR2 : public RegisterBase<0x40011010, 32, ReadWriteMode>
   {
-    using LINEN = USART_CR_LINEN_Values<USART1::CR2, 14, 1, ReadWriteMode, USART1CR2Base> ;
-    using STOP = USART_CR_STOP_Values<USART1::CR2, 12, 2, ReadWriteMode, USART1CR2Base> ;
-    using CLKEN = USART_CR_CLKEN_Values<USART1::CR2, 11, 1, ReadWriteMode, USART1CR2Base> ;
-    using CPOL = USART_CR_CPOL_Values<USART1::CR2, 10, 1, ReadWriteMode, USART1CR2Base> ;
-    using CPHA = USART_CR_CPHA_Values<USART1::CR2, 9, 1, ReadWriteMode, USART1CR2Base> ;
-    using LBCL = USART_CR_LBCL_Values<USART1::CR2, 8, 1, ReadWriteMode, USART1CR2Base> ;
-    using LBDIE = USART_CR_LBDIE_Values<USART1::CR2, 6, 1, ReadWriteMode, USART1CR2Base> ;
-    using LBDL = USART_CR_LBDL_Values<USART1::CR2, 5, 1, ReadWriteMode, USART1CR2Base> ;
-    using ADD = USART_CR_ADD_Values<USART1::CR2, 0, 4, ReadWriteMode, USART1CR2Base> ;
-    using FieldValues = USART_CR_ADD_Values<USART1::CR2, 0, 0, NoAccess, NoAccess> ;
+    using LINEN = USART1_CR2_LINEN_Values<USART1::CR2, 14, 1, ReadWriteMode, USART1CR2Base> ;
+    using STOP = USART1_CR2_STOP_Values<USART1::CR2, 12, 2, ReadWriteMode, USART1CR2Base> ;
+    using CLKEN = USART1_CR2_CLKEN_Values<USART1::CR2, 11, 1, ReadWriteMode, USART1CR2Base> ;
+    using CPOL = USART1_CR2_CPOL_Values<USART1::CR2, 10, 1, ReadWriteMode, USART1CR2Base> ;
+    using CPHA = USART1_CR2_CPHA_Values<USART1::CR2, 9, 1, ReadWriteMode, USART1CR2Base> ;
+    using LBCL = USART1_CR2_LBCL_Values<USART1::CR2, 8, 1, ReadWriteMode, USART1CR2Base> ;
+    using LBDIE = USART1_CR2_LBDIE_Values<USART1::CR2, 6, 1, ReadWriteMode, USART1CR2Base> ;
+    using LBDL = USART1_CR2_LBDL_Values<USART1::CR2, 5, 1, ReadWriteMode, USART1CR2Base> ;
+    using ADD = USART1_CR2_ADD_Values<USART1::CR2, 0, 4, ReadWriteMode, USART1CR2Base> ;
+    using FieldValues = USART1_CR2_ADD_Values<USART1::CR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -108,19 +108,19 @@ struct USART1
 
   struct CR3 : public RegisterBase<0x40011014, 32, ReadWriteMode>
   {
-    using ONEBIT = USART_CR_ONEBIT_Values<USART1::CR3, 11, 1, ReadWriteMode, USART1CR3Base> ;
-    using CTSIE = USART_CR_CTSIE_Values<USART1::CR3, 10, 1, ReadWriteMode, USART1CR3Base> ;
-    using CTSE = USART_CR_CTSE_Values<USART1::CR3, 9, 1, ReadWriteMode, USART1CR3Base> ;
-    using RTSE = USART_CR_RTSE_Values<USART1::CR3, 8, 1, ReadWriteMode, USART1CR3Base> ;
-    using DMAT = USART_CR_DMAT_Values<USART1::CR3, 7, 1, ReadWriteMode, USART1CR3Base> ;
-    using DMAR = USART_CR_DMAR_Values<USART1::CR3, 6, 1, ReadWriteMode, USART1CR3Base> ;
-    using SCEN = USART_CR_SCEN_Values<USART1::CR3, 5, 1, ReadWriteMode, USART1CR3Base> ;
-    using NACK = USART_CR_NACK_Values<USART1::CR3, 4, 1, ReadWriteMode, USART1CR3Base> ;
-    using HDSEL = USART_CR_HDSEL_Values<USART1::CR3, 3, 1, ReadWriteMode, USART1CR3Base> ;
-    using IRLP = USART_CR_IRLP_Values<USART1::CR3, 2, 1, ReadWriteMode, USART1CR3Base> ;
-    using IREN = USART_CR_IREN_Values<USART1::CR3, 1, 1, ReadWriteMode, USART1CR3Base> ;
-    using EIE = USART_CR_EIE_Values<USART1::CR3, 0, 1, ReadWriteMode, USART1CR3Base> ;
-    using FieldValues = USART_CR_EIE_Values<USART1::CR3, 0, 0, NoAccess, NoAccess> ;
+    using ONEBIT = USART1_CR3_ONEBIT_Values<USART1::CR3, 11, 1, ReadWriteMode, USART1CR3Base> ;
+    using CTSIE = USART1_CR3_CTSIE_Values<USART1::CR3, 10, 1, ReadWriteMode, USART1CR3Base> ;
+    using CTSE = USART1_CR3_CTSE_Values<USART1::CR3, 9, 1, ReadWriteMode, USART1CR3Base> ;
+    using RTSE = USART1_CR3_RTSE_Values<USART1::CR3, 8, 1, ReadWriteMode, USART1CR3Base> ;
+    using DMAT = USART1_CR3_DMAT_Values<USART1::CR3, 7, 1, ReadWriteMode, USART1CR3Base> ;
+    using DMAR = USART1_CR3_DMAR_Values<USART1::CR3, 6, 1, ReadWriteMode, USART1CR3Base> ;
+    using SCEN = USART1_CR3_SCEN_Values<USART1::CR3, 5, 1, ReadWriteMode, USART1CR3Base> ;
+    using NACK = USART1_CR3_NACK_Values<USART1::CR3, 4, 1, ReadWriteMode, USART1CR3Base> ;
+    using HDSEL = USART1_CR3_HDSEL_Values<USART1::CR3, 3, 1, ReadWriteMode, USART1CR3Base> ;
+    using IRLP = USART1_CR3_IRLP_Values<USART1::CR3, 2, 1, ReadWriteMode, USART1CR3Base> ;
+    using IREN = USART1_CR3_IREN_Values<USART1::CR3, 1, 1, ReadWriteMode, USART1CR3Base> ;
+    using EIE = USART1_CR3_EIE_Values<USART1::CR3, 0, 1, ReadWriteMode, USART1CR3Base> ;
+    using FieldValues = USART1_CR3_EIE_Values<USART1::CR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -130,9 +130,9 @@ struct USART1
 
   struct GTPR : public RegisterBase<0x40011018, 32, ReadWriteMode>
   {
-    using GT = USART_GTPR_GT_Values<USART1::GTPR, 8, 8, ReadWriteMode, USART1GTPRBase> ;
-    using PSC = USART_GTPR_PSC_Values<USART1::GTPR, 0, 8, ReadWriteMode, USART1GTPRBase> ;
-    using FieldValues = USART_GTPR_PSC_Values<USART1::GTPR, 0, 0, NoAccess, NoAccess> ;
+    using GT = USART1_GTPR_GT_Values<USART1::GTPR, 8, 8, ReadWriteMode, USART1GTPRBase> ;
+    using PSC = USART1_GTPR_PSC_Values<USART1::GTPR, 0, 8, ReadWriteMode, USART1GTPRBase> ;
+    using FieldValues = USART1_GTPR_PSC_Values<USART1::GTPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

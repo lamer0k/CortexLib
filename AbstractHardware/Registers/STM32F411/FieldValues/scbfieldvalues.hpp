@@ -238,10 +238,10 @@ struct SCB_CCR_UNALIGN__TRP_Values: public RegisterField<Reg, offset, size, Acce
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SCB_CCR_DIV__TRP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_CCR_DIV_0_TRP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_CCR_DIV__TRP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_CCR_DIV__TRP_Values, BaseType, 1U> ;
+  using Value0 = FieldValue<SCB_CCR_DIV_0_TRP_Values, BaseType, 0U> ;
+  using Value1 = FieldValue<SCB_CCR_DIV_0_TRP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -259,7 +259,32 @@ struct SCB_CCR_STKALIGN_Values: public RegisterField<Reg, offset, size, AccessMo
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct SCB_SHPR_PRI__Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct SCB_SHPR1_PRI_4_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR1_PRI_5_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR1_PRI_6_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR2_PRI_11_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR3_PRI_14_Values: public RegisterField<Reg, offset, size, AccessMode> 
+{
+} ;
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
+struct SCB_SHPR3_PRI_15_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 
