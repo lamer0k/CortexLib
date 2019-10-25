@@ -84,10 +84,8 @@ struct RCC
     using PPRE2 = RCC_CFGR_PPRE_Values<RCC::CFGR, 13, 3, ReadWriteMode, RCCCFGRBase> ;
     using PPRE1 = RCC_CFGR_PPRE_Values<RCC::CFGR, 10, 3, ReadWriteMode, RCCCFGRBase> ;
     using HPRE = RCC_CFGR_HPRE_Values<RCC::CFGR, 4, 4, ReadWriteMode, RCCCFGRBase> ;
-    using SWS1 = RCC_CFGR_SWS_Values<RCC::CFGR, 3, 1, ReadMode, RCCCFGRBase> ;
-    using SWS0 = RCC_CFGR_SWS_Values<RCC::CFGR, 2, 1, ReadMode, RCCCFGRBase> ;
-    using SW1 = RCC_CFGR_SW_Values<RCC::CFGR, 1, 1, ReadWriteMode, RCCCFGRBase> ;
-    using SW0 = RCC_CFGR_SW_Values<RCC::CFGR, 0, 1, ReadWriteMode, RCCCFGRBase> ;
+    using SWS = RCC_CFGR_SWS_Values<RCC::CFGR, 2, 2, ReadMode, RCCCFGRBase> ;
+    using SW = RCC_CFGR_SW_Values<RCC::CFGR, 0, 2, ReadWriteMode, RCCCFGRBase> ;
     using FieldValues = RCC_CFGR_SW_Values<RCC::CFGR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
