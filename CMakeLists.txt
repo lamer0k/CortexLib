@@ -23,6 +23,9 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Pin
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Spi
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/SystemClock
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/EdpElink
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Atomic
                     ${CMAKE_SOURCE_DIR}/Application/Led
                     ${CMAKE_SOURCE_DIR}/Application

@@ -1,21 +1,29 @@
 //#include <cstdint>            //for int types such as uint32_t
 #include "gpioaregisters.hpp" //for Gpioa
 #include "gpiocregisters.hpp" //for Gpioc
+#include "gpiobregisters.hpp" //for Gpiob
 #include "rccregisters.hpp"   //for RCC
+#include "spi2registers.hpp"   //for SPI2
 #include <array>              //for std::array ;
 #include "pin.hpp"            //for Pin
+#include "pinspack.hpp"       //for PinsPack
 #include "Led.hpp"            //for Led
 #include "port.hpp"           //for Port
 #include "tim2registers.hpp"  //for TIM2
 #include "tim5registers.hpp"  //for TIM5
 #include "timer.hpp"          //for Timer
+#include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
+#include "elinkdriver.hpp"    //for ElinkDriver
+
 
 using namespace std ;
 
 
 using Led1Pin = Pin<GPIOA, 5U, PinWriteableConfigurable> ;
 using Led2Pin = Pin<GPIOC, 5U, PinWriteableConfigurable> ;
+using Led3Pin = Pin<GPIOC, 8U, PinWriteable> ;
+using Led4Pin = Pin<GPIOC, 9U, PinWriteable> ;
 
 
 struct Test : ISubscriber
@@ -89,13 +97,38 @@ int __low_level_init(void)
   {
 
   }
-  //Switch on clock on PortA and PortC
+  
+  
+  //Switch on clock on PortA and PortC, PortB
   RCC::AHB1ENRPack<
     RCC::AHB1ENR::GPIOCEN::Enable,
-    RCC::AHB1ENR::GPIOAEN::Enable>::Set() ;
-
+    RCC::AHB1ENR::GPIOAEN::Enable,
+    RCC::AHB1ENR::GPIOBEN::Enable
+    >::Set() ;
+  
+  RCC::APB1ENRPack<
+    RCC::APB1ENR::TIM5EN::Enable,  
+    RCC::APB1ENR::SPI2EN::Enable
+    >::Set() ;
+  
   // LED1 on PortA.5, set PortA.5 as output
   GPIOA::MODER::MODER5::Output::Set() ;
+  // PortB.13 - SPI3_CLK, PortB.15 - SPI2_MOSI, PB1 -CS, PB2- DC, PB8 -Reset 
+  GPIOB::MODERPack<
+    GPIOB::MODER::MODER1::Output,         //CS
+    GPIOB::MODER::MODER2::Output,         //DC 
+    GPIOB::MODER::MODER8::Output,         //Reset
+    GPIOB::MODER::MODER9::Output,         //Busy
+    GPIOB::MODER::MODER13::Alternate,
+    GPIOB::MODER::MODER15::Alternate,
+    >::Set() ;
+  
+  GPIOB::AFRHPack<
+    GPIOB::AFRH::AFRH13::Af5,
+    GPIOB::AFRH::AFRH15::Af5
+    >::Set() ;
+    
+  
   // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
   GPIOC::MODERPack<
     GPIOC::MODER::MODER5::Output,
@@ -103,24 +136,52 @@ int __low_level_init(void)
     GPIOC::MODER::MODER9::Output
   >::Set() ;
 
+  SPI2::CR1Pack<
+    SPI2::CR1::MSTR::Master,   //SPI2 master
+    SPI2::CR1::BIDIMODE::Unidirectional2Line,
+    SPI2::CR1::DFF::Data16bit,
+    SPI2::CR1::CPOL::Low,
+    SPI2::CR1::CPHA::Phase1edge,
+    SPI2::CR1::SSM::NssSoftwareEnable,
+    SPI2::CR1::BR::PclockDiv64,
+    SPI2::CR1::LSBFIRST::MsbFisrt,
+    SPI2::CR1::CRCEN::CrcCalcDisable
+    >::Set() ;
+  
+  
+   SPI2::CRCPR::CRCPOLY::Set(10U) ;    
   return 1;
 }
 }
 
-  
+using ResetPin = Pin<GPIOB, 8U, PinWriteable> ;
+using DcPin = Pin<GPIOB, 2U, PinWriteable> ;
+using CsPin = Pin<GPIOB, 1U, PinWriteable> ;
+
+using LcdDriver = ElinkDriver<SPI2, ResetPin, DcPin, CsPin> ;
+
+
 int main()
 {
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
-  RCC::APB1ENR::TIM5EN::Enable::Set() ;
+
+
+ // Port<Led1Pin, Led2Pin>::SetOutput() ;
+ // Application::Leds[1]->Toggle() ;  
+  LcdDriver::Reset();
   
-  Port<Led1Pin, Led2Pin>::SetOutput() ;
-  Application::Leds[1]->Toggle() ;  
 //  Application::durationTimer.Start();
   for (;;)
   {
-    Application::DelayTimer::SetDelay(8000000) ;
-    Application::Leds[0]->Toggle() ;  
-    Application::Leds[1]->Toggle() ;
+    SystemClock::SetDelayMs(1000) ;
+    //Port<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+   // GPIOA::BSRR::Write(32U) ;
+   // GPIOC::BSRR::Write(800U) ;
+    SystemClock::SetDelayMs(1000) ;
+    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
+  //  Application::Leds[0]->Toggle() ;
+  //  Application::Leds[1]->Toggle() ;
   }
 
 

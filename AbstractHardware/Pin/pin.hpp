@@ -52,7 +52,7 @@ struct Pin
   static void Reset()
   {
     static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
-    Port::BSRR::Write(uint8_t(1U) << (pinNum << 15)) ;
+    Port::BSRR::Write((uint8_t(1U) << (pinNum)) << 16) ;
   }
   
   __forceinline template<typename T = Interface,

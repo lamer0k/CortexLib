@@ -5,7 +5,11 @@
 #ifndef REGISTERS_SUSUDEFS_HPP
 #define REGISTERS_SUSUDEFS_HPP
 
-//#define __forceinline  _Pragma("inline=forced")
-#define __forceinline
+
+#define __forceinline  _Pragma("inline=forced")
+//#define __forceinline
+
+template <typename... Types>
+struct TypesList{} ;
 
 #endif //REGISTERS_SUSUDEFS_HPP

@@ -1234,127 +1234,63 @@ struct GPIOB_AFRL_AFRL0_Values: public RegisterField<Reg, offset, size, AccessMo
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH15_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 15U> ;
+  using Af0 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 0U> ;
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 1U> ; 
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 5U> ;  
+  using Af2 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 12U> ; 
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH15_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH14_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 15U> ;
+ 
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 1U> ; 
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 5U> ; 
+  using Af6 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 6U> ;
+  using Af2 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 12U> ; 
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH14_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH13_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 15U> ;
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 1U> ; 
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 6U> ;  
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH13_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH12_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 15U> ;
+ 
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 1U> ; 
+  using Af4 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 6U> ;
+  using Af7 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 7U> ; 
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH12_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH11_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 15U> ;
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 1U> ;
+  using Af4 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 5U> ;  
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH11_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_AFRH_AFRH10_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 15U> ;
+  using Af1 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 1U> ;
+  using Af4 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 6U> ;  
+  using Af2 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 12U> ; 
+  using Af15 = FieldValue<GPIOB_AFRH_AFRH10_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
