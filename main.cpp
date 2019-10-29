@@ -12,6 +12,7 @@
 #include "tim2registers.hpp"  //for TIM2
 #include "tim5registers.hpp"  //for TIM5
 #include "timer.hpp"          //for Timer
+#include "spi.hpp"            //for Spi
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
 #include "elinkdriver.hpp"    //for ElinkDriver
@@ -157,8 +158,11 @@ int __low_level_init(void)
 using ResetPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
 using DcPin = Pin<Port<GPIOB>, 2U, PinWriteable> ;
 using CsPin = Pin<Port<GPIOB>, 1U, PinWriteable> ;
+using BusyPin = Pin<Port<GPIOB>, 9U, PinReadable> ;
 
-using LcdDriver = ElinkDriver<SPI2, ResetPin, DcPin, CsPin> ;
+
+using LcdDriverSpi = Spi<SPI2> ;
+using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin> ;
 
 
 int main()
@@ -168,7 +172,10 @@ int main()
 
  // Port<Led1Pin, Led2Pin>::SetOutput() ;
  // Application::Leds[1]->Toggle() ;  
-  LcdDriver::Reset();
+ 
+  LcdDriver::Init() ;
+  LcdDriver::TurnOnDisplay() ;
+  LcdDriver::Clear() ;
   
 //  Application::durationTimer.Start();
   for (;;)

@@ -5,7 +5,7 @@
 #ifndef REGISTERS_SPI_HPP
 #define REGISTERS_SPI_HPP
 
-#include <cstddef>  //for std::byte
+#include <cstddef>  //for std::uint8_t
 
 #include "susudefs.hpp"  //for __forceinline
 
@@ -13,7 +13,7 @@
 template<typename SpiModule>
 struct Spi
 {
-  __forceinline static void WriteByte(std::byte byte)
+  __forceinline static void WriteByte(std::uint8_t chByte)
   {
     while (SpiModule::SR::TXE::TxBufferNotEmpty::IsSet())
     {
@@ -21,18 +21,18 @@ struct Spi
     SendByte(chByte);
   }
 
-  static void ISpi::WriteData(std::byte *pData, size_t size)
+  static void WriteData(std::uint8_t *pData, size_t size)
   {
     for(size_t i = 0; i < size; ++i)
     {
-      WriteByte(pData[i], size);
+      WriteByte(pData[i]);
     }
   }
 
   private:
-    __forceinline void static SendByte(std::byte chByte)
+    __forceinline void static SendByte(std::uint8_t chByte)
     {
-      SpiModule::DR::Write(static_cast<SpiModule::DR::Type>(chByte)) ;
+      SpiModule::DR::Write(static_cast<typename SpiModule::DR::Type>(chByte)) ;
     }
 
 };
