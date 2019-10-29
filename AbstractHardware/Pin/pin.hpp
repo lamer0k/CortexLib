@@ -5,6 +5,7 @@
 #define REGISTERS_PIN_HPP
 
 #include "susudefs.hpp"  //for __forceinline
+#include "port.hpp"
 
 struct PinConfigurable
 {
@@ -35,7 +36,6 @@ struct Pin
 {
   using PortType = Port ;
   static constexpr uint32_t pin = pinNum ;
-  static constexpr typename Port::MODER::Type OutputValue = Port::MODER::FieldValues::Output::Value ;
   
   constexpr Pin() = default;
   
@@ -44,7 +44,7 @@ struct Pin
   static void Set()
   {
     static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
-    Port::BSRR::Write(uint8_t(1U) << pinNum) ;
+    Port::Set(uint8_t(1U) << pinNum) ;
   }
   
   __forceinline template<typename T = Interface,
@@ -52,7 +52,7 @@ struct Pin
   static void Reset()
   {
     static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
-    Port::BSRR::Write((uint8_t(1U) << (pinNum)) << 16) ;
+    Port::Reset((uint8_t(1U) << (pinNum)) << 16) ;
   }
   
   __forceinline template<typename T = Interface,
@@ -60,67 +60,46 @@ struct Pin
   static void Toggle()
   {
     static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
-    Port::ODR::Toggle(uint8_t(1U) << pinNum) ;
+    Port::Toggle(uint8_t(1U) << pinNum) ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinReadable, T>::value>>
-  static typename Port::IDR::Type Get()
+  static auto Get()
   {
-    return Port::IDR::Get() ;
+    return Port::Get() ;
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAnalog()
   {
-    using RegType = typename Port::MODER::Type ;
-    AtomicUtils<RegType>::Set(
-        Port::MODER::Address,
-        Port::MODER::FieldValues::Analog::Mask,
-        Port::MODER::FieldValues::Analog::Value,
-        pinNum * uint8_t{2U}
-        ) ;
-
+    static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
+    Port::SetAnalog(pinNum);
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinReadableConfigurable, T>::value>>
   static void SetInput()
   {
-    using RegType = typename Port::MODER::Type ;
-    AtomicUtils<RegType>::Set(
-      Port::MODER::Address,
-      Port::MODER::FieldValues::Input::Mask,
-      Port::MODER::FieldValues::Input::Value,
-      pinNum * uint8_t{2U}
-    ) ;
+    static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
+    Port::SetInput(pinNum);
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<PinWriteableConfigurable, T>::value>>
   static void SetOutput()
   {
-    using RegType = typename Port::MODER::Type ;
-    AtomicUtils<RegType>::Set(
-      Port::MODER::Address,
-      Port::MODER::FieldValues::Output::Mask,
-      Port::MODER::FieldValues::Output::Value,
-      pinNum * uint8_t{2U}
-    ) ;
+    static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
+    Port::SetOutput(pinNum);
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_same<PinConfigurable, T>::value>>
   static void SetAlternate()
   {
-    using RegType = typename Port::MODER::Type ;
-    AtomicUtils<RegType>::Set(
-      Port::MODER::Address,
-      Port::MODER::FieldValues::Alternate::Mask,
-      Port::MODER::FieldValues::Alternate::Value,
-      pinNum * uint8_t{2U}
-    ) ;
+    static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
+    Port::SetAlternate(pinNum) ;
   }
 } ;
 

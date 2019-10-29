@@ -20,10 +20,10 @@
 using namespace std ;
 
 
-using Led1Pin = Pin<GPIOA, 5U, PinWriteableConfigurable> ;
-using Led2Pin = Pin<GPIOC, 5U, PinWriteableConfigurable> ;
-using Led3Pin = Pin<GPIOC, 8U, PinWriteable> ;
-using Led4Pin = Pin<GPIOC, 9U, PinWriteable> ;
+using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
+using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
+using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
+using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
 
 
 struct Test : ISubscriber
@@ -154,9 +154,9 @@ int __low_level_init(void)
 }
 }
 
-using ResetPin = Pin<GPIOB, 8U, PinWriteable> ;
-using DcPin = Pin<GPIOB, 2U, PinWriteable> ;
-using CsPin = Pin<GPIOB, 1U, PinWriteable> ;
+using ResetPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
+using DcPin = Pin<Port<GPIOB>, 2U, PinWriteable> ;
+using CsPin = Pin<Port<GPIOB>, 1U, PinWriteable> ;
 
 using LcdDriver = ElinkDriver<SPI2, ResetPin, DcPin, CsPin> ;
 
@@ -174,7 +174,7 @@ int main()
   for (;;)
   {
     SystemClock::SetDelayMs(1000) ;
-    //Port<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+    Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
     PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
    // GPIOA::BSRR::Write(32U) ;
    // GPIOC::BSRR::Write(800U) ;
