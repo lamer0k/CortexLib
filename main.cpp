@@ -89,8 +89,8 @@ extern "C"
 int __low_level_init(void)
 {
   //Switch on external 16 MHz oscillator
-  RCC::CR::HSEON::Enable::Set() ;
-  while (!RCC::CR::HSERDY::Enable::IsSet())
+  RCC::CR::HSEON::On::Set() ;
+  while (!RCC::CR::HSERDY::Ready::IsSet())
   {
 
   }
@@ -131,7 +131,7 @@ int __low_level_init(void)
     GPIOB::AFRH::AFRH15::Af5
     >::Set() ;
     
-  GPIOB::BSRR::BS1::Value1::Write() ;
+  GPIOB::BSRR::BS1::High::Write() ;
   
   // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
   GPIOC::MODERPack<
@@ -270,8 +270,8 @@ int main()
   
   const auto i = GPIOA::IDR::Get() ;
   
-  GPIOC::BSRRPack<GPIOC::BSRR::BR0::Reset,
-              GPIOC::BSRR::BR4::Reset
+  GPIOC::BSRRPack<GPIOC::BSRR::BR0::Low,
+              GPIOC::BSRR::BR4::Low
               >::Write() ;
   
   return 0 ;

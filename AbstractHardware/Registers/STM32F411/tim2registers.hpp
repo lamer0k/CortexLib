@@ -221,9 +221,6 @@ struct TIM2
 
   struct CNT : public RegisterBase<0x40000024, 32, ReadWriteMode>
   {
-    using CNT_H = TIM2_CNT_CNT_H_Values<TIM2::CNT, 16, 16, ReadWriteMode, TIM2CNTBase> ;
-    using CNT_L = TIM2_CNT_CNT_L_Values<TIM2::CNT, 0, 16, ReadWriteMode, TIM2CNTBase> ;
-    using FieldValues = TIM2_CNT_CNT_L_Values<TIM2::CNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -244,9 +241,7 @@ struct TIM2
 
   struct ARR : public RegisterBase<0x4000002C, 32, ReadWriteMode>
   {
-    using ARR_H = TIM2_ARR_ARR_H_Values<TIM2::ARR, 16, 16, ReadWriteMode, TIM2ARRBase> ;
-    using ARR_L = TIM2_ARR_ARR_L_Values<TIM2::ARR, 0, 16, ReadWriteMode, TIM2ARRBase> ;
-    using FieldValues = TIM2_ARR_ARR_L_Values<TIM2::ARR, 0, 0, NoAccess, NoAccess> ;
+
   } ;
 
   template<typename... T> 
