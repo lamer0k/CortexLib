@@ -16,10 +16,12 @@
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
 #include "elinkdriver.hpp"    //for ElinkDriver
+#include "display.hpp"
 
 
 using namespace std ;
-
+extern Font Font24;
+extern Font Font48;
 
 using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
 using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
@@ -119,7 +121,7 @@ int __low_level_init(void)
     GPIOB::MODER::MODER1::Output,         //CS
     GPIOB::MODER::MODER2::Output,         //DC 
     GPIOB::MODER::MODER8::Output,         //Reset
-    GPIOB::MODER::MODER9::Output,         //Busy
+    GPIOB::MODER::MODER9::Input,         //Busy
     GPIOB::MODER::MODER13::Alternate,
     GPIOB::MODER::MODER15::Alternate,
     >::Set() ;
@@ -129,6 +131,7 @@ int __low_level_init(void)
     GPIOB::AFRH::AFRH15::Af5
     >::Set() ;
     
+  GPIOB::BSRR::BS1::Value1::Write() ;
   
   // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
   GPIOC::MODERPack<
@@ -140,17 +143,19 @@ int __low_level_init(void)
   SPI2::CR1Pack<
     SPI2::CR1::MSTR::Master,   //SPI2 master
     SPI2::CR1::BIDIMODE::Unidirectional2Line,
-    SPI2::CR1::DFF::Data16bit,
-    SPI2::CR1::CPOL::Low,
-    SPI2::CR1::CPHA::Phase1edge,
+    SPI2::CR1::DFF::Data8bit,
+    SPI2::CR1::CPOL::High,
+    SPI2::CR1::CPHA::Phase2edge,
     SPI2::CR1::SSM::NssSoftwareEnable,
-    SPI2::CR1::BR::PclockDiv64,
+    SPI2::CR1::SSI::Value1,
+    SPI2::CR1::BR::PclockDiv2,
     SPI2::CR1::LSBFIRST::MsbFisrt,
-    SPI2::CR1::CRCEN::CrcCalcDisable
+    SPI2::CR1::CRCEN::CrcCalcDisable      
     >::Set() ;
   
-  
+    
    SPI2::CRCPR::CRCPOLY::Set(10U) ;    
+   SPI2::CR1::SPE::Enable::Set() ;
   return 1;
 }
 }
@@ -162,22 +167,44 @@ using BusyPin = Pin<Port<GPIOB>, 9U, PinReadable> ;
 
 
 using LcdDriverSpi = Spi<SPI2> ;
-using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin> ;
+using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Attributes<BlackAndWhite>> ;
+
+//extern const unsigned char gImage_4in2bc_b[];
+//extern const unsigned char gImage_4in2bc_ry[];
 
 
 int main()
 {
+   
   //RCC::APB1ENR::TIM2EN::Enable::Set() ;
-
 
  // Port<Led1Pin, Led2Pin>::SetOutput() ;
  // Application::Leds[1]->Toggle() ;  
  
   LcdDriver::Init() ;
-  LcdDriver::TurnOnDisplay() ;
   LcdDriver::Clear() ;
-  
-//  Application::durationTimer.Start();
+  //LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
+  //LcdDriver::SetPartialWindow(gImage_4in2bc_b, 0, 0, 400, 300) ;
+  //for (int i = 0; i < 9 ; i++)
+  {
+    Point point; 
+    point.x  = 200;
+    point.y = 10 ;
+    //Display<400,300>::SetPixel(point, Color::White) ;
+    Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
+    LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+  //  LcdDriver::SetPartialWindow(Fly, i, 0, 100, 100) ;
+    SystemClock::SetDelayMs(1000) ;
+    
+    Display<400,300>::DrawChar(point, '1', Font48, Color::White, Color::Black) ;
+    LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+    SystemClock::SetDelayMs(1000) ;
+    Display<400,300>::DrawChar(point, '2', Font48, Color::White, Color::Black) ;
+    
+    
+  }
+  LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+  //LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
   for (;;)
   {
     SystemClock::SetDelayMs(1000) ;
@@ -190,13 +217,6 @@ int main()
   //  Application::Leds[0]->Toggle() ;
   //  Application::Leds[1]->Toggle() ;
   }
-
-
-  //guide(0) =  [] { int x = 0 ;} ;
-  //auto testGuide = guide(0) ;
-  
-  
-  
 
   GPIOA::MODER::MODER5::Output::Set() ;
   //GPIOA::MODERPack<

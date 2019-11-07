@@ -67,7 +67,7 @@ struct Pin
           class = typename std::enable_if_t<std::is_base_of<PinReadable, T>::value>>
   static auto Get()
   {
-    return Port::Get() ;
+    return ((Port::Get() & (uint8_t(1U) << pinNum)) >> pinNum)  ;
   }
   
   __forceinline template<typename T = Interface,

@@ -2370,6 +2370,15 @@
         </settings>
     </configuration>
     <file>
+        <name>$PROJ_DIR$\Application\Gui\Fonts\font24.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Application\Gui\Fonts\font48.cpp</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\Application\Images\imagedata.cpp</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\main.cpp</name>
     </file>
     <file>
