@@ -176,13 +176,9 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 int main()
 {
    
-  //RCC::APB1ENR::TIM2EN::Enable::Set() ;
-
- // Port<Led1Pin, Led2Pin>::SetOutput() ;
- // Application::Leds[1]->Toggle() ;  
- 
-  LcdDriver::Init() ;
-  LcdDriver::Clear() ;
+  
+ // LcdDriver::Init() ;
+ // LcdDriver::Clear() ;
   //LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
   //LcdDriver::SetPartialWindow(gImage_4in2bc_b, 0, 0, 400, 300) ;
   //for (int i = 0; i < 9 ; i++)
@@ -191,28 +187,29 @@ int main()
     point.x  = 200;
     point.y = 10 ;
     //Display<400,300>::SetPixel(point, Color::White) ;
-    Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
-    LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+   // Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
+   // LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
   //  LcdDriver::SetPartialWindow(Fly, i, 0, 100, 100) ;
     SystemClock::SetDelayMs(1000) ;
     
-    Display<400,300>::DrawChar(point, '1', Font48, Color::White, Color::Black) ;
-    LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-    SystemClock::SetDelayMs(1000) ;
-    Display<400,300>::DrawChar(point, '2', Font48, Color::White, Color::Black) ;
+ //   Display<400,300>::DrawChar(point, '1', Font48, Color::White, Color::Black) ;
+ //   LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+ //   SystemClock::SetDelayMs(1000) ;
+ //   Display<400,300>::DrawChar(point, '2', Font48, Color::White, Color::Black) ;
     
     
   }
-  LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+  //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
   //LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
   for (;;)
   {
     SystemClock::SetDelayMs(1000) ;
-    Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+  //  Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set(5) ;
    // GPIOA::BSRR::Write(32U) ;
    // GPIOC::BSRR::Write(800U) ;
-    SystemClock::SetDelayMs(1000) ;
+    //SystemClock::SetDelayMs(1000) ;
+    Application::DelayTimer::SetDelay(16000*500) ;
     PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
   //  Application::Leds[0]->Toggle() ;
   //  Application::Leds[1]->Toggle() ;

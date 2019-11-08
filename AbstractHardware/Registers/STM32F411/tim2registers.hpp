@@ -251,9 +251,9 @@ struct TIM2
 
   struct CCR1 : public RegisterBase<0x40000034, 32, ReadWriteMode>
   {
-    using CCR1_H = TIM2_CCR1_CCR1_H_Values<TIM2::CCR1, 16, 16, ReadWriteMode, TIM2CCR1Base> ;
-    using CCR1_L = TIM2_CCR1_CCR1_L_Values<TIM2::CCR1, 0, 16, ReadWriteMode, TIM2CCR1Base> ;
-    using FieldValues = TIM2_CCR1_CCR1_L_Values<TIM2::CCR1, 0, 0, NoAccess, NoAccess> ;
+    
+    using CCR1Field = TIM2_CCR1_CCR1_Values<TIM2::CCR1, 0, 32, ReadWriteMode, TIM2CCR1Base> ;
+    using FieldValues = TIM2_CCR1_CCR1_Values<TIM2::CCR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -263,9 +263,9 @@ struct TIM2
 
   struct CCR2 : public RegisterBase<0x40000038, 32, ReadWriteMode>
   {
-    using CCR2_H = TIM2_CCR2_CCR2_H_Values<TIM2::CCR2, 16, 16, ReadWriteMode, TIM2CCR2Base> ;
-    using CCR2_L = TIM2_CCR2_CCR2_L_Values<TIM2::CCR2, 0, 16, ReadWriteMode, TIM2CCR2Base> ;
-    using FieldValues = TIM2_CCR2_CCR2_L_Values<TIM2::CCR2, 0, 0, NoAccess, NoAccess> ;
+    
+    using CCR2Field = TIM2_CCR2_CCR2_Values<TIM2::CCR2, 0, 32, ReadWriteMode, TIM2CCR2Base> ;
+    using FieldValues = TIM2_CCR2_CCR2_Values<TIM2::CCR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -275,9 +275,9 @@ struct TIM2
 
   struct CCR3 : public RegisterBase<0x4000003C, 32, ReadWriteMode>
   {
-    using CCR3_H = TIM2_CCR3_CCR3_H_Values<TIM2::CCR3, 16, 16, ReadWriteMode, TIM2CCR3Base> ;
-    using CCR3_L = TIM2_CCR3_CCR3_L_Values<TIM2::CCR3, 0, 16, ReadWriteMode, TIM2CCR3Base> ;
-    using FieldValues = TIM2_CCR3_CCR3_L_Values<TIM2::CCR3, 0, 0, NoAccess, NoAccess> ;
+    
+    using CCR3Field = TIM2_CCR3_CCR3_Values<TIM2::CCR3, 0, 32, ReadWriteMode, TIM2CCR3Base> ;
+    using FieldValues = TIM2_CCR3_CCR3_Values<TIM2::CCR3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -287,9 +287,9 @@ struct TIM2
 
   struct CCR4 : public RegisterBase<0x40000040, 32, ReadWriteMode>
   {
-    using CCR4_H = TIM2_CCR4_CCR4_H_Values<TIM2::CCR4, 16, 16, ReadWriteMode, TIM2CCR4Base> ;
-    using CCR4_L = TIM2_CCR4_CCR4_L_Values<TIM2::CCR4, 0, 16, ReadWriteMode, TIM2CCR4Base> ;
-    using FieldValues = TIM2_CCR4_CCR4_L_Values<TIM2::CCR4, 0, 0, NoAccess, NoAccess> ;
+    
+    using CCR4Field = TIM2_CCR4_CCR4_Values<TIM2::CCR4, 0, 32, ReadWriteMode, TIM2CCR4Base> ;
+    using FieldValues = TIM2_CCR4_CCR4_Values<TIM2::CCR4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

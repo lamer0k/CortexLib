@@ -22,7 +22,7 @@ struct Port
   __forceinline static void Reset(std::uint32_t value)
   {
     assert((value >= (1 << 15U))) ;
-    T::BSRR::Write(static_cast<typename T::BSRR::Type>(value)) ;
+    T::BSRR::Write(static_cast<typename T::BSRR::Type>(value) << 16) ;
   }
   
   __forceinline static void Toggle(std::uint32_t value)

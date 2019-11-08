@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
+        <path>$WS_DIR$\..\LedCpp\BookCpp.ewp</path>
+    </project>
+    <project>
+        <path>$WS_DIR$\..\1\LedCpp\BookCpp.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\iartproject.ewp</path>
     </project>
     <batchBuild />

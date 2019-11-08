@@ -402,443 +402,306 @@ struct TIM2_CCMR1_Output_OC2FE_Values: public RegisterField<Reg, offset, size, A
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Output_CC2S_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 3U> ;
+  using Output = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 0U> ;
+  using InputOnTi2 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 1U> ;
+  using InputOnTi1 = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 2U> ;
+  using InputOnTrc = FieldValue<TIM2_CCMR1_Output_CC2S_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Output_OC1CE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_OC1CE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_OC1CE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR1_Output_OC1CE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR1_Output_OC1CE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Output_OC1M_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 7U> ;
+  using Frozen = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 0U> ;
+  using HighOnMatch = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 1U> ;
+  using LowOnMatch = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 2U> ;
+  using Toggle = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 3U> ;
+  using Low = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 4U> ;
+  using High = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 5U> ;
+  using PwmMode1 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 6U> ;
+  using PwmMode2 = FieldValue<TIM2_CCMR1_Output_OC1M_Values, BaseType, 7U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Output_OC1PE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_OC1PE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_OC1PE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR1_Output_OC1PE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR1_Output_OC1PE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Output_OC1FE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_OC1FE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_OC1FE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR1_Output_OC1FE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR1_Output_OC1FE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Output_CC1S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Output_CC1S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Output_CC1S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Output_CC1S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Output_CC1S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Output_CC1S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Input_IC2F_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Input_IC2F_Values: public TIM2_SMCR_ETF_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<TIM2_CCMR1_Input_IC2F_Values, BaseType, 15U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR1_Input_IC2PCS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 3U> ;
+  using NoPrescaler = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 0U> ;
+  using Every2Events = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 1U> ;
+  using Every4Events = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 2U> ;
+  using Every8Events = FieldValue<TIM2_CCMR1_Input_IC2PCS_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Input_CC2S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Input_CC2S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_CC2S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_CC2S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_CC2S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_CC2S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Input_IC1F_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Input_IC1F_Values: public TIM2_SMCR_ETF_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<TIM2_CCMR1_Input_IC1F_Values, BaseType, 15U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Input_ICPCS_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Input_ICPCS_Values: public TIM2_CCMR1_Input_IC2PCS_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_ICPCS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_ICPCS_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_ICPCS_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_ICPCS_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR1_Input_CC1S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR1_Input_CC1S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR1_Input_CC1S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR1_Input_CC1S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR1_Input_CC1S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR1_Input_CC1S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_O24CE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_O24CE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_O24CE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_O24CE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_O24CE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Output_OC4M_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Output_OC4M_Values: public TIM2_CCMR1_Output_OC1M_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR2_Output_OC4M_Values, BaseType, 7U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_OC4PE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC4PE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC4PE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_OC4PE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_OC4PE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_OC4FE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC4FE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC4FE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_OC4FE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_OC4FE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Output_CC4S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Output_CC4S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_CC4S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_CC4S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Output_CC4S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Output_CC4S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_OC3CE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC3CE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC3CE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_OC3CE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_OC3CE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Output_OC3M_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Output_OC3M_Values: public TIM2_CCMR1_Output_OC1M_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR2_Output_OC3M_Values, BaseType, 7U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_OC3PE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC3PE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC3PE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_OC3PE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_OC3PE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCMR2_Output_OC3FE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_OC3FE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_OC3FE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CCMR2_Output_OC3FE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CCMR2_Output_OC3FE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Output_CC3S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Output_CC3S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Output_CC3S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Output_CC3S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Output_CC3S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Output_CC3S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_IC4F_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_IC4F_Values:  public TIM2_SMCR_ETF_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<TIM2_CCMR2_Input_IC4F_Values, BaseType, 15U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_IC4PSC_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_IC4PSC_Values:  public TIM2_CCMR1_Input_IC2PCS_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_IC4PSC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_IC4PSC_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_IC4PSC_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_IC4PSC_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_CC4S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_CC4S_Values: public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_CC4S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_CC4S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_CC4S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_CC4S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_IC3F_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_IC3F_Values: public TIM2_SMCR_ETF_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<TIM2_CCMR2_Input_IC3F_Values, BaseType, 15U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_IC3PSC_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_IC3PSC_Values:  public TIM2_CCMR1_Input_IC2PCS_Values<Reg, offset, size, AccessMode, BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_IC3PSC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_IC3PSC_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_IC3PSC_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_IC3PSC_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCMR2_Input_CC3S_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCMR2_Input_CC3S_Values:  public TIM2_CCMR1_Output_CC2S_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCMR2_Input_CC3S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCMR2_Input_CC3S_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<TIM2_CCMR2_Input_CC3S_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<TIM2_CCMR2_Input_CC3S_Values, BaseType, 3U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCER_CC4NP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCER_CC4NP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC4NP_Values, BaseType, 1U> ;
+  using Output = FieldValue<TIM2_CCER_CC4NP_Values, BaseType, 0U> ;
+  using Input = FieldValue<TIM2_CCER_CC4NP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCER_CC4P_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCER_CC4P_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC4P_Values, BaseType, 1U> ;
+  using High = FieldValue<TIM2_CCER_CC4P_Values, BaseType, 0U> ;
+  using Low = FieldValue<TIM2_CCER_CC4P_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CCER_CC4E_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CCER_CC4E_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC4E_Values, BaseType, 1U> ;
+  using Off = FieldValue<TIM2_CCER_CC4E_Values, BaseType, 0U> ;
+  using On = FieldValue<TIM2_CCER_CC4E_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC3NP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC3NP_Values: public TIM2_CCER_CC4NP_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC3NP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC3NP_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC3P_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC3P_Values: public TIM2_CCER_CC4P_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC3P_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC3P_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC3E_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC3E_Values: public TIM2_CCER_CC4E_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC3E_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC3E_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC2NP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC2NP_Values: public TIM2_CCER_CC4NP_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC2NP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC2NP_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC2P_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC2P_Values: public TIM2_CCER_CC4P_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC2P_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC2P_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC2E_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC2E_Values: public TIM2_CCER_CC4E_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC2E_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC2E_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC1NP_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC1NP_Values: public TIM2_CCER_CC4NP_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC1NP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC1NP_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC1P_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC1P_Values: public TIM2_CCER_CC4P_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC1P_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC1P_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCER_CC1E_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCER_CC1E_Values: public TIM2_CCER_CC4E_Values<Reg, offset, size, AccessMode,BaseType>
 {
-  using Value0 = FieldValue<TIM2_CCER_CC1E_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CCER_CC1E_Values, BaseType, 1U> ;
+
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
-struct TIM2_CNT_CNT_H_Values: public RegisterField<Reg, offset, size, AccessMode>
+struct TIM2_CNT_CNT_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CNT_CNT_L_Values: public RegisterField<Reg, offset, size, AccessMode>
-{
-} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_PSC_PSC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
 } ;
 
+
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_ARR_ARR_H_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_ARR_ARR_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
+
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_ARR_ARR_L_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCR1_CCR1_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
+
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR1_CCR1_H_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCR2_CCR2_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
+
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR1_CCR1_L_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCR3_CCR3_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR2_CCR2_H_Values: public RegisterField<Reg, offset, size, AccessMode> 
-{
-} ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR2_CCR2_L_Values: public RegisterField<Reg, offset, size, AccessMode> 
-{
-} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR3_CCR3_H_Values: public RegisterField<Reg, offset, size, AccessMode> 
-{
-} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR3_CCR3_L_Values: public RegisterField<Reg, offset, size, AccessMode> 
-{
-} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR4_CCR4_H_Values: public RegisterField<Reg, offset, size, AccessMode> 
-{
-} ;
-
-template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
-struct TIM2_CCR4_CCR4_L_Values: public RegisterField<Reg, offset, size, AccessMode> 
+struct TIM2_CCR4_CCR4_Values: public RegisterField<Reg, offset, size, AccessMode>
 {
 } ;
 
