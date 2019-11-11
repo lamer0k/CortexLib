@@ -6,7 +6,8 @@
 #define REGISTERS_CANVA_HPP
 
 #include <array> //for std::array
-#include "font.hpp"
+#include "font_segoeUISemibold_48pt.h"
+#include "font_segoeUISemibold_24pt.h"
 
 enum class Color: std::uint8_t
 {
@@ -18,8 +19,7 @@ enum class Color: std::uint8_t
 struct Point
 {
   std::uint16_t x = 0U;
-  std::uint16_t y = 0U;
-  Color color;
+  std::uint16_t y = 0U;  
 };
 
 
@@ -28,7 +28,7 @@ class Display
 {
 
 public:
-  static void SetPixel(Point point)
+  static void SetPixel(Point point, Color color)
     {
       assert ((point.x <= width) && (point.y <= height)) ;
 
@@ -36,7 +36,7 @@ public:
 
       std::uint32_t address =  point.x / 8  + point.y * WidthByte ;
       std::uint8_t rData = image[address] ;
-      if (point.color == Color::Black)
+      if (color == Color::Black)
       {
         image[address] = rData & ~(0x80U >> (point.x % 8U));
       } else
@@ -57,7 +57,7 @@ public:
       }
     }
 
-    static void Paint_ClearWindows(Point startPoint, Point endPoint, Color color)
+    static void ClearWindows(Point startPoint, Point endPoint, Color color)
     {
       assert ((endPoint.x <= width) && (endPoint.y <= height)) ;
 
@@ -65,57 +65,92 @@ public:
       {
         for (std::uint16_t x = startPoint.x; x < endPoint.x; ++x)
         {//8 pixel =  1 byte
-          SetPixel(Point{x,y,color});
+          SetPixel(Point{x,y}, color);
         }
       }
     }
 
-    static void DrawChar(Point point, const char letter, Font& font, Color foreground, Color background)
+  static std::uint32_t DrawChar(Point point, const char letter, const tFont& font, Color foreground, Color background)
     {
       assert ((point.x <= width) && (point.y <= height)) ;
+      size_t symbolIndex =  letter - font.firstIndex;
+      size_t offset = 0U;
 
-      const std::uint32_t offset = (letter - ' ') * font.Height * (font.Width / 8 + (font.Width % 8 ? 1 : 0));
-
-      const unsigned char *ptr = &font.table[offset];
-
-      for (std::uint16_t page = 0; page < font.Height; ++page)
+      std::uint16_t fwidth = point.x + font.fontIndex[symbolIndex].width;
+      //check the limits of display screen, if out of screen take it to attention
+      if(point.x < width)
       {
-        for (std::uint16_t column = 0; column < font.Width; ++column)
+        if (fwidth > width)
         {
-          //To determine whether the font background color and screen background color is consistent
-          if (Color::Black == foreground)
-          { //this process is to speed up the scan
-            if (*ptr & (0x80 >> (column % 8)))
-            {
-              SetPixel(Point{static_cast<std::uint16_t>(point.x + column), static_cast<std::uint16_t>(point.y + page), foreground});
-            }            
-          }
-          else
-          {
-            if (*ptr & (0x80 >> (column % 8)))
-            {
-              SetPixel(Point{static_cast<std::uint16_t>(point.x + column), static_cast<std::uint16_t>(point.y + page), foreground});
-              // Paint_DrawPoint(Xpoint + Column, Ypoint + Page, Color_Foreground, DOT_PIXEL_DFT, DOT_STYLE_DFT);
-            }
-            else
-            {
-              SetPixel(Point{static_cast<std::uint16_t>(point.x + column), static_cast<std::uint16_t>(point.y + page), background});
-              // Paint_DrawPoint(Xpoint + Column, Ypoint + Page, Color_Background, DOT_PIXEL_DFT, DOT_STYLE_DFT);
-            }
-          }
-          //One pixel is 8 bits
-          if (column % 8 == 7)
-          {
-            ptr++;
-          }
-        }// Write a line
-        if (font.Width % 8 != 0)
+          fwidth =  width - point.x;
+          offset = ((font.fontIndex[symbolIndex].width - 1) >> 3) - (fwidth >> 3);
+        } else
         {
-          ptr++;
+          fwidth = font.fontIndex[symbolIndex].width;
+          offset = 0;
         }
-      }// Write all
+
+        size_t index = font.fontIndex[symbolIndex].index;
+
+        const unsigned char *ptr = &font.fontTable[index];
+        std::uint8_t k = 0;
+        std::uint8_t mask = *ptr;
+
+        for (std::uint16_t i = 0; i < font.height; ++i)
+        {
+          for (std::uint16_t j = 0; j < fwidth; ++j)
+          {
+            if(!(k & 0x07))
+            {
+              mask = *ptr++;
+            }
+            
+            SetPixel(Point{point.x + j, point.y + i}, (mask & 0x80) ? foreground : background) ;
+            mask <<= 1;
+            k ++;
+          }
+          k = 0;
+          ptr += offset;
+        }
+      }
+      return fwidth ;
     }
 
+  static void DrawString(Point point, char const *str, const tFont& font,
+                       Color foreground, Color background)
+  {
+
+    std::uint16_t x = point.x;
+    std::uint16_t position = 0;
+  
+    while(*str) 
+    {
+      // ?????????? ????? ?????????
+      if(position != 0)
+      {
+        ClearWindows(Point{x,point.y}, Point{x + font.spaceSize, point.y + font.height}, background) ;
+        //this->DrawBox(x, yPos, this->pCurrentFont->spaceSize,
+        //              this->pCurrentFont->height, colorGround);
+        x += font.spaceSize;
+      }
+      if(x > (width - font.spaceSize)) 
+      {
+        break;
+      }
+      if (*str != 32)
+      {
+        position = DrawChar(Point{x, point.y}, *str, font, foreground, background);
+        x += position ;
+      } else
+      {
+        //this->DrawBox(x, yPos, this->pCurrentFont->height / 3, 
+        //              this->pCurrentFont->height, colorGround);
+        x += font.height / 3;
+      }
+      str++;
+    }  
+}  
+  
   //private:
 public:
     static constexpr std::uint16_t WidthByte = (width % 8 == 0)? (width / 8 ): (width / 8 + 1);

@@ -20,14 +20,6 @@
 
 
 using namespace std ;
-extern Font Font24;
-extern Font Font48;
-
-using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
-using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
-using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
-using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
-
 
 struct Test : ISubscriber
 {
@@ -54,6 +46,11 @@ struct Test1 : ISubscriber
 Test test{1} ;
 constexpr Test1 test1{2} ;
 
+
+using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
+using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
+using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
+using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
 
 class Application
 {
@@ -177,38 +174,43 @@ int main()
 {
    
   
- // LcdDriver::Init() ;
- // LcdDriver::Clear() ;
-  //LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
+  LcdDriver::Init() ;
+  LcdDriver::Clear() ;
+ // LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
   //LcdDriver::SetPartialWindow(gImage_4in2bc_b, 0, 0, 400, 300) ;
-  //for (int i = 0; i < 9 ; i++)
+  for (int i = 0; i < 9 ; i++)
   {
-    Point point; 
-    point.x  = 200;
-    point.y = 10 ;
+    Point point{10U, 10U};
+
     //Display<400,300>::SetPixel(point, Color::White) ;
    // Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
    // LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
   //  LcdDriver::SetPartialWindow(Fly, i, 0, 100, 100) ;
     SystemClock::SetDelayMs(1000) ;
     
- //   Display<400,300>::DrawChar(point, '1', Font48, Color::White, Color::Black) ;
- //   LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
- //   SystemClock::SetDelayMs(1000) ;
- //   Display<400,300>::DrawChar(point, '2', Font48, Color::White, Color::Black) ;
+    //Display<400,300>::DrawChar(point, '4', segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
     
-    
+     SystemClock::SetDelayMs(1000) ;
+     Display<400,300>::DrawString(point, "125 .27: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
+     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+     Display<400,300>::DrawString(point, "125 .38: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
+     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+     Display<400,300>::DrawString(point, "125 .96: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
+     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
+     Display<400,300>::DrawString(point, "125 .66: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
+     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
   }
   //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-  //LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
+//  LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
   for (;;)
   {
-    SystemClock::SetDelayMs(1000) ;
+    //SystemClock::SetDelayMs(1000) ;
+    Application::DelayTimer::SetDelay(16000*500) ;
   //  Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set(5) ;
+    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
    // GPIOA::BSRR::Write(32U) ;
    // GPIOC::BSRR::Write(800U) ;
-    //SystemClock::SetDelayMs(1000) ;
+   // SystemClock::SetDelayMs(1000) ;
     Application::DelayTimer::SetDelay(16000*500) ;
     PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
   //  Application::Leds[0]->Toggle() ;

@@ -7,6 +7,9 @@
         <path>$WS_DIR$\..\1\LedCpp\BookCpp.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\..\LedCpp17\BookCpp.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\iartproject.ewp</path>
     </project>
     <batchBuild />

@@ -185,8 +185,8 @@ struct ElinkDriver
     WaitUntilBusy() ;
   }
 
-  template<typename = typename std::enable_if_t<Atribute::template HasAttribute<BlackAndWhite>()>>
-  __forceinline static void RefreshQuick()
+  __forceinline template<typename = typename std::enable_if_t<Atribute::template HasAttribute<BlackAndWhite>()>>
+  static void RefreshQuick()
   {
     SetLutQuick() ;
     SendCommand(ElinkDriverCommands::DisplayRefresh) ;       
@@ -194,7 +194,7 @@ struct ElinkDriver
   }
   
   
-  static void SetLut(void)
+  static void SetLut()
   {
     
     SendCommand(ElinkDriverCommands::VcomLut);         //g vcom
@@ -229,7 +229,7 @@ struct ElinkDriver
   }
   
   template<typename = typename std::enable_if_t<Atribute::template HasAttribute<BlackAndWhite>()>> 
-  static void SetLutQuick(void)
+  static void SetLutQuick()
   {
     
     SendCommand(ElinkDriverCommands::VcomLut);         //g vcom
@@ -263,8 +263,8 @@ struct ElinkDriver
     }
   }
   
-  template<typename = typename std::enable_if_t<Atribute::template HasAttribute<BlackAndWhite>()>>    
-  __forceinline static void Init()
+  __forceinline  template<typename = typename std::enable_if_t<Atribute::template HasAttribute<BlackAndWhite>()>>    
+  static void Init()
   {
     Reset();
     SendCommand(ElinkDriverCommands::BoosterSoftStart);
@@ -301,7 +301,7 @@ struct ElinkDriver
                                std::uint16_t height                               
                                )
   {
-    const std::uint16_t Counts  = (width / 8) * height ;
+    const size_t counts  = (width / 8) * height ;
     
     SetPartialMode() ;
     SendCommand(ElinkDriverCommands::PartialWindow) ;
@@ -315,7 +315,7 @@ struct ElinkDriver
     SendData((y + height - 1U) & 0xff) ;
     SendData(0x01) ;
     SendCommand(ElinkDriverCommands::DataStartTransmission2);
-    for (std::uint16_t j = 0; j < Counts; ++j)
+    for (size_t j = 0; j < counts; ++j)
     {
        SendData(bufferBlack[j]);
     }
