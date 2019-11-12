@@ -43,29 +43,11 @@ struct RCC
 
   struct PLLCFGR : public RegisterBase<0x40023804, 32, ReadWriteMode>
   {
-    using PLLQ3 = RCC_PLLCFGR_PLLQ3_Values<RCC::PLLCFGR, 27, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLQ2 = RCC_PLLCFGR_PLLQ2_Values<RCC::PLLCFGR, 26, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLQ1 = RCC_PLLCFGR_PLLQ1_Values<RCC::PLLCFGR, 25, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLQ0 = RCC_PLLCFGR_PLLQ0_Values<RCC::PLLCFGR, 24, 1, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLQ0 = RCC_PLLCFGR_PLLQ_Values<RCC::PLLCFGR, 24, 4, ReadWriteMode, RCCPLLCFGRBase> ;
     using PLLSRC = RCC_PLLCFGR_PLLSRC_Values<RCC::PLLCFGR, 22, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLP1 = RCC_PLLCFGR_PLLP1_Values<RCC::PLLCFGR, 17, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLP0 = RCC_PLLCFGR_PLLP0_Values<RCC::PLLCFGR, 16, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN8 = RCC_PLLCFGR_PLLN8_Values<RCC::PLLCFGR, 14, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN7 = RCC_PLLCFGR_PLLN7_Values<RCC::PLLCFGR, 13, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN6 = RCC_PLLCFGR_PLLN6_Values<RCC::PLLCFGR, 12, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN5 = RCC_PLLCFGR_PLLN5_Values<RCC::PLLCFGR, 11, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN4 = RCC_PLLCFGR_PLLN4_Values<RCC::PLLCFGR, 10, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN3 = RCC_PLLCFGR_PLLN3_Values<RCC::PLLCFGR, 9, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN2 = RCC_PLLCFGR_PLLN2_Values<RCC::PLLCFGR, 8, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN1 = RCC_PLLCFGR_PLLN1_Values<RCC::PLLCFGR, 7, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLN0 = RCC_PLLCFGR_PLLN0_Values<RCC::PLLCFGR, 6, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM5 = RCC_PLLCFGR_PLLM5_Values<RCC::PLLCFGR, 5, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM4 = RCC_PLLCFGR_PLLM4_Values<RCC::PLLCFGR, 4, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM3 = RCC_PLLCFGR_PLLM3_Values<RCC::PLLCFGR, 3, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM2 = RCC_PLLCFGR_PLLM2_Values<RCC::PLLCFGR, 2, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM1 = RCC_PLLCFGR_PLLM1_Values<RCC::PLLCFGR, 1, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using PLLM0 = RCC_PLLCFGR_PLLM0_Values<RCC::PLLCFGR, 0, 1, ReadWriteMode, RCCPLLCFGRBase> ;
-    using FieldValues = RCC_PLLCFGR_PLLM0_Values<RCC::PLLCFGR, 0, 0, NoAccess, NoAccess> ;
+    using PLLP0 = RCC_PLLCFGR_PLLP_Values<RCC::PLLCFGR, 16, 2, ReadWriteMode, RCCPLLCFGRBase> ;
+    using PLLN0 = RCC_PLLCFGR_PLLN_Values<RCC::PLLCFGR, 6, 9, ReadWriteMode, RCCPLLCFGRBase> ;
+    using FieldValues = RCC_PLLCFGR_PLLM_Values<RCC::PLLCFGR, 0, 5, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

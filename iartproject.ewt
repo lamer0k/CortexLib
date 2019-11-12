@@ -2370,6 +2370,9 @@
         </settings>
     </configuration>
     <file>
+        <name>$PROJ_DIR$\Application\Images\imagedata.cpp</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\main.cpp</name>
     </file>
     <file>

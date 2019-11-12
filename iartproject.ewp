@@ -359,6 +359,9 @@
                     <state>$PROJ_DIR$\Common\CriticalSection</state>
                     <state>$PROJ_DIR$\Application\Led</state>
                     <state>$PROJ_DIR$\Application</state>
+                    <state>$PROJ_DIR$\Application\Gui\Images</state>
+                    <state>$PROJ_DIR$\Application\Gui\Fonts</state>
+                    <state>$PROJ_DIR$\Application\Gui</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2116,6 +2119,12 @@
             <data />
         </settings>
     </configuration>
+    <file>
+        <name>$PROJ_DIR$\Application\Images\imagedata.cpp</name>
+        <excluded>
+            <configuration>Debug</configuration>
+        </excluded>
+    </file>
     <file>
         <name>$PROJ_DIR$\main.cpp</name>
     </file>

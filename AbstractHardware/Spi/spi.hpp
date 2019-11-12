@@ -19,6 +19,9 @@ struct Spi
     {
     }
     SendByte(chByte);
+    while (SpiModule::SR::BSY::Busy::IsSet())
+    {
+    }
   }
 
   static void WriteData(std::uint8_t *pData, size_t size)

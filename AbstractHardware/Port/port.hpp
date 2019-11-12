@@ -15,19 +15,19 @@ struct Port
   using ModerType = typename T::MODER::Type ;
   __forceinline static void Set(std::uint32_t value)
   {
-    assert((value <= (1 << 15U))) ;
+    assert((value <= (1 << 16U))) ;
     T::BSRR::Write(static_cast<typename T::BSRR::Type>(value)) ;
   }
   
   __forceinline static void Reset(std::uint32_t value)
   {
-    assert((value >= (1 << 15U))) ;
-    T::BSRR::Write(static_cast<typename T::BSRR::Type>(value)) ;
+    assert((value <= (1 << 16U))) ;
+    T::BSRR::Write(static_cast<typename T::BSRR::Type>(value) << 16) ;
   }
   
   __forceinline static void Toggle(std::uint32_t value)
   {
-    assert((value <= (1 << 15U))) ;
+    assert((value <= (1 << 16U))) ;
     T::ODR::Toggle(static_cast<typename T::ODR::Type>(value)) ;
   }
   

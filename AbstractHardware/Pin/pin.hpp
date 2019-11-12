@@ -52,7 +52,7 @@ struct Pin
   static void Reset()
   {
     static_assert(pinNum <= 15U, "There are only 16 pins on port") ;
-    Port::Reset((uint8_t(1U) << (pinNum)) << 16) ;
+    Port::Reset((uint8_t(1U) << (pinNum))) ;
   }
   
   __forceinline template<typename T = Interface,
@@ -67,7 +67,7 @@ struct Pin
           class = typename std::enable_if_t<std::is_base_of<PinReadable, T>::value>>
   static auto Get()
   {
-    return Port::Get() ;
+    return ((Port::Get() & (uint8_t(1U) << pinNum)) >> pinNum)  ;
   }
   
   __forceinline template<typename T = Interface,

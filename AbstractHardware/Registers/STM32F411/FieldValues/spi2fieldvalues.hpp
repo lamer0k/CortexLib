@@ -113,7 +113,7 @@ template <typename Reg, size_t offset, size_t size, typename AccessMode, typenam
 struct SPI2_CR1_CPHA_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using Phase1edge = FieldValue<SPI2_CR1_CPHA_Values, BaseType, 0U> ;
-  using Phas2edge = FieldValue<SPI2_CR1_CPHA_Values, BaseType, 1U> ;
+  using Phase2edge = FieldValue<SPI2_CR1_CPHA_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
