@@ -16,8 +16,14 @@ enum class Color: std::uint8_t
 };
 
 
+
 struct Point
 {
+  constexpr Point(std::uint16_t xValue, std::uint16_t yValue): 
+    x(xValue),
+    y(yValue)
+  { 
+  }
   std::uint16_t x = 0U;
   std::uint16_t y = 0U;  
 };
@@ -70,33 +76,80 @@ public:
       }
     }
 
-  static std::uint32_t DrawChar(Point point, const char letter, const tFont& font, Color foreground, Color background)
+//    void Paint_DrawLine(Point startPoint, Point endPoint,  width)
+//    {
+//      if (Xstart > Paint.Width || Ystart > Paint.Height ||
+//          Xend > Paint.Width || Yend > Paint.Height) {
+//        Debug("Paint_DrawLine Input exceeds the normal display range\r\n");
+//        return;
+//      }
+//
+//      UWORD Xpoint = Xstart;
+//      UWORD Ypoint = Ystart;
+//      int dx = (int)Xend - (int)Xstart >= 0 ? Xend - Xstart : Xstart - Xend;
+//      int dy = (int)Yend - (int)Ystart <= 0 ? Yend - Ystart : Ystart - Yend;
+//
+//      // Increment direction, 1 is positive, -1 is counter;
+//      int XAddway = Xstart < Xend ? 1 : -1;
+//      int YAddway = Ystart < Yend ? 1 : -1;
+//
+//      //Cumulative error
+//      int Esp = dx + dy;
+//      char Dotted_Len = 0;
+//
+//      for (;;) {
+//        Dotted_Len++;
+//        //Painted dotted line, 2 point is really virtual
+//        if (Line_Style == LINE_STYLE_DOTTED && Dotted_Len % 3 == 0) {
+//          //Debug("LINE_DOTTED\r\n");
+//          Paint_DrawPoint(Xpoint, Ypoint, IMAGE_BACKGROUND, Line_width, DOT_STYLE_DFT);
+//          Dotted_Len = 0;
+//        } else {
+//          Paint_DrawPoint(Xpoint, Ypoint, Color, Line_width, DOT_STYLE_DFT);
+//        }
+//        if (2 * Esp >= dy) {
+//          if (Xpoint == Xend)
+//            break;
+//          Esp += dy;
+//          Xpoint += XAddway;
+//        }
+//        if (2 * Esp <= dx) {
+//          if (Ypoint == Yend)
+//            break;
+//          Esp += dx;
+//          Ypoint += YAddway;
+//        }
+//      }
+//    }
+//
+
+  static std::uint32_t DrawChar(Point point, const char letter)
     {
       assert ((point.x <= width) && (point.y <= height)) ;
-      size_t symbolIndex =  letter - font.firstIndex;
+      size_t symbolIndex =  letter - font->firstIndex;
       size_t offset = 0U;
 
-      std::uint16_t fwidth = point.x + font.fontIndex[symbolIndex].width;
+      std::uint16_t fwidth = point.x + font->fontIndex[symbolIndex].width;
       //check the limits of display screen, if out of screen take it to attention
       if(point.x < width)
       {
         if (fwidth > width)
         {
           fwidth =  width - point.x;
-          offset = ((font.fontIndex[symbolIndex].width - 1) >> 3) - (fwidth >> 3);
+          offset = ((font->fontIndex[symbolIndex].width - 1) >> 3) - (fwidth >> 3);
         } else
         {
-          fwidth = font.fontIndex[symbolIndex].width;
+          fwidth = font->fontIndex[symbolIndex].width;
           offset = 0;
         }
 
-        size_t index = font.fontIndex[symbolIndex].index;
+        size_t index = font->fontIndex[symbolIndex].index;
 
-        const unsigned char *ptr = &font.fontTable[index];
+        const unsigned char *ptr = &font->fontTable[index];
         std::uint8_t k = 0;
         std::uint8_t mask = *ptr;
 
-        for (std::uint16_t i = 0; i < font.height; ++i)
+        for (std::uint16_t i = 0; i < font->height; ++i)
         {
           for (std::uint16_t j = 0; j < fwidth; ++j)
           {
@@ -105,7 +158,7 @@ public:
               mask = *ptr++;
             }
             
-            SetPixel(Point{point.x + j, point.y + i}, (mask & 0x80) ? foreground : background) ;
+            SetPixel(Point(point.x + j, point.y + i), (mask & 0x80) ? foreground : background) ;
             mask <<= 1;
             k ++;
           }
@@ -116,10 +169,8 @@ public:
       return fwidth ;
     }
 
-  static void DrawString(Point point, char const *str, const tFont& font,
-                       Color foreground, Color background)
+  static void DrawString(Point point, char const *str)
   {
-
     std::uint16_t x = point.x;
     std::uint16_t position = 0;
   
@@ -128,35 +179,48 @@ public:
       // ?????????? ????? ?????????
       if(position != 0)
       {
-        ClearWindows(Point{x,point.y}, Point{x + font.spaceSize, point.y + font.height}, background) ;
+        ClearWindows(Point(x,point.y), Point(x + font->spaceSize, point.y + font->height), background) ;
         //this->DrawBox(x, yPos, this->pCurrentFont->spaceSize,
         //              this->pCurrentFont->height, colorGround);
-        x += font.spaceSize;
+        x += font->spaceSize;
       }
-      if(x > (width - font.spaceSize)) 
+      if(x > (width - font->spaceSize)) 
       {
         break;
       }
       if (*str != 32)
       {
-        position = DrawChar(Point{x, point.y}, *str, font, foreground, background);
+        position = DrawChar(Point{x, point.y}, *str);
         x += position ;
       } else
       {
         //this->DrawBox(x, yPos, this->pCurrentFont->height / 3, 
         //              this->pCurrentFont->height, colorGround);
-        x += font.height / 3;
+        x += font->height / 3;
       }
       str++;
     }  
-}  
-  
+  }
+
+  static void SetFont()
+  {
+
+  }
+
+ //   friend DebugOut& operator <<( DebugOut& rOs, const char* pString );
+
   //private:
 public:
     static constexpr std::uint16_t WidthByte = (width % 8 == 0)? (width / 8 ): (width / 8 + 1);
     static constexpr std::uint16_t HeightByte = height;
     static std::array<std::uint8_t, ((width % 8 == 0)? (width / 8 ): (width / 8 + 1)) * height> image ;
+    static tFont* const font ;
+    static constexpr Color foreground = Color::White ;
+    static constexpr Color background = Color::Black ;
 };
+
+template <std::uint16_t width, std::uint16_t height>
+tFont* const Display<width, height>::font = const_cast<tFont*>(&segoeUISemibold_48ptFontInfo) ;
 
 
 template <std::uint16_t width, std::uint16_t height>

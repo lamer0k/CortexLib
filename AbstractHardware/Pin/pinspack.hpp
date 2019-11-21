@@ -8,9 +8,8 @@
 #include <functional>
 #include "portslist.hpp" // for PortsList
 
-template <std::uint32_t value, typename... Types>
-struct List{} ;
-struct NullType {};
+
+
 
 namespace PinHelper
 {
@@ -20,7 +19,8 @@ namespace PinHelper
    static constexpr int size  =  (sizeof...(Types));   
  };
   struct NullType {};
-
+  template <std::uint32_t value, typename... Types>
+  struct List{} ;
   //===================== Получаем тип по индексу
 
   template<typename L, std::size_t i,  typename Res = NullType>
@@ -46,48 +46,47 @@ namespace PinHelper
   
   //=================== Убираем дубликаты для одного типа
 
-  template<typename Q, typename X, typename Acc, bool once> struct Uniq;
+ ///////////////// Заимствуем идею NoDuplicates из библиотеки LOKI ////////////////
+template<class X, class Y> struct Glue;
+template<class T, class... Ts> 
+struct Glue<T, Collection<Ts...>> {
+    using Result = Collection<T, Ts...>;};
 
-  template<typename Q, typename... Tail, typename... Acc>
-  struct Uniq<Q, Collection<Q, Tail...>, Collection<Acc...>, false> {
-    using type = typename Uniq<Q, Collection<Tail...>, Collection<Acc...,Q>, true>::type;};
+template<class Q, class X> struct Erase;
 
-  template<typename Q, typename... Tail, typename... Acc>
-  struct Uniq<Q, Collection<Q, Tail...>, Collection<Acc...>, true> {
-    using type = typename Uniq<Q, Collection<Tail...>, Collection<Acc...>, true>::type;};
+template<class Q>
+struct Erase<Q, Collection<>> {
+   using Result = Collection<>;};
 
-  template<typename Q, typename T, typename ... Tail, typename... Acc, bool once>
-  struct Uniq<Q, Collection<T, Tail...>, Collection<Acc...>, once> {
-    using type = typename Uniq<Q, Collection<Tail...>, Collection<Acc..., T>, once>::type;};
+template<class Q, class... Tail>
+struct Erase<Q, Collection<Q, Tail...>> {
+   using Result = Collection<Tail...>;};
 
-//Терминал
-  template<typename Q, typename... Acc, bool once>
-  struct Uniq<Q, Collection<>, Collection<Acc...>, once> {
-    using type = Collection<Acc...>;};
+template<class Q, class T, class... Tail>
+struct Erase<Q, Collection<T, Tail...>> {
+   using Result = typename Glue<T, typename Erase<Q, Collection<Tail...>>::Result>::Result;};
 
-  template <typename Q, typename L>
-  using Once = typename Uniq<Q, L, Collection<>, false>::type;
+template <class X> struct NoDuplicates;
 
+template <> struct NoDuplicates<Collection<>>
+{
+    using Result = Collection<>;
+};
 
-//===================Убираем дубликаты для списка типов
-  template<typename X, typename Y>
-  struct Dedup{};
-
-  template<typename T, typename... Tail, typename... Acc>
-  struct Dedup<Collection<T, Tail...>, Collection<Acc...>>
-  {
-    using type = typename Dedup<Collection<Tail...>, Once<T, Collection<T, Acc...>>>::type;
-  };
-
-  template<typename T, typename... Acc>
-  struct Dedup<Collection<T>, Collection<Acc...>>
-  {
-    using type = Once<T, Collection<T, Acc...>>;
-  };
+template <class T, class... Tail>
+struct NoDuplicates< Collection<T, Tail...> >
+{
+private:
+    using L1 = typename NoDuplicates<Collection<Tail...>>::Result;
+    using L2 = typename Erase<T,L1>::Result;
+public:
+    using Result = typename Glue<T, L2>::Result;
+};
+///////////////// LOKI ////////////////
 
 
   template <typename L>
-  using Collect = typename Dedup<L, Collection<>>::type;
+  using Collect = typename NoDuplicates<L>::Result;
 
 //==== создаем список простых пинов из списка сложных пинов ==============
 
@@ -115,10 +114,10 @@ namespace PinHelper
 
 
   template <typename L>
-  using FromPinToPin = typename CreatePin<L, Collection<>>::type ;
+  using FakePinFromPin = typename CreatePin<L, Collection<>>::type ;
 
 
-//===================Создаем список портов из фейковых пинов
+//===================Создаем список портов из фейковых пинов====================
 
   template<typename X, typename Y>
   struct Create{};
@@ -136,36 +135,67 @@ namespace PinHelper
   } ;
 
   template <typename L>
-  using FakePinListFromPin = Collect<typename Create<FromPinToPin<L>, Collection<>>::type> ;
+  using PortListFromFakePin = Collect<typename Create<FakePinFromPin<L>, Collection<>>::type> ;
 
-//======================= Check
-
-
-  template<typename QueriedType, typename T, typename ... Types>
-  constexpr static auto IsUniqueType(Collection<T, Types...>)
+//================ Проверяем что нет одинаковых фейковых пинов в списке =======
+  
+  
+  template<class T, class T1> struct IsUnique;
+  
+  template<typename T, typename T1, typename... Ts>
+  struct IsUnique<T, Collection<T1,Ts...>>
   {
-    auto result = false ;
-    constexpr bool match = std::is_same<T, QueriedType>::value;
-    if constexpr (sizeof...(Types) != 0U)
-    {
-      result =   match ? false : IsUniqueType<QueriedType>(Collection<Types...>());
-    }
-    else
-    {
-      result =  match ? false : true;
-    }
-    return result ;
-  }
-
+    static constexpr bool Result = std::is_same<T, T1>::value ? false : IsUnique<T, Collection<Ts...>>::Result ; 
+  } ;
+  
+  template <class T>
+  struct IsUnique<T, Collection<>>
+  {
+    static constexpr bool Result = true;
+  } ;
+  
+  template<class T> struct CheckList ; 
+  
+  template<>
+  struct CheckList<Collection<>> 
+  {
+    static constexpr bool Result = true ;
+  };
+    
   template <typename T, typename... Ts>
-  constexpr static void Check(Collection<T, Ts...>)
+  struct CheckList<Collection<T,Ts...>> 
   {
-    if constexpr (sizeof...(Ts) != 0U)
-    {
-      static_assert(IsUniqueType<T>(Collection<Ts...>()), "Беда") ;
-      Check(Collection<Ts...>()) ;
-    }
-  }
+    static constexpr bool Result = IsUnique<T, Collection<Ts...>>::Result ? CheckList<Collection<Ts...>>::Result : false;
+  };
+  
+
+  
+  
+  //template<typename QueriedType, typename T, typename ... Types>
+  //constexpr static auto IsUniqueType(Collection<T, Types...>)
+ // {
+//    auto result = false ;
+//    constexpr bool match = std::is_same<T, QueriedType>::value;
+//    if constexpr (sizeof...(Types) != 0U)
+ //   {
+ //     result =   match ? false : IsUniqueType<QueriedType>(Collection<Types...>());
+  //  }
+ //   else
+ //   {
+ //     result =  match ? false : true;
+ //   }
+ //   return result ;
+ // }
+
+  //template <typename T, typename... Ts>
+ // constexpr static void Check(Collection<T, Ts...>)
+ // {
+ //   if constexpr (sizeof...(Ts) != 0U)
+ //   {
+ //     static_assert(IsUniqueType<T>(Collection<Ts...>()), "Беда") ;
+ //     Check(Collection<Ts...>()) ;
+ //   }
+ // }
 
 }
 //==============================GetValue
@@ -259,12 +289,14 @@ struct PinsPack
     __forceinline template<std::uint32_t value>
     constexpr static auto CreatePortList()
     {
-      Check(FromPinToPin<Collection<Type,Ts...>>()) ;
-      return List<value, FakePinListFromPin<Collection<Type, Ts...>>>();
+   
+      static_assert(CheckList<FakePinFromPin<Collection<Type, Ts...>>>::Result, "Bad") ;
+                    
+      return List<value, PortListFromFakePin<Collection<Type, Ts...>>>();
     }
 
     __forceinline template< std::uint32_t value, typename Port, typename ...Ports>
-    constexpr static void SetPorts(List<value, Collection<Port, Ports...>>)
+    constexpr static void VisitorSetPorts(List<value, Collection<Port, Ports...>>)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -273,12 +305,12 @@ struct PinsPack
 
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template SetPorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
+        MyPins::template VisitorSetPorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
       }
     }
 
     __forceinline template<typename Port, typename ...Ports>
-    constexpr static void SetPorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
+    constexpr static void VisitorSetPorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -287,12 +319,12 @@ struct PinsPack
 
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template SetPorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
+        MyPins::template VisitorSetPorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
       }
     }
 
      __forceinline template< std::uint32_t value, typename Port, typename ...Ports>
-    constexpr static void ResetPorts(List<value, Collection<Port, Ports...>>)
+    constexpr static void VisitorResetPorts(List<value, Collection<Port, Ports...>>)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -301,12 +333,12 @@ struct PinsPack
 
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template ResetPorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
+        MyPins::template VisitorResetPorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
       }
     }
      
     __forceinline template<typename Port, typename ...Ports>
-    constexpr static void ResetPorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
+    constexpr static void VisitorResetPorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -315,13 +347,13 @@ struct PinsPack
 
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template ResetPorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
+        MyPins::template VisitorResetPorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
       }
     }
 
 
    __forceinline template< std::uint32_t value, typename Port, typename ...Ports>
-    constexpr static void TogglePorts(List<value, Collection<Port, Ports...>>)
+    constexpr static void VisitorTogglePorts(List<value, Collection<Port, Ports...>>)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -330,12 +362,12 @@ struct PinsPack
 
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template TogglePorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
+        MyPins::template VisitorTogglePorts<value, Ports...>(List<value, Collection<Ports...>>()) ;
       }
     }
 
    __forceinline template<typename Port, typename ...Ports>
-    constexpr static void TogglePorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
+    constexpr static void VisitorTogglePorts(List<0U, Collection<Port, Ports...>>, std::uint32_t value)
     {
       using MyPins = PinsPack<Type, Ts...> ;
 
@@ -343,7 +375,7 @@ struct PinsPack
       Port::Toggle(result) ;
       if constexpr (sizeof ...(Ports) != 0U)
       {
-        MyPins::template TogglePorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
+        MyPins::template VisitorTogglePorts<Ports...>(List<0U, Collection<Ports...>>(), value) ;
       }
     }
 
@@ -353,38 +385,37 @@ public:
     __forceinline template<std::uint32_t value = 0xffffffffU>
     constexpr static void Set()
     {
-
-      SetPorts(CreatePortList<value>()) ;
+      VisitorSetPorts(CreatePortList<value>()) ;
     }
 
     __forceinline static void Set(std::uint32_t value)
     {
-      SetPorts(CreatePortList<0U>(), value) ;
+      VisitorSetPorts(CreatePortList<0U>(), value) ;
     }
 
 
     __forceinline template<std::uint32_t value = 0xffffffffU>
     constexpr static void Reset()
     {
-      ResetPorts(CreatePortList<value>()) ;
+      VisitorResetPorts(CreatePortList<value>()) ;
     }
 
 
     __forceinline static void Reset(std::uint32_t value)
     {
-      ResetPorts(CreatePortList<0>(), value) ;
+      VisitorResetPorts(CreatePortList<0>(), value) ;
     }
 
     __forceinline template<std::uint32_t value = 0xffffffffU>
     constexpr static void Toggle()
     {
-      TogglePorts(CreatePortList<value>()) ;
+      VisitorTogglePorts(CreatePortList<value>()) ;
     }
 
 
     __forceinline static void Toggle(std::uint32_t value)
     {
-      TogglePorts(CreatePortList<0U>(), value) ;
+      VisitorTogglePorts(CreatePortList<0U>(), value) ;
     }
     
 } ;

@@ -172,33 +172,28 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 
 int main()
 {
-   
-  
+
   LcdDriver::Init() ;
   LcdDriver::Clear() ;
  // LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
   //LcdDriver::SetPartialWindow(gImage_4in2bc_b, 0, 0, 400, 300) ;
+  Point point{90U, 10U};
+  Display<400,300>::DrawString(point, "Voltage: ") ;
+  LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+  point.y = 100 ; 
+  point.x = 130 ;
   for (int i = 0; i < 9 ; i++)
   {
-    Point point{10U, 10U};
-
-    //Display<400,300>::SetPixel(point, Color::White) ;
-   // Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
-   // LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-  //  LcdDriver::SetPartialWindow(Fly, i, 0, 100, 100) ;
-    SystemClock::SetDelayMs(1000) ;
-    
-    //Display<400,300>::DrawChar(point, '4', segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-    
      SystemClock::SetDelayMs(1000) ;
-     Display<400,300>::DrawString(point, "125 .27: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-     Display<400,300>::DrawString(point, "125 .38: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-     Display<400,300>::DrawString(point, "125 .96: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
-     Display<400,300>::DrawString(point, "125 .66: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
+     
+     Display<400,300>::DrawString(point, "125.27") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.38") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.96") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.66") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
   }
   //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
 //  LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
