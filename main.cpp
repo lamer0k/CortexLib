@@ -16,8 +16,8 @@
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
 #include "elinkdriver.hpp"    //for ElinkDriver
-#include "display.hpp"
-
+#include "display.hpp"        //for Display
+#include "nvicregisters.hpp"  //for NVIC
 
 using namespace std ;
 
@@ -108,6 +108,7 @@ int __low_level_init(void)
   
   RCC::APB1ENRPack<
     RCC::APB1ENR::TIM5EN::Enable,  
+    RCC::APB1ENR::TIM2EN::Enable,  
     RCC::APB1ENR::SPI2EN::Enable
     >::Set() ;
   
@@ -153,6 +154,10 @@ int __low_level_init(void)
     
    SPI2::CRCPR::CRCPOLY::Set(10U) ;    
    SPI2::CR1::SPE::Enable::Set() ;
+
+   NVIC::ISER0::Write(1 << 28) ;
+   TIM2::PSC::Write(8000) ;
+   TIM2::DIER::UIE::Enable::Set() ;
   return 1;
 }
 }
@@ -182,7 +187,10 @@ int main()
   LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
   point.y = 100 ; 
   point.x = 130 ;
-  for (int i = 0; i < 9 ; i++)
+  
+  Timer<TIM2, TimerCountable>::SetDelay(1000) ;
+  Timer<TIM2, TimerCountable>::Start() ;
+  //for (int i = 0; i < 9 ; i++)
   {
      SystemClock::SetDelayMs(1000) ;
      
@@ -197,17 +205,18 @@ int main()
   }
   //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
 //  LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
+
   for (;;)
   {
     //SystemClock::SetDelayMs(1000) ;
-    Application::DelayTimer::SetDelay(16000*500) ;
+   // Application::DelayTimer::SetDelay(16000*500) ;
   //  Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+//    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
    // GPIOA::BSRR::Write(32U) ;
    // GPIOC::BSRR::Write(800U) ;
    // SystemClock::SetDelayMs(1000) ;
-    Application::DelayTimer::SetDelay(16000*500) ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
+   // Application::DelayTimer::SetDelay(16000*500) ;
+   // PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
   //  Application::Leds[0]->Toggle() ;
   //  Application::Leds[1]->Toggle() ;
   }

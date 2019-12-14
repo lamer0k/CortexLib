@@ -352,6 +352,7 @@
                     <state>$PROJ_DIR$\AbstractHardware\Atomic</state>
                     <state>$PROJ_DIR$\AbstractHardware\SystemClock</state>
                     <state>$PROJ_DIR$\AbstractHardware\Spi</state>
+                    <state>$PROJ_DIR$\AbstractHardware\InterruptHandler</state>
                     <state>$PROJ_DIR$\AbstractHardware\EdpElink</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411</state>
                     <state>$PROJ_DIR$\AbstractHardware\Registers\STM32F411\FieldValues</state>

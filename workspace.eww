@@ -12,5 +12,11 @@
     <project>
         <path>$WS_DIR$\iartproject.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\..\..\Git\stm32Labs\Lab4\lab4.ewp</path>
+    </project>
+    <project>
+        <path>C:\Users\Sergey\Documents\IARProjects\Test1\test.ewp</path>
+    </project>
     <batchBuild />
 </workspace>

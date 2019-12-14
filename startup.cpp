@@ -1,12 +1,7 @@
 
-extern "C" void __iar_program_start(void) ;
+#include "interrupthandler.hpp"  //for InterruptHandler
 
-class InterruptHandler {
-  public:
-    static void DummyHandler() { for(;;) {} } 
-    static void Timer2Handler() { }
-     
-};
+extern "C" void __iar_program_start(void) ;
 
 using tIntFunct = void(*)();
 using tIntVectItem = union {tIntFunct __fun; void * __ptr;};
