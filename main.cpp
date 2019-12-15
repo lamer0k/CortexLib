@@ -18,6 +18,8 @@
 #include "elinkdriver.hpp"    //for ElinkDriver
 #include "display.hpp"        //for Display
 #include "nvicregisters.hpp"  //for NVIC
+#include "usart2registers.hpp" //for USART2
+
 
 using namespace std ;
 
@@ -109,11 +111,28 @@ int __low_level_init(void)
   RCC::APB1ENRPack<
     RCC::APB1ENR::TIM5EN::Enable,  
     RCC::APB1ENR::TIM2EN::Enable,  
-    RCC::APB1ENR::SPI2EN::Enable
+    RCC::APB1ENR::SPI2EN::Enable,
+    RCC::APB1ENR::USART2EN::Enable
     >::Set() ;
   
-  // LED1 on PortA.5, set PortA.5 as output
-  GPIOA::MODER::MODER5::Output::Set() ;
+
+  GPIOA::MODERPack<
+    GPIOA::MODER::MODER5::Output, // LED1 on PortA.5, set PortA.5 as output
+    GPIOA::MODER::MODER2::Alternate, // Uart2 TX
+    GPIOA::MODER::MODER3::Alternate  // Uart2 RX
+  >::Set() ;
+
+  GPIOA::AFRLPack <
+    GPIOA::AFRL::AFRL2::Af7, // Uart2 TX
+    GPIOA::AFRL::AFRL3::Af7  // Uart2 RX
+    >::Set() ;
+
+
+
+  //USART2::CR1::TE::Enable::Set() ;
+
+
+
   // PortB.13 - SPI3_CLK, PortB.15 - SPI2_MOSI, PB1 -CS, PB2- DC, PB8 -Reset 
   GPIOB::MODERPack<
     GPIOB::MODER::MODER1::Output,         //CS
@@ -121,14 +140,16 @@ int __low_level_init(void)
     GPIOB::MODER::MODER8::Output,         //Reset
     GPIOB::MODER::MODER9::Input,         //Busy
     GPIOB::MODER::MODER13::Alternate,
-    GPIOB::MODER::MODER15::Alternate,
+    GPIOB::MODER::MODER15::Alternate
     >::Set() ;
   
   GPIOB::AFRHPack<
     GPIOB::AFRH::AFRH13::Af5,
     GPIOB::AFRH::AFRH15::Af5
     >::Set() ;
-    
+
+
+
   GPIOB::BSRR::BS1::High::Write() ;
   
   // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
@@ -151,7 +172,8 @@ int __low_level_init(void)
     SPI2::CR1::CRCEN::CrcCalcDisable      
     >::Set() ;
   
-    
+
+
    SPI2::CRCPR::CRCPOLY::Set(10U) ;    
    SPI2::CR1::SPE::Enable::Set() ;
 
