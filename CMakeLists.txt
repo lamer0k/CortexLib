@@ -24,11 +24,13 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Spi
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/InterruptHandler
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/SystemClock
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/EdpElink
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Atomic
                     ${CMAKE_SOURCE_DIR}/Application/Led
                     ${CMAKE_SOURCE_DIR}/Application
+                    ${CMAKE_SOURCE_DIR}/Application/Gui
                     ${CMAKE_SOURCE_DIR}/Common
                     ${CMAKE_SOURCE_DIR}/Common/CriticalSection
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411

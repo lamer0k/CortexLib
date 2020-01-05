@@ -61,11 +61,11 @@ struct Timer
   static void SetDelay(uint32_t delay)
   {
     TimerModule::ARR::Write(delay) ;
-    Start();
-    while(!TimerModule::SR::UIF::UpdatePending::IsSet())
-    {
-    }
-    Stop();
+  //  Start();
+  //  while(!TimerModule::SR::UIF::UpdatePending::IsSet())
+  //  {
+  //  }
+  //  Stop();
   }
   
   __forceinline template<typename T = Interface,

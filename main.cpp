@@ -16,7 +16,9 @@
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
 #include "elinkdriver.hpp"    //for ElinkDriver
-#include "display.hpp"
+#include "display.hpp"        //for Display
+#include "nvicregisters.hpp"  //for NVIC
+#include "usart2registers.hpp" //for USART2
 
 
 using namespace std ;
@@ -108,11 +110,29 @@ int __low_level_init(void)
   
   RCC::APB1ENRPack<
     RCC::APB1ENR::TIM5EN::Enable,  
-    RCC::APB1ENR::SPI2EN::Enable
+    RCC::APB1ENR::TIM2EN::Enable,  
+    RCC::APB1ENR::SPI2EN::Enable,
+    RCC::APB1ENR::USART2EN::Enable
     >::Set() ;
   
-  // LED1 on PortA.5, set PortA.5 as output
-  GPIOA::MODER::MODER5::Output::Set() ;
+
+  GPIOA::MODERPack<
+    GPIOA::MODER::MODER5::Output, // LED1 on PortA.5, set PortA.5 as output
+    GPIOA::MODER::MODER2::Alternate, // Uart2 TX
+    GPIOA::MODER::MODER3::Alternate  // Uart2 RX
+  >::Set() ;
+
+  GPIOA::AFRLPack <
+    GPIOA::AFRL::AFRL2::Af7, // Uart2 TX
+    GPIOA::AFRL::AFRL3::Af7  // Uart2 RX
+    >::Set() ;
+
+
+
+  //USART2::CR1::TE::Enable::Set() ;
+
+
+
   // PortB.13 - SPI3_CLK, PortB.15 - SPI2_MOSI, PB1 -CS, PB2- DC, PB8 -Reset 
   GPIOB::MODERPack<
     GPIOB::MODER::MODER1::Output,         //CS
@@ -120,14 +140,16 @@ int __low_level_init(void)
     GPIOB::MODER::MODER8::Output,         //Reset
     GPIOB::MODER::MODER9::Input,         //Busy
     GPIOB::MODER::MODER13::Alternate,
-    GPIOB::MODER::MODER15::Alternate,
+    GPIOB::MODER::MODER15::Alternate
     >::Set() ;
   
   GPIOB::AFRHPack<
     GPIOB::AFRH::AFRH13::Af5,
     GPIOB::AFRH::AFRH15::Af5
     >::Set() ;
-    
+
+
+
   GPIOB::BSRR::BS1::High::Write() ;
   
   // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
@@ -150,9 +172,14 @@ int __low_level_init(void)
     SPI2::CR1::CRCEN::CrcCalcDisable      
     >::Set() ;
   
-    
+
+
    SPI2::CRCPR::CRCPOLY::Set(10U) ;    
    SPI2::CR1::SPE::Enable::Set() ;
+
+   NVIC::ISER0::Write(1 << 28) ;
+   TIM2::PSC::Write(8000) ;
+   TIM2::DIER::UIE::Enable::Set() ;
   return 1;
 }
 }
@@ -172,47 +199,46 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 
 int main()
 {
-   
-  
+
   LcdDriver::Init() ;
   LcdDriver::Clear() ;
  // LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
   //LcdDriver::SetPartialWindow(gImage_4in2bc_b, 0, 0, 400, 300) ;
-  for (int i = 0; i < 9 ; i++)
+  Point point{90U, 10U};
+  Display<400,300>::DrawString(point, "Voltage: ") ;
+  LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+  point.y = 100 ; 
+  point.x = 130 ;
+  
+  Timer<TIM2, TimerCountable>::SetDelay(1000) ;
+  Timer<TIM2, TimerCountable>::Start() ;
+  //for (int i = 0; i < 9 ; i++)
   {
-    Point point{10U, 10U};
-
-    //Display<400,300>::SetPixel(point, Color::White) ;
-   // Display<400,300>::DrawChar(point, '0', Font48, Color::White, Color::Black) ;
-   // LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-  //  LcdDriver::SetPartialWindow(Fly, i, 0, 100, 100) ;
-    SystemClock::SetDelayMs(1000) ;
-    
-    //Display<400,300>::DrawChar(point, '4', segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-    
      SystemClock::SetDelayMs(1000) ;
-     Display<400,300>::DrawString(point, "125 .27: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-     Display<400,300>::DrawString(point, "125 .38: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
-     Display<400,300>::DrawString(point, "125 .96: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
-     Display<400,300>::DrawString(point, "125 .66: ", segoeUISemibold_48ptFontInfo , Color::White, Color::Black) ;
-     LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;         
+     
+     Display<400,300>::DrawString(point, "125.27") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.38") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.96") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
+     Display<400,300>::DrawString(point, "125.66") ;
+     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
   }
   //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
 //  LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
+
   for (;;)
   {
     //SystemClock::SetDelayMs(1000) ;
-    Application::DelayTimer::SetDelay(16000*500) ;
+   // Application::DelayTimer::SetDelay(16000*500) ;
   //  Pins<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
+//    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
    // GPIOA::BSRR::Write(32U) ;
    // GPIOC::BSRR::Write(800U) ;
    // SystemClock::SetDelayMs(1000) ;
-    Application::DelayTimer::SetDelay(16000*500) ;
-    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
+   // Application::DelayTimer::SetDelay(16000*500) ;
+   // PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
   //  Application::Leds[0]->Toggle() ;
   //  Application::Leds[1]->Toggle() ;
   }

@@ -5,7 +5,7 @@
 #ifndef REGISTERS_SUSUDEFS_HPP
 #define REGISTERS_SUSUDEFS_HPP
 
-
+#include <type_traits>
 #define __forceinline  _Pragma("inline=forced")
 //#define __forceinline
 

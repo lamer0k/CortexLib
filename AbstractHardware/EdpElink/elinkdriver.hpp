@@ -294,7 +294,7 @@ struct ElinkDriver
   }
   
   
-  static void SetPartialWindow(const std::uint8_t *bufferBlack,
+  static void UpdatePartialWindow(const std::uint8_t *bufferBlack,
                                std::uint16_t x,
                                std::uint16_t y,
                                std::uint16_t width,
@@ -320,7 +320,7 @@ struct ElinkDriver
        SendData(bufferBlack[j]);
     }
     SendCommand(ElinkDriverCommands::PartialWindow) ;
-    ClearPartialMode() ;
+ //   ClearPartialMode() ;
     RefreshQuick();
   }
   

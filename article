@@ -1,0 +1,605 @@
+![](https://habrastorage.org/webt/al/fo/qs/alfoqsca21zydklcnzomwtqdgwe.png)
+
+Всем доброго здравия!
+
+В прошлой статье я обещал написать о том, как можно работать со списком портов.
+Сразу скажу, что уже все было решено до меня аж в 2010 году, вот статья: <a href="http://easyelectronics.ru/rabota-s-portami-vvoda-vyvoda-mikrokontrollerov-na-si.html">
+Работа с портами ввода-вывода микроконтроллеров на Си++ </a>. Человек написавший это в 2010 просто красавчик. 
+
+В вышеуказанной статье работа со списками типов была сделана с помощью C++03, когда еще шаблоны имели фиксированное число параметров, а функции не могли быть constexpr выражениями.  С тех пор С++ "немного изменился", поэтому давайте попробуем сделать тоже самое, но на С++17. Добро пожаловать под кат:
+
+<cut />
+
+##Задача
+Итак, перед нами стоит задача, установить или скинуть сразу несколько пинов процессора, которые объединены в список. Пины могут находиться на разных портах. Поэтому эта операция должна быть сделана максимально эффективно. 
+
+Собственно, то, что мы хотим сделать, можно показать кодом:
+```cpp
+using Pin1 = Pin<GPIOС, 1>;
+using Pin2 = Pin<GPIOB, 1>;
+using Pin3 = Pin<GPIOA, 1>;
+using Pin4 = Pin<GPIOC, 2>;
+using Pin5 = Pin<GPIOA, 3>;
+
+int main()
+{
+   // Хотим чтобы все Pinы установились в три действия:     
+   // В порт GPIOA установилось 10 GPIOA->BSRR = 10 ;  // (1<<1) | (1 << 3) ;
+   // В порт GPIOB установилось 2 GPIOB->BSRR = 2 ;  // (1 << 1)
+   // В порт GPIOC установилось 6 GPIOB->BSRR = 6 ; // (1 << 1) | (1 << 2); 
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>::Set() ; 
+
+    return 0;
+}
+```
+
+<spoiler title="Про регистр BSRR">
+
+Для тех, кто не в курсе микроконтроллерных дел, ```GPIOA->BSRR``` регистр отвечает за атомарную установку или сброс значений на ножках микроконтроллера. Этот регистр 32 битный.  Первые 16 бит отвечают за установку 1 на ножках, вторые 16 бит за установку 0 на ножках. 
+
+Например, для того, чтобы установить ножку номер 3 в 1, нужно в регистре ```BSRR``` установить третий бит в 1. Чтобы сбросить ножку номер 3 в 0 нужно в этом же регистре ```BSRR ```установить 19 бит в 1.
+</spoiler>
+
+Обобщенная схема этапов решения этой задачи может быть представлен следующим образом:
+
+![](https://habrastorage.org/webt/xl/zu/wm/xlzuwmbfoudvd9tf6jwlh-ih-vs.png)
+
+Ну или другими словами:
+
+*Чтобы компилятор сделал за нас:* 
+- проверку, что список содержит только уникальные Pin 
+- создание списка портов, определив на каких портах находятся Pin, 
+- вычислене значение, которое нужно поставить в каждый порт
+
+*А затем программа сама*
+- установила это значение
+
+И сделать это нужно максимально эффективно, чтобы даже без оптимизации код был минимальным. Собственно это вся задача. 
+Начнем с первого пунктика: Проверка, что список содержит уникальные Pin.
+
+## Проверка списка на уникальность
+Напомню, у нас есть список Pinов:
+ ```cpp
+PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5> ;
+```
+~~Нечаянно~~ можно сделать так:
+ ```cpp
+PinsPack<Pin1, Pin2, Pin3, Pin4, Pin1> ; // Два раза в списке Pin1
+```
+Хотелось бы, чтобы компилятор отловил такую оплошность и сообщил об этом пианисту.
+
+Будем проверять список на уникальность следующим образом:
+
+* Из исходного списка создадим новый список без дубликатов, 
+* Если тип исходного списка и тип списка без дубликатов не совпадают, то значит в исходном списке были одинаковые Pin и программист ошибся. 
+* Если совпадают, то все хорошо, дубликатов нет.
+
+Для формирования нового списка без дубликатов, коллега посоветовал не изобретать велосипед и воспользоваться подходом из библиотеки Loki. У него я этот подход и спер. Почти то же самое что и в 2010 году, но с переменным числом параметров. 
+
+<spoiler title="Код который позаимствован у коллеги, который позаимствовал идею из Loki">
+
+```cpp
+namespace PinHelper
+{
+ template<typename ... Types> struct Collection  { }; 
+ 
+ ///////////////// Заимствуем идею NoDuplicates из библиотеки LOKI ////////////////
+template<class X, class Y> struct Glue;
+template<class T, class... Ts> 
+struct Glue<T, Collection<Ts...>> {
+    using Result = Collection<T, Ts...>; };
+
+template<class Q, class X> struct Erase;
+
+template<class Q>
+struct Erase<Q, Collection<>> {
+   using Result = Collection<>;};
+
+template<class Q, class... Tail>
+struct Erase<Q, Collection<Q, Tail...>> {
+   using Result = Collection<Tail...>;};
+
+template<class Q, class T, class... Tail>
+struct Erase<Q, Collection<T, Tail...>> {
+   using Result = typename Glue<T, typename Erase<Q, Collection<Tail...>>::Result>::Result;};
+
+template <class X> struct NoDuplicates;
+
+template <> struct NoDuplicates<Collection<>>
+{
+    using Result = Collection<>;
+};
+
+template <class T, class... Tail>
+struct NoDuplicates< Collection<T, Tail...> >
+{
+private:
+    using L1 = typename NoDuplicates<Collection<Tail...>>::Result;
+    using L2 = typename Erase<T,L1>::Result;
+public:
+    using Result = typename Glue<T, L2>::Result;
+};
+///////////////// LOKI ////////////////
+}
+```
+</spoiler>
+
+Как теперь можно этим пользоваться? Да очень просто:
+
+```cpp
+using Pin1 = Pin<GPIOC, 1>;
+using Pin2 = Pin<GPIOB, 1>;
+using Pin3 = Pin<GPIOA, 1>;
+using Pin4 = Pin<GPIOC, 2>;
+using Pin5 = Pin<GPIOA, 3>;
+using Pin6 = Pin<GPIOC, 1>;
+
+int main() {
+    //Два раза Pin1 в списке, да еще и Pin6 имеет тот же самый тип
+    using PinList = Collection<Pin1, Pin2, Pin3, Pin4, Pin1, Pin6> ; 
+    using  TPins =  typename NoDuplicates<PinList>::Result;
+    // сработает static_assert. Так как  будут сравниваться два типа списков
+    // начальный:        Collection<Pin1, Pin2, Pin3, Pin4, Pin1, Pin6>
+    // и без дубликатов: Collection<Pin1, Pin2, Pin3, Pin4>
+    // очевидно, что типы разные
+    static_assert(std::is_same<TPins, PinList>::value, 
+                  "Беда: Одинаковые пины в списке") ;    
+    return 0;
+}
+```
+Ну т.е. если вы неправильно задали список пинов, и нечаянно два одинаковых пина указали в списке, то программа не откомпилируется, а компилятор выдаст ошибку: "Беда: Одинаковые пины в списке".
+
+<spoiler title="Кстати, для генерации списка пинов портов можно использовать такой подход">
+
+```cpp
+//Сгенерируем список пинов для портов
+using GpiobPort = typename GeneratePins<15, GPIOB>::type
+using GpioaPort = typename GeneratePins<15, GPIOA>::type
+ 
+int main() {
+   //Установить GPIOA.0 в 1
+   Gpioa<0>::Set() ; 
+   //Установить GPIOB.1 в 0
+   Gpiob<1>::Clear() ;
+   
+   using LcdData = Collection<Gpioa<0>, Gpiob<6>, Gpiob<2>, Gpioa<3>, Gpioc<7>, Gpioa<4>, Gpioc<3>, Gpioc<10>> ;
+   using TPinsLcd =  typename NoDuplicates<LcdData>::Result;
+   static_assert(std::is_same<TPinsB, LcdData>::value, "Беда: Одинаковые пины в списке для шины данных LCD") ;
+   
+   //Пишем A в линию данных для индикатора
+   LcdData::Write('A');      
+}
+```
+</spoiler>
+
+Мы тут понаписали уже столько, но пока еще нет ни строчки реального кода, который попадет в микроконтроллер. Если все пины заданы правильно, то программа для прошивки выглядит так:
+
+```cpp
+int main()
+{
+   return 0 ;
+}
+```
+Давайте добавим немного кода и попробуем сделать метод ```Set()``` для установки пинов в списке.
+
+## Метод установки Pinов в порте
+Нам необходимо реализовать метод ```Set()```, который автоматически, на основании Pinов в списке, определял бы какие значения в какой порт нужно установить. 
+
+<spoiler title="Кодом, что мы хотим">
+
+```cpp
+using Pin1 = Pin<GPIOA, 1>;
+using Pin2 = Pin<GPIOB, 2>;
+using Pin3 = Pin<GPIOA, 2>;
+using Pin4 = Pin<GPIOC, 1>;
+using Pin5 = Pin<GPIOA, 3>;
+
+int main()
+{         
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>::Set() ;
+   // Этот код должен преобразоваться в 3 линии кода
+   // GPIOA->BSRR = 14 ; // (1<<1) | (1 << 2) | (1 << 3) ;
+   // GPIOB->BSRR = 4 ;  // (1 << 2)
+   // GPIOB->BSRR = 2 ;  // (1 << 1); 
+   
+}
+```
+</spoiler>
+
+Для начала объявим класс, который будет содержать список Pinов, а в нем определим публичный статический метод ```Set()```. 
+```cpp
+template <typename Type, typename ...Ts>
+struct PinsPack 
+{
+   using Pins = PinsPack<Type,Ts...> ;
+public:
+    __forceinline static void Set(std::size_t mask)
+   {
+   }   
+} ;
+```
+Как видно, метод ```Set(size_t mask)``` принимает какое-то значение (маску). Эта маска  есть число, которое нужно поставить в порты. По умолчанию она равна 0xffffffff, это означает, что мы хотим поставить все Pinы в списке (максимум 32). Если передать туда другое значение, например, 7 == 0b111, то установиться должны только первые 3 пина в списке и так далее. Т.е. маска накладываемая на список Pinов.
+
+
+### Формирование списка портов
+Для того, чтобы вообще можно было что-то устанавливать в пины, нужно знать на каких портах эти пины сидят. Каждый Pin привязан к определенному порту и мы можем из класса Pin "вытащить" эти порты и сформировать список этих портов.
+
+Наши Pinы назначены на разные порты:
+```cpp
+using Pin1 = Pin<Port<GPIOA>, 1>;
+using Pin2 = Pin<Port<GPIOB>, 2>;
+using Pin3 = Pin<Port<GPIOA>, 2>;
+using Pin4 = Pin<Port<GPIOC>, 1>;
+using Pin5 = Pin<Port<GPIOA>, 3>;
+```
+У этих 5 Pinoв всего 3 уникальных порта (GPIOA, GPIOB, GPIOC). Если мы объявим список ```PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>```, то из него нужно получить список из трех портов ```Collection<Port<GPIOA>, Port<GPIOB>, Port<GPIOC>>```
+
+Класс Pin содержит в себе тип порта и в упрощенном виде выглядит так:
+```cpp
+template<typename Port, uint8_t pinNum>
+struct Pin 
+{
+  using PortType = Port ;
+  static constexpr uint32_t pin = pinNum ;
+...
+}
+```
+Кроме того, еще нужно определить структуру для этого списка, это будет просто шаблонная структура, принимающая переменное количество аргументов шаблона
+```cpp
+template <typename... Types>
+struct Collection{} ;
+```
+
+Теперь определим список уникальных портов, а заодно проверим, что список пинов не содержит одинаковых пинов. Это сделать несложно :
+```cpp
+template <typename ...Ts>
+struct PinsPack 
+{
+   using Pins = PinsPack<Ts...> ;
+private:
+   // Формируем список пинов без дубликатов
+   using  TPins =  typename NoDuplicates<Collection<Ts...>>::Result;
+   // Проверяем совпадает ли исходный список пинов со списком без дубликатов
+   static_assert(std::is_same<TPins, Collection<Ts...>>::value, 
+                 "Беда: Одинаковые пины в списке") ;   
+   // Формируем список уникальных портов
+   using Ports = typename 
+                     NoDuplicates<Collection<typename Ts::PortType...>>::Result;
+...
+} ;
+```
+
+Идем дальше...
+
+### Обход списка портов 
+Получив список портов, теперь нужно его обойти и что-то с каждым портом сделать. В упрощенном виде можно сказать, что мы должны объявить функцию, которая на входе получит список портов и маску для списка пинов.
+
+Поскольку мы должны обходить список, размер которого доподлинно не известен, функция будет шаблонной с переменным количеством параметров.
+
+Обходить будем "рекурсивно", пока в шаблоне еще есть параметры, будем вызвать функцию с этим же именем.
+ 
+ ```cpp
+template <typename ...Ts>
+struct PinsPack 
+{
+   using Pins = PinsPack<Ts...> ;
+private:
+  __forceinline template<typename Port, typename ...Ports>
+  constexpr static void SetPorts(Collection<Port, Ports...>, std::size_t mask)  
+  {
+    // Проверяем, что параметры шаблона еще не закончены
+    if constexpr (sizeof ...(Ports) != 0U)
+    {
+      Pins::template SetAndResetPorts<Ports...>(Collection<Ports...>(), mask) ;
+    }
+  }
+}
+```
+
+Итак, обходить список портов научились, но кроме обхода нужно сделать какую-то полезную работу, а именно установить в порт что-то. 
+
+```cpp
+__forceinline template<typename Port, typename ...Ports>
+constexpr static void SetPorts(Collection<Port, Ports...>, std::size_t mask)    
+{
+  // Получить значение маски для порта
+  auto result = GetPortValue<Port>(mask) ; 
+  // Установить в порт расчитанное значение
+  Port::Set(result) ;
+ 
+  if constexpr (sizeof ...(Ports) != 0U)
+  {
+    Pins::template SetAndResetPorts<Ports...>(Collection<Ports...>(), mask) ;
+  }
+}
+```
+
+Этот метод будет выполняться в runtime, так как параметр ```mask``` передается в функцию из вне. А из-за того, что мы не можем гарантировать, что в метод ```SetPorts()``` будет передаваться константа, метод ```GetValue()``` тоже начнет выполняться во время исполнения. 
+
+И хотя, в статье <a href="http://easyelectronics.ru/rabota-s-portami-vvoda-vyvoda-mikrokontrollerov-na-si.html"> Работа с портами ввода-вывода микроконтроллеров на Си++ </a> написано, что в подобном методе компилятор определил, что передалась константа и расчитал значение для записи в порт на этапе компиляции, мой компилятор сделал такой трюк только при максимальной оптимизации. 
+А хотелось бы, чтобы ```GetValue()``` выполнялся во время компиляции при любых настройках компилятора. 
+
+Я не нашел в стандарте, как в таком случае должен вести компилятор компилятор, но судя по тому, что компилятор IAR делает это только при максимальном уровне оптимизации, скорее всего это стандартом и не регламентировано, либо не должно восприниматься как constexpr выражение. 
+Если кто знает, пишите в комментариях. 
+
+Чтобы обеспечить явную передачу константного значения сделаем дополнительный метод с передачей ```mask``` в шаблоне:
+
+```cpp
+__forceinline template<std::size_t mask, typename Port, typename ...Ports>
+constexpr static void SetPorts(Collection<Port, Ports...>)  
+{
+  using MyPins = PinsPack<Ts...> ;
+  // метод вызывается в compile time, так как значение value взято из шаблона
+  constexpr auto result = GetPortValue<Port>(mask) ; 
+  Port::Set(result) ;
+
+  if constexpr (sizeof ...(Ports) != 0U)  
+  {
+    MyPins::template SetPorts<mask,Ports...>(Collection<Ports...>()) ;
+  }
+}
+```
+  
+Таким образом мы теперь можем пробегаться по списку Pinов, вытаскивать из них порты и составлять уникальный список портов к которым они привязаны, а затем пробегаться по созданному списку портов и устанавливать в каждом порте нужное <u>значение</u>.
+Осталось это <u>значение</u> рассчитать.
+
+### Расчет значения, которое необходимо установить в порт
+
+У нас есть список портов, который мы получили из списка Pinов, для нашего примера это список: ```Collection<Port<GPIOA>, Port<GPIOB>, Port<GPIOC>>```. 
+Нужно взять элемент этого списка, например, порт GPIOA, затем в списке Pinов найти все Pinы, которые привязаны к этому порту и рассчитать значение для установки в порт. А затем тоже самое сделать со следующим портом.
+
+<spoiler title="Еще раз: В нашем случае список Pinов, из которых нужно получить список уникальных портов такой:">
+
+```cpp
+using Pin1 = Pin<Port<GPIOC>, 1>;
+using Pin2 = Pin<Port<GPIOB>, 1>;
+using Pin3 = Pin<Port<GPIOA>, 1>;
+using Pin4 = Pin<Port<GPIOC>, 2>;
+using Pin5 = Pin<Port<GPIOA>, 3>;
+
+using Pins = PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5> ;
+```
+</spoiler>
+
+Значит для порта GPIOA значение должно ```(1 << 1 ) | (1 << 3) = 10```, а для порта GPIOC - ```(1 << 1) | (1 << 2) = 6```, а для GPIOB ```(1 << 1 ) = 2```  
+
+Функция для расчета принимает запрашиваемый порт и если Pin находится на том же порту, что и запрашиваемый порт, то она должна установить в маске бит, соответствующий позиции  этого Pina в списке,  единицу (1). 
+На словах объяснить не просто, лучше посмотрим сразу в код:
+
+```cpp
+template <typename ...Ts>
+struct PinsPack
+{
+  using Pins = PinsPack<Ts...> ;
+private:
+  __forceinline template<class QueryPort>
+  constexpr static auto GetPortValue(std::size_t mask) 
+  {
+    std::size_t result = 0;  
+    // Для того, чтобы узнать какая будет маска нужно
+    // 1. Проверить, что порт пина и запрашиваемый порт совпадают
+    // 2. Если совпадают взять нулевой бит маски и установить его в результирующее 
+    // значениe (т.е по номеру пина на порте), например, если Pin с индексом 0 в 
+    // списке пинов висит на выводе порта номер 10, то для в результирующее значение 
+    // для порта нужно установить(через ИЛИ) значение (1 << 10) и так далее
+    // 3. Сдвинуть маску на 1 в право
+    // 4. Повторить шаги 1-3 для остальных пинов в списке
+    pass{(result |= ((std::is_same<QueryPort, typename Ts::PortType>::value ? 1 : 0) & 
+                                                 mask) * (1 << Ts::pin), mask >>= 1)...} ;
+    return result;
+  }
+} ;      
+```
+
+Теперь мы знаем значение, которое нужно установить в каждом порту. Осталось доделать публичный метод ```Set()```, который будет виден пользователю, чтобы все это хозяйство вызвалось:
+
+```cpp
+template <typename ...Ts>
+struct PinsPack
+{
+  using Pins = PinsPack<Ts...> ; 
+  
+  __forceinline static void Set(std::size_t mask)
+  {
+    // Передаем список портов и значение,
+    SetPorts(Ports(), mask) ;
+  }
+}
+```
+
+ Как и в случае с ```SetPorts()```  сделаем дополнительный шаблонный метод, чтобы гарантировать передачу ```mask``` как  константы, передав её в атрибуте шаблона. 
+
+```cpp
+template <typename ...Ts>
+struct PinsPack
+{
+  using Pins = PinsPack<Ts...> ;
+  // Значение по умолчанию 0xffffffff, чтобы можно было одновременно устанавливать 32 пина
+  __forceinline template<std::size_t mask =  0xffffffffU>
+  static void Set()
+  {
+    SetPorts<mask>(Ports()) ;
+  }
+}
+
+```
+
+<spoiler title="В финальном виде наш класс для списка Pinов будет выглядеть следующим образом:" >
+
+```cpp
+using namespace PinHelper ;
+
+template <typename ...Ts>
+struct PinsPack
+{
+   using Pins = PinsPack<Ts...> ;
+
+ private:
+   
+   using  TPins =  typename NoDuplicates<Collection<Ts...>>::Result;
+   static_assert(std::is_same<TPins, Collection<Ts...>>::value, 
+                 "Беда: Одинаковые пины в списке") ;   
+   using Ports = typename 
+                     NoDuplicates<Collection<typename Ts::PortType...>>::Result;
+   
+   template<class Q>
+   constexpr static auto GetPortValue(std::size_t mask) 
+   {
+     std::size_t result = 0;  
+     auto rmask = mask ;
+     pass{(result |= ((std::is_same<Q, typename Ts::PortType>::value ? 1 : 0) & mask) * (1 << Ts::pin), mask>>=1)...};
+     pass{(result |= ((std::is_same<Q, typename Ts::PortType>::value ? 1 : 0) & ~rmask) * ((1 << Ts::pin) << 16), rmask>>=1)...};
+     return result;
+   }      
+  
+   __forceinline template<typename Port, typename ...Ports>
+   constexpr static void SetPorts(Collection<Port, Ports...>, std::size_t mask)
+   {
+     auto result = GetPortValue<Port>(mask) ;
+     Port::Set(result & 0xff) ;
+
+     if constexpr (sizeof ...(Ports) != 0U)
+     {
+       Pins::template SetPorts<Ports...>(Collection<Ports...>(), mask) ;
+     }
+   }
+
+   __forceinline template<std::size_t mask, typename Port, typename ...Ports>
+   constexpr static void SetPorts(Collection<Port, Ports...>)
+   {
+     constexpr auto result = GetPortValue<Port>(mask) ;
+     Port::Set(result & 0xff) ;
+
+     if constexpr (sizeof ...(Ports) != 0U)
+     {
+       Pins::template SetPorts<mask, Ports...>(Collection<Ports...>()) ;
+     }
+   }
+
+
+   __forceinline template<typename Port, typename ...Ports>
+   constexpr static void SetAndResetPorts(Collection<Port, Ports...>, std::size_t mask)
+   {
+     auto result = GetPortValue<Port>(mask) ;
+     Port::Set(result) ;
+
+     if constexpr (sizeof ...(Ports) != 0U)
+     {
+       Pins::template SetAndResetPorts<Ports...>(Collection<Ports...>(), mask) ;
+     }
+   }
+   
+    __forceinline template<std::size_t mask, typename Port, typename ...Ports>
+   constexpr static void SetAndResetPorts(Collection<Port, Ports...>)
+   {
+     Port::Set(GetPortValue<Port>(mask)) ;
+
+     if constexpr (sizeof ...(Ports) != 0U)
+     {
+       Pins::template SetAndResetPorts<mask, Ports...>(Collection<Ports...>()) ;
+     }
+   }
+
+public:
+    static constexpr size_t size = sizeof ...(Ts) + 1U ;
+
+   __forceinline static void Set(std::size_t mask  )
+   {
+     SetPorts(Ports(), mask) ;
+   }
+   
+   __forceinline template<std::size_t mask =  0xffffffffU>
+   static void Set()
+   {
+     SetPorts<mask>(Ports()) ;
+   }
+   
+    __forceinline static void SetAndReset(std::size_t mask)
+   {
+     SetAndResetPorts(Ports(), mask) ;
+   }
+
+   __forceinline template<std::size_t mask =  0xffffffffU>
+   static void SetAndReset()
+   {
+     SetAndResetPorts<mask>(Ports()) ;
+   }
+
+} ;
+
+```
+</spoiler>
+
+В результате все это дело можно использовать так:
+```cpp
+using Pin1 = Pin<GPIOC, 1>;
+using Pin2 = Pin<GPIOB, 1>;
+using Pin3 = Pin<GPIOA, 1>;
+using Pin4 = Pin<GPIOC, 2>;
+using Pin5 = Pin<GPIOA, 3>;
+using Pin6 = Pin<GPIOA, 5>;
+using Pin7 = Pin<GPIOC, 7>;
+using Pin8 = Pin<GPIOA, 3>;
+
+int main() 
+{
+    //1. Этот вызов развернется, как и планировалось в 3 строки, эквивалентные псевдокоду:
+    // GPIOA->BSRR = (1 << 1) | (1 << 3) 
+    // GPIOB->BSRR = (1 << 1) 
+    // GPIOC->BSRR = (1 << 1) | (1 << 2) 
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>::Set() ; // Вызвался метод Set<0xffffffffU>()  
+
+    //2. Этот вызов развернется, в 3 строки, эквивалентные псевдокоду:
+    // GPIOA->BSRR = (1 << 1) 
+    // GPIOB->BSRR = (1 << 1) 
+    // GPIOC->BSRR = (1 << 1) | (1 << 2)
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5, Pin6>::Set<7>() ;   
+
+   //3. А это уже сгенерит немного кода и всяких шаблонных функций, 
+   // так как someRunTimeValue не известно на этапе компиляции, то 
+   // функция SetPorts перестает быть constexpr со всеми вытекающими
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>::Set(someRunTimeValue) ;
+    
+    using LcdData =  PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5, Pin6, Pin7, Pin8> ;
+    LcdData::SetAndReset('A') ;
+}
+```
+
+Более полный пример, можно посмотреть тут: 
+https://onlinegdb.com/ryYbR8zAS
+
+
+## Быстродействие
+Как вы помните мы хотели добиться, чтобы наш вызов преобразовался в 3 строки, в порт A установилось 10, в порт B - 2 и в порт С - 6
+
+```cpp
+using Pin1 = Pin<GPIOС, 1>;
+using Pin2 = Pin<GPIOB, 1>;
+using Pin3 = Pin<GPIOA, 1>;
+using Pin4 = Pin<GPIOC, 2>;
+using Pin5 = Pin<GPIOA, 3>;
+
+int main()
+{
+   // Хотим чтобы все Pinы установились в три действия:     
+   // В порт GPIOA установилось 10 GPIOA->BSRR = 10 ;  // (1<<1) | (1 << 3) ;
+   // В порт GPIOB установилось 2 GPIOB->BSRR = 2 ;  // (1 << 1)
+   // В порт GPIOC установилось 6 GPIOB->BSRR = 6 ; // (1 << 1) | (1 << 2); 
+    PinsPack<Pin1, Pin2, Pin3, Pin4, Pin5>::Set() ; 
+
+    return 0;
+}
+```
+
+Давайте посмотрим, что у нас получилось при полностью отключенной оптимизации
+
+![](https://habrastorage.org/webt/gj/h4/2a/gjh42ajp_l8mnqu4wozlw8xdje8.png)
+
+Я подкрасил зеленым значения портов и вызовы установок этих значений в порты. Видно, что все сделано так как мы задумывали, компилятор для кадого из портов подстчитал значение и просто вызвал функцию для установки этих значений в нужные порты.
+Если функции установки также сделать inline, то в конечном итоге получится один вызов записи значения в BSRR регистр для каждого порта. 
+
+Собственно все, кому интересно все лежит тут:  https://github.com/lamer0k/CortexLib/tree/master/AbstractHardware/Pin
+
+Пример лежит тут: https://onlinegdb.com/ryYbR8zAS
+
+https://onlinegdb.com/ByeA50wTS
