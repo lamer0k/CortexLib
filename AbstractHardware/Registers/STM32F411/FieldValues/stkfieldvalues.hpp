@@ -15,29 +15,29 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CTRL_ENABLE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CTRL_ENABLE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CTRL_ENABLE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<STK_CTRL_ENABLE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<STK_CTRL_ENABLE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CTRL_TICKINT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CTRL_TICKINT_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CTRL_TICKINT_Values, BaseType, 1U> ;
+  using DisableInterrupt = FieldValue<STK_CTRL_TICKINT_Values, BaseType, 0U> ;
+  using EnableInterrupt = FieldValue<STK_CTRL_TICKINT_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CTRL_CLKSOURCE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CTRL_CLKSOURCE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CTRL_CLKSOURCE_Values, BaseType, 1U> ;
+  using ExternalClock = FieldValue<STK_CTRL_CLKSOURCE_Values, BaseType, 0U> ;
+  using CpuClock = FieldValue<STK_CTRL_CLKSOURCE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CTRL_COUNTFLAG_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CTRL_COUNTFLAG_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CTRL_COUNTFLAG_Values, BaseType, 1U> ;
+  using NoOverflow = FieldValue<STK_CTRL_COUNTFLAG_Values, BaseType, 0U> ;
+  using Overflow = FieldValue<STK_CTRL_COUNTFLAG_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -58,15 +58,15 @@ struct STK_CALIB_TENMS_Values: public RegisterField<Reg, offset, size, AccessMod
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CALIB_SKEW_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CALIB_SKEW_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CALIB_SKEW_Values, BaseType, 1U> ;
+  using CalibrationCoef = FieldValue<STK_CALIB_SKEW_Values, BaseType, 0U> ;
+  using DummyCoef = FieldValue<STK_CALIB_SKEW_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct STK_CALIB_NOREF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<STK_CALIB_NOREF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<STK_CALIB_NOREF_Values, BaseType, 1U> ;
+  using RefExist = FieldValue<STK_CALIB_NOREF_Values, BaseType, 0U> ;
+  using NoRef = FieldValue<STK_CALIB_NOREF_Values, BaseType, 1U> ;
 } ;
 
 #endif //#if !defined(STKENUMS_HPP)

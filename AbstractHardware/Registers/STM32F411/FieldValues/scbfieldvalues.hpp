@@ -93,8 +93,8 @@ struct SCB_ICSR_VECTACTIVE_Values: public RegisterField<Reg, offset, size, Acces
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_RETTOBASE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_RETTOBASE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_RETTOBASE_Values, BaseType, 1U> ;
+  using ActiveExceptionExist = FieldValue<SCB_ICSR_RETTOBASE_Values, BaseType, 0U> ;
+  using NoActiveException = FieldValue<SCB_ICSR_RETTOBASE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -105,43 +105,37 @@ struct SCB_ICSR_VECTPENDING_Values: public RegisterField<Reg, offset, size, Acce
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_ISRPENDING_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_ISRPENDING_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_ISRPENDING_Values, BaseType, 1U> ;
+  using PendingState = FieldValue<SCB_ICSR_ISRPENDING_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_PENDSTCLR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_PENDSTCLR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_PENDSTCLR_Values, BaseType, 1U> ;
+  using PendingStateRemove = FieldValue<SCB_ICSR_PENDSTCLR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_PENDSTSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_PENDSTSET_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_PENDSTSET_Values, BaseType, 1U> ;
+  using PendingState = FieldValue<SCB_ICSR_PENDSTSET_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_PENDSVCLR_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_PENDSVCLR_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_PENDSVCLR_Values, BaseType, 1U> ;
+   using PendingStateRemove = FieldValue<SCB_ICSR_PENDSVCLR_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_PENDSVSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_PENDSVSET_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_PENDSVSET_Values, BaseType, 1U> ;
+   using PendingState = FieldValue<SCB_ICSR_PENDSVSET_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_ICSR_NMIPENDSET_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<SCB_ICSR_NMIPENDSET_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<SCB_ICSR_NMIPENDSET_Values, BaseType, 1U> ;
+  using PendingState = FieldValue<SCB_ICSR_NMIPENDSET_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
