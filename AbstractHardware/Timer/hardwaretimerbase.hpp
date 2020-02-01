@@ -74,7 +74,7 @@ struct HardwareTimerBase
           class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
   static void HandleInterrupt()
   {
-    TimerList::HandleInterrupt();
+    TimerList::OnInterrupt();
   }
 };
 

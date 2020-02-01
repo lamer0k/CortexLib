@@ -8,9 +8,9 @@
 template<typename... Timers>
 struct TimersList
 {
-  __forceinline static void HandleInterrupt()
+  __forceinline static void OnInterrupt()
   {
-    (Timers::OnInterrupt(), ...) ;
+    (Timers::InterruptHandle(), ...) ;
   }
 
 } ;
