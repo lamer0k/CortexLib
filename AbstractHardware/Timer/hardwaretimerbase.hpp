@@ -2,11 +2,11 @@
 // Created by SKolody on 17.10.2019.
 //
 
-#ifndef REGISTERS_TIMER_HPP
-#define REGISTERS_TIMER_HPP
+#ifndef REGISTERS_HARDWARETIMERBASE_HPP
+#define REGISTERS_HARDWARETIMERBASE_HPP
 
 #include "susudefs.hpp"   //for __forceinline
-#include "subscriber.hpp" //for ISubscriber
+
 
 struct TimerSwitchable
 {
@@ -34,11 +34,13 @@ struct TimerCcpableInterruptable: TimerInterruptable, TimerCcpable
 };
 
 
-template<typename TimerModule, typename Interface, auto* const ...args>
-struct Timer
+template<typename TimerModule, typename Interface, typename TimerList>
+struct HardwareTimerBase
 {
   using CntType = typename TimerModule::CNT::Type ;
-  
+  using Timer = TimerModule ;
+  using TInterface = Interface ;
+
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Start()
@@ -70,14 +72,10 @@ struct Timer
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
-  void InterruptHandle() const
+  static void HandleInterrupt()
   {
-    auto subscribers = {(ISubscriber*)(args)...} ;  
-    for (auto subscriber: subscribers)
-    {
-      subscriber->Update() ;
-    }
+    TimerList::HandleInterrupt();
   }
 };
 
-#endif //REGISTERS_TIMER_HPP
+#endif //REGISTERS_HARDWARETIMERBASE_HPP

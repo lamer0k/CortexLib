@@ -141,24 +141,24 @@ struct ADC_Common_CSR_AWD1_Values: public RegisterField<Reg, offset, size, Acces
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct ADC_Common_CCR_TSVREFE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CCR_TSVREFE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CCR_TSVREFE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<ADC_Common_CCR_TSVREFE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<ADC_Common_CCR_TSVREFE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct ADC_Common_CCR_VBATE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CCR_VBATE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CCR_VBATE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<ADC_Common_CCR_VBATE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<ADC_Common_CCR_VBATE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct ADC_Common_CCR_ADCPRE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 3U> ;
+  using DevidedBy2 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 0U> ;
+  using DevidedBy4 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 1U> ;
+  using DevidedBy6 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 2U> ;
+  using DevidedBy8 = FieldValue<ADC_Common_CCR_ADCPRE_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

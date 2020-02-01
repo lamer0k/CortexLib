@@ -34,6 +34,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/Application/Gui/Fonts
                     ${CMAKE_SOURCE_DIR}/Common
                     ${CMAKE_SOURCE_DIR}/Common/CriticalSection
+                    ${CMAKE_SOURCE_DIR}/Common/Observer
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
                  #   ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues
                      ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
@@ -49,5 +50,5 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
 
 add_executable(Registers
             #   startup.cpp
-               main.cpp)
+               main.cpp Common/Observer/observers.hpp AbstractHardware/Timer/hardwaretimeroverflow.hpp AbstractHardware/Timer/timerlist.hpp AbstractHardware/Timer/timerobserver.hpp)
 

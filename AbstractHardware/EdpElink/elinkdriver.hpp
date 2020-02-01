@@ -35,17 +35,17 @@ enum class ElinkDriverCommands : std::uint8_t
 //Soft start period of phase 00b: 10mS
 //Driving strength of phase 010b: strength 3
 //Minimum OFF time setting of GDR in phase: 111b: 6.58uS
-constexpr auto BtphaDefaultValue = std::uint8_t{0x17} ;
-constexpr auto BtphbDefaultValue = std::uint8_t{0x17} ;
-constexpr auto BtphcDefaultValue = std::uint8_t{0x17} ;
+static constexpr auto BtphaDefaultValue = std::uint8_t{0x17} ;
+static constexpr auto BtphbDefaultValue = std::uint8_t{0x17} ;
+static constexpr auto BtphcDefaultValue = std::uint8_t{0x17} ;
 
-constexpr auto BlackColor =  std::uint8_t{0xFF} ;
+static constexpr auto BlackColor =  std::uint8_t{0xFF} ;
 
-constexpr auto DispalyWidth =  std::uint16_t{400U} ;
-constexpr auto DispalyHeight = std::uint16_t{300U} ;
+static constexpr auto DispalyWidth =  std::uint16_t{400U} ;
+static constexpr auto DispalyHeight = std::uint16_t{300U} ;
 
-constexpr std::uint16_t RealDisplayWidth = (DispalyWidth % 8U == 0U) ? (DispalyWidth / 8U ): (DispalyWidth / 8U + 1U) ;
-constexpr std::uint16_t RealDisplayHeight = DispalyHeight ;
+static constexpr std::uint16_t RealDisplayWidth = (DispalyWidth % 8U == 0U) ? (DispalyWidth / 8U ): (DispalyWidth / 8U + 1U) ;
+static constexpr std::uint16_t RealDisplayHeight = DispalyHeight ;
 
 
 static constexpr unsigned char EPD_4IN2_lut_vcom0[] = {

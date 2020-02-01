@@ -3,7 +3,7 @@
 // 
 #include "font.h"
 // Character bitmaps for Segoe UI Semibold 48pt
-const std::uint8_t segoeUISemibold_48ptBitmaps[] = 
+static constexpr std::uint8_t segoeUISemibold_48ptBitmaps[] =
 {
 	// @0 '!' (11 pixels wide)
 	0x00, 0x00, //            
@@ -6306,7 +6306,7 @@ const std::uint8_t segoeUISemibold_48ptBitmaps[] =
 
 // Character descriptors for Segoe UI Semibold 48pt
 // { [Char width in bits], [Offset into segoeUISemibold_48ptCharBitmaps in bytes] }
-const tFontDescriptor segoeUISemibold_48ptDescriptors[] = 
+static constexpr tFontDescriptor segoeUISemibold_48ptDescriptors[] =
 {
 	{11, 0}, 		// ! 
 	{21, 130}, 		// " 
@@ -6405,7 +6405,7 @@ const tFontDescriptor segoeUISemibold_48ptDescriptors[] =
 };
 
 // Font information for Segoe UI Semibold 48pt
-constexpr tFont segoeUISemibold_48ptFontInfo =
+static constexpr tFont segoeUISemibold_48ptFontInfo =
 {
 	65, //  Character height
 	'!', //  Start character

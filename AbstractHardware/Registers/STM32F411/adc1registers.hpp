@@ -83,7 +83,16 @@ struct ADC1
 
   struct SMPR1 : public RegisterBase<0x4001200C, 32, ReadWriteMode>
   {
-    using SMPx_x = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 0, 32, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP9 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 27, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP8 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 24, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP7 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 21, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP6 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 18, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP5 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 15, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP4 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 12, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP3 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 9, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP2 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 6, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP1 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 3, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP0 = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 0, 3, ReadWriteMode, ADC1SMPR1Base> ;
     using FieldValues = ADC1_SMPR1_SMPx_x_Values<ADC1::SMPR1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
@@ -94,7 +103,16 @@ struct ADC1
 
   struct SMPR2 : public RegisterBase<0x40012010, 32, ReadWriteMode>
   {
-    using SMPx_x = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 0, 32, ReadWriteMode, ADC1SMPR2Base> ;
+    using SMP9 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 27, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP8 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 24, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP7 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 21, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP6 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 18, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP5 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 15, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP4 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 12, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP3 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 9, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP2 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 6, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP1 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 3, 3, ReadWriteMode, ADC1SMPR1Base> ;
+    using SMP0 = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 0, 3, ReadWriteMode, ADC1SMPR1Base> ;
     using FieldValues = ADC1_SMPR2_SMPx_x_Values<ADC1::SMPR2, 0, 0, NoAccess, NoAccess> ;
   } ;
 

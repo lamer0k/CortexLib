@@ -11,7 +11,8 @@
 #include "port.hpp"           //for Port
 #include "tim2registers.hpp"  //for TIM2
 #include "tim5registers.hpp"  //for TIM5
-#include "timer.hpp"          //for Timer
+#include "hardwaretimerbase.hpp"          //for HardwareTimerBase
+#include "hardwaretimeroverflow.hpp"          //for HardwareTimerOverflow
 #include "spi.hpp"            //for Spi
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
@@ -19,34 +20,39 @@
 #include "display.hpp"        //for Display
 #include "nvicregisters.hpp"  //for NVIC
 #include "usart2registers.hpp" //for USART2
+#include "subscriber.hpp"
+#include "adc1registers.hpp" //for ADC1
+#include "adccommonregisters.hpp" //for ADCCommon
+#include "timerobserver.hpp" //for OverflowObserver
+#include "timerlist.hpp"
+
 
 
 using namespace std ;
 
-struct Test : ISubscriber
+struct Test
 {
-  constexpr explicit Test(std::uint32_t id): Id{id} {} ;
-  __forceinline void Update() const override
+
+  __forceinline static void OnTimeOut()
   {
     //std::cout << Id << std::endl ;
   }
   
-  const std::uint32_t Id;
+  inline static constexpr std::uint32_t Id = 1;
 };
 
-struct Test1 : ISubscriber
+template<typename Timer>
+struct Test1
 {
-  constexpr explicit Test1(std::uint32_t id): Id{id} {} ;
-  __forceinline void Update() const override
+
+  __forceinline static void OnTimeOut()
   {
     //std::cout << Id << std::endl ;
+    Timer::Start() ;
   }
   
-  const std::uint32_t Id;
+  inline static const std::uint32_t Id = 2 ;
 };
-
-Test test{1} ;
-constexpr Test1 test1{2} ;
 
 
 using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
@@ -61,11 +67,15 @@ class Application
 
 
 public:
-  using DurationTimer = Timer<TIM2, TimerCountableInterruptable, &test1, &test> ;
-  using DelayTimer = Timer<TIM5, TimerCountable> ;
-  //static constexpr DurationTimer durationTimer{test} ;
-  static constexpr DurationTimer durationTimer{} ;
-  static constexpr DelayTimer delayTimer{} ;
+
+  struct OverflowTimer; //говорим, что будем использовать
+  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, TimersList<OverflowTimer>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+
+  struct DurationTimer : HardwareOverflowTimerBase<
+      AppHardwareTimer,
+      OverflowObservers<Test, Test1<DurationTimer>>
+  >  {};
+
   static constexpr std::array<const ILed*, 2U> Leds 
   {
     &Led1,
@@ -78,7 +88,7 @@ struct Interrupt
 {
   static void Update()
   {
-    Application::durationTimer.InterruptHandle() ;
+    Application::DurationTimer::HandleInterrupt() ;
   }
 };
 
@@ -177,9 +187,20 @@ int __low_level_init(void)
    SPI2::CRCPR::CRCPOLY::Set(10U) ;    
    SPI2::CR1::SPE::Enable::Set() ;
 
-   NVIC::ISER0::Write(1 << 28) ;
-   TIM2::PSC::Write(8000) ;
+   NVIC::ISER0::Write(1U << 28U) ;
+   TIM2::PSC::Write(8000U) ;
    TIM2::DIER::UIE::Enable::Set() ;
+
+   //********************ADC
+   RCC::APB2ENR::ADC1EN::Enable::Set() ;
+   ADC_Common::CCR::TSVREFE::Enable::Set() ;
+   ADC1::CR2::EOCS::SingleConversion::Set() ;
+   //84 cycles sample rate for channel 0
+   ADC1::SMPR2::SMP0::Cycles84::Set() ;
+   ADC1::SQR1::L::Conversions1::Set() ;
+   ADC1::SQR3::SQ1::Channel18::Set() ;
+   GPIOA::MODER::MODER0::Analog::Set() ;
+
   return 1;
 }
 }
@@ -200,6 +221,21 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 int main()
 {
 
+  //**************ADC*****************
+  ADC1::CR2::ADON::Enable::Set() ;
+  ADC1::CR2::SWSTART::On::Set() ;
+  while(ADC1::SR::STRT::NotStarted::IsSet())
+  {
+
+  } ;
+
+  while(ADC1::SR::EOC::ConversionNotComplete::IsSet())
+  {
+
+  } ;
+
+  const auto data = ADC1::DR::Get() ;
+
   LcdDriver::Init() ;
   LcdDriver::Clear() ;
  // LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);
@@ -209,9 +245,9 @@ int main()
   LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
   point.y = 100 ; 
   point.x = 130 ;
-  
-  Timer<TIM2, TimerCountable>::SetDelay(1000) ;
-  Timer<TIM2, TimerCountable>::Start() ;
+
+  Application::DurationTimer::SetDelay(1000) ;
+  Application::DurationTimer::Start() ;
   //for (int i = 0; i < 9 ; i++)
   {
      SystemClock::SetDelayMs(1000) ;
