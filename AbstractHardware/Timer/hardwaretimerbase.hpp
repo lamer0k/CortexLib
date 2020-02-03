@@ -45,7 +45,7 @@ struct HardwareTimerBase
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Start()
   {
-    TimerModule::SR::UIF::NoUpdate::Set();
+    TimerModule::SR::UIF::NoInterruptPending::Set();
     TimerModule::CNT::Write(CntType(0));
     TimerModule::CR1::CEN::Enable::Set() ;
   }
@@ -55,7 +55,7 @@ struct HardwareTimerBase
   static void Stop()
   {
     TimerModule::CR1::CEN::Disable::Set() ;
-    TimerModule::SR::UIF::NoUpdate::Set() ;
+    TimerModule::SR::UIF::NoInterruptPending::Set() ;
   }
   
   __forceinline template<typename T = Interface,
@@ -63,11 +63,6 @@ struct HardwareTimerBase
   static void SetDelay(uint32_t delay)
   {
     TimerModule::ARR::Write(delay) ;
-  //  Start();
-  //  while(!TimerModule::SR::UIF::UpdatePending::IsSet())
-  //  {
-  //  }
-  //  Stop();
   }
   
   __forceinline template<typename T = Interface,

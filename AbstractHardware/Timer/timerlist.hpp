@@ -10,7 +10,7 @@ struct TimersList
 {
   __forceinline static void OnInterrupt()
   {
-    (Timers::InterruptHandle(), ...) ;
+    (Timers::HandleInterrupt(), ...) ;
   }
 
 } ;

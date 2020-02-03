@@ -50,5 +50,5 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
 
 add_executable(Registers
             #   startup.cpp
-               main.cpp Common/Observer/observers.hpp AbstractHardware/Timer/hardwaretimeroverflow.hpp AbstractHardware/Timer/timerlist.hpp AbstractHardware/Timer/timerobserver.hpp)
+               main.cpp Common/Observer/observers.hpp AbstractHardware/Timer/hardwaretimeroverflow.hpp AbstractHardware/Timer/timerlist.hpp AbstractHardware/Timer/timerobserver.hpp AbstractHardware/Timer/hardwaretimercc.hpp)
 

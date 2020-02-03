@@ -154,22 +154,22 @@ struct TIM9_SR_TIF_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM9_SR_CC2IF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM9_SR_CC2IF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM9_SR_CC2IF_Values, BaseType, 1U> ;
+  using NoInterruptPending = FieldValue<TIM9_SR_CC2IF_Values, BaseType, 0U> ;
+  using InterruptPending = FieldValue<TIM9_SR_CC2IF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM9_SR_CC1IF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM9_SR_CC1IF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM9_SR_CC1IF_Values, BaseType, 1U> ;
+  using NoInterruptPending = FieldValue<TIM9_SR_CC1IF_Values, BaseType, 0U> ;
+  using InterruptPending = FieldValue<TIM9_SR_CC1IF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM9_SR_UIF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM9_SR_UIF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM9_SR_UIF_Values, BaseType, 1U> ;
+  using NoInterruptPending = FieldValue<TIM9_SR_UIF_Values, BaseType, 0U> ;
+  using InterruptPending = FieldValue<TIM9_SR_UIF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

@@ -14,9 +14,9 @@ class InterruptHandler {
     static void DummyHandler() { for(;;) {} }
     static void Timer2Handler()
     {
-      if (TIM2::SR::UIF::UpdatePending::IsSet())
+      if (TIM2::SR::UIF::InterruptPending::IsSet())
       {
-        TIM2::SR::UIF::NoUpdate::Set();
+        TIM2::SR::UIF::NoInterruptPending::Set();
         Pin<Port<GPIOC>, 8U, PinWriteable>::Toggle() ;
       }
     }

@@ -24,73 +24,12 @@
 #include "adc1registers.hpp" //for ADC1
 #include "adccommonregisters.hpp" //for ADCCommon
 #include "timerobserver.hpp" //for OverflowObserver
-#include "timerlist.hpp"
+#include "timerlist.hpp" // for TimerList
+#include "hardwaretimercc.hpp" //HardwareCcTimer
 
 
 
 using namespace std ;
-
-struct Test
-{
-
-  __forceinline static void OnTimeOut()
-  {
-    //std::cout << Id << std::endl ;
-  }
-  
-  inline static constexpr std::uint32_t Id = 1;
-};
-
-template<typename Timer>
-struct Test1
-{
-
-  __forceinline static void OnTimeOut()
-  {
-    //std::cout << Id << std::endl ;
-    Timer::Start() ;
-  }
-  
-  inline static const std::uint32_t Id = 2 ;
-};
-
-
-using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
-using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
-using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
-using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
-
-class Application
-{
-  static constexpr Led<Led1Pin> Led1{} ;
-  static constexpr Led<Led2Pin> Led2{} ;
-
-
-public:
-
-  struct OverflowTimer; //говорим, что будем использовать
-  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, TimersList<OverflowTimer>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-
-  struct DurationTimer : HardwareOverflowTimerBase<
-      AppHardwareTimer,
-      OverflowObservers<Test, Test1<DurationTimer>>
-  >  {};
-
-  static constexpr std::array<const ILed*, 2U> Leds 
-  {
-    &Led1,
-    &Led2,
-  } ;
-  
-};
-
-struct Interrupt
-{
-  static void Update()
-  {
-    Application::DurationTimer::HandleInterrupt() ;
-  }
-};
 
 
 extern "C"
@@ -205,6 +144,99 @@ int __low_level_init(void)
 }
 }
 
+
+struct Test
+{
+
+  __forceinline static void OnTimeOut()
+  {
+    //std::cout << Id << std::endl ;
+  }
+  __forceinline static void OnCaptureCompare1()
+  {
+    //std::cout << Stop << std::endl ;
+  }
+  inline static constexpr std::uint32_t Id = 1;
+};
+
+template<typename Timer, typename CCTimer>
+struct Test1
+{
+
+  __forceinline static void OnTimeOut()
+  {
+    //std::cout << Id << std::endl ;
+    Timer::Start() ;
+  }
+
+  __forceinline static void OnCaptureCompare1()
+  {
+    CCTimer::Stop() ;
+  }
+
+  __forceinline static void OnCaptureCompare2()
+  {
+    CCTimer::Stop() ;
+  }
+  inline static const std::uint32_t Id = 2 ;
+};
+
+
+using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
+using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
+using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
+using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
+
+class Application
+{
+  static constexpr Led<Led1Pin> Led1{} ;
+  static constexpr Led<Led2Pin> Led2{} ;
+
+
+public:
+
+  struct OverflowTimer; //говорим, что будем использовать
+  struct CaptureTimer1 ;
+  struct CaptureTimer2 ;
+
+  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, TimersList<OverflowTimer, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, TimersList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, TimersList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+
+  struct DurationTimer : HardwareOverflowTimerBase<
+      AppHardwareTimer,
+      OverflowObservers<Test, Test1<DurationTimer, CaptureTimer1>>
+  >  {};
+
+  struct CaptureTimer1 : HardwareCCxTimerBase<
+      AppHardwareTimer1,
+      CcTimer1Observers<Test, Test1<DurationTimer, CaptureTimer1>>,
+      CC1
+  >  {};
+
+  struct CaptureTimer2 : HardwareCCxTimerBase<
+      AppHardwareTimer,
+      CcTimer2Observers<Test1<Test, CaptureTimer2>>,
+      CC2
+  >  {};
+
+  static constexpr std::array<const ILed*, 2U> Leds 
+  {
+    &Led1,
+    &Led2,
+  } ;
+  
+};
+
+struct Interrupt
+{
+  static void Update()
+  {
+    Application::DurationTimer::HandleInterrupt() ;
+  }
+};
+
+
 using ResetPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
 using DcPin = Pin<Port<GPIOB>, 2U, PinWriteable> ;
 using CsPin = Pin<Port<GPIOB>, 1U, PinWriteable> ;
@@ -224,6 +256,7 @@ int main()
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
   ADC1::CR2::SWSTART::On::Set() ;
+
   while(ADC1::SR::STRT::NotStarted::IsSet())
   {
 
@@ -248,6 +281,8 @@ int main()
 
   Application::DurationTimer::SetDelay(1000) ;
   Application::DurationTimer::Start() ;
+  Application::AppCCHardwareTimer::HandleInterrupt() ;
+
   //for (int i = 0; i < 9 ; i++)
   {
      SystemClock::SetDelayMs(1000) ;

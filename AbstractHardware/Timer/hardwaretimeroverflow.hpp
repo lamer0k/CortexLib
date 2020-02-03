@@ -8,17 +8,25 @@
 #include "hardwaretimerbase.hpp"
 #include "susudefs.hpp"
 
-struct List ;
-
 template<typename TimerModule, typename TimerObserver>
-struct HardwareOverflowTimerBase: HardwareTimerBase<typename TimerModule::Timer, typename TimerModule::TInterface, List>
+struct HardwareOverflowTimerBase
 {
   __forceinline static void HandleInterrupt()
   {
-    if(TimerModule::Timer::SR::UIF::UpdatePending::IsSet())
+    if(TimerModule::Timer::SR::UIF::InterruptPending::IsSet())
     {
       TimerObserver::OnOverflow() ;
     }
+  }
+
+  __forceinline static void SetDelay(uint32_t delay)
+  {
+    TimerModule::SetDelay(delay) ;
+  }
+
+  __forceinline static void Start()
+  {
+    TimerModule::Start() ;
   }
 };
 

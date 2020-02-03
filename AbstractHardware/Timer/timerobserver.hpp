@@ -13,7 +13,43 @@ struct OverflowObservers
   {
     (TObserver::OnTimeOut(), ...) ;
   }
-
 } ;
+
+template<typename... TObserver>
+struct CcTimer1Observers
+{
+  __forceinline static void OnCaptureCompare()
+  {
+    (TObserver::OnCaptureCompare1(), ...) ;
+  }
+} ;
+
+template<typename... TObserver>
+struct CcTimer2Observers
+{
+  __forceinline static void OnCaptureCompare()
+  {
+    (TObserver::OnCaptureCompare2(), ...) ;
+  }
+} ;
+
+template<typename... TObserver>
+struct CcTimer3Observers
+{
+  __forceinline static void OnCaptureCompare()
+  {
+    (TObserver::OnCaptureCompare3(), ...) ;
+  }
+} ;
+
+template<typename... TObserver>
+struct CcTimer4Observers
+{
+  __forceinline static void OnCaptureCompare()
+  {
+    (TObserver::OnCaptureCompare4(), ...) ;
+  }
+} ;
+
 
 #endif //REGISTERS_TIMEROBSERVER_HPP
