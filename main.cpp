@@ -24,8 +24,12 @@
 #include "adc1registers.hpp" //for ADC1
 #include "adccommonregisters.hpp" //for ADCCommon
 #include "timerobserver.hpp" //for OverflowObserver
-#include "timerlist.hpp" // for TimerList
+#include "interruptslist.hpp" // for InterruptList
 #include "hardwaretimercc.hpp" //HardwareCcTimer
+#include "uartdriver.hpp"
+#include "usart2registers.hpp"
+#include "hardwareuartbase.hpp"
+#include "uartobserver.hpp"
 
 
 
@@ -38,13 +42,13 @@ int __low_level_init(void)
 {
   //Switch on external 16 MHz oscillator
   RCC::CR::HSEON::On::Set() ;
-  while (!RCC::CR::HSERDY::Ready::IsSet())
+  //while (!RCC::CR::HSERDY::Ready::IsSet())
   {
 
   }
   //Switch system clock on external oscillator
   RCC::CFGR::SW::Hse::Set() ;
-  while (!RCC::CFGR::SWS::Hse::IsSet())
+  //while (!RCC::CFGR::SWS::Hse::IsSet())
   {
 
   }
@@ -199,9 +203,9 @@ public:
   struct CaptureTimer1 ;
   struct CaptureTimer2 ;
 
-  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, TimersList<OverflowTimer, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-  using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, TimersList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-  using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, TimersList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, InterruptsList<OverflowTimer, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, InterruptsList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, InterruptsList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
 
   struct DurationTimer : HardwareOverflowTimerBase<
       AppHardwareTimer,
@@ -225,7 +229,29 @@ public:
     &Led1,
     &Led2,
   } ;
-  
+
+//  struct HardwareUart ;
+//  struct MyDriver : UartDriver<HardwareUart> {};
+  struct TxUart ;
+  struct TcUart ;
+
+
+  struct HardwareUart : HardwareUartBase<USART2, UartTxInterruptable,
+      InterruptsList<
+          TxUart,
+          TcUart
+          >
+  > {};
+
+  using  MyAppDriver = UartDriver<HardwareUart>;
+  struct TxUart : MyAppDriver::UartTx<MyAppDriver> {} ;
+  struct TcUart : MyAppDriver::UartTc<MyAppDriver> {} ;
+
+
+
+
+
+
 };
 
 struct Interrupt
@@ -256,7 +282,7 @@ int main()
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
   ADC1::CR2::SWSTART::On::Set() ;
-
+  Application::HardwareUart::HandleInterrupt() ;
   while(ADC1::SR::STRT::NotStarted::IsSet())
   {
 
@@ -268,7 +294,7 @@ int main()
   } ;
 
   const auto data = ADC1::DR::Get() ;
-
+ 
   LcdDriver::Init() ;
   LcdDriver::Clear() ;
  // LcdDriver::Display(gImage_4in2bc_b, gImage_4in2bc_b);

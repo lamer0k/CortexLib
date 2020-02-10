@@ -24,6 +24,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Spi
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/InterruptHandler
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/SystemClock
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/EdpElink
@@ -50,5 +51,5 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
 
 add_executable(Registers
             #   startup.cpp
-               main.cpp Common/Observer/observers.hpp AbstractHardware/Timer/hardwaretimeroverflow.hpp AbstractHardware/Timer/timerlist.hpp AbstractHardware/Timer/timerobserver.hpp AbstractHardware/Timer/hardwaretimercc.hpp)
+               main.cpp Common/Observer/observers.hpp AbstractHardware/Timer/hardwaretimeroverflow.hpp AbstractHardware/Timer/timerobserver.hpp AbstractHardware/Timer/hardwaretimercc.hpp AbstractHardware/Uart/hardwareuarttx.hpp AbstractHardware/Uart/uartobserver.hpp AbstractHardware/Uart/uartdriver.hpp AbstractHardware/Uart/hardwareuarttc.hpp)
 

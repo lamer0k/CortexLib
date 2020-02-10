@@ -6,18 +6,18 @@
 #define REGISTERS_CRITICALSECTIONDEFAULT_HPP
 
 #include "susudefs.hpp"  //for __forceinline
-#include "intrinsics.h" // for __disable_interrupt()
+//#include "intrinsics.h" // for __disable_interrupt()
 
 struct CriticalSectionDefault
 {
   __forceinline static void Lock()
   {
-    __disable_interrupt() ;
+   // __disable_interrupt() ;
   }
 
   __forceinline static void Unclock()
   {
-    __enabled_interrupt() ;
+    //__enabled_interrupt() ;
   }
 
 };

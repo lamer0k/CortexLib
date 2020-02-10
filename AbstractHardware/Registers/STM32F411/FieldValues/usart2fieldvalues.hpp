@@ -37,7 +37,7 @@ template <typename Reg, size_t offset, size_t size, typename AccessMode, typenam
 struct USART2_SR_TC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
   using TransmitionNotComplete = FieldValue<USART2_SR_TC_Values, BaseType, 0U> ;
-  using TransmitionIsNotComplete = FieldValue<USART2_SR_TC_Values, BaseType, 1U> ;
+  using TransmitionComplete = FieldValue<USART2_SR_TC_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
