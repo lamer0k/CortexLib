@@ -160,6 +160,11 @@ struct Test
   {
     //std::cout << Stop << std::endl ;
   }
+  
+  __forceinline static void OnTransmitComplete()
+  {
+  
+  }
   inline static constexpr std::uint32_t Id = 1;
 };
 
@@ -182,6 +187,8 @@ struct Test1
   {
     CCTimer::Stop() ;
   }
+  
+  
   inline static const std::uint32_t Id = 2 ;
 };
 
@@ -230,27 +237,22 @@ public:
     &Led2,
   } ;
 
-//  struct HardwareUart ;
-//  struct MyDriver : UartDriver<HardwareUart> {};
-  struct TxUart ;
-  struct TcUart ;
+  struct HardwareUart ;
+  using MyDriver = UartDriver<HardwareUart> ;
 
-
-  struct HardwareUart : HardwareUartBase<USART2, UartTxInterruptable,
-      InterruptsList<
-          TxUart,
-          TcUart
+  struct HardwareUart : HardwareUartBase<
+          USART2,
+          UartTxInterruptable,
+          InterruptsList<
+            MyDriver::UartTx<MyDriver>,//TxUart,
+            MyDriver::UartTc<MyDriver, Test>
           >
   > {};
 
-  using  MyAppDriver = UartDriver<HardwareUart>;
-  struct TxUart : MyAppDriver::UartTx<MyAppDriver> {} ;
-  struct TcUart : MyAppDriver::UartTc<MyAppDriver> {} ;
-
-
-
-
-
+ // using  MyAppDriver = UartDriver<HardwareUart>;
+  
+  //struct TxUart : UartDriver<HardwareUart>::UartTx<UartDriver<HardwareUart>> {} ;
+  //struct TcUart : MyAppDriver::UartTc<MyAppDriver, Test> {} ;
 
 };
 
