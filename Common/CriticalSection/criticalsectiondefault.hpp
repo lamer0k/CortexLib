@@ -15,7 +15,7 @@ struct CriticalSectionDefault
    // __disable_interrupt() ;
   }
 
-  __forceinline static void Unclock()
+  __forceinline static void UnLock()
   {
     //__enabled_interrupt() ;
   }

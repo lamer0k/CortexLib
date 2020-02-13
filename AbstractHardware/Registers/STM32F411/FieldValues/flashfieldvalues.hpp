@@ -73,8 +73,8 @@ struct FLASH_OPTKEYR_OPTKEY_Values: public RegisterField<Reg, offset, size, Acce
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_SR_EOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_SR_EOP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_SR_EOP_Values, BaseType, 1U> ;
+  using NotComplete = FieldValue<FLASH_SR_EOP_Values, BaseType, 0U> ;
+  using Complete = FieldValue<FLASH_SR_EOP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -115,22 +115,22 @@ struct FLASH_SR_PGSERR_Values: public RegisterField<Reg, offset, size, AccessMod
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_SR_BSY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_SR_BSY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_SR_BSY_Values, BaseType, 1U> ;
+  using NotBusy = FieldValue<FLASH_SR_BSY_Values, BaseType, 0U> ;
+  using Busy = FieldValue<FLASH_SR_BSY_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_PG_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_CR_PG_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_CR_PG_Values, BaseType, 1U> ;
+  using Clear = FieldValue<FLASH_CR_PG_Values, BaseType, 0U> ;
+  using StartProgram = FieldValue<FLASH_CR_PG_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_SER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_CR_SER_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_CR_SER_Values, BaseType, 1U> ;
+  //using Value0 = FieldValue<FLASH_CR_SER_Values, BaseType, 0U> ;
+  using Activate = FieldValue<FLASH_CR_SER_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -173,8 +173,8 @@ struct FLASH_CR_PSIZE_Values: public RegisterField<Reg, offset, size, AccessMode
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_STRT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_CR_STRT_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_CR_STRT_Values, BaseType, 1U> ;
+  using Clear = FieldValue<FLASH_CR_STRT_Values, BaseType, 0U> ;
+  using Start = FieldValue<FLASH_CR_STRT_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -194,8 +194,8 @@ struct FLASH_CR_ERRIE_Values: public RegisterField<Reg, offset, size, AccessMode
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_LOCK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_CR_LOCK_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_CR_LOCK_Values, BaseType, 1U> ;
+  using Disable = FieldValue<FLASH_CR_LOCK_Values, BaseType, 0U> ;
+  using Enable = FieldValue<FLASH_CR_LOCK_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

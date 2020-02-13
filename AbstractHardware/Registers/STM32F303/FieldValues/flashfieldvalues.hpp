@@ -52,8 +52,8 @@ struct Flash_OPTKEYR_OPTKEYR_Values: public RegisterField<Reg, offset, size, Acc
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct Flash_SR_EOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Flash_SR_EOP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<Flash_SR_EOP_Values, BaseType, 1U> ;
+  using NotComplete = FieldValue<Flash_SR_EOP_Values, BaseType, 0U> ;
+  using Complete = FieldValue<Flash_SR_EOP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -143,8 +143,8 @@ struct Flash_CR_MER_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct Flash_CR_PER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<Flash_CR_PER_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<Flash_CR_PER_Values, BaseType, 1U> ;
+  using Clear = FieldValue<Flash_CR_PER_Values, BaseType, 0U> ;
+  using PageErase = FieldValue<Flash_CR_PER_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

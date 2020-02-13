@@ -24,7 +24,7 @@ struct UartDriver
   template <typename ...TcObservers>
   using UartTc = HardwareUartTc<UartModule, TransmitCompleteObservers<TcObservers...>> ;
 
-  __forceinline static void WriteData(std::uint8_t *pData, size_t size)
+  __forceinline static void WriteData(const char *pData, size_t size)
   {
     CriticalSection cs ;
     assert(size < txRxBuffer.size()) ;

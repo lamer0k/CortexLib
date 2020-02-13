@@ -165,6 +165,12 @@ struct Test
   {
   
   }
+  
+  __forceinline static void OnDataReady()
+  {
+  
+  }
+  
   inline static constexpr std::uint32_t Id = 1;
 };
 
@@ -238,7 +244,7 @@ public:
   } ;
 
   struct HardwareUart ;
-  using MyDriver = UartDriver<HardwareUart> ;
+  using MyDriver = UartDriver<HardwareUart, Test> ;
 
   struct HardwareUart : HardwareUartBase<
           USART2,
@@ -285,6 +291,8 @@ int main()
   ADC1::CR2::ADON::Enable::Set() ;
   ADC1::CR2::SWSTART::On::Set() ;
   Application::HardwareUart::HandleInterrupt() ;
+  const char* message = "Hello world" ;
+  Application::MyDriver::WriteData(message, strlen(message)) ;
   while(ADC1::SR::STRT::NotStarted::IsSet())
   {
 
