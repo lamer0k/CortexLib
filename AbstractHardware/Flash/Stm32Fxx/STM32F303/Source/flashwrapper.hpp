@@ -2,15 +2,13 @@
 #define FLASHWRAPPER_HPP
 
 #include "susudefs.hpp"   //
-#include "sector.hpp"     // For Sector class
 #include <array>          // For std::array
 #include "flashregisters.hpp" // for Flash
 
-static_assert(STM32F411xx == 1,
-              "This implementation only for STM32F411RG micro") ;
+static_assert(STM32F303xx == 1,
+              "This implementation only for STM32F303R micro") ;
 
 constexpr std::size_t SectorsCount = 255U ;
-
 constexpr std::size_t SectorsStartAddr = 0x0800'0000U;
 constexpr std::size_t SectorsSize = 0x800U;
 
@@ -29,8 +27,8 @@ class FlashWrapper
     {
       FLASH::CR::LOCK::Enable::Set() ;
     }
-
-    static void Erase(const std::size_t addr)
+    
+    __forceinline static void Erase(const std::size_t addr)
     {
       assrrt((addr >= SectorsStartAddr) && (addr < (SectorsStartAddr + SectorsCount * SectorsSize))) ;
       EraseSector(addr) ;
@@ -110,5 +108,4 @@ class FlashWrapper
     
 };
 
-#endif //NDEBUG
 #endif //FLASHWRAPPER_HPP
