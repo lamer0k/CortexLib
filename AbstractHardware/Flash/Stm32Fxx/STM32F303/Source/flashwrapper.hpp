@@ -9,7 +9,6 @@
 #define FLASHWRAPPER_HPP
 
 #include "susudefs.hpp"   // for __forceinline
-#include <array>          // For std::array
 #include "flashregisters.hpp" // for Flash
 
 static_assert(STM32F303xx == 1,
