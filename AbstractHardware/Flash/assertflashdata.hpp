@@ -5,7 +5,7 @@
 
 //#include <intrinsics.h>     // For __enable_interrupt()
 #include "criticalsectionconfig.hpp" // for CriticalSection
-#include "flashwrapper.hpp" // For FlashWrapper
+#include "Stm32Fxx/STM32F303/flashwrapper.hpp" // For FlashWrapper
 #include "rmldefs.hpp"      // For RML types
 
 constexpr tU16 maxMsgLength = tU16(512U) ;

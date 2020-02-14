@@ -15,15 +15,15 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_HSION_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_HSION_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_HSION_Values, BaseType, 1U> ;
+  using Off = FieldValue<RCC_CR_HSION_Values, BaseType, 0U> ;
+  using On = FieldValue<RCC_CR_HSION_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_HSIRDY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_HSIRDY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_HSIRDY_Values, BaseType, 1U> ;
+  using NotReady = FieldValue<RCC_CR_HSIRDY_Values, BaseType, 0U> ;
+  using Ready = FieldValue<RCC_CR_HSIRDY_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -71,15 +71,15 @@ struct RCC_CR_HSICAL_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_HSEON_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_HSEON_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_HSEON_Values, BaseType, 1U> ;
+  using Off = FieldValue<RCC_CR_HSEON_Values, BaseType, 0U> ;
+  using On = FieldValue<RCC_CR_HSEON_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_HSERDY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_HSERDY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_HSERDY_Values, BaseType, 1U> ;
+  using NotReady = FieldValue<RCC_CR_HSERDY_Values, BaseType, 0U> ;
+  using Ready = FieldValue<RCC_CR_HSERDY_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -92,39 +92,39 @@ struct RCC_CR_HSEBYP_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_CSSON_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_CSSON_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_CSSON_Values, BaseType, 1U> ;
+  using Off = FieldValue<RCC_CR_CSSON_Values, BaseType, 0U> ;
+  using On = FieldValue<RCC_CR_CSSON_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_PLLON_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_PLLON_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_PLLON_Values, BaseType, 1U> ;
+  using On = FieldValue<RCC_CR_PLLON_Values, BaseType, 0U> ;
+  using Off = FieldValue<RCC_CR_PLLON_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CR_PLLRDY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CR_PLLRDY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CR_PLLRDY_Values, BaseType, 1U> ;
+  using NotReady = FieldValue<RCC_CR_PLLRDY_Values, BaseType, 0U> ;
+  using Ready = FieldValue<RCC_CR_PLLRDY_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CFGR_SW_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CFGR_SW_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CFGR_SW_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<RCC_CFGR_SW_Values, BaseType, 2U> ;
+  using Hsi = FieldValue<RCC_CFGR_SW_Values, BaseType, 0U> ;
+  using Hse = FieldValue<RCC_CFGR_SW_Values, BaseType, 1U> ;
+  using Pll = FieldValue<RCC_CFGR_SW_Values, BaseType, 2U> ;
   using Value3 = FieldValue<RCC_CFGR_SW_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCC_CFGR_SWS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCC_CFGR_SWS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCC_CFGR_SWS_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<RCC_CFGR_SWS_Values, BaseType, 2U> ;
+  using Hsi = FieldValue<RCC_CFGR_SWS_Values, BaseType, 0U> ;
+  using Hse = FieldValue<RCC_CFGR_SWS_Values, BaseType, 1U> ;
+  using Pll = FieldValue<RCC_CFGR_SWS_Values, BaseType, 2U> ;
   using Value3 = FieldValue<RCC_CFGR_SWS_Values, BaseType, 3U> ;
 } ;
 

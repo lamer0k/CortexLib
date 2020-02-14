@@ -15,15 +15,12 @@
 #if !defined(SECTOR_HPP)
 #define SECTOR_HPP
 
-#include "rmldefs.hpp"    // For tU32
 
-//e935: data members  declared as type 'tU32' (aka 'unsigned int')
-//For tU32 std::uint32_t is used. This comes from std library
 struct Sector
 {
-  tU32 Start ; //lint !e935
-  tU32 End ;   //lint !e935
-  tU32 Index ; //lint !e935
+  std::size_t Start ; //lint !e935
+  std::size_t End ;   //lint !e935
+  std::size_t Index ; //lint !e935
 } ;
 
 #endif //SECTOR_HPP

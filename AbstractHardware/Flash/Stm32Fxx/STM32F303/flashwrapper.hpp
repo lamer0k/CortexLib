@@ -11,8 +11,8 @@
 #include "susudefs.hpp"   // for __forceinline
 #include "flashregisters.hpp" // for Flash
 
-static_assert(STM32F303xx == 1,
-              "This implementation only for STM32F303R micro") ;
+//static_assert(STM32F303xx == 1,
+//              "This implementation only for STM32F303R micro") ;
 
 constexpr std::size_t SectorsCount = 255U ;
 constexpr std::size_t SectorsStartAddr = 0x0800'0000U;
@@ -92,8 +92,8 @@ class FlashWrapper
       {
       }
       
-      FLASH::CR::PER::PageErase::Set() ;
-      FLASH::AR::FAR::Write(addr) ;
+   //   FLASH::CR::PER::PageErase::Set() ;
+  //   FLASH::AR::FAR::Write(addr) ;
       
       FLASH::CR::STRT::Start::Set() ;
       //The software should start checking if the BSY bit equals ‘0’ at least one CPU cycle after setting the STRT bit.

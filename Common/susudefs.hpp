@@ -9,6 +9,9 @@
 //#define __forceinline  _Pragma("inline=forced")
 #define __forceinline
 
+#define __flashdata _Pragma("location = \".flash\"")
+
+
 template <typename... Types>
 struct TypesList{} ;
 

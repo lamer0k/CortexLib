@@ -6,10 +6,10 @@
 #include <array>          // For std::array
 #include "flashregisters.hpp" // for Flash
 
-static_assert(STM32F411xx == 1,
-              "This implementation only for STM32F411RG micro") ;
+//static_assert(STM32F411xx == 1,
+//              "This implementation only for STM32F411RG micro") ;
 
-constexpr tU32 SectorsCount = tU32(7U) ;
+constexpr std::uint32_t SectorsCount = 8U ;
 
 constexpr std::array<Sector, SectorsCount> Sectors =
 {
@@ -39,19 +39,19 @@ class FlashWrapper
       FLASH::CR::LOCK::Enable::Set() ;
     }
 
-    static void Erase(const tU32 addr)
+    static void Erase(const std::size_t addr)
     {
       //search needed sector in the sectors list and erase it if found.
-      const tS32 sector = GetSectorIndex(addr) ;
-      if (sector >= tS32(0))
+      const std::int32_t sector = GetSectorIndex(addr) ;
+      if (sector >= 0)
       {
-        EraseSector(static_cast<tU32>(sector)) ;
+        EraseSector(static_cast<std::uint32_t>(sector)) ;
       }
     }
 
     
-    static void Write(const tChar * const pSrc, tChar * const pDest, //lint  !e971
-            const tU32 length)
+    static void Write(const char * const pSrc, char * const pDest, //lint  !e971
+            const std::size_t length)
     {
       if( (length < MaxMessageLength) && (pSrc != nullptr) && (pDest != nullptr))
       {
@@ -62,10 +62,10 @@ class FlashWrapper
 
         FLASH::CR::PG::StartProgram::Set() ;
 
-        const tChar * const pSource = pSrc;
-        tChar * const pDestination = pDest;
+        const char * const pSource = pSrc;
+        char * const pDestination = pDest;
 
-        for(tU32 i = tU32(0U); i < length; ++i)
+        for(std::size_t i = 0U; i < length; ++i)
         {
           
           pDestination[i] = pSource[i] ;
@@ -79,6 +79,42 @@ class FlashWrapper
       }
     }
 
+  template<typename T>
+  static void Write(T  value, volatile const T * const pDest)
+  {
+
+    assert(pDest != nullptr) ;
+    static_assert((sizeof(T) == 1) || ((sizeof(T) == 2)) || (sizeof(T) == 4) || (sizeof(T) == 8)) ;
+
+    if constexpr (sizeof(T) == 1 )
+    {
+      FLASH::CR::PSIZE::Size8bits::Set() ;
+    } else if constexpr (sizeof(T) == 2)
+    {
+      FLASH::CR::PSIZE::Size16bits::Set() ;
+    } else if constexpr (sizeof(T) == 4)
+    {
+      FLASH::CR::PSIZE::Size32bits::Set() ;
+    } else if constexpr (sizeof(T) == 8)
+    {
+      FLASH::CR::PSIZE::Size32bits::Set() ;
+    }
+
+    while(!IsReady())
+    {
+    }
+
+    FLASH::CR::PG::StartProgram::Set() ;
+     
+    *const_cast<T *>(pDest) = value ;
+    while(!IsReady())
+    {
+    }
+
+    FLASH::CR::PG::Clear::Set() ;
+    Lock();
+  }
+
   private:
 
     __forceinline static bool IsReady()
@@ -86,14 +122,14 @@ class FlashWrapper
       return (FLASH::SR::BSY::NotBusy::IsSet()) ;
     }
 
-    static void EraseSector(const tU32 index)
+    static void EraseSector(const std::size_t index)
     {
       
       while (!IsReady())
       {
       }
       
-      FLASH::CR::SNB::Write(index) ;
+      FLASH::CR::SNB::Set(index) ;
       FLASH::CR::SER::Activate::Set() ;
       
       FLASH::CR::STRT::Start::Set() ;
@@ -106,14 +142,14 @@ class FlashWrapper
       Lock() ;
     }
 
-    static tS32 GetSectorIndex(const tU32 addr)
+    static std::size_t GetSectorIndex(const std::size_t addr)
     {
-      tS32 result = tS32(-1) ;
-      for(auto & it: Sectors)
+      std::int32_t result = -1 ;
+      for(auto& it: Sectors)
       {
         if((it.Start <= addr) && ((it.End >= addr)))
         {
-          result = static_cast<tS32>(it.Index) ;
+          result = static_cast<std::int32_t>(it.Index) ;
         }
       }
       return result ;
@@ -121,8 +157,8 @@ class FlashWrapper
 
     static constexpr uint32_t FlashCode1  = uint32_t(0x45670123U) ;
     static constexpr uint32_t FlashCode2  = uint32_t(0xCDEF89ABU) ;
-    static constexpr tU32 MaxMessageLength = tU32(255U) ;
+    static constexpr std::size_t MaxMessageLength = 255U ;
 };
 
-#endif //NDEBUG
+//#endif //NDEBUG
 #endif //FLASHWRAPPER_HPP

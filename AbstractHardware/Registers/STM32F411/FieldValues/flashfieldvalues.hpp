@@ -129,7 +129,7 @@ struct FLASH_CR_PG_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_SER_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  //using Value0 = FieldValue<FLASH_CR_SER_Values, BaseType, 0U> ;
+  using Clear = FieldValue<FLASH_CR_SER_Values, BaseType, 0U> ;
   using Activate = FieldValue<FLASH_CR_SER_Values, BaseType, 1U> ;
 } ;
 
@@ -164,10 +164,10 @@ struct FLASH_CR_SNB_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_CR_PSIZE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 3U> ;
+  using Size8bits = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 0U> ;
+  using Size16bits = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 1U> ;
+  using Size32bits = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 2U> ;
+  using Size64bits = FieldValue<FLASH_CR_PSIZE_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

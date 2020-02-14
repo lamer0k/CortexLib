@@ -28,9 +28,9 @@
 #include "hardwaretimercc.hpp" //HardwareCcTimer
 #include "uartdriver.hpp"
 #include "usart2registers.hpp"
-#include "hardwareuartbase.hpp"
+#include "Stm32Fxx/STM32F411/hardwareuartbase.hpp"
 #include "uartobserver.hpp"
-#include "flashwrapper.hpp"
+#include "AbstractHardware/Flash/Stm32Fxx/STM32F303/flashwrapper.hpp"
 
 
 

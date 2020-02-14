@@ -6,8 +6,8 @@
 #define REGISTERS_UARTDRIVER_HPP
 
 #include "susudefs.hpp" //for __forceinline
-#include "hardwareuarttx.hpp" // for HardwareUartTx
-#include "hardwareuarttc.hpp" //for HardwareUartTc
+#include "Stm32Fxx/hardwareuarttx.hpp" // for HardwareUartTx
+#include "Stm32Fxx/hardwareuarttc.hpp" //for HardwareUartTc
 #include <array> // for std::array
 #include "criticalsectionconfig.hpp" // for CriticalSection
 #include "uartobserver.hpp"
