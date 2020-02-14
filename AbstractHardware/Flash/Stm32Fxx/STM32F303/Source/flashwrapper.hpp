@@ -1,7 +1,14 @@
+/*******************************************************************************
+*  FILENAME: Flashwrapper.cpp
+*
+*  Copyright (c) 2020 by SUSU INIT
+*
+*******************************************************************************/
+
 #if !defined(FLASHWRAPPER_HPP)
 #define FLASHWRAPPER_HPP
 
-#include "susudefs.hpp"   //
+#include "susudefs.hpp"   // for __forceinline
 #include <array>          // For std::array
 #include "flashregisters.hpp" // for Flash
 
@@ -30,7 +37,7 @@ class FlashWrapper
     
     __forceinline static void Erase(const std::size_t addr)
     {
-      assrrt((addr >= SectorsStartAddr) && (addr < (SectorsStartAddr + SectorsCount * SectorsSize))) ;
+      assert((addr >= SectorsStartAddr) && (addr < (SectorsStartAddr + SectorsCount * SectorsSize))) ;
       EraseSector(addr) ;
     }
     
@@ -38,37 +45,38 @@ class FlashWrapper
     template<typename T>
     static void Write(const T * const pSrc, T * const pDest)
     {
-      //Тут надо бы проверить, что адрес не выходит за границу страницы, но предполагаем, что все одной странице
-      if( pSrc != nullptr) && (pDest != nullptr))
+      //Проверим, что адрес не выходит за границу страницы, предполагаем, что все одной странице
+      assert(((reinterpret_cast<std::size_t>(&pDest) - SectorsStartAddr) / SectorsSize ) ==
+             ((reinterpret_cast<std::size_t>(&pDest) - SectorsStartAddr + sizeof(T))/ SectorsSize)) ;
+      
+      assert(( pSrc != nullptr) && (pDest != nullptr)) ;
+      
+      while(!IsReady())
       {
+      }
+
+      FLASH::CR::PG::StartProgram::Set() ;
+
+      const auto* const pSource = static_cast<std::uint16_t *>(pSrc); //писать надо по пол слова
+      auto* const pDestination = static_cast<std::uint16_t *>(pDest); //писать надо по пол слова
         
+      //если размер не четный, то писать все равно надо пол слова.
+      std::size_t Size = ((sizeof(T) % 2) == 0) ? sizeof(T) / 2 : (sizeof(T) / 2 + 1) ;
+        
+      for(std::size_t i = 0U ; i < Size ; ++i)
+      {
+        pDestination[i] = pSource[i] ;
         while(!IsReady())
         {
         }
-
-        FLASH::CR::PG::StartProgram::Set() ;
-
-        const std::uint16_t * const pSource = static_cast<std::uint16_t *>(pSrc); //писать надо по пол слова
-        std::uint16_t * const pDestination = static_cast<std::uint16_t *>(pDest); //писать надо по пол слова
-        
-        //если размер не четный, то писать все равно надо пол слова.
-        std::size_t Size = ((sizeof(T) % 2) == 0) ? sizeof(T) / 2 : (sizeof(T) / 2 + 1) ;
-        
-        for(std::size_t i = 0U ; i < Size ; ++i ;)
+        while (FLASH::SR::EOP::NotComplete::IsSet())
         {
-          pDestination[i] = pSource[i] ;
-          while(!IsReady())
-          {
-          }
-          while (FLASH::SR::EOP::NotComplete::IsSet())
-          {
-          };
-          FLASH::SR::EOP::NotComplete::Set() ;
-        }
-        
-        FLASH::CR::PG::Clear::Set() ;
-        Lock();
+        };
+        FLASH::SR::EOP::NotComplete::Set() ;
       }
+        
+      FLASH::CR::PG::Clear::Set() ;
+      Lock();
     }
 
   private:
@@ -89,7 +97,9 @@ class FlashWrapper
       FLASH::AR::FAR::Write(addr) ;
       
       FLASH::CR::STRT::Start::Set() ;
-      FLASH::CR::STRT::Start::Set() ; //The software should start checking if the BSY bit equals ‘0’ at least one CPU cycle after setting the STRT bit.
+      //The software should start checking if the BSY bit equals ‘0’ at least one CPU cycle after setting the STRT bit.
+      // так что просто один дополнительный запрос, чтобы сразу на проверку Busy не пойти
+      FLASH::CR::STRT::Start::Set() ;
       
       while (!IsReady())
       {

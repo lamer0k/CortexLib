@@ -41,6 +41,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                      ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411
                      ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/STM32F411/FieldValues
                      ${CMAKE_SOURCE_DIR}/Common/PatternMatching
+                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Flash/Stm32Fxx/STM32F303/Source
 
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y
                  #    ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Msp432P401Y/BitsField

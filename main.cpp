@@ -30,6 +30,7 @@
 #include "usart2registers.hpp"
 #include "hardwareuartbase.hpp"
 #include "uartobserver.hpp"
+#include "flashwrapper.hpp"
 
 
 
@@ -282,11 +283,13 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 
 //extern const unsigned char gImage_4in2bc_b[];
 //extern const unsigned char gImage_4in2bc_ry[];
-
+const int test =  10;
 
 int main()
 {
-
+  
+  FlashWrapper::Lock() ;
+  FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
   ADC1::CR2::SWSTART::On::Set() ;
