@@ -1,6 +1,7 @@
 
 #include "interrupthandler.hpp"  //for InterruptHandler
-
+#include "application.hpp"  // for Application
+ 
 extern "C" void __iar_program_start(void) ;
 
 using tIntFunct = void(*)();
@@ -58,6 +59,27 @@ const tIntVectItem __vector_table[] =
   InterruptHandler::Timer2Handler,         //TIM2  	
   InterruptHandler::DummyHandler,         //TIM3
   InterruptHandler::DummyHandler,        ////TIM4
+  InterruptHandler::DummyHandler,        //I2C1_EV
+  InterruptHandler::DummyHandler, //I2C1_ER
+  InterruptHandler::DummyHandler, //I2C2_EV
+  InterruptHandler::DummyHandler, // I2C2_ER
+  InterruptHandler::DummyHandler, //SPI1
+  InterruptHandler::DummyHandler, //SPI2
+  InterruptHandler::DummyHandler, //USART1
+  Application::HardwareUart::HandleInterrupt, //USART2
+  0,
+  InterruptHandler::DummyHandler, //EXTI15_10
+  InterruptHandler::DummyHandler, //EXTI17 / RTC_Alarm
+  InterruptHandler::DummyHandler, //EXTI18 /OTG_FS_WKUP
+  0,
+  0,
+  0,
+  0,
+  InterruptHandler::DummyHandler,  //DMA1_Stream7
+  0,
+  InterruptHandler::DummyHandler, //SDIO
+  InterruptHandler::DummyHandler, //TIM5
+  InterruptHandler::DummyHandler, //SPI3
 };
 
 extern "C" void __cmain(void) ;

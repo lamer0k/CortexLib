@@ -11,8 +11,7 @@
 #include "port.hpp"           //for Port
 #include "tim2registers.hpp"  //for TIM2
 #include "tim5registers.hpp"  //for TIM5
-#include "hardwaretimerbase.hpp"          //for HardwareTimerBase
-#include "hardwaretimeroverflow.hpp"          //for HardwareTimerOverflow
+
 #include "spi.hpp"            //for Spi
 #include "systemclock.hpp"     //for SystemClock
 #include "susudefs.hpp"       //for __forceinline
@@ -23,19 +22,15 @@
 #include "subscriber.hpp"
 #include "adc1registers.hpp" //for ADC1
 #include "adccommonregisters.hpp" //for ADCCommon
-#include "timerobserver.hpp" //for OverflowObserver
-#include "interruptslist.hpp" // for InterruptList
-#include "hardwaretimercc.hpp" //HardwareCcTimer
-#include "uartdriver.hpp"
-#include "usart2registers.hpp"
-#include "Stm32Fxx/STM32F411/hardwareuartbase.hpp"
-#include "uartobserver.hpp"
-#include "AbstractHardware/Flash/Stm32Fxx/STM32F303/flashwrapper.hpp"
+#include "application.hpp" //for Application
+
+//#include "flashwrapper.hpp"
 
 
 
 using namespace std ;
-
+constexpr std::uint32_t UartSpeed9600 = static_cast<std::uint32_t>(8000000U / 9600U) ;
+constexpr std::size_t Uart2InterruptPosition = 38U - 32U ;
 
 extern "C"
 {
@@ -134,7 +129,12 @@ int __low_level_init(void)
    NVIC::ISER0::Write(1U << 28U) ;
    TIM2::PSC::Write(8000U) ;
    TIM2::DIER::UIE::Enable::Set() ;
-
+   
+   //******* UART
+    USART2::BRR::Write(UartSpeed9600) ;
+    USART2::CR1::UE::Enable::Set() ;
+    NVIC::ISER1::Write(1U << Uart2InterruptPosition) ;
+   
    //********************ADC
    RCC::APB2ENR::ADC1EN::Enable::Set() ;
    ADC_Common::CCR::TSVREFE::Enable::Set() ;
@@ -149,119 +149,6 @@ int __low_level_init(void)
 }
 }
 
-
-struct Test
-{
-
-  __forceinline static void OnTimeOut()
-  {
-    //std::cout << Id << std::endl ;
-  }
-  __forceinline static void OnCaptureCompare1()
-  {
-    //std::cout << Stop << std::endl ;
-  }
-  
-  __forceinline static void OnTransmitComplete()
-  {
-  
-  }
-  
-  __forceinline static void OnDataReady()
-  {
-  
-  }
-  
-  inline static constexpr std::uint32_t Id = 1;
-};
-
-template<typename Timer, typename CCTimer>
-struct Test1
-{
-
-  __forceinline static void OnTimeOut()
-  {
-    //std::cout << Id << std::endl ;
-    Timer::Start() ;
-  }
-
-  __forceinline static void OnCaptureCompare1()
-  {
-    CCTimer::Stop() ;
-  }
-
-  __forceinline static void OnCaptureCompare2()
-  {
-    CCTimer::Stop() ;
-  }
-  
-  
-  inline static const std::uint32_t Id = 2 ;
-};
-
-
-using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
-using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
-using Led3Pin = Pin<Port<GPIOC>, 8U, PinWriteable> ;
-using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
-
-class Application
-{
-  static constexpr Led<Led1Pin> Led1{} ;
-  static constexpr Led<Led2Pin> Led2{} ;
-
-
-public:
-
-  struct OverflowTimer; //говорим, что будем использовать
-  struct CaptureTimer1 ;
-  struct CaptureTimer2 ;
-
-  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, InterruptsList<OverflowTimer, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-  using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, InterruptsList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-  using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, InterruptsList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
-
-  struct DurationTimer : HardwareOverflowTimerBase<
-      AppHardwareTimer,
-      OverflowObservers<Test, Test1<DurationTimer, CaptureTimer1>>
-  >  {};
-
-  struct CaptureTimer1 : HardwareCCxTimerBase<
-      AppHardwareTimer1,
-      CcTimer1Observers<Test, Test1<DurationTimer, CaptureTimer1>>,
-      CC1
-  >  {};
-
-  struct CaptureTimer2 : HardwareCCxTimerBase<
-      AppHardwareTimer,
-      CcTimer2Observers<Test1<Test, CaptureTimer2>>,
-      CC2
-  >  {};
-
-  static constexpr std::array<const ILed*, 2U> Leds 
-  {
-    &Led1,
-    &Led2,
-  } ;
-
-  struct HardwareUart ;
-  using MyDriver = UartDriver<HardwareUart, Test> ;
-
-  struct HardwareUart : HardwareUartBase<
-          USART2,
-          UartTxInterruptable,
-          InterruptsList<
-            MyDriver::UartTx<MyDriver>,//TxUart,
-            MyDriver::UartTc<MyDriver, Test>
-          >
-  > {};
-
- // using  MyAppDriver = UartDriver<HardwareUart>;
-  
-  //struct TxUart : UartDriver<HardwareUart>::UartTx<UartDriver<HardwareUart>> {} ;
-  //struct TcUart : MyAppDriver::UartTc<MyAppDriver, Test> {} ;
-
-};
 
 struct Interrupt
 {
@@ -288,14 +175,14 @@ const int test =  10;
 int main()
 {
   
-  FlashWrapper::Lock() ;
-  FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
+ // FlashWrapper::Lock() ;
+ // FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
   ADC1::CR2::SWSTART::On::Set() ;
-  Application::HardwareUart::HandleInterrupt() ;
-  const char* message = "Hello world" ;
-  Application::MyDriver::WriteData(message, strlen(message)) ;
+ // Application::HardwareUart::HandleInterrupt() ;
+  const char* message = "Hello world!" ;
+  Application::MyDriver::WriteData(reinterpret_cast<const std::uint8_t*>(message), strlen(message)) ;
   while(ADC1::SR::STRT::NotStarted::IsSet())
   {
 

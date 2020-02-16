@@ -15,7 +15,7 @@ struct UartInterruptable
 {
 };
 
-struct UartRead
+struct UartReceive
 {
 };
 
@@ -27,10 +27,13 @@ struct UartTxInterruptable: UartInterruptable, UartTransmit
 {
 } ;
 
-struct UartRxInterruptable: UartInterruptable, UartRead
+struct UartRxInterruptable: UartInterruptable, UartReceive
 {
 } ;
 
+struct UartRxInterruptableTx: UartRxInterruptable, UartTransmit
+{
+} ;
 struct UartTxRxInterruptable : UartRxInterruptable, UartTxInterruptable
 {
 } ;
@@ -42,72 +45,117 @@ struct HardwareUartBase
   using Uart = UartModule ;
   using Base = Interface ;
 
-  //__forceinline template<typename T = Interface,
-  //    class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
   __forceinline static void EnableTransmit()
   {
     UartModule::CR1::TE::Enable::Set();
   };
 
-  //__forceinline template<typename T = Interface,
-  //    class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
-  __forceinline static void DisableTransmit()
+
+  static void DisableTransmit()
   {
     UartModule::CR1::TE::Disable::Set();
   };
 
-  //__forceinline template<typename T = Interface,
-  //    class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void EnableTxInterrupt()
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartReceive, T>::value>>
+  static void EnableReceive()
+  {
+    UartModule::CR1::RE::Enable::Set();
+  };
+
+  static void DisableReceive()
+  {
+    UartModule::CR1::RE::Disable::Set();
+  };
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
+  static void EnableTxInterrupt()
   {
     UartModule::CR1::TXEIE::InterruptWhenTXE::Set();
   };
 
-  //__forceinline template<typename T = Interface,
-  //    class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void DisableTxInterrupt()
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartRxInterruptable, T>::value>>
+  static void EnableRxInterrupt()
+  {
+    UartModule::CR1::RXNEIE::InterruptWhenRXNE::Set();
+  };
+
+  static void DisableRxInterrupt()
+  {
+    UartModule::CR1::RXNEIE::InterruptInhibited::Set();
+  };
+
+  static void DisableTxInterrupt()
   {
     UartModule::CR1::TXEIE::InterruptInhibited::Set();
   };
 
- // __forceinline template<typename T = Interface,
- //     class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void EnableTcInterrupt()
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
+  static void EnableTcInterrupt()
   {
     UartModule::CR1::TCIE::InterruptWhenTC::Set();
   };
 
-//  __forceinline template<typename T = Interface,
-//      class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void DisableTcInterrupt()
+  static void DisableTcInterrupt()
   {
     UartModule::CR1::TCIE::InterruptInhibited::Set();
   };
 
 
- // __forceinline template<typename T = Interface,
- //     class = typename std::enable_if_t<std::is_base_of<UartInterruptable, T>::value>>
-  __forceinline static void HandleInterrupt()
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartInterruptable, T>::value>>
+  static void HandleInterrupt()
   {
     InterruptsList::OnInterrupt() ;
   }
 
-  //__forceinline template<typename T = Interface,
- //     class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
-  __forceinline static void WriteByte(std::uint8_t chByte)
+  __forceinline static void ClearStatus()
   {
-     UartModule::DR::Write(chByte) ;
+    UartModule::SR::Write(0);
   }
 
- // __forceinline template<typename T = Interface,
-  //    class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
-  __forceinline static void StartTransmit()
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
+  static void WriteByte(std::uint8_t chByte)
+  {
+    UartModule::DR::Write(static_cast<std::uint32_t>(chByte)) ;
+  }
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartReceive, T>::value>>
+  static std::uint8_t ReadByte()
+  {
+    return static_cast<std::uint8_t>(UartModule::DR::Get()) ;
+  }
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
+  static void StartTransmit()
   {
     EnableTransmit() ;
     if constexpr (std::is_base_of<UartTxInterruptable, Interface>::value)
     {
       EnableTxInterrupt() ;
     }
+  }
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
+  static bool IsDataRegisterEmpty()
+  {
+    return UartModule::SR::TXE::DataRegisterEmpty::IsSet() ;
+  }
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
+  static bool IsTransmitComplete()
+  {
+    return UartModule::SR::TC::TransmitionComplete::IsSet() ;
   }
 
 };

@@ -16,10 +16,12 @@ struct HardwareUartTc
       class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
   __forceinline static void HandleInterrupt()
   {
-    if(UartModule::Uart::SR::TC::TransmitionComplete::IsSet())
+    const bool TransmitionComplete = Uart::SR::TC::TransmitionComplete::IsSet() ;
+    const bool InterruptEnabled = Uart::CR1::TCIE::InterruptWhenTC::IsSet() ;
+    if(TransmitionComplete && InterruptEnabled)
     {
       UartObservers::OnComplete();
-      UartModule::Uart::SR::TC::TransmitionNotComplete::Set() ;
+      Uart::SR::TC::TransmitionNotComplete::Set() ;
     }
   }
 };

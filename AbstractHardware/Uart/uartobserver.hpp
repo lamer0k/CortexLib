@@ -9,7 +9,7 @@
 template<typename... TObserver>
 struct TransmitObservers
 {
-  __forceinline static void OnDataRegEmpty()
+  __forceinline static void OnTxDataRegEmpty()
   {
     (TObserver::OnTransmit(), ...) ;
   }
@@ -22,6 +22,15 @@ struct TransmitCompleteObservers
   __forceinline static void OnComplete()
   {
     (TObserver::OnTransmitComplete(), ...) ;
+  }
+} ;
+
+template<typename... TObserver>
+struct ReceiveObservers
+{
+  __forceinline static void OnRxData()
+  {
+    (TObserver::OnReceive(), ...) ;
   }
 } ;
 #endif //REGISTERS_UARTOBSERVER_HPP

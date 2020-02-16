@@ -12,7 +12,7 @@
 constexpr std::uint32_t SectorsCount = 8U ;
 
 constexpr std::array<Sector, SectorsCount> Sectors =
-{
+{ {
   Sector{ 0x08000000UL, 0x08003FFFUL,  0UL }, // 16 kB
   Sector{ 0x08004000UL, 0x08007FFFUL,  1UL }, // 16 kB
   Sector{ 0x08008000UL, 0x0800BFFFUL,  2UL }, // 16 kB
@@ -20,7 +20,8 @@ constexpr std::array<Sector, SectorsCount> Sectors =
   Sector{ 0x08010000UL, 0x0801FFFFUL,  4UL }, // 64 kB
   Sector{ 0x08020000UL, 0x0803FFFFUL,  5UL }, // 128 kB
   Sector{ 0x08040000UL, 0x0805FFFFUL,  6UL }, // 128 kB
-  Sector{ 0x08060000UL, 0x0807FFFFUL,  7UL }, // 128 kB
+  Sector{ 0x08060000UL, 0x0807FFFFUL,  7UL }, // 128 kB 
+  }
 } ;
 
 
@@ -39,16 +40,13 @@ class FlashWrapper
       FLASH::CR::LOCK::Enable::Set() ;
     }
 
-    static void Erase(const std::size_t addr)
+    __forceinline static void Erase(const std::size_t addr)
     {
       //search needed sector in the sectors list and erase it if found.
       const std::int32_t sector = GetSectorIndex(addr) ;
-      if (sector >= 0)
-      {
-        EraseSector(static_cast<std::uint32_t>(sector)) ;
-      }
+      assert(sector >= 0) ;
+      EraseSector(static_cast<std::uint32_t>(sector)) ;      
     }
-
     
     static void Write(const char * const pSrc, char * const pDest, //lint  !e971
             const std::size_t length)
@@ -80,7 +78,7 @@ class FlashWrapper
     }
 
   template<typename T>
-  static void Write(T  value, volatile const T * const pDest)
+  static void Write(T  value, const T * const pDest)
   {
 
     assert(pDest != nullptr) ;
@@ -97,8 +95,11 @@ class FlashWrapper
       FLASH::CR::PSIZE::Size32bits::Set() ;
     } else if constexpr (sizeof(T) == 8)
     {
-      FLASH::CR::PSIZE::Size32bits::Set() ;
-    }
+      FLASH::CR::PSIZE::Size64bits::Set() ;
+    } else
+    {
+      FLASH::CR::PSIZE::Size8bits::Set() ;  
+    }    
 
     while(!IsReady())
     {
@@ -142,7 +143,7 @@ class FlashWrapper
       Lock() ;
     }
 
-    static std::size_t GetSectorIndex(const std::size_t addr)
+    static std::int32_t GetSectorIndex(const std::size_t addr)
     {
       std::int32_t result = -1 ;
       for(auto& it: Sectors)

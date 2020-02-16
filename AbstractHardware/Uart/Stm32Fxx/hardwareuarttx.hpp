@@ -14,11 +14,13 @@ struct HardwareUartTx
   using Uart = typename UartModule::Uart ;
   __forceinline template<typename T = typename UartModule::Base,
       class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void HandleInterrupt()
+  static void HandleInterrupt()
   {
-    if(UartModule::Uart::SR::TXE::DataRegisterEmpty::IsSet())
+    const bool DataRegisterEmpty = Uart::SR::TXE::DataRegisterEmpty::IsSet() ;
+    const bool InterruptEnabled = Uart::CR1::TXEIE::InterruptWhenTXE::IsSet() ;
+    if(DataRegisterEmpty && InterruptEnabled)
     {
-      UartObservers::OnDataRegEmpty();
+      UartObservers::OnTxDataRegEmpty();
     }
   }
 };

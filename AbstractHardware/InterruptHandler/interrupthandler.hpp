@@ -5,7 +5,7 @@
 #ifndef REGISTERS_INTERRUPTHANDLER_HPP
 #define REGISTERS_INTERRUPTHANDLER_HPP
 
-#include "pin.hpp" //for Pin
+//#include "pin.hpp" //for Pin
 #include "tim2registers.hpp"  //for TIM2
 #include "gpiocregisters.hpp"  //for TIM2
 
@@ -17,7 +17,7 @@ class InterruptHandler {
       if (TIM2::SR::UIF::InterruptPending::IsSet())
       {
         TIM2::SR::UIF::NoInterruptPending::Set();
-        Pin<Port<GPIOC>, 8U, PinWriteable>::Toggle() ;
+     //   Pin<Port<GPIOC>, 8U, PinWriteable>::Toggle() ;
       }
     }
 };

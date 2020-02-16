@@ -364,6 +364,11 @@
                     <state>$PROJ_DIR$\Application\Gui\Images</state>
                     <state>$PROJ_DIR$\Application\Gui\Fonts</state>
                     <state>$PROJ_DIR$\Application\Gui</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Registers\CortexM4</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Registers\CortexM4\FieldValues</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart\Stm32Fxx\STM32F411</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart\Stm32Fxx</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
