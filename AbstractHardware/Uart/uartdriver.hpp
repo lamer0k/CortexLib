@@ -126,6 +126,7 @@ struct UartDriver
       status = Status::ReadComplete ;
 
       UartDriverReceiveObservers::OnReadComplete(txRxBuffer, static_cast<std::size_t>(bufferIndex)) ;
+      bufferIndex = 0 ;
     }
   }
 
