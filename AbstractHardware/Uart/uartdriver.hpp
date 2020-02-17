@@ -31,10 +31,9 @@ struct UartDriver
   static void WriteData(const std::uint8_t *pData, std::uint8_t bytesTosend)
   {
     assert(bytesTosend < txRxBuffer.size()) ;
+    const CriticalSection cs;
     if ((status != Status::Write) && (status != Status::Read))
     {
-      const CriticalSection cs;
-
       Uart::DisableReceive();
       Uart::DisableRxInterrupt();
 
@@ -101,10 +100,9 @@ struct UartDriver
   static auto ReadData(std::uint8_t size)
   {
     assert(size < txRxBuffer.size()) ;
+    const CriticalSection cs;
     if ((status != Status::Write) && (status != Status::Read))
     {
-      const CriticalSection cs;
-
       Uart::DisableTcInterrupt();
       Uart::DisableTxInterrupt();
       Uart::DisableTransmit();
