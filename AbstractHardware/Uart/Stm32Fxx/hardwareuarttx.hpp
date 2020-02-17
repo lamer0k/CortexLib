@@ -8,7 +8,7 @@
 #include "Stm32Fxx/STM32F411/hardwareuartbase.hpp" // for UartTx
 
 
-template<typename UartModule, typename UartObservers>
+template<typename UartModule, typename UartTransmitObservers>
 struct HardwareUartTx
 {
   using Uart = typename UartModule::Uart ;
@@ -20,7 +20,7 @@ struct HardwareUartTx
     const bool InterruptEnabled = Uart::CR1::TXEIE::InterruptWhenTXE::IsSet() ;
     if(DataRegisterEmpty && InterruptEnabled)
     {
-      UartObservers::OnTxDataRegEmpty();
+      UartTransmitObservers::OnTxDataRegEmpty();
     }
   }
 };

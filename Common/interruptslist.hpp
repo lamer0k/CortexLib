@@ -14,6 +14,5 @@ struct InterruptsList
   {
     (Modules::HandleInterrupt(), ...) ;
   }
-
 } ;
 #endif //REGISTERS_INTERRUPTSLIST_HPP

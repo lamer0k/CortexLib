@@ -9,7 +9,7 @@
 #include "Stm32Fxx/STM32F411/hardwareuartbase.hpp" // for UartRx
 
 
-template<typename UartModule, typename UartObservers>
+template<typename UartModule, typename UartReceiveObservers>
 struct HardwareUartRx
 {
   using Uart = typename UartModule::Uart ;
@@ -21,7 +21,7 @@ struct HardwareUartRx
     const bool InterruptEnabled = Uart::CR1::RXNEIE::InterruptWhenRXNE::IsSet() ;
     if(DataRecieved && InterruptEnabled)
     {
-      UartObservers::OnRxData();
+      UartReceiveObservers::OnRxData();
     }
   }
 };

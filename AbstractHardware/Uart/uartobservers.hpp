@@ -2,12 +2,12 @@
 // Created by Serge on 10.02.2020.
 //
 
-#ifndef REGISTERS_UARTOBSERVER_HPP
-#define REGISTERS_UARTOBSERVER_HPP
+#ifndef REGISTERS_UARTOBSERVERS_HPP
+#define REGISTERS_UARTOBSERVERS_HPP
 #include "susudefs.hpp" //for __forceinline
 
 template<typename... TObserver>
-struct TransmitObservers
+struct UartTransmitObservers
 {
   __forceinline static void OnTxDataRegEmpty()
   {
@@ -17,7 +17,7 @@ struct TransmitObservers
 
 
 template<typename... TObserver>
-struct TransmitCompleteObservers
+struct UartTransmitCompleteObservers
 {
   __forceinline static void OnComplete()
   {
@@ -26,11 +26,11 @@ struct TransmitCompleteObservers
 } ;
 
 template<typename... TObserver>
-struct ReceiveObservers
+struct UartReceiveObservers
 {
   __forceinline static void OnRxData()
   {
     (TObserver::OnReceive(), ...) ;
   }
 } ;
-#endif //REGISTERS_UARTOBSERVER_HPP
+#endif //REGISTERS_UARTOBSERVERS_HPP

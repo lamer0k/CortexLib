@@ -20,6 +20,8 @@
 #include <array>              //for std::array
 #include "uartdriver.hpp"
 #include "usart2registers.hpp"
+#include "uartobservers.hpp"
+#include "uartdriverobservers.hpp" // for UartDriverTrasnmitCompleteObservers,
 
 using Led1Pin = Pin<Port<GPIOA>, 5U, PinWriteableConfigurable> ;
 using Led2Pin = Pin<Port<GPIOC>, 5U, PinWriteableConfigurable> ;
@@ -118,14 +120,14 @@ public:
       } ;
 
   struct HardwareUart ;
-  struct MyDriver: UartDriver<HardwareUart, WriteObservers<Test>, ReadObservers<>> {};
+  struct MyDriver: UartDriver<HardwareUart, UartDriverTransmitCompleteObservers<Test>, UartDriverReceiveCompleteObservers<>> {};
 
   struct HardwareUart : HardwareUartBase<
       USART2,
       UartTxInterruptable,
       InterruptsList<
-      HardwareUartTx<HardwareUart, TransmitObservers<MyDriver>>,
-  HardwareUartTc<HardwareUart, TransmitCompleteObservers<MyDriver, Test>>
+      HardwareUartTx<HardwareUart, UartTransmitObservers<MyDriver>>,
+      HardwareUartTc<HardwareUart, UartTransmitCompleteObservers<MyDriver, Test>>
   >
   > {};
 

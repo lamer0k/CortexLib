@@ -9,45 +9,14 @@
 #include "hardwareuarttx.hpp" // for HardwareUartTx
 #include "hardwareuarttc.hpp" //for HardwareUartTc
 #include "hardwareuartrx.hpp" // for HardwareUartRx
-#include <array> // for std::array
 #include <cstring> // for memcpy
 #include "criticalsectionconfig.hpp" // for CriticalSection
-#include "uartobserver.hpp"
+#include "uartdriverconfig.hpp" // for tBuffer
 
-
-using tBuffer = std::array<std::uint8_t, 100> ;
-
-template<typename ...Observers>
-struct WriteObservers
-{
-  __forceinline static void OnWriteComplete()
-  {
-    (Observers::OnTransmitComplete(), ...) ;
-  }
-};
-
-template<typename ...Observers>
-struct ReadObservers
-{
-  __forceinline static void OnReadComplete(tBuffer& buffer, std::size_t length)
-  {
-    (Observers::OnReceiveComplete(buffer, length), ...) ;
-  }
-};
-
-
-
-template<typename UartModule, typename  WObservers, typename RObservers >
+template<typename UartModule, typename  UartDriverTransmitCompleteObservers, typename UartDriverReceiveObservers>
 struct UartDriver
 {
   using Uart = UartModule ;
-
- // template <typename ...TxObservers>
- // using UartTx = HardwareUartTx<UartModule, TxObservers...> ;
- // template <typename ...TcObservers>
- // using UartTc = HardwareUartTc<UartModule, TcObservers...> ;
- // template <typename ...RxObservers>
- // using UartRx = HardwareUartRx<UartModule, RxObservers...> ;
 
   enum class Status: std::uint8_t
   {
@@ -59,9 +28,9 @@ struct UartDriver
   } ;
 
 
-  static void WriteData(const std::uint8_t *pData, std::uint8_t size)
+  static void WriteData(const std::uint8_t *pData, std::uint8_t bytesTosend)
   {
-    assert(size < txRxBuffer.size()) ;
+    assert(bytesTosend < txRxBuffer.size()) ;
     if ((status != Status::Write) && (status != Status::Read))
     {
       const CriticalSection cs;
@@ -70,17 +39,18 @@ struct UartDriver
       Uart::DisableRxInterrupt();
 
       bufferIndex = 0U;
-      bufferSize = size;
-      std::memcpy(txRxBuffer.data(), pData, static_cast<std::size_t>(size));
+      bufferSize = bytesTosend;
+      std::memcpy(txRxBuffer.data(), pData, static_cast<std::size_t>(bytesTosend));
 
       Uart::WriteByte(txRxBuffer[bufferIndex]);
       bufferIndex++;
+
       status = Status::Write;
       Uart::StartTransmit();
       //если работает без прерываний, то посылаем прямо тут
       if constexpr (!std::is_base_of<UartTxInterruptable, typename Uart::Base>::value)
       {
-        for(; bufferIndex < size; ++bufferIndex)
+        for(; bufferIndex < bytesTosend; ++bufferIndex)
         {
           while (!Uart::IsDataRegisterEmpty())
           {
@@ -94,7 +64,7 @@ struct UartDriver
         }
         //Proceed() ;
         status = Status::WriteComplete ;
-        WObservers::OnWriteComplete() ;
+        UartDriverTransmitCompleteObservers::OnWriteComplete() ;
       } else
       {
 
@@ -125,10 +95,10 @@ struct UartDriver
     Uart::DisableTransmit();
 
     status = Status::WriteComplete;
-    WObservers::OnWriteComplete() ;
+    UartDriverTransmitCompleteObservers::OnWriteComplete() ;
   }
 
-  static void Read(std::uint8_t size)
+  static auto ReadData(std::uint8_t size)
   {
     assert(size < txRxBuffer.size()) ;
     if ((status != Status::Write) && (status != Status::Read))
@@ -157,7 +127,7 @@ struct UartDriver
     {   
       status = Status::ReadComplete ;
 
-      RObservers::OnReadComplete(txRxBuffer, static_cast<std::size_t>(bufferIndex)) ;
+      UartDriverReceiveObservers::OnReadComplete(txRxBuffer, static_cast<std::size_t>(bufferIndex)) ;
     }
   }
 
@@ -179,7 +149,6 @@ struct UartDriver
     bufferSize = 0U;
     status = Status::None;    
   }
-
 
 private:
 

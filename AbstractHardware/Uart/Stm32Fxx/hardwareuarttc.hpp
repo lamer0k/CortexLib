@@ -8,19 +8,19 @@
 #include "Stm32Fxx/STM32F411/hardwareuartbase.hpp" // for UartTx
 
 
-template<typename UartModule, typename UartObservers>
+template<typename UartModule, typename UartTransmitCompleteObservers>
 struct HardwareUartTc
 {
   using Uart = typename UartModule::Uart ;
   __forceinline template<typename T = typename UartModule::Base,
       class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
-  __forceinline static void HandleInterrupt()
+  static void HandleInterrupt()
   {
     const bool TransmitionComplete = Uart::SR::TC::TransmitionComplete::IsSet() ;
     const bool InterruptEnabled = Uart::CR1::TCIE::InterruptWhenTC::IsSet() ;
     if(TransmitionComplete && InterruptEnabled)
     {
-      UartObservers::OnComplete();
+      UartTransmitCompleteObservers::OnComplete();
       Uart::SR::TC::TransmitionNotComplete::Set() ;
     }
   }

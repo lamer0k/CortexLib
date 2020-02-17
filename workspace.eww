@@ -4,6 +4,9 @@
         <path>$WS_DIR$\..\DinamicStand\falshuart.ewp</path>
     </project>
     <project>
+        <path>$WS_DIR$\..\FlashUart\DinamicStand\falshuart.ewp</path>
+    </project>
+    <project>
         <path>$WS_DIR$\iartproject.ewp</path>
     </project>
     <batchBuild />
