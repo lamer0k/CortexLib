@@ -114,46 +114,46 @@ struct GPIOA_MODER_MODER5_Values: public RegisterField<Reg, offset, size, Access
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER4_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOA_MODER_MODER4_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOA_MODER_MODER3_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER2_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOA_MODER_MODER2_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER1_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOA_MODER_MODER1_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER0_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 3U> ;
+  using Input = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 0U> ;
+  using Output = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 1U> ;
+  using Alternate = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 2U> ;
+  using Analog = FieldValue<GPIOA_MODER_MODER0_Values, BaseType, 3U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -1210,85 +1210,85 @@ struct GPIOA_AFRL_AFRL4_Values: public RegisterField<Reg, offset, size, AccessMo
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_AFRL_AFRL3_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 15U> ;
+  using Af0 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 0U> ;
+  using Af1 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 1U> ;
+  using Af2 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 2U> ;
+  using Af3 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 3U> ;
+  using Af4 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 6U> ;
+  using Af7 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 7U> ;
+  using Af8 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 8U> ;
+  using Af9 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 9U> ;
+  using Af10 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 10U> ;
+  using Af11 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 11U> ;
+  using Af12 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 12U> ;
+  using Af13 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 13U> ;
+  using Af14 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 14U> ;
+  using Af15 = FieldValue<GPIOA_AFRL_AFRL3_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_AFRL_AFRL2_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 15U> ;
+  using Af0 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 0U> ;
+  using Af1 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 1U> ;
+  using Af2 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 2U> ;
+  using Af3 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 3U> ;
+  using Af4 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 6U> ;
+  using Af7 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 7U> ;
+  using Af8 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 8U> ;
+  using Af9 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 9U> ;
+  using Af10 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 10U> ;
+  using Af11 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 11U> ;
+  using Af12 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 12U> ;
+  using Af13 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 13U> ;
+  using Af14 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 14U> ;
+  using Af15 = FieldValue<GPIOA_AFRL_AFRL2_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_AFRL_AFRL1_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 15U> ;
+  using Af0 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 0U> ;
+  using Af1 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 1U> ;
+  using Af2 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 2U> ;
+  using Af3 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 3U> ;
+  using Af4 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 6U> ;
+  using Af7 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 7U> ;
+  using Af8 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 8U> ;
+  using Af9 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 9U> ;
+  using Af10 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 10U> ;
+  using Af11 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 11U> ;
+  using Af12 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 12U> ;
+  using Af13 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 13U> ;
+  using Af14 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 14U> ;
+  using Af15 = FieldValue<GPIOA_AFRL_AFRL1_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_AFRL_AFRL0_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 7U> ;
-  using Value8 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 8U> ;
-  using Value9 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 9U> ;
-  using Value10 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 10U> ;
-  using Value11 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 11U> ;
-  using Value12 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 12U> ;
-  using Value13 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 13U> ;
-  using Value14 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 14U> ;
-  using Value15 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 15U> ;
+  using Af0 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 0U> ;
+  using Af1 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 1U> ;
+  using Af2 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 2U> ;
+  using Af3 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 3U> ;
+  using Af4 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 4U> ;
+  using Af5 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 5U> ;
+  using Af6 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 6U> ;
+  using Af7 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 7U> ;
+  using Af8 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 8U> ;
+  using Af9 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 9U> ;
+  using Af10 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 10U> ;
+  using Af11 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 11U> ;
+  using Af12 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 12U> ;
+  using Af13 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 13U> ;
+  using Af14 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 14U> ;
+  using Af15 = FieldValue<GPIOA_AFRL_AFRL0_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

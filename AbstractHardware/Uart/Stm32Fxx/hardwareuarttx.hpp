@@ -16,7 +16,7 @@ struct HardwareUartTx
       class = typename std::enable_if_t<std::is_base_of<UartTxInterruptable, T>::value>>
   static void HandleInterrupt()
   {
-    const bool DataRegisterEmpty = Uart::SR::TXE::DataRegisterEmpty::IsSet() ;
+    const bool DataRegisterEmpty = Uart::ISR::TXE::DataRegisterEmpty::IsSet() ;
     const bool InterruptEnabled = Uart::CR1::TXEIE::InterruptWhenTXE::IsSet() ;
     if(DataRegisterEmpty && InterruptEnabled)
     {

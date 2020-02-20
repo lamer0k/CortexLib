@@ -123,14 +123,14 @@ struct HardwareUartBase
       class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
   static void WriteByte(std::uint8_t chByte)
   {
-    UartModule::DR::Write(static_cast<std::uint32_t>(chByte)) ;
+    UartModule::TDR::Write(static_cast<std::uint32_t>(chByte)) ;
   }
 
   __forceinline template<typename T = Interface,
       class = typename std::enable_if_t<std::is_base_of<UartReceive, T>::value>>
   static std::uint8_t ReadByte()
   {
-    return static_cast<std::uint8_t>(UartModule::DR::Get()) ;
+    return static_cast<std::uint8_t>(UartModule::RDR::Get()) ;
   }
 
   __forceinline template<typename T = Interface,

@@ -34,9 +34,7 @@ struct UartDriver
     const CriticalSection cs;
     if ((status != Status::Write) && (status != Status::Read))
     {
-      Uart::DisableReceive();
-      Uart::DisableRxInterrupt();
-
+   
       bufferIndex = 0U;
       bufferSize = bytesTosend;
       std::memcpy(txRxBuffer.data(), pData, static_cast<std::size_t>(bytesTosend));
@@ -61,7 +59,7 @@ struct UartDriver
         {
 
         }
-        //Proceed() ;
+        
         status = Status::WriteComplete ;
         UartDriverTransmitCompleteObservers::OnWriteComplete() ;
       } else
@@ -87,14 +85,14 @@ struct UartDriver
   static void OnTransmitComplete()
   {
     bufferIndex = 0U;
-    bufferSize = 0U;
-
-    Uart::DisableTcInterrupt();
-    Uart::DisableTxInterrupt() ;
-    Uart::DisableTransmit();
+    bufferSize = 0U; 
 
     status = Status::WriteComplete;
-    UartDriverTransmitCompleteObservers::OnWriteComplete() ;
+    Uart::DisableTcInterrupt();
+    Uart::DisableTxInterrupt() ;
+
+    UartDriverTransmitCompleteObservers::OnWriteComplete() ; 
+    
   }
 
   static auto ReadData(std::uint8_t size)
@@ -105,14 +103,14 @@ struct UartDriver
     {
       Uart::DisableTcInterrupt();
       Uart::DisableTxInterrupt();
-      Uart::DisableTransmit();
-  
+
       bufferIndex = 0U;      
       bufferSize = size;
       status = Status::Read;
 
-      Uart::EnableReceive();
       Uart::EnableRxInterrupt();
+      Uart::EnableReceive();
+     
     }
 
   }
@@ -124,9 +122,9 @@ struct UartDriver
     if (bufferIndex == bufferSize)
     {   
       status = Status::ReadComplete ;
-
-      UartDriverReceiveObservers::OnReadComplete(txRxBuffer, static_cast<std::size_t>(bufferIndex)) ;
+      const auto length = bufferIndex ;
       bufferIndex = 0 ;
+      UartDriverReceiveObservers::OnReadComplete(txRxBuffer, static_cast<std::size_t>(length)) ;      
     }
   }
 
@@ -147,6 +145,18 @@ struct UartDriver
     bufferIndex = 0U;
     bufferSize = 0U;
     status = Status::None;    
+  }
+
+  friend UartDriver& operator<<(UartDriver &rOs, const char* pString)
+  {
+    WriteData(reinterpret_cast<const std::uint8_t*>(pString), strlen(pString)) ;
+    return rOs;
+  }
+
+  friend UartDriver& operator<<(UartDriver &rOs, float value)
+  {
+    WriteData(reinterpret_cast<const std::uint8_t*>(&value), sizeof(float)) ;
+    return rOs;
   }
 
 private:

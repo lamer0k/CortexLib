@@ -110,7 +110,7 @@ struct USART2_CR1_OVER8_Values: public RegisterField<Reg, offset, size, AccessMo
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_CMIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_CMIE_Values, BaseType, 0U> ;
+  using InterruptInhibited = FieldValue<USART2_CR1_CMIE_Values, BaseType, 0U> ;
   using Value1 = FieldValue<USART2_CR1_CMIE_Values, BaseType, 1U> ;
 } ;
 
@@ -152,36 +152,36 @@ struct USART2_CR1_PS_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_PEIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_PEIE_Values, BaseType, 0U> ;
+  using InterruptInhibited = FieldValue<USART2_CR1_PEIE_Values, BaseType, 0U> ;
   using Value1 = FieldValue<USART2_CR1_PEIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_TXEIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<USART2_CR1_TXEIE_Values, BaseType, 0U> ;
-  using Enable = FieldValue<USART2_CR1_TXEIE_Values, BaseType, 1U> ;
+  using InterruptInhibited = FieldValue<USART2_CR1_TXEIE_Values, BaseType, 0U> ;
+  using InterruptWhenTXE = FieldValue<USART2_CR1_TXEIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_TCIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Disable = FieldValue<USART2_CR1_TCIE_Values, BaseType, 0U> ;
-  using Enable = FieldValue<USART2_CR1_TCIE_Values, BaseType, 1U> ;
+  using InterruptInhibited = FieldValue<USART2_CR1_TCIE_Values, BaseType, 0U> ;
+  using InterruptWhenTC = FieldValue<USART2_CR1_TCIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_RXNEIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_RXNEIE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_CR1_RXNEIE_Values, BaseType, 1U> ;
+  using InterruptInhibited = FieldValue<USART2_CR1_RXNEIE_Values, BaseType, 0U> ;
+  using InterruptWhenRXNE = FieldValue<USART2_CR1_RXNEIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_IDLEIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_IDLEIE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_CR1_IDLEIE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<USART2_CR1_IDLEIE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<USART2_CR1_IDLEIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -201,15 +201,15 @@ struct USART2_CR1_RE_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_UESM_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_UESM_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_CR1_UESM_Values, BaseType, 1U> ;
+  using Disable = FieldValue<USART2_CR1_UESM_Values, BaseType, 0U> ;
+  using Enable = FieldValue<USART2_CR1_UESM_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR1_UE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR1_UE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_CR1_UE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<USART2_CR1_UE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<USART2_CR1_UE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -700,22 +700,22 @@ struct USART2_ISR_LBDF_Values: public RegisterField<Reg, offset, size, AccessMod
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_ISR_TXE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using DataRegNotEmpty = FieldValue<USART2_ISR_TXE_Values, BaseType, 0U> ;
-  using DataRegEmpty = FieldValue<USART2_ISR_TXE_Values, BaseType, 1U> ;
+  using DataRegisterNotEmpty = FieldValue<USART2_ISR_TXE_Values, BaseType, 0U> ;
+  using DataRegisterEmpty = FieldValue<USART2_ISR_TXE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_ISR_TC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using NotComplete = FieldValue<USART2_ISR_TC_Values, BaseType, 0U> ;
-  using Complete = FieldValue<USART2_ISR_TC_Values, BaseType, 1U> ;
+  using TransmitionNotComplete = FieldValue<USART2_ISR_TC_Values, BaseType, 0U> ;
+  using TransmitionComplete = FieldValue<USART2_ISR_TC_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_ISR_RXNE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_ISR_RXNE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_ISR_RXNE_Values, BaseType, 1U> ;
+  using DataNotReceived = FieldValue<USART2_ISR_RXNE_Values, BaseType, 0U> ;
+  using DataReceived = FieldValue<USART2_ISR_RXNE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -798,8 +798,7 @@ struct USART2_ICR_LBDCF_Values: public RegisterField<Reg, offset, size, AccessMo
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_ICR_TCCF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_ICR_TCCF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_ICR_TCCF_Values, BaseType, 1U> ;
+  using TransmitionNotComplete = FieldValue<USART2_ICR_TCCF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

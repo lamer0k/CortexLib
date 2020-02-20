@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
-        <path>$WS_DIR$\..\DinamicStand\falshuart.ewp</path>
+        <path>$WS_DIR$\Backup of iartproject.ewp</path>
     </project>
     <project>
-        <path>$WS_DIR$\..\FlashUart\DinamicStand\falshuart.ewp</path>
+        <path>$WS_DIR$\..\DinamicStand\falshuart.ewp</path>
     </project>
     <project>
         <path>$WS_DIR$\iartproject.ewp</path>

@@ -22,7 +22,7 @@ constexpr std::size_t SectorsSize = 0x800U;
 class FlashWrapper
 {
   public:
-    __forceinline static void Unclock()
+    __forceinline static void Unlock()
     {
       //Write special keys to unlock the Flash
       FLASH::KEYR::Write(FlashCode1) ;
@@ -36,19 +36,19 @@ class FlashWrapper
     
     __forceinline static void Erase(const std::size_t addr)
     {
-      assert((addr >= SectorsStartAddr) && (addr < (SectorsStartAddr + SectorsCount * SectorsSize))) ;
+    //  assert((addr >= SectorsStartAddr) && (addr < (SectorsStartAddr + SectorsCount * SectorsSize))) ;
       EraseSector(addr) ;
     }
     
     
     template<typename T>
-    static void Write(const T * const pSrc, T * const pDest)
+    static void Write( T value, const T * const pDest)
     {
       //Проверим, что адрес не выходит за границу страницы, предполагаем, что все одной странице
       assert(((reinterpret_cast<std::size_t>(&pDest) - SectorsStartAddr) / SectorsSize ) ==
              ((reinterpret_cast<std::size_t>(&pDest) - SectorsStartAddr + sizeof(T))/ SectorsSize)) ;
       
-      assert(( pSrc != nullptr) && (pDest != nullptr)) ;
+      assert(pDest != nullptr) ;
       
       while(!IsReady())
       {
@@ -56,8 +56,8 @@ class FlashWrapper
 
       FLASH::CR::PG::StartProgram::Set() ;
 
-      const auto* const pSource = static_cast<std::uint16_t *>(pSrc); //писать надо по пол слова
-      auto* const pDestination = static_cast<std::uint16_t *>(pDest); //писать надо по пол слова
+      const auto* const pSource = reinterpret_cast<std::uint16_t *>(&value); //писать надо по пол слова
+      auto* const pDestination = reinterpret_cast<std::uint16_t *>(const_cast<T *>(pDest)); //писать надо по пол слова
         
       //если размер не четный, то писать все равно надо пол слова.
       std::size_t Size = ((sizeof(T) % 2) == 0) ? sizeof(T) / 2 : (sizeof(T) / 2 + 1) ;
@@ -78,6 +78,8 @@ class FlashWrapper
       Lock();
     }
 
+
+
   private:
 
     __forceinline static bool IsReady()
@@ -92,8 +94,8 @@ class FlashWrapper
       {
       }
       
-   //   FLASH::CR::PER::PageErase::Set() ;
-  //   FLASH::AR::FAR::Write(addr) ;
+      FLASH::CR::PER::PageErase::Set() ;
+      FLASH::AR::Write(addr) ;
       
       FLASH::CR::STRT::Start::Set() ;
       //The software should start checking if the BSY bit equals ‘0’ at least one CPU cycle after setting the STRT bit.
@@ -108,7 +110,12 @@ class FlashWrapper
       {
       };
       
-      FLASH::SR::EOP::NotComplete::Set() ;
+      while (FLASH::SR::EOP::Complete::IsSet())
+      {
+        FLASH::SR::EOP::Complete::Set() ;
+        
+      };
+      FLASH::CR::PER::Clear::Set() ;
       Lock() ;
     }
 

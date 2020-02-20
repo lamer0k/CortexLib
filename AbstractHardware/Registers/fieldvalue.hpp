@@ -14,7 +14,6 @@ using namespace std ;
 //В регистре устанавливаются те битовые поля, которые допустимы для данного регистра
 //template<typename Reg, size_t offset, size_t size, typename AccessMode, typename Base, typename Reg::Type value>
 template<typename Field, typename Base, typename Field::Register::Type value>
-//struct FieldValue: public FieldValueBase<Reg, offset, size, AccessMode, value>
 struct FieldValue: public FieldValueBase<Field, Base, value>
 {
   using Type = typename Field::Register::Type ;

@@ -17,7 +17,7 @@ struct HardwareUartRx
        class = typename std::enable_if_t<std::is_base_of<UartRxInterruptable, T>::value>>
   static void HandleInterrupt()
   {
-    const bool DataRecieved = Uart::SR::RXNE::DataRecieved::IsSet() ;
+    const bool DataRecieved = Uart::ISR::RXNE::DataReceived::IsSet() ;
     const bool InterruptEnabled = Uart::CR1::RXNEIE::InterruptWhenRXNE::IsSet() ;
     if(DataRecieved && InterruptEnabled)
     {
