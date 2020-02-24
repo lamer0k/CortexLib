@@ -5,21 +5,23 @@
 #ifndef REGISTERS_HARDWARETIMEROVERFLOW_HPP
 #define REGISTERS_HARDWARETIMEROVERFLOW_HPP
 
+#include <cstddef.h> // for std::uint32_t
 #include "hardwaretimerbase.hpp"
 #include "susudefs.hpp"
 
 template<typename TimerModule, typename TimerObserver>
-struct HardwareOverflowTimerBase
+struct HardwareOverflowTimer
 {
   __forceinline static void HandleInterrupt()
   {
     if(TimerModule::Timer::SR::UIF::InterruptPending::IsSet())
     {
+      TimerModule::Timer::SR::UIF::NoInterruptPending::Set() ;  
       TimerObserver::OnOverflow() ;
     }
   }
 
-  __forceinline static void SetDelay(uint32_t delay)
+  __forceinline static void SetDelay(std::uint32_t delay)
   {
     TimerModule::SetDelay(delay) ;
   }
@@ -27,6 +29,19 @@ struct HardwareOverflowTimerBase
   __forceinline static void Start()
   {
     TimerModule::Start() ;
+  }
+
+  __forceinline static void Stop()
+  {
+    TimerModule::Stop() ;
+    TimerModule::DisableInterrupt() ;
+  }
+
+  __forceinline static void Restart()
+  {
+    TimerModule::Restart() ;
+    TimerModule::Start() ;
+    TimerModule::EnableInterrupt() ;
   }
 };
 

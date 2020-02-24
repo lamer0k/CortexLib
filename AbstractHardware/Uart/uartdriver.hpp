@@ -27,37 +27,34 @@ struct UartDriver
     ReadComplete = 4
   } ;
 
-
   static void WriteData(const std::uint8_t *pData, std::uint8_t bytesTosend)
   {
     assert(bytesTosend < txRxBuffer.size()) ;
-    const CriticalSection cs;
-    if ((status != Status::Write) && (status != Status::Read))
+    const CriticalSection cs ;
+    if (status != Status::Write)// && (status != Status::Read))
     {
    
-      bufferIndex = 0U;
-      bufferSize = bytesTosend;
-      std::memcpy(txRxBuffer.data(), pData, static_cast<std::size_t>(bytesTosend));
+      bufferIndex = 0U ;
+      bufferSize = bytesTosend ;
+      std::memcpy(txRxBuffer.data(), pData, static_cast<std::size_t>(bytesTosend)) ;
 
-      Uart::WriteByte(txRxBuffer[bufferIndex]);
-      bufferIndex++;
+      Uart::WriteByte(txRxBuffer[bufferIndex]) ;
+      bufferIndex++ ;
 
-      status = Status::Write;
-      Uart::StartTransmit();
+      status = Status::Write ;
+      Uart::StartTransmit() ;
       //если работает без прерываний, то посылаем прямо тут
       if constexpr (!std::is_base_of<UartTxInterruptable, typename Uart::Base>::value)
       {
-        for(; bufferIndex < bytesTosend; ++bufferIndex)
+        for(; bufferIndex < bytesTosend ; ++bufferIndex)
         {
           while (!Uart::IsDataRegisterEmpty())
           {
-
           }
-          Uart::WriteByte(txRxBuffer[bufferIndex]);          
+          Uart::WriteByte(txRxBuffer[bufferIndex]) ;
         }
         while (!Uart::IsTransmitComplete())
         {
-
         }
         
         status = Status::WriteComplete ;
@@ -87,32 +84,29 @@ struct UartDriver
     bufferIndex = 0U;
     bufferSize = 0U; 
 
-    status = Status::WriteComplete;
-    Uart::DisableTcInterrupt();
+    status = Status::WriteComplete ;
+    Uart::DisableTcInterrupt() ;
     Uart::DisableTxInterrupt() ;
 
-    UartDriverTransmitCompleteObservers::OnWriteComplete() ; 
-    
+    UartDriverTransmitCompleteObservers::OnWriteComplete() ;
   }
 
   static auto ReadData(std::uint8_t size)
   {
     assert(size < txRxBuffer.size()) ;
-    const CriticalSection cs;
-    if ((status != Status::Write) && (status != Status::Read))
+    const CriticalSection cs ;
+    if (status != Status::Read)
     {
-      Uart::DisableTcInterrupt();
-      Uart::DisableTxInterrupt();
+      Uart::DisableTcInterrupt() ;
+      Uart::DisableTxInterrupt() ;
 
-      bufferIndex = 0U;      
-      bufferSize = size;
-      status = Status::Read;
+      bufferIndex = 0U ;
+      bufferSize = size ;
+      status = Status::Read ;
 
-      Uart::EnableRxInterrupt();
-      Uart::EnableReceive();
-     
+      Uart::EnableRxInterrupt() ;
+      Uart::EnableReceive() ;
     }
-
   }
 
   static void OnReceive()
@@ -135,16 +129,16 @@ struct UartDriver
 
   static void ResetAll()
   {
-    Uart::DisableTcInterrupt();
-    Uart::DisableTxInterrupt();
-    Uart::DisableTransmit();
+    Uart::DisableTcInterrupt() ;
+    Uart::DisableTxInterrupt() ;
+    Uart::DisableTransmit() ;
     
-    Uart::DisableReceive();
+    Uart::DisableReceive() ;
     Uart::DisableRxInterrupt() ;
     
-    bufferIndex = 0U;
-    bufferSize = 0U;
-    status = Status::None;    
+    bufferIndex = 0U ;
+    bufferSize = 0U ;
+    status = Status::None ;
   }
 
   friend UartDriver& operator<<(UartDriver &rOs, const char* pString)
@@ -165,6 +159,5 @@ private:
   inline static std::uint8_t bufferSize = 0U ;
   inline static std::uint8_t bufferIndex = 0U ;
   inline static Status status = Status::None ;
-
 };
 #endif //REGISTERS_UARTDRIVER_HPP

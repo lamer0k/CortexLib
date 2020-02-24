@@ -45,22 +45,26 @@ struct HardwareTimerBase
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Start()
   {
-    TimerModule::SR::UIF::NoInterruptPending::Set();
-    TimerModule::CNT::Write(CntType(0));
     TimerModule::CR1::CEN::Enable::Set() ;
+  }
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
+  static void Restart()
+  {    
+    TimerModule::CNT::Write(CntType(0));              
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Stop()
   {
-    TimerModule::CR1::CEN::Disable::Set() ;
-    TimerModule::SR::UIF::NoInterruptPending::Set() ;
+    TimerModule::CR1::CEN::Disable::Set() ;      
   }
   
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerCountable, T>::value>>
-  static void SetDelay(uint32_t delay)
+  static void SetDelay(std::uint32_t delay)
   {
     TimerModule::ARR::Write(delay) ;
   }
@@ -69,7 +73,21 @@ struct HardwareTimerBase
           class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
   static void HandleInterrupt()
   {
-    TimerList::OnInterrupt();
+    TimerModule::OnInterrupt();
+  }
+  
+  __forceinline template<typename T = Interface,
+          class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
+  static void EnableInterrupt()
+  {
+    TimerModule::DIER::UIE::Enable::Set();
+  }
+  
+  __forceinline template<typename T = Interface,
+          class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
+  static void DisableInterrupt()
+  {
+    TimerModule::DIER::UIE::Disable::Set();
   }
 };
 

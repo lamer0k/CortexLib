@@ -15,22 +15,22 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CR1_CEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CR1_CEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CR1_CEN_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_CR1_CEN_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_CR1_CEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CR1_UDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CR1_UDIS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CR1_UDIS_Values, BaseType, 1U> ;
+  using UevEnable = FieldValue<TIM2_CR1_UDIS_Values, BaseType, 0U> ;
+  using UevDisable = FieldValue<TIM2_CR1_UDIS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_CR1_URS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_CR1_URS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_CR1_URS_Values, BaseType, 1U> ;
+  using AnyEvent = FieldValue<TIM2_CR1_URS_Values, BaseType, 0U> ;
+  using OverflowEvent = FieldValue<TIM2_CR1_URS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -249,36 +249,36 @@ struct TIM2_DIER_TIE_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_DIER_CC4IE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_DIER_CC4IE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_DIER_CC4IE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_DIER_CC4IE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_DIER_CC4IE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_DIER_CC3IE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_DIER_CC3IE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_DIER_CC3IE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_DIER_CC3IE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_DIER_CC3IE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_DIER_CC2IE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_DIER_CC2IE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_DIER_CC2IE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_DIER_CC2IE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_DIER_CC2IE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_DIER_CC1IE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_DIER_CC1IE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_DIER_CC1IE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_DIER_CC1IE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_DIER_CC1IE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_DIER_UIE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_DIER_UIE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_DIER_UIE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<TIM2_DIER_UIE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<TIM2_DIER_UIE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -347,8 +347,8 @@ struct TIM2_SR_CC1IF_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct TIM2_SR_UIF_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<TIM2_SR_UIF_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<TIM2_SR_UIF_Values, BaseType, 1U> ;
+  using NoInterruptPending = FieldValue<TIM2_SR_UIF_Values, BaseType, 0U> ;
+  using InterruptPending = FieldValue<TIM2_SR_UIF_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

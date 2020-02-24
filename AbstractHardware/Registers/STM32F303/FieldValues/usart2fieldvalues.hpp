@@ -430,8 +430,8 @@ struct USART2_CR3_DDRE_Values: public RegisterField<Reg, offset, size, AccessMod
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct USART2_CR3_OVRDIS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<USART2_CR3_OVRDIS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<USART2_CR3_OVRDIS_Values, BaseType, 1U> ;
+  using OverrunEnable = FieldValue<USART2_CR3_OVRDIS_Values, BaseType, 0U> ;
+  using OverrunDisable = FieldValue<USART2_CR3_OVRDIS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

@@ -5,13 +5,14 @@
 
 #ifndef REGISTERS_TIMEROBSERVER_HPP
 #define REGISTERS_TIMEROBSERVER_HPP
+#include "susudefs.hpp" // for __forceinline
 
 template<typename... TObserver>
 struct OverflowObservers
 {
   __forceinline static void OnOverflow()
   {
-    (TObserver::OnTimeOut(), ...) ;
+    (TObserver::OnTimeout(), ...) ;
   }
 } ;
 
