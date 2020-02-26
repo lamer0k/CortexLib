@@ -19,10 +19,10 @@
 #include "display.hpp"        //for Display
 #include "nvicregisters.hpp"  //for NVIC
 #include "usart2registers.hpp" //for USART2
-#include "subscriber.hpp"
 #include "adc1registers.hpp" //for ADC1
 #include "adccommonregisters.hpp" //for ADCCommon
 #include "application.hpp" //for Application
+#include "hardwareadc.hpp"
 
 //#include "flashwrapper.hpp"
 
@@ -37,15 +37,9 @@ extern "C"
 {
 int __low_level_init(void)
 {
-  //Switch on external 16 MHz oscillator
-  RCC::CR::HSEON::On::Set() ;
-  //while (!RCC::CR::HSERDY::Ready::IsSet())
-  struct Register
-  {
-    constexpr Register(size_t& addr): reg(addr)
-    {
-
-    }
+    //Switch on external 16 MHz oscillator
+    RCC::CR::HSEON::On::Set() ;
+    //while (!RCC::CR::HSERDY::Ready::IsSet())
     //Switch system clock on external oscillator
     RCC::CFGR::SW::Hse::Set() ;
     //while (!RCC::CFGR::SWS::Hse::IsSet())
@@ -154,23 +148,6 @@ int __low_level_init(void)
 }
 
 
-struct Interrupt
-{
-  static void Update()
-  void Write(size_t data) const
-  {
-    Application::DurationTimer::HandleInterrupt() ;
-  }
-};
-//*reg = data ;
-}
-
-private:
-volatile size_t &reg ;
-} ;
-
-size_t IDR = *reinterpret_cast<size_t*>(0x00010U) ;
-
 using ResetPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
 using DcPin = Pin<Port<GPIOB>, 2U, PinWriteable> ;
 using CsPin = Pin<Port<GPIOB>, 1U, PinWriteable> ;
@@ -184,8 +161,7 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 //extern const unsigned char gImage_4in2bc_ry[];
 const int test =  10;
 //static size_t value = 10 ;
-//size_t& IDR = value ;
-constexpr Register reg(IDR) ;
+
 
 int main()
 {
@@ -194,6 +170,7 @@ int main()
   // FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
+  Adc<ADC1>::SetChannels(18) ;
   ADC1::CR2::SWSTART::On::Set() ;
   // Application::HardwareUart::HandleInterrupt() ;
   const char* message = "Hello world!" ;
@@ -312,7 +289,6 @@ int main()
   >::Write() ;
 
   return 0 ;
-  reg.Write(10) ;
 }
 
 

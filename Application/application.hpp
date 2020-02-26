@@ -96,7 +96,7 @@ public:
   using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, InterruptsList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
   using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, InterruptsList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
 
-  struct DurationTimer : HardwareOverflowTimerBase<
+  struct DurationTimer : HardwareOverflowTimer<
       AppHardwareTimer,
       OverflowObservers<Test, Test1<DurationTimer, CaptureTimer1>>
   >  {};

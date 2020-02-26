@@ -6,7 +6,7 @@
 #define REGISTERS_PINSPACK_HPP
 
 #include <functional>
-#include "portslist.hpp" // for PortsList
+#include "pinspack.hpp" // for PinsPack
 
 
 
