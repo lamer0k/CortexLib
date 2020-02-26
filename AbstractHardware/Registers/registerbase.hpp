@@ -25,6 +25,14 @@ struct RegisterBase
     *reinterpret_cast<volatile Type *>(address) = value ;
   }
 
+  //Метод Write будет работать только для регистров, в которые можно записать значение
+  __forceinline template<typename T = AccessMode,
+      class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value || std::is_base_of<ReadWriteMode, T>::value >>
+  inline static void Set(Type value)
+  {
+    Type oldRegValue = *reinterpret_cast<volatile RegType *>(Field::Register::Address) ; //Сохраняем текущее значение регистра
+    *reinterpret_cast<volatile Type *>(address) = oldRegValue | value ;
+  }
 
   //Метод Write будет работать только для регистров, в которые можно записать значение
   __forceinline template<typename T = AccessMode,

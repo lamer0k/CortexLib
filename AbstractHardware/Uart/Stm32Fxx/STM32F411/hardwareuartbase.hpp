@@ -137,7 +137,8 @@ struct HardwareUartBase
       class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
   static void StartTransmit()
   {
-    EnableTransmit() ;
+    Uart::ICR::TCCF::TransmitionNotComplete::Set() ;
+    EnableTransmit() ;    
     if constexpr (std::is_base_of<UartTxInterruptable, Interface>::value)
     {
       EnableTxInterrupt() ;

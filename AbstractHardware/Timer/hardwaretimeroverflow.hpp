@@ -5,7 +5,7 @@
 #ifndef REGISTERS_HARDWARETIMEROVERFLOW_HPP
 #define REGISTERS_HARDWARETIMEROVERFLOW_HPP
 
-#include <cstddef.h> // for std::uint32_t
+//#include <cstddef.h> // for std::uint32_t
 #include "hardwaretimerbase.hpp"
 #include "susudefs.hpp"
 
