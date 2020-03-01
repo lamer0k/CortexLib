@@ -47,7 +47,7 @@ struct Adc
     constexpr auto ChannelsCount = sizeof ... (channels) ;
     if constexpr  (ChannelsCount != 0)
     {
-      ADC::SQR1::L::Write(ChannelsCount - 1);
+      ADC::SQR1::L::Set(ChannelsCount - 1);
       ADC1::SQR3::Type result3 = 0 ;
       ADC1::SQR2::Type result2 = 0 ;
       ADC1::SQR1::Type result1 = ADC::SQR1::Get() ;
