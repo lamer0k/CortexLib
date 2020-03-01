@@ -43,11 +43,15 @@ struct Adc
     auto channelsList = {channels...} ;
     std::size_t index = 0U ;
     constexpr size_t ChannelsInRegisters = 6U ;
+    constexpr size_t BitsPerChannel = 5U ;
     constexpr auto ChannelsCount = sizeof ... (channels) ;
-
     if constexpr  (ChannelsCount != 0)
     {
-      ADC::SQR1::L::Set(ChannelsCount - 1);
+      ADC::SQR1::L::Write(ChannelsCount - 1);
+      ADC1::SQR3::Type result3 = 0 ;
+      ADC1::SQR2::Type result2 = 0 ;
+      ADC1::SQR1::Type result1 = ADC::SQR1::Get() ;
+
       if constexpr (ChannelsCount > 1)
       {
         ADC1::CR1::SCAN::Enable::Set() ;
@@ -60,16 +64,23 @@ struct Adc
       {
         if (index < ChannelsInRegisters)
         {
-          ADC1::SQR3::Set(it << (index * 5U));
-        } else if ((index < (ChannelsInRegisters * 2)) && (index >= ChannelsInRegisters))
+          //ADC1::SQR3::Set(it << (index * 5U));
+          result3 |= (it << (index * BitsPerChannel)) ;
+        }
+        else if ((index < (ChannelsInRegisters * 2)) && (index >= ChannelsInRegisters))
         {
-          ADC1::SQR2::Set(it << ((index - ChannelsInRegisters) * 5U));
+          //ADC1::SQR2::Set(it << ((index - ChannelsInRegisters) * 5U));
+          result2 |= (it << ((index - ChannelsInRegisters) * BitsPerChannel)) ;
         } else if ((index < 16) && (index >= ChannelsInRegisters * 2))
         {
-          ADC1::SQR1::Set(it << ((index - ChannelsInRegisters * 2) * 5U));
+          //ADC1::SQR1::Set(it << ((index - ChannelsInRegisters * 2) * BitsPerChannel));
+          result1 |= (it << ((index - ChannelsInRegisters * 2) * BitsPerChannel)) ;
         }
         index++;
       }
+      ADC::SQR1::Write(result1) ;
+      ADC::SQR2::Write(result2) ;
+      ADC::SQR3::Write(result3) ;
     } else
     {
       assert(false) ;

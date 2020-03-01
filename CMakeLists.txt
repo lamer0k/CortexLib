@@ -26,6 +26,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Spi
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart/Stm32Fxx
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart/Stm32Fxx/STM32F411
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/InterruptHandler
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/SystemClock
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/EdpElink

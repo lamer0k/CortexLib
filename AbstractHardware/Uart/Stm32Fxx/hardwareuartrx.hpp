@@ -6,7 +6,7 @@
 #define REGISTERS_HARDWAREUARTRX_HPP
 
 #include "susudefs.hpp" //for __forceinline
-#include "Stm32Fxx/STM32F411/hardwareuartbase.hpp" // for UartRx
+#include "hardwareuartbase.hpp" // for UartRx
 
 
 template<typename UartModule, typename UartReceiveObservers>

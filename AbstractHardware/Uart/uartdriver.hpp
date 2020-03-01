@@ -13,6 +13,7 @@
 #include "criticalsectionconfig.hpp" // for CriticalSection
 #include "uartdriverconfig.hpp" // for tBuffer
 
+
 template<typename UartModule, typename  UartDriverTransmitCompleteObservers, typename UartDriverReceiveObservers>
 struct UartDriver
 {
@@ -141,11 +142,11 @@ struct UartDriver
     status = Status::None ;
   }
 
-  friend UartDriver& operator<<(UartDriver &rOs, const char* pString)
-  {
-    WriteData(reinterpret_cast<const std::uint8_t*>(pString), strlen(pString)) ;
-    return rOs;
-  }
+//  friend UartDriver& operator<<(UartDriver &rOs, const char* pString)
+//  {
+//    WriteData(reinterpret_cast<const std::uint8_t*>(pString), strlen(pString)) ;
+//    return rOs;
+//  }
 
   friend UartDriver& operator<<(UartDriver &rOs, float value)
   {

@@ -11,6 +11,20 @@
 
 #define __flashdata _Pragma("location = \".flash\"")
 
+struct SusuString 
+{
+    const char * str;
+    std::size_t size;
+
+    template <std::size_t N>
+    explicit constexpr SusuString(char const (&s)[N])
+        : str(s)
+        , size(N - 1) 
+    {
+    }
+};
+
+
 
 template <typename... Types>
 struct TypesList{} ;

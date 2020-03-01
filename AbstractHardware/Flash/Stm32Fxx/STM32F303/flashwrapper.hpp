@@ -10,6 +10,8 @@
 
 #include "susudefs.hpp"   // for __forceinline
 #include "flashregisters.hpp" // for Flash
+#include <cstddef>  // for std::size_t
+#include <cassert>  // for assert
 
 //static_assert(STM32F303xx == 1,
 //              "This implementation only for STM32F303R micro") ;
