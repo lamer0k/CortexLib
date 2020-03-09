@@ -64,16 +64,13 @@ struct Adc
       {
         if (index < ChannelsInRegisters)
         {
-          //ADC1::SQR3::Set(it << (index * 5U));
           result3 |= (it << (index * BitsPerChannel)) ;
         }
         else if ((index < (ChannelsInRegisters * 2)) && (index >= ChannelsInRegisters))
         {
-          //ADC1::SQR2::Set(it << ((index - ChannelsInRegisters) * 5U));
           result2 |= (it << ((index - ChannelsInRegisters) * BitsPerChannel)) ;
         } else if ((index < 16) && (index >= ChannelsInRegisters * 2))
         {
-          //ADC1::SQR1::Set(it << ((index - ChannelsInRegisters * 2) * BitsPerChannel));
           result1 |= (it << ((index - ChannelsInRegisters * 2) * BitsPerChannel)) ;
         }
         index++;
