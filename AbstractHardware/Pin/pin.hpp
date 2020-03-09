@@ -5,7 +5,7 @@
 #define REGISTERS_PIN_HPP
 
 #include "susudefs.hpp"  //for __forceinline
-#include "port.hpp"
+#include <cinttypes>
 
 struct PinConfigurable
 {
@@ -35,7 +35,7 @@ template<typename Port, uint8_t pinNum, typename Interface>
 struct Pin
 {
   using PortType = Port ;
-  static constexpr uint32_t pin = pinNum ;
+  static constexpr std::uint32_t pin = pinNum ;
   
   constexpr Pin() = default;
   

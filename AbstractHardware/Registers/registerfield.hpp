@@ -6,6 +6,7 @@
 #define REGISTERS_REGISTERFIELD_HPP
 #include <cassert>      //for assert
 #include <atomicutils.hpp>
+#include "susudefs.hpp" //for __forceinline (#define __forceinline  _Pragma("inline=forced"))
 //#include "criticalsectionconfig.hpp" // for CriticalSection
 
 //Базовый класс для работы с битовыми полями регистров

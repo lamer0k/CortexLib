@@ -6,8 +6,8 @@
 #define REGISTERS_SUSUDEFS_HPP
 
 #include <type_traits>
-//#define __forceinline  _Pragma("inline=forced")
-#define __forceinline
+#define __forceinline  _Pragma("inline=forced")
+//#define __forceinline
 
 #define __flashdata _Pragma("location = \".flash\"")
 
