@@ -47,13 +47,13 @@ struct HardwareUartBase
 
   __forceinline template<typename T = Interface,
       class = typename std::enable_if_t<std::is_base_of<UartTransmit, T>::value>>
-  __forceinline static void EnableTransmit()
+  static void EnableTransmit()
   {
     UartModule::CR1::TE::Enable::Set();
   };
 
 
-  static void DisableTransmit()
+		__forceinline static void DisableTransmit()
   {
     UartModule::CR1::TE::Disable::Set();
   };
@@ -65,7 +65,7 @@ struct HardwareUartBase
     UartModule::CR1::RE::Enable::Set();
   };
 
-  static void DisableReceive()
+		__forceinline static void DisableReceive()
   {
     UartModule::CR1::RE::Disable::Set();
   };
@@ -84,12 +84,12 @@ struct HardwareUartBase
     UartModule::CR1::RXNEIE::InterruptWhenRXNE::Set();
   };
 
-  static void DisableRxInterrupt()
+		__forceinline static void DisableRxInterrupt()
   {
     UartModule::CR1::RXNEIE::InterruptInhibited::Set();
   };
 
-  static void DisableTxInterrupt()
+		__forceinline static void DisableTxInterrupt()
   {
     UartModule::CR1::TXEIE::InterruptInhibited::Set();
   };
@@ -101,7 +101,7 @@ struct HardwareUartBase
     UartModule::CR1::TCIE::InterruptWhenTC::Set();
   };
 
-  static void DisableTcInterrupt()
+		__forceinline static void DisableTcInterrupt()
   {
     UartModule::CR1::TCIE::InterruptInhibited::Set();
   };

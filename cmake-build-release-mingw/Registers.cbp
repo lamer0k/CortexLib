@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Registers"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/GitHub/CortexLib/cmake-build-release-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Registers">
+				<Option output="C:/GitHub/CortexLib/cmake-build-release-mingw/Registers.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/GitHub/CortexLib/cmake-build-release-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Pin"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Port"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Timer"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Spi"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/InterruptHandler"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/SystemClock"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/EdpElink"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Atomic"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Adc"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Smbus"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Mlx90614"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Led"/>
+					<Add directory="C:/GitHub/CortexLib/Application"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Gui"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Gui/Fonts"/>
+					<Add directory="C:/GitHub/CortexLib/Common"/>
+					<Add directory="C:/GitHub/CortexLib/Common/CriticalSection"/>
+					<Add directory="C:/GitHub/CortexLib/Common/Observer"/>
+					<Add directory="C:/GitHub/CortexLib/Common/RomObject"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/CortexM4"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/CortexM4/FieldValues"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+					<Add directory="C:/GitHub/CortexLib/Common/PatternMatching"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 Registers"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Registers/fast">
+				<Option output="C:/GitHub/CortexLib/cmake-build-release-mingw/Registers.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/GitHub/CortexLib/cmake-build-release-mingw"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Pin"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Port"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Timer"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Spi"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/InterruptHandler"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/SystemClock"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/EdpElink"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Atomic"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Adc"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Smbus"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Mlx90614"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Led"/>
+					<Add directory="C:/GitHub/CortexLib/Application"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Gui"/>
+					<Add directory="C:/GitHub/CortexLib/Application/Gui/Fonts"/>
+					<Add directory="C:/GitHub/CortexLib/Common"/>
+					<Add directory="C:/GitHub/CortexLib/Common/CriticalSection"/>
+					<Add directory="C:/GitHub/CortexLib/Common/Observer"/>
+					<Add directory="C:/GitHub/CortexLib/Common/RomObject"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/CortexM4"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/CortexM4/FieldValues"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/STM32F411"/>
+					<Add directory="C:/GitHub/CortexLib/AbstractHardware/Registers/STM32F411/FieldValues"/>
+					<Add directory="C:/GitHub/CortexLib/Common/PatternMatching"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 Registers/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/GitHub/CortexLib/cmake-build-release-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/GitHub/CortexLib/cmake-build-release-mingw"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/GitHub/CortexLib/cmake-build-release-mingw/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Adc/hardwareadc.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Mlx90614/mlx90614.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Smbus/smbus.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimercc.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimeroverflow.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/delaytimer.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/systemtimer.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/timerobserver.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuartrx.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttc.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttx.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriver.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriverconfig.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriverobservers.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartobservers.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/Application/application.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/Common/Observer/observers.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/Common/RomObject/memoryobject.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/main.cpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/startup.cpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,44 @@
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+2
+
+   IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM
+   Copyright 1999-2019 IAR Systems AB.
+   PC-locked license - IAR Embedded Workbench for ARM
+
+  # error "A C compiler has been selected for C++."
+    ^
+"C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\3.16.0\CompilerIdCXX\CMakeCXXCompilerId.cpp",5  Fatal error[Pe035]: 
+          #error directive: "A C compiler has been selected for C++."
+Fatal error detected, aborting.
+
+Errors: 1
+Warnings: none
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe 
+Build flags: 
+Id flags: -c 
+
+The output was:
+2
+
+   IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM
+   Copyright 1999-2019 IAR Systems AB.
+   PC-locked license - IAR Embedded Workbench for ARM
+
+  # error "A C compiler has been selected for C++."
+    ^
+"C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\3.16.0\CompilerIdCXX\CMakeCXXCompilerId.cpp",5  Fatal error[Pe035]: 
+          #error directive: "A C compiler has been selected for C++."
+Fatal error detected, aborting.
+
+Errors: 1
+Warnings: none
+
+

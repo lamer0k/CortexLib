@@ -41,6 +41,11 @@ struct HardwareTimerBase
   using Timer = TimerModule ;
   using TInterface = Interface ;
 
+		__forceinline static void SetDevider(std::uint32_t Devider)
+	{
+			TimerModule::PSC::Write(Devider) ;
+	}
+
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerSwitchable, T>::value>>
   static void Start()
@@ -68,7 +73,14 @@ struct HardwareTimerBase
   {
     TimerModule::ARR::Write(delay) ;
   }
-  
+
+  __forceinline template<typename T = Interface,
+      class = typename std::enable_if_t<std::is_base_of<TimerCountable, T>::value>>
+  static bool IsOverflow()
+  {
+    return TimerModule::SR::UIF::InterruptPending::IsSet() ;
+  }
+
   __forceinline template<typename T = Interface,
           class = typename std::enable_if_t<std::is_base_of<TimerInterruptable, T>::value>>
   static void HandleInterrupt()

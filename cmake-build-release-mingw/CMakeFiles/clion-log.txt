@@ -1,0 +1,18 @@
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - MinGW Makefiles" C:\GitHub\CortexLib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/GitHub/CortexLib/cmake-build-release-mingw
+
+Problems were encountered while collecting compiler information:
+	g++.exe: error: unrecognized command line option '--no_cse'; did you mean '--no-dse'?
+	g++.exe: error: unrecognized command line option '--no_unroll'
+	g++.exe: error: unrecognized command line option '--no_inline'; did you mean '--no-inline'?
+	g++.exe: error: unrecognized command line option '--no_code_motion'
+	g++.exe: error: unrecognized command line option '--no_tbaa'
+	g++.exe: error: unrecognized command line option '--no_clustering'
+	g++.exe: error: unrecognized command line option '--no_scheduling'; did you mean '--no-checking'?
+	g++.exe: error: unrecognized command line option '--endian=little'
+	g++.exe: error: unrecognized command line option '--cpu=Cortex-M4'
+	g++.exe: error: unrecognized command line option '--c++'
+	g++.exe: error: unrecognized command line option '--no_exceptions'; did you mean '--no-exceptions'?
+	g++.exe: error: unrecognized command line option '--no_rtti'; did you mean '--no-rtti'?

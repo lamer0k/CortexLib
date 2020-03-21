@@ -1,0 +1,1 @@
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/Registers.dir/startup.cpp.obj CMakeFiles/Registers.dir/main.cpp.obj   --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config C:/GitHub/CortexLib/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale  -o Registers.elf

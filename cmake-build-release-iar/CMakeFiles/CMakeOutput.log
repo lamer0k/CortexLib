@@ -1,0 +1,201 @@
+The system is: Windows - 10.0.18363 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+   IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM
+   Copyright 1999-2019 IAR Systems AB.
+   PC-locked license - IAR Embedded Workbench for ARM
+ 
+  76 bytes of CODE  memory
+ 176 bytes of CONST memory
+  16 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+
+The C compiler identification is IAR, found in "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/3.16.0/CompilerIdC/CMakeCCompilerId.o"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+0
+
+   IAR ANSI C/C++ Compiler V8.40.2.214/W32 for ARM
+   Copyright 1999-2019 IAR Systems AB.
+   PC-locked license - IAR Embedded Workbench for ARM
+ 
+  64 bytes of CODE  memory
+ 176 bytes of CONST memory
+  16 bytes of DATA  memory
+
+Errors: none
+Warnings: none
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+
+The CXX compiler identification is IAR, found in "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/3.16.0/CompilerIdCXX/CMakeCXXCompilerId.o"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_e0323/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_e0323.dir\build.make CMakeFiles/cmTC_e0323.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e0323.dir/testCCompiler.c.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe  --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\CMakeTmp\testCCompiler.c   -e -o CMakeFiles\cmTC_e0323.dir\testCCompiler.c.obj
+Linking C executable cmTC_e0323.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_e0323.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_e0323.dir/testCCompiler.c.obj     -o cmTC_e0323.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_1a0bc/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_1a0bc.dir\build.make CMakeFiles/cmTC_1a0bc.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1a0bc.dir/CMakeCCompilerABI.c.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe  --silent "C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\share\cmake-3.16\Modules\CMakeCCompilerABI.c"   -e -o CMakeFiles\cmTC_1a0bc.dir\CMakeCCompilerABI.c.obj
+Linking C executable cmTC_1a0bc.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_1a0bc.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_1a0bc.dir/CMakeCCompilerABI.c.obj     -o cmTC_1a0bc.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_4f967/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_4f967.dir\build.make CMakeFiles/cmTC_4f967.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4f967.dir/feature_tests.c.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe  --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_4f967.dir\feature_tests.c.obj
+Linking C executable cmTC_4f967.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_4f967.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_4f967.dir/feature_tests.c.obj     -o cmTC_4f967.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_4a38b/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_4a38b.dir\build.make CMakeFiles/cmTC_4a38b.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4a38b.dir/feature_tests.c.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe  --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.c   -e -o CMakeFiles\cmTC_4a38b.dir\feature_tests.c.obj
+Linking C executable cmTC_4a38b.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_4a38b.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_4a38b.dir/feature_tests.c.obj     -o cmTC_4a38b.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting C [--c89] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_72ab6/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_72ab6.dir\build.make CMakeFiles/cmTC_72ab6.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_72ab6.dir/feature_tests.c.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe  --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.c   --c89 -e -o CMakeFiles\cmTC_72ab6.dir\feature_tests.c.obj
+Linking C executable cmTC_72ab6.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_72ab6.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_72ab6.dir/feature_tests.c.obj     -o cmTC_72ab6.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_16992/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_16992.dir\build.make CMakeFiles/cmTC_16992.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_16992.dir/testCXXCompiler.cxx.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe --c++ --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\CMakeTmp\testCXXCompiler.cxx   -e -o CMakeFiles\cmTC_16992.dir\testCXXCompiler.cxx.obj
+Linking CXX executable cmTC_16992.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_16992.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_16992.dir/testCXXCompiler.cxx.obj     -o cmTC_16992.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_95a2a/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_95a2a.dir\build.make CMakeFiles/cmTC_95a2a.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_95a2a.dir/CMakeCXXCompilerABI.cpp.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe --c++ --silent "C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp"   -e -o CMakeFiles\cmTC_95a2a.dir\CMakeCXXCompilerABI.cpp.obj
+Linking CXX executable cmTC_95a2a.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_95a2a.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_95a2a.dir/CMakeCXXCompilerABI.cpp.obj     -o cmTC_95a2a.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_ccbef/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_ccbef.dir\build.make CMakeFiles/cmTC_ccbef.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ccbef.dir/feature_tests.cxx.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe --c++ --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_ccbef.dir\feature_tests.cxx.obj
+Linking CXX executable cmTC_ccbef.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_ccbef.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_ccbef.dir/feature_tests.cxx.obj     -o cmTC_ccbef.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_91ccc/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_91ccc.dir\build.make CMakeFiles/cmTC_91ccc.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_91ccc.dir/feature_tests.cxx.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe --c++ --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_91ccc.dir\feature_tests.cxx.obj
+Linking CXX executable cmTC_91ccc.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_91ccc.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_91ccc.dir/feature_tests.cxx.obj     -o cmTC_91ccc.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe cmTC_45d4c/fast && C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_45d4c.dir\build.make CMakeFiles/cmTC_45d4c.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_45d4c.dir/feature_tests.cxx.obj
+C:\PROGRA~2\IARSYS~1\EMBEDD~1.3\arm\bin\iccarm.exe --c++ --silent C:\GitHub\CortexLib\cmake-build-release-iar\CMakeFiles\feature_tests.cxx   -e -o CMakeFiles\cmTC_45d4c.dir\feature_tests.cxx.obj
+Linking CXX executable cmTC_45d4c.exe
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_45d4c.dir\link.txt --verbose=1
+"C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/ilinkarm.exe" --silent CMakeFiles/cmTC_45d4c.dir/feature_tests.cxx.obj     -o cmTC_45d4c.exe
+mingw32-make.exe[1]: Leaving directory 'C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/CMakeTmp'
+
+
+

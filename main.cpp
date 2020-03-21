@@ -23,13 +23,18 @@
 #include "adccommonregisters.hpp" //for ADCCommon
 #include "application.hpp" //for Application
 #include "hardwareadc.hpp"
+#include "mlx90614.hpp" // for Mlx90614
+#include "smbus.hpp" // for Smbus
+#include "delaytimer.hpp" // for DelayTimer
 
 //#include "flashwrapper.hpp"
 
 
 
 using namespace std ;
-constexpr std::uint32_t UartSpeed9600 = static_cast<std::uint32_t>(8000000U / 9600U) ;
+
+constexpr std::uint32_t SysClock = 8000000U ;
+constexpr std::uint32_t UartSpeed9600 = static_cast<std::uint32_t>(SysClock / 9600U) ;
 constexpr std::size_t Uart2InterruptPosition = 38U - 32U ;
 #include <cstddef>
 
@@ -46,7 +51,6 @@ int __low_level_init(void)
     {
 
     }
-
 
     //Switch on clock on PortA and PortC, PortB
     RCC::AHB1ENRPack<
@@ -74,18 +78,14 @@ int __low_level_init(void)
         GPIOA::AFRL::AFRL3::Af7  // Uart2 RX
     >::Set() ;
 
-
-
     //USART2::CR1::TE::Enable::Set() ;
-
-
 
     // PortB.13 - SPI3_CLK, PortB.15 - SPI2_MOSI, PB1 -CS, PB2- DC, PB8 -Reset
     GPIOB::MODERPack<
         GPIOB::MODER::MODER1::Output,         //CS
         GPIOB::MODER::MODER2::Output,         //DC
-        GPIOB::MODER::MODER8::Output,         //Reset
-        GPIOB::MODER::MODER9::Input,         //Busy
+        GPIOB::MODER::MODER8::Output,         //PortC.3 scl
+        GPIOB::MODER::MODER9::Output,         //PortC.2 sda
         GPIOB::MODER::MODER13::Alternate,
         GPIOB::MODER::MODER15::Alternate
     >::Set() ;
@@ -95,16 +95,28 @@ int __low_level_init(void)
         GPIOB::AFRH::AFRH15::Af5
     >::Set() ;
 
-
-
     GPIOB::BSRR::BS1::High::Write() ;
 
     // LED2 on PortC.9, LED3 on PortC.8, LED4 on PortC.5 so set PortC.5,8,9 as output
+    // PortC.2 sda, PortC.3 scl  for Smbus
     GPIOC::MODERPack<
         GPIOC::MODER::MODER5::Output,
         GPIOC::MODER::MODER8::Output,
-        GPIOC::MODER::MODER9::Output
+        GPIOC::MODER::MODER9::Output,
+				GPIOC::MODER::MODER2::Input, //Busy
+				GPIOC::MODER::MODER3::Output //Reset
     >::Set() ;
+
+		// PortC.2 sda, PortC.3 scl  for Smbus
+		GPIOB::OTYPERPack<
+		        GPIOB::OTYPER::OT8::OutputOpenDrain,
+						GPIOB::OTYPER::OT9::OutputOpenDrain
+		        >::Set() ;
+
+		GPIOB::BSRRPack<
+		        GPIOB::BSRR::BS8::High,
+						GPIOB::BSRR::BS9::High
+		        >::Write() ;
 
     SPI2::CR1Pack<
         SPI2::CR1::MSTR::Master,   //SPI2 master
@@ -119,14 +131,13 @@ int __low_level_init(void)
         SPI2::CR1::CRCEN::CrcCalcDisable
     >::Set() ;
 
-
-
     SPI2::CRCPR::CRCPOLY::Set(10U) ;
     SPI2::CR1::SPE::Enable::Set() ;
 
     NVIC::ISER0::Write(1U << 28U) ;
-    TIM2::PSC::Write(8000U) ;
-    TIM2::DIER::UIE::Enable::Set() ;
+
+   // TIM2::DIER::UIE::Enable::Set() ;
+		TIM2::PSC::Write(8000) ;
 
     //******* UART
     USART2::BRR::Write(UartSpeed9600) ;
@@ -148,10 +159,10 @@ int __low_level_init(void)
 }
 
 
-using ResetPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
+using ResetPin = Pin<Port<GPIOC>, 3U, PinWriteable> ;
 using DcPin = Pin<Port<GPIOB>, 2U, PinWriteable> ;
 using CsPin = Pin<Port<GPIOB>, 1U, PinWriteable> ;
-using BusyPin = Pin<Port<GPIOB>, 9U, PinReadable> ;
+using BusyPin = Pin<Port<GPIOC>, 2U, PinReadable> ;
 
 
 using LcdDriverSpi = Spi<SPI2> ;
@@ -159,14 +170,35 @@ using LcdDriver = ElinkDriver<LcdDriverSpi, ResetPin, DcPin, CsPin, BusyPin, Att
 
 //extern const unsigned char gImage_4in2bc_b[];
 //extern const unsigned char gImage_4in2bc_ry[];
-const int test =  10;
+//const int test =  10;
 //static size_t value = 10 ;
+
+using SdaPin = Pin<Port<GPIOB>, 9U, PinAlmighty> ;
+using SclPin = Pin<Port<GPIOB>, 8U, PinWriteable> ;
+
+using HardwareTimer5 = HardwareTimerBase<TIM5,TimerCountable, InterruptsList<>> ;
+
+using Timer = DelayTimer<HardwareOverflowTimer<HardwareTimer5,OverflowObservers<>>,SysClock, 8> ;
+using Bus = SmBus<Timer,SdaPin, SclPin> ;
+using Temperature = Mlx90614<Bus>;
+
 
 
 int main()
 {
 
-  // FlashWrapper::Lock() ;
+  auto temperatureAmbient = Temperature::GetTemperature(Temperature::TemperatureType::Ambient) ;
+  Timer::Delay(1000000us) ;
+	Application::Leds[0]->Toggle() ;
+  Timer::Delay(1000ms) ;
+	Application::Leds[1]->Toggle() ;
+	Timer::Delay(1000000us) ;
+	Application::Leds[0]->Toggle() ;
+	Timer::Delay(2000000us) ;
+	Application::Leds[1]->Toggle() ;
+
+
+		// FlashWrapper::Lock() ;
   // FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
   //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
@@ -198,12 +230,13 @@ int main()
   point.x = 130 ;
 
   Application::DurationTimer::SetDelay(1000) ;
-  Application::DurationTimer::Start() ;
-  Application::AppCCHardwareTimer::HandleInterrupt() ;
+ // Application::DurationTimer::Start() ;
+  Application::DurationTimer::Execute() ;
+// Application::AppCCHardwareTimer::HandleInterrupt() ;
 
   //for (int i = 0; i < 9 ; i++)
   {
-    SystemClock::SetDelayMs(1000) ;
+    //SystemClock::SetDelayMs(1000) ;
 
     Display<400,300>::DrawString(point, "125.27") ;
     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
@@ -214,7 +247,7 @@ int main()
     Display<400,300>::DrawString(point, "125.66") ;
     LcdDriver::UpdatePartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
   }
-  //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;    
+  //LcdDriver::SetPartialWindow(Display<400, 300>::image.data(), 0, 0, 400, 300) ;
 //  LcdDriver::Display(gImage_4in2bc_ry, gImage_4in2bc_b);
 
   for (;;)
@@ -225,11 +258,11 @@ int main()
 //    PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Set() ;
     // GPIOA::BSRR::Write(32U) ;
     // GPIOC::BSRR::Write(800U) ;
-    // SystemClock::SetDelayMs(1000) ;
+    Application::DurationTimer::Execute() ;
     // Application::DelayTimer::SetDelay(16000*500) ;
     // PinsPack<Led1Pin, Led2Pin, Led3Pin, Led4Pin>::Reset() ;
-    //  Application::Leds[0]->Toggle() ;
-    //  Application::Leds[1]->Toggle() ;
+      Application::Leds[0]->Toggle() ;
+      Application::Leds[1]->Toggle() ;
   }
 
   GPIOA::MODER::MODER5::Output::Set() ;
@@ -241,18 +274,18 @@ int main()
   //*******************************************
   //Включаем тактирование на порту GPIOA
   //Ошибка компиляции, у регистра APB1ENR нет поля GPIOAEN
-  //RCC::APB1ENR::GPIOAEN::Enable::Set() ; 
+  //RCC::APB1ENR::GPIOAEN::Enable::Set() ;
 
   //Все хорошо, подали тактирование на порт GPIOA
 
 
-  //Ошибка компиляции, RCC::APB2ENR::TIM1EN::Enable не 
+  //Ошибка компиляции, RCC::APB2ENR::TIM1EN::Enable не
   //является полем регистра APB1ENR
   //RCC::APB1ENRPack<RCC::APB1ENR::TIM2EN::Enable,
   //RCC::APB2ENR::TIM1EN::Enable>::Set() ;
 
-  //Ошибка компиляции, регистр BSRR только для записи     
-  //auto result = GPIOA::BSRR::Get() ; 
+  //Ошибка компиляции, регистр BSRR только для записи
+  //auto result = GPIOA::BSRR::Get() ;
 
   //Ошибка компиляции, значение Reset только для записи
   // if (GPIOA::BSRR::BS1::Reset::IsSet())

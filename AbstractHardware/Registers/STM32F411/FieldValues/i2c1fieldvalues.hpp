@@ -15,99 +15,99 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_SWRST_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_SWRST_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_SWRST_Values, BaseType, 1U> ;
+  using NotUnderReset = FieldValue<I2C1_CR1_SWRST_Values, BaseType, 0U> ;
+  using UnderReset = FieldValue<I2C1_CR1_SWRST_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_ALERT_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_ALERT_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_ALERT_Values, BaseType, 1U> ;
+  using FollowedByNack = FieldValue<I2C1_CR1_ALERT_Values, BaseType, 0U> ;
+  using FollowedByAck = FieldValue<I2C1_CR1_ALERT_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_PEC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_PEC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_PEC_Values, BaseType, 1U> ;
+  using NoTransfer = FieldValue<I2C1_CR1_PEC_Values, BaseType, 0U> ;
+  using Transfer = FieldValue<I2C1_CR1_PEC_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_POS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_POS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_POS_Values, BaseType, 1U> ;
+  using CurrentByte = FieldValue<I2C1_CR1_POS_Values, BaseType, 0U> ;
+  using NextByte = FieldValue<I2C1_CR1_POS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_ACK_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_ACK_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_ACK_Values, BaseType, 1U> ;
+  using NoAcknowledge = FieldValue<I2C1_CR1_ACK_Values, BaseType, 0U> ;
+  using Acknowledge = FieldValue<I2C1_CR1_ACK_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_STOP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_STOP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_STOP_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_STOP_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_STOP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_START_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_START_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_START_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_START_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_START_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_NOSTRETCH_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_NOSTRETCH_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_NOSTRETCH_Values, BaseType, 1U> ;
+  using Enable = FieldValue<I2C1_CR1_NOSTRETCH_Values, BaseType, 0U> ;
+  using Diable = FieldValue<I2C1_CR1_NOSTRETCH_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_ENGC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_ENGC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_ENGC_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_ENGC_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_ENGC_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_ENPEC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_ENPEC_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_ENPEC_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_ENPEC_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_ENPEC_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_ENARP_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_ENARP_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_ENARP_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_ENARP_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_ENARP_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_SMBTYPE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_SMBTYPE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_SMBTYPE_Values, BaseType, 1U> ;
+  using Device = FieldValue<I2C1_CR1_SMBTYPE_Values, BaseType, 0U> ;
+  using Host = FieldValue<I2C1_CR1_SMBTYPE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_SMBUS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_SMBUS_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_SMBUS_Values, BaseType, 1U> ;
+  using I2cMode = FieldValue<I2C1_CR1_SMBUS_Values, BaseType, 0U> ;
+  using SmBusMode = FieldValue<I2C1_CR1_SMBUS_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CR1_PE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CR1_PE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CR1_PE_Values, BaseType, 1U> ;
+  using Disable = FieldValue<I2C1_CR1_PE_Values, BaseType, 0U> ;
+  using Enable = FieldValue<I2C1_CR1_PE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -153,8 +153,8 @@ struct I2C1_CR2_FREQ_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_OAR1_ADDMODE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_OAR1_ADDMODE_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_OAR1_ADDMODE_Values, BaseType, 1U> ;
+  using Bits7 = FieldValue<I2C1_OAR1_ADDMODE_Values, BaseType, 0U> ;
+  using Bits10 = FieldValue<I2C1_OAR1_ADDMODE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -350,15 +350,15 @@ struct I2C1_SR2_MSL_Values: public RegisterField<Reg, offset, size, AccessMode>
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CCR_F_S_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CCR_F_S_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CCR_F_S_Values, BaseType, 1U> ;
+  using StandartMode = FieldValue<I2C1_CCR_F_S_Values, BaseType, 0U> ;
+  using FastMode = FieldValue<I2C1_CCR_F_S_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct I2C1_CCR_DUTY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<I2C1_CCR_DUTY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<I2C1_CCR_DUTY_Values, BaseType, 1U> ;
+  using DutyCycles_2 = FieldValue<I2C1_CCR_DUTY_Values, BaseType, 0U> ;
+  using DutyCycles_16_9 = FieldValue<I2C1_CCR_DUTY_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

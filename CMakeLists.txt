@@ -14,8 +14,8 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 
 #set(CMAKE_C_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
 #set(CMAKE_CXX_COMPILER "${CMAKE_COMPILER_PATH}/iccarm.exe")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
-#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --c++ --no_exceptions --no_rtti")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --redirect _Printf=_PrintfFullNoMb  --redirect _Scanf=_ScanfFullNoMb  --config ${CMAKE_SOURCE_DIR}/stm32f411xE.icf --semihosting --entry __iar_program_start --vfe --text_out locale")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp")
 
 
@@ -23,6 +23,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Pin
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Port
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Timer/Stm32Fxx/STM32F411
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Spi
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Uart/Stm32Fxx
@@ -32,6 +33,8 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/EdpElink
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Atomic
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Adc
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Smbus
+                    ${CMAKE_SOURCE_DIR}/AbstractHardware/Mlx90614
                     ${CMAKE_SOURCE_DIR}/Application/Led
                     ${CMAKE_SOURCE_DIR}/Application
                     ${CMAKE_SOURCE_DIR}/Application/Gui
@@ -39,6 +42,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
                     ${CMAKE_SOURCE_DIR}/Common
                     ${CMAKE_SOURCE_DIR}/Common/CriticalSection
                     ${CMAKE_SOURCE_DIR}/Common/Observer
+                    ${CMAKE_SOURCE_DIR}/Common/RomObject
                   #  ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411
                   #  ${CMAKE_SOURCE_DIR}/Tools/RegistersGenerator/Stm32F411/FieldValues
                     ${CMAKE_SOURCE_DIR}/AbstractHardware/Registers/CortexM4
@@ -57,19 +61,19 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
         )
 
 add_executable(Registers
-            #   startup.cpp
+               startup.cpp
                main.cpp Common/Observer/observers.hpp
-               AbstractHardware/Timer/hardwaretimeroverflow.hpp
+        AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimeroverflow.hpp
                AbstractHardware/Timer/timerobserver.hpp
-               AbstractHardware/Timer/hardwaretimercc.hpp
-               AbstractHardware/Uart/Stm32Fxx/hardwareuarttx.hpp
+        AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimercc.hpp
+        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttx.hpp
                AbstractHardware/Uart/uartobservers.hpp
                AbstractHardware/Uart/uartdriver.hpp
-               AbstractHardware/Uart/Stm32Fxx/hardwareuarttc.hpp
-               AbstractHardware/Uart/Stm32Fxx/hardwareuartrx.hpp
+        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttc.hpp
+        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuartrx.hpp
                Application/application.hpp
                AbstractHardware/Uart/uartdriverobservers.hpp
                AbstractHardware/Uart/uartdriverconfig.hpp
                AbstractHardware/Timer/systemtimer.hpp
-        AbstractHardware/Adc/hardwareadc.hpp)
+        AbstractHardware/Adc/hardwareadc.hpp Common/RomObject/memoryobject.hpp AbstractHardware/Smbus/smbus.hpp AbstractHardware/Mlx90614/mlx90614.hpp AbstractHardware/Timer/delaytimer.hpp AbstractHardware/Smbus/Stm32F4xx/STM32F411/hardwaresmbus.hpp)
 

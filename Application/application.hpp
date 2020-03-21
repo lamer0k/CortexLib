@@ -32,7 +32,7 @@ using Led4Pin = Pin<Port<GPIOC>, 9U, PinWriteable> ;
 struct Test
 {
 
-  __forceinline static void OnTimeOut()
+  __forceinline static void OnTimeout()
   {
     //std::cout << Id << std::endl ;
   }
@@ -58,7 +58,7 @@ template<typename Timer, typename CCTimer>
 struct Test1
 {
 
-  __forceinline static void OnTimeOut()
+  __forceinline static void OnTimeout()
   {
     //std::cout << Id << std::endl ;
     Timer::Start() ;
@@ -92,13 +92,13 @@ public:
   struct CaptureTimer1 ;
   struct CaptureTimer2 ;
 
-  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountableInterruptable, InterruptsList<OverflowTimer, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
+  using AppHardwareTimer = HardwareTimerBase<TIM2, TimerCountable, InterruptsList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
   using AppHardwareTimer1 = HardwareTimerBase<TIM1, TimerCcpableInterruptable, InterruptsList<>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
   using AppCCHardwareTimer = HardwareCCTimerBase<AppHardwareTimer1, InterruptsList<CaptureTimer1, CaptureTimer2>> ;  //Прикручиваем этот список в аппаратному таймеру, который будет использоваться для расчета частоты
 
   struct DurationTimer : HardwareOverflowTimer<
       AppHardwareTimer,
-      OverflowObservers<Test, Test1<DurationTimer, CaptureTimer1>>
+      OverflowObservers<Test>
   >  {};
 
   struct CaptureTimer1 : HardwareCCxTimerBase<

@@ -1,0 +1,7 @@
+"C:\Program Files\JetBrains\CLion201607320\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release "-DCMAKE_C_COMPILER=C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe" "-DCMAKE_CXX_COMPILER=C:/Program Files (x86)/IAR Systems/Embedded Workbench 8.3/arm/bin/iccarm.exe" -G "CodeBlocks - MinGW Makefiles" C:\GitHub\CortexLib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/GitHub/CortexLib/cmake-build-release-iar
+
+Problems were encountered while collecting compiler information:
+	"C:\GitHub\CortexLib\main.cpp",268  Warning[Pe111]: statement is unreachable

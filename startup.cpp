@@ -56,7 +56,7 @@ const tIntVectItem __vector_table[] =
   InterruptHandler::DummyHandler,             //TIM10/TIM1 Update interrupt
   InterruptHandler::DummyHandler,             //TIM11/TIM1 Trigger/Commutation interrupts
   InterruptHandler::DummyHandler,			   //TIM1 Capture Compare interrupt
-  InterruptHandler::Timer2Handler,         //TIM2  	
+  Application::DurationTimer::HandleInterrupt,         //TIM2
   InterruptHandler::DummyHandler,         //TIM3
   InterruptHandler::DummyHandler,        ////TIM4
   InterruptHandler::DummyHandler,        //I2C1_EV

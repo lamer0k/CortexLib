@@ -13,6 +13,15 @@
 template<typename SpiModule>
 struct Spi
 {
+		__forceinline static void Start()
+		{
+				// no implementation for SPI
+		}
+		__forceinline static void Stop()
+		{
+				// no implementation for SPI
+		}
+
   __forceinline static void WriteByte(std::uint8_t chByte)
   {
     while (SpiModule::SR::TXE::TxBufferNotEmpty::IsSet())
