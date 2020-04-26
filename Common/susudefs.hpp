@@ -11,17 +11,33 @@
 
 #define __flashdata _Pragma("location = \".flash\"")
 
-struct SusuString 
+struct SusuStringView
 {
     const char * str;
     std::size_t size;
 
     template <std::size_t N>
-    explicit constexpr SusuString(char const (&s)[N])
+    explicit constexpr SusuStringView(const char (&s)[N]) //char const
         : str(s)
         , size(N - 1) 
     {
     }
+};
+
+
+template<size_t size>
+struct SusuString
+{
+private:
+	char str[size];
+public:
+	template <std::size_t N>
+	void Set(const char (&s)[N])
+	{
+		static_assert(N < size, "Размер не тот") ;
+		memcpy(str, s, N);
+	}
+
 };
 
 
