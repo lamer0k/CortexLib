@@ -15,21 +15,21 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_ACR_LATENCY_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 1U> ;
-  using Value2 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 2U> ;
-  using Value3 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 3U> ;
-  using Value4 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 4U> ;
-  using Value5 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 5U> ;
-  using Value6 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 6U> ;
-  using Value7 = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 7U> ;
+  using Zero = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 0U> ;
+  using One = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 1U> ;
+  using Two = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 2U> ;
+  using Three = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 3U> ;
+  using Four = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 4U> ;
+  using Five = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 5U> ;
+  using Six = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 6U> ;
+  using Seven = FieldValue<FLASH_ACR_LATENCY_Values, BaseType, 7U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct FLASH_ACR_PRFTEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<FLASH_ACR_PRFTEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<FLASH_ACR_PRFTEN_Values, BaseType, 1U> ;
+  using Disable = FieldValue<FLASH_ACR_PRFTEN_Values, BaseType, 0U> ;
+  using Enable = FieldValue<FLASH_ACR_PRFTEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

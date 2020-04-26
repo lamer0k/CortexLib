@@ -2,7 +2,7 @@
 * Filename      : scbregisters.hpp
 *
 * Details       : System control block. This header file is auto-generated for
-*                 STM32F411 device.
+*                 CortexM4 device.
 *
 *
 *******************************************************************************/

@@ -56,7 +56,7 @@ struct MDR_ADC
     using CHCH = MDR_ADC_ADC2_Cfg_CHCH_Values<MDR_ADC::ADC2_Cfg, 9, 1, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
     using RGNC = MDR_ADC_ADC2_Cfg_RGNC_Values<MDR_ADC::ADC2_Cfg, 10, 1, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
     using REF = MDR_ADC_ADC2_Cfg_REF_Values<MDR_ADC::ADC2_Cfg, 11, 1, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
-    using CLKS = MDR_ADC_ADC2_Cfg_CLKS_Values<MDR_ADC::ADC2_Cfg, 12, 4, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
+    using CLKS2 = MDR_ADC_ADC2_Cfg_CLKS_Values<MDR_ADC::ADC2_Cfg, 12, 4, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
     using ADC1_OP = MDR_ADC_ADC2_Cfg_ADC1_OP_Values<MDR_ADC::ADC2_Cfg, 17, 1, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
     using ADC2_OP = MDR_ADC_ADC2_Cfg_ADC2_OP_Values<MDR_ADC::ADC2_Cfg, 18, 1, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
     using Delay_GO = MDR_ADC_ADC2_Cfg_Delay_GO_Values<MDR_ADC::ADC2_Cfg, 25, 3, ReadWriteMode, MDR_ADCADC2_CfgBase> ;
@@ -81,7 +81,7 @@ struct MDR_ADC
 
   struct ADC2_H_Level : public RegisterBase<0x4008800C, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC2_H_Level, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC2_H_Level, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -91,7 +91,7 @@ struct MDR_ADC
 
   struct ADC1_L_Level : public RegisterBase<0x40088010, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC1_L_Level, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC1_L_Level, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -101,7 +101,7 @@ struct MDR_ADC
 
   struct ADC2_L_Level : public RegisterBase<0x40088014, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC2_L_Level, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC2_L_Level, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -123,7 +123,7 @@ struct MDR_ADC
 
   struct ADC2_RESULT : public RegisterBase<0x4008801C, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC2_RESULT, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC2_RESULT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -138,7 +138,7 @@ struct MDR_ADC
     using EOCIF = MDR_ADC_ADC1_STATUS_EOCIF_Values<MDR_ADC::ADC1_STATUS, 2, 1, ReadWriteMode, MDR_ADCADC1_STATUSBase> ;
     using AWOIF_IE = MDR_ADC_ADC1_STATUS_AWOIF_IE_Values<MDR_ADC::ADC1_STATUS, 3, 1, ReadWriteMode, MDR_ADCADC1_STATUSBase> ;
     using EOCIF_EN = MDR_ADC_ADC1_STATUS_EOCIF_EN_Values<MDR_ADC::ADC1_STATUS, 4, 1, ReadWriteMode, MDR_ADCADC1_STATUSBase> ;
-    using FieldValues = MDR_ADC_ADC1_STATUS_EOCIF_EN_Values<MDR_ADC::ADC1_STATUS, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = MDR_ADC_ADC1_STATUS_EOCIF_EN_Values<MDR_ADC::ADC1_STATUS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -148,7 +148,7 @@ struct MDR_ADC
 
   struct ADC2_STATUS : public RegisterBase<0x40088024, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC2_STATUS, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC2_STATUS, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -186,7 +186,7 @@ struct MDR_ADC
 
   struct ADC2_CHSEL : public RegisterBase<0x4008802C, 32, ReadWriteMode>
   {
-    using FieldValues = <MDR_ADC::ADC2_CHSEL, 0, 0, NoAccess, NoAccess> ;
+    //using FieldValues = <MDR_ADC::ADC2_CHSEL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

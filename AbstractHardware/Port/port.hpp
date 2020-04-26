@@ -58,10 +58,10 @@ struct Port
            T::MODER::FieldValues::Input::Value,
            static_cast<ModerType>(pinNum * uint8_t{2U})
       ) ;
-    //volatile auto value = T::MODER::Get() ;
-    //value &= ~(3 << (pinNum * 2U)) ;
-	//	value |= 	(T::MODER::FieldValues::Input::Value << (pinNum * 2U)) ;
-    //T::MODER::Write(value);
+   // volatile auto value = T::MODER::Get() ;
+   // value &= ~(3 << (pinNum * 2U)) ;
+   // value |= 	(T::MODER::FieldValues::Input::Value << (pinNum * 2U)) ;
+   // T::MODER::Write(value);
   }
   
   __forceinline static void SetOutput(std::uint32_t pinNum)

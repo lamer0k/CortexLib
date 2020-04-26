@@ -25,7 +25,6 @@ struct SusuString
 };
 
 
-
 template <typename... Types>
 struct TypesList{} ;
 

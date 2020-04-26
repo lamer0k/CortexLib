@@ -5,7 +5,7 @@ project(Registers)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 
-set(CMAKE_VERBOSE_MAKEFILE on)
+#set(CMAKE_VERBOSE_MAKEFILE on)
 
 #set(CMAKE_COMPILER_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/bin")
 #set(CMAKE_COMPILER_INCLUDE_PATH "Y:/SKolody_main/Mob_Point_Lev/Hydrastep/04_Design/03_Software/05_Source/_iar_tools/Embedded_Workbench/arm/inc/cpp")
@@ -61,19 +61,7 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
         )
 
 add_executable(Registers
-               startup.cpp
-               main.cpp Common/Observer/observers.hpp
-        AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimeroverflow.hpp
-               AbstractHardware/Timer/timerobserver.hpp
-        AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimercc.hpp
-        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttx.hpp
-               AbstractHardware/Uart/uartobservers.hpp
-               AbstractHardware/Uart/uartdriver.hpp
-        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttc.hpp
-        AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuartrx.hpp
-               Application/application.hpp
-               AbstractHardware/Uart/uartdriverobservers.hpp
-               AbstractHardware/Uart/uartdriverconfig.hpp
-               AbstractHardware/Timer/systemtimer.hpp
-        AbstractHardware/Adc/hardwareadc.hpp Common/RomObject/memoryobject.hpp AbstractHardware/Smbus/smbus.hpp AbstractHardware/Mlx90614/mlx90614.hpp AbstractHardware/Timer/delaytimer.hpp AbstractHardware/Smbus/Stm32F4xx/STM32F411/hardwaresmbus.hpp)
+
+               main.cpp
+        )
 

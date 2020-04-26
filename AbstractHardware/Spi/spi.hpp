@@ -50,3 +50,4 @@ struct Spi
 };
 
 #endif //REGISTERS_SPI_HPP
+

@@ -26,6 +26,7 @@
 #include "mlx90614.hpp" // for Mlx90614
 #include "smbus.hpp" // for Smbus
 #include "delaytimer.hpp" // for DelayTimer
+#include "flashregisters.hpp" // for Flash
 
 //#include "flashwrapper.hpp"
 
@@ -84,10 +85,10 @@ int __low_level_init(void)
     GPIOB::MODERPack<
         GPIOB::MODER::MODER1::Output,         //CS
         GPIOB::MODER::MODER2::Output,         //DC
-        GPIOB::MODER::MODER8::Output,         //PortC.3 scl
-        GPIOB::MODER::MODER9::Output,         //PortC.2 sda
-        GPIOB::MODER::MODER13::Alternate,
-        GPIOB::MODER::MODER15::Alternate
+        GPIOB::MODER::MODER8::Output,
+        GPIOB::MODER::MODER9::Output,
+        GPIOB::MODER::MODER13::Alternate,			//PortC.3 scl
+        GPIOB::MODER::MODER15::Alternate			//PortC.2 sda
     >::Set() ;
 
     GPIOB::AFRHPack<
@@ -186,6 +187,11 @@ using Temperature = Mlx90614<Bus>;
 
 int main()
 {
+  FLASH::ACRPack<
+  	FLASH::ACR::LATENCY::Six,
+  	FLASH::ACR::PRFTEN::Enable
+  >::Set() ;
+
 
   auto temperatureAmbient = Temperature::GetTemperature(Temperature::TemperatureType::Ambient) ;
   Timer::Delay(1000000us) ;
@@ -265,7 +271,7 @@ int main()
       Application::Leds[1]->Toggle() ;
   }
 
-  GPIOA::MODER::MODER5::Output::Set() ;
+ // GPIOA::MODER::MODER5::Output::Set() ;
   //GPIOA::MODERPack<
   //         GPIOA::MODER::MODER12::Output,
   //         GPIOA::MODER::MODER14::Analog

@@ -37,7 +37,7 @@ struct HardwareSmBusBase
 
 		__forceinline std::uint16_t ReadWord()
 		{
-			while 
+			while
 		}
 };
 

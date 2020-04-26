@@ -59,7 +59,7 @@ struct MDR_ADC_ADC1_Cfg_CHS_Values: public RegisterField<Reg, offset, size, Acce
   using Channel_13 = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 13U> ;
   using Channel_14 = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 14U> ;
   using Channel_15 = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 15U> ;
-  using TS_VRef_1.23 = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 30U> ;
+  using TS_VRef_1_23 = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 30U> ;
   using TS_Temperature = FieldValue<MDR_ADC_ADC1_Cfg_CHS_Values, BaseType, 31U> ;
 } ;
 
@@ -153,35 +153,35 @@ struct MDR_ADC_ADC1_Cfg_TR_Values: public RegisterField<Reg, offset, size, Acces
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct MDR_ADC_ADC1_Cfg_Delay_GO_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using 1 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 0U> ;
-  using 2 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 1U> ;
-  using 3 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 2U> ;
-  using 4 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 3U> ;
-  using 5 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 4U> ;
-  using 6 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 5U> ;
-  using 7 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 6U> ;
-  using 8 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 7U> ;
+  using Delay1 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 0U> ;
+  using Delay2 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 1U> ;
+  using Delay3 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 2U> ;
+  using Delay4 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 3U> ;
+  using Delay5 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 4U> ;
+  using Delay6 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 5U> ;
+  using Delay7 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 6U> ;
+  using Delay8 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_GO_Values, BaseType, 7U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct MDR_ADC_ADC1_Cfg_Delay_ADC_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using 1 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 0U> ;
-  using 2 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 1U> ;
-  using 3 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 2U> ;
-  using 4 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 3U> ;
-  using 5 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 4U> ;
-  using 6 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 5U> ;
-  using 7 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 6U> ;
-  using 8 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 7U> ;
-  using 9 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 8U> ;
-  using 10 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 9U> ;
-  using 11 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 10U> ;
-  using 12 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 11U> ;
-  using 13 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 12U> ;
-  using 14 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 13U> ;
-  using 15 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 14U> ;
-  using 16 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 15U> ;
+  using Delay1 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 0U> ;
+  using Delay2 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 1U> ;
+  using Delay3 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 2U> ;
+  using Delay4 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 3U> ;
+  using Delay5 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 4U> ;
+  using Delay6 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 5U> ;
+  using Delay7 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 6U> ;
+  using Delay8 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 7U> ;
+  using Delay9 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 8U> ;
+  using Delay10 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 9U> ;
+  using Delay11 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 10U> ;
+  using Delay12 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 11U> ;
+  using Delay13 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 12U> ;
+  using Delay14 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 13U> ;
+  using Delay15 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 14U> ;
+  using Delay16 = FieldValue<MDR_ADC_ADC1_Cfg_Delay_ADC_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
@@ -326,7 +326,7 @@ struct MDR_ADC_ADC1_RESULT_Channel_Values: public RegisterField<Reg, offset, siz
   using Channel_13 = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 13U> ;
   using Channel_14 = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 14U> ;
   using Channel_15 = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 15U> ;
-  using TS_VRef_1.23 = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 30U> ;
+  using TS_VRef_1_23 = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 30U> ;
   using TS_Temperature = FieldValue<MDR_ADC_ADC1_RESULT_Channel_Values, BaseType, 31U> ;
 } ;
 

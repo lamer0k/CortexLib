@@ -1,0 +1,95 @@
+Function	Calls	Flat Time	Flat Time (%)	Acc. Time	Acc. Time (%)
+
+CriticalSection::CriticalSection()	0	0	0.0	0	0.0
+CriticalSection::subobject CriticalSection()	0	0	0.0	0	0.0
+CriticalSection::subobject ~CriticalSection()	0	0	0.0	0	0.0
+CriticalSection::~CriticalSection()	0	0	0.0	0	0.0
+DummyModule::HandleInterrupt()	0	0	0.0	0	0.0
+IState::OnEvent()	0	0	0.0	0	0.0
+IdleTask::IdleTask()	0	0	0.0	0	0.0
+IdleTask::OnEvent() const	0	0	0.0	0	0.0
+Schedule()	0	0	0.0	0	0.0
+Tasker::GetFirstActiveTaskId()	0	0	0.0	0	0.0
+Tasker::GetTaskId(struct IState &)	0	0	0.0	0	0.0
+Tasker::IsrEntry()	0	0	0.0	0	0.0
+Tasker::IsrExit()	0	0	0.0	0	0.0
+Tasker::PostEvent(struct IState &, unsigned short const)	0	0	0.0	0	0.0
+Tasker::Schedule()	0	0	0.0	0	0.0
+Tasker::Start()	0	0	0.0	0	0.0
+TaskerSchedule()	0	0	0.0	0	0.0
+TaskerTimer<myState, 1000U, 1000U, (unsigned short)1U>::OnTick()	0	0	0.0	0	0.0
+TaskerTimerService<TaskerTimer<myState, 1000U, 1000U, (unsigned short)1U>>::OnSystemTick()	0	0	0.0	0	0.0
+TestThread1::OnEvent() const	0	0	0.0	0	0.0
+TestThread1::TestThread1()	0	0	0.0	0	0.0
+TestThread::OnEvent() const	0	0	0.0	0	0.0
+TestThread::TestThread()	0	0	0.0	0	0.0
+__iar_program_start()	0	0	0.0	0	0.0
+__low_level_init()	0	0	0.0	0	0.0
+class std::basic_ostream<char, std::char_traits<char>> & std::basic_ostream<char, std::char_traits<char>>::operator<<(class std::basic_ostream<char, std::char_traits<char>> & (*)(class std::basic_ostream<char, std::char_traits<char>> &))	0	0	0.0	0	0.0
+class std::basic_ostream<char, std::char_traits<char>> & std::endl<char, std::char_traits<char>>(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+class std::basic_ostream<char, std::char_traits<char>> & std::operator<<<std::char_traits<char>>(class std::basic_ostream<char, std::char_traits<char>> &, char const *)	0	0	0.0	0	0.0
+class std::ctype<char> const & std::use_facet<std::ctype<char>>()	0	0	0.0	0	0.0
+main()	0	0	0.0	0	0.0
+std::_Wrap_facet<std::ctype<char>>::_Wrap_facet()	0	0	0.0	0	0.0
+std::_Wrap_facet<std::ctype<char>>::deleter ~_Wrap_facet()	0	0	0.0	0	0.0
+std::_Wrap_facet<std::ctype<char>>::~_Wrap_facet()	0	0	0.0	0	0.0
+std::array<StateControlBlock, 3U>::operator[](unsigned int)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Flush_sentry::~_Flush_sentry()	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::clear(enum std::_Iosb<int>::_Iostate, bool)	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::fill() const	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::rdbuf() const	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::setstate(enum std::_Iosb<int>::_Iostate, bool)	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::tie() const	0	0	0.0	0	0.0
+std::basic_ios<char, std::char_traits<char>>::widen(char) const	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Flush_sentry::_Flush_sentry(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Flush_sentry::operator bool() const	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Flush_sentry::subobject _Flush_sentry(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Flush_sentry::subobject ~_Flush_sentry()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::_Pnavail() const	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Osfx()	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Sentry_base::_Sentry_base(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Sentry_base::subobject _Sentry_base(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Sentry_base::subobject ~_Sentry_base()	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::_Sentry_base::~_Sentry_base()	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::flush()	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::put(char)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::sentry::sentry(class std::basic_ostream<char, std::char_traits<char>> &)	0	0	0.0	0	0.0
+std::basic_ostream<char, std::char_traits<char>>::sentry::~sentry()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::_Lock()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::_Pninc()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::_Unlock()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::overflow(int)	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::pubsync()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::sputc(char)	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::sputn(char const *, int)	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::sync()	0	0	0.0	0	0.0
+std::basic_streambuf<char, std::char_traits<char>>::xsputn(char const *, int)	0	0	0.0	0	0.0
+std::char_traits<char>::eq_int_type(int const &, int const &)	0	0	0.0	0	0.0
+std::char_traits<char>::length(char const *)	0	0	0.0	0	0.0
+std::char_traits<char>::to_int_type(char const &)	0	0	0.0	0	0.0
+std::ctype<char>::ctype()	0	0	0.0	0	0.0
+std::ctype<char>::deleter ~ctype()	0	0	0.0	0	0.0
+std::ctype<char>::subobject ctype()	0	0	0.0	0	0.0
+std::ctype<char>::widen(char) const	0	0	0.0	0	0.0
+std::ctype<char>::~ctype()	0	0	0.0	0	0.0
+std::ios_base::clear(enum std::_Iosb<int>::_Iostate, bool)	0	0	0.0	0	0.0
+std::ios_base::flags() const	0	0	0.0	0	0.0
+std::ios_base::good() const	0	0	0.0	0	0.0
+std::ios_base::rdstate() const	0	0	0.0	0	0.0
+std::ios_base::width() const	0	0	0.0	0	0.0
+std::ios_base::width(int)	0	0	0.0	0	0.0
+std::operator&(enum std::_Iosb<int>::_Fmtflags, enum std::_Iosb<int>::_Fmtflags)	0	0	0.0	0	0.0
+std::operator|=(enum std::_Iosb<int>::_Iostate &, enum std::_Iosb<int>::_Iostate)	0	0	0.0	0	0.0
+void FieldValueBase<SCB_ICSR_PENDSVSET_Values<SCB::ICSR, 28U, 1U, ReadWriteMode, SCB::SCBICSRBase>, SCB::SCBICSRBase, 1U>::Set<ReadWriteMode, void>()	0	0	0.0	0	0.0
+void Tasker::CreateThread<IdleTask>(struct IdleTask &, char const *, enum StatePriority)	0	0	0.0	0	0.0
+void Tasker::CreateThread<TestThread1>(struct TestThread1 &, char const *, enum StatePriority)	0	0	0.0	0	0.0
+void Tasker::CreateThread<TestThread>(struct TestThread &, char const *, enum StatePriority)	0	0	0.0	0	0.0
+__sti__routine()	0	0	0.0	0	0.0
+__sti__routine()	0	0	0.0	0	0.0
+__sti__routine()	0	0	0.0	0	0.0
+__sti__routine()	0	0	0.0	0	0.0
+<Other>	0	1543	76.8	1543	76.8
+test(class std::array<int, 7U>, class std::array<int, 7U>, int)	1			0	
+test(class std::array<int, 7U>, class std::array<int, 7U>, int)	1	425	21.1	463	23.0
+std::array<int, 7U>::operator[](unsigned int)	38			38	
+std::array<int, 7U>::operator[](unsigned int)	38	38	1.9	38	1.9
