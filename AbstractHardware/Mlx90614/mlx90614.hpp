@@ -26,7 +26,7 @@ struct Mlx90614
 		{
 				std::uint32_t result = 0U;
 				float temperature = 0.0f;
-				Bus::Start() ;
+				//Bus::Start() ;
 				Bus::WriteByte(AddressWrite);
 				(type == TemperatureType::Ambient) ? Bus::WriteByte(Ram | AmbientTemperature) : Bus::WriteByte(
 								Ram | ObjectTemperature);
@@ -34,7 +34,7 @@ struct Mlx90614
 				result = Bus::ReadByte();
 				result += (Bus::ReadByte() << 8U);
 				result += (Bus::ReadByte() << 16U);
-				Bus::Stop() ;
+			//	Bus::Stop() ;
 				if ((result >= Msb) || (result == 0U)) //если ошибка
 				{
 						return std::make_tuple(0.0f, Errors::DataError);

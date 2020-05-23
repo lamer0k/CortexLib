@@ -26,6 +26,7 @@
 #include "mlx90614.hpp" // for Mlx90614
 #include "smbus.hpp" // for Smbus
 #include "delaytimer.hpp" // for DelayTimer
+#include "dma2registers.hpp"
 #include "flashregisters.hpp" // for Flash
 
 //#include "flashwrapper.hpp"
@@ -38,6 +39,7 @@ constexpr std::uint32_t SysClock = 8000000U ;
 constexpr std::uint32_t UartSpeed9600 = static_cast<std::uint32_t>(SysClock / 9600U) ;
 constexpr std::size_t Uart2InterruptPosition = 38U - 32U ;
 #include <cstddef>
+#include <ostream>
 
 extern "C"
 {
@@ -154,7 +156,7 @@ int __low_level_init(void)
     ADC1::SQR1::L::Conversions1::Set() ;
     ADC1::SQR3::SQ1::Channel18::Set() ;
     GPIOA::MODER::MODER0::Analog::Set() ;
-
+		DMA2::S0M0AR::M0A::Set(10);
     return 1;
   }
 }
@@ -185,30 +187,31 @@ using Temperature = Mlx90614<Bus>;
 
 
 
+
 int main()
 {
-  FLASH::ACRPack<
-  	FLASH::ACR::LATENCY::Six,
-  	FLASH::ACR::PRFTEN::Enable
-  >::Set() ;
-
-
-  auto temperatureAmbient = Temperature::GetTemperature(Temperature::TemperatureType::Ambient) ;
-  Timer::Delay(1000000us) ;
-	Application::Leds[0]->Toggle() ;
-  Timer::Delay(1000ms) ;
-	Application::Leds[1]->Toggle() ;
-	Timer::Delay(1000000us) ;
-	Application::Leds[0]->Toggle() ;
-	Timer::Delay(2000000us) ;
-	Application::Leds[1]->Toggle() ;
-
-
-		// FlashWrapper::Lock() ;
-  // FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
-  //**************ADC*****************
+//  FLASH::ACRPack<
+//  	FLASH::ACR::LATENCY::Six,
+//  	FLASH::ACR::PRFTEN::Enable
+//  >::Set() ;
+//
+//
+//  auto temperatureAmbient = Temperature::GetTemperature(Temperature::TemperatureType::Ambient) ;
+//  Timer::Delay(1000000us) ;
+//	Application::Leds[0]->Toggle() ;
+//  Timer::Delay(1000ms) ;
+//	Application::Leds[1]->Toggle() ;
+//	Timer::Delay(1000000us) ;
+//	Application::Leds[0]->Toggle() ;
+//	Timer::Delay(2000000us) ;
+//	Application::Leds[1]->Toggle() ;
+//
+//
+//		// FlashWrapper::Lock() ;
+//  // FlashWrapper::Erase(reinterpret_cast<const std::size_t>(&test)) ;
+//  //**************ADC*****************
   ADC1::CR2::ADON::Enable::Set() ;
-  Adc<ADC1>::SetChannels(18) ;
+  Adc<ADC1>::ConfigureChannels<18,19>() ;
   ADC1::CR2::SWSTART::On::Set() ;
   // Application::HardwareUart::HandleInterrupt() ;
   const char* message = "Hello world!" ;

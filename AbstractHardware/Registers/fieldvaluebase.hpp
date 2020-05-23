@@ -53,7 +53,7 @@ struct FieldValueBase
   }
   
   
-  //Метод устанавливает проверяет установлено ли значение битового поля
+  //Метод проверяет установлено ли значение битового поля
   __forceinline template<typename T = typename Field::Access,
           class = typename std::enable_if_t<std::is_base_of<ReadMode, T>::value ||
                                             std::is_base_of<ReadWriteMode, T>::value>>
