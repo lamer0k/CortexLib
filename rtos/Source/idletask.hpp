@@ -1,11 +1,20 @@
 #pragma once
 
-#include "istate.hpp" // for IState
+#include "taskbase.hpp" // for TaskBase
 
-struct IdleTask : IState {
-  void OnEvent() const override {
-    while (true) {
+struct IdleTask : public TaskBase<IdleTask>
+{
+    constexpr IdleTask()
+    {
 
     }
-  }
+
+    void OnEvent() const
+    {
+
+    }
+
 };
+
+inline constexpr IdleTask idleTask;
+

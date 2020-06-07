@@ -1,9 +1,8 @@
 #pragma once
 
-#include "taskerconfig.hpp" // For tTaskEvents
-#include "tasker.hpp"       // For Tasker types
+#include "taskertypes.hpp" // For tTaskEvents
 
-template <auto& targetThread, std::uint32_t TimerFrequency, std::uint32_t msPeriod, tStateEvents eventsToPost>
+template <auto& targetThread, std::uint32_t TimerFrequency, std::uint32_t msPeriod, tStateEvents eventsToPost, typename Tasker>
 class TaskerTimer {
   public:
     static void OnTick()
@@ -12,7 +11,7 @@ class TaskerTimer {
       if (ticksRemain == 0U)
       {       
         ticksRemain = ticksReload ;
-        Tasker::PostEvent(targetThread, eventsToPost) ;       
+        Tasker::PostEvent<targetThread>(eventsToPost) ;
       }
     }
     

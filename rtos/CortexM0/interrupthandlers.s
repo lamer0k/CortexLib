@@ -12,7 +12,6 @@
 ; mode. This handler reserves space for exception stack frame and switches to 
 ; Thread mode by exception-returning to TaskerSchedule function
 HandlePendSv: 
-
   ; Set PendSvClr bit in Interrupt Control and State Register
   LDR     r3,=0xE000ED04
   LDR     r1,=1<<27

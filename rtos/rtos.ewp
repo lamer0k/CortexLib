@@ -224,7 +224,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state></state>
+                    <state>NDEBUG</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
@@ -285,7 +285,7 @@
                 <option>
                     <name>CCAllowList</name>
                     <version>1</version>
-                    <state>10010100</state>
+                    <state>11110000</state>
                 </option>
                 <option>
                     <name>CCDebugInfo</name>
@@ -360,6 +360,7 @@
                     <state>$PROJ_DIR$\Source</state>
                     <state>$PROJ_DIR$\Source\CriticalSection</state>
                     <state>$PROJ_DIR$\Config</state>
+                    <state>$PROJ_DIR$</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -375,7 +376,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>2</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -384,7 +385,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>2</state>
+                    <state>3</state>
                 </option>
                 <option>
                     <name>CompilerMisraRules98</name>

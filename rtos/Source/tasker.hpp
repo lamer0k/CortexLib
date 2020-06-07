@@ -1,179 +1,186 @@
 #pragma once
 
-#include "taskerconfig.hpp"                    // For RTOS types
+#include "taskertypes.hpp"                    // For RTOS types
 #include "criticalsection.hpp"           // For CriticalSection
 #include "idletask.hpp"                               // For IdleTask
-#include "istate.hpp"                                 // For IState
 #include "scbregisters.hpp"                           // For Scb
 #include "susudefs.hpp"                               // For __forceinline
 #include <array>                                      // For std::array
 #include <cassert> // For assert(), static_assert()
 
-struct StateControlBlock
-{
-	IState* thread;
-	StatePriority priority;
-};
-
+template<const auto& ...tasks>
 class Tasker
 {
-private:
-	using tTcbTable = std::array<StateControlBlock, MaxThreadCount>;
+ public:
 
-public:
-	__forceinline template<typename T>
-	static void CreateThread(T& thread, const char* pName,
-		StatePriority prior = StatePriority::normal)
-	{
-		assert(taskCount < MaxThreadCount);
-		tcbTable[taskCount].thread = static_cast<IState*>(&thread);
-		tcbTable[taskCount].priority = prior;
-		taskCount++;
-	}
+    __forceinline static void Start()
+    {
+        if (status != Status::Running)
+        {
+            status = Status::Running;
+            {
+                const CriticalSection cs;
+                scheduleLockedCounter = 0U;
+                Schedule();
+            }
+            for (;;) //UB Однако
+            {
+            }
+        }
+    }
 
-	__forceinline static void Start()
-	{
-		if (status != Status::Running)
-		{
-			CreateThread(idleTask, "", StatePriority::lowest);
+    template<const auto& targetTask>
+    static void PostEvent(const tStateEvents events)
+    {
+        const CriticalSection cs;
+        targetTask.events |= events;
+        preempted = true;
+        if (scheduleLockedCounter == 0U)
+        {
+            Schedule();
+        }
+    }
 
-			status = Status::Running;
-			{
-				const CriticalSection cs;
-				assert(currentPriority == LowestPriority);
-				scheduleLockedCounter = 0U;
-				Schedule();
-			}
-			for (;;)
-			{
-			}
-		}
-	}
+    __forceinline static void IsrEntry()
+    {
+        assert(scheduleLockedCounter != 255U);
+        ++scheduleLockedCounter;
+    }
 
-	static void PostEvent(IState& targetTask, const tStateEvents events)
-	{
+    __forceinline static void IsrExit()
+    {
+        assert(scheduleLockedCounter != 0U);
+        --scheduleLockedCounter;
+        SCB::ICSR::PENDSVSET::PendingState::Set();
+    }
 
-		const size_t targetId = GetTaskId(targetTask);
-		const CriticalSection cs;
+ private:
+    __forceinline static void DisableScheduler()
+    {
+        assert(scheduleLockedCounter != 255U);
+        ++scheduleLockedCounter;
+    }
 
-		tcbTable[targetId].thread->events |= events;
-		if (currentPriority < tcbTable[targetId].priority)
-		{
-			preempted = true;
-			Schedule();
-		}
-	}
+    __forceinline static void EnableScheduler()
+    {
+        assert(scheduleLockedCounter != 0U);
+        --scheduleLockedCounter;
 
-	__forceinline static void IsrEntry()
-	{
-		assert(scheduleLockedCounter != 255U) ;
-		++scheduleLockedCounter;
-	}
+        if (scheduleLockedCounter == 0U)
+        {
+            CriticalSection cs;
+            Schedule();
+        }
+    }
 
-	__forceinline static void IsrExit()
-	{
-		assert(scheduleLockedCounter != 0U) ;
-		--scheduleLockedCounter;
+    static void Schedule()
+    {
+        if(preempted)
+        {
+            preempted = false;
+            const tTaskId preemptedTaskId = activeTaskId;
+            auto nextTaskId = GetFirstActiveTaskId();
 
-		SCB::ICSR::PENDSVSET::PendingState::Set();
-	}
+            while (nextTaskId < activeTaskId)
+            {
+                activeTaskId = nextTaskId;
+                CallTask(nextTaskId);
+                nextTaskId = GetFirstActiveTaskId();
+            }
+            activeTaskId = preemptedTaskId;
+        }
+    }
 
-private:
-	__forceinline static void DisableScheduler()
-	{
-		assert(scheduleLockedCounter != 255U) ;
-		++scheduleLockedCounter;
-	}
+    static constexpr size_t GetFirstActiveTaskId()
+    {
+        return GetFisrtActiveTask<tasks...>(0U);
+    }
 
-	__forceinline static void EnableScheduler()
-	{
-		assert(scheduleLockedCounter != 0U) ;
-		--scheduleLockedCounter;
+    __forceinline template<const auto& task, const auto& ...args>
+    static constexpr size_t GetFisrtActiveTask(size_t result)
+    {
 
-		if (scheduleLockedCounter == 0U)
-		{
-			CriticalSection cs;
-			Schedule();
-		}
-	}
+        if constexpr (sizeof...(args) != 0U)
+        {
+            if (task.events != noEvents)
+            {
+                return result;
+            }
+            else
+            {
+                auto res = result + 1 ;
+                return GetFisrtActiveTask<args...>(res);
+            }
+        }
+        else
+        {
+            if (task.events != noEvents)
+            {
+                return result;
+            } else
+            {
+              return 0U;
+            }
+        }
+        assert(false) ;
+        return 0U;
+    }
 
-	__forceinline static void Schedule()
-	{
-		const bool schedulerIsEnabled = (scheduleLockedCounter == 0U);
+    static void CallTask(size_t id)
+    {
+        return CallTaskById<tasks...>(id, 0U);
+    }
 
-		if (preempted && schedulerIsEnabled)
-		{
-			preempted = false;
-			const tTaskId preemptedTaskId = activeTaskId;
-			size_t nextTaskId = GetFirstActiveTaskId();
+    __forceinline template<const auto& task, const auto& ...args>
+    static void CallTaskById(size_t id, size_t result)
+    {
+        if constexpr (sizeof...(args) != 0U)
+        {
+            if (result == id)
+            {
+                CallTaskHelper<task>() ;
+            }
+            else
+            {
+                auto res = result + 1 ;
+                CallTaskById<args...>(id, res);
+            }
+        }
+        else
+        {
+            if (result == id)
+            {
+                CallTaskHelper<task>() ;
+            }
 
-			while ((nextTaskId < taskCount) && ((tcbTable[nextTaskId].priority) > currentPriority))
-			{
-				const tStateEvents events = tcbTable[nextTaskId].thread->events;
-				tcbTable[nextTaskId].thread->events = noEvents;
+        }
+    }
 
-				const StatePriority previousPriority = currentPriority;
-				currentPriority = tcbTable[nextTaskId].priority;
-				activeTaskId = nextTaskId;
+    __forceinline  template<const auto& task>
+    static void CallTaskHelper()
+    {
+        task.events = noEvents;
+        const CriticalSection cs;
+        task.OnEvent();
+    }
 
-				__enable_interrupt();
-				tcbTable[nextTaskId].thread->OnEvent();
-				__disable_interrupt();
-				currentPriority = previousPriority;
+    enum class Status : std::uint8_t
+    {
+        NotRunning,
+        Running
+    };
 
-				nextTaskId = GetFirstActiveTaskId();
-			}
-			activeTaskId = preemptedTaskId;
-		}
-	}
 
-	__forceinline static size_t GetFirstActiveTaskId()
-	{
-		size_t result = taskCount - 1;
+    static inline Status status = Status::NotRunning;
+    static constexpr tStateEvents noEvents = tStateEvents{ 0U };
+    static constexpr std::size_t taskCount = sizeof...(tasks);
 
-		for (size_t i = 0U; i < taskCount; ++i)
-		{
-			if (tcbTable[i].thread->events != noEvents)
-			{
-				result = i;
-				break;
-			}
-		}
-		return result;
-	}
+    static inline volatile tTaskId activeTaskId = sizeof...(tasks) - 1;
+    static inline volatile bool preempted = true;
+    static inline volatile std::uint8_t scheduleLockedCounter = 1U;
 
-	static constexpr tTaskId GetTaskId(IState& task)
-	{
-		tTaskId result = taskCount - 1;
 
-		for (size_t i = 0U; i < taskCount; ++i)
-		{
-			if (&task == tcbTable[i].thread)
-			{
-				result = static_cast<tTaskId>(i);
-				break;
-			}
-		}
-		return result;
-	}
-
-	enum class Status : std::uint8_t
-	{
-		NotRunning, Running
-	};
-
-	static inline Status status = Status::NotRunning;
-	static constexpr tStateEvents noEvents = tStateEvents{0U};
-	static inline tTcbTable tcbTable;
-
-	static inline IdleTask idleTask = IdleTask{};
-
-	static inline StatePriority currentPriority = LowestPriority;
-	static inline tTaskId activeTaskId = tTaskId{0U};
-	static inline bool preempted = true;
-	static inline volatile std::uint8_t scheduleLockedCounter = 1U;
-	static inline std::size_t taskCount = 0U;
-
-	friend void TaskerSchedule();
-	friend class CriticalRegion;
+    friend void TaskerSchedule();
+    friend class CriticalRegion;
 };
+

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "tasker.hpp" // For Tasker
-
-template <typename ...Timers>
+template <typename Tasker, typename ...Timers>
 struct TaskerTimerService {
     static void OnSystemTick()
     {

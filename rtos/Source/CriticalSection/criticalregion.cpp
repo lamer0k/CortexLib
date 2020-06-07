@@ -3,14 +3,14 @@
 //
 
 #include "criticalregion.hpp" // for CriticalRegion
-#include "tasker.hpp"
+#include "taskerconfig.hpp"
 
 CriticalRegion::CriticalRegion()
 {
-	Tasker::DisableScheduler() ;
+	myTasker::DisableScheduler() ;
 }
 
 CriticalRegion::~CriticalRegion()
 {
-	Tasker::EnableScheduler() ;
+	myTasker::EnableScheduler() ;
 }

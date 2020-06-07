@@ -190,6 +190,10 @@ using Temperature = Mlx90614<Bus>;
 
 int main()
 {
+	GPIOA::OSPEEDR::OSPEEDR0::HighSpeed::Set() ;
+
+
+
 //  FLASH::ACRPack<
 //  	FLASH::ACR::LATENCY::Six,
 //  	FLASH::ACR::PRFTEN::Enable

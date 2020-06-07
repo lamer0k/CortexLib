@@ -20,16 +20,24 @@
 #if !defined(RTOSTIMERSCONFIG_HPP)
 #define RTOSTIMERSCONFIG_HPP
 
-#include "tasker.hpp"
+#include "taskerconfig.hpp"
 #include "taskertimer.hpp"        // For TaskerTimer
 #include "taskertimerservice.hpp" // For TaskerTimerService
-#include "statesconfig.hpp"              // for myState
+#include "teststates.hpp"              // for myState
 #include <iostream>                      // For std::cout
 
 using MyStateTimer = TaskerTimer<myState, 1'000UL,
-                                 1000UL, // time in ms
-                                 1>;
+                                 1001UL, // time in ms
+                                 1,
+                                 myTasker>;
 
-using tRtosTimerService = TaskerTimerService<MyStateTimer>;
+using MyStateLowTimer = TaskerTimer<myStateLow, 1'000UL,
+                                    1000UL, // time in ms
+                                 1,
+                                    myTasker>;
+
+using tRtosTimerService = TaskerTimerService<myTasker, MyStateTimer, MyStateLowTimer>;
+
+
 
 #endif

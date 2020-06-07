@@ -21,8 +21,8 @@ TaskerTimer<myState, 1000U, 1000U, (unsigned short)1U>::OnTick()	0	0	0.0	0	0.0
 TaskerTimerService<TaskerTimer<myState, 1000U, 1000U, (unsigned short)1U>>::OnSystemTick()	0	0	0.0	0	0.0
 TestThread1::OnEvent() const	0	0	0.0	0	0.0
 TestThread1::TestThread1()	0	0	0.0	0	0.0
-TestThread::OnEvent() const	0	0	0.0	0	0.0
-TestThread::TestThread()	0	0	0.0	0	0.0
+State::OnEvent() const	0	0	0.0	0	0.0
+State::State()	0	0	0.0	0	0.0
 __iar_program_start()	0	0	0.0	0	0.0
 __low_level_init()	0	0	0.0	0	0.0
 class std::basic_ostream<char, std::char_traits<char>> & std::basic_ostream<char, std::char_traits<char>>::operator<<(class std::basic_ostream<char, std::char_traits<char>> & (*)(class std::basic_ostream<char, std::char_traits<char>> &))	0	0	0.0	0	0.0
@@ -83,7 +83,7 @@ std::operator|=(enum std::_Iosb<int>::_Iostate &, enum std::_Iosb<int>::_Iostate
 void FieldValueBase<SCB_ICSR_PENDSVSET_Values<SCB::ICSR, 28U, 1U, ReadWriteMode, SCB::SCBICSRBase>, SCB::SCBICSRBase, 1U>::Set<ReadWriteMode, void>()	0	0	0.0	0	0.0
 void Tasker::CreateThread<IdleTask>(struct IdleTask &, char const *, enum StatePriority)	0	0	0.0	0	0.0
 void Tasker::CreateThread<TestThread1>(struct TestThread1 &, char const *, enum StatePriority)	0	0	0.0	0	0.0
-void Tasker::CreateThread<TestThread>(struct TestThread &, char const *, enum StatePriority)	0	0	0.0	0	0.0
+void Tasker::CreateThread<State>(struct State &, char const *, enum StatePriority)	0	0	0.0	0	0.0
 __sti__routine()	0	0	0.0	0	0.0
 __sti__routine()	0	0	0.0	0	0.0
 __sti__routine()	0	0	0.0	0	0.0

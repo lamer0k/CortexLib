@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(Rtos)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_SOURCE_DIR "C:/GitHub/CortexLib/rtos")
 
 
@@ -30,4 +30,4 @@ add_executable(Rtos
         Source/CriticalSection/criticalregion.cpp
         CortexM0/interrupthandlers.s
         startup.cpp
-        )
+        Config/taskerconfig.hpp Source/taskbase.hpp)
