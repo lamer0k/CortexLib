@@ -26,7 +26,7 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void Set(RegType value)
   {
-    assert(value < (1U << size)) ;
+    assert(value < (1U << (size - 1))) ;
 
 
     RegType newRegValue = *reinterpret_cast<volatile RegType *>(Reg::Address) ; //Сохраняем текущее значение регистра
@@ -42,7 +42,7 @@ struct RegisterField
     class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
   static void SetAtomic(RegType value)
   {
-    assert(value < (1U << size)) ;
+    assert(value < (1U << (size - 1))) ;
 
     AtomicUtils<RegType>::Set(
       Reg::Address,
@@ -57,7 +57,7 @@ struct RegisterField
           class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
   static void Write(RegType value)
   {
-    assert(value < (1U << size)) ;
+    assert(value < (1U << (size - 1))) ;
     *reinterpret_cast<volatile RegType *>(Reg::Address) = (value << offset) ;
   }
   

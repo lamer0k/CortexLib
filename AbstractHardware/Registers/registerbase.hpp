@@ -10,7 +10,7 @@
 #include "susudefs.hpp"      //for __forceinline
 
 //Базовый класс для работы с регистром
-template<uint32_t address, size_t size, typename AccessMode>
+template<std::uintptr_t address, size_t size, typename AccessMode>
 struct RegisterBase
 {
   static constexpr auto Address = address ;

@@ -23,21 +23,19 @@
 #include "taskerconfig.hpp"
 #include "taskertimer.hpp"        // For TaskerTimer
 #include "taskertimerservice.hpp" // For TaskerTimerService
-#include "teststates.hpp"              // for myState
+#include "teststates.hpp"              // for myThread1
 #include <iostream>                      // For std::cout
 
-using MyStateTimer = TaskerTimer<myState, 1'000UL,
-                                 1001UL, // time in ms
-                                 1,
-                                 myTasker>;
+using MyThread1Timer = TaskerTimer<myThread1, 1'000UL,
+                                   1001UL, // time in ms
+                                   1,
+                                   myTasker>;
 
-using MyStateLowTimer = TaskerTimer<myStateLow, 1'000UL,
-                                    1000UL, // time in ms
-                                 1,
-                                    myTasker>;
+using MyThread2Timer = TaskerTimer<myThread2, 1'000UL,
+                                   1000UL, // time in ms
+                                   1,
+                                   myTasker>;
 
-using tRtosTimerService = TaskerTimerService<myTasker, MyStateTimer, MyStateLowTimer>;
-
-
+using tRtosTimerService = TaskerTimerService<myTasker, MyThread1Timer, MyThread2Timer>;
 
 #endif

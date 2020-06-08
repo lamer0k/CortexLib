@@ -12,7 +12,7 @@
 
 
 //Класс для работы с регистром, можно передавать список Битовых полей для установки и проверки
-template<uint32_t address, size_t size, typename AccessMode, typename FieldValueBaseType,  typename ...Args>
+template<std::uintptr_t address, size_t size, typename AccessMode, typename FieldValueBaseType,  typename ...Args>
 class Register
 {
   public:

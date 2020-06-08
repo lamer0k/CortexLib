@@ -78,7 +78,7 @@ class Tasker
         if(preempted)
         {
             preempted = false;
-            const tTaskId preemptedTaskId = activeTaskId;
+            const auto preemptedTaskId = activeTaskId;
             auto nextTaskId = GetFirstActiveTaskId();
 
             while (nextTaskId < activeTaskId)
@@ -159,9 +159,10 @@ class Tasker
     __forceinline  template<const auto& task>
     static void CallTaskHelper()
     {
-        task.events = noEvents;
-        const CriticalSection cs;
+        task.events = noEvents;        
+        __enable_interrupt() ;
         task.OnEvent();
+        __disable_interrupt() ;
     }
 
     enum class Status : std::uint8_t
@@ -173,9 +174,8 @@ class Tasker
 
     static inline Status status = Status::NotRunning;
     static constexpr tStateEvents noEvents = tStateEvents{ 0U };
-    static constexpr std::size_t taskCount = sizeof...(tasks);
 
-    static inline volatile tTaskId activeTaskId = sizeof...(tasks) - 1;
+    static inline volatile size_t activeTaskId = sizeof...(tasks) - 1;
     static inline volatile bool preempted = true;
     static inline volatile std::uint8_t scheduleLockedCounter = 1U;
 

@@ -7,4 +7,4 @@
 #include "idletask.hpp"
 #include "tasker.hpp"
 
-class myTasker : public Tasker<targetThread, myState, myStateLow, idleTask> {} ;
+class myTasker : public Tasker<targetThread, myThread1, myThread2, idleTask> {} ;

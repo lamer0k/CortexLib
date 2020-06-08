@@ -27,7 +27,7 @@ add_executable(Rtos
         startup.cpp
         Source/taskerschedule.cpp
         Source/CriticalSection/criticalsection.cpp
-        Source/CriticalSection/criticalregion.cpp
+      #  Source/CriticalSection/criticalregion.cpp
         CortexM0/interrupthandlers.s
         startup.cpp
         Config/taskerconfig.hpp Source/taskbase.hpp)

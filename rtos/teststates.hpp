@@ -4,49 +4,47 @@
 #pragma once
 #include <iostream> // for cout
 #include "taskbase.hpp" // for TaskBase
+#include "gpiocregisters.hpp"
 
 
 struct TargetThread: public TaskBase<TargetThread>
 {
-    constexpr TargetThread()
-    {
-    }
+    constexpr TargetThread()    {   }
     void OnEvent() const
     {
-        std::cout << "Thread" << std::endl;
+      GPIOC::ODR::Toggle(1<<8);
+    //  std::cout << "TargetThread" << std::endl;
     }
 
 };
 inline constexpr TargetThread targetThread;
 
 template<typename SimpleTasker, auto& threadToSignal>
-struct State : public TaskBase<State<SimpleTasker, threadToSignal>>
+struct Thread1 : public TaskBase<Thread1<SimpleTasker, threadToSignal>>
 {
-    constexpr State()
-    {
-    }
+    constexpr Thread1()   {   }
     void OnEvent() const
     {
-        std::cout << "  StateQuickStart" << std::endl;
+    //    std::cout << "  Thread1Start" << std::endl;
+        GPIOC::ODR::Toggle(1<<9);
         SimpleTasker::PostEvent<threadToSignal>(1);
-        std::cout << "  StateQuickEnd" << std::endl;
+      //  std::cout << "  Thread1End" << std::endl;
     }
 };
 
 template<typename SimpleTasker, auto& threadToSignal>
-struct StateLow : public TaskBase<StateLow<SimpleTasker, threadToSignal>>
+struct Thread2 : public TaskBase<Thread2<SimpleTasker, threadToSignal>>
 {
-    constexpr StateLow()
-    {
-    }
+    constexpr Thread2()    { }
     void OnEvent() const
     {
-        std::cout << "    StateLongStart" << std::endl;
+        GPIOC::ODR::Toggle(1<<5);
+    //    std::cout << "    Thread2Start" << std::endl;
         for (int i = 0; i < 4000000; ++i)
         {
         };
         SimpleTasker::PostEvent<threadToSignal>(1);
-        std::cout << "    StateLongEnd: " << test << std::endl;
+     //   std::cout << "    Thread2End: " << test << std::endl;
         test ++ ;
     }
  private:
@@ -54,8 +52,8 @@ struct StateLow : public TaskBase<StateLow<SimpleTasker, threadToSignal>>
 };
 
 class myTasker;
-inline constexpr State<myTasker, targetThread> myState;
-inline constexpr StateLow<myTasker, targetThread> myStateLow;
+inline constexpr Thread1<myTasker, targetThread> myThread1;
+inline constexpr Thread2<myTasker, targetThread> myThread2;
 
 
 

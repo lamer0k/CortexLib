@@ -12,7 +12,7 @@
 ; mode. This handler reserves space for exception stack frame and switches to 
 ; Thread mode by exception-returning to TaskerSchedule function
 HandlePendSv: 
-  ; Set PendSvClr bit in Interrupt Control and State Register
+  ; Set PendSvClr bit in Interrupt Control and Thread1 Register
   LDR     r3,=0xE000ED04
   LDR     r1,=1<<27
   ; Disable interrupts
@@ -42,7 +42,7 @@ HandlePendSv:
 ScheduleReturn:
   ; Enable interrupts
   CPSIE   i
-  ; SVC will be executed together with CPSIE becuase Cortext M0 has 2 stage pipeline
+  ; SVC will be executed together with CPSIE because Cortext M0 has 2 stage pipeline
   SVC #0
   
 ; Returns back to thread that has been interrupted by PendSV exception
