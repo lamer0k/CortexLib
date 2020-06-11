@@ -25,6 +25,7 @@
 #include "taskertimerservice.hpp" // For TaskerTimerService
 #include "teststates.hpp"              // for myThread1
 #include <iostream>                      // For std::cout
+#include "idletask.hpp"
 
 using MyThread1Timer = TaskerTimer<myThread1, 1'000UL,
                                    1001UL, // time in ms
@@ -36,6 +37,11 @@ using MyThread2Timer = TaskerTimer<myThread2, 1'000UL,
                                    1,
                                    myTasker>;
 
-using tRtosTimerService = TaskerTimerService<myTasker, MyThread1Timer, MyThread2Timer>;
+using IdleTimer = TaskerTimer<idleTask, 1'000UL,
+                                   100UL, // time in ms
+                                   1,
+                                   myTasker>;
+
+using tRtosTimerService = TaskerTimerService<myTasker, MyThread1Timer, MyThread2Timer, IdleTimer>;
 
 #endif

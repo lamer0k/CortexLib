@@ -356,7 +356,7 @@
                     <state>$PROJ_DIR$\..\AbstractHardware\Registers\MDR1986VE4\FieldValues</state>
                     <state>$PROJ_DIR$\..\AbstractHardware\Registers</state>
                     <state>$PROJ_DIR$\..\Common</state>
-                    <state>C:\GitHub\CortexLib\AbstractHardware\Atomic</state>
+                    <state>$PROJ_DIR$\..\AbstractHardware\Atomic</state>
                     <state>$PROJ_DIR$\Source</state>
                     <state>$PROJ_DIR$\Source\CriticalSection</state>
                     <state>$PROJ_DIR$\Config</state>

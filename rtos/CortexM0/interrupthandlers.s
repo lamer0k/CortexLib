@@ -8,47 +8,50 @@
 
   EXTERN  Schedule
 
-; ISR executes in Handler mode, but scheduling should be performed in Thread
-; mode. This handler reserves space for exception stack frame and switches to 
-; Thread mode by exception-returning to TaskerSchedule function
+; Исключение выполняется в Hanlder режми, но планировщик должен запуcкаться в
+; Thread режиме. Этот обработчик резервирует кадр исключения и переключается в
+; Thread режим через этап выход из исключения для перехода в Schedule функцию
 HandlePendSv: 
-  ; Set PendSvClr bit in Interrupt Control and Thread1 Register
+  ; Очищаем бит запроса на PendSv, путем установки PendSvClr бита(#27) в ICSR регистре
+  ; Адрес ICSR(Interrupt Control and State Register) регистра 0xE000ED04
   LDR     r3,=0xE000ED04
   LDR     r1,=1<<27
-  ; Disable interrupts
+  ; Запрещаем все прерывания
   CPSID   i
-  ; The PendSV exception handler can be preempted by an interrupt,
-  ; which might pend PendSV exception again. The following write to
-  ; ICSR[27] un-pends any such spurious instance of PendSV.
+  ; Собственно скидываем бит PendSvClr
   STR     r1,[r3]
-  ; New XPSR value is (1 << 24) (T bit)
+  ; Когда мы вернемся из прерывания XPSR должен стоять T - bit(1 << 24), говорящий
+  ; о том, что у нас Thumb набор команд, а то если он не будет стоять, исполнение
+  ; команд накроется медным тазом.
   LDR     r3,=1<<24           
-  ; New PC value is TaskerSchedule address aligned at halfword
-  ; Адрес возврата должен быть четным 
+  ; Когда мы вернемся из прерывания, мы должны попасть в Schedule, поэтому в PC должен
+  ; быть записан адрес функции Schedule и он должен быть четным
   LDR     r2,=Schedule - 1
-  ; New LR value is ScheduleReturn address
+  ; А завершив функцию Schedule мы должны вернуться по адресу ScheduleReturn
+  ; Запишем этот адрес в LR
   LDR     r1,=ScheduleReturn
-  ; Reserve space for exception stack frame
+  ; Теперь резервируем кадр исключения для выхода из исключения
   SUB     sp,sp,#8*4            
   ADD     r0,sp,#5*4
-  ; Save XPSR, PC, LR
+  ; И сохраняем в него новые XPSR, PC, LR
   STM     r0!,{r1-r3}           
-  ; r0 = 0xFFFFFFF9 - Thread mode
+  ; r0 = 0xFFFFFFF9 - Thread режим и используем MSP стек
   LDR     r0,=0xFFFFFFF9              
-  ; Exception-return to the TaskerSchedule
+  ; Выходим из исключения со значением 0xFFFFFFF9 и попадаем после этого в Schedule
   BX      r0
 
-; Raises SVC to return back to preempted thread
+; Вовзращаемся сюдя из функции Schedule, разрешаем прерывание и
+; и вызываем исключение SVC, чтобы вернуться в вытесненную задачу
 ScheduleReturn:
-  ; Enable interrupts
   CPSIE   i
-  ; SVC will be executed together with CPSIE because Cortext M0 has 2 stage pipeline
+  ; SVC будет выполнен вмест с CPSIE, так как Cortext M0 имеет вдухстадийный конвейер.
   SVC #0
   
-; Returns back to thread that has been interrupted by PendSV exception
+; Собственно после запроса на SVC исключение попадаем сюда
 HandleSvc:
-  ; Remove SVC exception frame; we need to use PendSV exception frame
+  ; Удаляем кадр исключения который мы добавили в PendSV,
+  ; нам нужно оставить только кадр исключения от вытесненной задачи
   ADD     sp,sp,#(8*4)
-  ; Return back to thread interrupted by PendSV
+  ; Возвращаемся в вытесненную задачу
   BX      lr
   END

@@ -1,5 +1,5 @@
 #pragma language = extended
-#pragma segment = "CSTACK"
+#pragma section = "CSTACK"
 
 #include "taskertimersconfig.hpp" // For tRtosTimerService
 
@@ -30,11 +30,11 @@ using tInterruptVectorItem = union
 // it is where the SP start value is found, and the NVIC vector
 // table register (VTOR) is initialized to this address if != 0.
 
-#pragma section = ".intvec"
+//#pragma section = ".intvec"
 #pragma location = ".intvec"
 
 // __vector_table is only used in startup file
-extern "C" const tInterruptVectorItem __vector_table[] =
+const tInterruptVectorItem __vector_table[] =
 {
   {
     .pPtr = __sfe( "CSTACK" ) //lint !e64

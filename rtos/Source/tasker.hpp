@@ -119,7 +119,7 @@ class Tasker
                 return result;
             } else
             {
-              return 0U;
+              return sizeof...(tasks);
             }
         }
         assert(false) ;
@@ -152,6 +152,10 @@ class Tasker
             {
                 CallTaskHelper<task>() ;
             }
+            else
+            {
+
+            }
 
         }
     }
@@ -175,7 +179,8 @@ class Tasker
     static inline Status status = Status::NotRunning;
     static constexpr tStateEvents noEvents = tStateEvents{ 0U };
 
-    static inline volatile size_t activeTaskId = sizeof...(tasks) - 1;
+
+    static inline volatile size_t activeTaskId = sizeof...(tasks) ;
     static inline volatile bool preempted = true;
     static inline volatile std::uint8_t scheduleLockedCounter = 1U;
 

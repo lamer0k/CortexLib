@@ -7,6 +7,8 @@ extern "C"
  int __low_level_init(void)   
  {
      RCC::AHB1ENR::GPIOCEN::Enable::Set() ;
+     RCC::AHB1ENR::GPIOAEN::Enable::Set() ;
+     GPIOA::MODER::MODER5::Output::Set() ;
      GPIOC::MODERPack<
          GPIOC::MODER::MODER8::Output,
          GPIOC::MODER::MODER9::Output,
