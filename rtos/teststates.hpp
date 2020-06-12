@@ -40,7 +40,7 @@ struct Thread2 : public TaskBase<Thread2<SimpleTasker, threadToSignal>>
     {
         GPIOC::ODR::Toggle(1<<5);
     //    std::cout << "    Thread2Start" << std::endl;
-        //for (int i = 0; i < 4000000; ++i)
+        for (int i = 0; i < 4000000; ++i)
         {
         };
         SimpleTasker::PostEvent<threadToSignal>(1);

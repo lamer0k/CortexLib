@@ -34,7 +34,6 @@ class Tasker
     {
         const CriticalSection cs;
         targetTask.events |= events;
-        preempted = true;
         if (scheduleLockedCounter == 0U)
         {
             Schedule();
@@ -75,20 +74,18 @@ class Tasker
 
     static void Schedule()
     {
-        if(preempted)
-        {
-            preempted = false;
-            const auto preemptedTaskId = activeTaskId;
-            auto nextTaskId = GetFirstActiveTaskId();
 
-            while (nextTaskId < activeTaskId)
-            {
-                activeTaskId = nextTaskId;
-                CallTask(nextTaskId);
-                nextTaskId = GetFirstActiveTaskId();
-            }
-            activeTaskId = preemptedTaskId;
+        const auto preemptedTaskId = activeTaskId;
+        auto nextTaskId = GetFirstActiveTaskId();
+
+        while (nextTaskId < activeTaskId)
+        {
+            activeTaskId = nextTaskId;
+            CallTask(nextTaskId);
+            nextTaskId = GetFirstActiveTaskId();
         }
+        activeTaskId = preemptedTaskId;
+
     }
 
     static constexpr size_t GetFirstActiveTaskId()
@@ -108,7 +105,7 @@ class Tasker
             }
             else
             {
-                auto res = result + 1 ;
+                auto res = result + 1;
                 return GetFisrtActiveTask<args...>(res);
             }
         }
@@ -117,12 +114,13 @@ class Tasker
             if (task.events != noEvents)
             {
                 return result;
-            } else
+            }
+            else
             {
-              return sizeof...(tasks);
+                return sizeof...(tasks);
             }
         }
-        assert(false) ;
+        assert(false);
         return 0U;
     }
 
@@ -138,11 +136,11 @@ class Tasker
         {
             if (result == id)
             {
-                CallTaskHelper<task>() ;
+                CallTaskHelper<task>();
             }
             else
             {
-                auto res = result + 1 ;
+                auto res = result + 1;
                 CallTaskById<args...>(id, res);
             }
         }
@@ -150,7 +148,7 @@ class Tasker
         {
             if (result == id)
             {
-                CallTaskHelper<task>() ;
+                CallTaskHelper<task>();
             }
             else
             {
@@ -160,13 +158,13 @@ class Tasker
         }
     }
 
-    __forceinline  template<const auto& task>
+    __forceinline template<const auto& task>
     static void CallTaskHelper()
     {
-        task.events = noEvents;        
-        __enable_interrupt() ;
+        task.events = noEvents;
+        __enable_interrupt();
         task.OnEvent();
-        __disable_interrupt() ;
+        __disable_interrupt();
     }
 
     enum class Status : std::uint8_t
@@ -175,15 +173,11 @@ class Tasker
         Running
     };
 
-
     static inline Status status = Status::NotRunning;
     static constexpr tStateEvents noEvents = tStateEvents{ 0U };
 
-
-    static inline volatile size_t activeTaskId = sizeof...(tasks) ;
-    static inline volatile bool preempted = true;
+    static inline volatile size_t activeTaskId = sizeof...(tasks);
     static inline volatile std::uint8_t scheduleLockedCounter = 1U;
-
 
     friend void TaskerSchedule();
     friend class CriticalRegion;
