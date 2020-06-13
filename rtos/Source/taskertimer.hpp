@@ -3,7 +3,7 @@
 #include "taskertypes.hpp" // For tTaskEvents
 #include "chrono"
 
-template <auto& targetThread, std::uint32_t TimerFrequency, std::uint32_t msPeriod, tStateEvents eventsToPost, typename Tasker>
+template <typename Tasker, std::uint32_t TimerFrequency, std::uint32_t msPeriod, tStateEvents eventsToPost, const auto& ...targetThreads>
 class TaskerTimer {
   public:
     static void OnTick()
@@ -12,7 +12,7 @@ class TaskerTimer {
       if (ticksRemain == 0U)
       {       
         ticksRemain = ticksReload ;
-        Tasker::PostEvent<targetThread>(eventsToPost) ;
+        Tasker::template PostEvent<targetThreads...>(eventsToPost) ;
       }
     }
     
