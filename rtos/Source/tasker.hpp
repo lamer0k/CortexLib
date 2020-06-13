@@ -1,12 +1,11 @@
 #pragma once
 
-#include "taskertypes.hpp"                    // For RTOS types
-#include "criticalsection.hpp"           // For CriticalSection
-#include "idletask.hpp"                               // For IdleTask
-#include "scbregisters.hpp"                           // For Scb
-#include "susudefs.hpp"                               // For __forceinline
-#include <array>                                      // For std::array
-#include <cassert> // For assert(), static_assert()
+#include "taskertypes.hpp"            // For  types
+#include "criticalsection.hpp"        // For CriticalSection
+#include "idletask.hpp"               // For IdleTask
+#include "scbregisters.hpp"           // For Scb
+#include "susudefs.hpp"               // For __forceinline
+#include <cassert>                    // For assert(), static_assert()
 
 template<const auto& ...tasks>
 class Tasker
@@ -29,11 +28,11 @@ class Tasker
         }
     }
 
-    template<const auto& targetTask>
+    template<const auto& ...targetTasks>
     static void PostEvent(const tStateEvents events)
     {
         const CriticalSection cs;
-        targetTask.events |= events;
+        (targetTasks.events |= events, ...);
         if (scheduleLockedCounter == 0U)
         {
             Schedule();
@@ -120,7 +119,7 @@ class Tasker
                 return sizeof...(tasks);
             }
         }
-        assert(false);
+        assert(false);  //Dummy IAR thinks that no return from the method
         return 0U;
     }
 
@@ -173,10 +172,10 @@ class Tasker
         Running
     };
 
-    static inline Status status = Status::NotRunning;
     static constexpr tStateEvents noEvents = tStateEvents{ 0U };
 
     static inline volatile size_t activeTaskId = sizeof...(tasks);
+    static inline Status status = Status::NotRunning;
     static inline volatile std::uint8_t scheduleLockedCounter = 1U;
 
     friend void TaskerSchedule();
