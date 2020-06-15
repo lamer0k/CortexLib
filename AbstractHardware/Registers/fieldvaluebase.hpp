@@ -31,18 +31,18 @@ struct FieldValueBase
     *reinterpret_cast<volatile RegType *>(Field::Register::Address) = newRegValue ; //И записать новое значение в регистр
   }
 
-  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  __forceinline template<typename T = typename Field::Access,
-    class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
-  static void SetAtomic()
-  {
-    AtomicUtils<RegType>::Set(
-      Field::Register::Address,
-      Field::Mask,
-      value,
-      Field::Offset
-      ) ;
-  }
+//  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+//  __forceinline template<typename T = typename Field::Access,
+//    class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+//  static void SetAtomic()
+//  {
+//    AtomicUtils<RegType>::Set(
+//      Field::Register::Address,
+//      Field::Mask,
+//      value,
+//      Field::Offset
+//      ) ;
+//  }
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
   __forceinline template<typename T = typename Field::Access,

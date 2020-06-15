@@ -73,7 +73,6 @@ class Tasker
 
     static void Schedule()
     {
-
         const auto preemptedTaskId = activeTaskId;
         auto nextTaskId = GetFirstActiveTaskId();
 
@@ -89,11 +88,11 @@ class Tasker
 
     static constexpr size_t GetFirstActiveTaskId()
     {
-        return GetFisrtActiveTask<tasks...>(0U);
+        return GetFirstActiveTask<tasks...>(0U);
     }
 
     __forceinline template<const auto& task, const auto& ...args>
-    static constexpr size_t GetFisrtActiveTask(size_t result)
+    static constexpr size_t GetFirstActiveTask(size_t result)
     {
 
         if constexpr (sizeof...(args) != 0U)
@@ -105,7 +104,7 @@ class Tasker
             else
             {
                 auto res = result + 1;
-                return GetFisrtActiveTask<args...>(res);
+                return GetFirstActiveTask<args...>(res);
             }
         }
         else

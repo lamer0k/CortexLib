@@ -5,7 +5,7 @@
 #ifndef REGISTERS_REGISTERFIELD_HPP
 #define REGISTERS_REGISTERFIELD_HPP
 #include <cassert>      //for assert
-#include <atomicutils.hpp>
+//#include <atomicutils.hpp>
 #include "susudefs.hpp" //for __forceinline (#define __forceinline  _Pragma("inline=forced"))
 //#include "criticalsectionconfig.hpp" // for CriticalSection
 
@@ -37,20 +37,20 @@ struct RegisterField
     *reinterpret_cast<volatile RegType *>(Reg::Address) = newRegValue ; //И записать новое значение в регистр
   }
 
-  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-  __forceinline template<typename T = AccessMode,
-    class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
-  static void SetAtomic(RegType value)
-  {
-    assert(value < (1U << (size - 1))) ;
-
-    AtomicUtils<RegType>::Set(
-      Reg::Address,
-      Mask,
-      value,
-      offset
-    ) ;
-  }
+//  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+//  __forceinline template<typename T = AccessMode,
+//    class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+//  static void SetAtomic(RegType value)
+//  {
+//    assert(value < (1U << (size - 1))) ;
+//
+//    AtomicUtils<RegType>::Set(
+//      Reg::Address,
+//      Mask,
+//      value,
+//      offset
+//    ) ;
+//  }
 
   //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
   __forceinline template<typename T = AccessMode,

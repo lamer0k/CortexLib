@@ -31,18 +31,18 @@ class Register
       *reinterpret_cast<volatile Type *>(address) = newRegValue ; //Записываем в регистра новое значение
     }
     
-    //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
-    __forceinline template<typename T = AccessMode,
-            class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
-    static void SetAtomic()
-    {
-      AtomicUtils<Type>::Set(
-              address,
-              GetMask(),
-              GetValue,
-              0U
-      ) ;
-    }
+//    //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
+//    __forceinline template<typename T = AccessMode,
+//            class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
+//    static void SetAtomic()
+//    {
+//      AtomicUtils<Type>::Set(
+//              address,
+//              GetMask(),
+//              GetValue,
+//              0U
+//      ) ;
+//    }
     
     //Метод Write устанавливает битовые поля, только если регистр может использоваться для записи
     __forceinline template<typename T = AccessMode,
