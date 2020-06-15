@@ -1,3 +1,5 @@
+// Filename: taskertypes.hpp
+// Created by by Sergey Kolody aka Lamerok on 29.03.2020.
 #include "taskerconfig.hpp" // for myTasker
 #include "stkregisters.hpp" // for STK
 #include "rccregisters.hpp" // for RCC

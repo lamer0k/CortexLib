@@ -3,20 +3,6 @@
 //
 #pragma once
 
-/*******************************************************************************
- * Filename  	: rtostimersconfig.hpp
- *
- * Details   	: Configuration of RTOS timers
- *
- *   (c) ROSEMOUNT MEASUREMENT LIMITED 2020
- *       THE REPRODUCTION, DISTRIBUTION & UTILISATION OF THIS UNPUBLISHED
- *       WORK AS WELL AS THE COMMUNICATION OF ITS CONTENTS TO OTHERS WITHOUT
- *       EXPRESS AUTHORISATION ISPROHIBITED.OFFENDERS WILL BE HELD LIABLE FOR
- *       THE PAYMENT OF DAMAGES. ALL RIGHTS RESERVED IN THE EVENT OF GRANT OF
- *       PATENT, UTILITY MODEL OR DESIGN.
- *
- *******************************************************************************/
-
 #if !defined(RTOSTIMERSCONFIG_HPP)
 #define RTOSTIMERSCONFIG_HPP
 
