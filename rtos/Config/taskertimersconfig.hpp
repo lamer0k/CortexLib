@@ -3,15 +3,10 @@
 //
 #pragma once
 
-#if !defined(RTOSTIMERSCONFIG_HPP)
-#define RTOSTIMERSCONFIG_HPP
-
-#include "taskerconfig.hpp"
 #include "taskertimer.hpp"        // For TaskerTimer
 #include "taskertimerservice.hpp" // For TaskerTimerService
-#include "teststates.hpp"              // for myThread1
-#include <iostream>                      // For std::cout
-#include "idletask.hpp"
+#include "teststates.hpp"         // for myThread1
+#include "idletask.hpp"           // for  idleTask
 
 using MyThread1Timer = TaskerTimer<myTasker, 1'000UL,
                                    1001UL, // time in ms
@@ -31,4 +26,4 @@ using IdleTimer = TaskerTimer<myTasker, 1'000UL,
 
 using tRtosTimerService = TaskerTimerService<myTasker, MyThread1Timer, MyThread2Timer, IdleTimer>;
 
-#endif
+
