@@ -10,7 +10,7 @@
 
 template <typename T>
 struct AtomicUtils
-{
+{  
   static bool CompareExchange(volatile T* ptr, T oldValue, T newValue)
   {
     using namespace std ;
@@ -25,6 +25,7 @@ struct AtomicUtils
     return false;
   }
 
+  //template <typename T>
   static void Set(T address, T mask, T value, T offset)
   {
     T oldRegValue ;

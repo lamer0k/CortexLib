@@ -96,29 +96,13 @@ class Tasker
     __forceinline template<const auto& task, const auto& ...args>
     static constexpr size_t GetFirstActiveTask(size_t result)
     {
-
         if constexpr (sizeof...(args) != 0U)
         {
-            if (task.events != noEvents)
-            {
-                return result;
-            }
-            else
-            {
-                auto res = result + 1;
-                return GetFirstActiveTask<args...>(res);
-            }
+            return (task.events != noEvents) ? result : GetFirstActiveTask<args...>(result + 1U);
         }
         else
         {
-            if (task.events != noEvents)
-            {
-                return result;
-            }
-            else
-            {
-                return sizeof...(tasks);
-            }
+            return (task.events != noEvents) ? result : sizeof...(tasks) ;
         }
         assert(false);  //Dummy IAR thinks that no return from the method
         return 0U;
@@ -140,7 +124,7 @@ class Tasker
             }
             else
             {
-                auto res = result + 1;
+                const auto res = result + 1U;
                 CallTaskById<args...>(id, res);
             }
         }

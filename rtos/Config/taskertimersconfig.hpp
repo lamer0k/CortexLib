@@ -3,6 +3,7 @@
 //
 #pragma once
 
+#include "taskerconfig.hpp"
 #include "taskertimer.hpp"        // For TaskerTimer
 #include "taskertimerservice.hpp" // For TaskerTimerService
 #include "teststates.hpp"         // for myThread1
