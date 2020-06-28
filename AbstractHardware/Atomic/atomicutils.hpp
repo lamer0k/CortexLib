@@ -25,7 +25,6 @@ struct AtomicUtils
     return false;
   }
 
-  //template <typename T>
   static void Set(T address, T mask, T value, T offset)
   {
     T oldRegValue ;
