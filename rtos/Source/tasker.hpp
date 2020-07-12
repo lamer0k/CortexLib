@@ -8,11 +8,50 @@
 #include "scbregisters.hpp"           // For Scb
 #include "susudefs.hpp"               // For __forceinline
 #include <cassert>                    // For assert(), static_assert()
+#include "coretypes.hpp"              // for CortexM, GD32VF
+#include <type_traits>                // for std::is_same
 
-template<const auto& ...tasks>
+
+template<typename CoreType, const auto& ...tasks>
 class Tasker
 {
  public:
+
+    __forceinline void LowLevelInit()
+    {
+        if constexpr (std::is_same<CoreType, GD32VF>::value)
+        {
+            __disable_interrupt();
+            /* Set the the NMI base to share with mtvec by setting CSR_MMISC_CTL */
+            /* li t0, 0x200           */
+            /* csrs CSR_MMISC_CTL, t0 */
+           // __set_bits_csr(/*CSR_MMISC_CTL*/ 0x7D0, 0x200);
+
+            /* Initialize the mtvt */
+            /* la t0, vector_base      */
+            /* csrw CSR_MTVT, t0       */
+           // __write_csr(_CSR_MTVT, ((unsigned int)&gd_vector_base));
+            /* Initialize the mtvt2 and enable it */
+            /* la t0, irq_entry
+               csrw CSR_MTVT2, t0
+               csrs CSR_MTVT2, 0x1
+            */
+           // __write_csr(/*_CSR_MTVT2*/ 0x7EC, 0x1 | ((unsigned int)&NonVectoredInt::IrqEntry));
+
+            /* Initialize the CSR MTVEC for the Trap ane NMI base addr*/
+            /* la t0, trap_entry
+               csrw CSR_MTVEC, t0
+            */
+           // __write_csr(_CSR_MTVEC, 0x03 | ((unsigned int)&NonVectoredInt::TrapEntry));
+
+            /* Enable mycycle_minstret */
+            //__clear_bits_csr(/*CSR_MCOUNTINHIBIT*/ 0x320, 0x5);
+        }
+        else if constexpr (std::is_same<CoreType, CortexM>::value)
+        {
+        }
+
+    }
 
     __forceinline static void Start()
     {
@@ -51,7 +90,14 @@ class Tasker
     {
         assert(scheduleLockedCounter != 0U);
         --scheduleLockedCounter;
-        SCB::ICSR::PENDSVSET::PendingState::Set();
+        if constexpr (std::is_same<CoreType, CortexM>::value)
+        {
+            SCB::ICSR::PENDSVSET::PendingState::Set();
+        }
+        else if constexpr (std::is_same<CoreType, GD32VF>::value)
+        {
+
+        }
     }
 
  private:

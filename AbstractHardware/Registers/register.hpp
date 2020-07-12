@@ -1,10 +1,8 @@
 //
 // Created by Lamerok on 21.08.2019.
 //
-#ifndef REGISTERS_REGISTER_HPP
-#define REGISTERS_REGISTER_HPP
+#pragma once
 
-#include <initializer_list>   //for initializer_list
 #include "fieldvalue.hpp"      //for BitsFileds
 #include "registertype.hpp"   //for RegisterType
 #include "accessmode.hpp"     //for WriteMode, ReadMode
@@ -104,4 +102,3 @@ class Register
     }
 };
 
-#endif //REGISTERS_REGISTER_HPP

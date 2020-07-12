@@ -30,6 +30,8 @@ add_executable(Rtos
       #  Source/CriticalSection/criticalregion.cpp
         CortexM0/interrupthandlers.s
         startup.cpp
-        Config/taskerconfig.hpp Source/taskbase.hpp)
+        Config/taskerconfig.hpp Source/taskbase.hpp
+        #RISCV/GD32VF/interrupthandlers.cpp RISCV/GD32VF/interrupthandlers.hpp
+        Source/coretypes.hpp)
 
 

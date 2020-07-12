@@ -2,9 +2,7 @@
 // Created by Lamerok on 21.08.2019.
 //
 
-#ifndef REGISTERS_FIELDVALUEBASE_HPP
-#define REGISTERS_FIELDVALUEBASE_HPP
-
+#pragma once
 #include <cstddef>           //for size_t
 #include <type_traits>       //for std::is_base_of, std::is_same
 #include "accessmode.hpp"    //for WriteMode, ReadMode
@@ -63,4 +61,4 @@ struct FieldValueBase
               static_cast<RegType>(Field::Mask << Field::Offset)) == (value << Field::Offset) ;
   }
 };
-#endif //REGISTERS_FIELDVALUEBASE_HPP
+

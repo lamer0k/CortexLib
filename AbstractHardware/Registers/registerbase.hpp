@@ -2,8 +2,7 @@
 // Created by Lamerok on 21.08.2019.
 //
 
-#ifndef REGISTERS_REGISTERBASE_HPP
-#define REGISTERS_REGISTERBASE_HPP
+#pragma once
 
 #include "registertype.hpp"   //for RegisterType
 #include "accessmode.hpp"    //for WriteMode, ReadMode
@@ -52,4 +51,3 @@ struct RegisterBase
   }
 } ;
 
-#endif //REGISTERS_REGISTERBASE_HPP

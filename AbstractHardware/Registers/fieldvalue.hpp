@@ -2,8 +2,7 @@
 // Created by Lamerok on 21.08.2019.
 //
 
-#ifndef REGISTERS_FIELDVALUE_HPP
-#define REGISTERS_FIELDVALUE_HPP
+#pragma once
 
 #include <cstddef>           //for size_t
 #include "fieldvaluebase.hpp" //for BitsFieldBase
@@ -23,5 +22,3 @@ struct FieldValue: public FieldValueBase<Field, Base, value>
   using BaseType = Base ;
   using Access = typename Field::Access ;
 } ;
-
-#endif //REGISTERS_FIELDVALUE_HPP

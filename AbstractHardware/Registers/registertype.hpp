@@ -2,8 +2,7 @@
 // Created by Lamerok on 21.08.2019.
 //
 
-#ifndef REGISTERS_REGISTERTYPE_HPP
-#define REGISTERS_REGISTERTYPE_HPP
+#pragma once
 
 #include <cstdint>           //for int types such as uint32_t
 
@@ -35,4 +34,3 @@ struct RegisterType<64>
   using Type = uint64_t ;
 } ;
 
-#endif //REGISTERS_REGISTERTYPE_HPP

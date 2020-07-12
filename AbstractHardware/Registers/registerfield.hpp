@@ -2,8 +2,8 @@
 // Created by SKolody on 22.08.2019.
 //
 
-#ifndef REGISTERS_REGISTERFIELD_HPP
-#define REGISTERS_REGISTERFIELD_HPP
+#pragma once
+
 #include <cassert>      //for assert
 //#include <atomicutils.hpp>
 #include "susudefs.hpp" //for __forceinline (#define __forceinline  _Pragma("inline=forced"))
@@ -72,4 +72,4 @@ struct RegisterField
             (Mask << offset)) >> offset ;
   }
 };
-#endif //REGISTERS_REGISTERFIELD_HPP
+
