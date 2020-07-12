@@ -36,13 +36,13 @@ class Tasker
                csrw CSR_MTVT2, t0
                csrs CSR_MTVT2, 0x1
             */
-           // __write_csr(/*_CSR_MTVT2*/ 0x7EC, 0x1 | ((unsigned int)&NonVectoredInt::IrqEntry));
+           // __write_csr(/*_CSR_MTVT2*/ 0x7EC, 0x1 | ((unsigned int)&InterruptHandlers::IrqEntry));
 
             /* Initialize the CSR MTVEC for the Trap ane NMI base addr*/
             /* la t0, trap_entry
                csrw CSR_MTVEC, t0
             */
-           // __write_csr(_CSR_MTVEC, 0x03 | ((unsigned int)&NonVectoredInt::TrapEntry));
+           // __write_csr(_CSR_MTVEC, 0x03 | ((unsigned int)&InterruptHandlers::TrapEntry));
 
             /* Enable mycycle_minstret */
             //__clear_bits_csr(/*CSR_MCOUNTINHIBIT*/ 0x320, 0x5);
@@ -50,7 +50,6 @@ class Tasker
         else if constexpr (std::is_same<CoreType, CortexM>::value)
         {
         }
-
     }
 
     __forceinline static void Start()

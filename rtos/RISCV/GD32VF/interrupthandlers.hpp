@@ -5,14 +5,20 @@
 #include <cstdint>
 
 extern void Scheduler() ;
-#define __interrupt ;
+#define __interrupt
 
 using tInterruptFunction = void (*)() ;
 
 extern tInterruptFunction gd_vector_base[] ;
 
-class InterruptHandlers
+struct InterruptHandlers
 {
+ public:
+    __interrupt static void TrapEntry();
+    __interrupt static void IrqEntry();
+    __interrupt static void CallScheduler() ;
+
+private:
     static void  HandleTrap(std::uintptr_t mcause)
     {
         tInterruptFunction fp;
@@ -23,10 +29,6 @@ class InterruptHandlers
             fp();
         }
     }
-
-    static __interrupt void TrapEntry();
-    static __interrupt void IrqEntry();
-    static __interrupt void CallScheduler() ;
 };
 
 
