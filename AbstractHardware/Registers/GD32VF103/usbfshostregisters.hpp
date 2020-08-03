@@ -1,0 +1,671 @@
+/*******************************************************************************
+* Filename      : usbfshostregisters.hpp
+*
+* Details       : USB on the go full speed host. This header file is
+*                 auto-generated for GD32VF103 device.
+*
+*
+*******************************************************************************/
+
+#if !defined(USBFSHOSTREGISTERS_HPP)
+#define USBFSHOSTREGISTERS_HPP
+
+#include "usbfshostfieldvalues.hpp"  //for Bits Fields defs 
+#include "registerbase.hpp"   //for RegisterBase
+#include "register.hpp"       //for Register
+#include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
+
+struct USBFS_HOST
+{
+  struct USBFS_HOSTHCTLBase {} ;
+
+  struct HCTL : public RegisterBase<0x50000400, 32, ReadWriteMode>
+  {
+    using CLKSEL = USBFS_HOST_HCTL_CLKSEL_Values<USBFS_HOST::HCTL, 0, 2, ReadWriteMode, USBFS_HOSTHCTLBase> ;
+    using FieldValues = USBFS_HOST_HCTL_CLKSEL_Values<USBFS_HOST::HCTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCTLPack  = Register<0x50000400, 32, ReadWriteMode, USBFS_HOSTHCTLBase, T...> ;
+
+  struct USBFS_HOSTHFTBase {} ;
+
+  struct HFT : public RegisterBase<0x50000404, 32, ReadWriteMode>
+  {
+    using FRI = USBFS_HOST_HFT_FRI_Values<USBFS_HOST::HFT, 0, 16, ReadWriteMode, USBFS_HOSTHFTBase> ;
+    using FieldValues = USBFS_HOST_HFT_FRI_Values<USBFS_HOST::HFT, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HFTPack  = Register<0x50000404, 32, ReadWriteMode, USBFS_HOSTHFTBase, T...> ;
+
+  struct USBFS_HOSTHFINFRBase {} ;
+
+  struct HFINFR : public RegisterBase<0x50000408, 32, ReadMode>
+  {
+    using FRNUM = USBFS_HOST_HFINFR_FRNUM_Values<USBFS_HOST::HFINFR, 0, 16, ReadMode, USBFS_HOSTHFINFRBase> ;
+    using FRT = USBFS_HOST_HFINFR_FRT_Values<USBFS_HOST::HFINFR, 16, 16, ReadMode, USBFS_HOSTHFINFRBase> ;
+    using FieldValues = USBFS_HOST_HFINFR_FRT_Values<USBFS_HOST::HFINFR, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HFINFRPack  = Register<0x50000408, 32, ReadMode, USBFS_HOSTHFINFRBase, T...> ;
+
+  struct USBFS_HOSTHPTFQSTATBase {} ;
+
+  struct HPTFQSTAT : public RegisterBase<0x50000410, 32, ReadWriteMode>
+  {
+    using PTXFS = USBFS_HOST_HPTFQSTAT_PTXFS_Values<USBFS_HOST::HPTFQSTAT, 0, 16, ReadMode, USBFS_HOSTHPTFQSTATBase> ;
+    using PTXREQS = USBFS_HOST_HPTFQSTAT_PTXREQS_Values<USBFS_HOST::HPTFQSTAT, 16, 8, ReadMode, USBFS_HOSTHPTFQSTATBase> ;
+    using PTXREQT = USBFS_HOST_HPTFQSTAT_PTXREQT_Values<USBFS_HOST::HPTFQSTAT, 24, 8, ReadMode, USBFS_HOSTHPTFQSTATBase> ;
+    using FieldValues = USBFS_HOST_HPTFQSTAT_PTXREQT_Values<USBFS_HOST::HPTFQSTAT, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HPTFQSTATPack  = Register<0x50000410, 32, ReadWriteMode, USBFS_HOSTHPTFQSTATBase, T...> ;
+
+  struct USBFS_HOSTHACHINTBase {} ;
+
+  struct HACHINT : public RegisterBase<0x50000414, 32, ReadMode>
+  {
+    using HACHINTField = USBFS_HOST_HACHINT_HACHINT_Values<USBFS_HOST::HACHINT, 0, 8, ReadMode, USBFS_HOSTHACHINTBase> ;
+    using FieldValues = USBFS_HOST_HACHINT_HACHINT_Values<USBFS_HOST::HACHINT, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HACHINTPack  = Register<0x50000414, 32, ReadMode, USBFS_HOSTHACHINTBase, T...> ;
+
+  struct USBFS_HOSTHACHINTENBase {} ;
+
+  struct HACHINTEN : public RegisterBase<0x50000418, 32, ReadWriteMode>
+  {
+    using CINTEN = USBFS_HOST_HACHINTEN_CINTEN_Values<USBFS_HOST::HACHINTEN, 0, 8, ReadWriteMode, USBFS_HOSTHACHINTENBase> ;
+    using FieldValues = USBFS_HOST_HACHINTEN_CINTEN_Values<USBFS_HOST::HACHINTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HACHINTENPack  = Register<0x50000418, 32, ReadWriteMode, USBFS_HOSTHACHINTENBase, T...> ;
+
+  struct USBFS_HOSTHPCSBase {} ;
+
+  struct HPCS : public RegisterBase<0x50000440, 32, ReadWriteMode>
+  {
+    using PCST = USBFS_HOST_HPCS_PCST_Values<USBFS_HOST::HPCS, 0, 1, ReadMode, USBFS_HOSTHPCSBase> ;
+    using PCD = USBFS_HOST_HPCS_PCD_Values<USBFS_HOST::HPCS, 1, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PE = USBFS_HOST_HPCS_PE_Values<USBFS_HOST::HPCS, 2, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PEDC = USBFS_HOST_HPCS_PEDC_Values<USBFS_HOST::HPCS, 3, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PREM = USBFS_HOST_HPCS_PREM_Values<USBFS_HOST::HPCS, 6, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PSP = USBFS_HOST_HPCS_PSP_Values<USBFS_HOST::HPCS, 7, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PRST = USBFS_HOST_HPCS_PRST_Values<USBFS_HOST::HPCS, 8, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PLST = USBFS_HOST_HPCS_PLST_Values<USBFS_HOST::HPCS, 10, 2, ReadMode, USBFS_HOSTHPCSBase> ;
+    using PP = USBFS_HOST_HPCS_PP_Values<USBFS_HOST::HPCS, 12, 1, ReadWriteMode, USBFS_HOSTHPCSBase> ;
+    using PS = USBFS_HOST_HPCS_PS_Values<USBFS_HOST::HPCS, 17, 2, ReadMode, USBFS_HOSTHPCSBase> ;
+    using FieldValues = USBFS_HOST_HPCS_PS_Values<USBFS_HOST::HPCS, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HPCSPack  = Register<0x50000440, 32, ReadWriteMode, USBFS_HOSTHPCSBase, T...> ;
+
+  struct USBFS_HOSTHCH0CTLBase {} ;
+
+  struct HCH0CTL : public RegisterBase<0x50000500, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH0CTL_MPL_Values<USBFS_HOST::HCH0CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH0CTL_EPNUM_Values<USBFS_HOST::HCH0CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH0CTL_EPDIR_Values<USBFS_HOST::HCH0CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using LSD = USBFS_HOST_HCH0CTL_LSD_Values<USBFS_HOST::HCH0CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH0CTL_EPTYPE_Values<USBFS_HOST::HCH0CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using DAR = USBFS_HOST_HCH0CTL_DAR_Values<USBFS_HOST::HCH0CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH0CTL_ODDFRM_Values<USBFS_HOST::HCH0CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using CDIS = USBFS_HOST_HCH0CTL_CDIS_Values<USBFS_HOST::HCH0CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using CEN = USBFS_HOST_HCH0CTL_CEN_Values<USBFS_HOST::HCH0CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH0CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH0CTL_CEN_Values<USBFS_HOST::HCH0CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH0CTLPack  = Register<0x50000500, 32, ReadWriteMode, USBFS_HOSTHCH0CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH1CTLBase {} ;
+
+  struct HCH1CTL : public RegisterBase<0x50000520, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH1CTL_MPL_Values<USBFS_HOST::HCH1CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH1CTL_EPNUM_Values<USBFS_HOST::HCH1CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH1CTL_EPDIR_Values<USBFS_HOST::HCH1CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using LSD = USBFS_HOST_HCH1CTL_LSD_Values<USBFS_HOST::HCH1CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH1CTL_EPTYPE_Values<USBFS_HOST::HCH1CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using DAR = USBFS_HOST_HCH1CTL_DAR_Values<USBFS_HOST::HCH1CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH1CTL_ODDFRM_Values<USBFS_HOST::HCH1CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using CDIS = USBFS_HOST_HCH1CTL_CDIS_Values<USBFS_HOST::HCH1CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using CEN = USBFS_HOST_HCH1CTL_CEN_Values<USBFS_HOST::HCH1CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH1CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH1CTL_CEN_Values<USBFS_HOST::HCH1CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH1CTLPack  = Register<0x50000520, 32, ReadWriteMode, USBFS_HOSTHCH1CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH2CTLBase {} ;
+
+  struct HCH2CTL : public RegisterBase<0x50000540, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH2CTL_MPL_Values<USBFS_HOST::HCH2CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH2CTL_EPNUM_Values<USBFS_HOST::HCH2CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH2CTL_EPDIR_Values<USBFS_HOST::HCH2CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using LSD = USBFS_HOST_HCH2CTL_LSD_Values<USBFS_HOST::HCH2CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH2CTL_EPTYPE_Values<USBFS_HOST::HCH2CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using DAR = USBFS_HOST_HCH2CTL_DAR_Values<USBFS_HOST::HCH2CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH2CTL_ODDFRM_Values<USBFS_HOST::HCH2CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using CDIS = USBFS_HOST_HCH2CTL_CDIS_Values<USBFS_HOST::HCH2CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using CEN = USBFS_HOST_HCH2CTL_CEN_Values<USBFS_HOST::HCH2CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH2CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH2CTL_CEN_Values<USBFS_HOST::HCH2CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH2CTLPack  = Register<0x50000540, 32, ReadWriteMode, USBFS_HOSTHCH2CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH3CTLBase {} ;
+
+  struct HCH3CTL : public RegisterBase<0x50000560, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH3CTL_MPL_Values<USBFS_HOST::HCH3CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH3CTL_EPNUM_Values<USBFS_HOST::HCH3CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH3CTL_EPDIR_Values<USBFS_HOST::HCH3CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using LSD = USBFS_HOST_HCH3CTL_LSD_Values<USBFS_HOST::HCH3CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH3CTL_EPTYPE_Values<USBFS_HOST::HCH3CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using DAR = USBFS_HOST_HCH3CTL_DAR_Values<USBFS_HOST::HCH3CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH3CTL_ODDFRM_Values<USBFS_HOST::HCH3CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using CDIS = USBFS_HOST_HCH3CTL_CDIS_Values<USBFS_HOST::HCH3CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using CEN = USBFS_HOST_HCH3CTL_CEN_Values<USBFS_HOST::HCH3CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH3CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH3CTL_CEN_Values<USBFS_HOST::HCH3CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH3CTLPack  = Register<0x50000560, 32, ReadWriteMode, USBFS_HOSTHCH3CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH4CTLBase {} ;
+
+  struct HCH4CTL : public RegisterBase<0x50000580, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH4CTL_MPL_Values<USBFS_HOST::HCH4CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH4CTL_EPNUM_Values<USBFS_HOST::HCH4CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH4CTL_EPDIR_Values<USBFS_HOST::HCH4CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using LSD = USBFS_HOST_HCH4CTL_LSD_Values<USBFS_HOST::HCH4CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH4CTL_EPTYPE_Values<USBFS_HOST::HCH4CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using DAR = USBFS_HOST_HCH4CTL_DAR_Values<USBFS_HOST::HCH4CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH4CTL_ODDFRM_Values<USBFS_HOST::HCH4CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using CDIS = USBFS_HOST_HCH4CTL_CDIS_Values<USBFS_HOST::HCH4CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using CEN = USBFS_HOST_HCH4CTL_CEN_Values<USBFS_HOST::HCH4CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH4CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH4CTL_CEN_Values<USBFS_HOST::HCH4CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH4CTLPack  = Register<0x50000580, 32, ReadWriteMode, USBFS_HOSTHCH4CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH5CTLBase {} ;
+
+  struct HCH5CTL : public RegisterBase<0x500005A0, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH5CTL_MPL_Values<USBFS_HOST::HCH5CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH5CTL_EPNUM_Values<USBFS_HOST::HCH5CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH5CTL_EPDIR_Values<USBFS_HOST::HCH5CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using LSD = USBFS_HOST_HCH5CTL_LSD_Values<USBFS_HOST::HCH5CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH5CTL_EPTYPE_Values<USBFS_HOST::HCH5CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using DAR = USBFS_HOST_HCH5CTL_DAR_Values<USBFS_HOST::HCH5CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH5CTL_ODDFRM_Values<USBFS_HOST::HCH5CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using CDIS = USBFS_HOST_HCH5CTL_CDIS_Values<USBFS_HOST::HCH5CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using CEN = USBFS_HOST_HCH5CTL_CEN_Values<USBFS_HOST::HCH5CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH5CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH5CTL_CEN_Values<USBFS_HOST::HCH5CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH5CTLPack  = Register<0x500005A0, 32, ReadWriteMode, USBFS_HOSTHCH5CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH6CTLBase {} ;
+
+  struct HCH6CTL : public RegisterBase<0x500005C0, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH6CTL_MPL_Values<USBFS_HOST::HCH6CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH6CTL_EPNUM_Values<USBFS_HOST::HCH6CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH6CTL_EPDIR_Values<USBFS_HOST::HCH6CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using LSD = USBFS_HOST_HCH6CTL_LSD_Values<USBFS_HOST::HCH6CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH6CTL_EPTYPE_Values<USBFS_HOST::HCH6CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using DAR = USBFS_HOST_HCH6CTL_DAR_Values<USBFS_HOST::HCH6CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH6CTL_ODDFRM_Values<USBFS_HOST::HCH6CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using CDIS = USBFS_HOST_HCH6CTL_CDIS_Values<USBFS_HOST::HCH6CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using CEN = USBFS_HOST_HCH6CTL_CEN_Values<USBFS_HOST::HCH6CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH6CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH6CTL_CEN_Values<USBFS_HOST::HCH6CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH6CTLPack  = Register<0x500005C0, 32, ReadWriteMode, USBFS_HOSTHCH6CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH7CTLBase {} ;
+
+  struct HCH7CTL : public RegisterBase<0x500005E0, 32, ReadWriteMode>
+  {
+    using MPL = USBFS_HOST_HCH7CTL_MPL_Values<USBFS_HOST::HCH7CTL, 0, 11, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using EPNUM = USBFS_HOST_HCH7CTL_EPNUM_Values<USBFS_HOST::HCH7CTL, 11, 4, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using EPDIR = USBFS_HOST_HCH7CTL_EPDIR_Values<USBFS_HOST::HCH7CTL, 15, 1, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using LSD = USBFS_HOST_HCH7CTL_LSD_Values<USBFS_HOST::HCH7CTL, 17, 1, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using EPTYPE = USBFS_HOST_HCH7CTL_EPTYPE_Values<USBFS_HOST::HCH7CTL, 18, 2, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using DAR = USBFS_HOST_HCH7CTL_DAR_Values<USBFS_HOST::HCH7CTL, 22, 7, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using ODDFRM = USBFS_HOST_HCH7CTL_ODDFRM_Values<USBFS_HOST::HCH7CTL, 29, 1, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using CDIS = USBFS_HOST_HCH7CTL_CDIS_Values<USBFS_HOST::HCH7CTL, 30, 1, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using CEN = USBFS_HOST_HCH7CTL_CEN_Values<USBFS_HOST::HCH7CTL, 31, 1, ReadWriteMode, USBFS_HOSTHCH7CTLBase> ;
+    using FieldValues = USBFS_HOST_HCH7CTL_CEN_Values<USBFS_HOST::HCH7CTL, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH7CTLPack  = Register<0x500005E0, 32, ReadWriteMode, USBFS_HOSTHCH7CTLBase, T...> ;
+
+  struct USBFS_HOSTHCH0INTFBase {} ;
+
+  struct HCH0INTF : public RegisterBase<0x50000508, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH0INTF_TF_Values<USBFS_HOST::HCH0INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using CH = USBFS_HOST_HCH0INTF_CH_Values<USBFS_HOST::HCH0INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using STALL = USBFS_HOST_HCH0INTF_STALL_Values<USBFS_HOST::HCH0INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using NAK = USBFS_HOST_HCH0INTF_NAK_Values<USBFS_HOST::HCH0INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using ACK = USBFS_HOST_HCH0INTF_ACK_Values<USBFS_HOST::HCH0INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using USBER = USBFS_HOST_HCH0INTF_USBER_Values<USBFS_HOST::HCH0INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using BBER = USBFS_HOST_HCH0INTF_BBER_Values<USBFS_HOST::HCH0INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH0INTF_REQOVR_Values<USBFS_HOST::HCH0INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using DTER = USBFS_HOST_HCH0INTF_DTER_Values<USBFS_HOST::HCH0INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH0INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH0INTF_DTER_Values<USBFS_HOST::HCH0INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH0INTFPack  = Register<0x50000508, 32, ReadWriteMode, USBFS_HOSTHCH0INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH1INTFBase {} ;
+
+  struct HCH1INTF : public RegisterBase<0x50000528, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH1INTF_TF_Values<USBFS_HOST::HCH1INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using CH = USBFS_HOST_HCH1INTF_CH_Values<USBFS_HOST::HCH1INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using STALL = USBFS_HOST_HCH1INTF_STALL_Values<USBFS_HOST::HCH1INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using NAK = USBFS_HOST_HCH1INTF_NAK_Values<USBFS_HOST::HCH1INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using ACK = USBFS_HOST_HCH1INTF_ACK_Values<USBFS_HOST::HCH1INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using USBER = USBFS_HOST_HCH1INTF_USBER_Values<USBFS_HOST::HCH1INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using BBER = USBFS_HOST_HCH1INTF_BBER_Values<USBFS_HOST::HCH1INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH1INTF_REQOVR_Values<USBFS_HOST::HCH1INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using DTER = USBFS_HOST_HCH1INTF_DTER_Values<USBFS_HOST::HCH1INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH1INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH1INTF_DTER_Values<USBFS_HOST::HCH1INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH1INTFPack  = Register<0x50000528, 32, ReadWriteMode, USBFS_HOSTHCH1INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH2INTFBase {} ;
+
+  struct HCH2INTF : public RegisterBase<0x50000548, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH2INTF_TF_Values<USBFS_HOST::HCH2INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using CH = USBFS_HOST_HCH2INTF_CH_Values<USBFS_HOST::HCH2INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using STALL = USBFS_HOST_HCH2INTF_STALL_Values<USBFS_HOST::HCH2INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using NAK = USBFS_HOST_HCH2INTF_NAK_Values<USBFS_HOST::HCH2INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using ACK = USBFS_HOST_HCH2INTF_ACK_Values<USBFS_HOST::HCH2INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using USBER = USBFS_HOST_HCH2INTF_USBER_Values<USBFS_HOST::HCH2INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using BBER = USBFS_HOST_HCH2INTF_BBER_Values<USBFS_HOST::HCH2INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH2INTF_REQOVR_Values<USBFS_HOST::HCH2INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using DTER = USBFS_HOST_HCH2INTF_DTER_Values<USBFS_HOST::HCH2INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH2INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH2INTF_DTER_Values<USBFS_HOST::HCH2INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH2INTFPack  = Register<0x50000548, 32, ReadWriteMode, USBFS_HOSTHCH2INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH3INTFBase {} ;
+
+  struct HCH3INTF : public RegisterBase<0x50000568, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH3INTF_TF_Values<USBFS_HOST::HCH3INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using CH = USBFS_HOST_HCH3INTF_CH_Values<USBFS_HOST::HCH3INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using STALL = USBFS_HOST_HCH3INTF_STALL_Values<USBFS_HOST::HCH3INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using NAK = USBFS_HOST_HCH3INTF_NAK_Values<USBFS_HOST::HCH3INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using ACK = USBFS_HOST_HCH3INTF_ACK_Values<USBFS_HOST::HCH3INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using USBER = USBFS_HOST_HCH3INTF_USBER_Values<USBFS_HOST::HCH3INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using BBER = USBFS_HOST_HCH3INTF_BBER_Values<USBFS_HOST::HCH3INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH3INTF_REQOVR_Values<USBFS_HOST::HCH3INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using DTER = USBFS_HOST_HCH3INTF_DTER_Values<USBFS_HOST::HCH3INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH3INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH3INTF_DTER_Values<USBFS_HOST::HCH3INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH3INTFPack  = Register<0x50000568, 32, ReadWriteMode, USBFS_HOSTHCH3INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH4INTFBase {} ;
+
+  struct HCH4INTF : public RegisterBase<0x50000588, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH4INTF_TF_Values<USBFS_HOST::HCH4INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using CH = USBFS_HOST_HCH4INTF_CH_Values<USBFS_HOST::HCH4INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using STALL = USBFS_HOST_HCH4INTF_STALL_Values<USBFS_HOST::HCH4INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using NAK = USBFS_HOST_HCH4INTF_NAK_Values<USBFS_HOST::HCH4INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using ACK = USBFS_HOST_HCH4INTF_ACK_Values<USBFS_HOST::HCH4INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using USBER = USBFS_HOST_HCH4INTF_USBER_Values<USBFS_HOST::HCH4INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using BBER = USBFS_HOST_HCH4INTF_BBER_Values<USBFS_HOST::HCH4INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH4INTF_REQOVR_Values<USBFS_HOST::HCH4INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using DTER = USBFS_HOST_HCH4INTF_DTER_Values<USBFS_HOST::HCH4INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH4INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH4INTF_DTER_Values<USBFS_HOST::HCH4INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH4INTFPack  = Register<0x50000588, 32, ReadWriteMode, USBFS_HOSTHCH4INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH5INTFBase {} ;
+
+  struct HCH5INTF : public RegisterBase<0x500005A8, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH5INTF_TF_Values<USBFS_HOST::HCH5INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using CH = USBFS_HOST_HCH5INTF_CH_Values<USBFS_HOST::HCH5INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using STALL = USBFS_HOST_HCH5INTF_STALL_Values<USBFS_HOST::HCH5INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using NAK = USBFS_HOST_HCH5INTF_NAK_Values<USBFS_HOST::HCH5INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using ACK = USBFS_HOST_HCH5INTF_ACK_Values<USBFS_HOST::HCH5INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using USBER = USBFS_HOST_HCH5INTF_USBER_Values<USBFS_HOST::HCH5INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using BBER = USBFS_HOST_HCH5INTF_BBER_Values<USBFS_HOST::HCH5INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH5INTF_REQOVR_Values<USBFS_HOST::HCH5INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using DTER = USBFS_HOST_HCH5INTF_DTER_Values<USBFS_HOST::HCH5INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH5INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH5INTF_DTER_Values<USBFS_HOST::HCH5INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH5INTFPack  = Register<0x500005A8, 32, ReadWriteMode, USBFS_HOSTHCH5INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH6INTFBase {} ;
+
+  struct HCH6INTF : public RegisterBase<0x500005C8, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH6INTF_TF_Values<USBFS_HOST::HCH6INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using CH = USBFS_HOST_HCH6INTF_CH_Values<USBFS_HOST::HCH6INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using STALL = USBFS_HOST_HCH6INTF_STALL_Values<USBFS_HOST::HCH6INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using NAK = USBFS_HOST_HCH6INTF_NAK_Values<USBFS_HOST::HCH6INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using ACK = USBFS_HOST_HCH6INTF_ACK_Values<USBFS_HOST::HCH6INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using USBER = USBFS_HOST_HCH6INTF_USBER_Values<USBFS_HOST::HCH6INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using BBER = USBFS_HOST_HCH6INTF_BBER_Values<USBFS_HOST::HCH6INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH6INTF_REQOVR_Values<USBFS_HOST::HCH6INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using DTER = USBFS_HOST_HCH6INTF_DTER_Values<USBFS_HOST::HCH6INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH6INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH6INTF_DTER_Values<USBFS_HOST::HCH6INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH6INTFPack  = Register<0x500005C8, 32, ReadWriteMode, USBFS_HOSTHCH6INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH7INTFBase {} ;
+
+  struct HCH7INTF : public RegisterBase<0x500005E8, 32, ReadWriteMode>
+  {
+    using TF = USBFS_HOST_HCH7INTF_TF_Values<USBFS_HOST::HCH7INTF, 0, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using CH = USBFS_HOST_HCH7INTF_CH_Values<USBFS_HOST::HCH7INTF, 1, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using STALL = USBFS_HOST_HCH7INTF_STALL_Values<USBFS_HOST::HCH7INTF, 3, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using NAK = USBFS_HOST_HCH7INTF_NAK_Values<USBFS_HOST::HCH7INTF, 4, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using ACK = USBFS_HOST_HCH7INTF_ACK_Values<USBFS_HOST::HCH7INTF, 5, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using USBER = USBFS_HOST_HCH7INTF_USBER_Values<USBFS_HOST::HCH7INTF, 7, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using BBER = USBFS_HOST_HCH7INTF_BBER_Values<USBFS_HOST::HCH7INTF, 8, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using REQOVR = USBFS_HOST_HCH7INTF_REQOVR_Values<USBFS_HOST::HCH7INTF, 9, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using DTER = USBFS_HOST_HCH7INTF_DTER_Values<USBFS_HOST::HCH7INTF, 10, 1, ReadWriteMode, USBFS_HOSTHCH7INTFBase> ;
+    using FieldValues = USBFS_HOST_HCH7INTF_DTER_Values<USBFS_HOST::HCH7INTF, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH7INTFPack  = Register<0x500005E8, 32, ReadWriteMode, USBFS_HOSTHCH7INTFBase, T...> ;
+
+  struct USBFS_HOSTHCH0INTENBase {} ;
+
+  struct HCH0INTEN : public RegisterBase<0x5000050C, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH0INTEN_TFIE_Values<USBFS_HOST::HCH0INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using CHIE = USBFS_HOST_HCH0INTEN_CHIE_Values<USBFS_HOST::HCH0INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH0INTEN_STALLIE_Values<USBFS_HOST::HCH0INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH0INTEN_NAKIE_Values<USBFS_HOST::HCH0INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH0INTEN_ACKIE_Values<USBFS_HOST::HCH0INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH0INTEN_USBERIE_Values<USBFS_HOST::HCH0INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH0INTEN_BBERIE_Values<USBFS_HOST::HCH0INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH0INTEN_REQOVRIE_Values<USBFS_HOST::HCH0INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH0INTEN_DTERIE_Values<USBFS_HOST::HCH0INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH0INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH0INTEN_DTERIE_Values<USBFS_HOST::HCH0INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH0INTENPack  = Register<0x5000050C, 32, ReadWriteMode, USBFS_HOSTHCH0INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH1INTENBase {} ;
+
+  struct HCH1INTEN : public RegisterBase<0x5000052C, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH1INTEN_TFIE_Values<USBFS_HOST::HCH1INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using CHIE = USBFS_HOST_HCH1INTEN_CHIE_Values<USBFS_HOST::HCH1INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH1INTEN_STALLIE_Values<USBFS_HOST::HCH1INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH1INTEN_NAKIE_Values<USBFS_HOST::HCH1INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH1INTEN_ACKIE_Values<USBFS_HOST::HCH1INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH1INTEN_USBERIE_Values<USBFS_HOST::HCH1INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH1INTEN_BBERIE_Values<USBFS_HOST::HCH1INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH1INTEN_REQOVRIE_Values<USBFS_HOST::HCH1INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH1INTEN_DTERIE_Values<USBFS_HOST::HCH1INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH1INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH1INTEN_DTERIE_Values<USBFS_HOST::HCH1INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH1INTENPack  = Register<0x5000052C, 32, ReadWriteMode, USBFS_HOSTHCH1INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH2INTENBase {} ;
+
+  struct HCH2INTEN : public RegisterBase<0x5000054C, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH2INTEN_TFIE_Values<USBFS_HOST::HCH2INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using CHIE = USBFS_HOST_HCH2INTEN_CHIE_Values<USBFS_HOST::HCH2INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH2INTEN_STALLIE_Values<USBFS_HOST::HCH2INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH2INTEN_NAKIE_Values<USBFS_HOST::HCH2INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH2INTEN_ACKIE_Values<USBFS_HOST::HCH2INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH2INTEN_USBERIE_Values<USBFS_HOST::HCH2INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH2INTEN_BBERIE_Values<USBFS_HOST::HCH2INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH2INTEN_REQOVRIE_Values<USBFS_HOST::HCH2INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH2INTEN_DTERIE_Values<USBFS_HOST::HCH2INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH2INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH2INTEN_DTERIE_Values<USBFS_HOST::HCH2INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH2INTENPack  = Register<0x5000054C, 32, ReadWriteMode, USBFS_HOSTHCH2INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH3INTENBase {} ;
+
+  struct HCH3INTEN : public RegisterBase<0x5000056C, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH3INTEN_TFIE_Values<USBFS_HOST::HCH3INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using CHIE = USBFS_HOST_HCH3INTEN_CHIE_Values<USBFS_HOST::HCH3INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH3INTEN_STALLIE_Values<USBFS_HOST::HCH3INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH3INTEN_NAKIE_Values<USBFS_HOST::HCH3INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH3INTEN_ACKIE_Values<USBFS_HOST::HCH3INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH3INTEN_USBERIE_Values<USBFS_HOST::HCH3INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH3INTEN_BBERIE_Values<USBFS_HOST::HCH3INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH3INTEN_REQOVRIE_Values<USBFS_HOST::HCH3INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH3INTEN_DTERIE_Values<USBFS_HOST::HCH3INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH3INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH3INTEN_DTERIE_Values<USBFS_HOST::HCH3INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH3INTENPack  = Register<0x5000056C, 32, ReadWriteMode, USBFS_HOSTHCH3INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH4INTENBase {} ;
+
+  struct HCH4INTEN : public RegisterBase<0x5000058C, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH4INTEN_TFIE_Values<USBFS_HOST::HCH4INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using CHIE = USBFS_HOST_HCH4INTEN_CHIE_Values<USBFS_HOST::HCH4INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH4INTEN_STALLIE_Values<USBFS_HOST::HCH4INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH4INTEN_NAKIE_Values<USBFS_HOST::HCH4INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH4INTEN_ACKIE_Values<USBFS_HOST::HCH4INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH4INTEN_USBERIE_Values<USBFS_HOST::HCH4INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH4INTEN_BBERIE_Values<USBFS_HOST::HCH4INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH4INTEN_REQOVRIE_Values<USBFS_HOST::HCH4INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH4INTEN_DTERIE_Values<USBFS_HOST::HCH4INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH4INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH4INTEN_DTERIE_Values<USBFS_HOST::HCH4INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH4INTENPack  = Register<0x5000058C, 32, ReadWriteMode, USBFS_HOSTHCH4INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH5INTENBase {} ;
+
+  struct HCH5INTEN : public RegisterBase<0x500005AC, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH5INTEN_TFIE_Values<USBFS_HOST::HCH5INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using CHIE = USBFS_HOST_HCH5INTEN_CHIE_Values<USBFS_HOST::HCH5INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH5INTEN_STALLIE_Values<USBFS_HOST::HCH5INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH5INTEN_NAKIE_Values<USBFS_HOST::HCH5INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH5INTEN_ACKIE_Values<USBFS_HOST::HCH5INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH5INTEN_USBERIE_Values<USBFS_HOST::HCH5INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH5INTEN_BBERIE_Values<USBFS_HOST::HCH5INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH5INTEN_REQOVRIE_Values<USBFS_HOST::HCH5INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH5INTEN_DTERIE_Values<USBFS_HOST::HCH5INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH5INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH5INTEN_DTERIE_Values<USBFS_HOST::HCH5INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH5INTENPack  = Register<0x500005AC, 32, ReadWriteMode, USBFS_HOSTHCH5INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH6INTENBase {} ;
+
+  struct HCH6INTEN : public RegisterBase<0x500005CC, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH6INTEN_TFIE_Values<USBFS_HOST::HCH6INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using CHIE = USBFS_HOST_HCH6INTEN_CHIE_Values<USBFS_HOST::HCH6INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH6INTEN_STALLIE_Values<USBFS_HOST::HCH6INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH6INTEN_NAKIE_Values<USBFS_HOST::HCH6INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH6INTEN_ACKIE_Values<USBFS_HOST::HCH6INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH6INTEN_USBERIE_Values<USBFS_HOST::HCH6INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH6INTEN_BBERIE_Values<USBFS_HOST::HCH6INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH6INTEN_REQOVRIE_Values<USBFS_HOST::HCH6INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH6INTEN_DTERIE_Values<USBFS_HOST::HCH6INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH6INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH6INTEN_DTERIE_Values<USBFS_HOST::HCH6INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH6INTENPack  = Register<0x500005CC, 32, ReadWriteMode, USBFS_HOSTHCH6INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH7INTENBase {} ;
+
+  struct HCH7INTEN : public RegisterBase<0x500005EC, 32, ReadWriteMode>
+  {
+    using TFIE = USBFS_HOST_HCH7INTEN_TFIE_Values<USBFS_HOST::HCH7INTEN, 0, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using CHIE = USBFS_HOST_HCH7INTEN_CHIE_Values<USBFS_HOST::HCH7INTEN, 1, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using STALLIE = USBFS_HOST_HCH7INTEN_STALLIE_Values<USBFS_HOST::HCH7INTEN, 3, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using NAKIE = USBFS_HOST_HCH7INTEN_NAKIE_Values<USBFS_HOST::HCH7INTEN, 4, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using ACKIE = USBFS_HOST_HCH7INTEN_ACKIE_Values<USBFS_HOST::HCH7INTEN, 5, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using USBERIE = USBFS_HOST_HCH7INTEN_USBERIE_Values<USBFS_HOST::HCH7INTEN, 7, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using BBERIE = USBFS_HOST_HCH7INTEN_BBERIE_Values<USBFS_HOST::HCH7INTEN, 8, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using REQOVRIE = USBFS_HOST_HCH7INTEN_REQOVRIE_Values<USBFS_HOST::HCH7INTEN, 9, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using DTERIE = USBFS_HOST_HCH7INTEN_DTERIE_Values<USBFS_HOST::HCH7INTEN, 10, 1, ReadWriteMode, USBFS_HOSTHCH7INTENBase> ;
+    using FieldValues = USBFS_HOST_HCH7INTEN_DTERIE_Values<USBFS_HOST::HCH7INTEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH7INTENPack  = Register<0x500005EC, 32, ReadWriteMode, USBFS_HOSTHCH7INTENBase, T...> ;
+
+  struct USBFS_HOSTHCH0LENBase {} ;
+
+  struct HCH0LEN : public RegisterBase<0x50000510, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH0LEN_TLEN_Values<USBFS_HOST::HCH0LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH0LENBase> ;
+    using PCNT = USBFS_HOST_HCH0LEN_PCNT_Values<USBFS_HOST::HCH0LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH0LENBase> ;
+    using DPID = USBFS_HOST_HCH0LEN_DPID_Values<USBFS_HOST::HCH0LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH0LENBase> ;
+    using FieldValues = USBFS_HOST_HCH0LEN_DPID_Values<USBFS_HOST::HCH0LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH0LENPack  = Register<0x50000510, 32, ReadWriteMode, USBFS_HOSTHCH0LENBase, T...> ;
+
+  struct USBFS_HOSTHCH1LENBase {} ;
+
+  struct HCH1LEN : public RegisterBase<0x50000530, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH1LEN_TLEN_Values<USBFS_HOST::HCH1LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH1LENBase> ;
+    using PCNT = USBFS_HOST_HCH1LEN_PCNT_Values<USBFS_HOST::HCH1LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH1LENBase> ;
+    using DPID = USBFS_HOST_HCH1LEN_DPID_Values<USBFS_HOST::HCH1LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH1LENBase> ;
+    using FieldValues = USBFS_HOST_HCH1LEN_DPID_Values<USBFS_HOST::HCH1LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH1LENPack  = Register<0x50000530, 32, ReadWriteMode, USBFS_HOSTHCH1LENBase, T...> ;
+
+  struct USBFS_HOSTHCH2LENBase {} ;
+
+  struct HCH2LEN : public RegisterBase<0x50000550, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH2LEN_TLEN_Values<USBFS_HOST::HCH2LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH2LENBase> ;
+    using PCNT = USBFS_HOST_HCH2LEN_PCNT_Values<USBFS_HOST::HCH2LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH2LENBase> ;
+    using DPID = USBFS_HOST_HCH2LEN_DPID_Values<USBFS_HOST::HCH2LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH2LENBase> ;
+    using FieldValues = USBFS_HOST_HCH2LEN_DPID_Values<USBFS_HOST::HCH2LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH2LENPack  = Register<0x50000550, 32, ReadWriteMode, USBFS_HOSTHCH2LENBase, T...> ;
+
+  struct USBFS_HOSTHCH3LENBase {} ;
+
+  struct HCH3LEN : public RegisterBase<0x50000570, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH3LEN_TLEN_Values<USBFS_HOST::HCH3LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH3LENBase> ;
+    using PCNT = USBFS_HOST_HCH3LEN_PCNT_Values<USBFS_HOST::HCH3LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH3LENBase> ;
+    using DPID = USBFS_HOST_HCH3LEN_DPID_Values<USBFS_HOST::HCH3LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH3LENBase> ;
+    using FieldValues = USBFS_HOST_HCH3LEN_DPID_Values<USBFS_HOST::HCH3LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH3LENPack  = Register<0x50000570, 32, ReadWriteMode, USBFS_HOSTHCH3LENBase, T...> ;
+
+  struct USBFS_HOSTHCH4LENBase {} ;
+
+  struct HCH4LEN : public RegisterBase<0x50000590, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH4LEN_TLEN_Values<USBFS_HOST::HCH4LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH4LENBase> ;
+    using PCNT = USBFS_HOST_HCH4LEN_PCNT_Values<USBFS_HOST::HCH4LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH4LENBase> ;
+    using DPID = USBFS_HOST_HCH4LEN_DPID_Values<USBFS_HOST::HCH4LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH4LENBase> ;
+    using FieldValues = USBFS_HOST_HCH4LEN_DPID_Values<USBFS_HOST::HCH4LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH4LENPack  = Register<0x50000590, 32, ReadWriteMode, USBFS_HOSTHCH4LENBase, T...> ;
+
+  struct USBFS_HOSTHCH5LENBase {} ;
+
+  struct HCH5LEN : public RegisterBase<0x500005B0, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH5LEN_TLEN_Values<USBFS_HOST::HCH5LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH5LENBase> ;
+    using PCNT = USBFS_HOST_HCH5LEN_PCNT_Values<USBFS_HOST::HCH5LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH5LENBase> ;
+    using DPID = USBFS_HOST_HCH5LEN_DPID_Values<USBFS_HOST::HCH5LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH5LENBase> ;
+    using FieldValues = USBFS_HOST_HCH5LEN_DPID_Values<USBFS_HOST::HCH5LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH5LENPack  = Register<0x500005B0, 32, ReadWriteMode, USBFS_HOSTHCH5LENBase, T...> ;
+
+  struct USBFS_HOSTHCH6LENBase {} ;
+
+  struct HCH6LEN : public RegisterBase<0x500005D0, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH6LEN_TLEN_Values<USBFS_HOST::HCH6LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH6LENBase> ;
+    using PCNT = USBFS_HOST_HCH6LEN_PCNT_Values<USBFS_HOST::HCH6LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH6LENBase> ;
+    using DPID = USBFS_HOST_HCH6LEN_DPID_Values<USBFS_HOST::HCH6LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH6LENBase> ;
+    using FieldValues = USBFS_HOST_HCH6LEN_DPID_Values<USBFS_HOST::HCH6LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH6LENPack  = Register<0x500005D0, 32, ReadWriteMode, USBFS_HOSTHCH6LENBase, T...> ;
+
+  struct USBFS_HOSTHCH7LENBase {} ;
+
+  struct HCH7LEN : public RegisterBase<0x500005F0, 32, ReadWriteMode>
+  {
+    using TLEN = USBFS_HOST_HCH7LEN_TLEN_Values<USBFS_HOST::HCH7LEN, 0, 19, ReadWriteMode, USBFS_HOSTHCH7LENBase> ;
+    using PCNT = USBFS_HOST_HCH7LEN_PCNT_Values<USBFS_HOST::HCH7LEN, 19, 10, ReadWriteMode, USBFS_HOSTHCH7LENBase> ;
+    using DPID = USBFS_HOST_HCH7LEN_DPID_Values<USBFS_HOST::HCH7LEN, 29, 2, ReadWriteMode, USBFS_HOSTHCH7LENBase> ;
+    using FieldValues = USBFS_HOST_HCH7LEN_DPID_Values<USBFS_HOST::HCH7LEN, 0, 0, NoAccess, NoAccess> ;
+  } ;
+
+  template<typename... T> 
+  using HCH7LENPack  = Register<0x500005F0, 32, ReadWriteMode, USBFS_HOSTHCH7LENBase, T...> ;
+
+} ;
+
+#endif //#if !defined(USBFSHOSTREGISTERS_HPP)
