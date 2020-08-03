@@ -8,6 +8,7 @@ import re
 access_mode = {
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
+    'write': 'WriteMode',
     'read-write': 'ReadWriteMode',
     'writeOnce': 'WriteMode',
     'read-WriteOnce': 'ReadWriteMode',
@@ -22,6 +23,7 @@ register_types = {
 fieldvalue_types = {
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
+    'write': 'WriteMode',
     'read-write': 'ReadWriteMode',
     'writeOnce': 'WriteMode',
     'read-WriteOnce': 'ReadWriteMode',
@@ -31,6 +33,7 @@ fieldvalue_types = {
 register_field_types = {
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
+    'write': 'WriteMode',
     'read-write': 'ReadWriteMode',
     'writeOnce': 'WriteMode',
     'read-WriteOnce': 'ReadWriteMode',
