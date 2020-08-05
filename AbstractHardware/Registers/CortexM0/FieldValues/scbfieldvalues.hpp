@@ -15,7 +15,7 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct SCB_CPUID_Revision_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  sing  CortexM0 = FieldValue<SCB_CPUID_Revision_Values, BaseType, 0xC20U> ;
+  using  CortexM0 = FieldValue<SCB_CPUID_Revision_Values, BaseType, 0xC20U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

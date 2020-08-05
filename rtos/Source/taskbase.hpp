@@ -8,10 +8,9 @@
 template <typename T>
 struct TaskBase
 {
-
- protected:
-    template<typename CoreType, const auto& ...args>
-    friend class Tasker ;
+ //protected:
+ //   template<const auto& ...args>
+ //   friend class Tasker ;
     inline static tStateEvents events = static_cast<tStateEvents>(0U);
 };
 

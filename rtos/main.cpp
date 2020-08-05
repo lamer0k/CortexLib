@@ -3,6 +3,7 @@
 #include "taskerconfig.hpp" // for myTasker
 #include "stkregisters.hpp" // for STK
 #include "rccregisters.hpp" // for RCC
+#include "gpioaregisters.hpp" // for GPIOA
 
 extern "C" 
 {

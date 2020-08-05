@@ -4,54 +4,16 @@
 
 #include "taskertypes.hpp"            // For  types
 #include "criticalsection.hpp"        // For CriticalSection
-#include "idletask.hpp"               // For IdleTask
-#include "scbregisters.hpp"           // For Scb
 #include "susudefs.hpp"               // For __forceinline
 #include <cassert>                    // For assert(), static_assert()
-#include "coretypes.hpp"              // for CortexM, GD32VF
 #include <type_traits>                // for std::is_same
+//#include "scbregisters.hpp"  // for SCB
 
-
-template<typename CoreType, const auto& ...tasks>
+template<const auto& ...tasks>
 class Tasker
 {
  public:
-
-    __forceinline void LowLevelInit()
-    {
-        if constexpr (std::is_same<CoreType, GD32VF>::value)
-        {
-            __disable_interrupt();
-            /* Set the the NMI base to share with mtvec by setting CSR_MMISC_CTL */
-            /* li t0, 0x200           */
-            /* csrs CSR_MMISC_CTL, t0 */
-           // __set_bits_csr(/*CSR_MMISC_CTL*/ 0x7D0, 0x200);
-
-            /* Initialize the mtvt */
-            /* la t0, vector_base      */
-            /* csrw CSR_MTVT, t0       */
-           // __write_csr(_CSR_MTVT, ((unsigned int)&gd_vector_base));
-            /* Initialize the mtvt2 and enable it */
-            /* la t0, irq_entry
-               csrw CSR_MTVT2, t0
-               csrs CSR_MTVT2, 0x1
-            */
-           // __write_csr(/*_CSR_MTVT2*/ 0x7EC, 0x1 | ((unsigned int)&InterruptHandlers::IrqEntry));
-
-            /* Initialize the CSR MTVEC for the Trap ane NMI base addr*/
-            /* la t0, trap_entry
-               csrw CSR_MTVEC, t0
-            */
-           // __write_csr(_CSR_MTVEC, 0x03 | ((unsigned int)&InterruptHandlers::TrapEntry));
-
-            /* Enable mycycle_minstret */
-            //__clear_bits_csr(/*CSR_MCOUNTINHIBIT*/ 0x320, 0x5);
-        }
-        else if constexpr (std::is_same<CoreType, CortexM>::value)
-        {
-        }
-    }
-
+    
     __forceinline static void Start()
     {
         if (status != Status::Running)
@@ -88,15 +50,8 @@ class Tasker
     __forceinline static void IsrExit()
     {
         assert(scheduleLockedCounter != 0U);
-        --scheduleLockedCounter;
-        if constexpr (std::is_same<CoreType, CortexM>::value)
-        {
-            SCB::ICSR::PENDSVSET::PendingState::Set();
-        }
-        else if constexpr (std::is_same<CoreType, GD32VF>::value)
-        {
-
-        }
+        --scheduleLockedCounter;           
+      // SCB::ICSR::PENDSVSET::PendingState::Set();       
     }
 
  private:
@@ -143,7 +98,15 @@ class Tasker
     {
         if constexpr (sizeof...(args) != 0U)
         {
-            return (task.events != noEvents) ? result : GetFirstActiveTask<args...>(result + 1U);
+          if (task.events != noEvents)
+          {
+            return result ;
+          }
+          else
+          {
+            return GetFirstActiveTask<args...>(result + 1U) ;
+          }
+          //return (task.events != noEvents) ? result : GetFirstActiveTask<args...>(result + 1U);
         }
         else
         {
@@ -165,7 +128,7 @@ class Tasker
         {
             if (result == id)
             {
-                CallTaskHelper<task>();
+              CallTaskHelper<task>();
             }
             else
             {
@@ -187,7 +150,7 @@ class Tasker
         }
     }
 
-    __forceinline template<const auto& task>
+    __forceinline template<const auto& task> 
     static void CallTaskHelper()
     {
         task.events = noEvents;

@@ -5,7 +5,6 @@
 #include <cstdint>
 
 extern void Scheduler() ;
-#define __interrupt
 
 using tInterruptFunction = void (*)() ;
 
@@ -16,10 +15,10 @@ struct InterruptHandlers
  public:
     __interrupt static void TrapEntry();
     __interrupt static void IrqEntry();
-    __interrupt static void CallScheduler() ;
+    static void CallScheduler() ;
 
 private:
-    static void  HandleTrap(std::uintptr_t mcause)
+    static void  HandleTrap(std::uintptr_t mcause) 
     {
         tInterruptFunction fp;
         mcause &= 0xFFF;
