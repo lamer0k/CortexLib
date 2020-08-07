@@ -18,8 +18,7 @@ template<typename Field, typename Base, typename Field::Register::Type value,
 struct FieldValue : public FieldValueBase<Field, Base, value>
 {
 		using Type = typename Field::Register::Type;
-		constexpr static auto Mask = (Field::Size <	sizeof(Type)) ? static_cast<Type>(static_cast<Type>(1U) << (static_cast<Type>(Field::Size)) - static_cast<Type>(1U)) :
-		                                     std::numeric_limits<Type>::max();;
+		constexpr static auto Mask = Field::Mask;
 		constexpr static auto Value = value;
 		constexpr static auto Offset = Field::Offset;
 		using BaseType = Base;

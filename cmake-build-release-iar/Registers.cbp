@@ -126,63 +126,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Adc/hardwareadc.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Mlx90614/mlx90614.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Smbus/Stm32F4xx/STM32F411/hardwaresmbus.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Smbus/smbus.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimercc.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/Stm32Fxx/STM32F411/hardwaretimeroverflow.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/delaytimer.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/systemtimer.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Timer/timerobserver.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuartrx.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttc.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/Stm32Fxx/STM32F303/hardwareuarttx.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriver.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriverconfig.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartdriverobservers.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/AbstractHardware/Uart/uartobservers.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/Application/application.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/Common/Observer/observers.hpp">
-			<Option target="Registers"/>
-		</Unit>
-		<Unit filename="C:/GitHub/CortexLib/Common/RomObject/memoryobject.hpp">
-			<Option target="Registers"/>
-		</Unit>
 		<Unit filename="C:/GitHub/CortexLib/main.cpp">
 			<Option target="Registers"/>
 		</Unit>

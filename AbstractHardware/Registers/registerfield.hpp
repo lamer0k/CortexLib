@@ -19,7 +19,7 @@ struct RegisterField
 
 		static constexpr RegType Offset = offset;
 		static constexpr RegType Size = size;
-		static constexpr RegType Mask = (size < sizeof(RegType)) ? (static_cast<RegType>(
+		static constexpr RegType Mask = (size < sizeof(RegType) * 8U) ? (static_cast<RegType>(
 						(static_cast<RegType>(1U) << size) - static_cast<RegType>(1U))) : std::numeric_limits<RegType>::max();
 		using Access = AccessMode;
 
