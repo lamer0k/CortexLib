@@ -23,4 +23,5 @@ struct FieldValue : public FieldValueBase<Field, Base, value>
 		constexpr static auto Offset = Field::Offset;
 		using BaseType = Base;
 		using Access = typename Field::Access;
+		using FieldType = Field;
 };

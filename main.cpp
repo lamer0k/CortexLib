@@ -59,7 +59,8 @@ int __low_level_init(void)
     RCC::AHB1ENRPack<
         RCC::AHB1ENR::GPIOCEN::Enable,
         RCC::AHB1ENR::GPIOAEN::Enable,
-        RCC::AHB1ENR::GPIOBEN::Enable
+        RCC::AHB1ENR::GPIOBEN::Enable,
+
     >::Set() ;
 
     RCC::APB1ENRPack<
