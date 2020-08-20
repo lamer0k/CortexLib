@@ -43,7 +43,8 @@ class Register
 
     //Метод Write устанавливает битовые поля, только если регистр может использоваться для записи
     __forceinline template<typename T = AccessMode,
-        class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
+        class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value||
+                                          std::is_base_of<ReadWriteMode, T>::value>>
     static void Write()
     {
         static constexpr auto value = GetValue();
