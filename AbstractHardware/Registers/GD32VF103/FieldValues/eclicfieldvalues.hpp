@@ -494,8 +494,8 @@ struct ECLIC_CLICINTIP_86_IP_Values: public ECLIC_CLICINTIP_0_IP_Values<Reg, off
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct ECLIC_CLICINTIE_0_IE_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Enable = FieldValue<ECLIC_CLICINTIE_0_IE_Values, BaseType, 0U> ;
-  using Masked = FieldValue<ECLIC_CLICINTIE_0_IE_Values, BaseType, 1U> ;
+    using Masked = FieldValue<ECLIC_CLICINTIE_0_IE_Values, BaseType, 0U> ;
+    using Enable = FieldValue<ECLIC_CLICINTIE_0_IE_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

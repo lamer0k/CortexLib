@@ -62,10 +62,9 @@ struct CSR_MCAUSE_MPP_Values : public CoreRegisterField<Reg, offset, size, Acces
 		using SupervisorMode = CoreFieldValue<CSR_MCAUSE_MPP_Values, BaseType, 1U>;
 		using MachineMode = CoreFieldValue<CSR_MCAUSE_MPP_Values, BaseType, 3U>;
 
-        using UserModeMask = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 1U>;
-        using SupervisorModeMask = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 1U>;
-        using MachineModeMask = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 3U>;
-
+        using MppBit0 = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 1U>;
+        using MppBit1 = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 2U>;
+        using MppMask = CoreFieldValueMask<CSR_MCAUSE_MPP_Values, BaseType, 3U>;
 };
 
 template<typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
@@ -74,8 +73,8 @@ struct CSR_MCAUSE_MINHV_Values : public CoreRegisterField<Reg, offset, size, Acc
 		using HardwareVectoringNotInProgress = CoreFieldValue<CSR_MCAUSE_MINHV_Values, BaseType, 0U>;
 		using HardwareVectoringInProgress = CoreFieldValue<CSR_MCAUSE_MINHV_Values, BaseType, 1U>;
 
-		using HardwareVectoringNotInProgressMask = CoreFieldValueMask<CSR_MCAUSE_MINHV_Values, BaseType, 1U>;
-        using HardwareVectoringInProgressMask = CoreFieldValueMask<CSR_MCAUSE_MINHV_Values, BaseType, 1U>;
+		using MinhvBit0 = CoreFieldValueMask<CSR_MCAUSE_MINHV_Values, BaseType, 1U>;
+        using MinhvMask = CoreFieldValueMask<CSR_MCAUSE_MINHV_Values, BaseType, 1U>;
 };
 
 template<typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
@@ -98,7 +97,9 @@ struct CSR_MTVEC_MODE_Values : public CoreRegisterField<Reg, offset, size, Acces
 {
     using Eclic = CoreFieldValue<CSR_MTVEC_MODE_Values, BaseType, 3U>;
 
-    using EclicMask = CoreFieldValueMask<CSR_MTVEC_MODE_Values, BaseType, 3U>;
+    using MtvecBit0 = CoreFieldValueMask<CSR_MTVEC_MODE_Values, BaseType, 1U>;
+    using MtvecBit1 = CoreFieldValueMask<CSR_MTVEC_MODE_Values, BaseType, 2U>;
+    using MtvecMask = CoreFieldValueMask<CSR_MTVEC_MODE_Values, BaseType, 3U>;
 };
 
 
@@ -124,6 +125,10 @@ struct CSR_MSTATUS_FS_Values : public CoreRegisterField<Reg, offset, size, Acces
     using Initial = CoreFieldValue<CSR_MSTATUS_FS_Values, BaseType, 1U>;
     using Clean = CoreFieldValue<CSR_MSTATUS_FS_Values, BaseType, 2U>;
     using Dirty = CoreFieldValue<CSR_MSTATUS_FS_Values, BaseType, 3U>;
+
+    using FsBit0 = CoreFieldValueMask<CSR_MSTATUS_FS_Values, BaseType, 1U>;
+    using FsBit1 = CoreFieldValueMask<CSR_MSTATUS_FS_Values, BaseType, 2U>;
+    using FsMask = CoreFieldValueMask<CSR_MSTATUS_FS_Values, BaseType, 3U>;
 };
 
 template<typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
@@ -133,6 +138,10 @@ struct CSR_MSTATUS_XS_Values : public CoreRegisterField<Reg, offset, size, Acces
     using Initial = CoreFieldValue<CSR_MSTATUS_XS_Values, BaseType, 1U>;
     using Clean = CoreFieldValue<CSR_MSTATUS_XS_Values, BaseType, 2U>;
     using Dirty = CoreFieldValue<CSR_MSTATUS_XS_Values, BaseType, 3U>;
+
+    using XsBit0 = CoreFieldValueMask<CSR_MSTATUS_XS_Values, BaseType, 1U>;
+    using XsBit1 = CoreFieldValueMask<CSR_MSTATUS_XS_Values, BaseType, 2U>;
+    using XsMask = CoreFieldValueMask<CSR_MSTATUS_XS_Values, BaseType, 3U>;
 };
 
 template<typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
@@ -140,4 +149,7 @@ struct CSR_MSTATUS_SD_Values : public CoreRegisterField<Reg, offset, size, Acces
 {
     using XsAndFsAreZero = CoreFieldValue<CSR_MSTATUS_SD_Values, BaseType, 0U>;
     using XsOrFsIsSet = CoreFieldValue<CSR_MSTATUS_SD_Values, BaseType, 1U>;
+
+    using SdBit0 = CoreFieldValueMask<CSR_MSTATUS_SD_Values, BaseType, 1U>;
+    using SdMask = CoreFieldValueMask<CSR_MSTATUS_SD_Values, BaseType, 1U>;
 };

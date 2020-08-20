@@ -21,23 +21,15 @@ struct GPIOB
 
   struct CTL0 : public RegisterBase<0x40010C00, 32, ReadWriteMode>
   {
-    using CTL7 = GPIOB_CTL0_CTL7_Values<GPIOB::CTL0, 30, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD7 = GPIOB_CTL0_MD7_Values<GPIOB::CTL0, 28, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL6 = GPIOB_CTL0_CTL6_Values<GPIOB::CTL0, 26, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD6 = GPIOB_CTL0_MD6_Values<GPIOB::CTL0, 24, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL5 = GPIOB_CTL0_CTL5_Values<GPIOB::CTL0, 22, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD5 = GPIOB_CTL0_MD5_Values<GPIOB::CTL0, 20, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL4 = GPIOB_CTL0_CTL4_Values<GPIOB::CTL0, 18, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD4 = GPIOB_CTL0_MD4_Values<GPIOB::CTL0, 16, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL3 = GPIOB_CTL0_CTL3_Values<GPIOB::CTL0, 14, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD3 = GPIOB_CTL0_MD3_Values<GPIOB::CTL0, 12, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL2 = GPIOB_CTL0_CTL2_Values<GPIOB::CTL0, 10, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD2 = GPIOB_CTL0_MD2_Values<GPIOB::CTL0, 8, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL1 = GPIOB_CTL0_CTL1_Values<GPIOB::CTL0, 6, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD1 = GPIOB_CTL0_MD1_Values<GPIOB::CTL0, 4, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using CTL0Field = GPIOB_CTL0_CTL0_Values<GPIOB::CTL0, 2, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using MD0 = GPIOB_CTL0_MD0_Values<GPIOB::CTL0, 0, 2, ReadWriteMode, GPIOBCTL0Base> ;
-    using FieldValues = GPIOB_CTL0_MD0_Values<GPIOB::CTL0, 0, 0, NoAccess, NoAccess> ;
+      using CTLMD7 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 28, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD6 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 24, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD5 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 20, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD4 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 16, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD3 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 12, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD2 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 8, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD1 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 4, 4, ReadWriteMode, GPIOBCTL0Base> ;
+      using CTLMD0 = GPIOB_CTL_MD_Values<GPIOB::CTL0, 0, 4, ReadWriteMode, GPIOBCTL0Base> ; ;
+    using FieldValues = GPIOB_CTL_MD_Values<GPIOB::CTL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -735,8 +735,8 @@ struct RCU_APB2EN_PAEN_Values: public RegisterField<Reg, offset, size, AccessMod
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct RCU_APB2EN_PBEN_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using Value0 = FieldValue<RCU_APB2EN_PBEN_Values, BaseType, 0U> ;
-  using Value1 = FieldValue<RCU_APB2EN_PBEN_Values, BaseType, 1U> ;
+  using Disable = FieldValue<RCU_APB2EN_PBEN_Values, BaseType, 0U> ;
+  using Enable = FieldValue<RCU_APB2EN_PBEN_Values, BaseType, 1U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

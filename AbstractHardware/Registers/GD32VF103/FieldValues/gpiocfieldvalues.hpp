@@ -10,7 +10,8 @@
 #if !defined(GPIOCENUMS_HPP)
 #define GPIOCENUMS_HPP
 
-#include "fieldvalue.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues
+
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
 struct GPIOC_CTL_MD_Values: public RegisterField<Reg, offset, size, AccessMode>
 {

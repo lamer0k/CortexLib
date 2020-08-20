@@ -11,6 +11,7 @@
 #define GPIOAENUMS_HPP
 
 #include "fieldvalue.hpp"     //for FieldValues
+#include <type_traits>
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER15_Values: public RegisterField<Reg, offset, size, AccessMode> 
@@ -69,7 +70,13 @@ struct GPIOA_MODER_MODER6_Values: public GPIOA_MODER_MODER15_Values<Reg, offset,
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
 struct GPIOA_MODER_MODER5_Values: public GPIOA_MODER_MODER15_Values<Reg, offset,size, AccessMode,BaseType>
 {
+		template<typename Reg::Type val,
+		        typename  = typename std::enable_if_t<(size >= sizeof(Reg::Type) * 8U) || (val < (1U << size))>>
+		using Value = FieldValue<GPIOA_MODER_MODER5_Values, BaseType, val>;
 } ;
+
+
+
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOA_MODER_MODER4_Values: public GPIOA_MODER_MODER15_Values<Reg, offset, size, AccessMode, BaseType>

@@ -13,8 +13,8 @@ struct CSRCUSTOM
     };
     struct MTVT2 : public CoreRegisterBase<0x7EC, 32, ReadWriteMode>
     {
-        using MTVT2EN = CSR_MEPC_MTVT2EN_Values<CSRCUSTOM::MTVT2, 0, 1, ReadWriteMode, MTVT2Base>;
-        using FieldValues = CSR_MEPC_EPC_Values<CSRCUSTOM::MTVT2, 0, 0, NoAccess, NoAccess>;
+        using MTVT2EN = CSR_MTVT2_MTVT2EN_Values<CSRCUSTOM::MTVT2, 0, 1, ReadWriteMode, MTVT2Base>;
+        using FieldValues = CSR_MTVT2_MTVT2EN_Values<CSRCUSTOM::MTVT2, 0, 0, NoAccess, NoAccess>;
     };
     template<typename... T>
     using MTVT2Pack = CoreRegister<0x7EC, 32, ReadWriteMode, MTVT2Base, T...>;
@@ -44,6 +44,19 @@ struct CSRCUSTOM
     };
     template<typename... T>
     using MCOUNTINHIBITPack = CoreRegister<0x320, 32, ReadWriteMode, MCOUNTINHIBITBase, T...>;
+
+    struct MSUBMBase
+    {
+    };
+    struct MSUBM : public CoreRegisterBase<0x7c4, 32, ReadWriteMode>
+    {
+        using PTYP = CSR_MSUBM_PTYP_Values<CSRCUSTOM::MSUBM, 8, 2, ReadWriteMode, MSUBMBase>;
+        using TYP = CSR_MSUBM_TYP_Values<CSRCUSTOM::MSUBM, 6, 2, ReadWriteMode, MSUBMBase>;
+        using FieldValues = CSR_MSUBM_TYP_Values<CSRCUSTOM::MSUBM, 0, 0, NoAccess, NoAccess>;
+    };
+    template<typename... T>
+    using MSUMBPack = CoreRegister<0x7c4, 32, ReadWriteMode, MSUBMBase, T...>;
+
 
 };
 

@@ -186,13 +186,19 @@ using Timer = DelayTimer<HardwareOverflowTimer<HardwareTimer5,OverflowObservers<
 using Bus = SmBus<Timer,SdaPin, SclPin> ;
 using Temperature = Mlx90614<Bus>;
 
-
-
+		template<auto bit, typename T>
+		inline void setBit(T &value)
+		{
+				static_assert((sizeof(T) * 8U) > bit, "Bad");
+				value |= static_cast<T>(static_cast<T>(1U) << static_cast<T>(bit));
+		};
 
 int main()
 {
-	GPIOA::OSPEEDR::OSPEEDR0::HighSpeed::Set() ;
-
+		GPIOA::OSPEEDR::OSPEEDR0::HighSpeed::Set() ;
+		GPIOA::MODERPack<GPIOA::MODER::MODER5::Input,
+						         GPIOA::MODER::MODER6::Input
+		>::Set() ;
 
 
 //  FLASH::ACRPack<

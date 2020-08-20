@@ -10,7 +10,32 @@
 #if !defined(GPIOBENUMS_HPP)
 #define GPIOBENUMS_HPP
 
-#include "fieldvalue.hpp"     //for FieldValues 
+#include "fieldvalue.hpp"     //for FieldValues
+
+template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType>
+struct GPIOB_CTL_MD_Values: public RegisterField<Reg, offset, size, AccessMode>
+{
+    using AnalogInput = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0000> ;
+    using FloatInput = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0100> ;
+    using InputPullUp = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1000> ;
+
+    using GpioOutputPushPull10Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0001> ;
+    using GpioOutputPushPull2Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0010> ;
+    using GpioOutputPushPull50Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0011> ;
+
+    using GpioOutputOpenDrain10Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0101> ;
+    using GpioOutputOpenDrain2Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0110> ;
+    using GpioOutputOpenDrain50Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b0111> ;
+
+    using AfioOutputPushPull10Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1001> ;
+    using AfioOutputPushPull2Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1010> ;
+    using AfioOutputPushPull50Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1011> ;
+
+    using AfioOutputOpenDrain10Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1101> ;
+    using AfioOutputOpenDrain2Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1110> ;
+    using AfioOutputOpenDrain50Mhz = FieldValue<GPIOB_CTL_MD_Values, BaseType, 0b1111> ;
+} ;
+
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct GPIOB_CTL0_CTL7_Values: public RegisterField<Reg, offset, size, AccessMode> 
