@@ -48,6 +48,7 @@ struct CSR
     struct MTVECBase { };
     struct MTVEC : public CoreRegisterBase<0x305, 32, ReadWriteMode>
     {
+
         using ADDR = CSR_MTVEC_ADDR_Values<CSR::MTVEC, 6, 23, ReadWriteMode, MTVECBase> ;
         using MODE = CSR_MTVEC_MODE_Values<CSR::MTVEC, 0, 6, ReadWriteMode, MTVECBase> ;
         using FieldValues = CSR_MTVT_VECTBLADDR_Values<CSR::MTVEC, 0, 0, NoAccess, NoAccess> ;
