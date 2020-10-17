@@ -27,7 +27,8 @@ struct RegisterField
 		__forceinline template<typename T = AccessMode, class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
 		static void Set(RegType value)
 		{
-				assert(value < (1U << (size - 1)));
+				assert((size < sizeof(RegType) * 8U) ? (value <= ((static_cast<RegType>(1U) << size) - static_cast<RegType>(1U))) :
+				       (value <= std::numeric_limits<RegType>::max()));
 
 				RegType newRegValue = *reinterpret_cast<volatile RegType*>(Reg::Address); //Сохраняем текущее значение регистра
 
@@ -41,8 +42,8 @@ struct RegisterField
 		__forceinline template<RegType value, typename T = AccessMode, class = typename std::enable_if_t<std::is_base_of<ReadWriteMode, T>::value>>
 		static void Set()
 		{
-				static_assert((value < (1U << (size - 1))), "Value type size is more then the field size");
-
+				static_assert((size < sizeof(RegType) * 8U) ? (value <= ((static_cast<RegType>(1U) << size) - static_cast<RegType>(1U))) :
+							 (value <= std::numeric_limits<RegType>::max()), "Value type size is more then the field size");
 				RegType newRegValue = *reinterpret_cast<volatile RegType*>(Reg::Address); //Сохраняем текущее значение регистра
 
 				newRegValue &= ~(Mask << offset); //Вначале нужно очистить старое значение битового поля
@@ -51,6 +52,7 @@ struct RegisterField
 				*reinterpret_cast<volatile RegType*>(Reg::Address) = newRegValue; //И записать новое значение в регистр
 		}
 
+             
 
 //  //Метод устанавливает значение битового поля, только в случае, если оно достпуно для записи
 //  __forceinline template<typename T = AccessMode,
@@ -71,7 +73,8 @@ struct RegisterField
 		__forceinline template<typename T = AccessMode, class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
 		static void Write(RegType value)
 		{
-				assert(value < (1U << (size - 1)));
+				assert((size < sizeof(RegType) * 8U) ? (value <= ((static_cast<RegType>(1U) << size) - static_cast<RegType>(1U))) :
+							 (value <= std::numeric_limits<RegType>::max()));
 				*reinterpret_cast<volatile RegType*>(Reg::Address) = (value << offset);
 		}
 
@@ -79,7 +82,8 @@ struct RegisterField
 		__forceinline template<RegType value, typename T = AccessMode, class = typename std::enable_if_t<std::is_base_of<WriteMode, T>::value>>
 		static void Write()
 		{
-				static_assert((value < (1U << (size - 1))), "Value type size is more then the field size") ;
+				static_assert((size < sizeof(RegType) * 8U) ? (value <=((static_cast<RegType>(1U) << size) - static_cast<RegType>(1U))) :
+											(value <= std::numeric_limits<RegType>::max()), "Value type size is more then the field size");
 				*reinterpret_cast<volatile RegType*>(Reg::Address) = (value << offset);
 		}
 
