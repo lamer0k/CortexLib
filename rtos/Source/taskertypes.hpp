@@ -5,7 +5,7 @@
 #include <cstdint>  // for std::uint16_t
 #include <cstddef>  // for std::size_t
 
-using tStateEvents = std::uint16_t ;
+using tStateEvents = std::uint16_t;
 
 
 

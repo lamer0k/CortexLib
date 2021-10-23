@@ -63,5 +63,5 @@ include_directories(${CMAKE_SOURCE_DIR}/AbstractHardware/Registers
 add_executable(Registers
                main.cpp
                startup.cpp
-        )
+        Common/Nv/cashednvdata.hpp Common/Nv/nvlist.hpp)
 

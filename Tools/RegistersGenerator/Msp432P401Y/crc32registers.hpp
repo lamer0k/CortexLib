@@ -10,7 +10,7 @@
 #if !defined(CRC32REGISTERS_HPP)
 #define CRC32REGISTERS_HPP
 
-#include "crc32bitsfield.hpp"  //for Bits Fields defs 
+#include "crc32fieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -21,7 +21,8 @@ struct CRC32
 
   struct CRC32DI : public RegisterBase<0x40004000, 16, ReadWriteMode>
   {
-    using CRC32DIField = CRC_CRCDI_CRCDI_Values<CRC32::CRC32DI, 0, 16, ReadWriteMode, CRC32CRC32DIBase> ;
+    using CRC32DIField = CRC32_CRC32DI_CRC32DI_Values<CRC32::CRC32DI, 0, 16, ReadWriteMode, CRC32CRC32DIBase> ;
+    using FieldValues = CRC32_CRC32DI_CRC32DI_Values<CRC32::CRC32DI, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -31,7 +32,8 @@ struct CRC32
 
   struct CRC32DIRB : public RegisterBase<0x40004004, 16, ReadWriteMode>
   {
-    using CRC32DIRBField = CRC_CRCDIRB_CRCDIRB_Values<CRC32::CRC32DIRB, 0, 16, ReadWriteMode, CRC32CRC32DIRBBase> ;
+    using CRC32DIRBField = CRC32_CRC32DIRB_CRC32DIRB_Values<CRC32::CRC32DIRB, 0, 16, ReadWriteMode, CRC32CRC32DIRBBase> ;
+    using FieldValues = CRC32_CRC32DIRB_CRC32DIRB_Values<CRC32::CRC32DIRB, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -41,7 +43,8 @@ struct CRC32
 
   struct CRC32INIRES_LO : public RegisterBase<0x40004008, 16, ReadWriteMode>
   {
-    using CRC32INIRES_LOField = CRC_CRCINIRES_LO_CRCINIRES_LO_Values<CRC32::CRC32INIRES_LO, 0, 16, ReadWriteMode, CRC32CRC32INIRES_LOBase> ;
+    using CRC32INIRES_LOField = CRC32_CRC32INIRES_LO_CRC32INIRES_LO_Values<CRC32::CRC32INIRES_LO, 0, 16, ReadWriteMode, CRC32CRC32INIRES_LOBase> ;
+    using FieldValues = CRC32_CRC32INIRES_LO_CRC32INIRES_LO_Values<CRC32::CRC32INIRES_LO, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -51,7 +54,8 @@ struct CRC32
 
   struct CRC32INIRES_HI : public RegisterBase<0x4000400A, 16, ReadWriteMode>
   {
-    using CRC32INIRES_HIField = CRC_CRCINIRES_HI_CRCINIRES_HI_Values<CRC32::CRC32INIRES_HI, 0, 16, ReadWriteMode, CRC32CRC32INIRES_HIBase> ;
+    using CRC32INIRES_HIField = CRC32_CRC32INIRES_HI_CRC32INIRES_HI_Values<CRC32::CRC32INIRES_HI, 0, 16, ReadWriteMode, CRC32CRC32INIRES_HIBase> ;
+    using FieldValues = CRC32_CRC32INIRES_HI_CRC32INIRES_HI_Values<CRC32::CRC32INIRES_HI, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -61,7 +65,8 @@ struct CRC32
 
   struct CRC32RESR_LO : public RegisterBase<0x4000400C, 16, ReadWriteMode>
   {
-    using CRC32RESR_LOField = CRC_CRCRESR_LO_CRCRESR_LO_Values<CRC32::CRC32RESR_LO, 0, 16, ReadWriteMode, CRC32CRC32RESR_LOBase> ;
+    using CRC32RESR_LOField = CRC32_CRC32RESR_LO_CRC32RESR_LO_Values<CRC32::CRC32RESR_LO, 0, 16, ReadWriteMode, CRC32CRC32RESR_LOBase> ;
+    using FieldValues = CRC32_CRC32RESR_LO_CRC32RESR_LO_Values<CRC32::CRC32RESR_LO, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -71,7 +76,8 @@ struct CRC32
 
   struct CRC32RESR_HI : public RegisterBase<0x4000400E, 16, ReadWriteMode>
   {
-    using CRC32RESR_HIField = CRC_CRCRESR_HI_CRCRESR_HI_Values<CRC32::CRC32RESR_HI, 0, 16, ReadWriteMode, CRC32CRC32RESR_HIBase> ;
+    using CRC32RESR_HIField = CRC32_CRC32RESR_HI_CRC32RESR_HI_Values<CRC32::CRC32RESR_HI, 0, 16, ReadWriteMode, CRC32CRC32RESR_HIBase> ;
+    using FieldValues = CRC32_CRC32RESR_HI_CRC32RESR_HI_Values<CRC32::CRC32RESR_HI, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,7 +87,8 @@ struct CRC32
 
   struct CRC16DI : public RegisterBase<0x40004010, 16, ReadWriteMode>
   {
-    using CRC16DIField = CRC_CRCDI_CRCDI_Values<CRC32::CRC16DI, 0, 16, ReadWriteMode, CRC32CRC16DIBase> ;
+    using CRC16DIField = CRC32_CRC16DI_CRC16DI_Values<CRC32::CRC16DI, 0, 16, ReadWriteMode, CRC32CRC16DIBase> ;
+    using FieldValues = CRC32_CRC16DI_CRC16DI_Values<CRC32::CRC16DI, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -91,7 +98,8 @@ struct CRC32
 
   struct CRC16DIRB : public RegisterBase<0x40004014, 16, ReadWriteMode>
   {
-    using CRC16DIRBField = CRC_CRCDIRB_CRCDIRB_Values<CRC32::CRC16DIRB, 0, 16, ReadWriteMode, CRC32CRC16DIRBBase> ;
+    using CRC16DIRBField = CRC32_CRC16DIRB_CRC16DIRB_Values<CRC32::CRC16DIRB, 0, 16, ReadWriteMode, CRC32CRC16DIRBBase> ;
+    using FieldValues = CRC32_CRC16DIRB_CRC16DIRB_Values<CRC32::CRC16DIRB, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -101,7 +109,8 @@ struct CRC32
 
   struct CRC16INIRES : public RegisterBase<0x40004018, 16, ReadWriteMode>
   {
-    using CRC16INIRESField = CRC_CRCINIRES_CRCINIRES_Values<CRC32::CRC16INIRES, 0, 16, ReadWriteMode, CRC32CRC16INIRESBase> ;
+    using CRC16INIRESField = CRC32_CRC16INIRES_CRC16INIRES_Values<CRC32::CRC16INIRES, 0, 16, ReadWriteMode, CRC32CRC16INIRESBase> ;
+    using FieldValues = CRC32_CRC16INIRES_CRC16INIRES_Values<CRC32::CRC16INIRES, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -111,7 +120,8 @@ struct CRC32
 
   struct CRC16RESR : public RegisterBase<0x4000401E, 16, ReadWriteMode>
   {
-    using CRC16RESRField = CRC_CRCRESR_CRCRESR_Values<CRC32::CRC16RESR, 0, 16, ReadWriteMode, CRC32CRC16RESRBase> ;
+    using CRC16RESRField = CRC32_CRC16RESR_CRC16RESR_Values<CRC32::CRC16RESR, 0, 16, ReadWriteMode, CRC32CRC16RESRBase> ;
+    using FieldValues = CRC32_CRC16RESR_CRC16RESR_Values<CRC32::CRC16RESR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

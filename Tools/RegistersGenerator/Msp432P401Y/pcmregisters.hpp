@@ -10,7 +10,7 @@
 #if !defined(PCMREGISTERS_HPP)
 #define PCMREGISTERS_HPP
 
-#include "pcmbitsfield.hpp"  //for Bits Fields defs 
+#include "pcmfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -21,10 +21,11 @@ struct PCM
 
   struct PCMCTL0 : public RegisterBase<0x40010000, 32, ReadWriteMode>
   {
-    using AMR = PCM_PCMCTL_AMR_Values<PCM::PCMCTL0, 0, 4, ReadWriteMode, PCMPCMCTL0Base> ;
-    using LPMR = PCM_PCMCTL_LPMR_Values<PCM::PCMCTL0, 4, 4, ReadWriteMode, PCMPCMCTL0Base> ;
-    using CPM = PCM_PCMCTL_CPM_Values<PCM::PCMCTL0, 8, 6, ReadMode, PCMPCMCTL0Base> ;
-    using PCMKEY = PCM_PCMCTL_PCMKEY_Values<PCM::PCMCTL0, 16, 16, ReadWriteMode, PCMPCMCTL0Base> ;
+    using AMR = PCM_PCMCTL0_AMR_Values<PCM::PCMCTL0, 0, 4, ReadWriteMode, PCMPCMCTL0Base> ;
+    using LPMR = PCM_PCMCTL0_LPMR_Values<PCM::PCMCTL0, 4, 4, ReadWriteMode, PCMPCMCTL0Base> ;
+    using CPM = PCM_PCMCTL0_CPM_Values<PCM::PCMCTL0, 8, 6, ReadMode, PCMPCMCTL0Base> ;
+    using PCMKEY = PCM_PCMCTL0_PCMKEY_Values<PCM::PCMCTL0, 16, 16, ReadWriteMode, PCMPCMCTL0Base> ;
+    using FieldValues = PCM_PCMCTL0_PCMKEY_Values<PCM::PCMCTL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -34,11 +35,12 @@ struct PCM
 
   struct PCMCTL1 : public RegisterBase<0x40010004, 32, ReadWriteMode>
   {
-    using LOCKLPM5 = PCM_PCMCTL_LOCKLPM_Values<PCM::PCMCTL1, 0, 1, ReadWriteMode, PCMPCMCTL1Base> ;
-    using LOCKBKUP = PCM_PCMCTL_LOCKBKUP_Values<PCM::PCMCTL1, 1, 1, ReadWriteMode, PCMPCMCTL1Base> ;
-    using FORCE_LPM_ENTRY = PCM_PCMCTL_FORCE_LPM_ENTRY_Values<PCM::PCMCTL1, 2, 1, ReadWriteMode, PCMPCMCTL1Base> ;
-    using PMR_BUSY = PCM_PCMCTL_PMR_BUSY_Values<PCM::PCMCTL1, 8, 1, ReadWriteMode, PCMPCMCTL1Base> ;
-    using PCMKEY = PCM_PCMCTL_PCMKEY_Values<PCM::PCMCTL1, 16, 16, ReadWriteMode, PCMPCMCTL1Base> ;
+    using LOCKLPM5 = PCM_PCMCTL1_LOCKLPM5_Values<PCM::PCMCTL1, 0, 1, ReadWriteMode, PCMPCMCTL1Base> ;
+    using LOCKBKUP = PCM_PCMCTL1_LOCKBKUP_Values<PCM::PCMCTL1, 1, 1, ReadWriteMode, PCMPCMCTL1Base> ;
+    using FORCE_LPM_ENTRY = PCM_PCMCTL1_FORCE_LPM_ENTRY_Values<PCM::PCMCTL1, 2, 1, ReadWriteMode, PCMPCMCTL1Base> ;
+    using PMR_BUSY = PCM_PCMCTL1_PMR_BUSY_Values<PCM::PCMCTL1, 8, 1, ReadWriteMode, PCMPCMCTL1Base> ;
+    using PCMKEY = PCM_PCMCTL1_PCMKEY_Values<PCM::PCMCTL1, 16, 16, ReadWriteMode, PCMPCMCTL1Base> ;
+    using FieldValues = PCM_PCMCTL1_PCMKEY_Values<PCM::PCMCTL1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -52,6 +54,7 @@ struct PCM
     using LPM_INVALID_CLK_IE = PCM_PCMIE_LPM_INVALID_CLK_IE_Values<PCM::PCMIE, 1, 1, ReadWriteMode, PCMPCMIEBase> ;
     using AM_INVALID_TR_IE = PCM_PCMIE_AM_INVALID_TR_IE_Values<PCM::PCMIE, 2, 1, ReadWriteMode, PCMPCMIEBase> ;
     using DCDC_ERROR_IE = PCM_PCMIE_DCDC_ERROR_IE_Values<PCM::PCMIE, 6, 1, ReadWriteMode, PCMPCMIEBase> ;
+    using FieldValues = PCM_PCMIE_DCDC_ERROR_IE_Values<PCM::PCMIE, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -65,6 +68,7 @@ struct PCM
     using LPM_INVALID_CLK_IFG = PCM_PCMIFG_LPM_INVALID_CLK_IFG_Values<PCM::PCMIFG, 1, 1, ReadMode, PCMPCMIFGBase> ;
     using AM_INVALID_TR_IFG = PCM_PCMIFG_AM_INVALID_TR_IFG_Values<PCM::PCMIFG, 2, 1, ReadMode, PCMPCMIFGBase> ;
     using DCDC_ERROR_IFG = PCM_PCMIFG_DCDC_ERROR_IFG_Values<PCM::PCMIFG, 6, 1, ReadMode, PCMPCMIFGBase> ;
+    using FieldValues = PCM_PCMIFG_DCDC_ERROR_IFG_Values<PCM::PCMIFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -78,6 +82,7 @@ struct PCM
     using CLR_LPM_INVALID_CLK_IFG = PCM_PCMCLRIFG_CLR_LPM_INVALID_CLK_IFG_Values<PCM::PCMCLRIFG, 1, 1, WriteMode, PCMPCMCLRIFGBase> ;
     using CLR_AM_INVALID_TR_IFG = PCM_PCMCLRIFG_CLR_AM_INVALID_TR_IFG_Values<PCM::PCMCLRIFG, 2, 1, WriteMode, PCMPCMCLRIFGBase> ;
     using CLR_DCDC_ERROR_IFG = PCM_PCMCLRIFG_CLR_DCDC_ERROR_IFG_Values<PCM::PCMCLRIFG, 6, 1, WriteMode, PCMPCMCLRIFGBase> ;
+    using FieldValues = PCM_PCMCLRIFG_CLR_DCDC_ERROR_IFG_Values<PCM::PCMCLRIFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

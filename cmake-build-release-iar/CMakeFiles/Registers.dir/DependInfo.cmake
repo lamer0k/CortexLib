@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/GitHub/CortexLib/main.cpp" "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/Registers.dir/main.cpp.obj"
-  "C:/GitHub/CortexLib/startup.cpp" "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/Registers.dir/startup.cpp.obj"
+  "C:/GitHub/CortexLib/main.cpp" "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/Registers.dir/main.cpp.o"
+  "C:/GitHub/CortexLib/startup.cpp" "C:/GitHub/CortexLib/cmake-build-release-iar/CMakeFiles/Registers.dir/startup.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "IAR")
 

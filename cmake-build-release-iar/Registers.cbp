@@ -126,6 +126,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/GitHub/CortexLib/Common/Nv/cashednvdata.hpp">
+			<Option target="Registers"/>
+		</Unit>
+		<Unit filename="C:/GitHub/CortexLib/Common/Nv/nvlist.hpp">
+			<Option target="Registers"/>
+		</Unit>
 		<Unit filename="C:/GitHub/CortexLib/main.cpp">
 			<Option target="Registers"/>
 		</Unit>

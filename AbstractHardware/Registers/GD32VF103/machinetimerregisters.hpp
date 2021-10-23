@@ -28,8 +28,14 @@ struct MACHINETIMER
 
     struct MTIMECMP : public RegisterBase<0xd1000008, 64, ReadWriteMode>
     {
-        using MTIMEField = MACHINETIMER_MTIMECMP_MTIMECMP_Values<MACHINETIMER::MTIMECMP, 0, 64, ReadWriteMode, MACHINETIMERBase> ;
+        using MTIMECMPField = MACHINETIMER_MTIMECMP_MTIMECMP_Values<MACHINETIMER::MTIMECMP, 0, 64, ReadWriteMode, MACHINETIMERBase> ;
         using FieldValues = MACHINETIMER_MTIMECMP_MTIMECMP_Values<MACHINETIMER::MTIMECMP, 0, 0, NoAccess, NoAccess> ;
+    };
+
+    struct MSIP : public RegisterBase<0xd1000ffc, 64, ReadWriteMode>
+    {
+        using SIP = MACHINETIMER_MSIP_MSIP_Values<MACHINETIMER::MTIMECMP, 0, 1, ReadWriteMode, MACHINETIMERBase> ;
+        using FieldValues = MACHINETIMER_MSIP_MSIP_Values<MACHINETIMER::MTIMECMP, 0, 0, NoAccess, NoAccess> ;
     };
 
 } ;

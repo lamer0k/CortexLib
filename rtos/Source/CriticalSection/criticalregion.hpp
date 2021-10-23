@@ -5,7 +5,7 @@
 
 class CriticalRegion
 {
-	CriticalRegion() ;
-	~CriticalRegion() ;
+	CriticalRegion();
+	~CriticalRegion();
 
 };

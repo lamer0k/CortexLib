@@ -363,6 +363,19 @@
                     <state>$PROJ_DIR$\Application\Gui\Images</state>
                     <state>$PROJ_DIR$\Application\Gui\Fonts</state>
                     <state>$PROJ_DIR$\Application\Gui</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Registers\CortexM4\FieldValues</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Registers\CortexM4</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Timer</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Timer\Stm32Fxx</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Timer\Stm32Fxx\STM32F411</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart\Stm32Fxx</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Uart\Stm32Fxx\STM32F411</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Adc</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Mlx90614</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Smbus</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Smbus\Stm32F4xx</state>
+                    <state>$PROJ_DIR$\AbstractHardware\Smbus\Stm32F4xx\STM32F411</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>

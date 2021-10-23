@@ -6,4 +6,6 @@
 #include "idletask.hpp"   // for idleTask
 #include "tasker.hpp"     // for Tasker
 
-class myTasker : public Tasker<targetThread, myThread1, myThread2, idleTask> {} ;
+class myTasker: public Tasker<targetThread, myThread1, myThread2, idleTask>
+{
+};

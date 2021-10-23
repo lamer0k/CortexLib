@@ -11,14 +11,14 @@
 
 class CriticalSection
 {
-  public:
+public:
 
-    CriticalSection() ;
-    
-    ~CriticalSection() ;
-    
-  private:
-    const __istate_t previousInterruptState ;
-} ;
+	CriticalSection();
+
+	~CriticalSection();
+
+private:
+	const __istate_t previousInterruptState;
+};
 
 #endif // !defined(__CRITICALSECTION_HPP)

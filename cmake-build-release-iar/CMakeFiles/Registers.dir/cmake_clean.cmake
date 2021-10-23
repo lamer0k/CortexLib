@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Registers.dir/main.cpp.obj"
-  "CMakeFiles/Registers.dir/startup.cpp.obj"
+  "CMakeFiles/Registers.dir/main.cpp.o"
+  "CMakeFiles/Registers.dir/startup.cpp.o"
   "Registers.elf"
   "Registers.elf.manifest"
   "Registers.lib"

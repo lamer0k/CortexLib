@@ -6,19 +6,24 @@
 #include "taskbase.hpp" // for TaskBase
 
 
-struct IdleTask : public TaskBase<IdleTask>
+struct IdleTask: public TaskBase<IdleTask>
 {
-    constexpr IdleTask()
-    {
+	constexpr IdleTask()
+	{
 
-    }
+	}
 
-    void OnEvent() const
-    {
-      
-    }
+	void OnEvent() const
+	{
+		for (int i = 0; i < 100000; i++)
+			{
+			asm volatile("");
+			}
+	}
 
 };
 
-inline constexpr IdleTask idleTask;
+inline constexpr IdleTask
+
+idleTask;
 

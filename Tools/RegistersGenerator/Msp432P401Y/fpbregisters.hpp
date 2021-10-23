@@ -10,7 +10,7 @@
 #if !defined(FPBREGISTERS_HPP)
 #define FPBREGISTERS_HPP
 
-#include "fpbbitsfield.hpp"  //for Bits Fields defs 
+#include "fpbfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -23,9 +23,10 @@ struct FPB
   {
     using ENABLE = FPB_FP_CTRL_ENABLE_Values<FPB::FP_CTRL, 0, 1, ReadWriteMode, FPBFP_CTRLBase> ;
     using KEY = FPB_FP_CTRL_KEY_Values<FPB::FP_CTRL, 1, 1, WriteMode, FPBFP_CTRLBase> ;
-    using NUM_CODE1 = FPB_FP_CTRL_NUM_CODE_Values<FPB::FP_CTRL, 4, 4, ReadMode, FPBFP_CTRLBase> ;
+    using NUM_CODE1 = FPB_FP_CTRL_NUM_CODE1_Values<FPB::FP_CTRL, 4, 4, ReadMode, FPBFP_CTRLBase> ;
     using NUM_LIT = FPB_FP_CTRL_NUM_LIT_Values<FPB::FP_CTRL, 8, 4, ReadMode, FPBFP_CTRLBase> ;
-    using NUM_CODE2 = FPB_FP_CTRL_NUM_CODE_Values<FPB::FP_CTRL, 12, 2, ReadMode, FPBFP_CTRLBase> ;
+    using NUM_CODE2 = FPB_FP_CTRL_NUM_CODE2_Values<FPB::FP_CTRL, 12, 2, ReadMode, FPBFP_CTRLBase> ;
+    using FieldValues = FPB_FP_CTRL_NUM_CODE2_Values<FPB::FP_CTRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -36,6 +37,7 @@ struct FPB
   struct FP_REMAP : public RegisterBase<0xE0002004, 32, ReadWriteMode>
   {
     using REMAP = FPB_FP_REMAP_REMAP_Values<FPB::FP_REMAP, 5, 24, ReadWriteMode, FPBFP_REMAPBase> ;
+    using FieldValues = FPB_FP_REMAP_REMAP_Values<FPB::FP_REMAP, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -45,9 +47,10 @@ struct FPB
 
   struct FP_COMP0 : public RegisterBase<0xE0002008, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP0, 0, 1, ReadWriteMode, FPBFP_COMP0Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP0, 2, 27, ReadWriteMode, FPBFP_COMP0Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP0, 30, 2, ReadWriteMode, FPBFP_COMP0Base> ;
+    using ENABLE = FPB_FP_COMP0_ENABLE_Values<FPB::FP_COMP0, 0, 1, ReadWriteMode, FPBFP_COMP0Base> ;
+    using COMP = FPB_FP_COMP0_COMP_Values<FPB::FP_COMP0, 2, 27, ReadWriteMode, FPBFP_COMP0Base> ;
+    using REPLACE = FPB_FP_COMP0_REPLACE_Values<FPB::FP_COMP0, 30, 2, ReadWriteMode, FPBFP_COMP0Base> ;
+    using FieldValues = FPB_FP_COMP0_REPLACE_Values<FPB::FP_COMP0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -57,9 +60,10 @@ struct FPB
 
   struct FP_COMP1 : public RegisterBase<0xE000200C, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP1, 0, 1, ReadWriteMode, FPBFP_COMP1Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP1, 2, 27, ReadWriteMode, FPBFP_COMP1Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP1, 30, 2, ReadWriteMode, FPBFP_COMP1Base> ;
+    using ENABLE = FPB_FP_COMP1_ENABLE_Values<FPB::FP_COMP1, 0, 1, ReadWriteMode, FPBFP_COMP1Base> ;
+    using COMP = FPB_FP_COMP1_COMP_Values<FPB::FP_COMP1, 2, 27, ReadWriteMode, FPBFP_COMP1Base> ;
+    using REPLACE = FPB_FP_COMP1_REPLACE_Values<FPB::FP_COMP1, 30, 2, ReadWriteMode, FPBFP_COMP1Base> ;
+    using FieldValues = FPB_FP_COMP1_REPLACE_Values<FPB::FP_COMP1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -69,9 +73,10 @@ struct FPB
 
   struct FP_COMP2 : public RegisterBase<0xE0002010, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP2, 0, 1, ReadWriteMode, FPBFP_COMP2Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP2, 2, 27, ReadWriteMode, FPBFP_COMP2Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP2, 30, 2, ReadWriteMode, FPBFP_COMP2Base> ;
+    using ENABLE = FPB_FP_COMP2_ENABLE_Values<FPB::FP_COMP2, 0, 1, ReadWriteMode, FPBFP_COMP2Base> ;
+    using COMP = FPB_FP_COMP2_COMP_Values<FPB::FP_COMP2, 2, 27, ReadWriteMode, FPBFP_COMP2Base> ;
+    using REPLACE = FPB_FP_COMP2_REPLACE_Values<FPB::FP_COMP2, 30, 2, ReadWriteMode, FPBFP_COMP2Base> ;
+    using FieldValues = FPB_FP_COMP2_REPLACE_Values<FPB::FP_COMP2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -81,9 +86,10 @@ struct FPB
 
   struct FP_COMP3 : public RegisterBase<0xE0002014, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP3, 0, 1, ReadWriteMode, FPBFP_COMP3Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP3, 2, 27, ReadWriteMode, FPBFP_COMP3Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP3, 30, 2, ReadWriteMode, FPBFP_COMP3Base> ;
+    using ENABLE = FPB_FP_COMP3_ENABLE_Values<FPB::FP_COMP3, 0, 1, ReadWriteMode, FPBFP_COMP3Base> ;
+    using COMP = FPB_FP_COMP3_COMP_Values<FPB::FP_COMP3, 2, 27, ReadWriteMode, FPBFP_COMP3Base> ;
+    using REPLACE = FPB_FP_COMP3_REPLACE_Values<FPB::FP_COMP3, 30, 2, ReadWriteMode, FPBFP_COMP3Base> ;
+    using FieldValues = FPB_FP_COMP3_REPLACE_Values<FPB::FP_COMP3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -93,9 +99,10 @@ struct FPB
 
   struct FP_COMP4 : public RegisterBase<0xE0002018, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP4, 0, 1, ReadWriteMode, FPBFP_COMP4Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP4, 2, 27, ReadWriteMode, FPBFP_COMP4Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP4, 30, 2, ReadWriteMode, FPBFP_COMP4Base> ;
+    using ENABLE = FPB_FP_COMP4_ENABLE_Values<FPB::FP_COMP4, 0, 1, ReadWriteMode, FPBFP_COMP4Base> ;
+    using COMP = FPB_FP_COMP4_COMP_Values<FPB::FP_COMP4, 2, 27, ReadWriteMode, FPBFP_COMP4Base> ;
+    using REPLACE = FPB_FP_COMP4_REPLACE_Values<FPB::FP_COMP4, 30, 2, ReadWriteMode, FPBFP_COMP4Base> ;
+    using FieldValues = FPB_FP_COMP4_REPLACE_Values<FPB::FP_COMP4, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -105,9 +112,10 @@ struct FPB
 
   struct FP_COMP5 : public RegisterBase<0xE000201C, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP5, 0, 1, ReadWriteMode, FPBFP_COMP5Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP5, 2, 27, ReadWriteMode, FPBFP_COMP5Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP5, 30, 2, ReadWriteMode, FPBFP_COMP5Base> ;
+    using ENABLE = FPB_FP_COMP5_ENABLE_Values<FPB::FP_COMP5, 0, 1, ReadWriteMode, FPBFP_COMP5Base> ;
+    using COMP = FPB_FP_COMP5_COMP_Values<FPB::FP_COMP5, 2, 27, ReadWriteMode, FPBFP_COMP5Base> ;
+    using REPLACE = FPB_FP_COMP5_REPLACE_Values<FPB::FP_COMP5, 30, 2, ReadWriteMode, FPBFP_COMP5Base> ;
+    using FieldValues = FPB_FP_COMP5_REPLACE_Values<FPB::FP_COMP5, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -117,9 +125,10 @@ struct FPB
 
   struct FP_COMP6 : public RegisterBase<0xE0002020, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP6, 0, 1, ReadWriteMode, FPBFP_COMP6Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP6, 2, 27, ReadWriteMode, FPBFP_COMP6Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP6, 30, 2, ReadWriteMode, FPBFP_COMP6Base> ;
+    using ENABLE = FPB_FP_COMP6_ENABLE_Values<FPB::FP_COMP6, 0, 1, ReadWriteMode, FPBFP_COMP6Base> ;
+    using COMP = FPB_FP_COMP6_COMP_Values<FPB::FP_COMP6, 2, 27, ReadWriteMode, FPBFP_COMP6Base> ;
+    using REPLACE = FPB_FP_COMP6_REPLACE_Values<FPB::FP_COMP6, 30, 2, ReadWriteMode, FPBFP_COMP6Base> ;
+    using FieldValues = FPB_FP_COMP6_REPLACE_Values<FPB::FP_COMP6, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -129,9 +138,10 @@ struct FPB
 
   struct FP_COMP7 : public RegisterBase<0xE0002024, 32, ReadWriteMode>
   {
-    using ENABLE = FPB_FP_COMP_ENABLE_Values<FPB::FP_COMP7, 0, 1, ReadWriteMode, FPBFP_COMP7Base> ;
-    using COMP = FPB_FP_COMP_COMP_Values<FPB::FP_COMP7, 2, 27, ReadWriteMode, FPBFP_COMP7Base> ;
-    using REPLACE = FPB_FP_COMP_REPLACE_Values<FPB::FP_COMP7, 30, 2, ReadWriteMode, FPBFP_COMP7Base> ;
+    using ENABLE = FPB_FP_COMP7_ENABLE_Values<FPB::FP_COMP7, 0, 1, ReadWriteMode, FPBFP_COMP7Base> ;
+    using COMP = FPB_FP_COMP7_COMP_Values<FPB::FP_COMP7, 2, 27, ReadWriteMode, FPBFP_COMP7Base> ;
+    using REPLACE = FPB_FP_COMP7_REPLACE_Values<FPB::FP_COMP7, 30, 2, ReadWriteMode, FPBFP_COMP7Base> ;
+    using FieldValues = FPB_FP_COMP7_REPLACE_Values<FPB::FP_COMP7, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -7,10 +7,10 @@
 
 CriticalRegion::CriticalRegion()
 {
-	myTasker::DisableScheduler() ;
+	myTasker::DisableScheduler();
 }
 
 CriticalRegion::~CriticalRegion()
 {
-	myTasker::EnableScheduler() ;
+	myTasker::EnableScheduler();
 }

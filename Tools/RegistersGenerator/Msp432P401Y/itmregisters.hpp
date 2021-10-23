@@ -10,7 +10,7 @@
 #if !defined(ITMREGISTERS_HPP)
 #define ITMREGISTERS_HPP
 
-#include "itmbitsfield.hpp"  //for Bits Fields defs 
+#include "itmfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -310,6 +310,7 @@ struct ITM
   struct ITM_TER : public RegisterBase<0xE0000E00, 32, ReadWriteMode>
   {
     using STIMENA = ITM_ITM_TER_STIMENA_Values<ITM::ITM_TER, 0, 32, ReadWriteMode, ITMITM_TERBase> ;
+    using FieldValues = ITM_ITM_TER_STIMENA_Values<ITM::ITM_TER, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -320,6 +321,7 @@ struct ITM
   struct ITM_TPR : public RegisterBase<0xE0000E40, 32, ReadWriteMode>
   {
     using PRIVMASK = ITM_ITM_TPR_PRIVMASK_Values<ITM::ITM_TPR, 0, 4, ReadWriteMode, ITMITM_TPRBase> ;
+    using FieldValues = ITM_ITM_TPR_PRIVMASK_Values<ITM::ITM_TPR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -337,6 +339,7 @@ struct ITM
     using TSPRESCALE = ITM_ITM_TCR_TSPRESCALE_Values<ITM::ITM_TCR, 8, 2, ReadWriteMode, ITMITM_TCRBase> ;
     using ATBID = ITM_ITM_TCR_ATBID_Values<ITM::ITM_TCR, 16, 7, ReadWriteMode, ITMITM_TCRBase> ;
     using BUSY = ITM_ITM_TCR_BUSY_Values<ITM::ITM_TCR, 23, 1, ReadWriteMode, ITMITM_TCRBase> ;
+    using FieldValues = ITM_ITM_TCR_BUSY_Values<ITM::ITM_TCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -347,6 +350,7 @@ struct ITM
   struct ITM_IWR : public RegisterBase<0xE0000EF8, 32, WriteMode>
   {
     using ATVALIDM = ITM_ITM_IWR_ATVALIDM_Values<ITM::ITM_IWR, 0, 1, WriteMode, ITMITM_IWRBase> ;
+    using FieldValues = ITM_ITM_IWR_ATVALIDM_Values<ITM::ITM_IWR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -357,6 +361,7 @@ struct ITM
   struct ITM_IMCR : public RegisterBase<0xE0000F00, 32, ReadWriteMode>
   {
     using INTEGRATION = ITM_ITM_IMCR_INTEGRATION_Values<ITM::ITM_IMCR, 0, 1, ReadWriteMode, ITMITM_IMCRBase> ;
+    using FieldValues = ITM_ITM_IMCR_INTEGRATION_Values<ITM::ITM_IMCR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -367,6 +372,7 @@ struct ITM
   struct ITM_LAR : public RegisterBase<0xE0000FB0, 32, WriteMode>
   {
     using LOCK_ACCESS = ITM_ITM_LAR_LOCK_ACCESS_Values<ITM::ITM_LAR, 0, 32, WriteMode, ITMITM_LARBase> ;
+    using FieldValues = ITM_ITM_LAR_LOCK_ACCESS_Values<ITM::ITM_LAR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -379,6 +385,7 @@ struct ITM
     using PRESENT = ITM_ITM_LSR_PRESENT_Values<ITM::ITM_LSR, 0, 1, ReadMode, ITMITM_LSRBase> ;
     using ACCESS = ITM_ITM_LSR_ACCESS_Values<ITM::ITM_LSR, 1, 1, ReadMode, ITMITM_LSRBase> ;
     using BYTEACC = ITM_ITM_LSR_BYTEACC_Values<ITM::ITM_LSR, 2, 1, ReadMode, ITMITM_LSRBase> ;
+    using FieldValues = ITM_ITM_LSR_BYTEACC_Values<ITM::ITM_LSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

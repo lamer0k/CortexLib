@@ -10,7 +10,7 @@
 #if !defined(WDTAREGISTERS_HPP)
 #define WDTAREGISTERS_HPP
 
-#include "wdtabitsfield.hpp"  //for Bits Fields defs 
+#include "wdtafieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -27,6 +27,7 @@ struct WDT_A
     using WDTSSEL = WDT_A_WDTCTL_WDTSSEL_Values<WDT_A::WDTCTL, 5, 2, ReadWriteMode, WDT_AWDTCTLBase> ;
     using WDTHOLD = WDT_A_WDTCTL_WDTHOLD_Values<WDT_A::WDTCTL, 7, 1, ReadWriteMode, WDT_AWDTCTLBase> ;
     using WDTPW = WDT_A_WDTCTL_WDTPW_Values<WDT_A::WDTCTL, 8, 8, ReadWriteMode, WDT_AWDTCTLBase> ;
+    using FieldValues = WDT_A_WDTCTL_WDTPW_Values<WDT_A::WDTCTL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

@@ -15,22 +15,22 @@
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 
 struct ECLIC_CLICCFG_NLBITS_Values: public RegisterField<Reg, offset, size, AccessMode> 
 {
-  using MaxBitsPriorityLevel0 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 0U> ; // FIXME
-  using MaxPriorityLevelBits1 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 1U> ;
-  using MaxPriorityLevelBits2 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 2U> ;
-  using MaxPriorityLevelBits3 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 3U> ;
-  using MaxPriorityLevelBits4 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 4U> ;
-  using MaxPriorityLevelBits5 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 5U> ;
-  using MaxPriorityLevelBits6 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 6U> ;
-  using MaxPriorityLevelBits7 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 7U> ;
-  using MaxPriorityLevelBits8 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 8U> ;
-  using MaxPriorityLevelBits9 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 9U> ;
-  using MaxPriorityLevelBits10 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 10U> ;
-  using MaxPriorityLevelBits11 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 11U> ;
-  using MaxPriorityLevelBits12 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 12U> ;
-  using MaxPriorityLevelBits13 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 13U> ;
-  using MaxPriorityLevelBits14 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 14U> ;
-  using MaxPriorityLevelBits15 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 15U> ;
+  using MaxBitsForLevel0 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 0U> ; // FIXME
+  using MaxBitsForLevel1 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 1U> ;
+  using MaxBitsForLevel2 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 2U> ;
+  using MaxBitsForLevel3 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 3U> ;
+  using MaxBitsForLevel4 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 4U> ;
+  using MaxBitsForLevel5 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 5U> ;
+  using MaxBitsForLevel6 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 6U> ;
+  using MaxBitsForLevel7 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 7U> ;
+  using MaxBitsForLevel8 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 8U> ;
+  using MaxBitsForLevel9 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 9U> ;
+  using MaxBitsForLevel10 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 10U> ;
+  using MaxBitsForLevel11 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 11U> ;
+  using MaxBitsForLevel12 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 12U> ;
+  using MaxBitsForLevel13 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 13U> ;
+  using MaxBitsForLevel14 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 14U> ;
+  using MaxBitsForLevel15 = FieldValue<ECLIC_CLICCFG_NLBITS_Values, BaseType, 15U> ;
 } ;
 
 template <typename Reg, size_t offset, size_t size, typename AccessMode, typename BaseType> 

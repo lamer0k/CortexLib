@@ -26,8 +26,11 @@ struct Thread1 : public TaskBase<Thread1<SimpleTasker, threadToSignal>>
     void OnEvent() const
     {
     //    std::cout << "  Thread1Start" << std::endl;
-        GPIOC::ODR::Toggle(1<<9);
-        SimpleTasker::PostEvent<threadToSignal>(1);
+        if(Thread1::events == 1)
+        {
+            GPIOC::ODR::Toggle(1 << 9);
+            SimpleTasker::PostEvent<threadToSignal>(1);
+        }
       //  std::cout << "  Thread1End" << std::endl;
     }
 };

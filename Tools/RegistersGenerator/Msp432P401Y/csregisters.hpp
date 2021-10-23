@@ -9,7 +9,7 @@
 #if !defined(CSREGISTERS_HPP)
 #define CSREGISTERS_HPP
 
-#include "csbitsfield.hpp"  //for Bits Fields defs 
+#include "csfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -21,6 +21,7 @@ struct CS
   struct CSKEY : public RegisterBase<0x40010400, 32, ReadWriteMode>
   {
     using CSKEYField = CS_CSKEY_CSKEY_Values<CS::CSKEY, 0, 16, ReadWriteMode, CSCSKEYBase> ;
+    using FieldValues = CS_CSKEY_CSKEY_Values<CS::CSKEY, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -30,10 +31,11 @@ struct CS
 
   struct CSCTL0 : public RegisterBase<0x40010404, 32, ReadWriteMode>
   {
-    using DCOTUNE = CS_CSCTL_DCOTUNE_Values<CS::CSCTL0, 0, 10, ReadWriteMode, CSCSCTL0Base> ;
-    using DCORSEL = CS_CSCTL_DCORSEL_Values<CS::CSCTL0, 16, 3, ReadWriteMode, CSCSCTL0Base> ;
-    using DCORES = CS_CSCTL_DCORES_Values<CS::CSCTL0, 22, 1, ReadWriteMode, CSCSCTL0Base> ;
-    using DCOEN = CS_CSCTL_DCOEN_Values<CS::CSCTL0, 23, 1, ReadWriteMode, CSCSCTL0Base> ;
+    using DCOTUNE = CS_CSCTL0_DCOTUNE_Values<CS::CSCTL0, 0, 10, ReadWriteMode, CSCSCTL0Base> ;
+    using DCORSEL = CS_CSCTL0_DCORSEL_Values<CS::CSCTL0, 16, 3, ReadWriteMode, CSCSCTL0Base> ;
+    using DCORES = CS_CSCTL0_DCORES_Values<CS::CSCTL0, 22, 1, ReadWriteMode, CSCSCTL0Base> ;
+    using DCOEN = CS_CSCTL0_DCOEN_Values<CS::CSCTL0, 23, 1, ReadWriteMode, CSCSCTL0Base> ;
+    using FieldValues = CS_CSCTL0_DCOEN_Values<CS::CSCTL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -43,14 +45,15 @@ struct CS
 
   struct CSCTL1 : public RegisterBase<0x40010408, 32, ReadWriteMode>
   {
-    using SELM = CS_CSCTL_SELM_Values<CS::CSCTL1, 0, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using SELS = CS_CSCTL_SELS_Values<CS::CSCTL1, 4, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using SELA = CS_CSCTL_SELA_Values<CS::CSCTL1, 8, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using SELB = CS_CSCTL_SELB_Values<CS::CSCTL1, 12, 1, ReadWriteMode, CSCSCTL1Base> ;
-    using DIVM = CS_CSCTL_DIVM_Values<CS::CSCTL1, 16, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using DIVHS = CS_CSCTL_DIVHS_Values<CS::CSCTL1, 20, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using DIVA = CS_CSCTL_DIVA_Values<CS::CSCTL1, 24, 3, ReadWriteMode, CSCSCTL1Base> ;
-    using DIVS = CS_CSCTL_DIVS_Values<CS::CSCTL1, 28, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using SELM = CS_CSCTL1_SELM_Values<CS::CSCTL1, 0, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using SELS = CS_CSCTL1_SELS_Values<CS::CSCTL1, 4, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using SELA = CS_CSCTL1_SELA_Values<CS::CSCTL1, 8, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using SELB = CS_CSCTL1_SELB_Values<CS::CSCTL1, 12, 1, ReadWriteMode, CSCSCTL1Base> ;
+    using DIVM = CS_CSCTL1_DIVM_Values<CS::CSCTL1, 16, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using DIVHS = CS_CSCTL1_DIVHS_Values<CS::CSCTL1, 20, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using DIVA = CS_CSCTL1_DIVA_Values<CS::CSCTL1, 24, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using DIVS = CS_CSCTL1_DIVS_Values<CS::CSCTL1, 28, 3, ReadWriteMode, CSCSCTL1Base> ;
+    using FieldValues = CS_CSCTL1_DIVS_Values<CS::CSCTL1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -60,14 +63,15 @@ struct CS
 
   struct CSCTL2 : public RegisterBase<0x4001040C, 32, ReadWriteMode>
   {
-    using LFXTDRIVE = CS_CSCTL_LFXTDRIVE_Values<CS::CSCTL2, 0, 2, ReadWriteMode, CSCSCTL2Base> ;
-    using LFXTAGCOFF = CS_CSCTL_LFXTAGCOFF_Values<CS::CSCTL2, 7, 1, ReadWriteMode, CSCSCTL2Base> ;
-    using LFXT_EN = CS_CSCTL_LFXT_EN_Values<CS::CSCTL2, 8, 1, ReadWriteMode, CSCSCTL2Base> ;
-    using LFXTBYPASS = CS_CSCTL_LFXTBYPASS_Values<CS::CSCTL2, 9, 1, ReadWriteMode, CSCSCTL2Base> ;
-    using HFXTDRIVE = CS_CSCTL_HFXTDRIVE_Values<CS::CSCTL2, 16, 1, ReadWriteMode, CSCSCTL2Base> ;
-    using HFXTFREQ = CS_CSCTL_HFXTFREQ_Values<CS::CSCTL2, 20, 3, ReadWriteMode, CSCSCTL2Base> ;
-    using HFXT_EN = CS_CSCTL_HFXT_EN_Values<CS::CSCTL2, 24, 1, ReadWriteMode, CSCSCTL2Base> ;
-    using HFXTBYPASS = CS_CSCTL_HFXTBYPASS_Values<CS::CSCTL2, 25, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using LFXTDRIVE = CS_CSCTL2_LFXTDRIVE_Values<CS::CSCTL2, 0, 2, ReadWriteMode, CSCSCTL2Base> ;
+    using LFXTAGCOFF = CS_CSCTL2_LFXTAGCOFF_Values<CS::CSCTL2, 7, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using LFXT_EN = CS_CSCTL2_LFXT_EN_Values<CS::CSCTL2, 8, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using LFXTBYPASS = CS_CSCTL2_LFXTBYPASS_Values<CS::CSCTL2, 9, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using HFXTDRIVE = CS_CSCTL2_HFXTDRIVE_Values<CS::CSCTL2, 16, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using HFXTFREQ = CS_CSCTL2_HFXTFREQ_Values<CS::CSCTL2, 20, 3, ReadWriteMode, CSCSCTL2Base> ;
+    using HFXT_EN = CS_CSCTL2_HFXT_EN_Values<CS::CSCTL2, 24, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using HFXTBYPASS = CS_CSCTL2_HFXTBYPASS_Values<CS::CSCTL2, 25, 1, ReadWriteMode, CSCSCTL2Base> ;
+    using FieldValues = CS_CSCTL2_HFXTBYPASS_Values<CS::CSCTL2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -77,15 +81,16 @@ struct CS
 
   struct CSCTL3 : public RegisterBase<0x40010410, 32, ReadWriteMode>
   {
-    using FCNTLF = CS_CSCTL_FCNTLF_Values<CS::CSCTL3, 0, 2, ReadWriteMode, CSCSCTL3Base> ;
-    using RFCNTLF = CS_CSCTL_RFCNTLF_Values<CS::CSCTL3, 2, 1, WriteMode, CSCSCTL3Base> ;
-    using FCNTLF_EN = CS_CSCTL_FCNTLF_EN_Values<CS::CSCTL3, 3, 1, ReadWriteMode, CSCSCTL3Base> ;
-    using FCNTHF = CS_CSCTL_FCNTHF_Values<CS::CSCTL3, 4, 2, ReadWriteMode, CSCSCTL3Base> ;
-    using RFCNTHF = CS_CSCTL_RFCNTHF_Values<CS::CSCTL3, 6, 1, WriteMode, CSCSCTL3Base> ;
-    using FCNTHF_EN = CS_CSCTL_FCNTHF_EN_Values<CS::CSCTL3, 7, 1, ReadWriteMode, CSCSCTL3Base> ;
-    using FCNTHF2 = CS_CSCTL_FCNTHF_Values<CS::CSCTL3, 8, 2, ReadWriteMode, CSCSCTL3Base> ;
-    using RFCNTHF2 = CS_CSCTL_RFCNTHF_Values<CS::CSCTL3, 10, 1, WriteMode, CSCSCTL3Base> ;
-    using FCNTHF2_EN = CS_CSCTL_FCNTHF_EN_Values<CS::CSCTL3, 11, 1, ReadWriteMode, CSCSCTL3Base> ;
+    using FCNTLF = CS_CSCTL3_FCNTLF_Values<CS::CSCTL3, 0, 2, ReadWriteMode, CSCSCTL3Base> ;
+    using RFCNTLF = CS_CSCTL3_RFCNTLF_Values<CS::CSCTL3, 2, 1, WriteMode, CSCSCTL3Base> ;
+    using FCNTLF_EN = CS_CSCTL3_FCNTLF_EN_Values<CS::CSCTL3, 3, 1, ReadWriteMode, CSCSCTL3Base> ;
+    using FCNTHF = CS_CSCTL3_FCNTHF_Values<CS::CSCTL3, 4, 2, ReadWriteMode, CSCSCTL3Base> ;
+    using RFCNTHF = CS_CSCTL3_RFCNTHF_Values<CS::CSCTL3, 6, 1, WriteMode, CSCSCTL3Base> ;
+    using FCNTHF_EN = CS_CSCTL3_FCNTHF_EN_Values<CS::CSCTL3, 7, 1, ReadWriteMode, CSCSCTL3Base> ;
+    using FCNTHF2 = CS_CSCTL3_FCNTHF2_Values<CS::CSCTL3, 8, 2, ReadWriteMode, CSCSCTL3Base> ;
+    using RFCNTHF2 = CS_CSCTL3_RFCNTHF2_Values<CS::CSCTL3, 10, 1, WriteMode, CSCSCTL3Base> ;
+    using FCNTHF2_EN = CS_CSCTL3_FCNTHF2_EN_Values<CS::CSCTL3, 11, 1, ReadWriteMode, CSCSCTL3Base> ;
+    using FieldValues = CS_CSCTL3_FCNTHF2_EN_Values<CS::CSCTL3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -103,6 +108,7 @@ struct CS
     using REFO_EN = CS_CSCLKEN_REFO_EN_Values<CS::CSCLKEN, 9, 1, ReadWriteMode, CSCSCLKENBase> ;
     using MODOSC_EN = CS_CSCLKEN_MODOSC_EN_Values<CS::CSCLKEN, 10, 1, ReadWriteMode, CSCSCLKENBase> ;
     using REFOFSEL = CS_CSCLKEN_REFOFSEL_Values<CS::CSCLKEN, 15, 1, ReadWriteMode, CSCSCLKENBase> ;
+    using FieldValues = CS_CSCLKEN_REFOFSEL_Values<CS::CSCLKEN, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -115,7 +121,7 @@ struct CS
     using DCO_ON = CS_CSSTAT_DCO_ON_Values<CS::CSSTAT, 0, 1, ReadMode, CSCSSTATBase> ;
     using DCOBIAS_ON = CS_CSSTAT_DCOBIAS_ON_Values<CS::CSSTAT, 1, 1, ReadMode, CSCSSTATBase> ;
     using HFXT_ON = CS_CSSTAT_HFXT_ON_Values<CS::CSSTAT, 2, 1, ReadMode, CSCSSTATBase> ;
-    using HFXT2_ON = CS_CSSTAT_HFXT_ON_Values<CS::CSSTAT, 3, 1, ReadMode, CSCSSTATBase> ;
+    using HFXT2_ON = CS_CSSTAT_HFXT2_ON_Values<CS::CSSTAT, 3, 1, ReadMode, CSCSSTATBase> ;
     using MODOSC_ON = CS_CSSTAT_MODOSC_ON_Values<CS::CSSTAT, 4, 1, ReadMode, CSCSSTATBase> ;
     using VLO_ON = CS_CSSTAT_VLO_ON_Values<CS::CSSTAT, 5, 1, ReadMode, CSCSSTATBase> ;
     using LFXT_ON = CS_CSSTAT_LFXT_ON_Values<CS::CSSTAT, 6, 1, ReadMode, CSCSSTATBase> ;
@@ -133,6 +139,7 @@ struct CS
     using HSMCLK_READY = CS_CSSTAT_HSMCLK_READY_Values<CS::CSSTAT, 26, 1, ReadMode, CSCSSTATBase> ;
     using SMCLK_READY = CS_CSSTAT_SMCLK_READY_Values<CS::CSSTAT, 27, 1, ReadMode, CSCSSTATBase> ;
     using BCLK_READY = CS_CSSTAT_BCLK_READY_Values<CS::CSSTAT, 28, 1, ReadMode, CSCSSTATBase> ;
+    using FieldValues = CS_CSSTAT_BCLK_READY_Values<CS::CSSTAT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -144,15 +151,16 @@ struct CS
   {
     using LFXTIE = CS_CSIE_LFXTIE_Values<CS::CSIE, 0, 1, ReadWriteMode, CSCSIEBase> ;
     using HFXTIE = CS_CSIE_HFXTIE_Values<CS::CSIE, 1, 1, ReadWriteMode, CSCSIEBase> ;
-    using HFXT2IE = CS_CSIE_HFXTIE_Values<CS::CSIE, 2, 1, ReadWriteMode, CSCSIEBase> ;
+    using HFXT2IE = CS_CSIE_HFXT2IE_Values<CS::CSIE, 2, 1, ReadWriteMode, CSCSIEBase> ;
     using DCOR_OPNIE = CS_CSIE_DCOR_OPNIE_Values<CS::CSIE, 6, 1, ReadWriteMode, CSCSIEBase> ;
     using FCNTLFIE = CS_CSIE_FCNTLFIE_Values<CS::CSIE, 8, 1, ReadWriteMode, CSCSIEBase> ;
     using FCNTHFIE = CS_CSIE_FCNTHFIE_Values<CS::CSIE, 9, 1, ReadWriteMode, CSCSIEBase> ;
-    using FCNTHF2IE = CS_CSIE_FCNTHFIE_Values<CS::CSIE, 10, 1, ReadWriteMode, CSCSIEBase> ;
+    using FCNTHF2IE = CS_CSIE_FCNTHF2IE_Values<CS::CSIE, 10, 1, ReadWriteMode, CSCSIEBase> ;
     using PLLOOLIE = CS_CSIE_PLLOOLIE_Values<CS::CSIE, 12, 1, ReadWriteMode, CSCSIEBase> ;
     using PLLLOSIE = CS_CSIE_PLLLOSIE_Values<CS::CSIE, 13, 1, ReadWriteMode, CSCSIEBase> ;
     using PLLOORIE = CS_CSIE_PLLOORIE_Values<CS::CSIE, 14, 1, ReadWriteMode, CSCSIEBase> ;
     using CALIE = CS_CSIE_CALIE_Values<CS::CSIE, 15, 1, ReadWriteMode, CSCSIEBase> ;
+    using FieldValues = CS_CSIE_CALIE_Values<CS::CSIE, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -164,16 +172,17 @@ struct CS
   {
     using LFXTIFG = CS_CSIFG_LFXTIFG_Values<CS::CSIFG, 0, 1, ReadMode, CSCSIFGBase> ;
     using HFXTIFG = CS_CSIFG_HFXTIFG_Values<CS::CSIFG, 1, 1, ReadMode, CSCSIFGBase> ;
-    using HFXT2IFG = CS_CSIFG_HFXTIFG_Values<CS::CSIFG, 2, 1, ReadMode, CSCSIFGBase> ;
+    using HFXT2IFG = CS_CSIFG_HFXT2IFG_Values<CS::CSIFG, 2, 1, ReadMode, CSCSIFGBase> ;
     using DCOR_SHTIFG = CS_CSIFG_DCOR_SHTIFG_Values<CS::CSIFG, 5, 1, ReadMode, CSCSIFGBase> ;
     using DCOR_OPNIFG = CS_CSIFG_DCOR_OPNIFG_Values<CS::CSIFG, 6, 1, ReadMode, CSCSIFGBase> ;
     using FCNTLFIFG = CS_CSIFG_FCNTLFIFG_Values<CS::CSIFG, 8, 1, ReadMode, CSCSIFGBase> ;
     using FCNTHFIFG = CS_CSIFG_FCNTHFIFG_Values<CS::CSIFG, 9, 1, ReadMode, CSCSIFGBase> ;
-    using FCNTHF2IFG = CS_CSIFG_FCNTHFIFG_Values<CS::CSIFG, 11, 1, ReadMode, CSCSIFGBase> ;
+    using FCNTHF2IFG = CS_CSIFG_FCNTHF2IFG_Values<CS::CSIFG, 11, 1, ReadMode, CSCSIFGBase> ;
     using PLLOOLIFG = CS_CSIFG_PLLOOLIFG_Values<CS::CSIFG, 12, 1, ReadMode, CSCSIFGBase> ;
     using PLLLOSIFG = CS_CSIFG_PLLLOSIFG_Values<CS::CSIFG, 13, 1, ReadMode, CSCSIFGBase> ;
     using PLLOORIFG = CS_CSIFG_PLLOORIFG_Values<CS::CSIFG, 14, 1, ReadMode, CSCSIFGBase> ;
     using CALIFG = CS_CSIFG_CALIFG_Values<CS::CSIFG, 15, 1, ReadMode, CSCSIFGBase> ;
+    using FieldValues = CS_CSIFG_CALIFG_Values<CS::CSIFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -185,15 +194,16 @@ struct CS
   {
     using CLR_LFXTIFG = CS_CSCLRIFG_CLR_LFXTIFG_Values<CS::CSCLRIFG, 0, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_HFXTIFG = CS_CSCLRIFG_CLR_HFXTIFG_Values<CS::CSCLRIFG, 1, 1, WriteMode, CSCSCLRIFGBase> ;
-    using CLR_HFXT2IFG = CS_CSCLRIFG_CLR_HFXTIFG_Values<CS::CSCLRIFG, 2, 1, WriteMode, CSCSCLRIFGBase> ;
+    using CLR_HFXT2IFG = CS_CSCLRIFG_CLR_HFXT2IFG_Values<CS::CSCLRIFG, 2, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_DCOR_OPNIFG = CS_CSCLRIFG_CLR_DCOR_OPNIFG_Values<CS::CSCLRIFG, 6, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_CALIFG = CS_CSCLRIFG_CLR_CALIFG_Values<CS::CSCLRIFG, 15, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_FCNTLFIFG = CS_CSCLRIFG_CLR_FCNTLFIFG_Values<CS::CSCLRIFG, 8, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_FCNTHFIFG = CS_CSCLRIFG_CLR_FCNTHFIFG_Values<CS::CSCLRIFG, 9, 1, WriteMode, CSCSCLRIFGBase> ;
-    using CLR_FCNTHF2IFG = CS_CSCLRIFG_CLR_FCNTHFIFG_Values<CS::CSCLRIFG, 10, 1, WriteMode, CSCSCLRIFGBase> ;
+    using CLR_FCNTHF2IFG = CS_CSCLRIFG_CLR_FCNTHF2IFG_Values<CS::CSCLRIFG, 10, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_PLLOOLIFG = CS_CSCLRIFG_CLR_PLLOOLIFG_Values<CS::CSCLRIFG, 12, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_PLLLOSIFG = CS_CSCLRIFG_CLR_PLLLOSIFG_Values<CS::CSCLRIFG, 13, 1, WriteMode, CSCSCLRIFGBase> ;
     using CLR_PLLOORIFG = CS_CSCLRIFG_CLR_PLLOORIFG_Values<CS::CSCLRIFG, 14, 1, WriteMode, CSCSCLRIFGBase> ;
+    using FieldValues = CS_CSCLRIFG_CLR_PLLOORIFG_Values<CS::CSCLRIFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -205,15 +215,16 @@ struct CS
   {
     using SET_LFXTIFG = CS_CSSETIFG_SET_LFXTIFG_Values<CS::CSSETIFG, 0, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_HFXTIFG = CS_CSSETIFG_SET_HFXTIFG_Values<CS::CSSETIFG, 1, 1, WriteMode, CSCSSETIFGBase> ;
-    using SET_HFXT2IFG = CS_CSSETIFG_SET_HFXTIFG_Values<CS::CSSETIFG, 2, 1, WriteMode, CSCSSETIFGBase> ;
+    using SET_HFXT2IFG = CS_CSSETIFG_SET_HFXT2IFG_Values<CS::CSSETIFG, 2, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_DCOR_OPNIFG = CS_CSSETIFG_SET_DCOR_OPNIFG_Values<CS::CSSETIFG, 6, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_CALIFG = CS_CSSETIFG_SET_CALIFG_Values<CS::CSSETIFG, 15, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_FCNTHFIFG = CS_CSSETIFG_SET_FCNTHFIFG_Values<CS::CSSETIFG, 9, 1, WriteMode, CSCSSETIFGBase> ;
-    using SET_FCNTHF2IFG = CS_CSSETIFG_SET_FCNTHFIFG_Values<CS::CSSETIFG, 10, 1, WriteMode, CSCSSETIFGBase> ;
+    using SET_FCNTHF2IFG = CS_CSSETIFG_SET_FCNTHF2IFG_Values<CS::CSSETIFG, 10, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_FCNTLFIFG = CS_CSSETIFG_SET_FCNTLFIFG_Values<CS::CSSETIFG, 8, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_PLLOOLIFG = CS_CSSETIFG_SET_PLLOOLIFG_Values<CS::CSSETIFG, 12, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_PLLLOSIFG = CS_CSSETIFG_SET_PLLLOSIFG_Values<CS::CSSETIFG, 13, 1, WriteMode, CSCSSETIFGBase> ;
     using SET_PLLOORIFG = CS_CSSETIFG_SET_PLLOORIFG_Values<CS::CSSETIFG, 14, 1, WriteMode, CSCSSETIFGBase> ;
+    using FieldValues = CS_CSSETIFG_SET_PLLOORIFG_Values<CS::CSSETIFG, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -223,8 +234,9 @@ struct CS
 
   struct CSDCOERCAL0 : public RegisterBase<0x40010460, 32, ReadWriteMode>
   {
-    using DCO_TCCAL = CS_CSDCOERCAL_DCO_TCCAL_Values<CS::CSDCOERCAL0, 0, 2, ReadWriteMode, CSCSDCOERCAL0Base> ;
-    using DCO_FCAL_RSEL04 = CS_CSDCOERCAL_DCO_FCAL_RSEL_Values<CS::CSDCOERCAL0, 16, 10, ReadWriteMode, CSCSDCOERCAL0Base> ;
+    using DCO_TCCAL = CS_CSDCOERCAL0_DCO_TCCAL_Values<CS::CSDCOERCAL0, 0, 2, ReadWriteMode, CSCSDCOERCAL0Base> ;
+    using DCO_FCAL_RSEL04 = CS_CSDCOERCAL0_DCO_FCAL_RSEL04_Values<CS::CSDCOERCAL0, 16, 10, ReadWriteMode, CSCSDCOERCAL0Base> ;
+    using FieldValues = CS_CSDCOERCAL0_DCO_FCAL_RSEL04_Values<CS::CSDCOERCAL0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -234,7 +246,8 @@ struct CS
 
   struct CSDCOERCAL1 : public RegisterBase<0x40010464, 32, ReadWriteMode>
   {
-    using DCO_FCAL_RSEL5 = CS_CSDCOERCAL_DCO_FCAL_RSEL_Values<CS::CSDCOERCAL1, 0, 10, ReadWriteMode, CSCSDCOERCAL1Base> ;
+    using DCO_FCAL_RSEL5 = CS_CSDCOERCAL1_DCO_FCAL_RSEL5_Values<CS::CSDCOERCAL1, 0, 10, ReadWriteMode, CSCSDCOERCAL1Base> ;
+    using FieldValues = CS_CSDCOERCAL1_DCO_FCAL_RSEL5_Values<CS::CSDCOERCAL1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

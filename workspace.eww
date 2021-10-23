@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspace>
     <project>
-        <path>$WS_DIR$\Backup of iartproject.ewp</path>
+        <path>$WS_DIR$\..\KURSOVOY1\Kurs_Bluetooth-master\Kurs-Kurs\Kursovoy-master\iarproject.ewp</path>
     </project>
     <project>
-        <path>$WS_DIR$\..\DinamicStand\falshuart.ewp</path>
-    </project>
-    <project>
-        <path>$WS_DIR$\iartproject.ewp</path>
+        <path>$WS_DIR$\..\KURSOVOY1\Kurs_Bluetooth-master\Kurs-Kurs\Kursovoy-master\proj.ewp</path>
     </project>
     <batchBuild />
 </workspace>

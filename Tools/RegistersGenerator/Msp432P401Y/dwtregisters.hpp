@@ -10,7 +10,7 @@
 #if !defined(DWTREGISTERS_HPP)
 #define DWTREGISTERS_HPP
 
-#include "dwtbitsfield.hpp"  //for Bits Fields defs 
+#include "dwtfieldvalues.hpp"  //for Bits Fields defs 
 #include "registerbase.hpp"   //for RegisterBase
 #include "register.hpp"       //for Register
 #include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  
@@ -36,6 +36,7 @@ struct DWT
     using CYCEVTENA = DWT_DWT_CTRL_CYCEVTENA_Values<DWT::DWT_CTRL, 22, 1, ReadWriteMode, DWTDWT_CTRLBase> ;
     using NOPRFCNT = DWT_DWT_CTRL_NOPRFCNT_Values<DWT::DWT_CTRL, 24, 1, ReadWriteMode, DWTDWT_CTRLBase> ;
     using NOCYCCNT = DWT_DWT_CTRL_NOCYCCNT_Values<DWT::DWT_CTRL, 25, 1, ReadWriteMode, DWTDWT_CTRLBase> ;
+    using FieldValues = DWT_DWT_CTRL_NOCYCCNT_Values<DWT::DWT_CTRL, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -46,6 +47,7 @@ struct DWT
   struct DWT_CYCCNT : public RegisterBase<0xE0001004, 32, ReadWriteMode>
   {
     using CYCCNT = DWT_DWT_CYCCNT_CYCCNT_Values<DWT::DWT_CYCCNT, 0, 32, ReadWriteMode, DWTDWT_CYCCNTBase> ;
+    using FieldValues = DWT_DWT_CYCCNT_CYCCNT_Values<DWT::DWT_CYCCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -56,6 +58,7 @@ struct DWT
   struct DWT_CPICNT : public RegisterBase<0xE0001008, 32, ReadWriteMode>
   {
     using CPICNT = DWT_DWT_CPICNT_CPICNT_Values<DWT::DWT_CPICNT, 0, 8, ReadWriteMode, DWTDWT_CPICNTBase> ;
+    using FieldValues = DWT_DWT_CPICNT_CPICNT_Values<DWT::DWT_CPICNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -66,6 +69,7 @@ struct DWT
   struct DWT_EXCCNT : public RegisterBase<0xE000100C, 32, ReadWriteMode>
   {
     using EXCCNT = DWT_DWT_EXCCNT_EXCCNT_Values<DWT::DWT_EXCCNT, 0, 8, ReadWriteMode, DWTDWT_EXCCNTBase> ;
+    using FieldValues = DWT_DWT_EXCCNT_EXCCNT_Values<DWT::DWT_EXCCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -76,6 +80,7 @@ struct DWT
   struct DWT_SLEEPCNT : public RegisterBase<0xE0001010, 32, ReadWriteMode>
   {
     using SLEEPCNT = DWT_DWT_SLEEPCNT_SLEEPCNT_Values<DWT::DWT_SLEEPCNT, 0, 8, ReadWriteMode, DWTDWT_SLEEPCNTBase> ;
+    using FieldValues = DWT_DWT_SLEEPCNT_SLEEPCNT_Values<DWT::DWT_SLEEPCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -86,6 +91,7 @@ struct DWT
   struct DWT_LSUCNT : public RegisterBase<0xE0001014, 32, ReadWriteMode>
   {
     using LSUCNT = DWT_DWT_LSUCNT_LSUCNT_Values<DWT::DWT_LSUCNT, 0, 8, ReadWriteMode, DWTDWT_LSUCNTBase> ;
+    using FieldValues = DWT_DWT_LSUCNT_LSUCNT_Values<DWT::DWT_LSUCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -96,6 +102,7 @@ struct DWT
   struct DWT_FOLDCNT : public RegisterBase<0xE0001018, 32, ReadWriteMode>
   {
     using FOLDCNT = DWT_DWT_FOLDCNT_FOLDCNT_Values<DWT::DWT_FOLDCNT, 0, 8, ReadWriteMode, DWTDWT_FOLDCNTBase> ;
+    using FieldValues = DWT_DWT_FOLDCNT_FOLDCNT_Values<DWT::DWT_FOLDCNT, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -106,6 +113,7 @@ struct DWT
   struct DWT_PCSR : public RegisterBase<0xE000101C, 32, ReadMode>
   {
     using EIASAMPLE = DWT_DWT_PCSR_EIASAMPLE_Values<DWT::DWT_PCSR, 0, 32, ReadMode, DWTDWT_PCSRBase> ;
+    using FieldValues = DWT_DWT_PCSR_EIASAMPLE_Values<DWT::DWT_PCSR, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -115,7 +123,8 @@ struct DWT
 
   struct DWT_COMP0 : public RegisterBase<0xE0001020, 32, ReadWriteMode>
   {
-    using COMP = DWT_DWT_COMP_COMP_Values<DWT::DWT_COMP0, 0, 32, ReadWriteMode, DWTDWT_COMP0Base> ;
+    using COMP = DWT_DWT_COMP0_COMP_Values<DWT::DWT_COMP0, 0, 32, ReadWriteMode, DWTDWT_COMP0Base> ;
+    using FieldValues = DWT_DWT_COMP0_COMP_Values<DWT::DWT_COMP0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -125,7 +134,8 @@ struct DWT
 
   struct DWT_MASK0 : public RegisterBase<0xE0001024, 32, ReadWriteMode>
   {
-    using MASK = DWT_DWT_MASK_MASK_Values<DWT::DWT_MASK0, 0, 4, ReadWriteMode, DWTDWT_MASK0Base> ;
+    using MASK = DWT_DWT_MASK0_MASK_Values<DWT::DWT_MASK0, 0, 4, ReadWriteMode, DWTDWT_MASK0Base> ;
+    using FieldValues = DWT_DWT_MASK0_MASK_Values<DWT::DWT_MASK0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -135,14 +145,15 @@ struct DWT
 
   struct DWT_FUNCTION0 : public RegisterBase<0xE0001028, 32, ReadWriteMode>
   {
-    using FUNCTION = DWT_DWT_FUNCTION_FUNCTION_Values<DWT::DWT_FUNCTION0, 0, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using EMITRANGE = DWT_DWT_FUNCTION_EMITRANGE_Values<DWT::DWT_FUNCTION0, 5, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using DATAVMATCH = DWT_DWT_FUNCTION_DATAVMATCH_Values<DWT::DWT_FUNCTION0, 8, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using LNK1ENA = DWT_DWT_FUNCTION_LNKENA_Values<DWT::DWT_FUNCTION0, 9, 1, ReadMode, DWTDWT_FUNCTION0Base> ;
-    using DATAVSIZE = DWT_DWT_FUNCTION_DATAVSIZE_Values<DWT::DWT_FUNCTION0, 10, 2, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using DATAVADDR0 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION0, 12, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using DATAVADDR1 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION0, 16, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
-    using MATCHED = DWT_DWT_FUNCTION_MATCHED_Values<DWT::DWT_FUNCTION0, 24, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using FUNCTION = DWT_DWT_FUNCTION0_FUNCTION_Values<DWT::DWT_FUNCTION0, 0, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using EMITRANGE = DWT_DWT_FUNCTION0_EMITRANGE_Values<DWT::DWT_FUNCTION0, 5, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using DATAVMATCH = DWT_DWT_FUNCTION0_DATAVMATCH_Values<DWT::DWT_FUNCTION0, 8, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using LNK1ENA = DWT_DWT_FUNCTION0_LNK1ENA_Values<DWT::DWT_FUNCTION0, 9, 1, ReadMode, DWTDWT_FUNCTION0Base> ;
+    using DATAVSIZE = DWT_DWT_FUNCTION0_DATAVSIZE_Values<DWT::DWT_FUNCTION0, 10, 2, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using DATAVADDR0 = DWT_DWT_FUNCTION0_DATAVADDR0_Values<DWT::DWT_FUNCTION0, 12, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using DATAVADDR1 = DWT_DWT_FUNCTION0_DATAVADDR1_Values<DWT::DWT_FUNCTION0, 16, 4, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using MATCHED = DWT_DWT_FUNCTION0_MATCHED_Values<DWT::DWT_FUNCTION0, 24, 1, ReadWriteMode, DWTDWT_FUNCTION0Base> ;
+    using FieldValues = DWT_DWT_FUNCTION0_MATCHED_Values<DWT::DWT_FUNCTION0, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -152,7 +163,8 @@ struct DWT
 
   struct DWT_COMP1 : public RegisterBase<0xE0001030, 32, ReadWriteMode>
   {
-    using COMP = DWT_DWT_COMP_COMP_Values<DWT::DWT_COMP1, 0, 32, ReadWriteMode, DWTDWT_COMP1Base> ;
+    using COMP = DWT_DWT_COMP1_COMP_Values<DWT::DWT_COMP1, 0, 32, ReadWriteMode, DWTDWT_COMP1Base> ;
+    using FieldValues = DWT_DWT_COMP1_COMP_Values<DWT::DWT_COMP1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -162,7 +174,8 @@ struct DWT
 
   struct DWT_MASK1 : public RegisterBase<0xE0001034, 32, ReadWriteMode>
   {
-    using MASK = DWT_DWT_MASK_MASK_Values<DWT::DWT_MASK1, 0, 4, ReadWriteMode, DWTDWT_MASK1Base> ;
+    using MASK = DWT_DWT_MASK1_MASK_Values<DWT::DWT_MASK1, 0, 4, ReadWriteMode, DWTDWT_MASK1Base> ;
+    using FieldValues = DWT_DWT_MASK1_MASK_Values<DWT::DWT_MASK1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -172,15 +185,16 @@ struct DWT
 
   struct DWT_FUNCTION1 : public RegisterBase<0xE0001038, 32, ReadWriteMode>
   {
-    using FUNCTION = DWT_DWT_FUNCTION_FUNCTION_Values<DWT::DWT_FUNCTION1, 0, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using EMITRANGE = DWT_DWT_FUNCTION_EMITRANGE_Values<DWT::DWT_FUNCTION1, 5, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using CYCMATCH = DWT_DWT_FUNCTION_CYCMATCH_Values<DWT::DWT_FUNCTION1, 7, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using DATAVMATCH = DWT_DWT_FUNCTION_DATAVMATCH_Values<DWT::DWT_FUNCTION1, 8, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using LNK1ENA = DWT_DWT_FUNCTION_LNKENA_Values<DWT::DWT_FUNCTION1, 9, 1, ReadMode, DWTDWT_FUNCTION1Base> ;
-    using DATAVSIZE = DWT_DWT_FUNCTION_DATAVSIZE_Values<DWT::DWT_FUNCTION1, 10, 2, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using DATAVADDR0 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION1, 12, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using DATAVADDR1 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION1, 16, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
-    using MATCHED = DWT_DWT_FUNCTION_MATCHED_Values<DWT::DWT_FUNCTION1, 24, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using FUNCTION = DWT_DWT_FUNCTION1_FUNCTION_Values<DWT::DWT_FUNCTION1, 0, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using EMITRANGE = DWT_DWT_FUNCTION1_EMITRANGE_Values<DWT::DWT_FUNCTION1, 5, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using CYCMATCH = DWT_DWT_FUNCTION1_CYCMATCH_Values<DWT::DWT_FUNCTION1, 7, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using DATAVMATCH = DWT_DWT_FUNCTION1_DATAVMATCH_Values<DWT::DWT_FUNCTION1, 8, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using LNK1ENA = DWT_DWT_FUNCTION1_LNK1ENA_Values<DWT::DWT_FUNCTION1, 9, 1, ReadMode, DWTDWT_FUNCTION1Base> ;
+    using DATAVSIZE = DWT_DWT_FUNCTION1_DATAVSIZE_Values<DWT::DWT_FUNCTION1, 10, 2, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using DATAVADDR0 = DWT_DWT_FUNCTION1_DATAVADDR0_Values<DWT::DWT_FUNCTION1, 12, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using DATAVADDR1 = DWT_DWT_FUNCTION1_DATAVADDR1_Values<DWT::DWT_FUNCTION1, 16, 4, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using MATCHED = DWT_DWT_FUNCTION1_MATCHED_Values<DWT::DWT_FUNCTION1, 24, 1, ReadWriteMode, DWTDWT_FUNCTION1Base> ;
+    using FieldValues = DWT_DWT_FUNCTION1_MATCHED_Values<DWT::DWT_FUNCTION1, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -190,7 +204,8 @@ struct DWT
 
   struct DWT_COMP2 : public RegisterBase<0xE0001040, 32, ReadWriteMode>
   {
-    using COMP = DWT_DWT_COMP_COMP_Values<DWT::DWT_COMP2, 0, 32, ReadWriteMode, DWTDWT_COMP2Base> ;
+    using COMP = DWT_DWT_COMP2_COMP_Values<DWT::DWT_COMP2, 0, 32, ReadWriteMode, DWTDWT_COMP2Base> ;
+    using FieldValues = DWT_DWT_COMP2_COMP_Values<DWT::DWT_COMP2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -200,7 +215,8 @@ struct DWT
 
   struct DWT_MASK2 : public RegisterBase<0xE0001044, 32, ReadWriteMode>
   {
-    using MASK = DWT_DWT_MASK_MASK_Values<DWT::DWT_MASK2, 0, 4, ReadWriteMode, DWTDWT_MASK2Base> ;
+    using MASK = DWT_DWT_MASK2_MASK_Values<DWT::DWT_MASK2, 0, 4, ReadWriteMode, DWTDWT_MASK2Base> ;
+    using FieldValues = DWT_DWT_MASK2_MASK_Values<DWT::DWT_MASK2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -210,14 +226,15 @@ struct DWT
 
   struct DWT_FUNCTION2 : public RegisterBase<0xE0001048, 32, ReadWriteMode>
   {
-    using FUNCTION = DWT_DWT_FUNCTION_FUNCTION_Values<DWT::DWT_FUNCTION2, 0, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using EMITRANGE = DWT_DWT_FUNCTION_EMITRANGE_Values<DWT::DWT_FUNCTION2, 5, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using DATAVMATCH = DWT_DWT_FUNCTION_DATAVMATCH_Values<DWT::DWT_FUNCTION2, 8, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using LNK1ENA = DWT_DWT_FUNCTION_LNKENA_Values<DWT::DWT_FUNCTION2, 9, 1, ReadMode, DWTDWT_FUNCTION2Base> ;
-    using DATAVSIZE = DWT_DWT_FUNCTION_DATAVSIZE_Values<DWT::DWT_FUNCTION2, 10, 2, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using DATAVADDR0 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION2, 12, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using DATAVADDR1 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION2, 16, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
-    using MATCHED = DWT_DWT_FUNCTION_MATCHED_Values<DWT::DWT_FUNCTION2, 24, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using FUNCTION = DWT_DWT_FUNCTION2_FUNCTION_Values<DWT::DWT_FUNCTION2, 0, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using EMITRANGE = DWT_DWT_FUNCTION2_EMITRANGE_Values<DWT::DWT_FUNCTION2, 5, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using DATAVMATCH = DWT_DWT_FUNCTION2_DATAVMATCH_Values<DWT::DWT_FUNCTION2, 8, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using LNK1ENA = DWT_DWT_FUNCTION2_LNK1ENA_Values<DWT::DWT_FUNCTION2, 9, 1, ReadMode, DWTDWT_FUNCTION2Base> ;
+    using DATAVSIZE = DWT_DWT_FUNCTION2_DATAVSIZE_Values<DWT::DWT_FUNCTION2, 10, 2, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using DATAVADDR0 = DWT_DWT_FUNCTION2_DATAVADDR0_Values<DWT::DWT_FUNCTION2, 12, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using DATAVADDR1 = DWT_DWT_FUNCTION2_DATAVADDR1_Values<DWT::DWT_FUNCTION2, 16, 4, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using MATCHED = DWT_DWT_FUNCTION2_MATCHED_Values<DWT::DWT_FUNCTION2, 24, 1, ReadWriteMode, DWTDWT_FUNCTION2Base> ;
+    using FieldValues = DWT_DWT_FUNCTION2_MATCHED_Values<DWT::DWT_FUNCTION2, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -227,7 +244,8 @@ struct DWT
 
   struct DWT_COMP3 : public RegisterBase<0xE0001050, 32, ReadWriteMode>
   {
-    using COMP = DWT_DWT_COMP_COMP_Values<DWT::DWT_COMP3, 0, 32, ReadWriteMode, DWTDWT_COMP3Base> ;
+    using COMP = DWT_DWT_COMP3_COMP_Values<DWT::DWT_COMP3, 0, 32, ReadWriteMode, DWTDWT_COMP3Base> ;
+    using FieldValues = DWT_DWT_COMP3_COMP_Values<DWT::DWT_COMP3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -237,7 +255,8 @@ struct DWT
 
   struct DWT_MASK3 : public RegisterBase<0xE0001054, 32, ReadWriteMode>
   {
-    using MASK = DWT_DWT_MASK_MASK_Values<DWT::DWT_MASK3, 0, 4, ReadWriteMode, DWTDWT_MASK3Base> ;
+    using MASK = DWT_DWT_MASK3_MASK_Values<DWT::DWT_MASK3, 0, 4, ReadWriteMode, DWTDWT_MASK3Base> ;
+    using FieldValues = DWT_DWT_MASK3_MASK_Values<DWT::DWT_MASK3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 
@@ -247,14 +266,15 @@ struct DWT
 
   struct DWT_FUNCTION3 : public RegisterBase<0xE0001058, 32, ReadWriteMode>
   {
-    using FUNCTION = DWT_DWT_FUNCTION_FUNCTION_Values<DWT::DWT_FUNCTION3, 0, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using EMITRANGE = DWT_DWT_FUNCTION_EMITRANGE_Values<DWT::DWT_FUNCTION3, 5, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using DATAVMATCH = DWT_DWT_FUNCTION_DATAVMATCH_Values<DWT::DWT_FUNCTION3, 8, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using LNK1ENA = DWT_DWT_FUNCTION_LNKENA_Values<DWT::DWT_FUNCTION3, 9, 1, ReadMode, DWTDWT_FUNCTION3Base> ;
-    using DATAVSIZE = DWT_DWT_FUNCTION_DATAVSIZE_Values<DWT::DWT_FUNCTION3, 10, 2, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using DATAVADDR0 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION3, 12, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using DATAVADDR1 = DWT_DWT_FUNCTION_DATAVADDR_Values<DWT::DWT_FUNCTION3, 16, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
-    using MATCHED = DWT_DWT_FUNCTION_MATCHED_Values<DWT::DWT_FUNCTION3, 24, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using FUNCTION = DWT_DWT_FUNCTION3_FUNCTION_Values<DWT::DWT_FUNCTION3, 0, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using EMITRANGE = DWT_DWT_FUNCTION3_EMITRANGE_Values<DWT::DWT_FUNCTION3, 5, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using DATAVMATCH = DWT_DWT_FUNCTION3_DATAVMATCH_Values<DWT::DWT_FUNCTION3, 8, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using LNK1ENA = DWT_DWT_FUNCTION3_LNK1ENA_Values<DWT::DWT_FUNCTION3, 9, 1, ReadMode, DWTDWT_FUNCTION3Base> ;
+    using DATAVSIZE = DWT_DWT_FUNCTION3_DATAVSIZE_Values<DWT::DWT_FUNCTION3, 10, 2, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using DATAVADDR0 = DWT_DWT_FUNCTION3_DATAVADDR0_Values<DWT::DWT_FUNCTION3, 12, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using DATAVADDR1 = DWT_DWT_FUNCTION3_DATAVADDR1_Values<DWT::DWT_FUNCTION3, 16, 4, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using MATCHED = DWT_DWT_FUNCTION3_MATCHED_Values<DWT::DWT_FUNCTION3, 24, 1, ReadWriteMode, DWTDWT_FUNCTION3Base> ;
+    using FieldValues = DWT_DWT_FUNCTION3_MATCHED_Values<DWT::DWT_FUNCTION3, 0, 0, NoAccess, NoAccess> ;
   } ;
 
   template<typename... T> 

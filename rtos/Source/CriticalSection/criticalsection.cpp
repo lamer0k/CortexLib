@@ -3,12 +3,13 @@
 #include "criticalsection.hpp" // CriticalSection header file
 
 
-CriticalSection::CriticalSection(): previousInterruptState(__get_interrupt_state())
+CriticalSection::CriticalSection()
+	: previousInterruptState(__get_interrupt_state())
 {
-  __disable_interrupt() ;
+	__disable_interrupt();
 }
 
 CriticalSection::~CriticalSection()
 {
-  __set_interrupt_state(previousInterruptState) ;
+	__set_interrupt_state(previousInterruptState);
 }
