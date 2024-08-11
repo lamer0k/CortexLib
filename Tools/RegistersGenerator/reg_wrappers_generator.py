@@ -6,6 +6,7 @@ import argparse
 import re
 
 access_mode = {
+    'read': 'ReadMode',
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
     'write': 'WriteMode',
@@ -21,6 +22,7 @@ register_types = {
 }
 
 fieldvalue_types = {
+    'read': 'ReadMode',
     'read-only': 'ReadMode',
     'write-only': 'WriteMode',
     'write': 'WriteMode',
@@ -57,7 +59,7 @@ class Peripheral:
         self.size = size
         self.description = description
         self.registers = []
-        
+
 class Register:
     def __init__(self, name, address, access, size, description):
         self.name = name
@@ -67,7 +69,7 @@ class Register:
         self.description = description
         self.fields = []
         self.type = ''
-        
+
 class Field:
     def __init__(self, name, access, bit_offset, bit_width, description, is_fieldvalue):
         self.name = name
@@ -78,7 +80,7 @@ class Field:
         self.is_fieldvalue = False
         self.fieldvalue_values = None
 
-        
+
 class FieldValue:
     def __init__(self, name, value, description):
         self.name = name
@@ -104,24 +106,24 @@ def process_device(raw_device):
         raw_device.name,
         raw_device.access,
         raw_device.size)
-    
+
     if (raw_device.peripherals != None):
         for peripheral in raw_device.peripherals:
             result.peripherals.append(process_peripheral(peripheral, result))
-    
+
     return result
 
 def process_peripheral(raw_peripheral, device):
     if (raw_peripheral.derived_from != None):
         base_peripheral = raw_peripheral.get_derived_from()
-        
+
         result = Peripheral(
             raw_peripheral.name,
             raw_peripheral._base_address if (raw_peripheral._base_address != None) else base_peripheral._base_address, 
             raw_peripheral._access if (raw_peripheral._access != None) else base_peripheral._access, 
             raw_peripheral._size if (raw_peripheral._size != None) else base_peripheral._size,
             raw_peripheral._description if (raw_peripheral._description != None) else base_peripheral._description)
-        
+
         if (raw_peripheral._registers != None):
             for raw_register in raw_peripheral._registers:
                 result.registers.append(process_register(raw_register, result))
@@ -136,7 +138,7 @@ def process_peripheral(raw_peripheral, device):
             raw_peripheral._access if (raw_peripheral._access != None) else device.access, 
             raw_peripheral._size if (raw_peripheral._size != None) else device.size,
             raw_peripheral._description)
-        
+
         if (raw_peripheral._registers != None):
             for raw_register in raw_peripheral._registers:
                 result.registers.append(process_register(raw_register, result))
@@ -168,19 +170,19 @@ def process_peripheral(raw_peripheral, device):
                         result.registers.append(process_register(reg, result))
 
     return result
-    
+
 def process_register(raw_register, peripheral):
     if (raw_register.derived_from != None):
         base_register = raw_register.get_derived_from()
         address_offset = raw_register.address_offset if (raw_register.address_offset != None) else base_register.address_offset
-        
+
         result = Register(
             raw_register.name, 
             peripheral.base_address + address_offset, 
             raw_register._access if (raw_register._access != None) else base_register._access, 
             raw_register._size if (raw_register._size != None) else base_register._size,
             raw_register.description if (raw_register.description != None) else base_register.description)
-        
+
         if (raw_register._fields != None):
             for field in raw_register._fields:
                 result.fields.append(process_field(field, result,peripheral))
@@ -188,7 +190,7 @@ def process_register(raw_register, peripheral):
             if (base_register._fields != None):
                 for field in base_register._fields:
                     result.fields.append(process_field(field, result,peripheral))
-    else:        
+    else:
         result = Register(
             raw_register.name, 
             peripheral.base_address + raw_register.address_offset, 
@@ -196,7 +198,7 @@ def process_register(raw_register, peripheral):
             raw_register._size if (raw_register._size != None) else peripheral.size,
             raw_register.description
             )
-        
+
         if (raw_register._fields != None):
             for field in raw_register._fields:
                 result.fields.append(process_field(field, result, peripheral))
@@ -231,13 +233,13 @@ def process_register(raw_register, peripheral):
                             read_action = read_action,
                         )
                         result.fields.append(process_field(field, result, peripheral))
-    
+
     return result
-    
+
 def process_field(raw_field, register, peripheral):
     if (raw_field.derived_from != None):
         base_field = raw_field.get_derived_from()
-    
+
         result = Field(
             raw_field.name, 
             raw_field.access if (raw_field.access != None) else base_field.access, 
@@ -255,7 +257,7 @@ def process_field(raw_field, register, peripheral):
         else:
             if (base_field.enumerated_values != None):
                 result.fieldvalue_values = []
-        
+
                 for value in base_field.enumerated_values:
                     result.fieldvalue_values.append(process_fieldvalue_value(value))
             else:
@@ -294,7 +296,7 @@ def process_field(raw_field, register, peripheral):
                         result.is_fieldvalue = False
             else:
                 pass #Fixme
-    
+
     return result
 
 def process_fieldvalue_none(peripheral, register, field, value, description):
@@ -332,7 +334,7 @@ def generate_peripheral(peripheral, registers_file, enumerations_file = None):
         peripheral.access, 
         peripheral.size))
     registers_file.write('{\n')
-    
+
     for register in peripheral.registers:
         generate_register_base(
             peripheral,
@@ -371,7 +373,7 @@ def generate_register_base(peripheral, register, registers_file, enumerations_fi
         register.size,
         access_mode[register.access]
         ))
-    
+
     registers_file.write('  {\n')
     fieldvalue_class_name = ""
     for field in register.fields:
@@ -447,7 +449,7 @@ def generate_field(peripheral, register, field, registers_file, bitsfiled_file):
             #fieldvalue_types[access],
 
             fieldvalue_name))
-            
+
     if (bitsfiled_file != None):
         generate_bits_field(peripheral, register, field, fieldvalue_class_name, bitsfiled_file)
 
@@ -482,7 +484,7 @@ def generate_bits_field(peripherial, register, field, fieldvalue_name, bits_fiel
         bits_field_file.write('{\n')
         if(field.fieldvalue_values == None):
             bits_field_list.remove(fieldvalue_name)
-    
+
         if (field.fieldvalue_values != None):
             for value in field.fieldvalue_values:
                 if (field.bit_width <= bits_field_max_width):
@@ -498,16 +500,16 @@ def generate_bits_field(peripherial, register, field, fieldvalue_name, bits_fiel
 def split_into_lines(text, line_size):
     result = []
     line = ''
-    
+
     for word in filter(lambda x: x != '', text.split(' ')):
         if (len(line) + len(word) <= line_size): 
             line += word + ' '
         else:
             result.append(line.rstrip(' '))
             line = word + ' '
-            
+
     result.append(line.rstrip(' '))
-            
+
     return result
 
 def create_file_description(file_name, description):
@@ -520,20 +522,20 @@ def create_file_description(file_name, description):
 
     for line in description_lines[1:]:
         result += '*                 {}\n'.format(line)
-    
+
     result += '*\n'
     result += '*\n'
     result += '*******************************************************************************/\n'
-    
+
     return result
 
-def main():  
+def main():
     arg_parser = argparse.ArgumentParser()
     arg_parser.add_argument('input_file', help = 'input SVD file')
     arg_parser.add_argument('-p', metavar =  'PERIPHERAL', help = 'generate code only for specified peripheral')
     arg_parser.add_argument('-o', help = 'overwrite existing enumerations header files', action = 'store_true')
     args = arg_parser.parse_args()
-    
+
     parser = SVDParser.for_xml_file(args.input_file)
     device = process_device(parser.get_device())
 
@@ -541,10 +543,11 @@ def main():
 
     if (not os.path.isdir(device_name)):
         os.mkdir(device_name)
-        
-    if (not os.path.isdir('{}\FieldValues'.format(device_name))):
-        os.mkdir('{}\FieldValues'.format(device_name))
-        
+
+    fv_path = os.path.join(device_name, 'FieldValues')
+    if (not os.path.isdir(fv_path)):
+        os.mkdir(fv_path)
+
     if (args.p != None):
         peripherals = [x for x in device.peripherals if x.name.lower() == args.p.lower()]
     else:
@@ -553,30 +556,30 @@ def main():
     for peripheral in peripherals:
         peripheral_name = peripheral.name.lower().replace('_', '')
         reg_file_name = '{}registers.hpp'.format(peripheral_name)
+        reg_path = os.path.join(device_name, reg_file_name)
+
         enum_file_name = '{}fieldvalues.hpp'.format(peripheral_name)
-        enum_file_full_name = '{}\FieldValues\{}'.format(device_name, enum_file_name)
-    
-        with open('{}\{}'.format(device_name, reg_file_name), 'w') as registers_file:
+        enum_file_full_name = os.path.join(fv_path, enum_file_name)
+        with open(reg_path, 'w') as registers_file:
             if (peripheral.description != None):
                 per_description = '{}. This header file is auto-generated for {} device.'.format(
                     peripheral.description.rstrip('. '),
                     device.name)
             else:
                 per_description = 'This header file is auto-generated for {} device.'.format(device.name)
-            
+
             registers_file.write(create_file_description(reg_file_name, per_description))
-                
+
             reg_guard = '{}REGISTERS_HPP'.format(peripheral_name.upper())
             registers_file.write('\n')
-            registers_file.write('#if !defined({})\n'.format(reg_guard))
-            registers_file.write('#define {}\n'.format(reg_guard))
+            registers_file.write('#pragma once\n'.format(reg_guard))
             registers_file.write('\n')
             registers_file.write('#include "{}"  //for Bits Fields defs \n'.format(enum_file_name))
             registers_file.write('#include "registerbase.hpp"   //for RegisterBase\n')
             registers_file.write('#include "register.hpp"       //for Register\n')
             registers_file.write('#include "accessmode.hpp"     //for ReadMode, WriteMode, ReadWriteMode  \n')
             registers_file.write('\n')
-            
+
             if((args.o) or (not os.path.isfile(enum_file_full_name))):
                 with open(enum_file_full_name, 'w') as enumerations_file:
                     enumerations_file.write(create_file_description(
@@ -584,22 +587,17 @@ def main():
                         'Enumerations related with {} peripheral. This header file is auto-generated for {} device.'.format(
                             peripheral.name,
                             device.name)))
-                        
+
                     enum_guard = '{}ENUMS_HPP'.format(peripheral_name.upper())
                     enumerations_file.write('\n')
-                    enumerations_file.write('#if !defined({})\n'.format(enum_guard))
-                    enumerations_file.write('#define {}\n'.format(enum_guard))
+                    enumerations_file.write('#pragma once\n'.format(enum_guard))
                     enumerations_file.write('\n')
                     enumerations_file.write('#include "fieldvalue.hpp"     //for FieldValues \n')
                     enumerations_file.write('\n')
-                
+
                     generate_peripheral(peripheral, registers_file, enumerations_file)
-                    
-                    enumerations_file.write('#endif //#if !defined({})\n'.format(enum_guard))
             else:
                 generate_peripheral(peripheral, registers_file)
-                
-            registers_file.write('#endif //#if !defined({})\n'.format(reg_guard))
-        
+
 if __name__ == "__main__":
     main()
